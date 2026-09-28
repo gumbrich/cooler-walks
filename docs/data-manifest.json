@@ -1,0 +1,20 @@
+{
+  "version": "zurich-2026-09-28-v1",
+  "fetchedAt": "2026-09-28",
+  "osmTimestamp": "117344",
+  "treeSource": "City of Zurich Bauminventar, source locations 2021, heights 2018; preparation 2022",
+  "buildingsSource": "swissBUILDINGS3D 3.0 beta, 2019 tiles 1091-23 and 1091-41",
+  "sha256": {
+    "osm": "cf8051db7f470e97423c7cc6311470d8d3ac1553a5870f696f5f5b57a29db72c",
+    "areas": "e5ff49659c54229e20cd7052d1d267dbd65312893506eac0a8ca4fb448630900",
+    "trees": "0755de653c65b33f3d1beb06d272fa5a04543ea790aa81c61a081a90265da4d2",
+    "buildings": "8194bb47230224d8b9f7ca9f9fa91d214a7dd8482115b10c92f2b2002361d0b4"
+  },
+  "counts": {
+    "nodes": 18810,
+    "edges": 20602,
+    "trees": 18886,
+    "buildings": 11211,
+    "places": 498
+  }
+}
