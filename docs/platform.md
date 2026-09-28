@@ -31,6 +31,8 @@ Production testing blocked network requests, reloaded the page and verified rout
 - Axe WCAG 2 A/AA checks and a 200% text-size layout check passed in the tested entry/planner views. These automated checks are not a complete accessibility audit. Search and dialogs were exercised with keyboard input; reduced-motion styling and visible focus are implemented.
 - Production build: map worker loading, offline reload, actual PWA installation and standalone launch verified separately from the development server.
 
+A clean local clone of commit `23e9392` completed `npm ci`, all 19 model tests and the production build without raw data downloads. The main working copy also passed four browser tests, six real-route scenarios (including 0/5/10-minute budgets), formatting and whitespace checks. The clean install's dependency audit reported zero known vulnerabilities. GitHub Actions repeats installation, model/data checks, formatting, build and browser tests on Ubuntu with Node.js 22; its live results are available in the repository's Actions tab.
+
 **Not tested:** physical iPhone/Android devices, Safari, Firefox, touch/keyboard behaviour on real mobile devices, outdoor legibility or field usability. Phone/tablet screenshots are viewport emulation, not device certification. WebGL is needed for the interactive map; a map error keeps textual routes available. Modern browser APIs are used, including workers, Temporal's bundled polyfill and `AbortSignal.any`/`timeout`; broader browser compatibility needs explicit testing.
 
 ## Performance and release limits
