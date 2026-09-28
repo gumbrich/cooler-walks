@@ -27,6 +27,7 @@ import { localNow, timeLabel, toInstant } from './lib/time';
 import type { PilotData, Point, Route, RouteResult } from './lib/types';
 import { PlaceSearch, type Endpoint } from './components/Search';
 import { WalkingMap } from './components/Map';
+import { currentLocation, isNativeApp } from './lib/platform';
 
 type InstallEvent = Event & {
   prompt: () => Promise<void>;
@@ -50,6 +51,7 @@ export default function App() {
   const [cityId, setCityId] = useState(() => readPreference('cw-city', 'ch-zurich')),
     city = getCity(cityId);
   const [view, setView] = useState(() =>
+    isNativeApp ||
     new URLSearchParams(location.search).get('view') === 'planner' ||
     readPreference('cw-visited', '') === 'yes'
       ? 'planner'
@@ -83,7 +85,9 @@ export default function App() {
   const worker = useRef<Worker | null>(null),
     requestId = useRef(0),
     initialized = useRef(false);
+  const locationRequest = useRef(0);
   useEffect(() => {
+    locationRequest.current++;
     const controller = new AbortController();
     setData(null);
     setResult(null);
@@ -126,7 +130,7 @@ export default function App() {
         setDataState('ready');
         // The first city request can precede worker activation. Save that city
         // explicitly once the production worker is ready, including after updates.
-        if (import.meta.env.PROD && 'serviceWorker' in navigator) {
+        if (!isNativeApp && import.meta.env.PROD && 'serviceWorker' in navigator) {
           const saveCity = (target: ServiceWorker | null) => {
             if (!controller.signal.aborted)
               target?.postMessage({ type: 'CACHE_CITY', urls: [city.dataUrl, city.mapUrl] });
@@ -251,25 +255,36 @@ export default function App() {
     setDeparture(localNow(getCity(id).timeZone));
     setEditing(false);
   };
-  const locate = () => {
-    if (!navigator.geolocation) {
-      setError(
-        'Location is unavailable in this browser. Search a street or choose a point on the map.',
-      );
-      return;
-    }
+  useEffect(() => {
+    if (!isNativeApp) return;
+    const listener = import('@capacitor/app').then(({ App: NativeApp }) =>
+      NativeApp.addListener('backButton', () => {
+        if (modal) setModal(null);
+        else if (pick !== null) setPick(null);
+        else if (editing) setEditing(false);
+        else if (view !== 'planner') navigate('planner');
+        else void NativeApp.minimizeApp();
+      }),
+    );
+    return () => {
+      void listener.then((handle) => handle.remove());
+    };
+  }, [modal, pick, editing, view]);
+  const locate = async () => {
+    const id = ++locationRequest.current;
     setError('Finding your location…');
-    navigator.geolocation.getCurrentPosition(
-      (p) => {
-        setStart({ name: 'Your location', point: [p.coords.longitude, p.coords.latitude] });
+    try {
+      const point = await currentLocation();
+      if (id === locationRequest.current) {
+        setStart({ name: 'Your location', point });
         setError('');
-      },
-      () =>
+      }
+    } catch {
+      if (id === locationRequest.current)
         setError(
           'Location access was unavailable. Your trip is preserved; search a street or choose a point on the map.',
-        ),
-      { enableHighAccuracy: false, timeout: 10000, maximumAge: 60000 },
-    );
+        );
+    }
   };
   const mapPick = (p: Point) => {
     const value = { name: `Map point · ${p[1].toFixed(4)}, ${p[0].toFixed(4)}`, point: p };
@@ -493,19 +508,21 @@ export default function App() {
           </div>
           <button
             className="icon-button install-button"
-            aria-label="Install Cooler Walks"
+            aria-label={isNativeApp ? 'About this app' : 'Install Cooler Walks'}
             onClick={() => setModal('install')}
           >
-            <Download size={19} />
+            {isNativeApp ? <Info size={19} /> : <Download size={19} />}
           </button>
         </div>
       </header>
       {!online && (
         <div className="offline-banner" role="status">
           Offline ·{' '}
-          {data
-            ? 'Using previously downloaded pilot data. Source dates are in the method view.'
-            : 'Open a previously saved pilot or reconnect to load data.'}
+          {isNativeApp
+            ? 'Maps and route data are included in this app. No connection is needed to plan.'
+            : data
+              ? 'Using previously downloaded pilot data. Source dates are in the method view.'
+              : 'Open a previously saved pilot or reconnect to load data.'}
         </div>
       )}
       {view === 'home' ? (
@@ -1210,6 +1227,36 @@ export default function App() {
               <p className="small-copy">
                 A city appears here when we investigate it. Each capability launches only after its
                 local data and routes are checked.
+              </p>
+            </>
+          ) : isNativeApp ? (
+            <>
+              <span className="eyebrow">Your pocket walking atlas</span>
+              <h2 id="dialog-title">
+                Ready for
+                <br />
+                <em>a little exploring.</em>
+              </h2>
+              <p>
+                Cooler Walks for iOS and Android includes maps and walking data for all four
+                supported pilots. Planning works offline.
+              </p>
+              <div className="install-instructions">
+                <h3>Keep your data in view</h3>
+                <p>
+                  Source dates and coverage are shown in “How estimates work”. Data updates arrive
+                  with app updates; live closures and turn-by-turn navigation are not included.
+                </p>
+                <h3>Location stays your choice</h3>
+                <p>
+                  Location is requested only when you tap “Use my location”. Journeys are calculated
+                  on your device and are not saved as a history. This app does not track you in the
+                  background.
+                </p>
+              </div>
+              <p className="small-copy">
+                Development preview · version 0.3.0. This build has not been submitted to the App
+                Store or Google Play.
               </p>
             </>
           ) : (

@@ -1,0 +1,2 @@
+# Keep the Gradle Windows launcher native on checkout, normalized in Git.
+*.bat text eol=crlf

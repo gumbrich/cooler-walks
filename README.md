@@ -2,7 +2,7 @@
 
 A warmer kind of walking atlas: compare real pedestrian routes, greenery, waterside walks and experimental sun/shade estimates.
 
-**Status:** bounded pilots in **Zurich, Munich, Cambridge (Massachusetts) and Basel**, not citywide services. Zurich and Munich estimate building sun/shade; Cambridge and Basel offer greenery and water proximity only. Paris remains under review. Tree shade, terrain, weather, live closures and navigation are not included.
+**Status:** expanded pilots in **Zurich, Munich, Cambridge (Massachusetts) and Basel**. Cambridge follows its municipal boundary; the other cities cover central areas. These remain experimental services, not field-validated citywide routing. Zurich and Munich estimate building sun/shade; Cambridge and Basel offer greenery and water proximity only. Paris remains under review. Tree shade, terrain, weather, live closures and navigation are not included.
 
 ## Run locally
 
@@ -13,7 +13,7 @@ npm ci
 npm run dev
 ```
 
-Open **http://127.0.0.1:5173/** for the entry page or **http://127.0.0.1:5173/?view=planner** for the planner. A returning browser opens the planner directly. The small, processed pilot extracts are included, so a fresh checkout does not need to download the raw data.
+Open **http://127.0.0.1:5173/** for the entry page or **http://127.0.0.1:5173/?view=planner** for the planner. A returning browser opens the planner directly. Processed regional extracts are included, so a fresh checkout does not need to download the raw data. They total about 97 MB before compression; the browser loads one city at a time.
 
 For the installable production build:
 
@@ -26,7 +26,7 @@ Open **http://127.0.0.1:4173/**. Localhost is a secure context for PWA developme
 
 ## What works
 
-- A locally rendered MapLibre map of actual OSM streets, buildings, water and parks; a visible pilot boundary and source attribution.
+- A locally rendered MapLibre map of actual OSM streets, buildings, water and parks; a visible coverage boundary, muted unsupported surroundings, “Show whole coverage” control and source attribution. Coverage is now 8.06 km² in Zurich, 8.90 km² in Munich, 18.46 km² in Cambridge and 10.25 km² in Basel; [the coverage report](docs/coverage-validation.json) checks routes beyond the previous pilots.
 - Search among pilot streets and places, explicit map selection, optional geolocation, and endpoint swapping. Place results refer to mapped paths near their source locations; this is not a global address geocoder.
 - Fastest graph route and genuinely different alternatives within 0, 5 or 10 extra minutes; 5 minutes is the default.
 - Up to three ordered stops, with search/map selection, reordering, removal and trip reversal. The extra-time budget applies to the whole trip through all stops; dwell time is excluded.
@@ -36,6 +36,20 @@ Open **http://127.0.0.1:4173/**. Localhost is a secure context for PWA developme
 - PWA icons, manifest and installation guidance. The default Zurich bundle is cached first; other cities are cached when visited. A city’s map and routing downloads must finish online before offline use. Source data stays dated; no live updates are implied.
 
 Use Bahnhofquai → Bürkliplatz on **21 June 2026**, compare **10:00, 14:00 and 18:00 Europe/Zurich**. The exact computed validation results are stored in [docs/route-validation.json](docs/route-validation.json). No examples use synthetic production routes.
+
+## Native iOS and Android apps
+
+The same planner now has native Capacitor projects, in addition to the browser/PWA. Native builds include all four map/data bundles, open directly in the planner, use native location permission on request, and handle safe areas and Android Back. They are development builds, not App Store or Google Play releases.
+
+```sh
+npm run native:sync          # build shared assets and sync both native projects
+npm run native:android       # Android SDK 36 + Java 21; creates a debug APK
+npm run native:open:android  # open Android Studio
+npm run native:ios           # macOS + Xcode 26+ + installed iOS simulator platform
+npm run native:open:ios      # open Xcode
+```
+
+Detailed setup, signing boundaries, offline behaviour and the local iOS platform blocker are in [docs/mobile.md](docs/mobile.md). Actual platform test results are in [docs/platform.md](docs/platform.md). Signing credentials and generated native build outputs are ignored.
 
 ## Develop and verify
 
@@ -62,7 +76,7 @@ With the production preview running, `PWA_HEADFUL=1 npm run test:pwa` verifies o
 | Background calculations, stale-response suppression                | `src/route-worker.ts`, `src/App.tsx`    |
 | Cartography and local place search                                 | `src/components/`                       |
 | Reproducible ingestion, geometry extraction and verification       | `scripts/`                              |
-| Small derived runtime data                                         | `public/data/`                          |
+| Derived runtime data                                               | `public/data/`                          |
 | Untracked source downloads                                         | `data/raw/`                             |
 
 The browser makes no third-party search, route, tile or font requests. Your precise journey is not saved. Only city, units and the returning-user preference are stored locally. Geolocation is requested on demand; the browser's own location provider may contact external services.
@@ -77,7 +91,7 @@ The walking extract follows recorded pedestrian access and shared OSM node topol
 
 The [Zurich tree-position audit](docs/tree-accuracy.md) checks import fidelity and compares older register IDs with a fresh municipal sample. Munich trees are automatically detected positions, with documented false-positive risks; Cambridge and Basel use municipal registers. Sun/shade percentages remain **buildings only**. Sun preference is manual in every season. Low winter sun and tile-edge coverage can prevent a comparison; this is shown explicitly.
 
-Real route checks for every pilot are in [city-route-validation.json](docs/city-route-validation.json). Use the selected city’s default trip on **21 June 2026 at 14:00 local time** as a repeatable starting point. Cambridge’s missing building heights and Basel’s unintegrated height layer are documented in [the coverage register](docs/cities.md).
+Real route checks for every pilot are in [city-route-validation.json](docs/city-route-validation.json), with expanded-area journeys in [coverage-validation.json](docs/coverage-validation.json). Use the selected city’s default trip on **21 June 2026 at 14:00 local time** as a repeatable starting point. Cambridge’s missing building heights and Basel’s unintegrated height layer are documented in [the coverage register](docs/cities.md).
 
 ## Screenshots
 

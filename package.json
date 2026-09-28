@@ -1,6 +1,6 @@
 {
   "name": "cooler-walks",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
   "type": "module",
   "engines": {
@@ -13,15 +13,27 @@
     "test": "vitest run",
     "check": "tsc -b && vitest run",
     "data:prepare": "tsx scripts/prepare-data.ts",
-    "data:verify": "tsx scripts/verify-data.ts && tsx scripts/verify-cities.ts",
+    "data:verify": "tsx scripts/verify-data.ts && tsx scripts/verify-cities.ts && tsx scripts/verify-coverage.ts",
     "data:audit-trees": "tsx scripts/audit-trees.ts",
     "test:e2e": "playwright test",
     "test:pwa": "node scripts/verify-pwa.mjs",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "data:prepare:cities": "tsx scripts/prepare-cities.ts"
+    "data:prepare:cities": "tsx scripts/prepare-cities.ts",
+    "native:sync": "npm run build && node scripts/native-icons.mjs && cap sync",
+    "native:ios": "node scripts/native-build.mjs ios",
+    "native:android": "node scripts/native-build.mjs android",
+    "native:open:ios": "cap open ios",
+    "native:open:android": "cap open android",
+    "test:native:android": "node scripts/verify-android.mjs"
   },
   "dependencies": {
+    "@capacitor/android": "^8.5.2",
+    "@capacitor/app": "^8.1.1",
+    "@capacitor/core": "^8.5.2",
+    "@capacitor/geolocation": "^8.2.2",
+    "@capacitor/ios": "^8.5.2",
+    "@capacitor/splash-screen": "^8.0.2",
     "@js-temporal/polyfill": "^0.5.1",
     "lucide-react": "^0.577.0",
     "maplibre-gl": "^6.11.2",
@@ -32,6 +44,7 @@
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.13.0",
+    "@capacitor/cli": "^8.5.2",
     "@fontsource/dm-sans": "^5.3.0",
     "@fontsource/dm-serif-display": "^5.3.0",
     "@playwright/test": "^1.63.0",
@@ -47,5 +60,10 @@
     "typescript": "^5.9.3",
     "vite": "^7.3.1",
     "vitest": "^4.0.18"
+  },
+  "overrides": {
+    "xcode": {
+      "uuid": "^11.1.1"
+    }
   }
 }
