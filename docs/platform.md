@@ -35,6 +35,8 @@ A clean local clone of commit `23e9392` completed `npm ci`, its 19 model tests a
 
 **Not tested:** physical iPhone/Android devices, Safari, Firefox, touch/keyboard behaviour on real mobile devices, outdoor legibility or field usability. Phone/tablet screenshots are viewport emulation, not device certification. WebGL is needed for the interactive map; a map error keeps textual routes available. Modern browser APIs are used, including workers, Temporal's bundled polyfill and `AbortSignal.any`/`timeout`; broader browser compatibility needs explicit testing.
 
+Browser tests allow 180 seconds per complete multi-step flow on CI (90 seconds locally), with the same 45-second individual assertion limit. Two flows initially exhausted the 90-second total during a screenshot and the final city-switch check on the shared Linux runner. This test allowance is not a product responsiveness target; actual phone performance still needs measurement.
+
 ## Performance and release limits
 
 The pilot deliberately ships its small regional processed extracts (roughly 17 MB before compression). This makes routing independent of demo services and supports bounded offline use, but the bundle should be measured on lower-end phones and slow connections before release. Vite reports a large JavaScript bundle, primarily the map stack; code splitting and a smaller geometry format are the next performance work. The current screenshots use Chrome software WebGL rendering and do not establish mobile GPU performance.

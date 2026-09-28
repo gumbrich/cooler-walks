@@ -1,8 +1,11 @@
 import { defineConfig } from '@playwright/test';
 export default defineConfig({
   testDir: './tests/browser',
-  timeout: 90000,
+  // Shared CI runners need more time for multiple software-rendered map captures.
+  // Individual assertions retain the same limit, so stalled interactions still fail.
+  timeout: process.env.CI ? 180000 : 90000,
   expect: { timeout: 45000 },
+  reporter: process.env.CI ? 'line' : 'list',
   workers: 1,
   webServer: { command: 'npm run dev', url: 'http://127.0.0.1:5173', reuseExistingServer: true },
   use: {
