@@ -18,12 +18,12 @@
     "kind": "Mapped path 5 m from place"
   },
   "version": "zurich-2026-09-28-v1",
-  "verifiedAt": "2026-09-28T17:13:58.307Z",
+  "verifiedAt": "2026-09-28T19:35:45.081Z",
   "results": [
     {
       "date": "2026-06-21T08:00:00Z",
       "extra": 5,
-      "calculationMs": 1561,
+      "calculationMs": 1631,
       "mode": "shade",
       "candidates": 4,
       "fastest": {
@@ -66,7 +66,7 @@
     {
       "date": "2026-06-21T12:00:00Z",
       "extra": 5,
-      "calculationMs": 1174,
+      "calculationMs": 1308,
       "mode": "shade",
       "candidates": 4,
       "fastest": {
@@ -113,7 +113,7 @@
     {
       "date": "2026-06-21T16:00:00Z",
       "extra": 5,
-      "calculationMs": 1827,
+      "calculationMs": 1995,
       "mode": "shade",
       "candidates": 5,
       "fastest": {
@@ -170,7 +170,7 @@
     {
       "date": "2026-06-21T12:00:00Z",
       "extra": 0,
-      "calculationMs": 14,
+      "calculationMs": 15,
       "mode": "shade",
       "candidates": 1,
       "fastest": {
@@ -199,9 +199,56 @@
       "alternative": null
     },
     {
+      "date": "2026-06-21T12:00:00Z",
+      "extra": 10,
+      "calculationMs": 1253,
+      "mode": "shade",
+      "candidates": 4,
+      "fastest": {
+        "meters": 1511.2300000000007,
+        "minutes": 18.89037500000001,
+        "shade": 344.7947142857144,
+        "green": 422.89785714285705,
+        "unknown": 0,
+        "streets": [
+          "Bahnhofquai",
+          "Walking path",
+          "Bahnhofquai",
+          "Walking path",
+          "Steps",
+          "Heiristeg",
+          "Schipfe",
+          "Strehlgasse",
+          "Weinplatz",
+          "Storchengasse",
+          "Münsterhof",
+          "Walking path",
+          "Fraumünsterstrasse",
+          "Walking path"
+        ]
+      },
+      "alternative": {
+        "meters": 1786.4899999999998,
+        "minutes": 22.331124999999997,
+        "shade": 1116.6204545454534,
+        "green": 1010.4920000000003,
+        "unknown": 0,
+        "streets": [
+          "Bahnhofquai",
+          "Walking path",
+          "Bahnhofquai",
+          "Walking path",
+          "Lindenhofstrasse",
+          "Oetenbachgasse",
+          "Lindenhofstrasse",
+          "Walking path"
+        ]
+      }
+    },
+    {
       "date": "2026-06-21T00:00:00Z",
       "extra": 5,
-      "calculationMs": 159,
+      "calculationMs": 204,
       "mode": "night",
       "candidates": 4,
       "fastest": {

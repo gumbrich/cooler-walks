@@ -1,0 +1,17 @@
+{
+  "browser": "153.0.8010.53",
+  "verifiedAt": "2026-09-28T19:35:58.744Z",
+  "origin": "http://127.0.0.1:4173",
+  "manifestErrors": [],
+  "installabilityErrors": [],
+  "offlineReload": true,
+  "offlineRoutes": true,
+  "offlineMap": true,
+  "reconnected": true,
+  "installation": {
+    "installed": true,
+    "standalone": true,
+    "error": null
+  },
+  "pageErrors": []
+}

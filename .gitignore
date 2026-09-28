@@ -9,5 +9,6 @@ data/raw/
 coverage/
 .vite/
 *.log
+.venv-geo/
 playwright-report/
 test-results/

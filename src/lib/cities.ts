@@ -25,6 +25,9 @@ export const cities: City[] = [
     mapUrl: '/data/zurich-map.geojson',
     providers: ['OpenStreetMap', 'City of Zurich', 'swisstopo'],
     translatedNames: { en: 'Zurich', de: 'Zürich' },
+    defaultJourney: ['Bahnhofquai', 'Bürkliplatz'],
+    mapAttribution:
+      '© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">OpenStreetMap</a> · <a href="https://data.stadt-zuerich.ch/dataset/geo_bauminventar" target="_blank" rel="noreferrer">Stadt Zürich</a> · © swisstopo',
   },
   {
     id: 'fr-paris',
@@ -51,6 +54,8 @@ export const cities: City[] = [
     mapUrl: null,
     providers: ['Ville de Paris', 'IGN', 'OpenStreetMap'],
     translatedNames: { en: 'Paris', fr: 'Paris' },
+    defaultJourney: null,
+    mapAttribution: '',
   },
 ];
 export const getCity = (id: string) => cities.find((c) => c.id === id) ?? cities[0];

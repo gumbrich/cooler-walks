@@ -8,12 +8,16 @@
   },
   "scripts": {
     "dev": "vite --host 127.0.0.1",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && node scripts/build-pwa.mjs",
     "preview": "vite preview --host 127.0.0.1",
     "test": "vitest run",
     "check": "tsc -b && vitest run",
     "data:prepare": "tsx scripts/prepare-data.ts",
-    "data:verify": "tsx scripts/verify-data.ts"
+    "data:verify": "tsx scripts/verify-data.ts",
+    "test:e2e": "playwright test",
+    "test:pwa": "node scripts/verify-pwa.mjs",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "dependencies": {
     "@js-temporal/polyfill": "^0.5.1",
@@ -25,14 +29,17 @@
     "suncalc": "^1.9.0"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
     "@fontsource/dm-sans": "^5.3.0",
     "@fontsource/dm-serif-display": "^5.3.0",
+    "@playwright/test": "^1.63.0",
     "@types/geojson": "^7946.0.16",
     "@types/node": "^24.0.0",
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
     "@types/suncalc": "^1.9.2",
     "@vitejs/plugin-react": "^5.1.0",
+    "prettier": "^3.9.9",
     "sharp": "^0.35.5",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3",

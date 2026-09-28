@@ -25,6 +25,8 @@ export interface City {
   mapUrl: string | null;
   providers: string[];
   translatedNames: Record<string, string>;
+  defaultJourney: [string, string] | null;
+  mapAttribution: string;
 }
 export interface GraphNode {
   id: number;

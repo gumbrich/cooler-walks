@@ -101,6 +101,7 @@ export class Router {
     center: Point;
   }>();
   maxHeight = 0;
+  maxRadius = 0;
   constructor(
     public data: PilotData,
     public city: City,
@@ -129,6 +130,7 @@ export class Router {
         ring.reduce((s, p) => s + p[1], 0) / ring.length,
       ];
       const radius = Math.max(...ring.map((p) => distance(p, center)));
+      this.maxRadius = Math.max(this.maxRadius, radius);
       this.buildingGrid.add(center, {
         ring,
         holes: (b.holes ?? []).map((h) => h.map((p) => metric(city, p))),
@@ -161,7 +163,7 @@ export class Router {
     // Do not snap through a mapped building footprint.
     if (
       this.buildingGrid
-        .around(p, 150)
+        .around(p, this.maxRadius + 45)
         .some((b) => rayHits(p, this.points[best], b.ring, b.holes) && !inside(p, b.ring))
     )
       throw new Error(
@@ -244,7 +246,7 @@ export class Router {
             boundaryPoints.every((p) => inBounds(geographic(this.city, p), this.data.modelBounds))
           ) {
             exposure = 'sun';
-            for (const building of this.buildingGrid.around(pt, reach + 160)) {
+            for (const building of this.buildingGrid.around(pt, reach + this.maxRadius)) {
               const vec = shadowVector(building.height, sun.altitude, sun.azimuth);
               if (distance(pt, building.center) > Math.hypot(...vec) + building.radius) continue;
               if (rayHits(pt, [pt[0] - vec[0], pt[1] - vec[1]], building.ring, building.holes)) {
