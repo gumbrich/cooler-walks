@@ -82,7 +82,7 @@ try {
   await page.getByRole('button', { name: 'Edit', exact: true }).click();
   const origin = await page.getByRole('combobox', { name: 'From', exact: true }).inputValue();
   await page.getByRole('button', { name: 'Use my location', exact: true }).click();
-  await device.tap({ res: 'com.android.permissioncontroller:id/permission_deny_button' });
+  await device.tap({ text: /Don.t allow/ });
   await expect(page.getByText(/Location access was unavailable/)).toBeVisible();
   await expect(page.getByRole('combobox', { name: 'From', exact: true })).toHaveValue(origin);
   await device.screenshot({ path: 'docs/screenshots/android-location-denied.png' });

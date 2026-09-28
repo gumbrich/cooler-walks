@@ -1,0 +1,29 @@
+{
+  "checkedAt": "2026-09-28T23:18:38.393Z",
+  "appVersion": "0.3.0",
+  "device": {
+    "model": "sdk_gphone64_arm64",
+    "avd": "CoolerWalks_Test",
+    "emulated": true
+  },
+  "android": "16",
+  "webView": "Current WebView package (name, version): (com.google.android.webview, 134.0.6998.135)",
+  "passed": [
+    "Native launch, bundled Zurich map, real routes and no service worker",
+    "Android Back closes the native information view",
+    "Native permission denial preserves the trip; Back closes editing",
+    "Offline map and real routing: ch-zurich",
+    "Offline map and real routing: de-munich",
+    "Offline map and real routing: us-cambridge-ma",
+    "Offline map and real routing: ch-basel",
+    "Winter sun preference calculates inside the offline native app",
+    "Root Back minimizes; resume preserves selected city and routes",
+    "Native viewport has no horizontal overflow",
+    "Cold native relaunch works offline and remembers the city"
+  ],
+  "pageErrors": [],
+  "limitations": [
+    "No physical-device testing",
+    "iOS compile/launch blocked by missing Xcode platform; see mobile.md"
+  ]
+}

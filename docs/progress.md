@@ -18,7 +18,7 @@ Private maintained repository: https://github.com/gumbrich/cooler-walks. The del
 
 Zurich: 8.06 km² (1.81× the old pilot); Munich: 8.90 km² (4.44×); Cambridge: 18.46 km² (4.95×), using its municipal polygon; Basel: 10.25 km² (2.14×). All graph segments stay inside supported coverage, including narrow gaps and holes. Six new journeys and the existing reference trips validate real routes, alternatives and detour limits. Larger Munich surroundings also enable the tested winter sun comparison.
 
-A whole-coverage map action and quieter city-scale cartography make these limits visible. Unsupported surroundings are muted. Native Capacitor projects share the complete planner and bundle all city data for offline use, with native location permission, Android Back, app icons and safe areas. Setup and the exact remaining iOS platform blocker are in `mobile.md`; validation is recorded in `platform.md`.
+A whole-coverage map action and quieter city-scale cartography make these limits visible. Unsupported surroundings are muted. Native Capacitor projects share the complete planner and bundle all city data for offline use, with native location permission, Android Back, app icons and safe areas. The Android debug APK built and passed eleven emulator integration checks, including native permission denial, every city offline, winter sun and a cold offline restart. Actual emulator screenshots are included. Setup and the exact remaining iOS platform blocker are in `mobile.md`; validation is recorded in `platform.md`.
 
 ## Next useful milestone
 

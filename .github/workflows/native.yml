@@ -25,6 +25,7 @@ jobs:
             android/gradle/wrapper/gradle-wrapper.properties
       - run: npm ci
       - run: npm run native:sync
+      - uses: android-actions/setup-android@v4
       - run: sdkmanager 'platforms;android-36' 'build-tools;36.0.0'
       - run: npm run native:android
       - uses: actions/upload-artifact@v7

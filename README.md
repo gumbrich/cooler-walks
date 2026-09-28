@@ -51,6 +51,8 @@ npm run native:open:ios      # open Xcode
 
 Detailed setup, signing boundaries, offline behaviour and the local iOS platform blocker are in [docs/mobile.md](docs/mobile.md). Actual platform test results are in [docs/platform.md](docs/platform.md). Signing credentials and generated native build outputs are ignored.
 
+Android compiled and passed eleven checks in an Android 16 emulator, including native location denial, Back/resume, all four cities offline and cold offline launch. The iOS project is prepared but requires this Mac's missing compatible Xcode platform before compile/launch can be verified. Neither platform has been tested on a physical phone or submitted to a store.
+
 ## Develop and verify
 
 ```sh
@@ -95,7 +97,7 @@ Real route checks for every pilot are in [city-route-validation.json](docs/city-
 
 ## Screenshots
 
-Actual browser captures are in [docs/screenshots](docs/screenshots). They document visual review, not physical-device or field validation.
+Actual browser and Android emulator captures are in [docs/screenshots](docs/screenshots), including [expanded Cambridge on desktop](docs/screenshots/desktop-expanded-cambridge.png) and [offline Munich in the native app](docs/screenshots/android-offline-munich.png). They document visual review, not physical-device or field validation.
 
 ![Desktop planner](docs/screenshots/desktop-planner.png)
 

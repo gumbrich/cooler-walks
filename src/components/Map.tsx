@@ -493,7 +493,12 @@ export function WalkingMap({
               onClick={() => {
                 if (!showCoverage) onCoverage();
                 map.current?.fitBounds(city.bounds, {
-                  padding: { top: 130, bottom: 100, left: 40, right: 85 },
+                  padding: {
+                    top: 130,
+                    bottom: matchMedia('(max-width:620px)').matches ? 100 : 280,
+                    left: 40,
+                    right: 85,
+                  },
                   duration: matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 650,
                 });
               }}
