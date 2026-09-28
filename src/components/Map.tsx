@@ -372,7 +372,7 @@ export function WalkingMap({
     ? `${result.start.join(',')}:${result.waypoints.map((stop) => stop.point.join(',')).join(':')}:${result.end.join(',')}`
     : '';
   const lastTrip = useRef('');
-  const fit = () => {
+  const fit = (instant = false) => {
     const m = map.current;
     if (!m) return;
     if (result) {
@@ -381,13 +381,13 @@ export function WalkingMap({
       result.alternative?.coordinates.forEach((p) => box.extend(p));
       m.fitBounds(box, {
         padding: {
-          top: hero ? 100 : matchMedia('(max-width:620px)').matches ? 80 : 100,
+          top: hero ? 100 : matchMedia('(max-width:620px)').matches ? 125 : 145,
           bottom: hero ? 170 : matchMedia('(max-width:620px)').matches ? 105 : 280,
           left: 45,
-          right: 45,
+          right: hero ? 45 : 95,
         },
         maxZoom: 16,
-        duration: matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 600,
+        duration: instant || matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 600,
       });
     } else m.flyTo({ center: city.center, zoom: 14.4 });
   };
@@ -400,7 +400,7 @@ export function WalkingMap({
   useEffect(() => {
     const m = map.current;
     if (!m || !ready) return;
-    const resize = () => fit();
+    const resize = () => fit(true);
     m.on('resize', resize);
     return () => {
       m.off('resize', resize);
@@ -428,7 +428,7 @@ export function WalkingMap({
           <div className="map-location">
             <span className="eyebrow">{city.country}</span>
             <strong>{city.localName}</strong>
-            <span>Central city pilot</span>
+            <span>{city.coverageLabel} · pilot</span>
           </div>
           <div className="map-tools">
             <button aria-label="Zoom in" onClick={() => map.current?.zoomIn()}>
@@ -437,7 +437,7 @@ export function WalkingMap({
             <button aria-label="Zoom out" onClick={() => map.current?.zoomOut()}>
               <Minus size={19} />
             </button>
-            <button aria-label="Fit route to map" onClick={fit}>
+            <button aria-label="Fit route to map" onClick={() => fit()}>
               <LocateFixed size={19} />
             </button>
             <button

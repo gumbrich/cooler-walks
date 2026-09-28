@@ -46,3 +46,13 @@ npm run data:audit-trees
 ```
 
 The register endpoint is live, so future results may change. Preserve raw hashes and fetch dates; keep raw files outside Git. Source CRS is WGS84 in the queried GeoJSON, transformed into LV95 for distance comparisons. The register catalogue uses CC0; retain City of Zurich / Grün Stadt Zürich attribution.
+
+## Additional-city positions
+
+The quantified Zurich audit above does not establish positional accuracy in another city. The new source adapters preserve actual source points and identifiers; they do not move trees to make a route look greener.
+
+- **Munich:** the 2024 Bavarian layer is an automatic detection product. Roof edges, power lines and shadows can produce false detections; points do not necessarily locate surveyed trunk centres. The app exposes this limitation and uses proximity only. A separate detection/position audit remains necessary.
+- **Cambridge, MA:** only municipal records explicitly marked `SiteType=Tree` are retained. Stumps, vacant planting sites, retired and unknown sites are excluded even if species/size fields are populated. Dates and maintenance ownership vary; coordinates have not been independently field-checked.
+- **Basel:** source points come from the cantonal maintained-tree register. The provider's coverage excludes some private and other unrecorded trees. Planting year and catalogue updates are not observation dates. No independent positional error figure is claimed.
+
+These are documented source-quality limits, not invented confidence percentages. None of the additional tree layers is used for canopy shadows.

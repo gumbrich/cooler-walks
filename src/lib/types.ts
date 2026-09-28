@@ -28,6 +28,13 @@ export interface City {
   translatedNames: Record<string, string>;
   defaultJourney: [string, string] | null;
   mapAttribution: string;
+  coverageLabel: string;
+  coverageDescription: string;
+  treeNotes: string;
+  buildingNotes: string;
+  sourceSummary: string;
+  sources: { label: string; url: string }[];
+  reviewSummary?: string;
 }
 export interface GraphNode {
   id: number;
@@ -111,6 +118,6 @@ export interface RouteResult {
   startSnap: number;
   endSnap: number;
   waypoints: { point: Point; snap: number }[];
-  preference: 'environment' | 'water';
+  preference: 'environment' | 'water' | 'sun';
   departure: string;
 }

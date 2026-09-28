@@ -1,5 +1,5 @@
 import fs from 'node:fs';
-import { Router } from '../src/lib/routing';
+import { MODEL_VERSION, Router } from '../src/lib/routing';
 import { cities } from '../src/lib/cities';
 import type { PilotData, RouteResult } from '../src/lib/types';
 const data = JSON.parse(fs.readFileSync('public/data/zurich.json', 'utf8')) as PilotData;
@@ -80,6 +80,7 @@ const waterAndStops = [[], [stop.point]].map((waypoints) => {
   return { stops: waypoints.length ? [stop.name] : [], ...summarise(route) };
 });
 const report = {
+  modelVersion: MODEL_VERSION,
   from,
   to,
   version: data.version,

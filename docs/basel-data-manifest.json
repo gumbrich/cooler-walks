@@ -1,0 +1,29 @@
+{
+  "cityId": "ch-basel",
+  "version": "basel-2026-09-28-v1",
+  "fetchedAt": "2026-09-28",
+  "modelBounds": [
+    7.58,
+    47.547,
+    7.606,
+    47.569
+  ],
+  "sourceSummary": "Fetched 28 September 2026. Tree catalogue modified 26 September 2026, with daily processing; those dates do not establish when each tree was observed.",
+  "osmTimestamp": null,
+  "osmSourceStamp": "117349",
+  "sha256": {
+    "basel-osm.json": "70d026be13daa06a6f30ef6e6eab2bde3d2f37c36efa3afab229a777cd4ef827",
+    "basel-areas.json": "204c3813d34da566d56c310c128144b17778b70376e9c2714fc33a61ee047732",
+    "basel-trees.geojson": "f343aaee152799bd8d17644ac04ebb83ef4167791d0bc747035b22c770cf2b12"
+  },
+  "sourceRecords": 32381,
+  "excludedNonTreeStatus": 0,
+  "counts": {
+    "nodes": 9249,
+    "edges": 10430,
+    "places": 479,
+    "trees": 6713,
+    "buildings": 0,
+    "waterAreas": 67
+  }
+}

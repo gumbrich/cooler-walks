@@ -2,7 +2,7 @@
 
 ## Walking network
 
-OSM node identities establish connectivity. Crossing lines without a shared node are not joined, so bridges and tunnels retain their mapped topology. Way segments become metre-weighted graph edges in LV95. Motorways/trunks, construction, private or prohibited pedestrian access, conditional access, indoor paths, unmapped plaza interiors, restricted gates and vehicle-only cycleways are excluded conservatively. Explicit pedestrian access can override a general vehicle restriction. Normal traffic one-way tags do not imply pedestrian one-way restrictions.
+OSM node identities establish connectivity. Crossing lines without a shared node are not joined, so bridges and tunnels retain their mapped topology. Way segments become metre-weighted graph edges in the city’s configured CRS: LV95 for Zurich/Basel, ETRS89 UTM 32N for Munich, WGS84 UTM 19N for Cambridge. Motorways/trunks, construction, private or prohibited pedestrian access, conditional access, indoor paths, unmapped plaza interiors, restricted gates and vehicle-only cycleways are excluded conservatively. Explicit pedestrian access can override a general vehicle restriction. Normal traffic one-way tags do not imply pedestrian one-way restrictions. Explicit `oneway:foot` restrictions and prohibited `foot:forward`/`foot:backward` segments are conservatively excluded until directed pedestrian edges are implemented.
 
 We route between actual graph nodes within 45 m of an input, show the snapped route endpoints and disclose snap distances. No straight connector is advertised as a walking route. Named places are selected on the main connected walking network; small disconnected components remain in the graph so map selections can be reported honestly. Place points may be a nearby mapped path rather than a building's door. Snapping and recorded access still require local verification before broader rollout.
 
@@ -12,9 +12,9 @@ Alternatives come from three penalties on the reference path and three environme
 
 ## Estimated building shade — experimental
 
-1. Parse actual `GroundSurface` triangles from swissBUILDINGS3D CityGML and derive each building's height from maximum model Z minus minimum ground Z. Source coordinates are LV95 with LN02 vertical reference. Heights are **relative metres**, not absolute elevations used as heights.
+1. Parse actual `GroundSurface` polygons from swissBUILDINGS3D or Bavarian LoD2 CityGML and derive each building's height from maximum model Z minus minimum ground Z. Swiss source coordinates are LV95 with LN02 vertical reference; Munich uses ETRS89 UTM 32N with DHHN2016 elevations. Heights are **relative metres**, not absolute elevations used as heights.
 2. Merge ground triangles and preserve holes. Simplify their outlines by 0.1 m. Display and storage use WGS84; calculations project into the city's explicitly configured metric CRS.
-3. SunCalc supplies solar altitude and azimuth for an absolute instant. Convert its south-origin convention to clockwise from north. The route's IANA time zone converts user-entered local dates to an instant. Ambiguous/skipped DST times are rejected.
+3. SunCalc supplies solar altitude and azimuth for an absolute instant. Convert its south-origin convention to clockwise from true north, then rotate into the local projected grid using a projected northward displacement at the pilot centre. Independent PROJ meridian-convergence references check this correction for Munich and Cambridge. The route's IANA time zone converts user-entered local dates to an instant. Ambiguous/skipped DST times are rejected.
 4. Sample each walking edge at intervals no longer than 8 m, weighting by segment length. Cast a ray towards the sun against each extruded footprint; horizontal reach is `height / tan(altitude)`. Preserve courtyard openings. Use a spatial grid to bound candidate objects.
 5. Use a **departure-time snapshot** for the entire walk. This does not model the time of arrival at each segment. Flat-ground prisms overstate some roof shadows and do not capture terrain. Opposite pavements cannot be distinguished from street centrelines.
 
@@ -24,9 +24,17 @@ Shade, direct sun and unknown distances are separate. Shade percentage uses **mo
 
 For shade, prefer lower absolute modelled distance in direct sun (equivalent to time under a constant walking speed); shorter duration breaks ties. At night the app only compares greenery and does not call a zero-sun route cooler.
 
+## Prefer sun and winter
+
+The explicit sunlight preference is available only in building-enabled pilots. It remains the user’s choice throughout the year; there is no universal Northern Hemisphere seasonal switch. Date and local solar position already change building shadows in winter. Tree foliage is not modelled.
+
+For **Prefer sun**, maximize known sun-exposed distance divided by **total route distance**, then break ties with shorter duration. A longer all-sun walk is not inherently better. Require at least 3 percentage points of improvement and 10% new path length, within the same 0/5/10-minute budget. Conservatively compare the candidate’s known sun fraction against the fastest route’s **sun + unknown** fraction; unknown candidate segments never improve the score. Both routes require at least 95% coverage. The displayed sun percentage uses the modelled portion, alongside its coverage, just like shade.
+
+A sun request produces no environmental alternative at night, below 10° solar elevation, or with insufficient building coverage. The interface explains why; it does not relabel a greenery recommendation as sunny. Waterside preference explicitly takes priority when enabled.
+
 ## Greenery
 
-The measure is the fraction of route distance within 15 m of a verified inventory tree position. It is a reproducible **tree-proximity indicator**, independent of time. Invented/randomly distributed TLM woodland trees are excluded by their source prefix. No assumption about crown size, actual canopy shade, foliage, seasonality or cooling is inferred from proximity. Building shade and greenery remain separate metrics.
+The measure is the fraction of route distance within 15 m of a source tree position. It is a reproducible **tree-proximity indicator**, independent of time. Zurich’s randomly distributed TLM woodland trees are excluded by their source prefix. Cambridge retains only SiteType=Tree, excluding stumps, vacant and unknown sites; Basel uses its maintained-tree register. Munich uses Bavaria’s automatic 2024 individual-tree detections, which may include roof-edge and other false positives. No assumption about crown size, actual canopy shade, foliage, seasonality or cooling is inferred from proximity. Building shade and greenery remain separate metrics.
 
 ## Water and ordered stops
 

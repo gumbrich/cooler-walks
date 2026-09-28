@@ -10,5 +10,7 @@ coverage/
 .vite/
 *.log
 .venv-geo/
+__pycache__/
+*.pyc
 playwright-report/
 test-results/

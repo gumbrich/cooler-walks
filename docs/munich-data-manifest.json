@@ -1,0 +1,66 @@
+{
+  "cityId": "de-munich",
+  "version": "munich-2026-09-28-v1",
+  "fetchedAt": "2026-09-28",
+  "modelBounds": [
+    11.5545289,
+    48.1308797,
+    11.5804688,
+    48.148235199999995
+  ],
+  "sourceSummary": "Fetched 28 September 2026. Munich tree product: 2024. Building index published 22 September 2026; per-building creation and outline dates are retained in the data manifest. Publication is not observation date.",
+  "osmTimestamp": null,
+  "osmSourceStamp": null,
+  "sha256": {
+    "munich-osm.json": "c8af8e47c9e0ab747f96acef90c2db9b09dedff4996ff385450c4ae4dcf07a79",
+    "munich-areas.json": "78f612da6d187a0fcbb5644784d60cb4573fa97b430ddbf296ad974bc11152a7",
+    "munich-environment.json": "94b9d1b3e6605b8e7c10952342d37bc0764aa079749b53cb83250536dc4a94d6",
+    "munich-690_5334.gml": "fa05d2a15ae676f2906cc1d0ff2f9889bd2d6c77b9bd0af38852e848a588ab23",
+    "munich-trees.gpkg": "8da66c261e7710a195641b4e617c0b8d81950b42425027fb31498784c875b8e0",
+    "munich-buildings.meta4": "5e2e8e7fcd8dbd6951be57a53a724068ab904814fad1fc39b44984caa4d883b8"
+  },
+  "outlineDates": {
+    "2026-02-06": 5499
+  },
+  "creationDates": {
+    "2015-09-24": 949,
+    "2017-03-28": 1,
+    "2017-11-02": 1,
+    "2018-03-19": 30,
+    "2018-09-04": 19,
+    "2021-02-25": 933,
+    "2021-03-24": 949,
+    "2021-04-20": 682,
+    "2022-10-11": 1,
+    "2023-06-05": 266,
+    "2023-06-20": 337,
+    "2023-06-29": 202,
+    "2024-05-21": 195,
+    "2025-04-04": 27,
+    "2025-04-15": 174,
+    "2026-05-07": 234,
+    "2026-05-26": 499
+  },
+  "heightValidation": {
+    "compared": 5499,
+    "maximumDifferenceMeters": 0.005000000000105587
+  },
+  "sourceMethods": {
+    "1000": 1551,
+    "2000": 3842,
+    "3100": 41,
+    "3210": 8,
+    "3220": 14,
+    "9999": 43
+  },
+  "sourceTreeYear": 2024,
+  "sourceCrs": "EPSG:25832 / DHHN2016",
+  "counts": {
+    "nodes": 5377,
+    "edges": 6038,
+    "places": 335,
+    "trees": 3879,
+    "buildings": 5499,
+    "waterAreas": 62
+  }
+}

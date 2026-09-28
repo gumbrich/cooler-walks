@@ -2,7 +2,7 @@
   "id": "/",
   "name": "Cooler Walks",
   "short_name": "Cooler Walks",
-  "description": "Real walking routes, greenery and estimated building shade in the Zurich pilot.",
+  "description": "Real walking routes, greenery, water proximity and estimated sun/shade in supported city pilots.",
   "start_url": "/?view=planner",
   "scope": "/",
   "display": "standalone",

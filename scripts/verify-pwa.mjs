@@ -34,6 +34,24 @@ const installability = await cdp.send('Page.getInstallabilityErrors');
 if (manifest.errors.length) throw new Error('Manifest errors: ' + JSON.stringify(manifest.errors));
 if (installability.installabilityErrors.length)
   throw new Error('Installability errors: ' + JSON.stringify(installability));
+// Download one additional city while controlled by the production worker.
+await page.getByLabel('City', { exact: true }).selectOption('ch-basel');
+await expect(page.locator('.route-card').first()).toBeVisible({ timeout: 60000 });
+await expect(page.locator('.map-shell')).toHaveAttribute('data-map-ready', 'true', {
+  timeout: 60000,
+});
+await page.waitForFunction(
+  async () =>
+    Boolean(await caches.match('/data/basel.json')) &&
+    Boolean(await caches.match('/data/basel-map.geojson')),
+);
+const unvisitedCityPrecached = await page.evaluate(async () =>
+  Boolean(await caches.match('/data/cambridge.json')),
+);
+if (unvisitedCityPrecached)
+  throw new Error('Unvisited cities should not be downloaded during installation');
+await page.getByLabel('City', { exact: true }).selectOption('ch-zurich');
+await expect(page.locator('.route-card').first()).toBeVisible({ timeout: 60000 });
 await context.setOffline(true);
 await page.reload();
 // Chrome 153 resets navigator.onLine on a cached navigation while retaining
@@ -78,6 +96,16 @@ await expect(page.getByRole('button', { name: /More time near water/ })).toBeVis
   timeout: 60000,
 });
 await expect(page.locator('.map-marker')).toHaveCount(3);
+await page.getByLabel('City', { exact: true }).selectOption('ch-basel');
+await expect(page.locator('.route-card').first()).toBeVisible({ timeout: 60000 });
+await expect(page.locator('.map-shell')).toHaveAttribute('data-map-ready', 'true', {
+  timeout: 60000,
+});
+await page.getByLabel('City', { exact: true }).selectOption('us-cambridge-ma');
+await expect(
+  page.getByText('The pilot data could not load. Check your connection and try again.'),
+).toBeVisible({ timeout: 60000 });
+await expect(page.locator('.route-card')).toHaveCount(0);
 await context.setOffline(false);
 await cdp.send('Network.overrideNetworkState', {
   offline: false,
@@ -87,6 +115,12 @@ await cdp.send('Network.overrideNetworkState', {
   connectionType: 'wifi',
 });
 await expect(page.locator('.offline-banner')).toHaveCount(0);
+await page.getByRole('button', { name: 'Try loading again' }).click();
+await expect(page.locator('.route-card').first()).toBeVisible({ timeout: 60000 });
+await expect(page.locator('.map-shell')).toHaveAttribute('data-map-ready', 'true', {
+  timeout: 60000,
+});
+await expect(page.locator('.map-failure')).toHaveCount(0);
 let installation = { installed: false, standalone: false, error: null };
 const root = await browser.newBrowserCDPSession();
 try {
@@ -122,6 +156,10 @@ const report = {
   offlineRoutes: true,
   offlineMap: true,
   offlineWaterPreference: true,
+  offlineVisitedCitySwitch: true,
+  unvisitedCityPrecached,
+  offlineUnvisitedCityError: true,
+  unvisitedCityRecovery: true,
   offlineWaypoints: true,
   reconnected: true,
   installation,

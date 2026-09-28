@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { geographic, inside, metric, rayHits, formatDistance } from '../src/lib/geo';
-import { cities } from '../src/lib/cities';
+import { geographic, gridAzimuth, inside, metric, rayHits, formatDistance } from '../src/lib/geo';
+import { cities, getCity } from '../src/lib/cities';
 import { toInstant } from '../src/lib/time';
 import { shadowVector, solar } from '../src/lib/solar';
 import { isWalkable, Router } from '../src/lib/routing';
@@ -8,6 +8,20 @@ import { isSurfaceWater, segmentDistance, WaterIndex } from '../src/lib/water';
 import type { PilotData, Point } from '../src/lib/types';
 
 describe('coordinate systems and units', () => {
+  it('matches independent PROJ reference coordinates in the new metric systems', () => {
+    for (const [id, expected] of [
+      ['de-munich', [691331.144249, 5335115.837473]],
+      ['us-cambridge-ma', [325457.539569, 4693590.296933]],
+    ] as [string, Point][]) {
+      const city = getCity(id),
+        xy = metric(city, city.center);
+      expect(xy[0]).toBeCloseTo(expected[0], 3);
+      expect(xy[1]).toBeCloseTo(expected[1], 3);
+      const round = geographic(city, xy);
+      expect(round[0]).toBeCloseTo(city.center[0], 7);
+      expect(round[1]).toBeCloseTo(city.center[1], 7);
+    }
+  });
   it('matches the official LV95 Bern origin and round-trips Zurich', () => {
     const bern = metric(cities[0], [7.438632495, 46.951082877]);
     expect(bern[0]).toBeCloseTo(2600000, 0);
@@ -28,6 +42,17 @@ describe('coordinate systems and units', () => {
   });
 });
 describe('local dates and daylight saving', () => {
+  it('uses Cambridge’s own DST dates, including its skipped and repeated times', () => {
+    expect(toInstant('2026-03-20T12:00', getCity('us-cambridge-ma').timeZone)).toBe(
+      '2026-03-20T16:00:00Z',
+    );
+    expect(toInstant('2026-03-20T12:00', getCity('de-munich').timeZone)).toBe(
+      '2026-03-20T11:00:00Z',
+    );
+    expect(toInstant('2026-12-21T12:00', 'America/New_York')).toBe('2026-12-21T17:00:00Z');
+    expect(() => toInstant('2026-03-08T02:30', 'America/New_York')).toThrow();
+    expect(() => toInstant('2026-11-01T01:30', 'America/New_York')).toThrow();
+  });
   it('interprets Zurich summer and winter locally', () => {
     expect(toInstant('2026-06-21T14:00', 'Europe/Zurich')).toBe('2026-06-21T12:00:00Z');
     expect(toInstant('2026-12-21T14:00', 'Europe/Zurich')).toBe('2026-12-21T13:00:00Z');
@@ -42,6 +67,16 @@ describe('local dates and daylight saving', () => {
   });
 });
 describe('solar geometry', () => {
+  it('rotates true-north solar bearings into each projected grid using independent PROJ references', () => {
+    expect((gridAzimuth(getCity('de-munich'), 0) * 180) / Math.PI).toBeCloseTo(-1.9161611732, 5);
+    expect((gridAzimuth(getCity('us-cambridge-ma'), 0) * 180) / Math.PI).toBeCloseTo(
+      1.4291976981,
+      5,
+    );
+    expect(
+      gridAzimuth(getCity('de-munich'), Math.PI) - gridAzimuth(getCity('de-munich'), 0),
+    ).toBeCloseTo(Math.PI);
+  });
   it('casts northward shadows from a southern sun', () => {
     const v = shadowVector(10, Math.PI / 4, Math.PI);
     expect(v[0]).toBeCloseTo(0);
@@ -95,6 +130,8 @@ describe('pedestrian access', () => {
       { highway: 'path', 'foot:conditional': 'yes @ (sunrise-sunset)' },
       { highway: 'construction' },
       { highway: 'cycleway' },
+      { highway: 'path', 'oneway:foot': 'yes' },
+      { highway: 'path', 'foot:backward': 'no' },
     ] as Record<string, string>[])
       expect(isWalkable(tags)).toBe(false);
   });
@@ -147,6 +184,94 @@ function fixture(): PilotData {
   };
 }
 describe('route constraints', () => {
+  it('prefers a greater known sun fraction, respects detours and changes with winter shadows', () => {
+    const d = fixture();
+    const origin = metric(cities[0], d.nodes[0].point);
+    const point = (x: number, y: number): Point =>
+      geographic(cities[0], [origin[0] + x, origin[1] + y]);
+    d.modelBounds = [8.5, 47.34, 8.58, 47.41];
+    d.buildings = [
+      {
+        id: 'synthetic-south-block',
+        height: 30,
+        ground: 0,
+        ring: [
+          [10, -12],
+          [190, -12],
+          [190, -2],
+          [10, -2],
+          [10, -12],
+        ].map(([x, y]) => point(x, y)),
+      },
+    ];
+    const router = new Router(d, cities[0]);
+    const run = (date: string, extra = 5) =>
+      router.calculate(d.nodes[0].point, d.nodes[2].point, date, extra, [], false, 'sun');
+    const summer = run('2026-06-21T12:00:00Z');
+    expect(summer.preference).toBe('sun');
+    expect(summer.mode).toBe('shade');
+    expect(summer.alternative).not.toBeNull();
+    expect(summer.alternative!.sunMeters / summer.alternative!.distance).toBeGreaterThan(
+      summer.fastest.sunMeters / summer.fastest.distance + 0.03,
+    );
+    expect(summer.alternative!.minutes).toBeLessThanOrEqual(summer.fastest.minutes + 5);
+    expect(run('2026-06-21T12:00:00Z', 0).alternative).toBeNull();
+    const winter = run('2026-12-21T11:30:00Z');
+    expect(winter.mode).toBe('shade');
+    const via = (date: string) =>
+      router.calculate(
+        d.nodes[0].point,
+        d.nodes[2].point,
+        date,
+        0,
+        [d.nodes[3].point],
+        false,
+        'sun',
+      ).fastest;
+    expect(via('2026-12-21T11:30:00Z').sunMeters).toBeLessThan(
+      via('2026-06-21T12:00:00Z').sunMeters,
+    );
+    // A longer all-sun walk has no better sun fraction, and is not recommended.
+    d.buildings[0].ring = [
+      [-500, -500],
+      [-490, -500],
+      [-490, -490],
+      [-500, -490],
+      [-500, -500],
+    ].map(([x, y]) => point(x, y));
+    const fullySunny = new Router(d, cities[0]).calculate(
+      d.nodes[0].point,
+      d.nodes[2].point,
+      '2026-06-21T12:00:00Z',
+      5,
+      [],
+      false,
+      'sun',
+    );
+    expect(fullySunny.fastest.sunMeters).toBeCloseTo(fullySunny.fastest.distance);
+    expect(fullySunny.alternative).toBeNull();
+  });
+  it('never interprets missing geometry, night or low sun as a sunny-route improvement', () => {
+    const d = fixture();
+    const router = new Router(d, cities[0]);
+    for (const departure of [
+      '2026-06-21T12:00:00Z',
+      '2026-06-21T22:00:00Z',
+      '2026-12-21T07:30:00Z',
+    ]) {
+      const r = router.calculate(
+        d.nodes[0].point,
+        d.nodes[2].point,
+        departure,
+        5,
+        [],
+        false,
+        'sun',
+      );
+      expect(r.preference).toBe('sun');
+      expect(r.alternative).toBeNull();
+    }
+  });
   it('visits ordered stops, permits return trips and preserves the zero-detour reference', () => {
     const d = fixture(),
       r = new Router(d, cities[0]);

@@ -2319,6 +2319,84 @@ small {
 }
 
 /* Trip stops and the independent water preference. */
+.sunlight-preference {
+  border: 0;
+  padding: 0;
+  margin: 14px 0 0;
+}
+.capability-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  color: var(--muted);
+  background: #edf0e4;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+.capability-note svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.sunlight-preference legend {
+  font-size: 0.8125rem;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+.sunlight-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid #c9d2bf;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.sunlight-options label {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+.sunlight-options label + label {
+  border-left: 1px solid #c9d2bf;
+}
+.sunlight-options input {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+.sunlight-options label:focus-within {
+  box-shadow: inset 0 0 0 3px #327e81;
+}
+.sunlight-options .active {
+  background: #e2ead8;
+  font-weight: 600;
+}
+.sunlight-options .active.sun {
+  background: #f3dfaa;
+  color: #584016;
+}
+.sun-route.selected {
+  background: #fbf3dc;
+  border-color: #ae802d;
+}
+.sun-route .exposure-bar {
+  background: #ccd6bd;
+}
+.sun-route .exposure-bar > span {
+  background: #d0a03d;
+}
+.sun-route .route-icon {
+  background: #f2e2b8;
+  color: #765519;
+}
 .waypoint-editor {
   margin: -2px 0 12px;
 }

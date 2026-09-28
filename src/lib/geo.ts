@@ -5,6 +5,14 @@ export const geographic = (city: City, p: Point): Point => proj4(city.crs, 'EPSG
 export const inBounds = (p: Point, b: Bounds) =>
   p[0] >= b[0] && p[0] <= b[2] && p[1] >= b[1] && p[1] <= b[3];
 export const distance = (a: Point, b: Point) => Math.hypot(a[0] - b[0], a[1] - b[1]);
+// Solar azimuth is clockwise from true north. The calculation CRS's north can
+// differ (notably UTM away from its central meridian); derive the local rotation
+// from an actual projected northward displacement at the pilot centre.
+export function gridAzimuth(city: City, trueAzimuth: number) {
+  const origin = metric(city, city.center);
+  const north = metric(city, [city.center[0], city.center[1] + 0.00001]);
+  return trueAzimuth + Math.atan2(north[0] - origin[0], north[1] - origin[1]);
+}
 export function inside(p: Point, ring: Point[]) {
   let yes = false;
   for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {

@@ -63,6 +63,7 @@ export default function App() {
   const [stops, setStops] = useState<{ id: number; value: Endpoint | null }[]>([]);
   const stopId = useRef(0);
   const [preferWater, setPreferWater] = useState(false);
+  const [sunlight, setSunlight] = useState<'shade' | 'sun'>('shade');
   const [departure, setDeparture] = useState(() => localNow(city.timeZone)),
     [extra, setExtra] = useState(5);
   const [result, setResult] = useState<RouteResult | null>(null),
@@ -90,6 +91,7 @@ export default function App() {
     setEnd(null);
     setStops([]);
     setPreferWater(false);
+    setSunlight('shade');
     setError('');
     setDataState('loading');
     setBusy(false);
@@ -122,8 +124,20 @@ export default function App() {
           throw new Error('Pilot data version mismatch');
         setData(d);
         setDataState('ready');
-        const from = d.places.find((p) => p.name === city.defaultJourney?.[0]) ?? d.places[0],
-          to = d.places.find((p) => p.name === city.defaultJourney?.[1]) ?? d.places[1];
+        // The first city request can precede worker activation. Save that city
+        // explicitly once the production worker is ready, including after updates.
+        if (import.meta.env.PROD && 'serviceWorker' in navigator) {
+          void navigator.serviceWorker.ready.then((registration) => {
+            if (!controller.signal.aborted)
+              registration.active?.postMessage({
+                type: 'CACHE_CITY',
+                urls: [city.dataUrl, city.mapUrl],
+              });
+          });
+        }
+        const from = d.places.find((p) => p.name === city.defaultJourney?.[0]),
+          to = d.places.find((p) => p.name === city.defaultJourney?.[1]);
+        if (!from || !to) throw new Error('Reference places are missing from the city bundle');
         setStart({ name: from.name, point: from.point });
         setEnd({ name: to.name, point: to.point });
         const w = new Worker(new URL('./route-worker.ts', import.meta.url), { type: 'module' });
@@ -141,6 +155,7 @@ export default function App() {
           }
         };
         w.onerror = () => {
+          if (worker.current !== w) return;
           setBusy(false);
           setError('The route calculator could not start. Reload to try again.');
         };
@@ -187,11 +202,12 @@ export default function App() {
         extra,
         waypoints: stops.map((stop) => stop.value!.point),
         preferWater,
+        sunlight,
       });
       initialized.current = true;
     }, 180);
     return () => clearTimeout(timer);
-  }, [data, start, end, stops, preferWater, departure, extra, city]);
+  }, [data, start, end, stops, preferWater, sunlight, departure, extra, city]);
   useEffect(() => {
     const a = () => setOnline(true),
       b = () => setOnline(false),
@@ -280,10 +296,12 @@ export default function App() {
       : (result.alternative ?? result.fastest)
     : null;
   const isShade = result?.mode === 'shade';
+  const showSun = isShade && sunlight === 'sun';
   const percentage = (r: Route) =>
     Math.round(
       isShade
-        ? (r.shadeMeters / Math.max(1, r.distance - r.unknownMeters)) * 100
+        ? ((showSun ? r.sunMeters : r.shadeMeters) / Math.max(1, r.distance - r.unknownMeters)) *
+            100
         : (r.greenMeters / r.distance) * 100,
     );
   const timeMinutes =
@@ -329,7 +347,7 @@ export default function App() {
               : result?.mode === 'low-sun'
                 ? 'Low sun · building estimate unavailable'
                 : isShade
-                  ? 'Move time. See the estimated shade change.'
+                  ? `Move time. See the estimated ${showSun ? 'sun' : 'shade'} change.`
                   : 'Tree proximity stays the same throughout the day.'}
         </span>
         <label className="date-label">
@@ -349,7 +367,7 @@ export default function App() {
   const routeCard = (route: Route, index: number) => (
     <button
       key={route.id}
-      className={`route-card ${selected === route.id ? 'selected' : ''}`}
+      className={`route-card ${selected === route.id ? 'selected' : ''} ${showSun ? 'sun-route' : ''}`}
       onClick={() => setSelected(route.id)}
       aria-pressed={selected === route.id}
     >
@@ -358,6 +376,8 @@ export default function App() {
           {index ? (
             result?.preference === 'water' ? (
               <Waves size={20} />
+            ) : result?.preference === 'sun' ? (
+              <Sun size={20} />
             ) : (
               <Leaf size={20} />
             )
@@ -369,9 +389,11 @@ export default function App() {
           {index
             ? result?.preference === 'water'
               ? 'More time near water'
-              : isShade
-                ? 'More estimated shade'
-                : 'Greener route'
+              : result?.preference === 'sun'
+                ? 'More estimated sun'
+                : isShade
+                  ? 'More estimated shade'
+                  : 'Greener route'
             : 'Fastest walk'}
           <small>
             {index
@@ -390,7 +412,8 @@ export default function App() {
         </strong>
         <span>{formatDistance(route.distance, units)}</span>
         <span className="exposure-number">
-          {percentage(route)}%<small>{isShade ? 'estimated shade' : 'near trees'}</small>
+          {percentage(route)}%
+          <small>{isShade ? (showSun ? 'estimated sun' : 'estimated shade') : 'near trees'}</small>
         </span>
       </div>
       <div className="exposure-bar" aria-hidden="true">
@@ -452,12 +475,14 @@ export default function App() {
               City
             </label>
             <select id="city" value={city.id} onChange={(e) => changeCity(e.target.value)}>
-              {cities.map((c) => (
-                <option value={c.id} key={c.id}>
-                  {c.localName}, {c.country}
-                  {c.status === 'review' ? ' · under review' : ''}
-                </option>
-              ))}
+              {[...cities]
+                .sort((a, b) => Number(a.status === 'review') - Number(b.status === 'review'))
+                .map((c) => (
+                  <option value={c.id} key={c.id}>
+                    {c.localName}, {c.country}
+                    {c.status === 'review' ? ' · under review' : ''}
+                  </option>
+                ))}
             </select>
             <ChevronDown size={14} />
           </div>
@@ -474,7 +499,7 @@ export default function App() {
         <div className="offline-banner" role="status">
           Offline ·{' '}
           {data
-            ? 'Using saved pilot data from 28 September 2026.'
+            ? 'Using previously downloaded pilot data. Source dates are in the method view.'
             : 'Open a previously saved pilot or reconnect to load data.'}
         </div>
       )}
@@ -486,12 +511,12 @@ export default function App() {
                 <span className="tiny-sun">✳</span> A city is better on foot
               </div>
               <h1>
-                A little less sun.
+                {sunlight === 'sun' ? 'A little more sun.' : 'A little less sun.'}
                 <br />A better <em>walk.</em>
               </h1>
               <p>
-                Take a different path through the city. Find more greenery, explore estimated shade,
-                and see what a few extra minutes can change.
+                Take a different path through the city. Find more greenery, choose sun or shade
+                where estimates are available, and see what a few extra minutes can change.
               </p>
               <button className="primary hero-cta" onClick={() => navigate('planner')}>
                 Find a cooler walk <ArrowRight size={21} />
@@ -505,7 +530,7 @@ export default function App() {
             </div>
             <div className="hero-atlas">
               {city.status === 'pilot' ? (
-                <WalkingMap {...mapProps} hero />
+                <WalkingMap key={`${city.id}:${retry}`} {...mapProps} hero />
               ) : (
                 <div className="review-visual">
                   <Globe2 size={90} />
@@ -517,7 +542,7 @@ export default function App() {
                 <span>THE WALKING ATLAS</span>
                 <strong>
                   {city.localName}
-                  <sup>{city.status === 'pilot' ? '01' : '02'}</sup>
+                  <sup>{String(cities.indexOf(city) + 1).padStart(2, '0')}</sup>
                 </strong>
               </div>
               <div className="atlas-coordinate">
@@ -534,9 +559,11 @@ export default function App() {
                       {result.alternative
                         ? result.preference === 'water'
                           ? 'A little closer to the water.'
-                          : isShade
-                            ? 'A little more shade along the way.'
-                            : 'A little more green along the way.'
+                          : result.preference === 'sun'
+                            ? 'A little more sunshine along the way.'
+                            : isShade
+                              ? 'A little more shade along the way.'
+                              : 'A little more green along the way.'
                         : 'Your city. A walk worth taking.'}
                     </strong>
                     <span>
@@ -578,7 +605,8 @@ export default function App() {
               <span className="number">03 /</span>
               <h3>Know the ground</h3>
               <p>
-                See the coverage and sources behind your walk. Our first chapter is central Zurich.
+                See the coverage and sources behind your walk. Each city starts with a carefully
+                bounded pilot.
               </p>
             </article>
           </section>
@@ -587,7 +615,7 @@ export default function App() {
             <button onClick={() => setModal('method')}>
               Method, sources & privacy <ArrowRight size={14} />
             </button>
-            <span>Zurich pilot · v0.1</span>
+            <span>City pilots · v0.2</span>
           </footer>
         </main>
       ) : (
@@ -602,14 +630,10 @@ export default function App() {
                 {city.localName},<br />
                 <em>under review.</em>
               </h1>
-              <p>
-                We’ve verified a sample of Paris’s public tree inventory. Pedestrian routes and
-                building geometry still need integration and validation before we can recommend a
-                walk here.
-              </p>
+              <p>{city.reviewSummary}</p>
               <div className="review-tags">
                 <span>France</span>
-                <span>Europe/Paris</span>
+                <span>{city.timeZone}</span>
                 <span>Routing unavailable</span>
               </div>
               <button className="primary" onClick={() => changeCity('ch-zurich')}>
@@ -792,6 +816,29 @@ export default function App() {
                       ))}
                     </div>
                   </fieldset>
+                  {city.capabilities.buildingShade && (
+                    <fieldset className="sunlight-preference">
+                      <legend>Find your light</legend>
+                      <div className="sunlight-options">
+                        {(['shade', 'sun'] as const).map((value) => (
+                          <label
+                            key={value}
+                            className={sunlight === value ? `active ${value}` : ''}
+                          >
+                            <input
+                              type="radio"
+                              name="sunlight"
+                              value={value}
+                              checked={sunlight === value}
+                              onChange={() => setSunlight(value)}
+                            />
+                            {value === 'sun' ? <Sun size={18} /> : <Leaf size={18} />}
+                            Prefer {value}
+                          </label>
+                        ))}
+                      </div>
+                    </fieldset>
+                  )}
                   {city.capabilities.water && (
                     <label className={`water-preference ${preferWater ? 'active' : ''}`}>
                       <Waves size={21} />
@@ -808,7 +855,8 @@ export default function App() {
                   )}
                   {preferWater && (
                     <p className="preference-help">
-                      Water proximity takes priority and may mean less shade.
+                      Water proximity takes priority over your{' '}
+                      {city.capabilities.buildingShade ? 'sunlight' : 'greenery'} preference.
                     </p>
                   )}
                   <button className="primary mobile-save" type="submit">
@@ -857,6 +905,11 @@ export default function App() {
                       <p>Choose a start, destination and any added stops to find your walk.</p>
                     </div>
                   ) : null}
+                  {city.status === 'pilot' && !city.capabilities.buildingShade && (
+                    <p className="capability-note">
+                      <Leaf size={16} /> Greenery prototype · sun/shade estimates are not enabled.
+                    </p>
+                  )}
                   {result && (
                     <>
                       {[result.fastest, ...(result.alternative ? [result.alternative] : [])].map(
@@ -866,9 +919,13 @@ export default function App() {
                         <p className="result-note">
                           {extra === 0
                             ? 'With no extra walking time, the fastest walk through your chosen points is your route.'
-                            : preferWater
-                              ? 'No route with meaningfully more water proximity was found within your time limit.'
-                              : 'No meaningfully better alternative was found within your time limit.'}
+                            : sunlight === 'sun' && !preferWater && !isShade
+                              ? 'A sun-based recommendation is unavailable for this time or coverage. The fastest walk is shown.'
+                              : preferWater
+                                ? 'No route with meaningfully more water proximity was found within your time limit.'
+                                : sunlight === 'sun'
+                                  ? 'No meaningfully sunnier alternative was found within your time limit.'
+                                  : 'No meaningfully better alternative was found within your time limit.'}
                         </p>
                       )}
                       {result.mode === 'night' && (
@@ -896,6 +953,9 @@ export default function App() {
                       <summary>
                         About this walk <ChevronDown size={15} />
                       </summary>
+                      <p>
+                        Departure: {departure.replace('T', ' ')} · {city.timeZone}.
+                      </p>
                       {!!stops.length && (
                         <p>
                           Stops:{' '}
@@ -945,7 +1005,7 @@ export default function App() {
                 </div>
                 <div className="panel-footer">
                   <button onClick={() => setModal('coverage')}>
-                    <span className="pilot-dot" /> Central {city.name} pilot <Info size={13} />
+                    <span className="pilot-dot" /> {city.coverageLabel} pilot <Info size={13} />
                   </button>
                   <button
                     onClick={() => {
@@ -960,7 +1020,7 @@ export default function App() {
                 </div>
               </aside>
               <section className="planner-map" aria-label="Walking route map">
-                <WalkingMap {...mapProps} />
+                <WalkingMap key={`${city.id}:${retry}`} {...mapProps} />
                 <div className="map-top-pill">
                   <Leaf size={15} /> A little more green. A little less rush.
                 </div>
@@ -1004,9 +1064,9 @@ export default function App() {
                 <div>
                   <h3>Estimated building shade</h3>
                   <p>
-                    Actual swisstopo building footprints and roof heights meet the sun’s position at
-                    your chosen departure time. We sample paths every 8 metres on a flat-ground
-                    model. This is a departure snapshot, not a measurement of heat or a forecast.
+                    {city.buildingNotes} Where enabled, we sample paths every 8 metres at your
+                    selected departure instant. This is a flat-ground snapshot, not a measurement of
+                    heat or a weather forecast.
                   </p>
                 </div>
               </div>
@@ -1019,12 +1079,7 @@ export default function App() {
                     not canopy coverage or shade. Tree crowns, foliage, clouds and terrain shadows
                     are not modelled.
                   </p>
-                  <p>
-                    Markers preserve the source positions. Some trees were surveyed; others were
-                    entered on screen or detected from aerial data. The inventory uses 2021
-                    positions, so removals and replacements may be missing. Marker size does not
-                    represent a measured crown.
-                  </p>
+                  <p>{city.treeNotes}</p>
                 </div>
               </div>
               <div className="method-item">
@@ -1045,10 +1100,12 @@ export default function App() {
                 <div>
                   <h3>Know the limits</h3>
                   <p>
-                    At least 95% model coverage is required to compare shade. Low sun below 10° is
-                    withheld. Streets may follow centrelines; we cannot identify the shadier
-                    pavement. Access restrictions, closures and walking speed may differ on the
-                    ground. No wheelchair-suitability claim is made.
+                    At least 95% model coverage is required to compare shade or sun. “Prefer sun”
+                    ranks the known sunny share of the whole walk; unknown data cannot improve that
+                    score. It stays your choice in every season. Low sun below 10° is withheld.
+                    Streets may follow centrelines; we cannot identify the shadier pavement. Access
+                    restrictions, closures and walking speed may differ on the ground. No
+                    wheelchair-suitability claim is made.
                   </p>
                 </div>
               </div>
@@ -1056,26 +1113,18 @@ export default function App() {
               <p>
                 <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">
                   OpenStreetMap contributors
-                </a>{' '}
-                ·{' '}
-                <a
-                  href="https://data.stadt-zuerich.ch/dataset/geo_bauminventar"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  City of Zurich tree inventory
-                </a>{' '}
-                ·{' '}
-                <a
-                  href="https://www.swisstopo.admin.ch/en/landscape-model-swissbuildings3d-3-0-beta"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  © swisstopo building models
                 </a>
-                . Data fetched 28 September 2026. Building tiles: 2019; tree locations: 2021,
-                prepared 2022. Fetch date is not observation date.
+                {city.sources.map((source) => (
+                  <span key={source.url}>
+                    {' '}
+                    ·{' '}
+                    <a href={source.url} target="_blank" rel="noreferrer">
+                      {source.label}
+                    </a>
+                  </span>
+                ))}
               </p>
+              <p>{city.sourceSummary}</p>
               <p>
                 Search and route calculation use the downloaded pilot data on your device. We save
                 only city, units and whether you’ve opened the planner. Location is requested only
@@ -1091,52 +1140,68 @@ export default function App() {
                 <br />
                 <em>Room to grow.</em>
               </h2>
-              <div className="coverage-city">
-                <div>
-                  <h3>Zürich, Switzerland</h3>
-                  <span className="status-badge">Pilot area</span>
+              {cities.map((coveredCity) => (
+                <div className="coverage-city" key={coveredCity.id}>
+                  <div>
+                    <h3>
+                      {coveredCity.name}, {coveredCity.country}
+                    </h3>
+                    <span
+                      className={`status-badge ${coveredCity.status === 'review' ? 'muted' : ''}`}
+                    >
+                      {coveredCity.status === 'pilot' ? 'Pilot area' : 'Data under review'}
+                    </span>
+                  </div>
+                  <p>{coveredCity.coverageDescription}</p>
+                  {coveredCity.status === 'pilot' ? (
+                    <>
+                      <dl>
+                        <div>
+                          <dt>Greenery</dt>
+                          <dd>
+                            {coveredCity.capabilities.greenery
+                              ? 'Recorded tree proximity'
+                              : 'Unavailable'}
+                          </dd>
+                        </div>
+                        <div>
+                          <dt>Sun & shade</dt>
+                          <dd>
+                            {coveredCity.capabilities.buildingShade
+                              ? 'Buildings only · experimental'
+                              : 'Not enabled'}
+                          </dd>
+                        </div>
+                        <div>
+                          <dt>Water</dt>
+                          <dd>
+                            {coveredCity.capabilities.water
+                              ? 'Mapped surface-water proximity'
+                              : 'Unavailable'}
+                          </dd>
+                        </div>
+                        <div>
+                          <dt>Not included</dt>
+                          <dd>Tree shade, terrain, fountains</dd>
+                        </div>
+                      </dl>
+                      <button
+                        className="text-button"
+                        onClick={() => {
+                          changeCity(coveredCity.id);
+                          setCoverage(true);
+                          navigate('planner');
+                          setModal(null);
+                        }}
+                      >
+                        Explore {coveredCity.name} <ArrowRight size={16} />
+                      </button>
+                    </>
+                  ) : (
+                    <p>{coveredCity.reviewSummary}</p>
+                  )}
                 </div>
-                <p>
-                  Central Zurich: the Limmat corridor from the main station area towards the lake.
-                  The dashed boundary shows the exact supported area, not the whole city.
-                </p>
-                <dl>
-                  <div>
-                    <dt>Greenery</dt>
-                    <dd>Recorded tree proximity</dd>
-                  </div>
-                  <div>
-                    <dt>Estimated shade</dt>
-                    <dd>Buildings only · experimental</dd>
-                  </div>
-                  <div>
-                    <dt>Not included</dt>
-                    <dd>Tree shade, terrain, fountains</dd>
-                  </div>
-                </dl>
-                <button
-                  className="text-button"
-                  onClick={() => {
-                    changeCity('ch-zurich');
-                    setCoverage(true);
-                    navigate('planner');
-                    setModal(null);
-                  }}
-                >
-                  Show pilot boundary <ArrowRight size={16} />
-                </button>
-              </div>
-              <div className="coverage-city">
-                <div>
-                  <h3>Paris, France</h3>
-                  <span className="status-badge muted">Data under review</span>
-                </div>
-                <p>
-                  The municipal tree inventory has a working public API. IGN building heights are a
-                  promising input. Local routing, source-date checks and building validation are the
-                  next steps. No Paris route recommendations are available yet.
-                </p>
-              </div>
+              ))}
               <p className="small-copy">
                 A city appears here when we investigate it. Each capability launches only after its
                 local data and routes are checked.
@@ -1177,9 +1242,9 @@ export default function App() {
                 </div>
               )}
               <p className="small-copy">
-                After a successful online load and cache installation, the saved Zurich interface,
-                map and route data can work offline. Data remains dated 28 September 2026; closures
-                and live navigation are not provided.
+                After a successful online load and cache installation, the saved interface and
+                visited city’s map and route data can work offline. Saved data keeps its source
+                dates; closures and live navigation are not provided.
               </p>
             </>
           )}

@@ -6,7 +6,9 @@ dist/
 node_modules/
 package-lock.json
 docs/data-manifest.json
+docs/*-data-manifest.json
 docs/route-validation.json
+docs/city-route-validation.json
 test-results/
 public/fonts/
 docs/screenshots/

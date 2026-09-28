@@ -1,8 +1,8 @@
 # Cooler Walks
 
-A warmer kind of walking atlas: compare real pedestrian routes, recorded greenery and experimental building-shade estimates in central Zurich.
+A warmer kind of walking atlas: compare real pedestrian routes, greenery, waterside walks and experimental sun/shade estimates.
 
-**Status:** a bounded Zurich pilot, not a validated citywide service. Paris is a researched expansion candidate, with no route recommendations yet. Tree shade, terrain, weather, live closures and navigation are not included.
+**Status:** bounded pilots in **Zurich, Munich, Cambridge (Massachusetts) and Basel**, not citywide services. Zurich and Munich estimate building sun/shade; Cambridge and Basel offer greenery and water proximity only. Paris remains under review. Tree shade, terrain, weather, live closures and navigation are not included.
 
 ## Run locally
 
@@ -31,9 +31,9 @@ Open **http://127.0.0.1:4173/**. Localhost is a secure context for PWA developme
 - Fastest graph route and genuinely different alternatives within 0, 5 or 10 extra minutes; 5 minutes is the default.
 - Up to three ordered stops, with search/map selection, reordering, removal and trip reversal. The extra-time budget applies to the whole trip through all stops; dwell time is excluded.
 - Optional **Prefer waterside** routing and a separate measure of distance within 50 m of mapped surface water. Proximity does not establish views, bank access, drinking water or cooling.
-- Estimated building shade from actual Swiss building geometry and solar position, sampled every 8 m at the selected departure instant. Greenery remains a separate 15 m tree-proximity measure.
-- Local date/time with explicit DST ambiguity handling, metric/imperial display, a responsive phone sheet, source/coverage views and a capability-disabled Paris view.
-- PWA icons, manifest, supported-browser installation guidance and a generated service worker. After its first successful cache installation, the complete bounded map and routing bundle can be used offline. Source data stays dated; no live updates are implied.
+- **Prefer shade / Prefer sun** in Zurich and Munich, including winter dates. Uses actual Swiss or Bavarian building geometry and solar position, sampled every 8 m at the selected departure instant. Unknown coverage cannot count as sunshine. Greenery remains a separate 15 m tree-proximity measure.
+- Four city configurations with local sources, metric coordinate systems, coverage and IANA time zones. Cambridge uses America/New_York, independently of the device’s zone. Local date/time rejects ambiguous or skipped DST times. Metric/imperial display, a responsive phone sheet and source/coverage views are shared.
+- PWA icons, manifest and installation guidance. The default Zurich bundle is cached first; other cities are cached when visited. A city’s map and routing downloads must finish online before offline use. Source data stays dated; no live updates are implied.
 
 Use Bahnhofquai → Bürkliplatz on **21 June 2026**, compare **10:00, 14:00 and 18:00 Europe/Zurich**. The exact computed validation results are stored in [docs/route-validation.json](docs/route-validation.json). No examples use synthetic production routes.
 
@@ -41,7 +41,7 @@ Use Bahnhofquai → Bürkliplatz on **21 June 2026**, compare **10:00, 14:00 and
 
 ```sh
 npm run check          # TypeScript and focused model tests
-npm run data:verify    # real Zurich pair, detours, changing shade and night
+npm run data:verify    # real pairs in every pilot, sun/shade, water and detours
 npm run build         # production build and offline cache manifest
 npx playwright install chromium
 npm run test:e2e       # real browser interactions and responsive screenshots
@@ -75,7 +75,9 @@ The building model uses footprints extruded to maximum roof height above local m
 
 The walking extract follows recorded pedestrian access and shared OSM node topology. It does not know current closures, crossing waits or unrecorded access changes. It is not an accessibility or turn-by-turn navigation service. Below 10° solar elevation and outside adequate source coverage, the interface uses greenery rather than an unsupported shade recommendation.
 
-The [tree-position audit](docs/tree-accuracy.md) checks import fidelity and compares older register IDs with a fresh municipal sample. Current shade percentages remain **building shade only**. Seasonal sun preferences, weather context and feedback submission are on the roadmap.
+The [Zurich tree-position audit](docs/tree-accuracy.md) checks import fidelity and compares older register IDs with a fresh municipal sample. Munich trees are automatically detected positions, with documented false-positive risks; Cambridge and Basel use municipal registers. Sun/shade percentages remain **buildings only**. Sun preference is manual in every season. Low winter sun and tile-edge coverage can prevent a comparison; this is shown explicitly.
+
+Real route checks for every pilot are in [city-route-validation.json](docs/city-route-validation.json). Use the selected city’s default trip on **21 June 2026 at 14:00 local time** as a repeatable starting point. Cambridge’s missing building heights and Basel’s unintegrated height layer are documented in [the coverage register](docs/cities.md).
 
 ## Screenshots
 

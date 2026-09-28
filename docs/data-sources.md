@@ -62,3 +62,41 @@ For any refresh: inspect source schemas/dates/licences, update the fetch date an
 ## International research
 
 Paris's actual two-record API sample was inspected locally and its source fields are summarized in `cities.md`. IGN BD TOPO is a documented height source, but no Paris building sample, local route or shade calculation has been validated yet. Vienna was compared using its official WFS and OGD documentation. Neither is presented as launched.
+
+## Munich: Bavarian LoD2 and automatic tree detections
+
+- Official [Bavaria open geodata catalogue](https://geodaten.bayern.de/opengeodata/), [LoD2 product notes](https://geodaten.bayern.de/odd/m/3/pdf/hinweise_daten_lod2_download.pdf), [individual-tree limitations](https://www.geodaten.bayern.de/odd/m/3/html/datenhinweise/datenhinweise_einzelbaeume.html) and [tree schema](https://geodaten.bayern.de/odd/m/3/pdf/einzelbaeume_datenformat.pdf) were checked against actual downloads. Licence: **CC BY 4.0**, attribution **Bayerische Vermessungsverwaltung**. The app uses no hosted map-viewer scraping or remote runtime service.
+- Buildings: municipal metalink `https://geodaten.bayern.de/odd/a/lod2/citygml/meta/metalink/09162000.meta4`, published 22 September 2026. One nominal 2 km tile, `https://download1.bayernwolke.de/a/lod2/citygml/690_5334.gml`, approximately 162 MB. Its SHA-256 is checked against the published index before extraction. This is not the entire municipal dataset.
+- Actual source: CityGML 1.0, **ETRS89 UTM 32N / DHHN2016**, metre XYZ coordinates. Read each building/part's real GroundSurface polygons, retain courtyard holes, calculate maximum geometry Z minus minimum ground Z, union/simplify by 0.1 m. All 5,499 derived heights were compared with the source `measuredHeight` in metres; maximum difference 0.005 m. This checks extraction, not real-world survey accuracy or the simplified shadow model.
+- Nominal tile: `[690000,5334000,692000,5336000]`. The runtime model boundary is a conservative WGS84 rectangle inside the rotated metric tile. Surrounding geometry and maximum possible shadow reach determine sample coverage. Long winter shadows can leave insufficient coverage even for endpoints inside the walking boundary. Missing coverage stays unknown.
+- Building creation and `Grundrissaktualitaet` dates vary by object and are counted in `munich-data-manifest.json`. Index publication is not a new field observation. Standardized roof geometry is simplified further to flat-ground extrusions; no tree or terrain shadows.
+- Trees: Munich block **124028, product year 2024**, `https://geodaten.bayern.de/odd/m/8/baeume3d/data/124028_baeume.gpkg`, roughly 482 MB. A read-only GeoPackage spatial-index query extracts actual EPSG:25832 point coordinates around the pilot. The source derives trees automatically from surface/elevation models and imagery. Roof edges, power lines and shadows can cause false detections; these are not surveyed trunk centres. `baumhoehe`/`dgmhoehe` are not used to invent canopy shade.
+- Network/map: nine small, bounded [OSM API v0.6](https://wiki.openstreetmap.org/wiki/API_v0.6) map extracts, original node identities preserved. Complete water/park relations are downloaded separately. Exact bounds, requests and cached source XML are specified in `fetch-munich-network.py`. Requests remain under the API's 50,000-node per-map limit. Fetch dates do not establish feature survey freshness.
+
+## Cambridge, Massachusetts: greenery and water pilot
+
+- [City GIS tree dictionary](https://www.cambridgema.gov/gis/gisdatadictionary/environmental/environmental_streettrees), municipal [source repository](https://github.com/cambridgegis/cambridgegis_data/tree/main/Environmental/Trees). Licence: **Open Data Commons PDDL 1.0**, credit City of Cambridge GIS / Public Works. Actual GeoJSON contains 43,222 site records; catalogue modified **6 July 2026**, not the observation date of every tree.
+- Read WGS84 Point coordinates and TreeID. **Retain only `SiteType === 'Tree'`**. Exclude retired trees, stumps, spars, vacant planting sites and unknown statuses regardless of other attributes. The register covers several owners, including university sites; private trees and changes can be absent. Only the bounded subset with a small tree-proximity buffer is shipped. Source coordinates are not randomly shifted or expanded into imagined crowns.
+- OSM network/map/water: [Geofabrik Massachusetts](https://download.geofabrik.de/north-america/us/massachusetts.html), dated `https://download.geofabrik.de/north-america/us/massachusetts-260927.osm.pbf` (~311 MB). ODbL, © OpenStreetMap contributors. The actual PBF replication timestamp and SHA-256 are recorded separately from its filename. A local pyosmium extraction retains original OSM IDs, way nodes and tags; libosmium assembles water/park multipolygons and islands. The app does not call Geofabrik or a routing demo server.
+- Calculation CRS: **WGS84 UTM 19N**, metres; display WGS84. Time zone: **America/New_York**, including its own DST transitions. The municipal source geodatabase uses NAD83 Massachusetts State Plane feet (EPSG:2249); the supplied GeoJSON is already geographic, so its coordinates are not treated as feet.
+- **Sun/shade blocked at integration:** inspected [actual building data](https://www.cambridgema.gov/gis/gisdatadictionary/basemap/basemap_buildings) and source XML. The 18,235 features include 250 missing/nonpositive `TOP_GL` heights. Footprints derive from April 2018 imagery; the 2026 catalogue edit is not new imagery. Source elevation reference is NAVD88; unit/attribute semantics and missing-height masks need further verification before modelling. None of these heights enters the released runtime. Next: normalize verified relative heights and units, mask unknown buildings and municipal-edge gaps, then validate daylight routes. No sun/shade claims here.
+
+## Basel: maintained-tree register and Rhine geometry
+
+- [Basel-Stadt Baumkataster, dataset 100052](https://data.bs.ch/explore/dataset/100052/), actual Explore API GeoJSON export and metadata. Licence **CC BY 4.0** with the portal's OSM conditions, attribution **Geodaten Kanton Basel-Stadt** and © OpenStreetMap contributors. There were **32,381 source records**; catalogue modified 26 September 2026 and processed daily. Planting dates/catalogue changes are not survey dates.
+- The register covers Stadtgärtnerei Basel and Riehen maintained trees, not all private/urban trees. Retain actual point coordinates and `ba_baumnr`. Source geodata is LV95; the API GeoJSON export supplies WGS84 points, explicitly projected back to LV95 for distances. Tree positions support proximity, not canopy or leaf cover.
+- Bounded Swiss Overpass road/tree-context extracts are recorded in `fetch-city-data.sh`; OSM reuse/attribution is as above. The mirror's `117349` marker is not an ISO observation timestamp. Its Switzerland clipping left the cross-border Rhine relation incomplete. `complete-basel-water.py` merges the **complete original relation 7518910** from the documented OSM API. No artificial polygon closure is used.
+- Sun/shade is disabled: a local building-height extract and its coverage checks have not been integrated. Basemap footprints are never treated as physical shadow data.
+
+## Rebuild the additional cities
+
+After `npm ci`, prepare the same pinned Python environment as above, then run one or more:
+
+```sh
+bash scripts/fetch-city-data.sh basel
+bash scripts/fetch-city-data.sh cambridge
+bash scripts/fetch-city-data.sh munich
+npm run data:verify
+```
+
+The scripts are resumable for the large immutable files. For a deliberate source refresh, remove the relevant cached raw files first, inspect upstream dates/licences/schema and increment the configured version/fetch date. Live municipal exports and OSM APIs can change; exact historical output requires raw files matching each `*-data-manifest.json` hash. Munich's published metalink can also change; keep its matching index and tile together. Ordinary app setup uses the compact checked-in derived files and needs none of these large downloads or Python dependencies.

@@ -1,6 +1,6 @@
 {
   "name": "cooler-walks",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "type": "module",
   "engines": {
@@ -13,12 +13,13 @@
     "test": "vitest run",
     "check": "tsc -b && vitest run",
     "data:prepare": "tsx scripts/prepare-data.ts",
-    "data:verify": "tsx scripts/verify-data.ts",
+    "data:verify": "tsx scripts/verify-data.ts && tsx scripts/verify-cities.ts",
     "data:audit-trees": "tsx scripts/audit-trees.ts",
     "test:e2e": "playwright test",
     "test:pwa": "node scripts/verify-pwa.mjs",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "data:prepare:cities": "tsx scripts/prepare-cities.ts"
   },
   "dependencies": {
     "@js-temporal/polyfill": "^0.5.1",

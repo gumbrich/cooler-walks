@@ -1,5 +1,5 @@
 import type { Edge, PilotData, Point, City, Route, RouteResult, Sample } from './types';
-import { distance, geographic, inBounds, inside, metric, rayHits } from './geo';
+import { distance, geographic, gridAzimuth, inBounds, inside, metric, rayHits } from './geo';
 import { solar, shadowVector } from './solar';
 import { WaterIndex } from './water';
 
@@ -7,7 +7,7 @@ export const WALK_METERS_PER_MINUTE = 80;
 export const SAMPLE_METERS = 8;
 export const TREE_PROXIMITY_METERS = 15;
 export const MIN_SHADE_COVERAGE = 0.95;
-export const MODEL_VERSION = 'flat-buildings-snapshot-v2';
+export const MODEL_VERSION = 'flat-buildings-snapshot-v3';
 export const MAX_WAYPOINTS = 3;
 const CELL = 60;
 class Grid<T> {
@@ -80,6 +80,10 @@ export function isWalkable(tags: Record<string, string>) {
   )
     return false;
   if (tags['access:conditional'] || tags['foot:conditional'] || tags.opening_hours) return false;
+  // The pilot graph is bidirectional. Do not admit a source path with explicit
+  // pedestrian direction restrictions until directed edges are implemented.
+  if (tags['oneway:foot'] && !['no', '0', 'false'].includes(tags['oneway:foot'])) return false;
+  if (tags['foot:forward'] === 'no' || tags['foot:backward'] === 'no') return false;
   if (['no', 'private', 'use_sidepath'].includes(tags.foot)) return false;
   const explicit = ['yes', 'designated', 'permissive'].includes(tags.foot);
   if (
@@ -209,6 +213,7 @@ export class Router {
     extra: number,
     waypoints: Point[] = [],
     preferWater = false,
+    sunlight: 'shade' | 'sun' = 'shade',
   ): RouteResult {
     if (waypoints.length > MAX_WAYPOINTS) throw new Error('Choose up to three stops.');
     if (preferWater && (!this.city.capabilities.water || !this.data.water.length))
@@ -241,15 +246,16 @@ export class Router {
       return nodes;
     };
     const sun = solar(date, this.city.center),
+      projectedAzimuth = gridAzimuth(this.city, sun.azimuth),
       altDeg = (sun.altitude * 180) / Math.PI;
     const mode: RouteResult['mode'] =
       altDeg <= 0
         ? 'night'
-        : altDeg < 10
-          ? 'low-sun'
-          : this.city.capabilities.buildingShade && this.maxHeight
-            ? 'shade'
-            : 'greenery';
+        : !this.city.capabilities.buildingShade || !this.maxHeight
+          ? 'greenery'
+          : altDeg < 10
+            ? 'low-sun'
+            : 'shade';
     const edgeSamples = new Map<number, Sample[]>();
     const sample = (index: number) => {
       const cached = edgeSamples.get(index);
@@ -279,7 +285,7 @@ export class Router {
           ) {
             exposure = 'sun';
             for (const building of this.buildingGrid.around(pt, reach + this.maxRadius)) {
-              const vec = shadowVector(building.height, sun.altitude, sun.azimuth);
+              const vec = shadowVector(building.height, sun.altitude, projectedAzimuth);
               if (distance(pt, building.center) > Math.hypot(...vec) + building.radius) continue;
               if (rayHits(pt, [pt[0] - vec[0], pt[1] - vec[1]], building.ring, building.holes)) {
                 exposure = 'shade';
@@ -354,7 +360,7 @@ export class Router {
             const favorable = sample(i).reduce(
               (v, s) =>
                 v +
-                ((preferWater ? s.water : mode === 'shade' ? s.exposure === 'shade' : s.green)
+                ((preferWater ? s.water : mode === 'shade' ? s.exposure === sunlight : s.green)
                   ? s.meters
                   : 0),
               0,
@@ -393,18 +399,25 @@ export class Router {
         novel / r.distance >= 0.1 &&
         (preferWater
           ? r.waterMeters / r.distance - fastest.waterMeters / fastest.distance >= 0.03
-          : shade
-            ? fastest.sunMeters - (r.sunMeters + r.unknownMeters) >= 40
-            : r.greenMeters / r.distance - fastest.greenMeters / fastest.distance >= 0.03)
+          : sunlight === 'sun'
+            ? shade &&
+              r.sunMeters / r.distance -
+                (fastest.sunMeters + fastest.unknownMeters) / fastest.distance >=
+                0.03
+            : shade
+              ? fastest.sunMeters - (r.sunMeters + r.unknownMeters) >= 40
+              : r.greenMeters / r.distance - fastest.greenMeters / fastest.distance >= 0.03)
       );
     });
     better.sort(
       (x, y) =>
         (preferWater
           ? y.waterMeters / y.distance - x.waterMeters / x.distance
-          : shade
-            ? x.sunMeters + x.unknownMeters - (y.sunMeters + y.unknownMeters)
-            : y.greenMeters / y.distance - x.greenMeters / x.distance) || x.minutes - y.minutes,
+          : sunlight === 'sun'
+            ? y.sunMeters / y.distance - x.sunMeters / x.distance
+            : shade
+              ? x.sunMeters + x.unknownMeters - (y.sunMeters + y.unknownMeters)
+              : y.greenMeters / y.distance - x.greenMeters / x.distance) || x.minutes - y.minutes,
     );
     return {
       fastest,
@@ -418,7 +431,7 @@ export class Router {
       waypoints: stops
         .slice(1, -1)
         .map((stop) => ({ point: this.data.nodes[stop.index].point, snap: stop.meters })),
-      preference: preferWater ? 'water' : 'environment',
+      preference: preferWater ? 'water' : sunlight === 'sun' ? 'sun' : 'environment',
       departure,
     };
   }
