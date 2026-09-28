@@ -41,6 +41,7 @@ const data: PilotData = {
   version: city.dataVersion!,
   cityId: city.id,
   fetchedAt: '2026-09-28',
+  preparedAt: '2026-09-29',
   bounds: city.bounds,
   modelBounds,
   nodes,
@@ -74,6 +75,9 @@ fs.writeFileSync(
     {
       version: data.version,
       fetchedAt: data.fetchedAt,
+      preparedAt: data.preparedAt,
+      routeBounds: city.bounds,
+      modelBounds,
       ...data.provenance,
       counts: {
         nodes: nodes.length,

@@ -10,6 +10,10 @@ Dijkstra finds the shortest route on the included network. A constant 80 m/min (
 
 Alternatives come from three penalties on the reference path and three environmental weightings. All candidates must respect the precise unrounded extra-time budget. At least 10% of an alternative's distance must use new path nodes, and improvement must be at least 40 m less direct sun or 3 percentage points more tree proximity. The result is the best candidate evaluated, not a proof of globally optimal shade routing. Exact zero detour returns only the shortest reference route. Different weighting searches can converge to the same route and are deduplicated.
 
+Coverage uses the configured rectangle or municipal MultiPolygon. Whole graph segments and route segments are checked, including holes and separate islands, and snaps cannot cross an unsupported gap. Cambridge uses its actual city boundary. A visible basemap beyond the boundary does not establish environmental coverage.
+
+After calculating the fastest route, a Euclidean lower bound excludes candidate edges that cannot fit the total trip distance budget. Both directions are checked. The tolerance bounds all centimetre-rounded edge errors across every ordered leg, preserving eligible routes while keeping short trips responsive on a larger graph.
+
 ## Estimated building shade — experimental
 
 1. Parse actual `GroundSurface` polygons from swissBUILDINGS3D or Bavarian LoD2 CityGML and derive each building's height from maximum model Z minus minimum ground Z. Swiss source coordinates are LV95 with LN02 vertical reference; Munich uses ETRS89 UTM 32N with DHHN2016 elevations. Heights are **relative metres**, not absolute elevations used as heights.
@@ -19,6 +23,8 @@ Alternatives come from three penalties on the reference path and three environme
 5. Use a **departure-time snapshot** for the entire walk. This does not model the time of arrival at each segment. Flat-ground prisms overstate some roof shadows and do not capture terrain. Opposite pavements cannot be distinguished from street centrelines.
 
 Object data extends beyond the routing boundary. Samples are unknown if their potential source reach exceeds the model bounds. Solar altitude below 10° is withheld because a bounded flat-ground model becomes particularly unreliable; solar altitude at or below 0° is night. Tree shadows, leaf seasonality, clouds, weather and terrain effects are disabled.
+
+Munich’s 61 unsupported elevated structures or conflicting source heights are potential unknown obstructions, not shade-producing building prisms. They use the supported model height ceiling of 150 m solely to conservatively mask possible obstruction along the sun ray. A sample remains unknown unless a separate accepted building establishes shade. These objects do not block snapping as though their elevated slab touched the ground. This conservative ceiling is a model limit, not a measurement of those objects.
 
 Shade, direct sun and unknown distances are separate. Shade percentage uses **modelled distance** (`shade + sun`) as denominator, while model coverage uses total route distance. Both comparison routes must have at least 95% model coverage. Unknown segments never reduce the sunlight cost or improve eligibility. Inadequate shade coverage falls back explicitly to the separate greenery comparison. Qualitative quality: **experimental — simplified buildings, historical source geometry, no field validation**. No confidence probabilities, measured temperature reductions or thermal-safety claims are made.
 

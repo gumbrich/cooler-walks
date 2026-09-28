@@ -1,4 +1,5 @@
-import { distance, inBounds, inside, metric } from '../../src/lib/geo';
+import { distance, inside, metric } from '../../src/lib/geo';
+import { inCoverage, segmentInCoverage } from '../../src/lib/coverage';
 import { isWalkable } from '../../src/lib/routing';
 import { isSurfaceWater } from '../../src/lib/water';
 import type { City, GraphNode, Edge, Place, Point, WaterArea } from '../../src/lib/types';
@@ -127,7 +128,7 @@ export function prepareOSM(city: City, raw: OSMData, areas: OSMData, areaFeature
       for (let j = 1; j < way.nodes.length; j++) {
         const p = coords[j - 1],
           q = coords[j];
-        if (!inBounds(p, city.bounds) || !inBounds(q, city.bounds)) continue;
+        if (!segmentInCoverage(city, p, q)) continue;
         const length = distance(metric(city, p), metric(city, q));
         if (length < 0.01) continue;
         edges.push({
@@ -179,6 +180,7 @@ export function prepareOSM(city: City, raw: OSMData, areas: OSMData, areaFeature
   }
   const largest = sizes.indexOf(Math.max(...sizes));
   const mainNodes = nodes.map((_, i) => i).filter((i) => component[i] === largest);
+  const metricNodes = nodes.map((n) => metric(city, n.point));
   const namedWays = new Set<string>();
   for (const way of raw.elements
     .filter((e) => e.type === 'way' && e.tags?.name && isWalkable(e.tags))
@@ -196,12 +198,12 @@ export function prepareOSM(city: City, raw: OSMData, areas: OSMData, areaFeature
   for (const n of raw.elements.filter(
     (e) => e.type === 'node' && e.tags?.name && e.tags?.tourism,
   )) {
-    if (inBounds([n.lon, n.lat], city.bounds) && !namedWays.has(n.tags!.name)) {
+    if (inCoverage(city, [n.lon, n.lat]) && !namedWays.has(n.tags!.name)) {
       const p = metric(city, [n.lon, n.lat]);
       let best = -1,
         dist = Infinity;
       for (const i of mainNodes) {
-        const d = distance(p, metric(city, nodes[i].point));
+        const d = distance(p, metricNodes[i]);
         if (d < dist) {
           dist = d;
           best = i;
@@ -219,6 +221,33 @@ export function prepareOSM(city: City, raw: OSMData, areas: OSMData, areaFeature
     }
   }
   places.sort((a, b) => a.name.localeCompare(b.name));
+  // Cartographic hierarchy: small pocket parks should not label a whole-city view.
+  const ringArea = (ring: number[][]) => {
+    const points = ring.map((p) => metric(city, p as Point));
+    return (
+      Math.abs(
+        points.slice(1).reduce((sum, p, i) => sum + points[i][0] * p[1] - p[0] * points[i][1], 0),
+      ) / 2
+    );
+  };
+  for (const f of features) {
+    if (f.properties?.kind !== 'park') continue;
+    const polygons =
+      f.geometry.type === 'Polygon'
+        ? [f.geometry.coordinates]
+        : f.geometry.type === 'MultiPolygon'
+          ? f.geometry.coordinates
+          : [];
+    f.properties.areaM2 = Math.round(
+      polygons.reduce(
+        (sum, rings) =>
+          sum +
+          ringArea(rings[0]) -
+          rings.slice(1).reduce((area, ring) => area + ringArea(ring), 0),
+        0,
+      ),
+    );
+  }
   const water: WaterArea[] = features.flatMap((f) => {
     if (!f.properties?.routeWater) return [];
     const polygons =

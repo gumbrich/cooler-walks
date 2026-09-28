@@ -21,6 +21,8 @@ case "${1:-}" in
     python3 scripts/complete-basel-water.py
     ;;
   cambridge)
+    fetch 'https://raw.githubusercontent.com/cambridgegis/cambridgegis_data/main/Boundary/City_Boundary/BOUNDARY_CityBoundary.geojson' cambridge-boundary.geojson
+    python3 scripts/prepare-city-boundaries.py
     fetch 'https://raw.githubusercontent.com/cambridgegis/cambridgegis_data/main/Environmental/Trees/ENVIRONMENTAL_StreetTrees.geojson' cambridge-trees.geojson
     fetch 'https://raw.githubusercontent.com/cambridgegis/cambridgegis_data/main/Basemap/Buildings/BASEMAP_Buildings.geojson' cambridge-buildings.geojson
     fetch 'https://download.geofabrik.de/north-america/us/massachusetts-260927.osm.pbf' massachusetts-260927.osm.pbf
@@ -28,7 +30,7 @@ case "${1:-}" in
     ;;
   munich)
     fetch 'https://geodaten.bayern.de/odd/a/lod2/citygml/meta/metalink/09162000.meta4' munich-buildings.meta4
-    fetch 'https://download1.bayernwolke.de/a/lod2/citygml/690_5334.gml' munich-690_5334.gml
+    python3 scripts/fetch-munich-buildings.py
     python3 scripts/fetch-munich-trees.py
     python3 scripts/fetch-munich-network.py
     .venv-geo/bin/python scripts/extract-munich-environment.py

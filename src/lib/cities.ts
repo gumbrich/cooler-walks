@@ -1,4 +1,5 @@
-import type { City } from './types';
+import type { City, Point } from './types';
+import cambridgeCoverage from './coverage/cambridge.json';
 export const cities: City[] = [
   {
     id: 'ch-zurich',
@@ -7,7 +8,7 @@ export const cities: City[] = [
     country: 'Switzerland',
     region: 'Zürich',
     center: [8.541, 47.374],
-    bounds: [8.529, 47.362, 8.552, 47.385],
+    bounds: [8.524, 47.359, 8.556, 47.389],
     timeZone: 'Europe/Zurich',
     locale: 'de-CH',
     crs: '+proj=somerc +lat_0=46.95240555555556 +lon_0=7.439583333333333 +k_0=1 +x_0=2600000 +y_0=1200000 +ellps=bessel +towgs84=674.374,15.056,405.346,0,0,0,0 +units=m +no_defs',
@@ -21,15 +22,15 @@ export const cities: City[] = [
       fountains: false,
       water: true,
     },
-    dataVersion: 'zurich-2026-09-28-v2',
+    dataVersion: 'zurich-2026-09-29-v3',
     dataUrl: '/data/zurich.json',
     mapUrl: '/data/zurich-map.geojson',
     providers: ['OpenStreetMap', 'City of Zurich', 'swisstopo'],
     translatedNames: { en: 'Zurich', de: 'Zürich' },
     defaultJourney: ['Bahnhofquai', 'Bürkliplatz'],
-    coverageLabel: 'Limmat corridor',
+    coverageLabel: 'Central Zurich',
     coverageDescription:
-      'Central Zurich, from the main station area along the Limmat towards the lake. The boundary is a pilot area, not the whole city.',
+      'An expanded central pilot from Platzspitz and the university area to the lake, including more streets west of the Limmat. The dashed boundary is routing coverage, not the whole city; building-model gaps remain unknown.',
     treeNotes:
       'The inventory uses 2021 positions from surveys, screen entry and aerial data. Removals and replacements may be missing. Markers are positions, not measured crowns.',
     buildingNotes:
@@ -102,7 +103,7 @@ cities.push(
     country: 'Germany',
     region: 'Bavaria',
     center: [11.572, 48.1405],
-    bounds: [11.56, 48.135, 11.582, 48.146],
+    bounds: [11.558, 48.133, 11.601, 48.158],
     timeZone: 'Europe/Berlin',
     locale: 'de-DE',
     crs: '+proj=utm +zone=32 +ellps=GRS80 +units=m +no_defs',
@@ -116,7 +117,7 @@ cities.push(
       fountains: false,
       water: true,
     },
-    dataVersion: 'munich-2026-09-28-v1',
+    dataVersion: 'munich-2026-09-29-v2',
     dataUrl: '/data/munich.json',
     mapUrl: '/data/munich-map.geojson',
     providers: ['OpenStreetMap', 'Bayerische Vermessungsverwaltung'],
@@ -124,13 +125,13 @@ cities.push(
     defaultJourney: ['Karlsplatz (Stachus)', 'Odeonsplatz'],
     mapAttribution:
       '© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">OpenStreetMap</a> · <a href="https://geodaten.bayern.de/opengeodata/" target="_blank" rel="noreferrer">Bayerische Vermessungsverwaltung · CC BY 4.0</a>',
-    coverageLabel: 'Old town west',
+    coverageLabel: 'Old town, Lehel & gardens',
     coverageDescription:
-      'A bounded old-town pilot around Karlsplatz, Frauenkirche and Odeonsplatz. Building coverage comes from one 2 km tile; edge and long-shadow gaps remain unknown.',
+      'An expanded central pilot from Karlsplatz across the old town to Lehel and the southern English Garden. Four adjacent 2 km building tiles support shade estimates; edge and long-shadow gaps remain unknown.',
     treeNotes:
       'Automatically detected individual-tree positions from Bavaria’s 2024 Munich dataset. False detections can occur near roof edges, shadows and power lines. These are not surveyed trunk centres or measured crowns.',
     buildingNotes:
-      'Bavarian LoD2 ground surfaces and actual relative heights, simplified to flat-ground extrusions. Data dates differ by building; complex roofs are generalized.',
+      'Bavarian LoD2 ground surfaces and actual relative heights, simplified to flat-ground extrusions. Conflicting heights and unsupported elevated structures are masked as unknown; complex roofs and slopes remain limitations.',
     sourceSummary:
       'Fetched 28 September 2026. Munich tree product: 2024. Building index published 22 September 2026; per-building creation and outline dates are retained in the data manifest. Publication is not observation date.',
     sources: [
@@ -151,7 +152,8 @@ cities.push(
     country: 'United States',
     region: 'Massachusetts',
     center: [-71.12, 42.375],
-    bounds: [-71.132, 42.367, -71.108, 42.384],
+    bounds: [-71.161, 42.352, -71.063, 42.405],
+    coverage: cambridgeCoverage as Point[][][],
     timeZone: 'America/New_York',
     locale: 'en-US',
     crs: '+proj=utm +zone=19 +datum=WGS84 +units=m +no_defs',
@@ -165,7 +167,7 @@ cities.push(
       fountains: false,
       water: true,
     },
-    dataVersion: 'cambridge-2026-09-28-v1',
+    dataVersion: 'cambridge-2026-09-29-v2',
     dataUrl: '/data/cambridge.json',
     mapUrl: '/data/cambridge-map.geojson',
     providers: ['OpenStreetMap / Geofabrik', 'City of Cambridge GIS'],
@@ -173,9 +175,9 @@ cities.push(
     defaultJourney: ['Brattle Street', 'Cambridge Street'],
     mapAttribution:
       '© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">OpenStreetMap</a> · <a href="https://www.cambridgema.gov/gis/gisdatadictionary/environmental/environmental_streettrees" target="_blank" rel="noreferrer">City of Cambridge GIS · PDDL</a>',
-    coverageLabel: 'Harvard Square area',
+    coverageLabel: 'Cambridge city boundary',
     coverageDescription:
-      'Harvard Square and nearby Cambridge streets within the displayed boundary. Greenery and water proximity are available; sun and shade estimates are not yet enabled.',
+      'The municipal boundary now includes Harvard, Central and Kendall squares, North Cambridge and Fresh Pond. Routes stay on the Cambridge side of the boundary. Greenery uses recorded trees, not a complete canopy survey; shade is not yet enabled.',
     treeNotes:
       'City-maintained tree records include municipal, university and other sites. Only records explicitly marked “Tree” are retained; stumps, vacant sites and unknown status are excluded. Private trees may be missing.',
     buildingNotes:
@@ -204,7 +206,7 @@ cities.push(
     country: 'Switzerland',
     region: 'Basel-Stadt',
     center: [7.59, 47.559],
-    bounds: [7.58, 47.547, 7.606, 47.569],
+    bounds: [7.576, 47.541, 7.611, 47.576],
     timeZone: 'Europe/Zurich',
     locale: 'de-CH',
     crs: cities[0].crs,
@@ -218,7 +220,7 @@ cities.push(
       fountains: false,
       water: true,
     },
-    dataVersion: 'basel-2026-09-28-v1',
+    dataVersion: 'basel-2026-09-29-v2',
     dataUrl: '/data/basel.json',
     mapUrl: '/data/basel-map.geojson',
     providers: ['OpenStreetMap', 'Geodaten Kanton Basel-Stadt'],
@@ -226,9 +228,9 @@ cities.push(
     defaultJourney: ['Aeschenplatz', 'Mittlere Rheinbrücke'],
     mapAttribution:
       '© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">OpenStreetMap</a> · <a href="https://data.bs.ch/explore/dataset/100052/" target="_blank" rel="noreferrer">Geodaten Kanton Basel-Stadt · CC BY 4.0</a>',
-    coverageLabel: 'Old town & Rhine',
+    coverageLabel: 'Central Basel & Kleinbasel',
     coverageDescription:
-      'The central old town and Rhine corridor inside the pilot boundary. Greenery and water proximity only; no sun/shade recommendations yet.',
+      'An expanded central pilot spanning Basel SBB, the old town, the Rhine and more of Kleinbasel. Greenery and water proximity are available within the dashed boundary; no sun/shade recommendations yet.',
     treeNotes:
       'The cantonal register covers trees maintained by Basel’s Stadtgärtnerei and Riehen. The pilot uses actual point locations; private and otherwise unrecorded trees may be absent. Planting dates are not survey dates.',
     buildingNotes:

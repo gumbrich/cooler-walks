@@ -1,21 +1,30 @@
 {
   "cityId": "us-cambridge-ma",
-  "version": "cambridge-2026-09-28-v1",
+  "version": "cambridge-2026-09-29-v2",
   "fetchedAt": "2026-09-28",
   "modelBounds": [
-    -71.132,
-    42.367,
-    -71.108,
-    42.384
+    -71.161,
+    42.352,
+    -71.063,
+    42.405
   ],
+  "routeBounds": [
+    -71.161,
+    42.352,
+    -71.063,
+    42.405
+  ],
+  "coverageGeometry": "Official municipal MultiPolygon",
+  "preparedAt": "2026-09-29",
   "sourceSummary": "Fetched 28 September 2026. Municipal tree catalogue modified 6 July 2026; individual survey dates vary. OSM uses the dated 27 September 2026 Geofabrik extract. No time-dependent environmental estimate is advertised here.",
   "osmTimestamp": "2026-09-27T20:23:36Z",
   "osmSourceStamp": "2026-09-27T20:23:36Z",
   "sha256": {
-    "cambridge-osm.json": "8fa71020bf9d40354399b8fdd8625feb9b6fd83bd86400f3236131a4b42d5b0f",
-    "cambridge-areas.geojson": "a66319405e6d20fd77b668cd082ac63ffb1397db35ca16c0436ee23178eba13d",
+    "cambridge-osm.json": "0632a417ae15dbda6f6c684c571278610264885413998579be0f8f880fa17d64",
+    "cambridge-areas.geojson": "eea64616ca95306f00e5d397625f8ee075a919cd57f8b14653c27268e27b56a0",
     "cambridge-trees.geojson": "7d5b353e63811c0d56a0937fa6b85a5251713acdb62a2b5c28f5d0e4f229b66d",
-    "massachusetts-260927.osm.pbf": "97675255a33e9c898167ab40eac72c7d58f5769830c8bf60be32f0b84f4f4385"
+    "massachusetts-260927.osm.pbf": "97675255a33e9c898167ab40eac72c7d58f5769830c8bf60be32f0b84f4f4385",
+    "cambridge-boundary.geojson": "b0150a42bf9f3c21a179aaf2d4bff7ec6fedd1e368fe45f992a3cd06e8807cbb"
   },
   "sourceRecords": 43222,
   "excludedNonTreeStatus": 12039,
@@ -26,11 +35,11 @@
     "reason": "Missing-height masks and municipal model-coverage geometry not implemented."
   },
   "counts": {
-    "nodes": 11462,
-    "edges": 13268,
-    "places": 242,
-    "trees": 9074,
+    "nodes": 48121,
+    "edges": 56351,
+    "places": 965,
+    "trees": 31183,
     "buildings": 0,
-    "waterAreas": 7
+    "waterAreas": 49
   }
 }

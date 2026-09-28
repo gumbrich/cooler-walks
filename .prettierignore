@@ -12,3 +12,8 @@ docs/city-route-validation.json
 test-results/
 public/fonts/
 docs/screenshots/
+src/lib/coverage/*.json
+ios/
+android/
+native-artifacts/
+docs/coverage-validation.json

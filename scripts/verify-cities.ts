@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import assert from 'node:assert/strict';
 import { cities } from '../src/lib/cities';
-import { inBounds } from '../src/lib/geo';
+import { inCoverage } from '../src/lib/coverage';
 import { MODEL_VERSION, Router } from '../src/lib/routing';
 import { toInstant } from '../src/lib/time';
 import type { PilotData, RouteResult } from '../src/lib/types';
@@ -45,12 +45,12 @@ for (const city of cities.filter((c) => c.status === 'pilot')) {
       preference === 'sun' ? 'sun' : 'shade',
     );
     assert(r.fastest.distance > 100, 'Meaningful mapped walk required');
-    assert(r.fastest.coordinates.every((p) => inBounds(p, city.bounds)));
+    assert(r.fastest.coordinates.every((p) => inCoverage(city, p)));
     assert.equal(r.mode, city.capabilities.buildingShade ? 'shade' : 'greenery');
     if (r.alternative) {
       assert(r.alternative.minutes <= r.fastest.minutes + 5 + 1e-8);
       assert.notDeepEqual(r.alternative.nodes, r.fastest.nodes);
-      assert(r.alternative.coordinates.every((p) => inBounds(p, city.bounds)));
+      assert(r.alternative.coordinates.every((p) => inCoverage(city, p)));
       if (preference === 'sun')
         assert(
           r.alternative.sunMeters / r.alternative.distance >

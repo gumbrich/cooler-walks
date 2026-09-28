@@ -8,7 +8,7 @@ from pathlib import Path
 import osmium
 
 source = Path('data/raw/massachusetts-260927.osm.pbf')
-bounds = (-71.142, 42.357, -71.100, 42.391)
+bounds = (-71.166, 42.348, -71.060, 42.409)
 def inside(lon, lat):
     w, s, e, n = bounds
     return w <= lon <= e and s <= lat <= n

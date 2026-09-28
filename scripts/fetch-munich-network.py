@@ -34,9 +34,9 @@ def elements(root):
 
 all_elements = {}
 requests = []
-xs, ys = [11.550, 11.568, 11.585, 11.603], [48.127, 48.137, 48.147, 48.157]
-for x in range(3):
-    for y in range(3):
+xs, ys = [11.550, 11.568, 11.585, 11.603], [48.127, 48.137, 48.147, 48.157, 48.167]
+for x in range(len(xs)-1):
+    for y in range(len(ys)-1):
         bbox = ','.join(map(str, [xs[x], ys[y], xs[x+1], ys[y+1]]))
         url = f'https://api.openstreetmap.org/api/0.6/map?bbox={bbox}'
         requests.append(url)

@@ -8,6 +8,8 @@ export interface City {
   region: string;
   center: Point;
   bounds: Bounds;
+  /** Optional WGS84 MultiPolygon inside bounds; outer ring followed by holes. */
+  coverage?: Point[][][];
   timeZone: string;
   locale: string;
   crs: string;
@@ -54,6 +56,8 @@ export interface Building {
   holes?: Point[][];
   height: number;
   ground: number;
+  /** Unsupported elevated geometry or conflicting source heights. Never scored as shade. */
+  uncertain?: boolean;
 }
 export interface Tree {
   id: string;
@@ -75,6 +79,7 @@ export interface PilotData {
   version: string;
   cityId: string;
   fetchedAt: string;
+  preparedAt?: string;
   bounds: Bounds;
   modelBounds: Bounds;
   nodes: GraphNode[];

@@ -52,6 +52,7 @@ for (const [slug, identifier] of Object.entries(identifiers)) {
       creationDates: Record<string, number>;
       methods: Record<string, number>;
       heightValidation: Record<string, number>;
+      tileSha256: Record<string, string>;
     };
     const transform = (p: Point) => geographic(city, p).map((x) => +x.toFixed(7)) as Point;
     trees = env.trees.map((t) => ({ ...t, point: transform(t.point) }));
@@ -79,12 +80,13 @@ for (const [slug, identifier] of Object.entries(identifiers)) {
       creationDates: env.creationDates,
       heightValidation: env.heightValidation,
       sourceMethods: env.methods,
+      tileSha256: env.tileSha256,
       sourceTreeYear: 2024,
       sourceCrs: 'EPSG:25832 / DHHN2016',
     });
     sourceFiles.push(
       'munich-environment.json',
-      'munich-690_5334.gml',
+      ...Object.keys(env.tileSha256).map((tile) => `munich-${tile}.gml`),
       'munich-trees.gpkg',
       'munich-buildings.meta4',
     );
@@ -114,7 +116,7 @@ for (const [slug, identifier] of Object.entries(identifiers)) {
     });
     sourceFiles.push(`${slug}-trees.geojson`);
     if (slug === 'cambridge') {
-      sourceFiles.push('massachusetts-260927.osm.pbf');
+      sourceFiles.push('massachusetts-260927.osm.pbf', 'cambridge-boundary.geojson');
       // Record the inspection blocker; these buildings never enter the sunlight model.
       const inspected = read('cambridge-buildings.geojson') as FeatureCollection;
       manifest.buildingReview = {
@@ -141,6 +143,7 @@ for (const [slug, identifier] of Object.entries(identifiers)) {
     version: city.dataVersion!,
     cityId: city.id,
     fetchedAt: '2026-09-28',
+    preparedAt: '2026-09-29',
     bounds: city.bounds,
     modelBounds,
     nodes,
@@ -179,6 +182,9 @@ for (const [slug, identifier] of Object.entries(identifiers)) {
         version: data.version,
         fetchedAt: data.fetchedAt,
         modelBounds,
+        routeBounds: city.bounds,
+        coverageGeometry: city.coverage ? 'Official municipal MultiPolygon' : 'Pilot rectangle',
+        preparedAt: data.preparedAt,
         ...data.provenance,
         ...manifest,
         counts,

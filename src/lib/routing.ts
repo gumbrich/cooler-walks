@@ -2,12 +2,13 @@ import type { Edge, PilotData, Point, City, Route, RouteResult, Sample } from '.
 import { distance, geographic, gridAzimuth, inBounds, inside, metric, rayHits } from './geo';
 import { solar, shadowVector } from './solar';
 import { WaterIndex } from './water';
+import { inCoverage, segmentInCoverage } from './coverage';
 
 export const WALK_METERS_PER_MINUTE = 80;
 export const SAMPLE_METERS = 8;
 export const TREE_PROXIMITY_METERS = 15;
 export const MIN_SHADE_COVERAGE = 0.95;
-export const MODEL_VERSION = 'flat-buildings-snapshot-v3';
+export const MODEL_VERSION = 'flat-buildings-snapshot-v4';
 export const MAX_WAYPOINTS = 3;
 const CELL = 60;
 class Grid<T> {
@@ -105,6 +106,7 @@ export class Router {
     height: number;
     radius: number;
     center: Point;
+    uncertain: boolean;
   }>();
   water: WaterIndex;
   maxHeight = 0;
@@ -142,15 +144,18 @@ export class Router {
       this.buildingGrid.add(center, {
         ring,
         holes: (b.holes ?? []).map((h) => h.map((p) => metric(city, p))),
-        height: b.height,
+        // Unknown objects can potentially obstruct sunlight anywhere up to the
+        // model's supported 150 m height ceiling, not just their conflicting value.
+        height: b.uncertain ? 150 : b.height,
+        uncertain: b.uncertain === true,
         radius,
         center,
       });
-      this.maxHeight = Math.max(this.maxHeight, b.height);
+      this.maxHeight = Math.max(this.maxHeight, b.uncertain ? 150 : b.height);
     });
   }
   snap(point: Point) {
-    if (!inBounds(point, this.city.bounds))
+    if (!inCoverage(this.city, point))
       throw new Error(
         `This point is outside the ${this.city.name} pilot. Choose a point inside the dashed coverage boundary.`,
       );
@@ -168,11 +173,18 @@ export class Router {
       throw new Error(
         'No mapped public walking path within 45 metres. Choose a point on a nearby street or path.',
       );
+    if (!segmentInCoverage(this.city, point, this.data.nodes[best].point))
+      throw new Error(
+        'The nearest path crosses the supported coverage boundary. Choose a point further inside the area.',
+      );
     // Do not snap through a mapped building footprint.
     if (
       this.buildingGrid
         .around(p, this.maxRadius + 45)
-        .some((b) => rayHits(p, this.points[best], b.ring, b.holes) && !inside(p, b.ring))
+        .some(
+          (b) =>
+            !b.uncertain && rayHits(p, this.points[best], b.ring, b.holes) && !inside(p, b.ring),
+        )
     )
       throw new Error(
         'A building separates this point from the walking path. Select its public street entrance.',
@@ -234,11 +246,16 @@ export class Router {
       b = stops.at(-1)!;
     if (stops.every((stop) => stop.index === a.index))
       throw new Error('Your trip points are on the same path point. Choose a point farther away.');
+    let feasible: Uint8Array | null = null;
     const throughStops = (weight: (e: Edge, i: number) => number) => {
       const nodes = [a.index];
       for (let i = 1; i < stops.length; i++) {
         try {
-          nodes.push(...this.shortest(stops[i - 1].index, stops[i].index, weight).slice(1));
+          nodes.push(
+            ...this.shortest(stops[i - 1].index, stops[i].index, (edge, index) =>
+              feasible && !feasible[index] ? Infinity : weight(edge, index),
+            ).slice(1),
+          );
         } catch (e) {
           throw new Error(`Leg ${i}: ${(e as Error).message}`);
         }
@@ -288,8 +305,11 @@ export class Router {
               const vec = shadowVector(building.height, sun.altitude, projectedAzimuth);
               if (distance(pt, building.center) > Math.hypot(...vec) + building.radius) continue;
               if (rayHits(pt, [pt[0] - vec[0], pt[1] - vec[1]], building.ring, building.holes)) {
-                exposure = 'shade';
-                break;
+                if (building.uncertain) exposure = 'unknown';
+                else {
+                  exposure = 'shade';
+                  break;
+                }
               }
             }
           }
@@ -341,6 +361,26 @@ export class Router {
       throughStops((e) => e.length),
       'fastest',
     );
+    // A Euclidean lower bound keeps short trips local even in a city-sized
+    // graph. It cannot discard a route inside the distance budget, including
+    // trips with stops. Use both edge directions and a rounding tolerance.
+    // Source edge lengths are rounded to the nearest centimetre. A positive-
+    // weight shortest leg is simple, so this bounds accumulated rounding even
+    // for a long trip with repeated nodes across different ordered legs.
+    const roundingAllowance = 0.005 * (this.points.length + 1) * (stops.length - 1);
+    const limit = fastest.distance + extra * WALK_METERS_PER_MINUTE + roundingAllowance;
+    const origin = this.points[a.index],
+      destination = this.points[b.index];
+    feasible = Uint8Array.from(this.data.edges, (edge) => {
+      const p = this.points[edge.a],
+        q = this.points[edge.b];
+      return Number(
+        Math.min(
+          distance(origin, p) + edge.length + distance(q, destination),
+          distance(origin, q) + edge.length + distance(p, destination),
+        ) <= limit,
+      );
+    });
     const fastNodes = new Set(fastest.nodes),
       candidates: Route[] = [];
     const distinct = (r: Route) =>
@@ -373,7 +413,9 @@ export class Router {
       }
     }
     // Every segment remains inside configured coverage; missing data cannot improve a score.
-    const valid = (r: Route) => r.samples.every((s) => inBounds(s.point, this.city.bounds));
+    const valid = (r: Route) =>
+      r.samples.every((s) => inCoverage(this.city, s.point)) &&
+      r.coordinates.slice(1).every((p, i) => segmentInCoverage(this.city, r.coordinates[i], p));
     if (!valid(fastest))
       throw new Error(
         'This route leaves the pilot’s data coverage. Try closer points inside the boundary.',

@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import * as maplibregl from 'maplibre-gl';
 import { type GeoJSONSource, type Map as LibreMap } from 'maplibre-gl';
-import { Layers, LocateFixed, Minus, Plus } from 'lucide-react';
+import { Layers, LocateFixed, Minus, Plus, Scan } from 'lucide-react';
+import { coverageGeometry } from '../lib/coverage';
 import type { FeatureCollection, Feature } from 'geojson';
 import type { City, PilotData, Point, RouteResult } from '../lib/types';
 import 'maplibre-gl/dist/maplibre-gl.css';
@@ -55,7 +56,7 @@ export function WalkingMap({
         container: container.current,
         center: city.center,
         zoom: 14.4,
-        minZoom: 12.8,
+        minZoom: 11,
         maxZoom: 18.5,
         attributionControl: false,
         maxBounds: [
@@ -152,25 +153,13 @@ export function WalkingMap({
       'bottom-right',
     );
     m.on('load', () => {
-      const b = city.bounds;
       m.addSource('coverage', {
         type: 'geojson',
         data: collection([
           {
             type: 'Feature',
             properties: {},
-            geometry: {
-              type: 'Polygon',
-              coordinates: [
-                [
-                  [b[0], b[1]],
-                  [b[2], b[1]],
-                  [b[2], b[3]],
-                  [b[0], b[3]],
-                  [b[0], b[1]],
-                ],
-              ],
-            },
+            geometry: coverageGeometry(city),
           },
         ]),
       });
@@ -186,9 +175,9 @@ export function WalkingMap({
         type: 'circle',
         source: 'trees',
         paint: {
-          'circle-radius': ['interpolate', ['linear'], ['zoom'], 13, 1.3, 17, 5],
+          'circle-radius': ['interpolate', ['linear'], ['zoom'], 11, 0.35, 13, 1, 17, 5],
           'circle-color': '#91b681',
-          'circle-opacity': 0.72,
+          'circle-opacity': ['interpolate', ['linear'], ['zoom'], 11, 0.3, 14, 0.72],
         },
       });
       m.addSource('routes', { type: 'geojson', data: collection([]) });
@@ -238,6 +227,7 @@ export function WalkingMap({
       m.addLayer({
         id: 'street-labels',
         type: 'symbol',
+        minzoom: 13,
         source: 'base',
         filter: ['all', ['==', ['get', 'kind'], 'road'], ['!=', ['get', 'name'], '']],
         layout: {
@@ -253,6 +243,7 @@ export function WalkingMap({
       m.addLayer({
         id: 'park-labels',
         type: 'symbol',
+        minzoom: 14,
         source: 'base',
         filter: ['all', ['==', ['get', 'kind'], 'park'], ['!=', ['get', 'name'], '']],
         layout: {
@@ -260,9 +251,68 @@ export function WalkingMap({
           'text-font': ['Open Sans Semibold'],
           'text-size': 13,
           'text-max-width': 8,
+          'text-padding': 6,
         },
         paint: { 'text-color': '#4a6941', 'text-halo-color': '#dce6c9', 'text-halo-width': 1.5 },
       });
+      m.addLayer({
+        id: 'large-park-labels',
+        type: 'symbol',
+        source: 'base',
+        maxzoom: 14,
+        filter: [
+          'all',
+          ['==', ['get', 'kind'], 'park'],
+          ['>=', ['get', 'areaM2'], 100000],
+          ['!=', ['get', 'name'], ''],
+        ],
+        layout: {
+          'text-field': ['get', 'name'],
+          'text-font': ['Open Sans Semibold'],
+          'text-size': 12,
+          'text-max-width': 9,
+          'text-padding': 12,
+        },
+        paint: { 'text-color': '#4a6941', 'text-halo-color': '#f4f2e8', 'text-halo-width': 2 },
+      });
+      const [w, s, e, n] = city.bounds;
+      const polygons = coverageGeometry(city).coordinates;
+      m.addSource('coverage-surround', {
+        type: 'geojson',
+        data: collection([
+          {
+            type: 'Feature',
+            properties: {},
+            geometry: {
+              type: 'Polygon',
+              coordinates: [
+                [
+                  [w - 0.1, s - 0.1],
+                  [e + 0.1, s - 0.1],
+                  [e + 0.1, n + 0.1],
+                  [w - 0.1, n + 0.1],
+                  [w - 0.1, s - 0.1],
+                ],
+                ...polygons.map((polygon) => polygon[0]),
+              ],
+            },
+          },
+          ...polygons.flatMap((polygon) =>
+            polygon.slice(1).map((hole): Feature => ({
+              type: 'Feature',
+              properties: {},
+              geometry: { type: 'Polygon', coordinates: [hole] },
+            })),
+          ),
+        ]),
+      });
+      m.addLayer({
+        id: 'coverage-mask',
+        type: 'fill',
+        source: 'coverage-surround',
+        paint: { 'fill-color': '#f8f6ef', 'fill-opacity': 0.65 },
+      });
+      m.moveLayer('coverage-line');
       setReady(true);
     });
     m.on('click', (event) => {
@@ -304,11 +354,8 @@ export function WalkingMap({
   }, [ready, data]);
   useEffect(() => {
     if (ready && map.current)
-      map.current.setLayoutProperty(
-        'coverage-line',
-        'visibility',
-        showCoverage ? 'visible' : 'none',
-      );
+      for (const layer of ['coverage-line', 'coverage-mask'])
+        map.current.setLayoutProperty(layer, 'visibility', showCoverage ? 'visible' : 'none');
   }, [ready, showCoverage]);
   useEffect(() => {
     if (map.current) map.current.getCanvas().style.cursor = pick ? 'crosshair' : '';
@@ -439,6 +486,19 @@ export function WalkingMap({
             </button>
             <button aria-label="Fit route to map" onClick={() => fit()}>
               <LocateFixed size={19} />
+            </button>
+            <button
+              aria-label="Show whole coverage"
+              title="Show whole coverage"
+              onClick={() => {
+                if (!showCoverage) onCoverage();
+                map.current?.fitBounds(city.bounds, {
+                  padding: { top: 130, bottom: 100, left: 40, right: 85 },
+                  duration: matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 650,
+                });
+              }}
+            >
+              <Scan size={19} />
             </button>
             <button
               aria-label="Toggle coverage boundary"

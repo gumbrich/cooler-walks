@@ -1,66 +1,609 @@
 {
   "cityId": "de-munich",
-  "version": "munich-2026-09-28-v1",
+  "version": "munich-2026-09-29-v2",
   "fetchedAt": "2026-09-28",
   "modelBounds": [
-    11.5545289,
+    11.5554221,
     48.1308797,
-    11.5804688,
-    48.148235199999995
+    11.6073201,
+    48.1656036
   ],
+  "routeBounds": [
+    11.558,
+    48.133,
+    11.601,
+    48.158
+  ],
+  "coverageGeometry": "Pilot rectangle",
+  "preparedAt": "2026-09-29",
   "sourceSummary": "Fetched 28 September 2026. Munich tree product: 2024. Building index published 22 September 2026; per-building creation and outline dates are retained in the data manifest. Publication is not observation date.",
   "osmTimestamp": null,
   "osmSourceStamp": null,
   "sha256": {
-    "munich-osm.json": "c8af8e47c9e0ab747f96acef90c2db9b09dedff4996ff385450c4ae4dcf07a79",
-    "munich-areas.json": "78f612da6d187a0fcbb5644784d60cb4573fa97b430ddbf296ad974bc11152a7",
-    "munich-environment.json": "94b9d1b3e6605b8e7c10952342d37bc0764aa079749b53cb83250536dc4a94d6",
+    "munich-osm.json": "c06924edf325271903f4993e20ccae531f9252d479ce602736a19d2cd7770913",
+    "munich-areas.json": "44c62522cd8e3ae830366969924421e06a3e9fc831c748ce6de80de4e7f910bf",
+    "munich-environment.json": "ddbe1c5b95fb2d6f14f7c98af0756e86e23542b484bd711475b0898436faa2da",
     "munich-690_5334.gml": "fa05d2a15ae676f2906cc1d0ff2f9889bd2d6c77b9bd0af38852e848a588ab23",
+    "munich-692_5334.gml": "1193453ab2dd07455649840bc7ea3fb624f354bde0c7d02b4ae75824b770b489",
+    "munich-690_5336.gml": "8129a87794808742a47e277b293f336206e14dfdcc2cdd7be686d873b7d5d7a5",
+    "munich-692_5336.gml": "c1acf5c32061ec0d5348374f5e88a182da458b496c3bea84038e0d789741ef58",
     "munich-trees.gpkg": "8da66c261e7710a195641b4e617c0b8d81950b42425027fb31498784c875b8e0",
     "munich-buildings.meta4": "5e2e8e7fcd8dbd6951be57a53a724068ab904814fad1fc39b44984caa4d883b8"
   },
   "outlineDates": {
-    "2026-02-06": 5499
+    "2023-01-18": 6,
+    "2024-06-27": 59,
+    "2025-06-19": 11,
+    "2026-02-06": 19453
   },
   "creationDates": {
-    "2015-09-24": 949,
+    "2015-09-24": 2706,
     "2017-03-28": 1,
+    "2017-09-08": 2,
     "2017-11-02": 1,
+    "2018-03-06": 641,
     "2018-03-19": 30,
+    "2018-05-09": 463,
+    "2018-05-14": 336,
+    "2018-06-04": 304,
+    "2018-06-19": 35,
+    "2018-06-22": 75,
     "2018-09-04": 19,
-    "2021-02-25": 933,
-    "2021-03-24": 949,
-    "2021-04-20": 682,
+    "2018-11-16": 492,
+    "2018-11-20": 341,
+    "2020-09-23": 998,
+    "2020-09-24": 4,
+    "2021-02-04": 701,
+    "2021-02-25": 989,
+    "2021-03-24": 1716,
+    "2021-04-20": 2337,
+    "2021-05-25": 995,
+    "2021-08-05": 598,
     "2022-10-11": 1,
-    "2023-06-05": 266,
-    "2023-06-20": 337,
-    "2023-06-29": 202,
-    "2024-05-21": 195,
-    "2025-04-04": 27,
-    "2025-04-15": 174,
-    "2026-05-07": 234,
-    "2026-05-26": 499
+    "2023-03-31": 5,
+    "2023-04-01": 1,
+    "2023-05-06": 356,
+    "2023-05-19": 308,
+    "2023-06-05": 537,
+    "2023-06-20": 365,
+    "2023-06-28": 232,
+    "2023-06-29": 699,
+    "2023-07-06": 175,
+    "2024-05-17": 51,
+    "2024-05-21": 398,
+    "2025-02-06": 59,
+    "2025-03-10": 22,
+    "2025-03-12": 62,
+    "2025-03-24": 7,
+    "2025-03-25": 54,
+    "2025-04-04": 114,
+    "2025-04-15": 215,
+    "2025-09-26": 11,
+    "2026-04-02": 220,
+    "2026-05-07": 550,
+    "2026-05-22": 159,
+    "2026-05-26": 850,
+    "2026-06-17": 294
   },
   "heightValidation": {
-    "compared": 5499,
-    "maximumDifferenceMeters": 0.005000000000105587
+    "compared": 19529,
+    "maximumSourceDifferenceMeters": 10.272999999999943,
+    "accepted": 19468,
+    "maximumAcceptedDifferenceMeters": 0.0129999999999999,
+    "unknownObjects": [
+      {
+        "id": "DEBY_LOD2_42760947",
+        "tile": "692_5334",
+        "function": "31001_3018",
+        "geometryHeight": 4.19,
+        "sourceHeight": 3.819,
+        "reason": "Non-building structure or source height disagreement; potential shadow remains unknown"
+      },
+      {
+        "id": "DEBY_LOD2_107628436",
+        "tile": "692_5334",
+        "function": "53001_1800",
+        "geometryHeight": 2.393,
+        "sourceHeight": 2.393,
+        "reason": "Non-building structure or source height disagreement; potential shadow remains unknown"
+      },
+      {
+        "id": "DEBY_LOD2_107629696",
+        "tile": "692_5334",
+        "function": "53001_1800",
+        "geometryHeight": 1,
+        "sourceHeight": 4.662,
+        "reason": "Non-building structure or source height disagreement; potential shadow remains unknown"
+      },
+      {
+        "id": "DEBY_LOD2_107629731",
+        "tile": "692_5334",
+        "function": "53001_1800",
+        "geometryHeight": 1,
+        "sourceHeight": 1,
+        "reason": "Non-building structure or source height disagreement; potential shadow remains unknown"
+      },
+      {
+        "id": "DEBY_LOD2_107632683",
+        "tile": "692_5334",
+        "function": "53001_1800",
+        "geometryHeight": 1.295,
+        "sourceHeight": 1.295,
+        "reason": "Non-building structure or source height disagreement; potential shadow remains unknown"
+      },
+      {
+        "id": "DEBY_LOD2_107633962",
+        "tile": "692_5334",
+        "function": "53001_1800",
+        "geometryHeight": 1.1,
+        "sourceHeight": 1.1,
+        "reason": "Non-building structure or source height disagreement; potential shadow remains unknown"
+      },
+      {
+        "id": "DEBY_LOD2_107634754",
+        "tile": "692_5334",
+        "function": "53001_1800",
+        "geometryHeight": 1.106,
+        "sourceHeight": 0.77,
+        "reason": "Non-building structure or source height disagreement; potential shadow remains unknown"
+      },
+      {
+        "id": "DEBY_LOD2_107636363",
+        "tile": "692_5334",
+        "function": "53001_1800",
+        "geometryHeight": 1,
+        "sourceHeight": 0.85,
+        "reason": "Non-building structure or source height disagreement; potential shadow remains unknown"
+      },
+      {
+        "id": "DEBY_LOD2_107642379",
+        "tile": "692_5334",
+        "function": "53001_1800",
+        "geometryHeight": 1.298,
+        "sourceHeight": 1.298,
+        "reason": "Non-building structure or source height disagreement; potential shadow remains unknown"
+      },
+      {
+        "id": "DEBY_LOD2_107642636",
+        "tile": "692_5334",
+        "function": "53001_1800",
+        "geometryHeight": 1,
+        "sourceHeight": 4.674,
+        "reason": "Non-building structure or source height disagreement; potential shadow remains unknown"
+      },
+      {
+        "id": "DEBY_LOD2_107644906",
+        "tile": "692_5334",
+        "function": "53001_1800",
+        "geometryHeight": 1,
+        "sourceHeight": 11.273,
+        "reason": "Non-building structure or source height disagreement; potential shadow remains unknown"
+      },
+      {
+        "id": "DEBY_LOD2_107648573",
+        "tile": "692_5334",
+        "function": "53001_1800",
+        "geometryHeight": 1,
+        "sourceHeight": 1,
+        "reason": "Non-building structure or source height disagreement; potential shadow remains unknown"
+      },
+      {
+        "id": "DEBY_LOD2_107649023",
+        "tile": "692_5334",
+        "function": "53001_1800",
+        "geometryHeight": 1.198,
+        "sourceHeight": 1.198,
+        "reason": "Non-building structure or source height disagreement; potential shadow remains unknown"
+      },
+      {
+        "id": "DEBY_LOD2_107652524",
+        "tile": "692_5334",
+        "function": "53001_1800",
+        "geometryHeight": 1,
+        "sourceHeight": 4.109,
+        "reason": "Non-building structure or source height disagreement; potential shadow remains unknown"
+      },
+      {
+        "id": "DEBY_LOD2_107652984",
+        "tile": "692_5334",
+        "function": "53001_1800",
+        "geometryHeight": 3.877,
+        "sourceHeight": 11.534,
+        "reason": "Non-building structure or source height disagreement; potential shadow remains unknown"
+      },
+      {
+        "id": "DEBY_LOD2_107655928",
+        "tile": "692_5334",
+        "function": "53001_1800",
+        "geometryHeight": 1.1,
+        "sourceHeight": 4.576,
+        "reason": "Non-building structure or source height disagreement; potential shadow remains unknown"
+      },
+      {
+        "id": "DEBY_LOD2_108460421",
+        "tile": "692_5334",
+        "function": "53001_1800",
+        "geometryHeight": 1,
+        "sourceHeight": 0.53,
+        "reason": "Non-building structure or source height disagreement; potential shadow remains unknown"
+      },
+      {
+        "id": "DEBY_LOD2_108462886",
+        "tile": "692_5334",
+        "function": "53001_1800",
+        "geometryHeight": 1,
+        "sourceHeight": 4.946,
+        "reason": "Non-building structure or source height disagreement; potential shadow remains unknown"
+      },
+      {
+        "id": "DEBY_LOD2_107196068",
+        "tile": "692_5336",
+        "function": "31001_2000",
+        "geometryHeight": 3.11,
+        "sourceHeight": 3.014,
+        "reason": "Non-building structure or source height disagreement; potential shadow remains unknown"
+      },
+      {
+        "id": "DEBY_LOD2_107628150",
+        "tile": "692_5336",
+        "function": "53001_1800",
+        "geometryHeight": 1,
+        "sourceHeight": 1,
+        "reason": "Non-building structure or source height disagreement; potential shadow remains unknown"
+      },
+      {
+        "id": "DEBY_LOD2_107628539",
+        "tile": "692_5336",
+        "function": "53001_1800",
+        "geometryHeight": 1,
+        "sourceHeight": 1,
+        "reason": "Non-building structure or source height disagreement; potential shadow remains unknown"
+      },
+      {
+        "id": "DEBY_LOD2_107628882",
+        "tile": "692_5336",
+        "function": "53001_1800",
+        "geometryHeight": 1,
+        "sourceHeight": 1,
+        "reason": "Non-building structure or source height disagreement; potential shadow remains unknown"
+      },
+      {
+        "id": "DEBY_LOD2_107629339",
+        "tile": "692_5336",
+        "function": "53001_1800",
+        "geometryHeight": 3.928,
+        "sourceHeight": 8.42,
+        "reason": "Non-building structure or source height disagreement; potential shadow remains unknown"
+      },
+      {
+        "id": "DEBY_LOD2_107629637",
+        "tile": "692_5336",
+        "function": "53001_1800",
+        "geometryHeight": 1,
+        "sourceHeight": 1,
+        "reason": "Non-building structure or source height disagreement; potential shadow remains unknown"
+      },
+      {
+        "id": "DEBY_LOD2_107629762",
+        "tile": "692_5336",
+        "function": "53001_1800",
+        "geometryHeight": 1,
+        "sourceHeight": 1,
+        "reason": "Non-building structure or source height disagreement; potential shadow remains unknown"
+      },
+      {
+        "id": "DEBY_LOD2_107629928",
+        "tile": "692_5336",
+        "function": "53001_1800",
+        "geometryHeight": 1.296,
+        "sourceHeight": 1.296,
+        "reason": "Non-building structure or source height disagreement; potential shadow remains unknown"
+      },
+      {
+        "id": "DEBY_LOD2_107629952",
+        "tile": "692_5336",
+        "function": "53001_1800",
+        "geometryHeight": 1,
+        "sourceHeight": 1,
+        "reason": "Non-building structure or source height disagreement; potential shadow remains unknown"
+      },
+      {
+        "id": "DEBY_LOD2_107630448",
+        "tile": "692_5336",
+        "function": "53001_1800",
+        "geometryHeight": 1,
+        "sourceHeight": 1,
+        "reason": "Non-building structure or source height disagreement; potential shadow remains unknown"
+      },
+      {
+        "id": "DEBY_LOD2_107631779",
+        "tile": "692_5336",
+        "function": "53001_1800",
+        "geometryHeight": 1,
+        "sourceHeight": 0.16,
+        "reason": "Non-building structure or source height disagreement; potential shadow remains unknown"
+      },
+      {
+        "id": "DEBY_LOD2_107632501",
+        "tile": "692_5336",
+        "function": "53001_1800",
+        "geometryHeight": 1.19,
+        "sourceHeight": 0.559,
+        "reason": "Non-building structure or source height disagreement; potential shadow remains unknown"
+      },
+      {
+        "id": "DEBY_LOD2_107632576",
+        "tile": "692_5336",
+        "function": "53001_1800",
+        "geometryHeight": 1.296,
+        "sourceHeight": 0.505,
+        "reason": "Non-building structure or source height disagreement; potential shadow remains unknown"
+      },
+      {
+        "id": "DEBY_LOD2_107633017",
+        "tile": "692_5336",
+        "function": "53001_1800",
+        "geometryHeight": 6.405,
+        "sourceHeight": 6.405,
+        "reason": "Non-building structure or source height disagreement; potential shadow remains unknown"
+      },
+      {
+        "id": "DEBY_LOD2_107633711",
+        "tile": "692_5336",
+        "function": "53001_1800",
+        "geometryHeight": 1.196,
+        "sourceHeight": 1.196,
+        "reason": "Non-building structure or source height disagreement; potential shadow remains unknown"
+      },
+      {
+        "id": "DEBY_LOD2_107634509",
+        "tile": "692_5336",
+        "function": "53001_1800",
+        "geometryHeight": 1.098,
+        "sourceHeight": 1.098,
+        "reason": "Non-building structure or source height disagreement; potential shadow remains unknown"
+      },
+      {
+        "id": "DEBY_LOD2_107635189",
+        "tile": "692_5336",
+        "function": "53001_1800",
+        "geometryHeight": 1.197,
+        "sourceHeight": 1.197,
+        "reason": "Non-building structure or source height disagreement; potential shadow remains unknown"
+      },
+      {
+        "id": "DEBY_LOD2_107635609",
+        "tile": "692_5336",
+        "function": "53001_1800",
+        "geometryHeight": 1,
+        "sourceHeight": 0.611,
+        "reason": "Non-building structure or source height disagreement; potential shadow remains unknown"
+      },
+      {
+        "id": "DEBY_LOD2_107636427",
+        "tile": "692_5336",
+        "function": "53001_1800",
+        "geometryHeight": 1,
+        "sourceHeight": 1.538,
+        "reason": "Non-building structure or source height disagreement; potential shadow remains unknown"
+      },
+      {
+        "id": "DEBY_LOD2_107636755",
+        "tile": "692_5336",
+        "function": "53001_1800",
+        "geometryHeight": 1.391,
+        "sourceHeight": 1.391,
+        "reason": "Non-building structure or source height disagreement; potential shadow remains unknown"
+      },
+      {
+        "id": "DEBY_LOD2_107638827",
+        "tile": "692_5336",
+        "function": "53001_1800",
+        "geometryHeight": 1,
+        "sourceHeight": 1,
+        "reason": "Non-building structure or source height disagreement; potential shadow remains unknown"
+      },
+      {
+        "id": "DEBY_LOD2_107639731",
+        "tile": "692_5336",
+        "function": "53001_1800",
+        "geometryHeight": 2.299,
+        "sourceHeight": 2.099,
+        "reason": "Non-building structure or source height disagreement; potential shadow remains unknown"
+      },
+      {
+        "id": "DEBY_LOD2_107641904",
+        "tile": "692_5336",
+        "function": "53001_1800",
+        "geometryHeight": 1.468,
+        "sourceHeight": 1.468,
+        "reason": "Non-building structure or source height disagreement; potential shadow remains unknown"
+      },
+      {
+        "id": "DEBY_LOD2_107643157",
+        "tile": "692_5336",
+        "function": "53001_1800",
+        "geometryHeight": 1,
+        "sourceHeight": 0.527,
+        "reason": "Non-building structure or source height disagreement; potential shadow remains unknown"
+      },
+      {
+        "id": "DEBY_LOD2_107643505",
+        "tile": "692_5336",
+        "function": "53001_1800",
+        "geometryHeight": 1.1,
+        "sourceHeight": 0.507,
+        "reason": "Non-building structure or source height disagreement; potential shadow remains unknown"
+      },
+      {
+        "id": "DEBY_LOD2_107644413",
+        "tile": "692_5336",
+        "function": "53001_1800",
+        "geometryHeight": 1,
+        "sourceHeight": 1,
+        "reason": "Non-building structure or source height disagreement; potential shadow remains unknown"
+      },
+      {
+        "id": "DEBY_LOD2_107644450",
+        "tile": "692_5336",
+        "function": "53001_1800",
+        "geometryHeight": 1,
+        "sourceHeight": 1,
+        "reason": "Non-building structure or source height disagreement; potential shadow remains unknown"
+      },
+      {
+        "id": "DEBY_LOD2_107646413",
+        "tile": "692_5336",
+        "function": "53001_1800",
+        "geometryHeight": 1.816,
+        "sourceHeight": 0.949,
+        "reason": "Non-building structure or source height disagreement; potential shadow remains unknown"
+      },
+      {
+        "id": "DEBY_LOD2_107646613",
+        "tile": "692_5336",
+        "function": "53001_1800",
+        "geometryHeight": 1,
+        "sourceHeight": 6.121,
+        "reason": "Non-building structure or source height disagreement; potential shadow remains unknown"
+      },
+      {
+        "id": "DEBY_LOD2_107646835",
+        "tile": "692_5336",
+        "function": "53001_1800",
+        "geometryHeight": 1,
+        "sourceHeight": 1.42,
+        "reason": "Non-building structure or source height disagreement; potential shadow remains unknown"
+      },
+      {
+        "id": "DEBY_LOD2_107647482",
+        "tile": "692_5336",
+        "function": "53001_1800",
+        "geometryHeight": 1,
+        "sourceHeight": 1,
+        "reason": "Non-building structure or source height disagreement; potential shadow remains unknown"
+      },
+      {
+        "id": "DEBY_LOD2_107649565",
+        "tile": "692_5336",
+        "function": "53001_1800",
+        "geometryHeight": 3.141,
+        "sourceHeight": 3.141,
+        "reason": "Non-building structure or source height disagreement; potential shadow remains unknown"
+      },
+      {
+        "id": "DEBY_LOD2_107650571",
+        "tile": "692_5336",
+        "function": "53001_1800",
+        "geometryHeight": 2.585,
+        "sourceHeight": 2.585,
+        "reason": "Non-building structure or source height disagreement; potential shadow remains unknown"
+      },
+      {
+        "id": "DEBY_LOD2_107651255",
+        "tile": "692_5336",
+        "function": "53001_1800",
+        "geometryHeight": 1,
+        "sourceHeight": 1,
+        "reason": "Non-building structure or source height disagreement; potential shadow remains unknown"
+      },
+      {
+        "id": "DEBY_LOD2_107652356",
+        "tile": "692_5336",
+        "function": "53001_1800",
+        "geometryHeight": 1.139,
+        "sourceHeight": 1.139,
+        "reason": "Non-building structure or source height disagreement; potential shadow remains unknown"
+      },
+      {
+        "id": "DEBY_LOD2_107653121",
+        "tile": "692_5336",
+        "function": "53001_1800",
+        "geometryHeight": 1,
+        "sourceHeight": 1,
+        "reason": "Non-building structure or source height disagreement; potential shadow remains unknown"
+      },
+      {
+        "id": "DEBY_LOD2_107655933",
+        "tile": "692_5336",
+        "function": "53001_1800",
+        "geometryHeight": 1.5,
+        "sourceHeight": 1.5,
+        "reason": "Non-building structure or source height disagreement; potential shadow remains unknown"
+      },
+      {
+        "id": "DEBY_LOD2_108460425",
+        "tile": "692_5336",
+        "function": "53001_1800",
+        "geometryHeight": 1,
+        "sourceHeight": 1.898,
+        "reason": "Non-building structure or source height disagreement; potential shadow remains unknown"
+      },
+      {
+        "id": "DEBY_LOD2_108461322",
+        "tile": "692_5336",
+        "function": "53001_1800",
+        "geometryHeight": 1,
+        "sourceHeight": 0.195,
+        "reason": "Non-building structure or source height disagreement; potential shadow remains unknown"
+      },
+      {
+        "id": "DEBY_LOD2_108461670",
+        "tile": "692_5336",
+        "function": "53001_1800",
+        "geometryHeight": 1,
+        "sourceHeight": 0.417,
+        "reason": "Non-building structure or source height disagreement; potential shadow remains unknown"
+      },
+      {
+        "id": "DEBY_LOD2_108462879",
+        "tile": "692_5336",
+        "function": "53001_1800",
+        "geometryHeight": 1,
+        "sourceHeight": 4.932,
+        "reason": "Non-building structure or source height disagreement; potential shadow remains unknown"
+      },
+      {
+        "id": "DEBY_LOD2_108462895",
+        "tile": "692_5336",
+        "function": "53001_1800",
+        "geometryHeight": 1,
+        "sourceHeight": 10.237,
+        "reason": "Non-building structure or source height disagreement; potential shadow remains unknown"
+      },
+      {
+        "id": "DEBY_LOD2_108462896",
+        "tile": "692_5336",
+        "function": "53001_1800",
+        "geometryHeight": 1,
+        "sourceHeight": 4.29,
+        "reason": "Non-building structure or source height disagreement; potential shadow remains unknown"
+      }
+    ],
+    "unknownPotentialHeightCeilingMeters": 150
   },
   "sourceMethods": {
-    "1000": 1551,
-    "2000": 3842,
-    "3100": 41,
-    "3210": 8,
-    "3220": 14,
-    "9999": 43
+    "1000": 5882,
+    "2000": 13211,
+    "3100": 189,
+    "3210": 24,
+    "3220": 118,
+    "9999": 105
+  },
+  "tileSha256": {
+    "690_5334": "fa05d2a15ae676f2906cc1d0ff2f9889bd2d6c77b9bd0af38852e848a588ab23",
+    "692_5334": "1193453ab2dd07455649840bc7ea3fb624f354bde0c7d02b4ae75824b770b489",
+    "690_5336": "8129a87794808742a47e277b293f336206e14dfdcc2cdd7be686d873b7d5d7a5",
+    "692_5336": "c1acf5c32061ec0d5348374f5e88a182da458b496c3bea84038e0d789741ef58"
   },
   "sourceTreeYear": 2024,
   "sourceCrs": "EPSG:25832 / DHHN2016",
   "counts": {
-    "nodes": 5377,
-    "edges": 6038,
-    "places": 335,
-    "trees": 3879,
-    "buildings": 5499,
-    "waterAreas": 62
+    "nodes": 18520,
+    "edges": 20684,
+    "places": 774,
+    "trees": 29503,
+    "buildings": 19529,
+    "waterAreas": 77
   }
 }

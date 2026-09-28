@@ -184,6 +184,38 @@ function fixture(): PilotData {
   };
 }
 describe('route constraints', () => {
+  it('keeps potential shadows from uncertain structures unknown unless a known object blocks the sun', () => {
+    const d = fixture();
+    const origin = metric(cities[0], d.nodes[0].point);
+    d.modelBounds = [8.5, 47.34, 8.58, 47.41];
+    const ring = [
+      [-10, -10],
+      [210, -10],
+      [210, 10],
+      [-10, 10],
+      [-10, -10],
+    ].map(([x, y]) => geographic(cities[0], [origin[0] + x, origin[1] + y]));
+    const unknown = { id: 'uncertain-structure', height: 1, ground: 0, ring, uncertain: true };
+    d.buildings = [unknown];
+    const calculate = () =>
+      new Router(d, cities[0]).calculate(
+        d.nodes[0].point,
+        d.nodes[2].point,
+        '2026-06-21T12:00:00Z',
+        0,
+      ).fastest;
+    expect(calculate().unknownMeters).toBeCloseTo(200);
+    expect(calculate().shadeMeters).toBe(0);
+    const known = { ...unknown, id: 'known-block', height: 30, uncertain: false };
+    for (const buildings of [
+      [unknown, known],
+      [known, unknown],
+    ]) {
+      d.buildings = buildings;
+      expect(calculate().shadeMeters).toBeCloseTo(200);
+      expect(calculate().unknownMeters).toBe(0);
+    }
+  });
   it('prefers a greater known sun fraction, respects detours and changes with winter shadows', () => {
     const d = fixture();
     const origin = metric(cities[0], d.nodes[0].point);
