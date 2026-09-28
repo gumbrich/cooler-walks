@@ -19,6 +19,7 @@ export interface City {
     treeShade: boolean;
     terrain: boolean;
     fountains: boolean;
+    water: boolean;
   };
   dataVersion: string | null;
   dataUrl: string | null;
@@ -58,6 +59,11 @@ export interface Place {
   point: Point;
   kind: string;
 }
+export interface WaterArea {
+  id: string;
+  name: string;
+  rings: Point[][];
+}
 export interface PilotData {
   version: string;
   cityId: string;
@@ -68,6 +74,7 @@ export interface PilotData {
   edges: Edge[];
   buildings: Building[];
   trees: Tree[];
+  water: WaterArea[];
   places: Place[];
   provenance: Record<string, unknown>;
 }
@@ -77,6 +84,7 @@ export interface Sample {
   meters: number;
   exposure: Exposure;
   green: boolean;
+  water: boolean;
 }
 export interface Route {
   id: string;
@@ -85,6 +93,7 @@ export interface Route {
   distance: number;
   minutes: number;
   greenMeters: number;
+  waterMeters: number;
   shadeMeters: number;
   sunMeters: number;
   unknownMeters: number;
@@ -101,5 +110,7 @@ export interface RouteResult {
   end: Point;
   startSnap: number;
   endSnap: number;
+  waypoints: { point: Point; snap: number }[];
+  preference: 'environment' | 'water';
   departure: string;
 }

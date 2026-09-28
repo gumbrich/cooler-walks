@@ -2317,3 +2317,174 @@ small {
     height: 44px;
   }
 }
+
+/* Trip stops and the independent water preference. */
+.waypoint-editor {
+  margin: -2px 0 12px;
+}
+.waypoint-editor:empty {
+  display: none;
+}
+.waypoint-row {
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr);
+  column-gap: 8px;
+  align-items: start;
+  margin-bottom: 8px;
+}
+.stop-number {
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  margin-top: 28px;
+  border: 1px solid var(--ink);
+  border-radius: 50%;
+  font-size: 0.75rem;
+}
+.waypoint-row .place-field {
+  margin-bottom: 0;
+}
+.stop-actions {
+  grid-column: 2;
+  display: flex;
+  justify-content: flex-end;
+  gap: 4px;
+}
+.stop-actions button {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 6px;
+}
+.stop-actions button:hover:not(:disabled) {
+  background: #e9eddf;
+}
+.stop-actions button:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+.add-stop {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 40px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+.stop-help,
+.preference-help {
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--muted);
+  margin: 5px 0 10px;
+}
+.water-preference {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border: 1px solid #b9cdcb;
+  border-radius: 8px;
+  margin-top: 12px;
+  cursor: pointer;
+}
+.water-preference.active {
+  background: #e6efed;
+  border-color: #497877;
+}
+.water-preference > svg,
+.route-water > svg {
+  color: #366f70;
+  flex-shrink: 0;
+}
+.water-preference span {
+  flex: 1;
+  min-width: 0;
+}
+.water-preference strong {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+.water-preference small {
+  display: none;
+  font-size: 0.75rem;
+  margin-top: 3px;
+  line-height: 1.4;
+}
+.water-preference input {
+  accent-color: #366f70;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+.route-water {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  border-top: 1px solid #d8e1d6;
+  margin-top: 9px;
+  padding-top: 9px;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+}
+.route-water strong {
+  font-weight: 600;
+}
+.trip-stop-summary {
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  margin: -6px 0 16px;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+.map-marker.waypoint {
+  background: #f8f6ef;
+  color: #193d32;
+  border-color: #193d32;
+}
+@media (min-width: 621px) {
+  .trip-stop-summary {
+    display: none;
+  }
+}
+@media (max-width: 620px) {
+  .editing .trip-stop-summary {
+    display: none;
+  }
+  .stop-actions button {
+    width: 44px;
+    height: 44px;
+  }
+}
+.waypoint-row {
+  position: relative;
+}
+.stop-actions.single {
+  position: absolute;
+  right: -34px;
+  top: 23px;
+}
+.stop-actions.single button {
+  width: 32px;
+  height: 40px;
+}
+@media (min-width: 621px) {
+  .planner-panel {
+    padding-top: 22px;
+  }
+  .panel-title h1 {
+    margin-bottom: 13px;
+  }
+  .form-utilities {
+    margin-bottom: 15px;
+  }
+  .trip-form {
+    margin-bottom: 14px;
+  }
+  .results-heading {
+    padding-top: 14px;
+  }
+}

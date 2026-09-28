@@ -17,6 +17,7 @@ const summarise = (r: RouteResult) => ({
     minutes: r.fastest.minutes,
     shade: r.fastest.shadeMeters,
     green: r.fastest.greenMeters,
+    water: r.fastest.waterMeters,
     unknown: r.fastest.unknownMeters,
     streets: r.fastest.streets,
   },
@@ -26,6 +27,7 @@ const summarise = (r: RouteResult) => ({
         minutes: r.alternative.minutes,
         shade: r.alternative.shadeMeters,
         green: r.alternative.greenMeters,
+        water: r.alternative.waterMeters,
         unknown: r.alternative.unknownMeters,
         streets: r.alternative.streets,
       }
@@ -53,7 +55,38 @@ if (results[0].fastest.shade === results[1].fastest.shade)
   throw new Error('Time did not change building shade');
 if (!results.some((r) => r.alternative))
   throw new Error('No distinct useful route for reference pair');
-const report = { from, to, version: data.version, verifiedAt: new Date().toISOString(), results };
+const stop = data.places.find((p) => p.name === 'Rennweg')!;
+const waterAndStops = [[], [stop.point]].map((waypoints) => {
+  const route = router.calculate(from.point, to.point, '2026-06-21T12:00:00Z', 5, waypoints, true);
+  if (
+    !route.alternative ||
+    route.alternative.waterMeters / route.alternative.distance <=
+      route.fastest.waterMeters / route.fastest.distance
+  )
+    throw new Error('No useful water alternative for reference trip');
+  if (route.alternative.minutes > route.fastest.minutes + 5 + 1e-8)
+    throw new Error('Total waypoint detour exceeded');
+  for (const waypoint of route.waypoints)
+    if (
+      !route.alternative.coordinates.some(
+        (p) => p[0] === waypoint.point[0] && p[1] === waypoint.point[1],
+      )
+    )
+      throw new Error('Alternative missed a required stop');
+  if (
+    router.calculate(from.point, to.point, '2026-06-21T12:00:00Z', 0, waypoints, true).alternative
+  )
+    throw new Error('Water preference violated zero detour');
+  return { stops: waypoints.length ? [stop.name] : [], ...summarise(route) };
+});
+const report = {
+  from,
+  to,
+  version: data.version,
+  verifiedAt: new Date().toISOString(),
+  results,
+  waterAndStops,
+};
 fs.writeFileSync('docs/route-validation.json', JSON.stringify(report, null, 2) + '\n');
 console.log(
   'Validated a real route pair, different alternatives, moving shadows, zero detour and night.',

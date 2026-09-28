@@ -29,6 +29,8 @@ Open **http://127.0.0.1:4173/**. Localhost is a secure context for PWA developme
 - A locally rendered MapLibre map of actual OSM streets, buildings, water and parks; a visible pilot boundary and source attribution.
 - Search among pilot streets and places, explicit map selection, optional geolocation, and endpoint swapping. Place results refer to mapped paths near their source locations; this is not a global address geocoder.
 - Fastest graph route and genuinely different alternatives within 0, 5 or 10 extra minutes; 5 minutes is the default.
+- Up to three ordered stops, with search/map selection, reordering, removal and trip reversal. The extra-time budget applies to the whole trip through all stops; dwell time is excluded.
+- Optional **Prefer waterside** routing and a separate measure of distance within 50 m of mapped surface water. Proximity does not establish views, bank access, drinking water or cooling.
 - Estimated building shade from actual Swiss building geometry and solar position, sampled every 8 m at the selected departure instant. Greenery remains a separate 15 m tree-proximity measure.
 - Local date/time with explicit DST ambiguity handling, metric/imperial display, a responsive phone sheet, source/coverage views and a capability-disabled Paris view.
 - PWA icons, manifest, supported-browser installation guidance and a generated service worker. After its first successful cache installation, the complete bounded map and routing bundle can be used offline. Source data stays dated; no live updates are implied.
@@ -72,6 +74,8 @@ Read [data sources and preparation](docs/data-sources.md), [the model](docs/mode
 The building model uses footprints extruded to maximum roof height above local minimum ground, with preserved courtyards and a flat-ground approximation. Slopes, roof shape and changing height along the walk affect real shadows. Centreline geometry does not establish which pavement is shaded. The model is not field-validated and provides no measured temperature or comfort benefit.
 
 The walking extract follows recorded pedestrian access and shared OSM node topology. It does not know current closures, crossing waits or unrecorded access changes. It is not an accessibility or turn-by-turn navigation service. Below 10° solar elevation and outside adequate source coverage, the interface uses greenery rather than an unsupported shade recommendation.
+
+The [tree-position audit](docs/tree-accuracy.md) checks import fidelity and compares older register IDs with a fresh municipal sample. Current shade percentages remain **building shade only**. Seasonal sun preferences, weather context and feedback submission are on the roadmap.
 
 ## Screenshots
 

@@ -10,12 +10,21 @@ self.onmessage = (
     end: Point;
     departure: string;
     extra: number;
+    waypoints: Point[];
+    preferWater: boolean;
   }>,
 ) => {
   const m = event.data;
   try {
     if (m.data && m.city) router = new Router(m.data, m.city);
-    const result = router.calculate(m.start, m.end, m.departure, m.extra);
+    const result = router.calculate(
+      m.start,
+      m.end,
+      m.departure,
+      m.extra,
+      m.waypoints,
+      m.preferWater,
+    );
     self.postMessage({ id: m.id, result });
   } catch (e) {
     self.postMessage({

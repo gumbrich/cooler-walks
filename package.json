@@ -14,6 +14,7 @@
     "check": "tsc -b && vitest run",
     "data:prepare": "tsx scripts/prepare-data.ts",
     "data:verify": "tsx scripts/verify-data.ts",
+    "data:audit-trees": "tsx scripts/audit-trees.ts",
     "test:e2e": "playwright test",
     "test:pwa": "node scripts/verify-pwa.mjs",
     "format": "prettier --write .",

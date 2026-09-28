@@ -67,6 +67,17 @@ await expect(page.locator('.map-shell')).toHaveAttribute('data-map-ready', 'true
   timeout: 60000,
 });
 await page.screenshot({ path: 'docs/screenshots/desktop-offline.png', fullPage: true });
+await page.getByRole('checkbox', { name: /Prefer waterside/ }).check();
+await expect(page.getByRole('button', { name: /More time near water/ })).toBeVisible({
+  timeout: 60000,
+});
+await page.getByRole('button', { name: 'Add a stop' }).click();
+await page.getByRole('combobox', { name: 'Stop 1', exact: true }).fill('Rennweg');
+await page.getByRole('listbox').getByRole('option').first().click();
+await expect(page.getByRole('button', { name: /More time near water/ })).toBeVisible({
+  timeout: 60000,
+});
+await expect(page.locator('.map-marker')).toHaveCount(3);
 await context.setOffline(false);
 await cdp.send('Network.overrideNetworkState', {
   offline: false,
@@ -110,6 +121,8 @@ const report = {
   offlineReload: true,
   offlineRoutes: true,
   offlineMap: true,
+  offlineWaterPreference: true,
+  offlineWaypoints: true,
   reconnected: true,
   installation,
   pageErrors: errors,

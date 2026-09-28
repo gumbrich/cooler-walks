@@ -4,6 +4,7 @@ import { cities } from '../src/lib/cities';
 import { toInstant } from '../src/lib/time';
 import { shadowVector, solar } from '../src/lib/solar';
 import { isWalkable, Router } from '../src/lib/routing';
+import { isSurfaceWater, segmentDistance, WaterIndex } from '../src/lib/water';
 import type { PilotData, Point } from '../src/lib/types';
 
 describe('coordinate systems and units', () => {
@@ -139,12 +140,134 @@ function fixture(): PilotData {
       steps: false,
     })),
     trees: [{ id: 'test-tree', point: nodes[3].point, source: 'test' }],
+    water: [],
     buildings: [],
     places: [],
     provenance: { test: true },
   };
 }
 describe('route constraints', () => {
+  it('visits ordered stops, permits return trips and preserves the zero-detour reference', () => {
+    const d = fixture(),
+      r = new Router(d, cities[0]);
+    const out = r.calculate(d.nodes[0].point, d.nodes[0].point, '2026-06-21T12:00:00Z', 0, [
+      d.nodes[2].point,
+      d.nodes[3].point,
+    ]);
+    expect(out.waypoints.map((stop) => stop.point)).toEqual([d.nodes[2].point, d.nodes[3].point]);
+    expect(out.fastest.nodes).toEqual([0, 1, 2, 3, 0]);
+    expect(out.alternative).toBeNull();
+    expect(() =>
+      r.calculate(d.nodes[0].point, d.nodes[2].point, '2026-06-21T12:00:00Z', 5, [
+        d.nodes[4].point,
+      ]),
+    ).toThrow(/Leg 1.*disconnected/);
+    expect(() =>
+      r.calculate(
+        d.nodes[0].point,
+        d.nodes[2].point,
+        '2026-06-21T12:00:00Z',
+        5,
+        Array(4).fill(d.nodes[1].point),
+      ),
+    ).toThrow(/three stops/);
+  });
+  it('treats mapped water as an explicit preference independent of shade and greenery', () => {
+    const d = fixture(),
+      p = metric(cities[0], d.nodes[3].point);
+    d.water = [
+      {
+        id: 'synthetic-pond',
+        name: 'Test pond',
+        rings: [
+          [
+            [p[0] - 5, p[1] - 5],
+            [p[0] + 5, p[1] - 5],
+            [p[0] + 5, p[1] + 5],
+            [p[0] - 5, p[1] + 5],
+            [p[0] - 5, p[1] - 5],
+          ].map((x) => geographic(cities[0], x as Point)),
+        ],
+      },
+    ];
+    const r = new Router(d, cities[0]);
+    const out = r.calculate(
+      d.nodes[0].point,
+      d.nodes[2].point,
+      '2026-06-21T12:00:00Z',
+      5,
+      [],
+      true,
+    );
+    expect(out.preference).toBe('water');
+    expect(out.fastest.waterMeters).toBe(0);
+    expect(out.alternative!.waterMeters).toBeGreaterThan(50);
+    expect(out.alternative!.minutes).toBeLessThanOrEqual(out.fastest.minutes + 5);
+    expect(
+      r.calculate(d.nodes[0].point, d.nodes[2].point, '2026-06-21T00:00:00Z', 5, [], true)
+        .alternative!.waterMeters,
+    ).toBe(out.alternative!.waterMeters);
+    expect(
+      r.calculate(d.nodes[0].point, d.nodes[2].point, '2026-06-21T12:00:00Z', 0, [], true)
+        .alternative,
+    ).toBeNull();
+    d.water = [];
+    expect(() =>
+      new Router(d, cities[0]).calculate(
+        d.nodes[0].point,
+        d.nodes[2].point,
+        '2026-06-21T12:00:00Z',
+        5,
+        [],
+        true,
+      ),
+    ).toThrow(/unavailable/);
+  });
+  it('applies the detour budget to the complete trip instead of granting it to each leg', () => {
+    const d = fixture(),
+      base = metric(cities[0], d.nodes[0].point);
+    const xy: Point[] = [
+      [0, 0],
+      [100, 0],
+      [200, 0],
+      [50, 160],
+      [150, 160],
+    ];
+    d.nodes = xy.map((p, id) => ({
+      id,
+      point: geographic(cities[0], [base[0] + p[0], base[1] + p[1]]),
+    }));
+    d.edges = [
+      [0, 1],
+      [1, 2],
+      [0, 3],
+      [3, 1],
+      [1, 4],
+      [4, 2],
+    ].map(([a, b], way) => ({
+      a,
+      b,
+      way,
+      length: Math.hypot(xy[a][0] - xy[b][0], xy[a][1] - xy[b][1]),
+      name: 'Synthetic path',
+      steps: false,
+    }));
+    d.trees = [
+      { id: 'a', source: 'test', point: d.nodes[3].point },
+      { id: 'b', source: 'test', point: d.nodes[4].point },
+    ];
+    const out = new Router(d, cities[0]).calculate(
+      d.nodes[0].point,
+      d.nodes[2].point,
+      '2026-06-21T12:00:00Z',
+      5,
+      [d.nodes[1].point],
+    );
+    expect(out.fastest.distance).toBe(200);
+    if (out.alternative)
+      expect(out.alternative.minutes - out.fastest.minutes).toBeLessThanOrEqual(5);
+    expect(out.alternative?.nodes).not.toEqual([0, 3, 1, 4, 2]);
+  });
   it('finds the true shortest graph route and enforces zero detour', () => {
     const d = fixture(),
       r = new Router(d, cities[0]);
@@ -198,5 +321,40 @@ describe('route constraints', () => {
     expect(r.calculate(d.nodes[0].point, d.nodes[2].point, '2026-06-21T00:00:00Z', 5).mode).toBe(
       'night',
     );
+  });
+});
+describe('surface water geometry', () => {
+  it('excludes fountains, underground water and intermittent features', () => {
+    expect(isSurfaceWater({ natural: 'water', water: 'river' })).toBe(true);
+    for (const tags of [
+      { amenity: 'fountain' },
+      { water: 'basin' },
+      { water: 'reflecting_pool' },
+      { tunnel: 'yes' },
+      { location: 'underground' },
+      { intermittent: 'yes' },
+      { seasonal: 'yes' },
+    ] as Record<string, string>[])
+      expect(isSurfaceWater({ natural: 'water', ...tags })).toBe(false);
+  });
+  it('measures metres to actual polygon boundaries and preserves islands', () => {
+    expect(segmentDistance([5, 4], [0, 0], [10, 0])).toBe(4);
+    expect(segmentDistance([13, 4], [0, 0], [10, 0])).toBe(5);
+    const base = metric(cities[0], [8.54, 47.374]);
+    const ring = (lo: number, hi: number): Point[] =>
+      [
+        [lo, lo],
+        [hi, lo],
+        [hi, hi],
+        [lo, hi],
+        [lo, lo],
+      ].map((p) => geographic(cities[0], [base[0] + p[0], base[1] + p[1]]));
+    const index = new WaterIndex(cities[0], [
+      { id: 'test', name: 'Test water', rings: [ring(-200, 200), ring(-100, 100)] },
+    ]);
+    expect(index.near(base)).toBe(false);
+    expect(index.near([base[0] + 149, base[1]])).toBe(true);
+    expect(index.near([base[0] + 249, base[1]])).toBe(true);
+    expect(index.near([base[0] + 251, base[1]])).toBe(false);
   });
 });

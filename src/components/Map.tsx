@@ -20,7 +20,7 @@ interface Props {
   result: RouteResult | null;
   selected: string;
   onSelect: (id: string) => void;
-  pick: 'start' | 'end' | null;
+  pick: string | null;
   onPick: (p: Point) => void;
   showCoverage: boolean;
   onCoverage: () => void;
@@ -345,23 +345,32 @@ export function WalkingMap({
       ),
     );
     if (result) {
-      [result.start, result.end].forEach((p, i) => {
-        const el = document.createElement('div');
-        el.className = `map-marker ${i ? 'destination' : ''}`;
-        el.textContent = i ? 'B' : 'A';
-        el.setAttribute(
-          'aria-label',
-          i ? 'Destination on walking network' : 'Start on walking network',
-        );
-        markers.current.push(new maplibregl.Marker({ element: el }).setLngLat(p).addTo(m));
-      });
+      [result.start, ...result.waypoints.map((stop) => stop.point), result.end].forEach(
+        (p, i, points) => {
+          const isEnd = i === points.length - 1;
+          const el = document.createElement('div');
+          el.className = `map-marker ${isEnd ? 'destination' : i ? 'waypoint' : ''}`;
+          el.textContent = isEnd ? 'B' : i ? String(i) : 'A';
+          el.setAttribute(
+            'aria-label',
+            isEnd
+              ? 'Destination on walking network'
+              : i
+                ? `Stop ${i} on walking network`
+                : 'Start on walking network',
+          );
+          markers.current.push(new maplibregl.Marker({ element: el }).setLngLat(p).addTo(m));
+        },
+      );
     }
     return () => {
       markers.current.forEach((marker) => marker.remove());
       markers.current = [];
     };
   }, [result, selected, ready]);
-  const tripKey = result ? `${result.start.join(',')}:${result.end.join(',')}` : '';
+  const tripKey = result
+    ? `${result.start.join(',')}:${result.waypoints.map((stop) => stop.point.join(',')).join(':')}:${result.end.join(',')}`
+    : '';
   const lastTrip = useRef('');
   const fit = () => {
     const m = map.current;
@@ -372,7 +381,7 @@ export function WalkingMap({
       result.alternative?.coordinates.forEach((p) => box.extend(p));
       m.fitBounds(box, {
         padding: {
-          top: hero ? 100 : 70,
+          top: hero ? 100 : matchMedia('(max-width:620px)').matches ? 80 : 100,
           bottom: hero ? 170 : matchMedia('(max-width:620px)').matches ? 105 : 280,
           left: 45,
           right: 45,
@@ -388,6 +397,15 @@ export function WalkingMap({
       lastTrip.current = tripKey;
     }
   }, [ready, tripKey]); // Keep the map steady when time or route selection changes.
+  useEffect(() => {
+    const m = map.current;
+    if (!m || !ready) return;
+    const resize = () => fit();
+    m.on('resize', resize);
+    return () => {
+      m.off('resize', resize);
+    };
+  }, [ready, result]);
   return (
     <div
       className={`map-shell ${hero ? 'hero-map' : ''}`}
@@ -434,7 +452,7 @@ export function WalkingMap({
       )}
       {pick && (
         <div className="pick-notice">
-          Tap a public path to set your {pick === 'start' ? 'start' : 'destination'}.
+          Tap a public path to set your {pick === 'end' ? 'destination' : pick}.
         </div>
       )}
       <div className="map-north" aria-hidden="true">

@@ -1,12 +1,14 @@
 import type { Edge, PilotData, Point, City, Route, RouteResult, Sample } from './types';
 import { distance, geographic, inBounds, inside, metric, rayHits } from './geo';
 import { solar, shadowVector } from './solar';
+import { WaterIndex } from './water';
 
 export const WALK_METERS_PER_MINUTE = 80;
 export const SAMPLE_METERS = 8;
 export const TREE_PROXIMITY_METERS = 15;
 export const MIN_SHADE_COVERAGE = 0.95;
-export const MODEL_VERSION = 'flat-buildings-snapshot-v1';
+export const MODEL_VERSION = 'flat-buildings-snapshot-v2';
+export const MAX_WAYPOINTS = 3;
 const CELL = 60;
 class Grid<T> {
   cells = new Map<string, T[]>();
@@ -100,6 +102,7 @@ export class Router {
     radius: number;
     center: Point;
   }>();
+  water: WaterIndex;
   maxHeight = 0;
   maxRadius = 0;
   constructor(
@@ -110,6 +113,7 @@ export class Router {
       throw new Error('The city data version does not match. Reload the app.');
     if (!data.nodes.length || !data.edges.length || !data.trees.length)
       throw new Error('The pilot data is incomplete.');
+    this.water = new WaterIndex(city, data.water);
     this.points = data.nodes.map((n) => metric(city, n.point));
     this.adjacency = data.nodes.map(() => []);
     data.edges.forEach((e, i) => {
@@ -198,16 +202,44 @@ export class Router {
     for (let n = end; n !== -1; n = prev[n]) path.push(n);
     return path.reverse();
   }
-  calculate(start: Point, end: Point, departure: string, extra: number): RouteResult {
+  calculate(
+    start: Point,
+    end: Point,
+    departure: string,
+    extra: number,
+    waypoints: Point[] = [],
+    preferWater = false,
+  ): RouteResult {
+    if (waypoints.length > MAX_WAYPOINTS) throw new Error('Choose up to three stops.');
+    if (preferWater && (!this.city.capabilities.water || !this.data.water.length))
+      throw new Error('Water proximity is unavailable in this pilot.');
     if (![0, 5, 10].includes(extra)) throw new Error('Choose 0, 5 or 10 extra minutes.');
     const date = new Date(departure);
     if (!Number.isFinite(date.getTime())) throw new Error('Choose a valid departure time.');
-    const a = this.snap(start),
-      b = this.snap(end);
-    if (a.index === b.index)
-      throw new Error(
-        'Your start and destination are on the same path point. Choose a destination farther away.',
-      );
+    const stops = [start, ...waypoints, end].map((point, i) => {
+      try {
+        return this.snap(point);
+      } catch (e) {
+        throw new Error(
+          `${i === 0 ? 'Start' : i === waypoints.length + 1 ? 'Destination' : `Stop ${i}`}: ${(e as Error).message}`,
+        );
+      }
+    });
+    const a = stops[0],
+      b = stops.at(-1)!;
+    if (stops.every((stop) => stop.index === a.index))
+      throw new Error('Your trip points are on the same path point. Choose a point farther away.');
+    const throughStops = (weight: (e: Edge, i: number) => number) => {
+      const nodes = [a.index];
+      for (let i = 1; i < stops.length; i++) {
+        try {
+          nodes.push(...this.shortest(stops[i - 1].index, stops[i].index, weight).slice(1));
+        } catch (e) {
+          throw new Error(`Leg ${i}: ${(e as Error).message}`);
+        }
+      }
+      return nodes;
+    };
     const sun = solar(date, this.city.center),
       altDeg = (sun.altitude * 180) / Math.PI;
     const mode: RouteResult['mode'] =
@@ -256,7 +288,13 @@ export class Router {
             }
           }
         }
-        samples.push({ point: geo, meters: e.length / count, exposure, green });
+        samples.push({
+          point: geo,
+          meters: e.length / count,
+          exposure,
+          green,
+          water: this.water.near(pt),
+        });
       }
       edgeSamples.set(index, samples);
       return samples;
@@ -287,13 +325,14 @@ export class Router {
         steps,
         streets,
         greenMeters: sum((s) => s.green),
+        waterMeters: sum((s) => s.water),
         shadeMeters: sum((s) => s.exposure === 'shade'),
         sunMeters: sum((s) => s.exposure === 'sun'),
         unknownMeters: sum((s) => s.exposure === 'unknown'),
       };
     };
     const fastest = buildRoute(
-      this.shortest(a.index, b.index, (e) => e.length),
+      throughStops((e) => e.length),
       'fastest',
     );
     const fastNodes = new Set(fastest.nodes),
@@ -304,20 +343,20 @@ export class Router {
     if (extra > 0) {
       for (const penalty of [1.6, 3, 6]) {
         const r = buildRoute(
-          this.shortest(
-            a.index,
-            b.index,
-            (e) => e.length * (fastNodes.has(e.a) && fastNodes.has(e.b) ? penalty : 1),
-          ),
+          throughStops((e) => e.length * (fastNodes.has(e.a) && fastNodes.has(e.b) ? penalty : 1)),
           `option-${candidates.length}`,
         );
         if (distinct(r)) candidates.push(r);
       }
       for (const emphasis of [0.2, 0.6, 1.5]) {
         const r = buildRoute(
-          this.shortest(a.index, b.index, (e, i) => {
+          throughStops((e, i) => {
             const favorable = sample(i).reduce(
-              (v, s) => v + ((mode === 'shade' ? s.exposure === 'shade' : s.green) ? s.meters : 0),
+              (v, s) =>
+                v +
+                ((preferWater ? s.water : mode === 'shade' ? s.exposure === 'shade' : s.green)
+                  ? s.meters
+                  : 0),
               0,
             );
             return e.length * emphasis + e.length - favorable;
@@ -352,16 +391,20 @@ export class Router {
         );
       return (
         novel / r.distance >= 0.1 &&
-        (shade
-          ? fastest.sunMeters - (r.sunMeters + r.unknownMeters) >= 40
-          : r.greenMeters / r.distance - fastest.greenMeters / fastest.distance >= 0.03)
+        (preferWater
+          ? r.waterMeters / r.distance - fastest.waterMeters / fastest.distance >= 0.03
+          : shade
+            ? fastest.sunMeters - (r.sunMeters + r.unknownMeters) >= 40
+            : r.greenMeters / r.distance - fastest.greenMeters / fastest.distance >= 0.03)
       );
     });
     better.sort(
       (x, y) =>
-        (shade
-          ? x.sunMeters + x.unknownMeters - (y.sunMeters + y.unknownMeters)
-          : y.greenMeters / y.distance - x.greenMeters / x.distance) || x.minutes - y.minutes,
+        (preferWater
+          ? y.waterMeters / y.distance - x.waterMeters / x.distance
+          : shade
+            ? x.sunMeters + x.unknownMeters - (y.sunMeters + y.unknownMeters)
+            : y.greenMeters / y.distance - x.greenMeters / x.distance) || x.minutes - y.minutes,
     );
     return {
       fastest,
@@ -372,6 +415,10 @@ export class Router {
       end: this.data.nodes[b.index].point,
       startSnap: a.meters,
       endSnap: b.meters,
+      waypoints: stops
+        .slice(1, -1)
+        .map((stop) => ({ point: this.data.nodes[stop.index].point, snap: stop.meters })),
+      preference: preferWater ? 'water' : 'environment',
       departure,
     };
   }

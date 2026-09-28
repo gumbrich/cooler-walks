@@ -3,7 +3,17 @@ import crypto from 'node:crypto';
 import { cities } from '../src/lib/cities';
 import { distance, geographic, inBounds, inside, metric } from '../src/lib/geo';
 import { isWalkable } from '../src/lib/routing';
-import type { Building, Edge, GraphNode, PilotData, Place, Point, Tree } from '../src/lib/types';
+import { isSurfaceWater } from '../src/lib/water';
+import type {
+  Building,
+  Edge,
+  GraphNode,
+  PilotData,
+  Place,
+  Point,
+  Tree,
+  WaterArea,
+} from '../src/lib/types';
 import type { Feature, FeatureCollection, Geometry } from 'geojson';
 
 const city = cities[0];
@@ -92,6 +102,7 @@ for (const rel of areas.elements.filter(
       kind: rel.tags!.natural === 'water' ? 'water' : 'park',
       name: rel.tags!.name ?? '',
       id: `relation-${rel.id}`,
+      routeWater: isSurfaceWater(rel.tags!),
     },
   );
 }
@@ -119,7 +130,13 @@ for (const way of raw.elements.filter((e) => e.type === 'way')) {
     closed && ['building', 'water', 'park'].includes(kind)
       ? { type: 'Polygon', coordinates: [coords] }
       : { type: 'LineString', coordinates: coords },
-    { kind, name: t.name ?? '', highway: t.highway ?? '', id: way.id },
+    {
+      kind,
+      name: t.name ?? '',
+      highway: t.highway ?? '',
+      id: way.id,
+      routeWater: isSurfaceWater(t),
+    },
   );
   if (isWalkable(t)) {
     for (let j = 1; j < way.nodes.length; j++) {
@@ -243,6 +260,20 @@ const buildings = buildingRaw
   .filter((b) => b.ring.some((p) => inBounds(p, modelBounds)));
 if (buildings.length < 100) throw new Error('Building coverage is incomplete');
 const hash = (p: string) => crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex');
+const water: WaterArea[] = features.flatMap((f) => {
+  if (!f.properties?.routeWater) return [];
+  const polygons =
+    f.geometry.type === 'Polygon'
+      ? [f.geometry.coordinates]
+      : f.geometry.type === 'MultiPolygon'
+        ? f.geometry.coordinates
+        : [];
+  return polygons.map((rings, i) => ({
+    id: `${f.properties!.id}-${i}`,
+    name: String(f.properties!.name ?? ''),
+    rings: rings as Point[][],
+  }));
+});
 const data: PilotData = {
   version: city.dataVersion!,
   cityId: city.id,
@@ -252,6 +283,7 @@ const data: PilotData = {
   nodes,
   edges: filteredEdges,
   trees,
+  water,
   buildings,
   places,
   provenance: {
@@ -284,6 +316,7 @@ fs.writeFileSync(
         nodes: nodes.length,
         edges: filteredEdges.length,
         trees: trees.length,
+        waterAreas: water.length,
         buildings: buildings.length,
         places: places.length,
       },

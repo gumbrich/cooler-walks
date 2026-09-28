@@ -8,6 +8,8 @@
 
 Zurich's routing area is about 1.7 × 2.6 km. Its rectangular boundary is a data-validation scope, not a municipal boundary. The building source area is larger, with additional boundary checks for shadows entering the walking area. The map can show source geography outside the supported routing rectangle; this does not establish route or shade coverage there.
 
+**Water:** Zurich additionally supports a separate proximity preference from 31 mapped surface-water polygons in the pilot's source extract. This is not a fountain, drinking-water, shoreline-access or cooling capability. Paris and Vienna do not have this capability enabled.
+
 ## International comparison and choice
 
 **Paris: selected next investigation.** The municipal [Arbres API](https://opendata.paris.fr/explore/dataset/les-arbres/) returned actual public records on 28 September 2026. Two inspected examples include species, height in metres, circumference in centimetres, public-management category and WGS84 positions; IDs 256125 and 280520. This establishes API/schema feasibility, not reliable crown geometry, complete private-tree coverage or observation dates. The API reported 220,215 records at inspection; this is a catalog count, not a claim of complete city coverage. [IGN BD TOPO](https://www.data.gouv.fr/datasets/bd-topo-r) supplies building geometries and heights under Licence Ouverte 2.0. Height definitions and local missing values must be inspected before modelling.

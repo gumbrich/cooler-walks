@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import {
   ArrowDownUp,
+  ArrowUp,
+  ArrowDown,
   ArrowRight,
   Check,
   ChevronDown,
@@ -14,7 +16,9 @@ import {
   MapPin,
   Moon,
   PanelTopClose,
+  Plus,
   Sun,
+  Waves,
   X,
 } from 'lucide-react';
 import { cities, getCity } from './lib/cities';
@@ -56,13 +60,16 @@ export default function App() {
     [retry, setRetry] = useState(0);
   const [start, setStart] = useState<Endpoint | null>(null),
     [end, setEnd] = useState<Endpoint | null>(null);
+  const [stops, setStops] = useState<{ id: number; value: Endpoint | null }[]>([]);
+  const stopId = useRef(0);
+  const [preferWater, setPreferWater] = useState(false);
   const [departure, setDeparture] = useState(() => localNow(city.timeZone)),
     [extra, setExtra] = useState(5);
   const [result, setResult] = useState<RouteResult | null>(null),
     [selected, setSelected] = useState('fastest'),
     [busy, setBusy] = useState(false),
     [error, setError] = useState('');
-  const [pick, setPick] = useState<'start' | 'end' | null>(null),
+  const [pick, setPick] = useState<'start' | 'end' | number | null>(null),
     [coverage, setCoverage] = useState(true),
     [editing, setEditing] = useState(false);
   const [units, setUnits] = useState<'metric' | 'imperial'>(() =>
@@ -81,6 +88,8 @@ export default function App() {
     setResult(null);
     setStart(null);
     setEnd(null);
+    setStops([]);
+    setPreferWater(false);
     setError('');
     setDataState('loading');
     setBusy(false);
@@ -107,7 +116,8 @@ export default function App() {
           d.version !== city.dataVersion ||
           !Array.isArray(d.nodes) ||
           !Array.isArray(d.edges) ||
-          !d.places?.length
+          !d.places?.length ||
+          !Array.isArray(d.water)
         )
           throw new Error('Pilot data version mismatch');
         setData(d);
@@ -149,11 +159,12 @@ export default function App() {
   useEffect(() => {
     requestId.current++;
     setResult(null);
-    setError('');
-    if (!data || !start || !end || !worker.current) {
+    if (!data || !start || !end || stops.some((stop) => !stop.value) || !worker.current) {
       setBusy(false);
+      if (data) setError('');
       return;
     }
+    setError('');
     let instant: string;
     try {
       instant = toInstant(departure, city.timeZone);
@@ -174,11 +185,13 @@ export default function App() {
         end: end.point,
         departure: instant,
         extra,
+        waypoints: stops.map((stop) => stop.value!.point),
+        preferWater,
       });
       initialized.current = true;
     }, 180);
     return () => clearTimeout(timer);
-  }, [data, start, end, departure, extra, city]);
+  }, [data, start, end, stops, preferWater, departure, extra, city]);
   useEffect(() => {
     const a = () => setOnline(true),
       b = () => setOnline(false),
@@ -240,7 +253,25 @@ export default function App() {
   const mapPick = (p: Point) => {
     const value = { name: `Map point · ${p[1].toFixed(4)}, ${p[0].toFixed(4)}`, point: p };
     if (pick === 'start') setStart(value);
-    else setEnd(value);
+    else if (pick === 'end') setEnd(value);
+    else
+      setStops((current) => current.map((stop) => (stop.id === pick ? { ...stop, value } : stop)));
+    setPick(null);
+  };
+  const chooseMap = (target: 'start' | 'end' | number) => {
+    setPick(target);
+    setEditing(false);
+    window.scrollTo({
+      top: 0,
+      behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+    });
+  };
+  const moveStop = (index: number, direction: number) => {
+    setStops((current) => {
+      const next = [...current];
+      [next[index], next[index + direction]] = [next[index + direction], next[index]];
+      return next;
+    });
     setPick(null);
   };
   const chosen = result
@@ -323,13 +354,31 @@ export default function App() {
       aria-pressed={selected === route.id}
     >
       <div className="route-card-top">
-        <span className="route-icon">{index ? <Leaf size={20} /> : <Footprints size={20} />}</span>
+        <span className="route-icon">
+          {index ? (
+            result?.preference === 'water' ? (
+              <Waves size={20} />
+            ) : (
+              <Leaf size={20} />
+            )
+          ) : (
+            <Footprints size={20} />
+          )}
+        </span>
         <span className="route-name">
-          {index ? (isShade ? 'More estimated shade' : 'Greener route') : 'Fastest walk'}
+          {index
+            ? result?.preference === 'water'
+              ? 'More time near water'
+              : isShade
+                ? 'More estimated shade'
+                : 'Greener route'
+            : 'Fastest walk'}
           <small>
             {index
               ? `+${(route.minutes - result!.fastest.minutes).toFixed(1)} min · best of ${result!.candidateCount} evaluated`
-              : 'The shortest walk on this network'}
+              : stops.length
+                ? 'The shortest walk through all stops'
+                : 'The shortest walk on this network'}
           </small>
         </span>
         <span className="route-radio">{selected === route.id && <Check size={12} />}</span>
@@ -352,6 +401,15 @@ export default function App() {
           ? `${Math.round((1 - route.unknownMeters / route.distance) * 100)}% model coverage · buildings only`
           : 'Within 15 m of a recorded tree · not canopy shade'}
       </div>
+      {city.capabilities.water && (
+        <div className="route-water">
+          <Waves size={14} />
+          <span>
+            <strong>{Math.round((route.waterMeters / route.distance) * 100)}%</strong> near mapped
+            water · {formatDistance(route.waterMeters, units)}
+          </span>
+        </div>
+      )}
     </button>
   );
   const mapProps = {
@@ -360,7 +418,8 @@ export default function App() {
     result,
     selected,
     onSelect: setSelected,
-    pick,
+    pick:
+      typeof pick === 'number' ? `stop ${stops.findIndex((stop) => stop.id === pick) + 1}` : pick,
     onPick: mapPick,
     showCoverage: coverage,
     onCoverage: () => setCoverage(!coverage),
@@ -473,9 +532,11 @@ export default function App() {
                   <div>
                     <strong>
                       {result.alternative
-                        ? isShade
-                          ? 'A little more shade along the way.'
-                          : 'A little more green along the way.'
+                        ? result.preference === 'water'
+                          ? 'A little closer to the water.'
+                          : isShade
+                            ? 'A little more shade along the way.'
+                            : 'A little more green along the way.'
                         : 'Your city. A walk worth taking.'}
                     </strong>
                     <span>
@@ -585,6 +646,12 @@ export default function App() {
                   </span>
                   <button onClick={() => setEditing(true)}>Edit</button>
                 </div>
+                {!!stops.length && (
+                  <p className="trip-stop-summary">
+                    Via{' '}
+                    {stops.map((stop, i) => stop.value?.name ?? `choose stop ${i + 1}`).join(' → ')}
+                  </p>
+                )}
                 <form
                   className="trip-form"
                   onSubmit={(e) => {
@@ -605,21 +672,74 @@ export default function App() {
                         value={start}
                         places={data?.places ?? []}
                         onChange={setStart}
-                        onPick={() => {
-                          setPick('start');
-                          setEditing(false);
-                        }}
+                        onPick={() => chooseMap('start')}
                       />
+                      <div className="waypoint-editor">
+                        {stops.map((stop, index) => (
+                          <div className="waypoint-row" key={stop.id}>
+                            <span className="stop-number" aria-hidden="true">
+                              {index + 1}
+                            </span>
+                            <PlaceSearch
+                              label={`Stop ${index + 1}`}
+                              value={stop.value}
+                              places={data?.places ?? []}
+                              onChange={(value) =>
+                                setStops((current) =>
+                                  current.map((item) =>
+                                    item.id === stop.id ? { ...item, value } : item,
+                                  ),
+                                )
+                              }
+                              onPick={() => chooseMap(stop.id)}
+                            />
+                            <div className={`stop-actions ${stops.length === 1 ? 'single' : ''}`}>
+                              {stops.length > 1 && (
+                                <>
+                                  <button
+                                    type="button"
+                                    aria-label={`Move stop ${index + 1} earlier`}
+                                    disabled={index === 0}
+                                    onClick={() => moveStop(index, -1)}
+                                  >
+                                    <ArrowUp size={15} />
+                                  </button>
+                                  <button
+                                    type="button"
+                                    aria-label={`Move stop ${index + 1} later`}
+                                    disabled={index === stops.length - 1}
+                                    onClick={() => moveStop(index, 1)}
+                                  >
+                                    <ArrowDown size={15} />
+                                  </button>
+                                </>
+                              )}
+                              <button
+                                type="button"
+                                aria-label={`Remove stop ${index + 1}`}
+                                onClick={() => {
+                                  setStops((current) =>
+                                    current.filter((item) => item.id !== stop.id),
+                                  );
+                                  setPick(null);
+                                }}
+                              >
+                                <X size={16} />
+                              </button>
+                            </div>
+                          </div>
+                        ))}
+                        {!!stops.length && (
+                          <p className="stop-help">Time spent at stops is not included.</p>
+                        )}
+                      </div>
                       <PlaceSearch
                         key={`end-${city.id}`}
                         label="To"
                         value={end}
                         places={data?.places ?? []}
                         onChange={setEnd}
-                        onPick={() => {
-                          setPick('end');
-                          setEditing(false);
-                        }}
+                        onPick={() => chooseMap('end')}
                       />
                     </div>
                     <button
@@ -629,6 +749,8 @@ export default function App() {
                       onClick={() => {
                         setStart(end);
                         setEnd(start);
+                        setStops((current) => [...current].reverse());
+                        setPick(null);
                       }}
                     >
                       <ArrowDownUp size={17} />
@@ -638,11 +760,23 @@ export default function App() {
                     <button type="button" onClick={locate}>
                       <LocateFixed size={14} /> Use my location
                     </button>
-                    <span>or choose on the map</span>
+                    {stops.length < 3 && (
+                      <button
+                        className="add-stop"
+                        type="button"
+                        onClick={() => {
+                          const id = ++stopId.current;
+                          setStops((current) => [...current, { id, value: null }]);
+                        }}
+                      >
+                        <Plus size={16} /> Add a stop
+                      </button>
+                    )}
                   </div>
                   <fieldset className="detour">
                     <legend>
-                      Room for a detour <span>Extra walking time</span>
+                      Room for a detour{' '}
+                      <span>{stops.length ? 'For the whole trip' : 'Extra walking time'}</span>
                     </legend>
                     <div className="segmented">
                       {[0, 5, 10].map((n) => (
@@ -658,6 +792,25 @@ export default function App() {
                       ))}
                     </div>
                   </fieldset>
+                  {city.capabilities.water && (
+                    <label className={`water-preference ${preferWater ? 'active' : ''}`}>
+                      <Waves size={21} />
+                      <span>
+                        <strong>Prefer waterside</strong>
+                        <small>More of your walk near mapped water</small>
+                      </span>
+                      <input
+                        type="checkbox"
+                        checked={preferWater}
+                        onChange={(e) => setPreferWater(e.target.checked)}
+                      />
+                    </label>
+                  )}
+                  {preferWater && (
+                    <p className="preference-help">
+                      Water proximity takes priority and may mean less shade.
+                    </p>
+                  )}
                   <button className="primary mobile-save" type="submit">
                     Show my walk <ArrowRight size={17} />
                   </button>
@@ -698,10 +851,10 @@ export default function App() {
                       Unfolding the {city.name} map…
                     </div>
                   )}
-                  {!start || !end ? (
+                  {!start || !end || stops.some((stop) => !stop.value) ? (
                     <div className="empty-hint">
                       <MapPin size={22} />
-                      <p>Choose a start and destination to find your walk.</p>
+                      <p>Choose a start, destination and any added stops to find your walk.</p>
                     </div>
                   ) : null}
                   {result && (
@@ -712,8 +865,10 @@ export default function App() {
                       {!result.alternative && (
                         <p className="result-note">
                           {extra === 0
-                            ? 'With no extra walking time, the fastest walk is your route.'
-                            : 'No meaningfully better alternative was found within your time limit.'}
+                            ? 'With no extra walking time, the fastest walk through your chosen points is your route.'
+                            : preferWater
+                              ? 'No route with meaningfully more water proximity was found within your time limit.'
+                              : 'No meaningfully better alternative was found within your time limit.'}
                         </p>
                       )}
                       {result.mode === 'night' && (
@@ -741,6 +896,15 @@ export default function App() {
                       <summary>
                         About this walk <ChevronDown size={15} />
                       </summary>
+                      {!!stops.length && (
+                        <p>
+                          Stops:{' '}
+                          {stops
+                            .map((stop, index) => stop.value?.name ?? `Choose stop ${index + 1}`)
+                            .join(' → ')}
+                          . Time spent at stops is not included.
+                        </p>
+                      )}
                       <p>
                         {chosen.streets
                           .filter((s, i, a) => s !== 'Walking path' && a.indexOf(s) === i)
@@ -753,6 +917,22 @@ export default function App() {
                         {result &&
                           `Start and destination snap ${Math.round(result.startSnap)} m and ${Math.round(result.endSnap)} m to the mapped network.`}
                       </p>
+                      {result?.waypoints.length ? (
+                        <p>
+                          Stop snapping:{' '}
+                          {result.waypoints
+                            .map((stop, index) => `${index + 1}: ${Math.round(stop.snap)} m`)
+                            .join(' · ')}
+                          .
+                        </p>
+                      ) : null}
+                      {city.capabilities.water && (
+                        <p>
+                          Near water: within 50 m of mapped surface water, including bridges.
+                          Proximity does not establish a view, access to the bank, drinking water or
+                          a cooling benefit.
+                        </p>
+                      )}
                       {isShade && (
                         <p>
                           Direct sun: about {Math.round(chosen.sunMeters / 80)} min. Unknown:{' '}
@@ -838,6 +1018,25 @@ export default function App() {
                     “Near trees” is the share of a walk within 15 metres of a recorded tree. It is
                     not canopy coverage or shade. Tree crowns, foliage, clouds and terrain shadows
                     are not modelled.
+                  </p>
+                  <p>
+                    Markers preserve the source positions. Some trees were surveyed; others were
+                    entered on screen or detected from aerial data. The inventory uses 2021
+                    positions, so removals and replacements may be missing. Marker size does not
+                    represent a measured crown.
+                  </p>
+                </div>
+              </div>
+              <div className="method-item">
+                <Waves size={24} />
+                <div>
+                  <h3>Water is a separate preference</h3>
+                  <p>
+                    We measure the share of the walk within 50 metres of mapped surface water.
+                    “Prefer waterside” chooses the greatest share among the distinct alternatives
+                    evaluated within your total detour budget; walking time breaks ties. It may
+                    trade shade for water proximity. Mapped proximity does not guarantee access,
+                    visibility or a temperature benefit.
                   </p>
                 </div>
               </div>

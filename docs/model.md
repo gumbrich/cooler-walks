@@ -28,6 +28,14 @@ For shade, prefer lower absolute modelled distance in direct sun (equivalent to 
 
 The measure is the fraction of route distance within 15 m of a verified inventory tree position. It is a reproducible **tree-proximity indicator**, independent of time. Invented/randomly distributed TLM woodland trees are excluded by their source prefix. No assumption about crown size, actual canopy shade, foliage, seasonality or cooling is inferred from proximity. Building shade and greenery remain separate metrics.
 
+## Water and ordered stops
+
+Water is a separate, optional preference. Sample the route at the same ≤8 m resolution and count distance within **50 m of mapped surface-water polygons**, including bridges over water. Distances use the city's metric CRS; polygon holes preserve islands. Water fraction uses total route distance. This is straight-line proximity, not verified views, bank access, drinking-water availability or cooling. Untagged/missing water and historical source changes remain possible. Do not interpret a zero as proof that no water exists.
+
+The source adapter keeps actual OSM water polygons and multipolygons, excluding fountains, basins, reflecting pools, underground/covered water, and tagged intermittent/seasonal features. Water centreline widths are not invented. With **Prefer waterside** enabled, generate candidates using water proximity and choose the greatest water fraction, with walking time as tie-breaker. Require at least a three-percentage-point increase and 10% new path length. Shade/greenery remain visible, independently calculated metrics; a waterside recommendation may have less building shade. Existing shade-coverage comparison rules still apply when displaying shade. No composite cooling score is used.
+
+Up to **three intermediate stops** are visited in the specified order. Each stop uses the same access, snapping and coverage checks as an endpoint. The fastest reference is the sum of shortest valid legs through all requested stops; a candidate's **whole-trip duration** must stay within the single 0/5/10-minute extra-time budget. Stops do not each receive another budget. Return trips and repeated path segments are allowed. Stop dwell time is not included; shade remains a departure snapshot. A disconnected leg fails the trip with its leg number. Reversing endpoints also reverses stops.
+
 ## Verification and remaining work
 
 Focused tests check LV95 against the official Bern origin, a Paris UTM round-trip, unit conversion, DST, Melbourne local time and solar orientation, polar night, shadow direction and length, an analytic 10 m block at 45°, courtyard openings, graph access, disconnected routes, detours and missing coverage. `docs/route-validation.json` records a real Zurich route at several times.

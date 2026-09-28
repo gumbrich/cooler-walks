@@ -12,6 +12,8 @@ Source review and fetch date: **28 September 2026**. Runtime arrays and raw hash
 - Derived map data is factual geography, not shade geometry. A separate bounded relation extract supplies water and park multipolygons. Rings are joined using shared OSM endpoint identities, holes are preserved and incomplete rings fail preparation. The Limmat and lake boundaries were inspected in rendered screenshots.
 - Hosting/service limits: a one-time bounded download, locally processed. No public Overpass, tile or route service is queried by the running app. Respect service capacity when refreshing; do not use this script as a high-volume production data pipeline.
 
+Version 2 also derives **31 surface-water polygons** from the same OSM files described above. Real boundaries and island holes are retained. Fountains, basins, reflecting pools, and tagged underground, covered, intermittent or seasonal water are excluded. Waterway centreline widths are not invented. Proximity does not verify access, visibility, current water conditions or cooling.
+
 ## City of Zurich: tree positions
 
 - [Bauminventar catalogue](https://data.stadt-zuerich.ch/dataset/geo_bauminventar), [CKAN metadata](https://data.stadt-zuerich.ch/api/3/action/package_show?id=geo_bauminventar). Catalogue licence: CC0. Credit City of Zurich / Grün Stadt Zürich and underlying swissTLM3D contributions.
@@ -20,6 +22,8 @@ Source review and fetch date: **28 September 2026**. Runtime arrays and raw hash
 - Source dates: inventory documentation says register and swissTLM3D tree positions 2021, LiDAR heights 2018; preparation records include `202212151503`. Catalogue metadata was edited in 2026, which is **not** a new observation date.
 - Source XY values use LV95; the queried output is WGS84. Runtime retains positions and provenance, not unused personal/contact attributes.
 - `TLM3D_GF` woodland points are randomly distributed model positions and are excluded. Register and individual-tree locations support a proximity indicator only. Source crown widths are inferred, not measured, and some source heights use defaults. Therefore no tree-shade capability is enabled.
+
+A separate bounded query of the maintained [Baumkataster](https://data.stadt-zuerich.ch/dataset/geo_baumkataster), layer `baumkataster_baumstandorte`, was fetched on 28 September 2026 for comparison only. `scripts/fetch-tree-audit.sh` records the exact WGS84 request over the pilot bounds. The catalogue reports CC0, a 30 August 2026 update and weekly updates, not individual survey dates. Raw files remain ignored; hashes, accuracy categories, derived statistics and limitations are in [tree-accuracy.md](tree-accuracy.md) and `tree-audit.json`. Runtime tree locations did not change through the audit.
 
 ## swisstopo: actual building geometry
 
