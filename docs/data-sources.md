@@ -35,7 +35,7 @@ Source review and fetch date: **28 September 2026**. Runtime arrays and raw hash
 
 React, Vite, MapLibre, proj4, Temporal polyfill and SunCalc are locked in `package-lock.json`. MapLibre was updated to the patched 6.11.2 series after the initial dependency audit; Sharp was updated to 0.35.5. The later audit reported zero known advisories.
 
-DM Sans and DM Serif Display are self-hosted through Fontsource with their package licences. Open Sans Semibold map glyphs are vendored from the [MapLibre demo assets](https://github.com/maplibre/demotiles); the associated notices are retained under `public/fonts/`. The running map does not consume the demo tile service.
+DM Sans and DM Serif Display are self-hosted through Fontsource; their SIL Open Font License notices are copied into `public/fonts/` so production builds retain them. Open Sans Semibold map glyphs are vendored from the [MapLibre demo assets](https://github.com/maplibre/demotiles), whose documented source is [OpenMapTiles fonts](https://github.com/openmaptiles/fonts/tree/master/open-sans). Its Open Sans notice and Apache licence, along with MapLibre's BSD notice, are retained under `public/fonts/`. The running map does not consume the demo tile service.
 
 ## Reproduce the transformation
 
