@@ -127,12 +127,17 @@ export default function App() {
         // The first city request can precede worker activation. Save that city
         // explicitly once the production worker is ready, including after updates.
         if (import.meta.env.PROD && 'serviceWorker' in navigator) {
-          void navigator.serviceWorker.ready.then((registration) => {
+          const saveCity = (target: ServiceWorker | null) => {
             if (!controller.signal.aborted)
-              registration.active?.postMessage({
-                type: 'CACHE_CITY',
-                urls: [city.dataUrl, city.mapUrl],
-              });
+              target?.postMessage({ type: 'CACHE_CITY', urls: [city.dataUrl, city.mapUrl] });
+          };
+          navigator.serviceWorker.addEventListener(
+            'controllerchange',
+            () => saveCity(navigator.serviceWorker.controller),
+            { signal: controller.signal },
+          );
+          void navigator.serviceWorker.ready.then((registration) => {
+            saveCity(navigator.serviceWorker.controller ?? registration.active);
           });
         }
         const from = d.places.find((p) => p.name === city.defaultJourney?.[0]),
