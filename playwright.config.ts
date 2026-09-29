@@ -12,6 +12,10 @@ export default defineConfig({
   use: {
     baseURL: 'http://127.0.0.1:5173',
     headless: true,
+    // Exercise the full Chromium compositor, matching normal Chrome's headless mode.
+    // The separate headless shell stalled during WebGL captures on Linux CI.
+    channel: 'chromium',
+    trace: 'retain-on-failure',
     launchOptions: {
       ...(process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE
         ? { executablePath: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE }
