@@ -33,6 +33,8 @@ npm run release:serve
 
 Open `http://127.0.0.1:4181/`, `/privacy/` and `/support/`. This local server applies the project's security/cache headers and real 404 responses. It is a test approximation of Netlify, not a production server. The ordinary Vite preview on port 4173 does not apply `_headers`.
 
+Internal help/privacy links include `index.html` so the same pages work in Capacitor's bundled asset server. Their public canonical URLs remain `/privacy/` and `/support/`; both forms are real files, not planner fallbacks.
+
 The ignored `release-artifacts/` directory contains the website folder, a `.tar.gz` archive, the matching map packs/catalogue, R2 CORS configuration and a SHA-256 manifest with source commit, dirty-state flag and Node version. The manual **Prepare release files (no publishing)** GitHub workflow produces the same artifacts with Node 22 and runs release browser checks. No workflow publishes anything.
 
 Before a public deployment, fill `release/site.json` with the purchased HTTPS origin, publisher/contact information, actual host names, their privacy notice, and confirmed logging/retention/analytics settings. Draft pages have a visible notice and `noindex`; production builds refuse incomplete settings. Do not invent a host retention period. If website and map hosting use different providers, disclose both in `hostingDetails`. Disable optional analytics unless deliberately added and disclosed. No credentials belong in this file.

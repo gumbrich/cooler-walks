@@ -18,12 +18,16 @@ test('public help and privacy pages work without JavaScript, including phone and
   await page.screenshot({ path: 'docs/screenshots/phone-support.png', fullPage: true });
   await page.getByRole('link', { name: 'Privacy', exact: true }).click();
   await expect(page.getByRole('heading', { name: 'Location is your choice' })).toBeVisible();
-  await page.setViewportSize({ width: 1440, height: 1000 });
-  await page.reload();
-  await page.locator('footer').scrollIntoViewIfNeeded();
-  await page.getByRole('heading', { level: 1 }).scrollIntoViewIfNeeded();
-  await page.screenshot({ path: 'docs/screenshots/desktop-privacy.png', fullPage: true });
   await context.close();
+  // A fresh viewport avoids Chromium's full-page capture tiling after a resize.
+  const desktop = await browser.newContext({
+    javaScriptEnabled: false,
+    viewport: { width: 1440, height: 1000 },
+  });
+  const desktopPage = await desktop.newPage();
+  await desktopPage.goto('http://127.0.0.1:4181/privacy/');
+  await desktopPage.screenshot({ path: 'docs/screenshots/desktop-privacy.png' });
+  await desktop.close();
 });
 
 test('release pages meet accessibility checks and stay within the phone viewport at 200% text', async ({

@@ -667,7 +667,8 @@ export default function App() {
               Method, sources & privacy <ArrowRight size={14} />
             </button>
             <span>
-              <a href="/support/">Help & feedback</a> · <a href="/privacy/">Privacy</a>
+              <a href="/support/index.html">Help & feedback</a> ·{' '}
+              <a href="/privacy/index.html">Privacy</a>
             </span>
           </footer>
         </main>
@@ -1206,8 +1207,8 @@ export default function App() {
                 service may contact its own provider. We do not save your precise journeys.
               </p>
               <p>
-                <a href="/privacy/">Read the privacy notice</a> ·{' '}
-                <a href="/support/">Help & feedback</a>
+                <a href="/privacy/index.html">Read the privacy notice</a> ·{' '}
+                <a href="/support/index.html">Help & feedback</a>
               </p>
             </>
           ) : modal === 'coverage' ? (

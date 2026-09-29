@@ -1,0 +1,13 @@
+{
+  "checkedAt": "2026-09-29T15:36:59.339Z",
+  "platform": "Android emulator only",
+  "passed": [
+    "Native help page, real mailto link and status-bar clearance",
+    "Bundled privacy page",
+    "Return to real planner after static-page navigation"
+  ],
+  "insets": {
+    "safeTop": "50px",
+    "brandTop": 69.89881134033203
+  }
+}

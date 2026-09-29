@@ -9,6 +9,8 @@ Status on 29 September 2026: native Android and iOS projects exist, with the sam
 - Public, readable HTML `/privacy/` and `/support/` pages, with email feedback, offline caching and draft notices until host details are confirmed.
 - English listing copy, category suggestions, reviewer instructions, bounded-city claims, screenshot inventory and release checks. No store account, signing key, listing or submission was created.
 
+The unsigned Android AAB, iOS simulator build and unsigned iOS device archive passed the [native CI build](https://github.com/gumbrich/cooler-walks/actions/runs/36590625022) for the packaging milestone. Local Xcode device archiving remains blocked by its platform installation; CI provides the working archive path. The new help/privacy navigation was then checked on the Android emulator: explicit `index.html` links are required by Capacitor's bundled asset server, and the pages honor native safe-area insets. Run `npm run test:native:pages` against the dedicated installed debug emulator build to repeat it; see `native-public-pages-validation.json`.
+
 Keep `io.github.gumbrich.coolerwalks` as the provisional application/bundle ID. Confirm it before creating the store records: changing it after publication creates a different app. Current marketing version is 0.4.0, Android versionCode/iOS build number 2. Increment build numbers for later uploaded builds; keep Android, iOS and package.json version values consistent.
 
 ## Accounts and current requirements
