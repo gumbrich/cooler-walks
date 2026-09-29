@@ -2,9 +2,9 @@
 
 ## Current milestone: domain and store-release preparation
 
-Added Netlify build configuration, a locally checked upload archive, security/cache/CORS headers, real 404s, hosted smoke checks and standalone privacy/help pages. The provided support email is configured. SWITCH's official Domain Check confirms `coolerwalks.ch` could be registered on 29 September 2026. No domain is reserved or purchased. The hosting guide explains the current 31 MB Cambridge asset constraint and durable retention of native map packs.
+Added Netlify build configuration, a locally checked upload archive, security/cache/CORS headers, real 404s, hosted smoke checks and standalone privacy/help pages. The provided support email is configured. `coolerwalks.ch` is now registered in the owner's Infomaniak account and configured as the intended public origin. The hosting guide explains the current 31 MB Cambridge asset constraint and durable retention of native map packs.
 
-Registration is now started: Infomaniak's basket contains only `coolerwalks.ch`, with paid add-ons removed and a provisional EUR 6 first-year price excluding tax. Account creation and Netlify sign-in require the owner to finish the browser steps. No payment, DNS change or deployment has occurred. The website remains available in the local preview.
+Infomaniak confirms the domain-registration order completed on 29 September; the official registry independently confirms registration. Netlify sign-in is complete and the existing Free Legacy plan is verified. No DNS change or website deployment has occurred yet. The public build now includes the selected domain and Netlify privacy details and passes the three release browser checks.
 
 The pre-launch check uncovered Linux browser-test failures. Full Chromium and request interception installed before page loading resolve them without removing assertions or screenshots. [Complete CI validation passed](https://github.com/gumbrich/cooler-walks/actions/runs/36614132370) on `ac58a9a`, including all twelve browser scenarios; Android and iOS builds passed for that revision too.
 
@@ -38,4 +38,4 @@ Added five reproducible packs, SHA-256 and size/schema verification, progress/ca
 
 ## Next useful milestone
 
-Register the chosen domain, confirm the public publisher identity and host privacy details, deploy the website/pack host, and create a signed internal tester build. Physical-phone testing was deferred at the user’s request. Benchmark memory, download recovery and map rendering on lower-end phones before further city expansion. Validate dated shadows and route access in the street; normalize Cambridge’s height units/unknown-height masks and add Basel building heights. Tree shade, terrain and weather remain separate roadmap items. Help pages now provide email feedback without a public posting system.
+Complete Netlify sign-in, confirm host privacy details, connect the registered domain and deploy the website/pack host, then create a signed internal tester build. Physical-phone testing was deferred at the user’s request. Benchmark memory, download recovery and map rendering on lower-end phones before further city expansion. Validate dated shadows and route access in the street; normalize Cambridge’s height units/unknown-height masks and add Basel building heights. Tree shade, terrain and weather remain separate roadmap items. Help pages now provide email feedback without a public posting system.

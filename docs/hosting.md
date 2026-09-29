@@ -1,6 +1,6 @@
 # Hosting and domain launch
 
-Prepared 29 September 2026. **No domain purchased, public deployment created or store submission made.** The private GitHub repository remains the source of truth. The public support email is `knoerzerjohannes@protonmail.com`, as requested. “Cooler Walks” is the public brand; the legal publisher/account-holder identity still needs confirmation for store enrollment.
+Updated 29 September 2026. **`coolerwalks.ch` is registered in the owner's Infomaniak account. No public website deployment or store submission has been made.** The private GitHub repository remains the source of truth. The public support email is `knoerzerjohannes@protonmail.com`, as requested. “Cooler Walks” is the public brand; store enrollment and legal publisher details remain separate steps.
 
 ## Recommended launch setup
 
@@ -8,7 +8,7 @@ Use **Netlify for the website**, **coolerwalks.ch for its domain**, and **Cloudf
 
 The current complete web output is about **124 MB uncompressed**, including five compressed packs. Cambridge's map is **31,093,355 bytes**. That exceeds Cloudflare Pages' [25 MiB per-file limit](https://developers.cloudflare.com/pages/platform/limits/). Pages/Sites would need the large map moved to object storage or a revised data-loading format; do not upload the current output there unchanged. The existing `.openai/hosting.json` is only an unregistered static-output descriptor, not a live site.
 
-Netlify has a private-GitHub import workflow, atomic deployments, custom domains and HTTPS. Import through Git or use its CLI; its [manual drop-zone guidance](https://docs.netlify.com/manage/projects/add-new-project/) warns that large files can stall drag-and-drop uploads. The [current Free plan](https://www.netlify.com/pricing/) has 300 monthly credits and a hard usage limit; the Personal plan lists 1,000 credits. This data-heavy app can consume bandwidth quickly. Start with a controlled pilot, watch usage, and confirm the checkout price/limits before choosing a paid plan. A private source repository does **not** make the resulting website private.
+Netlify has a private-GitHub import workflow, atomic deployments, custom domains and HTTPS. Import through Git or use its CLI; its [manual drop-zone guidance](https://docs.netlify.com/manage/projects/add-new-project/) warns that large files can stall drag-and-drop uploads. The owner's existing team was verified on **Free Legacy: $0, 100 GB bandwidth and 300 build minutes per month, one concurrent build** on 29 September. It has no saved payment method; no plan change is needed. New accounts use different [credit-based pricing](https://www.netlify.com/pricing/). This data-heavy app can consume bandwidth quickly; monitor the actual team's usage. A private source repository does **not** make the resulting website private.
 
 R2 is recommended for a permanent, additive map archive so an older installed app can still retrieve its exact hashed files after a new website deploy. It charges for storage and operations, with [no direct egress charge](https://developers.cloudflare.com/r2/pricing/); account billing and limits still need review. The smaller launch alternative is to keep every released pack in each Netlify deployment, but that increases every deployment's size and requires explicit retention discipline.
 
@@ -23,7 +23,7 @@ whois -h whois.nic.ch -p 4343 coolerwalks.ch
 
 The registry [documents code 1 as available for registration](https://www.nic.ch/whois/domaincheck/). This is an availability check, not a reservation or a purchase. Recheck at checkout, including renewal price and taxes. `coolerwalks.com` and `coolerwalks.app` also returned RDAP 404/no registration record earlier that day, but their registrar availability and price were not confirmed. `.ch` is the user's preferred candidate. It does not change the app's international scope.
 
-Registration started in Infomaniak's browser checkout on 29 September. The basket contains only `coolerwalks.ch`, with the optional Domain Plus add-on removed. Before account/address verification, the displayed first-year price was **EUR 6 excluding tax**; the final tax, renewal price and renewal settings still need checking. The supplied email was accepted for account setup, which requires the owner's name, password and verification. Netlify also requires sign-in. No account creation, domain purchase, payment, DNS change or public deployment has been confirmed. Credentials and verification codes should be entered directly in the provider's browser, never recorded here.
+The owner completed Infomaniak account setup and checkout on 29 September. The registrar shows the `coolerwalks.ch` domain-registration order completed at **21:05**, and SWITCH's Domain Check now returns code 0, already registered. The prepared basket excluded Domain Plus; its pre-account quote of EUR 6 excluding tax is not a record of the final charge or renewal cost. Confirm the invoice and renewal settings in the owner's account. Netlify sign-in is complete; no DNS change or website deployment has been made yet. Credentials and verification codes belong directly in the provider's browser, never in this repository.
 
 ## Prepare locally
 
@@ -60,7 +60,7 @@ For updates, validate first, then push a focused commit. Netlify deploys the new
 4. Keep old hashed files for every supported app version. Never overwrite a hash-named file or use a destructive `sync --delete`. Do not rely on temporary GitHub artifact links or Netlify preview URLs as the app's permanent origin. App updates ship a new compatible catalogue; there is no remote arbitrary-code update channel.
 5. Build the native app with `VITE_AREA_BASE_URL=https://maps.coolerwalks.ch/packs/`, once that owned host is live. Re-upload the packs emitted by that exact build if compression changed. Node/zlib versions can change compressed bytes even for identical source data; filename/hash mismatches must not be ignored.
 
-Cloudflare credentials stay in the provider login, a local credential store or scoped CI secrets. No upload token is required by the app. Domain registration, DNS delegation and billable bucket creation have not been performed.
+Cloudflare credentials stay in the provider login, a local credential store or scoped CI secrets. No upload token is required by the app. The domain is registered; Cloudflare DNS delegation and billable bucket creation have not been performed.
 
 ## Live acceptance checks
 

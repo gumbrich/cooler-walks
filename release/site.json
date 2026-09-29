@@ -1,8 +1,8 @@
 {
-  "siteUrl": "",
+  "siteUrl": "https://coolerwalks.ch",
   "publisherName": "Cooler Walks",
   "supportEmail": "knoerzerjohannes@protonmail.com",
-  "hostingProvider": "",
-  "hostingPrivacyUrl": "",
-  "hostingDetails": ""
+  "hostingProvider": "Netlify",
+  "hostingPrivacyUrl": "https://www.netlify.com/privacy/",
+  "hostingDetails": "The website and map downloads are hosted by Netlify. We do not add advertising, analytics or monitoring scripts. Netlify processes network request logs to deliver and protect its services and may provide aggregated traffic statistics. It sets retention periods according to purpose and legal requirements; its public policy does not specify one deletion period for all logs. Processing may take place outside Switzerland. Contact us about requests relating to this website's hosting data."
 }
