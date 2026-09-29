@@ -112,9 +112,11 @@ export function AreaDownloads({
               : 'Ready when you are'}
           </strong>
           <small>
-            {isNativeApp
-              ? `${bundled.length} areas included in this build`
-              : 'Downloads saved on this browser'}
+            {loading
+              ? 'Checking saved maps…'
+              : isNativeApp
+                ? `${bundled.length} areas included in this build`
+                : 'Downloads saved on this browser'}
           </small>
         </span>
       </div>

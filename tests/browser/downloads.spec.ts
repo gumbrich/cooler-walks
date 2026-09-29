@@ -24,6 +24,9 @@ test('download, verify, reopen offline, select smaller coverage and remove', asy
   await expect(page.locator('.map-failure')).toHaveCount(0);
   await page.setViewportSize({ width: 390, height: 844 });
   await page.locator('.header').click({ position: { x: 1, y: 1 } });
+  const legend = await page.locator('.map-legend').boundingBox();
+  const attribution = await page.locator('.maplibregl-ctrl-attrib').boundingBox();
+  expect(legend!.y + legend!.height).toBeLessThanOrEqual(attribution!.y);
   await page.screenshot({ path: 'docs/screenshots/phone-downloaded-area.png', fullPage: true });
   // Block every network data source. The app shell is served normally by Vite;
   // production service-worker offline reload is checked separately by test:pwa.
@@ -46,6 +49,8 @@ test('download, verify, reopen offline, select smaller coverage and remove', asy
 test('interrupted downloads and quota failure preserve previous saved data', async ({ page }) => {
   await page.setViewportSize({ width: 768, height: 1024 });
   await page.goto('/?view=planner');
+  await expect(page.locator('.route-card').first()).toBeVisible();
+  await expect(page.locator('.map-shell')).toHaveAttribute('data-map-settled', 'true');
   await page.getByRole('button', { name: 'Offline maps', exact: true }).click();
   const pack = page.locator('[data-area-id="ch-basel"]');
   await page.route('**/packs/ch-basel-*.cwp', async (route) => {

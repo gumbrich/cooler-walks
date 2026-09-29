@@ -154,6 +154,15 @@ export function WalkingMap({
       }),
       'bottom-right',
     );
+    const attribution = m.getContainer().querySelector('.maplibregl-ctrl-attrib');
+    const attributionObserver = new ResizeObserver(() => {
+      if (attribution)
+        container.current?.parentElement?.style.setProperty(
+          '--map-attribution-height',
+          `${attribution.getBoundingClientRect().height}px`,
+        );
+    });
+    if (attribution) attributionObserver.observe(attribution);
     m.on('load', () => {
       m.addSource('coverage', {
         type: 'geojson',
@@ -337,6 +346,7 @@ export function WalkingMap({
     observer.observe(container.current);
     return () => {
       observer.disconnect();
+      attributionObserver.disconnect();
       m.remove();
       map.current = null;
     };

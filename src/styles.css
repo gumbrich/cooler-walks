@@ -2777,6 +2777,7 @@ small {
 /* Keep long source attributions readable on narrow native WebViews. */
 .maplibregl-ctrl-bottom-right {
   max-width: 100%;
+  width: 100%;
 }
 .maplibregl-ctrl-attrib {
   max-width: calc(100% - 12px);
@@ -2785,4 +2786,7 @@ small {
 }
 .maplibregl-ctrl-attrib-inner {
   white-space: normal;
+}
+.map-legend {
+  bottom: calc(var(--map-attribution-height, 22px) + 20px);
 }
