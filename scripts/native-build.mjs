@@ -25,6 +25,8 @@ if (platform === 'ios') {
     '-derivedDataPath',
     'ios/DerivedData',
     'CODE_SIGNING_ALLOWED=NO',
+    'ARCHS=arm64',
+    'ONLY_ACTIVE_ARCH=YES',
     'build',
   ]);
 } else if (platform === 'android') {
