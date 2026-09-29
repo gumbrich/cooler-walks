@@ -666,7 +666,9 @@ export default function App() {
             <button onClick={() => setModal('method')}>
               Method, sources & privacy <ArrowRight size={14} />
             </button>
-            <span>City pilots · v0.2</span>
+            <span>
+              <a href="/support/">Help & feedback</a> · <a href="/privacy/">Privacy</a>
+            </span>
           </footer>
         </main>
       ) : (
@@ -1202,6 +1204,10 @@ export default function App() {
                 only city, selected area, units, downloaded maps and whether you’ve opened the
                 planner. Location is requested only when you choose it; your browser’s location
                 service may contact its own provider. We do not save your precise journeys.
+              </p>
+              <p>
+                <a href="/privacy/">Read the privacy notice</a> ·{' '}
+                <a href="/support/">Help & feedback</a>
               </p>
             </>
           ) : modal === 'coverage' ? (

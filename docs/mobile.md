@@ -69,10 +69,12 @@ Local Xcode 26.3 initially rejected its missing iOS 26.2 runtime. The working do
 xcodebuild -downloadPlatform iOS -buildVersion 26.2 -architectureVariant arm64
 ```
 
-The download is 8.39 GB. The matching runtime download was not yet complete at verification time. CI builds provide a tested alternative while local platform installation completes. An unsigned simulator artifact cannot be installed on a physical iPhone.
+The 8.39 GB runtime download has now completed and appears in `simctl list runtimes`. However, local Xcode still rejects a generic iOS **device archive** destination as missing the iOS 26.2 platform. Resolve that in Xcode Settings → Components before local device archiving. CI remains the alternative. An unsigned simulator artifact cannot be installed on a physical iPhone.
 
 ## Next release steps
 
 Test the native app on physical iPhone and Android devices, including location denial/approximate location, keyboard and safe areas, app resume, low-memory behaviour, large-city map performance and airplane-mode city switching. Complete physical iOS testing and benchmark downloads on real Android hardware. Validate real-world route access and shadows before making stronger model claims.
 
 App Store/TestFlight and Google Play distribution are separate future steps: confirm the final application identifier, prepare signing, privacy declarations and listings, and obtain store review. No store listing, certificate upload, account creation or publication has been performed. Versioned downloadable areas are implemented; compatible catalogues ship with app updates. Public HTTPS data hosting and signed tester distribution remain release steps.
+
+Release commands and draft listing materials are now prepared in [app-stores.md](app-stores.md). Android's unsigned App Bundle build has been verified locally; upload-key signing uses environment variables and refuses missing credentials. The website/pack-host setup is documented in [hosting.md](hosting.md).

@@ -21,3 +21,4 @@ public/packs/
 native-web/
 src/generated/
 docs/area-pack-validation.json
+release-artifacts/

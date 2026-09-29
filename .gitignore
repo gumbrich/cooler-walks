@@ -21,3 +21,7 @@ test-results/
 native-artifacts/
 /public/packs/
 /native-web/
+/release-artifacts/
+*.p8
+*.ipa
+*.xcarchive/

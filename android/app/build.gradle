@@ -1,5 +1,9 @@
 apply plugin: 'com.android.application'
 
+def signingNames = ['COOLER_KEYSTORE_PATH', 'COOLER_KEYSTORE_PASSWORD', 'COOLER_KEY_ALIAS', 'COOLER_KEY_PASSWORD']
+def signingValues = signingNames.collect { System.getenv(it) }
+def hasUploadKey = signingValues.every { it != null && !it.isBlank() }
+
 android {
     namespace = "io.github.gumbrich.coolerwalks"
     compileSdk = rootProject.ext.compileSdkVersion
@@ -20,6 +24,34 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    signingConfigs {
+        if (hasUploadKey) {
+            upload {
+                storeFile file(System.getenv('COOLER_KEYSTORE_PATH'))
+                storePassword System.getenv('COOLER_KEYSTORE_PASSWORD')
+                keyAlias System.getenv('COOLER_KEY_ALIAS')
+                keyPassword System.getenv('COOLER_KEY_PASSWORD')
+            }
+        }
+    }
+    if (hasUploadKey && !project.hasProperty('coolerUnsigned')) {
+        buildTypes.release.signingConfig = signingConfigs.upload
+    }
+}
+
+// Never accidentally sign a release with the development key or serve a dev URL.
+tasks.configureEach { task ->
+    if (task.name == 'preReleaseBuild') {
+        task.doFirst {
+            if (!project.hasProperty('coolerUnsigned') && !hasUploadKey) {
+                throw new GradleException('Release signing needs all four COOLER_KEY* environment variables. Use the explicit unsigned preparation command for local validation.')
+            }
+            def cap = new groovy.json.JsonSlurper().parse(file('src/main/assets/capacitor.config.json'))
+            if (System.getenv('COOLER_DEV_DOWNLOADS') == '1' || cap.server?.url || cap.server?.cleartext || cap.android?.allowMixedContent) {
+                throw new GradleException('Development network settings are forbidden in release builds. Run native:sync without COOLER_DEV_DOWNLOADS.')
+            }
         }
     }
 }

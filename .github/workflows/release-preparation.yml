@@ -1,0 +1,23 @@
+name: Prepare release files (no publishing)
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  website:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run release:prepare
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:release:browser
+      - uses: actions/upload-artifact@v7
+        with:
+          name: cooler-walks-website-and-map-packs
+          path: release-artifacts/
+          retention-days: 30

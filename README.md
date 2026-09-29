@@ -22,7 +22,19 @@ npm run build
 npm run preview -- --port 4173
 ```
 
-Open **http://127.0.0.1:4173/**. Localhost is a secure context for PWA development. Production hosting must use HTTPS and serve `dist/`, with an index fallback for navigation. Optional Sites hosting configuration is in `.openai/hosting.json`; no external Site has been registered. This delivery uses the requested GitHub project and local preview.
+Open **http://127.0.0.1:4173/**. Localhost is a secure context for PWA development. Production hosting must use HTTPS and serve `dist/`, including the real `/privacy/` and `/support/` pages. Missing data/pack URLs must return 404, never the app HTML. Optional Sites hosting configuration is in `.openai/hosting.json`; no external Site has been registered.
+
+## Domain, hosting and store preparation
+
+**Recommended:** `coolerwalks.ch` on Netlify, with durable native map downloads on an HTTPS object-storage host. SWITCH confirmed the domain could be registered on 29 September 2026; it has not been purchased or reserved. The support contact is `knoerzerjohannes@protonmail.com`.
+
+```sh
+npm run release:prepare         # checked website archive, matching packs and SHA-256 manifest
+npm run release:serve           # preview with production-style headers at port 4181
+npm run test:release:browser    # privacy/help accessibility, CSP and offline checks
+```
+
+The upload files are in ignored `release-artifacts/`. Complete `release/site.json` after choosing and verifying the real domain/host. `netlify.toml` blocks public builds while those details are missing; local draft packaging remains available. See [domain/DNS and hosting instructions](docs/hosting.md), [Android/iOS store instructions](docs/app-stores.md) and [listing copy](release/store-listing.json). The manual GitHub release-preparation workflow creates private artifacts only. No purchase, public website deployment or store submission has been made.
 
 ## What works
 

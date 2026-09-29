@@ -1,6 +1,7 @@
 import { defineConfig } from '@playwright/test';
 export default defineConfig({
   testDir: './tests/browser',
+  testIgnore: '**/release.spec.ts',
   // Shared CI runners need more time for multiple software-rendered map captures.
   // Individual assertions retain the same limit, so stalled interactions still fail.
   timeout: process.env.CI ? 180000 : 90000,

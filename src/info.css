@@ -1,0 +1,146 @@
+@import '@fontsource/dm-sans/latin-400.css';
+@import '@fontsource/dm-sans/latin-600.css';
+@import '@fontsource/dm-serif-display/latin-400.css';
+@import '@fontsource/dm-serif-display/latin-400-italic.css';
+:root {
+  font-family: 'DM Sans', sans-serif;
+  color: #193d32;
+  background: #f6f4eb;
+  font-synthesis: none;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+a {
+  color: inherit;
+  text-underline-offset: 4px;
+  overflow-wrap: anywhere;
+}
+a:focus-visible {
+  outline: 3px solid #b86b14;
+  outline-offset: 5px;
+}
+.info-header,
+.info-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 24px max(24px, calc((100vw - 1200px) / 2));
+}
+.info-header {
+  border-bottom: 1px solid #ccd4c7;
+}
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
+  font-size: 1.25rem;
+  text-decoration: none;
+}
+.info-header > a:last-child {
+  padding-block: 12px;
+}
+.info-page {
+  max-width: 780px;
+  margin: 64px auto 88px;
+  padding: 0 24px;
+}
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+h1,
+h2 {
+  font-family: 'DM Serif Display', serif;
+  font-weight: 400;
+  line-height: 1.12;
+}
+h1 {
+  font-size: clamp(2.8rem, 6vw, 4.8rem);
+  margin: 20px 0 28px;
+  letter-spacing: -0.025em;
+}
+h1 em {
+  color: #52724e;
+}
+h2 {
+  font-size: 1.75rem;
+  margin: 0 0 16px;
+}
+.lead {
+  font-size: 1.25rem;
+  line-height: 1.65;
+  max-width: 640px;
+}
+.updated,
+.secondary {
+  color: #536358;
+  font-size: 0.875rem;
+}
+section {
+  padding-top: 32px;
+  margin-top: 32px;
+  border-top: 1px solid #ccd4c7;
+}
+section p:last-child {
+  margin-bottom: 0;
+}
+.notice {
+  background: #f2e3be;
+  padding: 16px 20px;
+  border-radius: 12px;
+  margin-bottom: 32px;
+  color: #5b451b;
+  font-size: 0.875rem;
+}
+.contact-card {
+  background: #e6ecdf;
+  border: 1px solid #c7d4bf;
+  padding: 28px;
+  border-radius: 20px;
+  margin: 32px 0;
+}
+.info-footer {
+  border-top: 1px solid #ccd4c7;
+  font-size: 0.875rem;
+}
+.info-footer nav {
+  display: flex;
+  gap: 24px;
+}
+.info-footer a {
+  display: inline-block;
+  padding-block: 12px;
+}
+@media (max-width: 540px) {
+  .info-header {
+    gap: 12px;
+    padding: 14px 20px;
+  }
+  .brand {
+    font-size: 1rem;
+    gap: 8px;
+  }
+  .info-header > a:last-child {
+    font-size: 0.875rem;
+  }
+  .info-page {
+    margin-top: 36px;
+    padding: 0 20px;
+  }
+  .info-footer {
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+    padding: 24px 20px;
+  }
+}

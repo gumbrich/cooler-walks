@@ -1,0 +1,14 @@
+[build]
+  command = "npm run check && npm run build && npm run release:check"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+[build.processing]
+  skip_processing = true
+
+# Deployment previews remain drafts, with noindex metadata from site configuration.
+# Production requires publisher/contact/hosting details in release/site.json.
+[context.deploy-preview]
+  command = "npm run check && npm run build && npm run release:check -- --allow-draft"

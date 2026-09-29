@@ -1,6 +1,12 @@
 # Progress
 
-## Current milestone: downloadable areas and native validation
+## Current milestone: domain and store-release preparation
+
+Added Netlify build configuration, a locally checked upload archive, security/cache/CORS headers, real 404s, hosted smoke checks and standalone privacy/help pages. The provided support email is configured. SWITCH's official Domain Check confirms `coolerwalks.ch` could be registered on 29 September 2026. No domain is reserved or purchased. The hosting guide explains the current 31 MB Cambridge asset constraint and durable retention of native map packs.
+
+Prepared Android upload-key signing and unsigned AAB builds, iOS archive commands, private CI artifacts, listing copy and current store submission instructions. Public deployment remains intentionally blocked until the owned domain and actual host privacy details are filled. Store enrollment, signing and final hosted testing remain separate steps. See [hosting.md](hosting.md) and [app-stores.md](app-stores.md).
+
+## Working application
 
 Implemented an explicit **Prefer shade / Prefer sun** choice for building-enabled cities, preserving the single 0/5/10-minute detour limit. Sun preference uses a higher known sunny share and conservatively accounts for missing data; it does not reward a longer walk merely for accumulating more sun. Winter date changes already affect building geometry. No universal seasonal switch, tree foliage or weather model is implied.
 
@@ -26,4 +32,4 @@ Added five reproducible packs, SHA-256 and size/schema verification, progress/ca
 
 ## Next useful milestone
 
-Physical-phone testing was deferred at the user’s request. Configure an HTTPS pack origin and prepare a signed private tester build. Benchmark memory, download recovery and map rendering on lower-end phones before further city expansion. Validate dated shadows and route access in the street; normalize Cambridge’s height units/unknown-height masks and add Basel building heights. Tree shade, terrain, weather and feedback collection remain separate roadmap items.
+Register the chosen domain, confirm the public publisher identity and host privacy details, deploy the website/pack host, and create a signed internal tester build. Physical-phone testing was deferred at the user’s request. Benchmark memory, download recovery and map rendering on lower-end phones before further city expansion. Validate dated shadows and route access in the street; normalize Cambridge’s height units/unknown-height masks and add Basel building heights. Tree shade, terrain and weather remain separate roadmap items. Help pages now provide email feedback without a public posting system.
