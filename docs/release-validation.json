@@ -1,0 +1,26 @@
+{
+  "checkedAt": "2026-09-29T08:39:01.571995+00:00",
+  "sourceCommit": "58af19407e55adc81025359185cbcf0a0f7e53e9",
+  "version": "0.4.0",
+  "android": {
+    "path": "native-artifacts/cooler-walks-debug.apk",
+    "sha256": "d8874fb34fa2d072fe40772290d743b8c7cebc6536e3fb9519a29743b55ebb27",
+    "bytes": 30892219,
+    "configuration": "full; four included areas; no external download origin; development-signed",
+    "ci": "https://github.com/gumbrich/cooler-walks/actions/runs/36542835846",
+    "finalSanity": [
+      "Native launch and Munich routes",
+      "Legend and attribution do not overlap",
+      "Download manager shows four included areas",
+      "Returned to Zurich planner"
+    ]
+  },
+  "ios": {
+    "path": "native-artifacts/ios-final/cooler-walks-ios-simulator.zip",
+    "ci": "https://github.com/gumbrich/cooler-walks/actions/runs/36542835656",
+    "configuration": "unsigned ARM64 simulator app; not installable on a physical iPhone"
+  },
+  "preview": "http://127.0.0.1:4173/",
+  "physicalDeviceTesting": "Deferred at user request",
+  "publicDataHost": "Not configured; see downloads.md"
+}

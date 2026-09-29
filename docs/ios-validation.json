@@ -1,0 +1,31 @@
+{
+  "checkedAt": "2026-09-29T08:37:24.937041+00:00",
+  "appVersion": "0.4.0",
+  "sourceCommit": "58af19407e55adc81025359185cbcf0a0f7e53e9",
+  "build": {
+    "provider": "GitHub Actions macos-26",
+    "run": "https://github.com/gumbrich/cooler-walks/actions/runs/36542835656",
+    "target": "unsigned ARM64 iOS simulator",
+    "archiveSha256": "940b219fdabd0ca0a1f8645df23a2a5cc61da9f1dcda3e01711aacc722c9135f"
+  },
+  "device": {
+    "model": "iPhone 16e",
+    "runtime": "iOS 26.1",
+    "simulated": true
+  },
+  "passed": [
+    "Compiled iOS native project including Filesystem plugin and privacy manifest",
+    "Installed and launched in local iOS simulator",
+    "Rendered real Zurich map, route and building-shade estimate",
+    "Opened native information view",
+    "Opened offline atlas and read four included areas through native inventory/storage"
+  ],
+  "limitations": [
+    "No physical iPhone test",
+    "No iOS network-download, offline cold-start or location-permission test",
+    "Long-dialog touch scrolling and keyboard interactions need further iOS testing",
+    "Direct local compilation still requires the matching Xcode simulator platform; CI supplies the verified artifact"
+  ],
+  "interactionBuildCommit": "0f5c48c1126ddf48afd6d833dfe5706169cea9b8",
+  "finalLaunchScreenshot": "screenshots/ios-final-zurich.png"
+}

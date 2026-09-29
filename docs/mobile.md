@@ -69,7 +69,7 @@ Local Xcode 26.3 initially rejected its missing iOS 26.2 runtime. The working do
 xcodebuild -downloadPlatform iOS -buildVersion 26.2 -architectureVariant arm64
 ```
 
-The download is 8.39 GB. CI builds provide a tested alternative while local platform installation completes. An unsigned simulator artifact cannot be installed on a physical iPhone.
+The download is 8.39 GB. The matching runtime download was not yet complete at verification time. CI builds provide a tested alternative while local platform installation completes. An unsigned simulator artifact cannot be installed on a physical iPhone.
 
 ## Next release steps
 

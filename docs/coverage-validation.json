@@ -1,5 +1,5 @@
 {
-  "verifiedAt": "2026-09-28T23:07:39.317Z",
+  "verifiedAt": "2026-09-29T07:58:05.411Z",
   "modelVersion": "flat-buildings-snapshot-v4",
   "cities": [
     {
@@ -31,7 +31,7 @@
             "kind": "Mapped path 5 m from place"
           },
           "mode": "shade",
-          "elapsedMs": 2896,
+          "elapsedMs": 2465,
           "routes": [
             {
               "meters": 2658,
@@ -100,7 +100,7 @@
             "kind": "Street or path"
           },
           "mode": "shade",
-          "elapsedMs": 1402,
+          "elapsedMs": 1277,
           "routes": [
             {
               "meters": 3152,
@@ -218,7 +218,7 @@
             "kind": "Street or path"
           },
           "mode": "greenery",
-          "elapsedMs": 1366,
+          "elapsedMs": 1259,
           "routes": [
             {
               "meters": 7139,
@@ -285,7 +285,7 @@
             "kind": "Street or path"
           },
           "mode": "greenery",
-          "elapsedMs": 1412,
+          "elapsedMs": 1270,
           "routes": [
             {
               "meters": 6817,
@@ -371,7 +371,7 @@
             "kind": "Street or path"
           },
           "mode": "greenery",
-          "elapsedMs": 297,
+          "elapsedMs": 251,
           "routes": [
             {
               "meters": 2815,
@@ -450,7 +450,7 @@
             "kind": "Street or path"
           },
           "mode": "greenery",
-          "elapsedMs": 149,
+          "elapsedMs": 142,
           "routes": [
             {
               "meters": 1645,
