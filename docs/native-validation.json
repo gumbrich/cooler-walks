@@ -1,6 +1,6 @@
 {
-  "checkedAt": "2026-09-28T23:18:38.393Z",
-  "appVersion": "0.3.0",
+  "checkedAt": "2026-09-29T07:50:30.385Z",
+  "appVersion": "0.4.0",
   "device": {
     "model": "sdk_gphone64_arm64",
     "avd": "CoolerWalks_Test",
@@ -22,8 +22,5 @@
     "Cold native relaunch works offline and remembers the city"
   ],
   "pageErrors": [],
-  "limitations": [
-    "No physical-device testing",
-    "iOS compile/launch blocked by missing Xcode platform; see mobile.md"
-  ]
+  "limitations": ["No physical-device testing", "iOS is tested separately; see ios-validation.json"]
 }

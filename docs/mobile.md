@@ -6,9 +6,9 @@ The user requested a mobile app in addition to the browser. A shared native cont
 
 ## Implemented
 
-- Native projects in `ios/` and `android/`, with application ID `io.github.gumbrich.coolerwalks`, version 0.3.0.
+- Native projects in `ios/` and `android/`, with application ID `io.github.gumbrich.coolerwalks`, version 0.4.0.
 - Direct launch into the planner; selected city and units remembered locally.
-- All four city map/model bundles packaged with the app. Planning does not need a first online visit. Native builds do not register the website service worker.
+- All four city map/model bundles packaged by default; an optional lite build includes Zurich and downloads other areas. See [downloads.md](downloads.md). Planning does not need a first online visit. Native builds do not register the website service worker.
 - Native one-shot location permission only after “Use my location”; no background tracking. Denial preserves the trip and offers map/search input. A late location response cannot replace inputs after a city change.
 - Android Back closes information/editing/map selection first, then minimizes the root planner. It does not silently erase a trip.
 - Safe-area handling for iOS and Android edge-to-edge WebViews, including Capacitor’s fallback insets for older Android WebViews. Standard browser keyboard zoom remains enabled.
@@ -61,10 +61,18 @@ npm run test:native:android
 
 Set `COOLER_ANDROID_SERIAL` if its ADB serial differs from `emulator-5554`. The test deliberately refuses physical devices or a differently named emulator. It resets Cooler Walks' test app data, exercises native Back and location denial, temporarily disables the emulator's network, verifies every city's bundled map/routes and a cold offline relaunch, then restores the emulator's previous Wi-Fi/mobile-data settings. It writes `docs/native-validation.json` and actual device captures in `docs/screenshots/`. Playwright's [Android/WebView integration](https://playwright.dev/docs/api/class-android) attaches to this debug app only.
 
-On this Mac, Xcode 26.3 reports the required iOS 26.2 platform as unavailable despite an older iOS 26.1 simulator being present. Its exact-version download also reports unavailable. The current offered 26.3.1 runtime is 8.39 GB; a trial download was stopped because its observed rate would require many hours. **The iOS project is prepared, but its compile and native launch remain unverified here.** Enable a compatible iOS platform under Xcode → Settings → Components, then repeat the commands above. Do not describe it as an iPhone-tested release yet.
+The iOS workflow now compiles an unsigned ARM64 simulator app on GitHub's macOS 26 runner and uploads a private `cooler-walks-ios-simulator` artifact. That artifact installed and launched in this Mac's iPhone 16e / iOS 26.1 simulator, displaying a real Zurich walking route and building-shade estimate. Physical iPhone testing and signed-device builds remain outstanding.
+
+Local Xcode 26.3 initially rejected its missing iOS 26.2 runtime. The working download command specifies the architecture explicitly:
+
+```sh
+xcodebuild -downloadPlatform iOS -buildVersion 26.2 -architectureVariant arm64
+```
+
+The download is 8.39 GB. CI builds provide a tested alternative while local platform installation completes. An unsigned simulator artifact cannot be installed on a physical iPhone.
 
 ## Next release steps
 
-Test the native app on physical iPhone and Android devices, including location denial/approximate location, keyboard and safe areas, app resume, low-memory behaviour, large-city map performance and airplane-mode city switching. Resolve the local iOS platform setup and compile/run it. Validate real-world route access and shadows before making stronger model claims.
+Test the native app on physical iPhone and Android devices, including location denial/approximate location, keyboard and safe areas, app resume, low-memory behaviour, large-city map performance and airplane-mode city switching. Complete physical iOS testing and benchmark downloads on real Android hardware. Validate real-world route access and shadows before making stronger model claims.
 
-App Store/TestFlight and Google Play distribution are separate future steps: confirm the final application identifier, prepare signing, privacy declarations and listings, and obtain store review. No store listing, certificate upload, account creation or publication has been performed. Dataset updates currently ship with app updates; a versioned downloadable-area system is the next size/update improvement.
+App Store/TestFlight and Google Play distribution are separate future steps: confirm the final application identifier, prepare signing, privacy declarations and listings, and obtain store review. No store listing, certificate upload, account creation or publication has been performed. Versioned downloadable areas are implemented; compatible catalogues ship with app updates. Public HTTPS data hosting and signed tester distribution remain release steps.

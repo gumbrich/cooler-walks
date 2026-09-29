@@ -6,7 +6,7 @@ A warmer kind of walking atlas: compare real pedestrian routes, greenery, waters
 
 ## Run locally
 
-Requires Node.js 22.12+ and npm. No API keys, accounts or runtime environment variables are needed.
+Requires Node.js 22.12+ and npm. No API keys or accounts are needed. Browser downloads work on the same origin; native remote downloads use the optional setting in `.env.example`.
 
 ```sh
 npm ci
@@ -37,6 +37,8 @@ Open **http://127.0.0.1:4173/**. Localhost is a secure context for PWA developme
 
 Use Bahnhofquai → Bürkliplatz on **21 June 2026**, compare **10:00, 14:00 and 18:00 Europe/Zurich**. The exact computed validation results are stored in [docs/route-validation.json](docs/route-validation.json). No examples use synthetic production routes.
 
+- **Offline maps** manager: versioned, checksum-verified downloads with progress, cancellation, removal and offline reopening. Four larger pilot packs plus a compact 2 km² Munich Old Town pack. Browser IndexedDB and private native filesystem storage share the same format. See [download setup and limitations](docs/downloads.md).
+
 ## Native iOS and Android apps
 
 The same planner now has native Capacitor projects, in addition to the browser/PWA. Native builds include all four map/data bundles, open directly in the planner, use native location permission on request, and handle safe areas and Android Back. They are development builds, not App Store or Google Play releases.
@@ -49,9 +51,9 @@ npm run native:ios           # macOS + Xcode 26+ + installed iOS simulator platf
 npm run native:open:ios      # open Xcode
 ```
 
-Detailed setup, signing boundaries, offline behaviour and the local iOS platform blocker are in [docs/mobile.md](docs/mobile.md). Actual platform test results are in [docs/platform.md](docs/platform.md). Signing credentials and generated native build outputs are ignored.
+Detailed setup, signing boundaries and offline behaviour are in [docs/mobile.md](docs/mobile.md). Actual platform test results are in [docs/platform.md](docs/platform.md). Signing credentials and generated native build outputs are ignored.
 
-Android compiled and passed eleven checks in an Android 16 emulator, including native location denial, Back/resume, all four cities offline and cold offline launch. The iOS project is prepared but requires this Mac's missing compatible Xcode platform before compile/launch can be verified. Neither platform has been tested on a physical phone or submitted to a store.
+Android compiled and passed eleven checks in an Android 16 emulator, including native location denial, Back/resume, all four cities offline and cold offline launch. The iOS simulator build passes in GitHub Actions and launched successfully in the local iPhone 16e simulator. Neither platform has been tested on a physical phone or submitted to a store.
 
 ## Develop and verify
 
@@ -81,7 +83,7 @@ With the production preview running, `PWA_HEADFUL=1 npm run test:pwa` verifies o
 | Derived runtime data                                               | `public/data/`                          |
 | Untracked source downloads                                         | `data/raw/`                             |
 
-The browser makes no third-party search, route, tile or font requests. Your precise journey is not saved. Only city, units and the returning-user preference are stored locally. Geolocation is requested on demand; the browser's own location provider may contact external services.
+The browser makes no third-party search, route, tile or font requests. Your precise journey is not saved. City, selected area, units, the returning-user preference and explicit map downloads are stored locally. An optional native data host receives requests for public area files, never journey inputs. Geolocation is requested on demand; the browser's own location provider may contact external services.
 
 ## Data and limitations
 
@@ -97,7 +99,7 @@ Real route checks for every pilot are in [city-route-validation.json](docs/city-
 
 ## Screenshots
 
-Actual browser and Android emulator captures are in [docs/screenshots](docs/screenshots), including [expanded Cambridge on desktop](docs/screenshots/desktop-expanded-cambridge.png) and [offline Munich in the native app](docs/screenshots/android-offline-munich.png). They document visual review, not physical-device or field validation.
+Actual browser, Android emulator and iOS simulator captures are in [docs/screenshots](docs/screenshots), including [expanded Cambridge on desktop](docs/screenshots/desktop-expanded-cambridge.png) and [offline Munich in the native app](docs/screenshots/android-offline-munich.png). The [download manager](docs/screenshots/desktop-downloads.png) and [compact Munich phone view](docs/screenshots/phone-downloaded-area.png) show the new flow. They document visual review, not physical-device or field validation.
 
 ![Desktop planner](docs/screenshots/desktop-planner.png)
 

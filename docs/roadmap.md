@@ -8,10 +8,10 @@ Previously delivered: **Prefer waterside**, a separate mapped-water proximity me
 - **Tree refresh:** reconcile moved and unmatched IDs, replacements and duplicates; check dated aerial imagery and a field sample before publishing a versioned data refresh. Tree positions alone do not establish canopy shade.
 - **Feedback:** consider “Suggest an idea / Report a problem”, initially with a private review queue. Contact information should be optional; attaching a route/location needs explicit consent. Decide storage, retention, abuse controls and moderation before enabling submission. No feedback is collected yet. Friend testing itself is deferred as requested.
 - **Weather and reliability:** no weather feed is currently used. Before integration, verify provider coverage, terms and forecast validation. Show source, issue time, valid local time, model/grid resolution, lead time, refresh policy and stale/offline status. Evaluate cloud/radiation forecasts against observations; avoid invented reliability percentages. Keep geometric shade, weather and perceived comfort separate.
-- **Cities and platforms:** deepen the new Munich, Cambridge (MA) and Basel pilots before adding more cities. Native iOS/Android development projects now exist at the user’s request. Complete iOS platform setup and physical-device testing, then prepare private test distribution. Maintain one shared planner and budget for two native SDK/signing paths.
+- **Cities and platforms:** deepen the new Munich, Cambridge (MA) and Basel pilots before adding more cities. Native iOS/Android development projects now exist at the user’s request. iOS now builds on CI and launches in the simulator. Complete physical-device testing and configure HTTPS map downloads, then prepare private test distribution. Maintain one shared planner and budget for two native SDK/signing paths.
 - **Existing-app research:** deferred, as requested. No competitor investigation was performed in this iteration.
 
-Current delivery expands all four areas and adds native app projects to the existing sun, greenery, water and waypoints features. The remaining items above are backlog work; weather and feedback collection are not implemented.
+Current delivery expands all four areas, adds native app projects and versioned downloadable areas to the existing sun, greenery, water and waypoints features. The remaining items above are backlog work; weather and feedback collection are not implemented.
 
 ## Model and release work
 

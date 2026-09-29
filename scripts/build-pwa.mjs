@@ -5,7 +5,7 @@ const walk = (dir) =>
   fs
     .readdirSync(dir, { withFileTypes: true })
     .flatMap((f) => (f.isDirectory() ? walk(path.join(dir, f.name)) : [path.join(dir, f.name)]));
-const files = walk('dist').filter((f) => !f.endsWith('sw.js'));
+const files = walk('dist').filter((f) => !f.endsWith('sw.js') && !f.startsWith('dist/packs/'));
 const hash = crypto.createHash('sha256');
 for (const f of files) hash.update(fs.readFileSync(f));
 const version = hash.digest('hex').slice(0, 14);
@@ -26,7 +26,7 @@ self.addEventListener('message',event=>{
  event.waitUntil(caches.open(CACHE).then(cache=>Promise.all(event.data.urls.map(url=>cache.match(url,{ignoreVary:true}).then(saved=>saved||cache.add(url))))).catch(()=>{}));
 });
 self.addEventListener('fetch',event=>{
- if(event.request.method!=='GET'||new URL(event.request.url).origin!==self.location.origin)return;
+ if(event.request.method!=='GET'||new URL(event.request.url).origin!==self.location.origin||new URL(event.request.url).pathname.startsWith('/packs/'))return;
  if(event.request.mode==='navigate')event.respondWith(fetch(event.request).catch(()=>caches.match('/index.html')));
  // All cached assets are this app's fixed public files. Vite's Vary: Origin differs
  // between precache fetches and CORS module requests; it must not cause offline misses.

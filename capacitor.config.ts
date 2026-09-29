@@ -3,7 +3,10 @@ import type { CapacitorConfig } from '@capacitor/cli';
 const config: CapacitorConfig = {
   appId: 'io.github.gumbrich.coolerwalks',
   appName: 'Cooler Walks',
-  webDir: 'dist',
+  webDir: 'native-web',
+  ...(process.env.COOLER_DEV_DOWNLOADS === '1'
+    ? { android: { allowMixedContent: true }, server: { cleartext: true } }
+    : {}),
   backgroundColor: '#f6f4eb',
   ios: { contentInset: 'never', preferredContentMode: 'mobile' },
   plugins: {

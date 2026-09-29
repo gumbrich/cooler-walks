@@ -17,3 +17,7 @@ ios/
 android/
 native-artifacts/
 docs/coverage-validation.json
+public/packs/
+native-web/
+src/generated/
+docs/area-pack-validation.json

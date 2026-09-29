@@ -19,3 +19,5 @@ test-results/
 *.p12
 *.mobileprovision
 native-artifacts/
+/public/packs/
+/native-web/

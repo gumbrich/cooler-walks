@@ -18,6 +18,7 @@ const collection = (features: Feature[]): FeatureCollection => ({
 interface Props {
   city: City;
   data: PilotData | null;
+  mapData?: FeatureCollection | null;
   result: RouteResult | null;
   selected: string;
   onSelect: (id: string) => void;
@@ -30,6 +31,7 @@ interface Props {
 export function WalkingMap({
   city,
   data,
+  mapData,
   result,
   selected,
   onSelect,
@@ -66,7 +68,7 @@ export function WalkingMap({
         style: {
           version: 8,
           glyphs: '/fonts/{fontstack}/{range}.pbf',
-          sources: { base: { type: 'geojson', data: city.mapUrl! } },
+          sources: { base: { type: 'geojson', data: mapData ?? city.mapUrl ?? collection([]) } },
           layers: [
             { id: 'paper', type: 'background', paint: { 'background-color': '#eeede4' } },
             {
@@ -339,6 +341,10 @@ export function WalkingMap({
       map.current = null;
     };
   }, [city]);
+  useEffect(() => {
+    const source = map.current?.getSource('base') as GeoJSONSource | undefined;
+    if (ready && source) source.setData(mapData ?? city.mapUrl ?? collection([]));
+  }, [ready, city, mapData]);
   useEffect(() => {
     const m = map.current;
     if (!m || !ready || !data) return;

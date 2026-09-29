@@ -52,6 +52,11 @@ if (unvisitedCityPrecached)
   throw new Error('Unvisited cities should not be downloaded during installation');
 await page.getByLabel('City', { exact: true }).selectOption('ch-zurich');
 await expect(page.locator('.route-card').first()).toBeVisible({ timeout: 60000 });
+await page.getByRole('button', { name: 'Offline maps', exact: true }).click();
+const compactPack = page.locator('[data-area-id="de-munich-old-town"]');
+await compactPack.getByRole('button', { name: 'Download area', exact: true }).click();
+await expect(compactPack.locator('.area-state')).toHaveText('Saved');
+await page.getByRole('button', { name: 'Close information' }).click();
 await context.setOffline(true);
 await page.reload();
 // Chrome 153 resets navigator.onLine on a cached navigation while retaining
@@ -106,6 +111,17 @@ await expect(
   page.getByText('The pilot data could not load. Check your connection and try again.'),
 ).toBeVisible({ timeout: 60000 });
 await expect(page.locator('.route-card')).toHaveCount(0);
+await page.getByRole('button', { name: 'Offline maps', exact: true }).click();
+await compactPack.getByRole('button', { name: 'Use this area', exact: true }).click();
+await expect(page.locator('.route-card').first()).toBeVisible({ timeout: 60000 });
+await page.reload();
+await expect(page.locator('.route-card').first()).toBeVisible({ timeout: 60000 });
+await expect(page.locator('.map-shell')).toHaveAttribute('data-map-settled', 'true', {
+  timeout: 60000,
+});
+await expect(page.locator('.map-location')).toContainText('Old Town essentials');
+await expect(page.locator('.map-failure')).toHaveCount(0);
+await page.screenshot({ path: 'docs/screenshots/desktop-downloaded-offline.png' });
 await context.setOffline(false);
 await cdp.send('Network.overrideNetworkState', {
   offline: false,
@@ -115,7 +131,7 @@ await cdp.send('Network.overrideNetworkState', {
   connectionType: 'wifi',
 });
 await expect(page.locator('.offline-banner')).toHaveCount(0);
-await page.getByRole('button', { name: 'Try loading again' }).click();
+await page.getByLabel('City', { exact: true }).selectOption('us-cambridge-ma');
 await expect(page.locator('.route-card').first()).toBeVisible({ timeout: 60000 });
 await expect(page.locator('.map-shell')).toHaveAttribute('data-map-ready', 'true', {
   timeout: 60000,
@@ -155,6 +171,8 @@ const report = {
   offlineReload: true,
   offlineRoutes: true,
   offlineMap: true,
+  verifiedAreaDownload: true,
+  downloadedAreaColdOfflineReload: true,
   offlineWaterPreference: true,
   offlineVisitedCitySwitch: true,
   unvisitedCityPrecached,

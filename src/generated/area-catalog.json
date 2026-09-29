@@ -1,0 +1,78 @@
+[
+  {
+    "id": "ch-zurich",
+    "cityId": "ch-zurich",
+    "label": "Central Zurich",
+    "description": "An expanded central pilot from Platzspitz and the university area to the lake, including more streets west of the Limmat. The dashed boundary is routing coverage, not the whole city; building-model gaps remain unknown.",
+    "schema": 1,
+    "version": "zurich-2026-09-29-v3",
+    "sha256": "82e762ce2429185c539d7cb65476e917215e1801b343e07d060a3f5a231b1871",
+    "bytes": 3790201,
+    "expandedBytes": 20168861,
+    "file": "ch-zurich-82e762ce2429185c.cwp",
+    "preparedAt": "2026-09-29",
+    "areaKm2": 8.06
+  },
+  {
+    "id": "de-munich",
+    "cityId": "de-munich",
+    "label": "Old town, Lehel & gardens",
+    "description": "An expanded central pilot from Karlsplatz across the old town to Lehel and the southern English Garden. Four adjacent 2 km building tiles support shade estimates; edge and long-shadow gaps remain unknown.",
+    "schema": 1,
+    "version": "munich-2026-09-29-v2",
+    "sha256": "9302c4651047c7527197ba4b8ccd63f5303b257389f29e1be43a425bf3d32ad3",
+    "bytes": 4449639,
+    "expandedBytes": 27589260,
+    "file": "de-munich-9302c4651047c752.cwp",
+    "preparedAt": "2026-09-29",
+    "areaKm2": 8.9
+  },
+  {
+    "id": "us-cambridge-ma",
+    "cityId": "us-cambridge-ma",
+    "label": "Cambridge city boundary",
+    "description": "The municipal boundary now includes Harvard, Central and Kendall squares, North Cambridge and Fresh Pond. Routes stay on the Cambridge side of the boundary. Greenery uses recorded trees, not a complete canopy survey; shade is not yet enabled.",
+    "schema": 1,
+    "version": "cambridge-2026-09-29-v2",
+    "sha256": "5e5f2dccb41db952ddf383aa98ef77ae7a96f610b840f23a441144d7a0fdecf5",
+    "bytes": 6769814,
+    "expandedBytes": 42491983,
+    "file": "us-cambridge-ma-5e5f2dccb41db952.cwp",
+    "preparedAt": "2026-09-29",
+    "areaKm2": 18.46
+  },
+  {
+    "id": "ch-basel",
+    "cityId": "ch-basel",
+    "label": "Central Basel & Kleinbasel",
+    "description": "An expanded central pilot spanning Basel SBB, the old town, the Rhine and more of Kleinbasel. Greenery and water proximity are available within the dashed boundary; no sun/shade recommendations yet.",
+    "schema": 1,
+    "version": "basel-2026-09-29-v2",
+    "sha256": "9df9dcd963729817ed62cfc162c28e1820bd669c914385ecabf5d30f0c5e6975",
+    "bytes": 1984628,
+    "expandedBytes": 11628977,
+    "file": "ch-basel-9df9dcd963729817.cwp",
+    "preparedAt": "2026-09-29",
+    "areaKm2": 10.25
+  },
+  {
+    "id": "de-munich-old-town",
+    "cityId": "de-munich",
+    "label": "Old Town essentials",
+    "description": "A compact walking area around Karlsplatz, Frauenkirche and Odeonsplatz. Choose the larger Munich pack for Lehel and the gardens. This rectangle is a download area, not an administrative district.",
+    "bounds": [
+      11.56,
+      48.135,
+      11.582,
+      48.146
+    ],
+    "schema": 1,
+    "version": "munich-2026-09-29-v2-de-munich-old-town-v1",
+    "sha256": "25a5cc00b63feafa635724cc15cd56f6a18e4350a92318a9c464b94edf3dc369",
+    "bytes": 2336181,
+    "expandedBytes": 14025046,
+    "file": "de-munich-old-town-25a5cc00b63feafa.cwp",
+    "preparedAt": "2026-09-29",
+    "areaKm2": 2
+  }
+]

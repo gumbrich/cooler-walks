@@ -1,6 +1,6 @@
 # Progress
 
-## Current milestone: expanded coverage and native mobile development
+## Current milestone: downloadable areas and native validation
 
 Implemented an explicit **Prefer shade / Prefer sun** choice for building-enabled cities, preserving the single 0/5/10-minute detour limit. Sun preference uses a higher known sunny share and conservatively accounts for missing data; it does not reward a longer walk merely for accumulating more sun. Winter date changes already affect building geometry. No universal seasonal switch, tree foliage or weather model is implied.
 
@@ -18,8 +18,12 @@ Private maintained repository: https://github.com/gumbrich/cooler-walks. The del
 
 Zurich: 8.06 km² (1.81× the old pilot); Munich: 8.90 km² (4.44×); Cambridge: 18.46 km² (4.95×), using its municipal polygon; Basel: 10.25 km² (2.14×). All graph segments stay inside supported coverage, including narrow gaps and holes. Six new journeys and the existing reference trips validate real routes, alternatives and detour limits. Larger Munich surroundings also enable the tested winter sun comparison.
 
-A whole-coverage map action and quieter city-scale cartography make these limits visible. Unsupported surroundings are muted. Native Capacitor projects share the complete planner and bundle all city data for offline use, with native location permission, Android Back, app icons and safe areas. The Android debug APK built and passed eleven emulator integration checks, including native permission denial, every city offline, winter sun and a cold offline restart. Actual emulator screenshots are included. Setup and the exact remaining iOS platform blocker are in `mobile.md`; validation is recorded in `platform.md`.
+A whole-coverage map action and quieter city-scale cartography make these limits visible. Unsupported surroundings are muted. Native Capacitor projects share the complete planner and bundle all city data for offline use, with native location permission, Android Back, app icons and safe areas. The Android debug APK built and passed eleven emulator integration checks, including native permission denial, every city offline, winter sun and a cold offline restart. Actual emulator screenshots are included. Setup and the iOS CI build are in `mobile.md`; validation is recorded in `platform.md`.
+
+## Downloadable areas
+
+Added five reproducible packs, SHA-256 and size/schema verification, progress/cancellation, storage errors and removal. Browser packs use IndexedDB; native packs use private filesystem storage. Four larger areas remain included in the default native app. An optional Zurich-only build downloads other areas from a configured HTTPS origin. The 2 km² Munich Old Town pack demonstrates a smaller real graph and shared routing/shade model. The iOS build now passes on GitHub and runs in the local iPhone simulator. See `downloads.md` for data hosting and update boundaries.
 
 ## Next useful milestone
 
-Complete physical-phone and iOS-platform validation, then prepare a small private tester build. Benchmark city bundles on lower-end phones and introduce versioned downloadable areas before full-city expansion elsewhere. Validate dated shadows and route access in the street; normalize Cambridge’s height units/unknown-height masks and add Basel building heights. Tree shade, terrain, weather and feedback collection remain separate roadmap items.
+Connect the Android phone for physical-device checks, configure an HTTPS pack origin and prepare a signed private tester build. Benchmark memory, download recovery and map rendering on lower-end phones before further city expansion. Validate dated shadows and route access in the street; normalize Cambridge’s height units/unknown-height masks and add Basel building heights. Tree shade, terrain, weather and feedback collection remain separate roadmap items.

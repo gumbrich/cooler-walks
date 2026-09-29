@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import {
   ArrowDownUp,
   ArrowUp,
@@ -28,6 +28,10 @@ import type { PilotData, Point, Route, RouteResult } from './lib/types';
 import { PlaceSearch, type Endpoint } from './components/Search';
 import { WalkingMap } from './components/Map';
 import { currentLocation, isNativeApp } from './lib/platform';
+import type { FeatureCollection } from 'geojson';
+import { getArea, loadSavedArea, bundledAreas } from './lib/areas';
+import { cityForArea } from './lib/area-specs';
+import { AreaDownloads } from './components/AreaDownloads';
 
 type InstallEvent = Event & {
   prompt: () => Promise<void>;
@@ -48,8 +52,11 @@ const preference = (key: string, value: string) => {
   }
 };
 export default function App() {
-  const [cityId, setCityId] = useState(() => readPreference('cw-city', 'ch-zurich')),
-    city = getCity(cityId);
+  const [cityId, setCityId] = useState(() => readPreference('cw-city', 'ch-zurich'));
+  const [areaId, setAreaId] = useState(() => readPreference('cw-area', cityId));
+  const area = getArea(areaId, cityId);
+  const city = useMemo(() => (area ? cityForArea(area) : getCity(cityId)), [area, cityId]);
+  const [mapData, setMapData] = useState<FeatureCollection | null>(null);
   const [view, setView] = useState(() =>
     isNativeApp ||
     new URLSearchParams(location.search).get('view') === 'planner' ||
@@ -78,7 +85,7 @@ export default function App() {
   const [units, setUnits] = useState<'metric' | 'imperial'>(() =>
     readPreference('cw-units', 'metric') === 'imperial' ? 'imperial' : 'metric',
   );
-  const [modal, setModal] = useState<'method' | 'coverage' | 'install' | null>(null),
+  const [modal, setModal] = useState<'method' | 'coverage' | 'install' | 'areas' | null>(null),
     dialog = useRef<HTMLDialogElement>(null);
   const [online, setOnline] = useState(navigator.onLine),
     [installEvent, setInstallEvent] = useState<InstallEvent | null>(null);
@@ -90,6 +97,7 @@ export default function App() {
     locationRequest.current++;
     const controller = new AbortController();
     setData(null);
+    setMapData(null);
     setResult(null);
     setStart(null);
     setEnd(null);
@@ -108,13 +116,25 @@ export default function App() {
       setDataState('review');
       return () => controller.abort();
     }
-    fetch(city.dataUrl!, {
-      signal: AbortSignal.any([controller.signal, AbortSignal.timeout(30000)]),
-    })
-      .then((r) => {
-        if (!r.ok) throw new Error('Pilot data unavailable');
-        return r.json();
-      })
+    (async () => {
+      if (area) {
+        const saved = await loadSavedArea(area);
+        if (controller.signal.aborted) return;
+        if (saved) {
+          setMapData(saved.map);
+          return saved.data;
+        }
+      }
+      if (!city.dataUrl || (isNativeApp && !(await bundledAreas()).includes(area?.id ?? city.id))) {
+        throw new Error('Download this walking area to open its map and plan offline.');
+      }
+      const r = await fetch(city.dataUrl, {
+        signal: AbortSignal.any([controller.signal, AbortSignal.timeout(30000)]),
+      });
+      if (!r.ok)
+        throw new Error('The pilot data could not load. Check your connection and try again.');
+      return r.json();
+    })()
       .then((d: PilotData) => {
         if (controller.signal.aborted) return;
         if (
@@ -130,7 +150,7 @@ export default function App() {
         setDataState('ready');
         // The first city request can precede worker activation. Save that city
         // explicitly once the production worker is ready, including after updates.
-        if (!isNativeApp && import.meta.env.PROD && 'serviceWorker' in navigator) {
+        if (!isNativeApp && city.dataUrl && import.meta.env.PROD && 'serviceWorker' in navigator) {
           const saveCity = (target: ServiceWorker | null) => {
             if (!controller.signal.aborted)
               target?.postMessage({ type: 'CACHE_CITY', urls: [city.dataUrl, city.mapUrl] });
@@ -170,9 +190,15 @@ export default function App() {
         };
       })
       .catch((e) => {
-        if (e.name !== 'AbortError') {
+        if (!controller.signal.aborted && e.name !== 'AbortError') {
           setDataState('error');
-          setError('The pilot data could not load. Check your connection and try again.');
+          setError(
+            e instanceof TypeError || e.name === 'TimeoutError'
+              ? 'The pilot data could not load. Check your connection and try again.'
+              : e instanceof Error
+                ? e.message
+                : 'The walking area could not load. Open downloads to try again.',
+          );
         }
       });
     return () => {
@@ -251,7 +277,9 @@ export default function App() {
   }, []);
   const changeCity = (id: string) => {
     setCityId(id);
+    setAreaId(id);
     preference('cw-city', id);
+    preference('cw-area', id);
     setDeparture(localNow(getCity(id).timeZone));
     setEditing(false);
   };
@@ -458,6 +486,7 @@ export default function App() {
   const mapProps = {
     city,
     data,
+    mapData,
     result,
     selected,
     onSelect: setSelected,
@@ -519,7 +548,7 @@ export default function App() {
         <div className="offline-banner" role="status">
           Offline ·{' '}
           {isNativeApp
-            ? 'Maps and route data are included in this app. No connection is needed to plan.'
+            ? 'Included and downloaded areas work without a connection.'
             : data
               ? 'Using previously downloaded pilot data. Source dates are in the method view.'
               : 'Open a previously saved pilot or reconnect to load data.'}
@@ -909,7 +938,10 @@ export default function App() {
                           <strong>Let’s adjust this walk.</strong>
                           <p>{error}</p>
                           {dataState === 'error' && (
-                            <button onClick={() => setRetry(retry + 1)}>Try loading again</button>
+                            <>
+                              <button onClick={() => setRetry(retry + 1)}>Try loading again</button>{' '}
+                              <button onClick={() => setModal('areas')}>Open downloads</button>
+                            </>
                           )}
                         </div>
                       </>
@@ -1025,6 +1057,9 @@ export default function App() {
                     </details>
                   )}
                 </div>
+                <button className="downloads-link" onClick={() => setModal('areas')}>
+                  <Download size={17} /> Offline maps <ArrowRight size={16} />
+                </button>
                 <div className="panel-footer">
                   <button onClick={() => setModal('coverage')}>
                     <span className="pilot-dot" /> {city.coverageLabel} pilot <Info size={13} />
@@ -1069,7 +1104,22 @@ export default function App() {
           >
             <X size={22} />
           </button>
-          {modal === 'method' ? (
+          {modal === 'areas' ? (
+            <AreaDownloads
+              activeId={area?.id}
+              onUse={(next) => {
+                setCityId(next.cityId);
+                setAreaId(next.id);
+                preference('cw-city', next.cityId);
+                preference('cw-area', next.id);
+                setDeparture(localNow(getCity(next.cityId).timeZone));
+                setRetry((n) => n + 1);
+                setEditing(false);
+                setModal(null);
+                navigate('planner');
+              }}
+            />
+          ) : modal === 'method' ? (
             <>
               <span className="eyebrow">A little transparency</span>
               <h2 id="dialog-title">
@@ -1149,9 +1199,9 @@ export default function App() {
               <p>{city.sourceSummary}</p>
               <p>
                 Search and route calculation use the downloaded pilot data on your device. We save
-                only city, units and whether you’ve opened the planner. Location is requested only
-                when you choose it; your browser’s location service may contact its own provider. We
-                do not save your precise journeys.
+                only city, selected area, units, downloaded maps and whether you’ve opened the
+                planner. Location is requested only when you choose it; your browser’s location
+                service may contact its own provider. We do not save your precise journeys.
               </p>
             </>
           ) : modal === 'coverage' ? (
@@ -1238,9 +1288,12 @@ export default function App() {
                 <em>a little exploring.</em>
               </h2>
               <p>
-                Cooler Walks for iOS and Android includes maps and walking data for all four
-                supported pilots. Planning works offline.
+                Keep a walking atlas in your pocket with included and downloaded areas. Planning
+                works offline.
               </p>
+              <button className="primary" onClick={() => setModal('areas')}>
+                Manage offline maps <Download size={18} />
+              </button>
               <div className="install-instructions">
                 <h3>Keep your data in view</h3>
                 <p>
@@ -1255,7 +1308,7 @@ export default function App() {
                 </p>
               </div>
               <p className="small-copy">
-                Development preview · version 0.3.0. This build has not been submitted to the App
+                Development preview · version 0.4.0. This build has not been submitted to the App
                 Store or Google Play.
               </p>
             </>

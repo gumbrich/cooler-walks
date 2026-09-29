@@ -39,3 +39,7 @@ All four pilots use the same search, local map styling, graph routing, stops, de
 **Vienna:** compared using the city's [WFS documentation](https://digitales.wien.gv.at/open-data/geowebservices/) and geodata catalogue. No source sample or runtime adapter has been validated. Its presence in this register does not imply availability.
 
 Source dates, exact resources, attribution, transformations and known gaps are in [data-sources.md](data-sources.md). Geographic support is city-specific; these pilots are not blanket Swiss, German, US or worldwide coverage.
+
+## Download areas
+
+All four larger pilots can be packaged for offline use. Munich also has an optional **Old Town essentials** rectangle (11.560–11.582° E, 48.135–48.146° N; 2.00 km²), with a separately clipped walking graph and preserved surrounding building/tree geometry. It is a download area, not an administrative district, and advertises the same experimental building-only shade capability. The larger Munich pilot remains the city-selector default. See [downloads.md](downloads.md) for pack sizes, storage, versioning and hosting requirements.

@@ -30,16 +30,13 @@ const wifi = await shell('settings get global wifi_on');
 const mobile = await shell('settings get global mobile_data');
 const report = {
   checkedAt: new Date().toISOString(),
-  appVersion: '0.3.0',
+  appVersion: JSON.parse(await fs.readFile('package.json', 'utf8')).version,
   device: { model: device.model(), avd: 'CoolerWalks_Test', emulated: true },
   android: await shell('getprop ro.build.version.release'),
   webView: (await shell('dumpsys webviewupdate')).match(/Current WebView package.*$/m)?.[0],
   passed: [],
   pageErrors: [],
-  limitations: [
-    'No physical-device testing',
-    'iOS compile/launch blocked by missing Xcode platform; see mobile.md',
-  ],
+  limitations: ['No physical-device testing', 'iOS is tested separately; see ios-validation.json'],
 };
 const passed = (name) => {
   report.passed.push(name);
@@ -151,3 +148,6 @@ try {
 }
 await fs.writeFile('docs/native-validation.json', `${JSON.stringify(report, null, 2)}\n`);
 console.log('Native Android validation complete. Network settings restored.');
+
+// Android device discovery can retain a Node transport after device.close().
+process.exit(0);
