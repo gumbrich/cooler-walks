@@ -48,15 +48,17 @@ test('download, verify, reopen offline, select smaller coverage and remove', asy
 
 test('interrupted downloads and quota failure preserve previous saved data', async ({ page }) => {
   await page.setViewportSize({ width: 768, height: 1024 });
+  // Configure interception before navigation. Enabling it as the dialog opens
+  // can leave its newly requested italic font pending in Linux Chromium.
+  await page.route('**/packs/ch-basel-*.cwp', async (route) => {
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+    await route.fulfill({ status: 503, body: 'Unavailable' }).catch(() => {});
+  });
   await page.goto('/?view=planner');
   await expect(page.locator('.route-card').first()).toBeVisible();
   await expect(page.locator('.map-shell')).toHaveAttribute('data-map-settled', 'true');
   await page.getByRole('button', { name: 'Offline maps', exact: true }).click();
   const pack = page.locator('[data-area-id="ch-basel"]');
-  await page.route('**/packs/ch-basel-*.cwp', async (route) => {
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    await route.fulfill({ status: 503, body: 'Unavailable' }).catch(() => {});
-  });
   await pack.getByRole('button', { name: 'Download area', exact: true }).click();
   await pack.getByRole('button', { name: 'Cancel download' }).click();
   await expect(page.getByRole('dialog')).toContainText('Download cancelled');
