@@ -7,7 +7,7 @@ import crypto from 'node:crypto';
 const origin = process.argv[2];
 if (!origin)
   throw new Error(
-    'Usage: npm run release:smoke -- https://owned-domain [https://map-host/packs/] [--local]',
+    'Usage: npm run release:smoke -- https://owned-domain [https://map-host/packs/] [--catalog path/to/build-catalog.json] [--local]',
   );
 const site = new URL(origin);
 if (
@@ -20,6 +20,12 @@ const packOrigin =
     ? process.argv[3].replace(/\/?$/, '/')
     : new URL('/packs/', site).href;
 const checks = [];
+// Use the catalogue emitted by the deployed build, not a recompression on a
+// different OS or Node/zlib version. Keep checksum validation strict.
+const catalogFlag = process.argv.indexOf('--catalog');
+const catalogPath =
+  catalogFlag < 0 ? 'src/generated/area-catalog.json' : process.argv[catalogFlag + 1];
+assert.ok(catalogPath && !catalogPath.startsWith('--'), '--catalog requires a local JSON file');
 const get = async (url, options = {}) => {
   const response = await fetch(url, { ...options, signal: AbortSignal.timeout(120000) });
   return response;
@@ -49,7 +55,7 @@ assert.equal(sw.status, 200);
 assert.match(sw.headers.get('cache-control') ?? '', /no-cache|max-age=0/);
 const manifest = await (await get(new URL('/manifest.webmanifest', site))).json();
 assert.equal(manifest.display, 'standalone');
-for (const entry of JSON.parse(fs.readFileSync('src/generated/area-catalog.json', 'utf8'))) {
+for (const entry of JSON.parse(fs.readFileSync(catalogPath, 'utf8'))) {
   const url = new URL(entry.file, packOrigin);
   const response = await get(url, { headers: { Origin: 'capacitor://localhost' } });
   assert.equal(response.status, 200, entry.id);

@@ -3,13 +3,15 @@ import AxeBuilder from '@axe-core/playwright';
 
 test('public help and privacy pages work without JavaScript, including phone and enlarged text', async ({
   browser,
+  baseURL,
 }) => {
   const context = await browser.newContext({
     javaScriptEnabled: false,
+    baseURL,
     viewport: { width: 390, height: 844 },
   });
   const page = await context.newPage();
-  await page.goto('http://127.0.0.1:4181/support/');
+  await page.goto('/support/');
   await expect(page.getByRole('heading', { name: 'Help & feedback' })).toBeVisible();
   await expect(page.getByRole('link', { name: 'knoerzerjohannes@protonmail.com' })).toHaveAttribute(
     'href',
@@ -22,10 +24,11 @@ test('public help and privacy pages work without JavaScript, including phone and
   // A fresh viewport avoids Chromium's full-page capture tiling after a resize.
   const desktop = await browser.newContext({
     javaScriptEnabled: false,
+    baseURL,
     viewport: { width: 1440, height: 1000 },
   });
   const desktopPage = await desktop.newPage();
-  await desktopPage.goto('http://127.0.0.1:4181/privacy/');
+  await desktopPage.goto('/privacy/');
   await desktopPage.screenshot({ path: 'docs/screenshots/desktop-privacy.png' });
   await desktop.close();
 });

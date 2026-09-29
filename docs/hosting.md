@@ -1,6 +1,6 @@
 # Hosting and domain launch
 
-Updated 29 September 2026. **`coolerwalks.ch` is registered in the owner's Infomaniak account. No public website deployment or store submission has been made.** The private GitHub repository remains the source of truth. The public support email is `knoerzerjohannes@protonmail.com`, as requested. “Cooler Walks” is the public brand; store enrollment and legal publisher details remain separate steps.
+Updated 29 September 2026. **The website is live at https://coolerwalks.ch/ with valid HTTPS. The domain is registered in the owner's Infomaniak account; the Netlify project deploys the private GitHub repository.** The public support email is `knoerzerjohannes@protonmail.com`, as requested. “Cooler Walks” is the public brand; store enrollment and legal publisher details remain separate steps.
 
 ## Recommended launch setup
 
@@ -23,7 +23,7 @@ whois -h whois.nic.ch -p 4343 coolerwalks.ch
 
 The registry [documents code 1 as available for registration](https://www.nic.ch/whois/domaincheck/). This is an availability check, not a reservation or a purchase. Recheck at checkout, including renewal price and taxes. `coolerwalks.com` and `coolerwalks.app` also returned RDAP 404/no registration record earlier that day, but their registrar availability and price were not confirmed. `.ch` is the user's preferred candidate. It does not change the app's international scope.
 
-The owner completed Infomaniak account setup and checkout on 29 September. The registrar shows the `coolerwalks.ch` domain-registration order completed at **21:05**, and SWITCH's Domain Check now returns code 0, already registered. The prepared basket excluded Domain Plus; its pre-account quote of EUR 6 excluding tax is not a record of the final charge or renewal cost. Confirm the invoice and renewal settings in the owner's account. Netlify sign-in is complete; no DNS change or website deployment has been made yet. Credentials and verification codes belong directly in the provider's browser, never in this repository.
+The owner completed Infomaniak account setup and checkout on 29 September. The registrar shows the `coolerwalks.ch` domain-registration order completed at **21:05**, and SWITCH's Domain Check now returns code 0, already registered. The prepared basket excluded Domain Plus; its pre-account quote of EUR 6 excluding tax is not a record of the final charge or renewal cost. Confirm the invoice and renewal settings in the owner's account. Netlify project `cooler-walks` now builds the private repository's `main` branch. Both website DNS records have been added and Netlify's DNS verification succeeded. Credentials and verification codes belong directly in the provider's browser, never in this repository.
 
 ## Prepare locally
 
@@ -37,7 +37,7 @@ Open `http://127.0.0.1:4181/`, `/privacy/` and `/support/`. This local server ap
 
 Internal help/privacy links include `index.html` so the same pages work in Capacitor's bundled asset server. Their public canonical URLs remain `/privacy/` and `/support/`; both forms are real files, not planner fallbacks.
 
-The ignored `release-artifacts/` directory contains the website folder, a `.tar.gz` archive, the matching map packs/catalogue, R2 CORS configuration and a SHA-256 manifest with source commit, dirty-state flag and Node version. The manual **Prepare release files (no publishing)** GitHub workflow produces the same artifacts with Node 22 and runs release browser checks. No workflow publishes anything.
+The ignored `release-artifacts/` directory contains the website folder, a `.tar.gz` archive, the matching map packs/catalogue, R2 CORS configuration and a SHA-256 manifest with source commit, dirty-state flag and Node version. The manual **Prepare release files (no publishing)** GitHub workflow produces the same artifacts with Node 22 and runs release browser checks. This manual workflow does not publish; Netlify independently deploys pushes to `main`.
 
 Before a public deployment, fill `release/site.json` with the purchased HTTPS origin, publisher/contact information, actual host names, their privacy notice, and confirmed logging/retention/analytics settings. Draft pages have a visible notice and `noindex`; production builds refuse incomplete settings. Do not invent a host retention period. If website and map hosting use different providers, disclose both in `hostingDetails`. Disable optional analytics unless deliberately added and disclosed. No credentials belong in this file.
 
@@ -68,4 +68,28 @@ Cloudflare credentials stay in the provider login, a local credential store or s
 npm run release:smoke -- https://coolerwalks.ch https://maps.coolerwalks.ch/packs/
 ```
 
-Use the actual owned URLs and the matching app checkout/catalogue. The script checks HTML pages, security headers, true missing-file 404s, service-worker revalidation, the PWA manifest, all pack hashes and Capacitor CORS. Repeat real Android/iOS downloads, cancel/retry, cold offline launch and removal against the final host before submitting to stores. The private/local draft still works without any hosting account.
+Use the actual owned URLs and the matching app checkout/catalogue. For the initial same-origin website deployment, use:
+
+```sh
+npm run release:smoke -- https://coolerwalks.ch --catalog docs/releases/2026-09-29-netlify-catalog.json
+PWA_ORIGIN=https://coolerwalks.ch PWA_HEADFUL=1 npm run test:pwa
+RELEASE_ORIGIN=https://coolerwalks.ch npm run test:release:browser
+```
+
+`--catalog` accepts a local catalogue from the exact deployed build. Do not regenerate it on a different machine and assume hashes match: Node/zlib versions affect compression, and even identical Node 22 compression differs at the gzip OS header on Linux versus macOS. The launch catalogue was recovered from the deployed build and **all five decompressed payloads independently compared byte-for-byte with local source packs** before accepting it; see [verification record](releases/2026-09-29-hosted-packs.json). Checks still enforce every compressed checksum, length and native CORS header. Future releases should retain their original build artifacts. The script checks HTML pages, security headers, true missing-file 404s, service-worker revalidation, the PWA manifest, all pack hashes and Capacitor CORS. Repeat real Android/iOS downloads, cancel/retry, cold offline launch and removal against the final host before submitting to stores. Local development still works without any hosting account.
+
+## Launch record — 29 September 2026
+
+- Project: [cooler-walks](https://app.netlify.com/projects/cooler-walks/overview), repository `gumbrich/cooler-walks`, production branch `main`.
+- Initial production source: `05220a37796a1d5fa3b23efec8ee81a4583c1b05`; [published deployment](https://app.netlify.com/projects/cooler-walks/deploys/6abc10e944762174f4e87c9b).
+- Build: Node 22, `npm run check && npm run build && npm run release:check`, output `dist/`. `VITE_AREA_BASE_URL` is unset; website packs come from the same origin.
+- DNS stays at Infomaniak. Added apex `A 75.2.60.5` and `www CNAME cooler-walks.netlify.app`, each TTL 3600. Preserved both nameservers, DNSSEC and existing SPF/DMARC TXT records. No mail hosting was created.
+- `coolerwalks.ch` is Netlify's primary domain; `www.coolerwalks.ch` is its automatic redirect alias. Netlify verified DNS, provisioned the certificate and served HTTPS successfully at 19:53 UTC. Both HTTP and `https://www.coolerwalks.ch/` redirect to `https://coolerwalks.ch/`.
+- The three HTML pages, security headers, real 404s, service-worker revalidation, standalone manifest and all five hosted pack hashes/CORS passed against both the Netlify HTTPS origin and the final custom domain.
+- CI on the deployed source passed all 45 model/unit tests, real-data verification, formatting, production build and twelve browser scenarios. Android and iOS build workflows also passed.
+
+No host plan upgrade, R2 account/bucket, store enrollment or app submission was performed. The permanent native pack archive, store account identities and signing keys remain the next distribution work.
+
+The initial live PWA check detected Netlify's automatically injected badge script conflicting with the strict CSP. Disabled **Project configuration → General → Powered by Netlify badge** using the [supported setting](https://docs.netlify.com/manage/projects/powered-by-netlify-badge/). Public HTML was rechecked: only the application's own module script remains. No CSP exception or third-party script allowance was added.
+
+Final custom-domain checks passed on Chrome 154/macOS: actual PWA installation and standalone launch, real pack download, cold offline reopening of Munich Old Town, offline routes/water preference/waypoints, cached-city switching, an honest unvisited-city error and recovery after reconnecting. Three release browser scenarios passed on `https://coolerwalks.ch`: no-JavaScript help/privacy, WCAG A/AA scan and 200% text, production CSP, offline privacy and real 404. Two existing desktop/phone planner scenarios also passed on the identical Netlify deployment. Screenshots were inspected; [PWA report](pwa-validation.json) records the final origin. Physical phone and native-app downloads from the final host remain untested.

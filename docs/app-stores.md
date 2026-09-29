@@ -6,7 +6,7 @@ Status on 29 September 2026: native Android and iOS projects exist, with the sam
 
 - Shared native source, app/launch icons, optional foreground location, private file storage and an iOS privacy manifest.
 - Environment-based Android upload-key signing, explicit unsigned AAB preparation, signed/unsigned iOS archive commands, and CI artifacts. Release Android builds reject development URLs/cleartext settings and never silently use the debug key.
-- Public, readable HTML `/privacy/` and `/support/` pages, with email feedback, offline caching and draft notices until host details are confirmed.
+- Live HTTPS [privacy](https://coolerwalks.ch/privacy/) and [support](https://coolerwalks.ch/support/) pages, with email feedback, offline caching and confirmed Netlify hosting disclosure.
 - English listing copy, category suggestions, reviewer instructions, bounded-city claims, screenshot inventory and release checks. No store account, signing key, listing or submission was created.
 
 The unsigned Android AAB, iOS simulator build and unsigned iOS device archive passed the [native CI build](https://github.com/gumbrich/cooler-walks/actions/runs/36590625022) for the packaging milestone. Local Xcode device archiving remains blocked by its platform installation; CI provides the working archive path. The new help/privacy navigation was then checked on the Android emulator: explicit `index.html` links are required by Capacitor's bundled asset server, and the pages honor native safe-area insets. Run `npm run test:native:pages` against the dedicated installed debug emulator build to repeat it; see `native-public-pages-validation.json`.
@@ -79,7 +79,7 @@ Create the matching app record in App Store Connect, upload the build, answer ex
 
 ## Privacy declarations to finish before upload
 
-The implementation calculates search/routes on-device, does not transmit selected journey coordinates, and has no analytics/advertising SDK. Location permission is not by itself off-device collection. **Do not automatically select “no data collected”**: the chosen map/website hosts may retain IP addresses, request paths and logs, and emailed support reports contain voluntarily supplied information. Inspect the actual provider settings and SDK inventory, then complete [Apple's privacy labels](https://developer.apple.com/app-store/app-privacy-details/) and [Google's Data safety form](https://support.google.com/googleplay/android-developer/answer/10787469) using their definitions. Update the public notice consistently. Host retention is intentionally an unfilled release field.
+The implementation calculates search/routes on-device, does not transmit selected journey coordinates, and has no analytics/advertising SDK. Location permission is not by itself off-device collection. **Do not automatically select “no data collected”**: the chosen map/website hosts may retain IP addresses, request paths and logs, and emailed support reports contain voluntarily supplied information. Inspect the actual provider settings and SDK inventory, then complete [Apple's privacy labels](https://developer.apple.com/app-store/app-privacy-details/) and [Google's Data safety form](https://support.google.com/googleplay/android-developer/answer/10787469) using their definitions. Update the public notice consistently. The website notice now discloses Netlify processing and its purpose-based retention policy without inventing a deletion period. Update it again if a separate native map host is added.
 
 `ios/App/App/PrivacyInfo.xcprivacy` describes the current app-owned required-reason file API use and no tracking. Review the final archive's aggregated SDK privacy reports too. Keep secrets, certificates, provisioning profiles and `.p8` keys outside Git; ignore rules are already in place. Downloaded packs contain data only, not executable updates.
 
@@ -99,7 +99,7 @@ Follow the live [Apple screenshot specifications](https://developer.apple.com/he
 
 ## Remaining release gates
 
-1. Purchase/verify the domain, complete real publisher/hosting policy details, deploy the public privacy/support pages and verify durable map downloads.
+1. Domain registration, public HTTPS website and privacy/support pages are complete. Establish durable retention of every supported native pack hash and verify the permanent download origin.
 2. Enroll the owning accounts, create protected signing credentials, confirm identifier/versioning, and build signed artifacts.
 3. Complete final-host Android/iOS download and offline tests. Physical-phone testing remains deferred at the user's request; do not call emulator results physical-device validation. iOS permissions, keyboard, long-dialog scrolling and download writes still need full native validation.
 4. Obtain tester feedback, resolve failures and store pre-launch warnings, finish screenshots/feature graphic and submit for review. The web/PWA can launch independently of store approval.

@@ -43,7 +43,7 @@ Browser checks now use Playwright's full `chromium` channel, matching normal Chr
 
 Each city has a separate processed map/model bundle. Expanded data totals approximately 97 MB uncompressed across all four cities; only the selected city loads into the browser. For the website/PWA, additional city files are downloaded on demand, not all at installation. Default native builds package all four bundles for immediate offline use; the lite build includes Zurich and downloads selected areas. This makes routing independent of demo services and supports bounded offline use, but the bundle should be measured on lower-end phones and slow connections before release. Vite reports a large JavaScript bundle, primarily the map stack; code splitting and a smaller geometry format are the next performance work. The current screenshots use Chrome software WebGL rendering and do not establish mobile GPU performance.
 
-The local preview is the delivered runtime. No public production domain is deployed. Deployment should add HTTPS, compression, long-lived caching for hashed assets and a short cache policy for the service worker, followed by installation/update tests on that actual origin.
+The website is deployed at https://coolerwalks.ch/ with valid HTTPS, production security/cache headers and all five verified downloads. See [the hosting record](hosting.md) for exact source, DNS and validation.
 
 ## Coverage and native follow-up
 
@@ -62,3 +62,9 @@ The explicit map manager packages four larger pilots and one smaller Munich area
 The latest production PWA run also saved the compact Munich pack, reopened it with all networking blocked, cold-reloaded its map and route, and then installed/launched the app standalone. Both manifest and installability checks were clear, with zero page errors. The six native download checks in [native-download-validation.json](native-download-validation.json) passed in addition to the eleven full-bundle native checks.
 
 The iOS check is deliberately narrower than Android: native compile/install/launch, a real Zurich route, the information view and the four-area inventory were verified. iOS download writes, cold offline restart, permissions, long-dialog touch scrolling and keyboard interaction are still unverified. See [ios-validation.json](ios-validation.json). Physical-phone testing was explicitly deferred by the user for this delivery.
+
+## Public-domain verification — 29 September 2026
+
+Chrome 154.0.8037.58 on macOS verified https://coolerwalks.ch/ after DNS and TLS provisioning. All five hosted pack checksums/lengths/native CORS passed; HTTP and `www` redirect to the HTTPS apex. Three release browser scenarios passed against the final domain, including real production CSP with zero reported violations, no-JavaScript support/privacy pages, automated accessibility and 200% text, offline privacy and a true 404. The identical Netlify deployment also passed the existing desktop planner and phone/tablet interaction flows; screenshots were recaptured and inspected.
+
+The final-origin PWA test installed and launched standalone, saved a genuine Munich pack and cold-reopened its routes/map offline. Offline waterside/stops, cached-city switching, unvisited-city failure and network recovery passed with zero page errors. See [pwa-validation.json](pwa-validation.json). Expected failed requests during deliberate offline tests are not live service failures. This is macOS Chrome verification; the previously listed physical-device and Safari/iOS gaps remain.

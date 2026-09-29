@@ -4,6 +4,8 @@ A warmer kind of walking atlas: compare real pedestrian routes, greenery, waters
 
 **Status:** expanded pilots in **Zurich, Munich, Cambridge (Massachusetts) and Basel**. Cambridge follows its municipal boundary; the other cities cover central areas. These remain experimental services, not field-validated citywide routing. Zurich and Munich estimate building sun/shade; Cambridge and Basel offer greenery and water proximity only. Paris remains under review. Tree shade, terrain, weather, live closures and navigation are not included.
 
+**Live website:** [coolerwalks.ch](https://coolerwalks.ch/) · [Open the planner](https://coolerwalks.ch/?view=planner)
+
 ## Run locally
 
 Requires Node.js 22.12+ and npm. No API keys or accounts are needed. Browser downloads work on the same origin; native remote downloads use the optional setting in `.env.example`.
@@ -26,7 +28,7 @@ Open **http://127.0.0.1:4173/**. Localhost is a secure context for PWA developme
 
 ## Domain, hosting and store preparation
 
-**Recommended:** `coolerwalks.ch` on Netlify, with durable native map downloads on an HTTPS object-storage host. SWITCH confirmed the domain could be registered on 29 September 2026; it has not been purchased or reserved. The support contact is `knoerzerjohannes@protonmail.com`.
+**Launched on Netlify:** the website and its five map packs are public. `coolerwalks.ch` is registered with Infomaniak; the apex A record and `www` CNAME point to Netlify. The existing Free Legacy hosting plan is unchanged. The support contact is `knoerzerjohannes@protonmail.com`. Durable retention of native map downloads remains a prerequisite for store distribution.
 
 ```sh
 npm run release:prepare         # checked website archive, matching packs and SHA-256 manifest
@@ -34,7 +36,7 @@ npm run release:serve           # preview with production-style headers at port 
 npm run test:release:browser    # privacy/help accessibility, CSP and offline checks
 ```
 
-The upload files are in ignored `release-artifacts/`. Complete `release/site.json` after choosing and verifying the real domain/host. `netlify.toml` blocks public builds while those details are missing; local draft packaging remains available. See [domain/DNS and hosting instructions](docs/hosting.md), [Android/iOS store instructions](docs/app-stores.md) and [listing copy](release/store-listing.json). The manual GitHub release-preparation workflow creates private artifacts only. No purchase, public website deployment or store submission has been made.
+The upload files are in ignored `release-artifacts/`. `release/site.json` now contains the public domain, contact and Netlify privacy details. Netlify automatically builds `main` using `netlify.toml`; the manual GitHub release-preparation workflow creates private artifacts only. See [domain/DNS and hosting instructions](docs/hosting.md), [Android/iOS store instructions](docs/app-stores.md) and [listing copy](release/store-listing.json). No store enrollment or submission has been made.
 
 ## What works
 

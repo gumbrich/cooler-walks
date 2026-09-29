@@ -1,14 +1,16 @@
 # Progress
 
-## Current milestone: domain and store-release preparation
+## Current milestone: public website launch
 
 Added Netlify build configuration, a locally checked upload archive, security/cache/CORS headers, real 404s, hosted smoke checks and standalone privacy/help pages. The provided support email is configured. `coolerwalks.ch` is now registered in the owner's Infomaniak account and configured as the intended public origin. The hosting guide explains the current 31 MB Cambridge asset constraint and durable retention of native map packs.
 
-Infomaniak confirms the domain-registration order completed on 29 September; the official registry independently confirms registration. Netlify sign-in is complete and the existing Free Legacy plan is verified. No DNS change or website deployment has occurred yet. The public build now includes the selected domain and Netlify privacy details and passes the three release browser checks.
+The website is now public at **https://coolerwalks.ch/**, built from private GitHub `main` on Netlify’s existing Free Legacy plan. Infomaniak registration is complete. Apex and `www` DNS records are saved; Netlify verified them and provisioned valid HTTPS. The public build includes the selected domain, support contact and Netlify privacy details.
 
-The pre-launch check uncovered Linux browser-test failures. Full Chromium and request interception installed before page loading resolve them without removing assertions or screenshots. [Complete CI validation passed](https://github.com/gumbrich/cooler-walks/actions/runs/36614132370) on `ac58a9a`, including all twelve browser scenarios; Android and iOS builds passed for that revision too.
+Live acceptance checks passed: all five compressed map files match their deployed catalogue, and their decompressed payloads match locally built source data. Chrome installed and launched the PWA from `coolerwalks.ch`, reopened downloaded Munich offline and recovered an unavailable city after reconnecting. Three final-domain release browser checks and two hosted desktop/phone planner flows passed. Netlify’s injected badge was disabled to preserve the strict CSP; no security exception was added.
 
-Prepared Android upload-key signing and unsigned AAB builds, iOS archive commands, private CI artifacts, listing copy and current store submission instructions. Public deployment remains intentionally blocked until the owned domain and actual host privacy details are filled. Store enrollment, signing and final hosted testing remain separate steps. See [hosting.md](hosting.md) and [app-stores.md](app-stores.md).
+The pre-launch check uncovered Linux browser-test failures. Full Chromium and request interception installed before page loading resolve them without removing assertions or screenshots. [Complete CI validation passed](https://github.com/gumbrich/cooler-walks/actions/runs/36618963620) on deployed source `05220a3`, including all twelve browser scenarios; Android and iOS builds passed for that revision too.
+
+Prepared Android upload-key signing and unsigned AAB builds, iOS archive commands, private CI artifacts, listing copy and current store submission instructions. Public release settings are complete; privacy and help pages are live. Store enrollment, signing and final hosted testing remain separate steps. See [hosting.md](hosting.md) and [app-stores.md](app-stores.md).
 
 Release checks passed locally: 45 unit/model checks, three production-style browser scenarios (CSP, no-JavaScript help/privacy, accessibility, 200% text and offline privacy navigation), five served pack checksums/CORS checks, and three Android public-page navigation checks. Actual phone/desktop/tablet screenshots are included. Android AAB and iOS unsigned archive packaging also passed CI. Emulator testing exposed and fixed Capacitor's folder-URL fallback for the new pages; explicit bundled HTML links now return to the working planner.
 
@@ -24,7 +26,7 @@ The map now accounts for projected-grid rotation when using true-north solar bea
 
 Validation: TypeScript, focused model tests, real route comparisons in all four pilots, responsive browser interactions, accessibility/enlarged text, source formatting and production build. Chrome on macOS also verified offline reload, cached-city switching, unvisited-city failure/recovery, actual PWA installation and standalone launch. Reports and actual desktop/phone/tablet screenshots are included; see platform.md for exact counts and untested platforms.
 
-Private maintained repository: https://github.com/gumbrich/cooler-walks. The delivered runtime remains the local preview; no public production domain has been deployed.
+Private maintained repository: https://github.com/gumbrich/cooler-walks. The public deployment supplements the local preview.
 
 ## Expanded areas
 
@@ -38,4 +40,4 @@ Added five reproducible packs, SHA-256 and size/schema verification, progress/ca
 
 ## Next useful milestone
 
-Complete Netlify sign-in, confirm host privacy details, connect the registered domain and deploy the website/pack host, then create a signed internal tester build. Physical-phone testing was deferred at the user’s request. Benchmark memory, download recovery and map rendering on lower-end phones before further city expansion. Validate dated shadows and route access in the street; normalize Cambridge’s height units/unknown-height masks and add Basel building heights. Tree shade, terrain and weather remain separate roadmap items. Help pages now provide email feedback without a public posting system.
+Retain a permanent archive of released native map packs, then create a signed internal tester build. Physical-phone testing was deferred at the user’s request. Benchmark memory, download recovery and map rendering on lower-end phones before further city expansion. Validate dated shadows and route access in the street; normalize Cambridge’s height units/unknown-height masks and add Basel building heights. Tree shade, terrain and weather remain separate roadmap items. Help pages now provide email feedback without a public posting system.

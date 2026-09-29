@@ -1,0 +1,43 @@
+{
+  "verifiedAt": "2026-09-29T19:48:54.305Z",
+  "origin": "https://cooler-walks.netlify.app",
+  "sourceCommit": "05220a37796a1d5fa3b23efec8ee81a4583c1b05",
+  "note": "Hosted compressed files match the deployment catalogue. Each decompressed payload independently matches the local pack built from the same checked-in source. Node 22 macOS/Linux compression differed only at gzip OS header byte 9 (19 vs 3); Node 26 also produces different deflate bytes.",
+  "packs": [
+    {
+      "id": "ch-zurich",
+      "compressedBytes": 3737983,
+      "sha256": "d81200cf5ec292cac832032324028f341999ee4de27e8b86ed660e10a86787e0",
+      "uncompressedSha256": "c66f3b67fb9b4cb9ff8bc534f1bd755f423113d6e38791bae04a1c7af0063222",
+      "matchesLocalSourcePayload": true
+    },
+    {
+      "id": "de-munich",
+      "compressedBytes": 4391043,
+      "sha256": "11abcf79c70191990d629ba7def6cd6b9742f4e25c0b28c7050f486c10bdc075",
+      "uncompressedSha256": "f6c3918feb4d54682048a1cca6da075d0e38fb7e68953ad5ce668e485261bbd3",
+      "matchesLocalSourcePayload": true
+    },
+    {
+      "id": "us-cambridge-ma",
+      "compressedBytes": 6669893,
+      "sha256": "f2cca82e97e6e9a8696c75750ef5301f2547a128b5998f914b6593e74caf73ff",
+      "uncompressedSha256": "696c6a7de507d6da4e266337535973c889e8311f3f6b65524756fa10c7ab3a49",
+      "matchesLocalSourcePayload": true
+    },
+    {
+      "id": "ch-basel",
+      "compressedBytes": 1957430,
+      "sha256": "0d6d9b904ff8f315b356c253c076c1e3b7b5142b60c5493c8b44a0f515ba8c2e",
+      "uncompressedSha256": "cb6252c059c70642dd39ed394f09d06bc91f982799575c33512987e4e142d6b7",
+      "matchesLocalSourcePayload": true
+    },
+    {
+      "id": "de-munich-old-town",
+      "compressedBytes": 2306028,
+      "sha256": "0f8a602649abe3f6ec91032e35bf41b42e4d7b95b0eba87a6017b84e2dccca7c",
+      "uncompressedSha256": "f88792ae110f46602ebb76a8652231522feca7fe0827da67b21cf8def5d6c17b",
+      "matchesLocalSourcePayload": true
+    }
+  ]
+}

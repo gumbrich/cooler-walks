@@ -18,7 +18,7 @@ page.on('console', (m) => {
   if (m.type() === 'error') console.log('Browser error:', m.text());
 });
 page.on('requestfailed', (r) => console.log('Request failed:', r.url(), r.failure()));
-const origin = 'http://127.0.0.1:4173';
+const origin = (process.env.PWA_ORIGIN ?? 'http://127.0.0.1:4173').replace(/\/$/, '');
 await page.goto(origin + '/?view=planner');
 await expect(page.locator('.route-card').first()).toBeVisible({ timeout: 60000 });
 await expect(page.locator('.map-shell')).toHaveAttribute('data-map-ready', 'true', {
@@ -152,6 +152,10 @@ try {
   const app = await windowPromise;
   await app.waitForLoadState('domcontentloaded');
   await expect(app.locator('.route-card').first()).toBeVisible({ timeout: 60000 });
+  await expect(app.locator('.map-shell')).toHaveAttribute('data-map-settled', 'true', {
+    timeout: 60000,
+  });
+  await expect(app.locator('.map-failure')).toHaveCount(0);
   installation.standalone = await app.evaluate(
     () => matchMedia('(display-mode: standalone)').matches,
   );
