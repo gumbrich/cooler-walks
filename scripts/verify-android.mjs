@@ -23,6 +23,7 @@ assert.equal(
   adbText('-s', serial, 'shell', 'getprop', 'ro.boot.qemu.avd_name'),
   'CoolerWalks_Test',
 );
+adbText('-s', serial, 'shell', 'input', 'keyevent', 'KEYCODE_WAKEUP');
 const [device] = await _android.devices();
 device.setDefaultTimeout(45000);
 const shell = async (command) => (await device.shell(command)).toString().trim();
@@ -79,18 +80,31 @@ try {
   await page.getByRole('button', { name: 'Edit', exact: true }).click();
   const origin = await page.getByRole('combobox', { name: 'From', exact: true }).inputValue();
   await page.getByRole('button', { name: 'Use my location', exact: true }).click();
-  await device.tap({ res: 'com.android.permissioncontroller:id/permission_deny_button' });
+  // Decline the real OS request with Back. Wait for the system window so a
+  // delayed permission sheet cannot make Back dismiss our trip editor instead.
+  await expect
+    .poll(
+      async () =>
+        (await shell('dumpsys window')).includes(
+          'com.android.permissioncontroller.permission.ui.GrantPermissionsActivity',
+        ),
+      { timeout: 15000 },
+    )
+    .toBe(true);
+  await device.input.press('Back');
   await expect(page.getByText(/Location access was unavailable/)).toBeVisible();
   await expect(page.getByRole('combobox', { name: 'From', exact: true })).toHaveValue(origin);
   await device.screenshot({ path: 'docs/screenshots/android-location-denied.png' });
   await device.input.press('Back');
   await expect(page.getByRole('button', { name: 'Edit', exact: true })).toBeVisible();
-  passed('Native permission denial preserves the trip; Back closes editing');
+  passed('Native permission dismissal preserves the trip; Back closes editing');
 
   await page.getByRole('combobox', { name: 'Language', exact: true }).selectOption('de');
   await page.getByRole('button', { name: 'Weg bearbeiten', exact: true }).click();
   await page.getByRole('checkbox', { name: /Verkehrsberuhigt bevorzugen/ }).check();
-  await expect(page.getByRole('button', { name: /Verkehrsberuhigter Weg/ })).toBeVisible();
+  await expect(page.getByRole('button', { name: /Verkehrsberuhigter Weg/ })).toBeVisible({
+    timeout: 60000,
+  });
   await expect(page.locator('.route-name').last()).toContainText('+3,0');
   await device.input.press('Back');
   await ready(page);

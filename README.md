@@ -74,7 +74,7 @@ npm run native:open:ios      # open Xcode
 
 Detailed setup, signing boundaries and offline behaviour are in [docs/mobile.md](docs/mobile.md). Actual platform test results are in [docs/platform.md](docs/platform.md). Signing credentials and generated native build outputs are ignored.
 
-Android compiled and passed eleven checks in an Android 16 emulator, including native location denial, Back/resume, all four cities offline and cold offline launch. The iOS simulator build passes in GitHub Actions and launched successfully in the local iPhone 16e simulator. Neither platform has been tested on a physical phone or submitted to a store.
+Android 0.5.0 compiled and passed twelve checks in an Android 16 emulator, including German calmer-route comparison, native permission dismissal, Back/resume, all four cities offline and cold offline launch. The iOS simulator build passes in GitHub Actions and launched in English and German in the local iPhone 16e simulator. Neither platform has been tested on a physical phone or submitted to a store.
 
 ## Develop and verify
 
@@ -120,7 +120,7 @@ Real route checks for every pilot are in [city-route-validation.json](docs/city-
 
 ## Screenshots
 
-Version 0.5.0: [German desktop comparison](docs/screenshots/desktop-german-calm.png), [German phone](docs/screenshots/phone-german-calm.png), [German entry](docs/screenshots/desktop-german-home.png) and [recoverable error state](docs/screenshots/tablet-german-error.png).
+Version 0.5.0: [German desktop comparison](docs/screenshots/desktop-german-calm.png), [German phone](docs/screenshots/phone-german-calm.png), [German entry](docs/screenshots/desktop-german-home.png), [recoverable error state](docs/screenshots/tablet-german-error.png), [installed German PWA](docs/screenshots/installed-german-app.png), [Android calmer route](docs/screenshots/android-german-calm.png) and [German iOS launch](docs/screenshots/ios-v050-german.png).
 
 Actual browser, Android emulator and iOS simulator captures are in [docs/screenshots](docs/screenshots), including [expanded Cambridge on desktop](docs/screenshots/desktop-expanded-cambridge.png) and [offline Munich in the native app](docs/screenshots/android-offline-munich.png). The [download manager](docs/screenshots/desktop-downloads.png) and [compact Munich phone view](docs/screenshots/phone-downloaded-area.png) show the new flow. They document visual review, not physical-device or field validation.
 

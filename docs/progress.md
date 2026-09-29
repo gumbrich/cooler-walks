@@ -6,7 +6,7 @@ Implemented a Zurich-only street-context preference using the actual current mun
 
 The website, shared native planner, source/coverage dialogs, error states and offline manager now support German. `/de/`, `/de/privacy/`, `/de/support/`, German manifest and native iOS permission resources are included. EN/DE preserves current trip state; route-local time and units remain independent. Native version is 0.5.0, build 3. [Localization maintenance](localization.md).
 
-Validation and deployment results are recorded in [platform.md](platform.md). Next for this mode: verify street-level vehicle volumes/noise-model inputs and field-check representative routes. Other cities do not inherit Zurich traffic data.
+Published to **https://coolerwalks.ch/** and **https://coolerwalks.ch/de/** from `e0a0795`. All 55 unit/model/language tests, 14 browser scenarios, four live release browser scenarios and hosted map checks passed; web, Android and iOS CI builds are green. Chrome installed and used the German PWA offline. Android passed twelve emulator checks including German calmer routes; the iOS CI artifact launched in English and German. Reports and actual screenshots are in [platform.md](platform.md). Physical-device and traffic field validation remain unperformed. Next for this mode: verify street-level vehicle volumes/noise-model inputs and field-check representative routes. Other cities do not inherit Zurich traffic data.
 
 ## Previous milestone: public website launch
 

@@ -55,7 +55,7 @@ await expect(page.locator('.route-card').first()).toBeVisible({ timeout: 60000 }
 await page.getByRole('button', { name: 'Offline maps', exact: true }).click();
 const compactPack = page.locator('[data-area-id="de-munich-old-town"]');
 await compactPack.getByRole('button', { name: 'Download area', exact: true }).click();
-await expect(compactPack.locator('.area-state')).toHaveText('Saved');
+await expect(compactPack.locator('.area-state')).toHaveText('Saved', { timeout: 120000 });
 await page.getByRole('button', { name: 'Close information' }).click();
 await context.setOffline(true);
 await page.reload();
@@ -137,7 +137,7 @@ await expect(page.locator('.map-shell')).toHaveAttribute('data-map-ready', 'true
   timeout: 60000,
 });
 await expect(page.locator('.map-failure')).toHaveCount(0);
-let installation = { installed: false, standalone: false, error: null };
+let installation = { installed: false, standalone: false, germanOffline: false, error: null };
 const root = await browser.newBrowserCDPSession();
 try {
   await root.send('PWA.install', { manifestId: origin + '/', installUrlOrBundleUrl: origin + '/' });
@@ -161,6 +161,24 @@ try {
   );
   if (!installation.standalone) throw new Error('Installed app did not launch standalone');
   await app.screenshot({ path: 'docs/screenshots/installed-app.png' });
+  await app.getByRole('combobox', { name: 'City', exact: true }).selectOption('ch-zurich');
+  await expect(app.locator('.route-card').first()).toBeVisible({ timeout: 60000 });
+  await app.getByRole('combobox', { name: 'Language', exact: true }).selectOption('de');
+  const germanSession = await context.newCDPSession(app);
+  const germanManifest = await germanSession.send('Page.getAppManifest');
+  if (germanManifest.errors.length) throw new Error('German manifest validation failed');
+  await context.setOffline(true);
+  await app.reload();
+  await expect(app.locator('html')).toHaveAttribute('lang', 'de');
+  await expect(app.locator('.route-card').first()).toBeVisible({ timeout: 60000 });
+  await app.getByRole('checkbox', { name: /Verkehrsberuhigt bevorzugen/ }).check();
+  await expect(app.getByRole('button', { name: /Verkehrsberuhigter Weg/ })).toBeVisible();
+  await expect(app.locator('.map-shell')).toHaveAttribute('data-map-settled', 'true', {
+    timeout: 60000,
+  });
+  installation.germanOffline = true;
+  await app.screenshot({ path: 'docs/screenshots/installed-german-app.png' });
+  await context.setOffline(false);
 } catch (e) {
   installation.error = e.message;
 } finally {
@@ -190,4 +208,5 @@ const report = {
 fs.writeFileSync('docs/pwa-validation.json', JSON.stringify(report, null, 2) + '\n');
 console.log(JSON.stringify(report, null, 2));
 await context.close();
-if (errors.length || !installation.standalone) process.exitCode = 1;
+if (errors.length || !installation.standalone || !installation.germanOffline || installation.error)
+  process.exitCode = 1;

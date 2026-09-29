@@ -1,9 +1,10 @@
 {
-  "checkedAt": "2026-09-29T15:36:59.339Z",
+  "checkedAt": "2026-09-29T21:39:59.105Z",
   "platform": "Android emulator only",
   "passed": [
     "Native help page, real mailto link and status-bar clearance",
     "Bundled privacy page",
+    "German bundled help and privacy, returning to the German planner",
     "Return to real planner after static-page navigation"
   ],
   "insets": {

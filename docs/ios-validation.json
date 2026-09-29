@@ -1,12 +1,13 @@
 {
-  "checkedAt": "2026-09-29T08:37:24.937041+00:00",
-  "appVersion": "0.4.0",
-  "sourceCommit": "58af19407e55adc81025359185cbcf0a0f7e53e9",
+  "checkedAt": "2026-09-29T21:37:28.308502+00:00",
+  "appVersion": "0.5.0",
+  "buildNumber": "3",
+  "sourceCommit": "e0a0795ffa8990a24f87786b572e51c0e5ba1f8b",
   "build": {
     "provider": "GitHub Actions macos-26",
-    "run": "https://github.com/gumbrich/cooler-walks/actions/runs/36542835656",
-    "target": "unsigned ARM64 iOS simulator",
-    "archiveSha256": "940b219fdabd0ca0a1f8645df23a2a5cc61da9f1dcda3e01711aacc722c9135f"
+    "run": "https://github.com/gumbrich/cooler-walks/actions/runs/36627073386",
+    "target": "unsigned ARM64 iOS simulator; unsigned device archive also passed CI",
+    "archiveSha256": "343958f69770c35d7a8deb888feb6a42c56ba53ba1bea02b6682cbfbdb16d837"
   },
   "device": {
     "model": "iPhone 16e",
@@ -14,18 +15,17 @@
     "simulated": true
   },
   "passed": [
-    "Compiled iOS native project including Filesystem plugin and privacy manifest",
-    "Installed and launched in local iOS simulator",
-    "Rendered real Zurich map, route and building-shade estimate",
-    "Opened native information view",
-    "Opened offline atlas and read four included areas through native inventory/storage"
+    "Compiled iOS native project and unsigned device archive in CI",
+    "Confirmed packaged version 0.5.0/build 3 and German location-permission resources",
+    "Installed and launched the CI artifact in the local iOS simulator",
+    "Rendered actual Zurich map and route in English",
+    "Launched with app-specific German locale and rendered the German planner with real Zurich route and localized numbers"
   ],
   "limitations": [
-    "No physical iPhone test",
-    "No iOS network-download, offline cold-start or location-permission test",
+    "No physical iPhone test or App Store submission",
+    "Calmer-route interaction, downloads, offline cold-start and location permissions not exercised on iOS in this release",
     "Long-dialog touch scrolling and keyboard interactions need further iOS testing",
-    "Direct local compilation still requires the matching Xcode simulator platform; CI supplies the verified artifact"
+    "Local Xcode rejects the generic simulator destination despite the installed runtime; CI supplied the verified artifact"
   ],
-  "interactionBuildCommit": "0f5c48c1126ddf48afd6d833dfe5706169cea9b8",
-  "finalLaunchScreenshot": "screenshots/ios-final-zurich.png"
+  "screenshots": ["screenshots/ios-v050-launch.png", "screenshots/ios-v050-german.png"]
 }
