@@ -22,6 +22,7 @@ export interface City {
     terrain: boolean;
     fountains: boolean;
     water: boolean;
+    trafficCalming?: boolean;
   };
   dataVersion: string | null;
   dataUrl: string | null;
@@ -49,7 +50,11 @@ export interface Edge {
   name: string;
   way: number;
   steps: boolean;
+  /** Samples at the shared 8 m resolution, from the versioned traffic adapter. */
+  traffic?: TrafficClass[];
 }
+export type TrafficClass =
+  'major' | 'pedestrian' | 'encounter' | 'tempo30' | 'path' | 'other' | 'unknown';
 export interface Building {
   id: string;
   ring: Point[];
@@ -89,6 +94,7 @@ export interface PilotData {
   water: WaterArea[];
   places: Place[];
   provenance: Record<string, unknown>;
+  trafficModel?: string;
 }
 export type Exposure = 'shade' | 'sun' | 'unknown' | 'night';
 export interface Sample {
@@ -97,6 +103,7 @@ export interface Sample {
   exposure: Exposure;
   green: boolean;
   water: boolean;
+  traffic?: TrafficClass;
 }
 export interface Route {
   id: string;
@@ -109,6 +116,9 @@ export interface Route {
   shadeMeters: number;
   sunMeters: number;
   unknownMeters: number;
+  majorRoadMeters: number;
+  calmedMeters: number;
+  trafficUnknownMeters: number;
   samples: Sample[];
   streets: string[];
   steps: boolean;
@@ -123,6 +133,6 @@ export interface RouteResult {
   startSnap: number;
   endSnap: number;
   waypoints: { point: Point; snap: number }[];
-  preference: 'environment' | 'water' | 'sun';
+  preference: 'environment' | 'water' | 'sun' | 'calm';
   departure: string;
 }

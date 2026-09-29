@@ -150,3 +150,16 @@ section p:last-child {
     padding-bottom: calc(24px + var(--safe-area-inset-bottom, env(safe-area-inset-bottom, 0px)));
   }
 }
+
+/* German compounds and enlarged text must reflow instead of leaving the viewport. */
+.info-page {
+  overflow-wrap: anywhere;
+  hyphens: auto;
+}
+.info-header > a,
+.info-footer > * {
+  min-width: 0;
+}
+.info-footer nav {
+  flex-wrap: wrap;
+}

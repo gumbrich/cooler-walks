@@ -47,10 +47,10 @@ export function rayHits(origin: Point, end: Point, ring: Point[], holes: Point[]
     }
   return false;
 }
-export function formatDistance(m: number, units: 'metric' | 'imperial') {
+export function formatDistance(m: number, units: 'metric' | 'imperial', locale = 'en-GB') {
   return units === 'imperial'
-    ? `${(m / 1609.344).toFixed(2)} mi`
+    ? `${(m / 1609.344).toLocaleString(locale, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} mi`
     : m >= 1000
-      ? `${(m / 1000).toFixed(2)} km`
+      ? `${(m / 1000).toLocaleString(locale, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} km`
       : `${Math.round(m / 10) * 10} m`;
 }

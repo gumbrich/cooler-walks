@@ -32,6 +32,9 @@ const get = async (url, options = {}) => {
 };
 for (const [route, phrase] of [
   ['/', 'Cooler Walks'],
+  ['/de/', 'Dein Weg durch die Stadt'],
+  ['/de/privacy/', 'Der Standort bleibt deine Entscheidung'],
+  ['/de/support/', 'verkehrsberuhigte Wege'],
   ['/privacy/', 'Location is your choice'],
   ['/support/', 'Help & feedback'],
 ]) {
@@ -44,7 +47,12 @@ for (const [route, phrase] of [
   assert.ok(html.includes(phrase), route);
   checks.push(`${route}: real HTML and security headers`);
 }
-for (const route of ['/packs/does-not-exist.cwp', '/data/does-not-exist.json', '/not-a-page'])
+for (const route of [
+  '/packs/does-not-exist.cwp',
+  '/data/does-not-exist.json',
+  '/not-a-page',
+  '/de/not-a-page',
+])
   assert.equal(
     (await get(new URL(route, site))).status,
     404,
@@ -55,6 +63,10 @@ assert.equal(sw.status, 200);
 assert.match(sw.headers.get('cache-control') ?? '', /no-cache|max-age=0/);
 const manifest = await (await get(new URL('/manifest.webmanifest', site))).json();
 assert.equal(manifest.display, 'standalone');
+const germanManifest = await (await get(new URL('/manifest-de.webmanifest', site))).json();
+assert.equal(germanManifest.lang, 'de');
+assert.equal(germanManifest.id, manifest.id);
+assert.equal(germanManifest.start_url, '/de/?view=planner');
 for (const entry of JSON.parse(fs.readFileSync(catalogPath, 'utf8'))) {
   const url = new URL(entry.file, packOrigin);
   const response = await get(url, { headers: { Origin: 'capacitor://localhost' } });

@@ -12,6 +12,7 @@ self.onmessage = (
     extra: number;
     waypoints: Point[];
     preferWater: boolean;
+    preferCalm: boolean;
     sunlight: 'shade' | 'sun';
   }>,
 ) => {
@@ -26,6 +27,7 @@ self.onmessage = (
       m.waypoints,
       m.preferWater,
       m.sunlight,
+      m.preferCalm,
     );
     self.postMessage({ id: m.id, result });
   } catch (e) {

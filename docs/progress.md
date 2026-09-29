@@ -1,6 +1,14 @@
 # Progress
 
-## Current milestone: public website launch
+## Current milestone: Zurich calmer streets and German · 0.5.0
+
+Implemented a Zurich-only street-context preference using the actual current municipal traffic-zone response and buffered OSM main roads. It preserves fastest-route comparison, ordered stops and the 0/5/10-minute budget. A real Bahnhofquai–Bürkliplatz alternative adds 2.99 minutes and reduces main-road proximity from 587.85 m to 302.92 m. Unknown context is penalized and both comparison routes require 95% classified coverage. This remains an experimental geometric street indicator, not traffic/noise measurement. [Source audit and model](traffic.md).
+
+The website, shared native planner, source/coverage dialogs, error states and offline manager now support German. `/de/`, `/de/privacy/`, `/de/support/`, German manifest and native iOS permission resources are included. EN/DE preserves current trip state; route-local time and units remain independent. Native version is 0.5.0, build 3. [Localization maintenance](localization.md).
+
+Validation and deployment results are recorded in [platform.md](platform.md). Next for this mode: verify street-level vehicle volumes/noise-model inputs and field-check representative routes. Other cities do not inherit Zurich traffic data.
+
+## Previous milestone: public website launch
 
 Added Netlify build configuration, a locally checked upload archive, security/cache/CORS headers, real 404s, hosted smoke checks and standalone privacy/help pages. The provided support email is configured. `coolerwalks.ch` is now registered in the owner's Infomaniak account and configured as the intended public origin. The hosting guide explains the current 31 MB Cambridge asset constraint and durable retention of native map packs.
 

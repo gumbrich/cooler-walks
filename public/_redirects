@@ -1,3 +1,7 @@
 /privacy /privacy/ 301
 /support /support/ 301
+/de /de/ 301
+/de/privacy /de/privacy/ 301
+/de/support /de/support/ 301
+/de/* /de/404.html 404
 /* /404.html 404

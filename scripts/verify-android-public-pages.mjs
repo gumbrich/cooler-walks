@@ -49,12 +49,28 @@ try {
   assert.equal(new URL(page.url()).pathname, '/privacy/index.html');
   await page.getByRole('link', { name: 'Open planner' }).click();
   await expect(page.locator('.route-card').first()).toBeVisible({ timeout: 60000 });
+  await page.getByRole('combobox', { name: 'Language', exact: true }).selectOption('de');
+  await page.getByRole('button', { name: 'So schätzen wir' }).click();
+  await page.getByRole('link', { name: 'Hilfe & Feedback' }).click();
+  await expect(
+    page.getByRole('heading', { name: 'Wie funktionieren verkehrsberuhigte Wege?' }),
+  ).toBeVisible();
+  assert.equal(new URL(page.url()).pathname, '/de/support/index.html');
+  await page.getByRole('link', { name: 'Datenschutz', exact: true }).click();
+  await expect(
+    page.getByRole('heading', { name: 'Der Standort bleibt deine Entscheidung' }),
+  ).toBeVisible();
+  await page.getByRole('link', { name: 'Planer öffnen' }).click();
+  await expect(page.locator('.route-card').first()).toBeVisible({ timeout: 60000 });
+  await expect(page.locator('html')).toHaveAttribute('lang', 'de');
+  await page.getByRole('combobox', { name: 'Sprache', exact: true }).selectOption('en');
   const report = {
     checkedAt: new Date().toISOString(),
     platform: 'Android emulator only',
     passed: [
       'Native help page, real mailto link and status-bar clearance',
       'Bundled privacy page',
+      'German bundled help and privacy, returning to the German planner',
       'Return to real planner after static-page navigation',
     ],
     insets,

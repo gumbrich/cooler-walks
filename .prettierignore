@@ -22,3 +22,4 @@ native-web/
 src/generated/
 docs/area-pack-validation.json
 release-artifacts/
+docs/traffic-validation.json

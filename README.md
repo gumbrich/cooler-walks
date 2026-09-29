@@ -1,8 +1,12 @@
 # Cooler Walks
 
-A warmer kind of walking atlas: compare real pedestrian routes, greenery, waterside walks and experimental sun/shade estimates.
+A warmer kind of walking atlas: compare real pedestrian routes, greenery, waterside walks, calmer Zurich streets and experimental sun/shade estimates.
+
+[Deutsch](README.de.md) · English / German website and app interface
 
 **Status:** expanded pilots in **Zurich, Munich, Cambridge (Massachusetts) and Basel**. Cambridge follows its municipal boundary; the other cities cover central areas. These remain experimental services, not field-validated citywide routing. Zurich and Munich estimate building sun/shade; Cambridge and Basel offer greenery and water proximity only. Paris remains under review. Tree shade, terrain, weather, live closures and navigation are not included.
+
+**German version:** [coolerwalks.ch/de/](https://coolerwalks.ch/de/) · switch EN/DE without losing your trip.
 
 **Live website:** [coolerwalks.ch](https://coolerwalks.ch/) · [Open the planner](https://coolerwalks.ch/?view=planner)
 
@@ -39,6 +43,9 @@ npm run test:release:browser    # privacy/help accessibility, CSP and offline ch
 The upload files are in ignored `release-artifacts/`. `release/site.json` now contains the public domain, contact and Netlify privacy details. Netlify automatically builds `main` using `netlify.toml`; the manual GitHub release-preparation workflow creates private artifacts only. See [domain/DNS and hosting instructions](docs/hosting.md), [Android/iOS store instructions](docs/app-stores.md) and [listing copy](release/store-listing.json). No store enrollment or submission has been made.
 
 ## What works
+
+- **Prefer calmer streets / Verkehrsberuhigt bevorzugen** in Zurich: current official pedestrian, Begegnungszone and Tempo-30 zones plus mapped main-road proximity. Reduces distance near main roads first, within the same detour limit. No live traffic counts, noise or safety rating. See [sources, model and real route result](docs/traffic.md).
+- Full **English / German** interface, including source explanations, errors, downloads, static privacy/help and PWA metadata. Language changes preserve the current trip. [Localization guide](docs/localization.md).
 
 - A locally rendered MapLibre map of actual OSM streets, buildings, water and parks; a visible coverage boundary, muted unsupported surroundings, “Show whole coverage” control and source attribution. Coverage is now 8.06 km² in Zurich, 8.90 km² in Munich, 18.46 km² in Cambridge and 10.25 km² in Basel; [the coverage report](docs/coverage-validation.json) checks routes beyond the previous pilots.
 - Search among pilot streets and places, explicit map selection, optional geolocation, and endpoint swapping. Place results refer to mapped paths near their source locations; this is not a global address geocoder.
@@ -97,7 +104,7 @@ With the production preview running, `PWA_HEADFUL=1 npm run test:pwa` verifies o
 | Derived runtime data                                               | `public/data/`                          |
 | Untracked source downloads                                         | `data/raw/`                             |
 
-The browser makes no third-party search, route, tile or font requests. Your precise journey is not saved. City, selected area, units, the returning-user preference and explicit map downloads are stored locally. An optional native data host receives requests for public area files, never journey inputs. Geolocation is requested on demand; the browser's own location provider may contact external services.
+The browser makes no third-party search, route, tile or font requests. Your precise journey is not saved. City, selected area, language, units, the returning-user preference and explicit map downloads are stored locally. An optional native data host receives requests for public area files, never journey inputs. Geolocation is requested on demand; the browser's own location provider may contact external services.
 
 ## Data and limitations
 
@@ -112,6 +119,8 @@ The [Zurich tree-position audit](docs/tree-accuracy.md) checks import fidelity a
 Real route checks for every pilot are in [city-route-validation.json](docs/city-route-validation.json), with expanded-area journeys in [coverage-validation.json](docs/coverage-validation.json). Use the selected city’s default trip on **21 June 2026 at 14:00 local time** as a repeatable starting point. Cambridge’s missing building heights and Basel’s unintegrated height layer are documented in [the coverage register](docs/cities.md).
 
 ## Screenshots
+
+Version 0.5.0: [German desktop comparison](docs/screenshots/desktop-german-calm.png), [German phone](docs/screenshots/phone-german-calm.png), [German entry](docs/screenshots/desktop-german-home.png) and [recoverable error state](docs/screenshots/tablet-german-error.png).
 
 Actual browser, Android emulator and iOS simulator captures are in [docs/screenshots](docs/screenshots), including [expanded Cambridge on desktop](docs/screenshots/desktop-expanded-cambridge.png) and [offline Munich in the native app](docs/screenshots/android-offline-munich.png). The [download manager](docs/screenshots/desktop-downloads.png) and [compact Munich phone view](docs/screenshots/phone-downloaded-area.png) show the new flow. They document visual review, not physical-device or field validation.
 

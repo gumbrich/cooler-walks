@@ -79,13 +79,26 @@ try {
   await page.getByRole('button', { name: 'Edit', exact: true }).click();
   const origin = await page.getByRole('combobox', { name: 'From', exact: true }).inputValue();
   await page.getByRole('button', { name: 'Use my location', exact: true }).click();
-  await device.tap({ text: /Don.t allow/ });
+  await device.tap({ res: 'com.android.permissioncontroller:id/permission_deny_button' });
   await expect(page.getByText(/Location access was unavailable/)).toBeVisible();
   await expect(page.getByRole('combobox', { name: 'From', exact: true })).toHaveValue(origin);
   await device.screenshot({ path: 'docs/screenshots/android-location-denied.png' });
   await device.input.press('Back');
   await expect(page.getByRole('button', { name: 'Edit', exact: true })).toBeVisible();
   passed('Native permission denial preserves the trip; Back closes editing');
+
+  await page.getByRole('combobox', { name: 'Language', exact: true }).selectOption('de');
+  await page.getByRole('button', { name: 'Weg bearbeiten', exact: true }).click();
+  await page.getByRole('checkbox', { name: /Verkehrsberuhigt bevorzugen/ }).check();
+  await expect(page.getByRole('button', { name: /Verkehrsberuhigter Weg/ })).toBeVisible();
+  await expect(page.locator('.route-name').last()).toContainText('+3,0');
+  await device.input.press('Back');
+  await ready(page);
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await device.screenshot({ path: 'docs/screenshots/android-german-calm.png' });
+  await page.getByRole('combobox', { name: 'Sprache', exact: true }).selectOption('en');
+  await expect(page.getByRole('button', { name: /Calmer streets/ })).toBeVisible();
+  passed('German interface and real Zurich calmer route; language switch preserves the trip');
 
   await shell('svc wifi disable');
   await shell('svc data disable');

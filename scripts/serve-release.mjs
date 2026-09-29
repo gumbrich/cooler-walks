@@ -50,7 +50,7 @@ const server = http.createServer((req, res) => {
     res.writeHead(204).end();
     return;
   }
-  if (['/privacy', '/support'].includes(pathname)) {
+  if (['/privacy', '/support', '/de', '/de/privacy', '/de/support'].includes(pathname)) {
     res.writeHead(301, { Location: pathname + '/' }).end();
     return;
   }
@@ -66,7 +66,7 @@ const server = http.createServer((req, res) => {
   if (fs.existsSync(file) && fs.statSync(file).isDirectory()) file = path.join(file, 'index.html');
   let status = 200;
   if (!fs.existsSync(file) || !fs.statSync(file).isFile()) {
-    file = path.join(root, '404.html');
+    file = path.join(root, pathname.startsWith('/de/') ? 'de/404.html' : '404.html');
     status = 404;
   }
   res.setHeader('Content-Type', types[path.extname(file)] ?? 'application/octet-stream');

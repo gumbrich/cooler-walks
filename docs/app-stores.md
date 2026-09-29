@@ -103,3 +103,7 @@ Follow the live [Apple screenshot specifications](https://developer.apple.com/he
 2. Enroll the owning accounts, create protected signing credentials, confirm identifier/versioning, and build signed artifacts.
 3. Complete final-host Android/iOS download and offline tests. Physical-phone testing remains deferred at the user's request; do not call emulator results physical-device validation. iOS permissions, keyboard, long-dialog scrolling and download writes still need full native validation.
 4. Obtain tester feedback, resolve failures and store pre-launch warnings, finish screenshots/feature graphic and submit for review. The web/PWA can launch independently of store approval.
+
+## Version 0.5.0 localization update
+
+Android versionName / iOS marketing version is 0.5.0; native build number is 3. German listing copy is prepared in `release/store-listing.de.json`, with German privacy/help paths. The shared app supports EN/DE; iOS permission descriptions include both localizations. Zurich's calmer-street preference must be described as an experimental street-context indicator, never live traffic/noise avoidance or guaranteed quiet/safe routing. Use new screenshots from the tested build, and retain the existing signing, developer-account and durable-download prerequisites before submission. No store submission is implied by this update.

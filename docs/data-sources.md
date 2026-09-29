@@ -51,6 +51,7 @@ python3 -m venv .venv-geo
 .venv-geo/bin/pip install -r scripts/requirements-geo.txt
 .venv-geo/bin/python scripts/extract-buildings.py
 .venv-geo/bin/python scripts/compact-buildings.py
+npm run data:fetch:traffic
 npm run data:prepare
 npm run data:verify
 ```
@@ -112,3 +113,9 @@ Cambridge now uses the official [City Boundary](https://www.cambridgema.gov/gis/
 Munich adds a fourth northward row to the bounded OSM request grid and three adjacent building tiles. The combined UTM building block is `[690000,5334000,694000,5338000]`. All source tiles must be present and checksum-valid; a missing tile must never be hidden by taking the rectangular union of available tiles. Runtime building coverage is the conservative inscribed WGS84 rectangle recorded in its manifest. All raw files remain ignored.
 
 Preparation commands are unchanged; the Cambridge fetch command additionally obtains/prepares its boundary, and the Munich fetch command obtains/checks all four tiles. Existing immutable sources can be reused. Fetch timestamps and preparation dates are separate from observations; source dates remain historical.
+
+## Zurich traffic zones and street context · 29 September 2026
+
+The derived Zurich v4 bundle adds actual current-status municipal traffic zones (`view_geoserver_zonen_ist`, WGS84 response, CC0), transformed into LV95 metre coordinates and combined with the existing buffered OSM road classes (ODbL). Source: [Verkehrszonen](https://data.stadt-zuerich.ch/dataset/geo_verkehrszonen). Fields checked: `id`, `zonenname`, `zonentyp_technical`, `umgesetzt_datum`, `rechtskraeftig_datum`, `publiziert_vsi_datum` and MultiPolygon geometry. Of 366 records, one null geometry (ID 65) is excluded. Dates missing in individual records remain unknown; catalogue modification and fetch dates are not observation dates. No planned-status speed layer is used.
+
+[traffic.md](traffic.md) records the verified WFS layer, download/preparation commands, street classification, comparison rules, source candidates not yet integrated and a real route example. [traffic-validation.json](traffic-validation.json) records hashes, zone IDs and class totals. Raw GeoJSON remains ignored; compact per-edge classes are distributed with the reproducible derived graph. `npm run data:prepare` requires the fetched traffic zones and now runs the traffic adapter after base Zurich preparation.

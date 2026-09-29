@@ -21,8 +21,9 @@ export const cities: City[] = [
       terrain: false,
       fountains: false,
       water: true,
+      trafficCalming: true,
     },
-    dataVersion: 'zurich-2026-09-29-v3',
+    dataVersion: 'zurich-2026-09-29-v4',
     dataUrl: '/data/zurich.json',
     mapUrl: '/data/zurich-map.geojson',
     providers: ['OpenStreetMap', 'City of Zurich', 'swisstopo'],
@@ -36,8 +37,12 @@ export const cities: City[] = [
     buildingNotes:
       'Actual swisstopo footprints and roof-to-ground heights, simplified to flat-ground extrusions. Historical geometry and roof simplification affect the estimate.',
     sourceSummary:
-      'Fetched 28 September 2026. Building tiles: 2019; tree locations: 2021, prepared 2022. Fetch dates are not observation dates.',
+      'Core data fetched 28 September 2026. Building tiles: 2019; tree locations: 2021, prepared 2022. Current-status traffic zones fetched 29 September 2026. Fetch dates are not observation dates.',
     sources: [
+      {
+        label: 'City of Zurich traffic zones',
+        url: 'https://data.stadt-zuerich.ch/dataset/geo_verkehrszonen',
+      },
       {
         label: 'City of Zurich tree inventory',
         url: 'https://data.stadt-zuerich.ch/dataset/geo_bauminventar',

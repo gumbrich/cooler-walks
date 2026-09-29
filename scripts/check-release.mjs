@@ -20,6 +20,11 @@ for (const entry of catalog) {
 }
 for (const file of [
   'index.html',
+  'de/index.html',
+  'de/privacy/index.html',
+  'de/support/index.html',
+  'de/404.html',
+  'manifest-de.webmanifest',
   'privacy/index.html',
   'support/index.html',
   '404.html',

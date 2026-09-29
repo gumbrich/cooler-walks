@@ -1,13 +1,7 @@
+import { useI18n } from '../i18n';
 import { useEffect, useRef, useState } from 'react';
 import { ArrowRight, Check, Download, Map, Trash2, WifiOff } from 'lucide-react';
-import {
-  areas,
-  areaDownloadURL,
-  bundledAreas,
-  installedStatus,
-  installArea,
-  sizeLabel,
-} from '../lib/areas';
+import { areas, areaDownloadURL, bundledAreas, installedStatus, installArea } from '../lib/areas';
 import { areaStore } from '../lib/area-store';
 import { getCity } from '../lib/cities';
 import { isNativeApp } from '../lib/platform';
@@ -20,6 +14,7 @@ export function AreaDownloads({
   activeId?: string;
   onUse: (area: AreaDescriptor) => void;
 }) {
+  const { t, number } = useI18n();
   const [saved, setSaved] = useState<SavedArea[]>([]);
   const [bundled, setBundled] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
@@ -52,7 +47,7 @@ export function AreaDownloads({
     try {
       await installArea(area, { signal: controller.signal, progress: setProgress });
       await refresh();
-      setMessage(`${area.label} is ready for offline walks.`);
+      setMessage(t('{area} is ready for offline walks.', { area: t(area.label) }));
       // Persistence may be declined by the browser. Never imply a guarantee.
       if (!isNativeApp) void navigator.storage?.persist?.().catch(() => {});
     } catch (error) {
@@ -80,7 +75,9 @@ export function AreaDownloads({
       await areaStore().remove(area.id);
       await refresh();
       setMessage(
-        `${area.label} removed from downloads. Your open walk stays available until you leave it.`,
+        t('{area} removed from downloads. Your open walk stays available until you leave it.', {
+          area: t(area.label),
+        }),
       );
     } catch {
       setFailure(true);
@@ -92,31 +89,35 @@ export function AreaDownloads({
   return (
     <div className="area-manager">
       <span className="eyebrow">
-        <Map size={15} /> Your pocket atlas
+        <Map size={15} />
+        {t(' Your pocket atlas')}
       </span>
       <h2 id="dialog-title">
-        A little preparation.
+        {t('A little preparation.')}
         <br />
-        <em>A lot of exploring.</em>
+        <em>{t('A lot of exploring.')}</em>
       </h2>
       <p>
-        Save a walking area before you go. Its map, paths and environmental data stay together,
-        ready without a connection.
+        {t(
+          'Save a walking area before you go. Its map, paths and environmental data stay together, ready without a connection.',
+        )}
       </p>
       <div className="storage-strip">
         <WifiOff size={19} />
         <span>
           <strong>
             {saved.length
-              ? `${sizeLabel(saved.reduce((n, a) => n + a.bytes, 0))} saved`
-              : 'Ready when you are'}
+              ? t('{size} saved', {
+                  size: `${number(saved.reduce((n, a) => n + a.bytes, 0) / 1e6, 1)} MB`,
+                })
+              : t('Ready when you are')}
           </strong>
           <small>
             {loading
-              ? 'Checking saved maps…'
+              ? t('Checking saved maps…')
               : isNativeApp
-                ? `${bundled.length} areas included in this build`
-                : 'Downloads saved on this browser'}
+                ? t('{count} areas included in this build', { count: bundled.length })
+                : t('Downloads saved on this browser')}
           </small>
         </span>
       </div>
@@ -125,10 +126,10 @@ export function AreaDownloads({
         aria-live="polite"
         className={message ? `download-notice ${failure ? 'is-error' : ''}` : ''}
       >
-        {message}
+        {t(message)}
       </div>
       {loading ? (
-        <p>Checking your maps…</p>
+        <p>{t('Checking your maps…')}</p>
       ) : (
         <div className="area-list">
           {[...areas]
@@ -152,45 +153,53 @@ export function AreaDownloads({
                 >
                   <div className="area-card-top">
                     <span className="eyebrow">
-                      {city.localName} · {city.country}
+                      {city.localName} · {t(city.country)}
                     </span>
                     <span className="area-state">
                       {ready && <Check size={13} />}
                       {status === 'included'
-                        ? 'Included'
+                        ? t('Included')
                         : status === 'saved'
-                          ? 'Saved'
+                          ? t('Saved')
                           : status === 'update'
-                            ? 'Update needed'
-                            : 'Available'}
+                            ? t('Update needed')
+                            : t('Available')}
                     </span>
                   </div>
-                  <h3>{area.label}</h3>
+                  <h3>{t(area.label)}</h3>
                   <p className="area-facts">
-                    {area.areaKm2} km² · {sizeLabel(area.bytes)} download ·{' '}
+                    {number(area.areaKm2, 2)} km² · {number(area.bytes / 1e6, 1)} MB
+                    {t(' download ·')}{' '}
                     {city.capabilities.buildingShade
-                      ? 'Building shade estimates'
-                      : 'Greenery prototype'}
+                      ? t('Building shade estimates')
+                      : t('Greenery prototype')}
                   </p>
                   <details>
-                    <summary>Coverage & source dates</summary>
-                    <p>{area.description}</p>
+                    <summary>{t('Coverage & source dates')}</summary>
+                    <p>{t(area.description)}</p>
                     <p>
-                      Prepared {area.preparedAt.slice(0, 10)}. Observation dates differ by source;
-                      see “Our approach”.{' '}
+                      {t('Prepared ')}
+                      {area.preparedAt.slice(0, 10)}
+                      {t('. Observation dates differ by source; see “Our approach”.')}{' '}
                       {area.bounds
-                        ? 'Routes must stay within this smaller area.'
-                        : 'The map shows the supported boundary.'}{' '}
-                      Tree shade and live closures are not included.
+                        ? t('Routes must stay within this smaller area.')
+                        : t('The map shows the supported boundary.')}{' '}
+                      {t('Tree shade and live closures are not included.')}
                     </p>
                   </details>
                   {downloading && (
                     <div className="download-progress">
-                      <progress aria-label={`Downloading ${area.label}`} max={1} value={progress} />
+                      <progress
+                        aria-label={t('Downloading {area}', { area: t(area.label) })}
+                        max={1}
+                        value={progress}
+                      />
                       <span>
                         {progress >= 0.97
-                          ? 'Saving verified map…'
-                          : `${Math.round(progress * 100)}% · keep this view open`}
+                          ? t('Saving verified map…')
+                          : t('{progress}% · keep this view open', {
+                              progress: Math.round(progress * 100),
+                            })}
                       </span>
                     </div>
                   )}
@@ -201,7 +210,7 @@ export function AreaDownloads({
                         disabled={!!working}
                         onClick={() => onUse(area)}
                       >
-                        {active ? 'Open this area' : 'Use this area'} <ArrowRight size={16} />
+                        {active ? t('Open this area') : t('Use this area')} <ArrowRight size={16} />
                       </button>
                     ) : downloading ? (
                       <button
@@ -209,7 +218,7 @@ export function AreaDownloads({
                         disabled={progress >= 0.97}
                         onClick={() => request.current?.abort()}
                       >
-                        Cancel download
+                        {t('Cancel download')}
                       </button>
                     ) : (
                       <button
@@ -218,14 +227,14 @@ export function AreaDownloads({
                         onClick={() => void download(area)}
                       >
                         <Download size={16} />
-                        {status === 'update' ? 'Update area' : 'Download area'}
+                        {status === 'update' ? t('Update area') : t('Download area')}
                       </button>
                     )}
                     {(status === 'saved' || status === 'update') && (
                       <button
                         className="area-remove"
                         disabled={!!working}
-                        aria-label={`Remove ${area.label} download`}
+                        aria-label={t('Remove {area} download', { area: t(area.label) })}
                         onClick={() => void remove(area)}
                       >
                         <Trash2 size={17} />
@@ -234,8 +243,9 @@ export function AreaDownloads({
                   </div>
                   {!ready && !available && (
                     <p className="area-unavailable">
-                      This development build needs a download service configured. Included areas
-                      remain available.
+                      {t(
+                        'This development build needs a download service configured. Included areas remain available.',
+                      )}
                     </p>
                   )}
                 </article>
@@ -244,11 +254,13 @@ export function AreaDownloads({
         </div>
       )}
       <p className="small-copy">
-        Downloads contain public map data, never your journey history.{' '}
+        {t('Downloads contain public map data, never your journey history.')}{' '}
         {isNativeApp
-          ? 'Included areas are part of the app and cannot be removed here.'
-          : 'Browsers may clear saved maps when storage is low. Recently opened maps may also remain in the browser cache.'}{' '}
-        Source updates are reviewed and released with compatible app versions.
+          ? t('Included areas are part of the app and cannot be removed here.')
+          : t(
+              'Browsers may clear saved maps when storage is low. Recently opened maps may also remain in the browser cache.',
+            )}{' '}
+        {t('Source updates are reviewed and released with compatible app versions.')}
       </p>
     </div>
   );

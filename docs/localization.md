@@ -1,0 +1,9 @@
+# English and German
+
+The React interface uses `src/i18n/index.tsx` and `src/i18n/de.json`. English source messages are keys; dynamic messages use named placeholders. UI language is independent of city, route-local IANA time zone and metric/imperial selection. Names such as Bürkliplatz remain source place names.
+
+Selection order: explicit `?lang=en|de`, `/de/` path, locally saved `cw-language`, then German browser language or English fallback. The EN/DE control changes the interface immediately and remembers the choice; it preserves endpoints, stops, route preference, selected route, detour, date and units. German numeric display uses `de-DE`; the Swiss pilot copy uses Swiss spelling. Local-time input is unchanged, including DST rejection. The browser's native date-picker rendering may follow the browser locale independently.
+
+The public German entry is `/de/`; direct planning is `/de/?view=planner`. Help and privacy at `/de/support/` and `/de/privacy/` are actual static HTML, usable without JavaScript and cached offline. Native links explicitly use `index.html` for Capacitor compatibility. Canonical/hreflang metadata distinguishes language pages. German manifest text/start URL shares app ID `/` with English, so it remains one installable app. Native iOS permission text includes English and German resources; Android's OS permission UI follows device language.
+
+To add a language, introduce a dictionary, extend the typed language selection and URL mapping, provide static help/privacy and manifest translations, and add equivalent tests. Do not translate technical identifiers, city IDs, enum values, source URLs or calculation inputs. Tests enforce city-fact/message coverage and placeholder consistency; browser tests verify interpolation, real routing, language switching, responsive layouts, source explanations and error recovery. Native/store descriptions remain draft distribution assets until signing and submission are completed.

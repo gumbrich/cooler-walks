@@ -1,6 +1,7 @@
 import type { Edge, PilotData, Point, City, Route, RouteResult, Sample } from './types';
 import { distance, geographic, gridAzimuth, inBounds, inside, metric, rayHits } from './geo';
 import { solar, shadowVector } from './solar';
+import { isCalmed, MIN_TRAFFIC_COVERAGE, TRAFFIC_MODEL } from './traffic';
 import { WaterIndex } from './water';
 import { inCoverage, segmentInCoverage } from './coverage';
 
@@ -226,7 +227,13 @@ export class Router {
     waypoints: Point[] = [],
     preferWater = false,
     sunlight: 'shade' | 'sun' = 'shade',
+    preferCalm = false,
   ): RouteResult {
+    if (
+      preferCalm &&
+      (!this.city.capabilities.trafficCalming || this.data.trafficModel !== TRAFFIC_MODEL)
+    )
+      throw new Error('Calmer-street data is unavailable for this area.');
     if (waypoints.length > MAX_WAYPOINTS) throw new Error('Choose up to three stops.');
     if (preferWater && (!this.city.capabilities.water || !this.data.water.length))
       throw new Error('Water proximity is unavailable in this pilot.');
@@ -320,6 +327,7 @@ export class Router {
           exposure,
           green,
           water: this.water.near(pt),
+          traffic: e.traffic?.[i] ?? 'unknown',
         });
       }
       edgeSamples.set(index, samples);
@@ -355,6 +363,9 @@ export class Router {
         shadeMeters: sum((s) => s.exposure === 'shade'),
         sunMeters: sum((s) => s.exposure === 'sun'),
         unknownMeters: sum((s) => s.exposure === 'unknown'),
+        majorRoadMeters: sum((s) => s.traffic === 'major'),
+        calmedMeters: sum((s) => isCalmed(s.traffic)),
+        trafficUnknownMeters: sum((s) => s.traffic === 'unknown'),
       };
     };
     const fastest = buildRoute(
@@ -400,7 +411,15 @@ export class Router {
             const favorable = sample(i).reduce(
               (v, s) =>
                 v +
-                ((preferWater ? s.water : mode === 'shade' ? s.exposure === sunlight : s.green)
+                ((
+                  preferCalm
+                    ? s.traffic !== 'major' && s.traffic !== 'unknown'
+                    : preferWater
+                      ? s.water
+                      : mode === 'shade'
+                        ? s.exposure === sunlight
+                        : s.green
+                )
                   ? s.meters
                   : 0),
               0,
@@ -410,6 +429,21 @@ export class Router {
           `option-${candidates.length}`,
         );
         if (distinct(r)) candidates.push(r);
+      }
+    }
+    if (extra > 0 && preferCalm) {
+      for (const emphasis of [0.2, 0.6, 1.5]) {
+        const candidate = buildRoute(
+          throughStops((edge, index) => {
+            const good = sample(index).reduce(
+              (sum, item) => sum + (isCalmed(item.traffic) ? item.meters : 0),
+              0,
+            );
+            return edge.length * emphasis + edge.length - good;
+          }),
+          `option-${candidates.length}`,
+        );
+        if (distinct(candidate)) candidates.push(candidate);
       }
     }
     // Every segment remains inside configured coverage; missing data cannot improve a score.
@@ -422,8 +456,14 @@ export class Router {
       );
     const covered = (r: Route) => 1 - r.unknownMeters / r.distance >= MIN_SHADE_COVERAGE;
     const shade = mode === 'shade' && covered(fastest);
+    const trafficCovered = (r: Route) =>
+      1 - r.trafficUnknownMeters / r.distance >= MIN_TRAFFIC_COVERAGE;
+    const trafficCost = (r: Route) => r.majorRoadMeters + r.trafficUnknownMeters;
     const eligible = candidates.filter(
-      (r) => valid(r) && r.minutes <= fastest.minutes + extra + 1e-9 && (shade ? covered(r) : true),
+      (r) =>
+        valid(r) &&
+        r.minutes <= fastest.minutes + extra + 1e-9 &&
+        (preferCalm ? trafficCovered(fastest) && trafficCovered(r) : shade ? covered(r) : true),
     );
     // Require a material improvement and a genuinely different path (at least 10% new length).
     const better = eligible.filter((r) => {
@@ -439,27 +479,36 @@ export class Router {
         );
       return (
         novel / r.distance >= 0.1 &&
-        (preferWater
-          ? r.waterMeters / r.distance - fastest.waterMeters / fastest.distance >= 0.03
-          : sunlight === 'sun'
-            ? shade &&
-              r.sunMeters / r.distance -
-                (fastest.sunMeters + fastest.unknownMeters) / fastest.distance >=
-                0.03
-            : shade
-              ? fastest.sunMeters - (r.sunMeters + r.unknownMeters) >= 40
-              : r.greenMeters / r.distance - fastest.greenMeters / fastest.distance >= 0.03)
+        (preferCalm
+          ? fastest.majorRoadMeters - trafficCost(r) >= 40 ||
+            (trafficCost(r) <= fastest.majorRoadMeters + 1e-9 &&
+              r.calmedMeters / r.distance -
+                (fastest.calmedMeters + fastest.trafficUnknownMeters) / fastest.distance >=
+                0.03)
+          : preferWater
+            ? r.waterMeters / r.distance - fastest.waterMeters / fastest.distance >= 0.03
+            : sunlight === 'sun'
+              ? shade &&
+                r.sunMeters / r.distance -
+                  (fastest.sunMeters + fastest.unknownMeters) / fastest.distance >=
+                  0.03
+              : shade
+                ? fastest.sunMeters - (r.sunMeters + r.unknownMeters) >= 40
+                : r.greenMeters / r.distance - fastest.greenMeters / fastest.distance >= 0.03)
       );
     });
     better.sort(
       (x, y) =>
-        (preferWater
-          ? y.waterMeters / y.distance - x.waterMeters / x.distance
-          : sunlight === 'sun'
-            ? y.sunMeters / y.distance - x.sunMeters / x.distance
-            : shade
-              ? x.sunMeters + x.unknownMeters - (y.sunMeters + y.unknownMeters)
-              : y.greenMeters / y.distance - x.greenMeters / x.distance) || x.minutes - y.minutes,
+        (preferCalm
+          ? trafficCost(x) - trafficCost(y) ||
+            y.calmedMeters / y.distance - x.calmedMeters / x.distance
+          : preferWater
+            ? y.waterMeters / y.distance - x.waterMeters / x.distance
+            : sunlight === 'sun'
+              ? y.sunMeters / y.distance - x.sunMeters / x.distance
+              : shade
+                ? x.sunMeters + x.unknownMeters - (y.sunMeters + y.unknownMeters)
+                : y.greenMeters / y.distance - x.greenMeters / x.distance) || x.minutes - y.minutes,
     );
     return {
       fastest,
@@ -473,7 +522,13 @@ export class Router {
       waypoints: stops
         .slice(1, -1)
         .map((stop) => ({ point: this.data.nodes[stop.index].point, snap: stop.meters })),
-      preference: preferWater ? 'water' : sunlight === 'sun' ? 'sun' : 'environment',
+      preference: preferCalm
+        ? 'calm'
+        : preferWater
+          ? 'water'
+          : sunlight === 'sun'
+            ? 'sun'
+            : 'environment',
       departure,
     };
   }

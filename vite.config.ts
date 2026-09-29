@@ -13,7 +13,14 @@ export default defineConfig({
   build: {
     target: 'es2022',
     rollupOptions: {
-      input: { main: 'index.html', privacy: 'privacy/index.html', support: 'support/index.html' },
+      input: {
+        main: 'index.html',
+        privacy: 'privacy/index.html',
+        support: 'support/index.html',
+        german: 'de/index.html',
+        privacyDe: 'de/privacy/index.html',
+        supportDe: 'de/support/index.html',
+      },
     },
   },
   server: { port: 5173, strictPort: true },

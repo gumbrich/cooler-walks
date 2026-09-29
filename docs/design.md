@@ -39,3 +39,11 @@ Native apps open directly to the planner, share the same icon and launch artwork
 ## Offline atlas
 
 The download manager extends the same paper/forest palette and serif headline, with city-labelled cards, readable pack sizes and explicit saved/included states. Coverage and source details expand in place. Native and browser downloads share progress, cancellation, recovery and removal controls with 44 px targets. The compact Munich area uses the ordinary map and route comparison; its smaller boundary is visible and labelled. Actual desktop, phone, tablet error-state and native Android screenshots were inspected. Checks include the dialog's automated accessibility scan, a downloaded-area map render and preservation of the open walk after removal.
+
+## German and calmer-street mode
+
+A compact EN/DE select sits beside the city selector on desktop and phone. It changes interface text and numeric formatting without moving the map or resetting the trip. German copy wraps naturally in controls, source dialogs and comparisons; route-local time stays explicit. Public German pages retain the same typography and spacing, with their own metadata and links.
+
+The Zurich calmer-street control uses an olive accent and a labelled street-cone icon. The selected comparison leads with metres near mapped main roads. Its bar shows known distance away from main roads over the whole route; a secondary line separates official calmed streets/path share from that main-road measure. Map amber dots become main-road proximity **only in this mode**, and the legend changes with them; outlined unknown dots and route selection casing remain distinct. The time helper states that street context is static. Water and calmer-street priorities are exclusive, and their limits are explained where selected.
+
+Desktop/phone German entry and route screenshots, tablet unsupported/error states and native captures are retained with the existing English set. Screenshot inspection corrected placeholder interpolation, a German-only map conditional and clipping of the hidden skip link in full-page captures; keyboard focus keeps the skip link available.

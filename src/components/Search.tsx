@@ -1,3 +1,4 @@
+import { useI18n } from '../i18n';
 import { useId, useState } from 'react';
 import { MapPin, Search as SearchIcon } from 'lucide-react';
 import type { Place, Point } from '../lib/types';
@@ -7,17 +8,20 @@ export interface Endpoint {
 }
 export function PlaceSearch({
   label,
+  cityName,
   value,
   places,
   onChange,
   onPick,
 }: {
   label: string;
+  cityName: string;
   value: Endpoint | null;
   places: Place[];
   onChange: (v: Endpoint | null) => void;
   onPick: () => void;
 }) {
+  const { t } = useI18n();
   const id = useId(),
     [query, setQuery] = useState(value?.name ?? ''),
     [open, setOpen] = useState(false),
@@ -43,10 +47,10 @@ export function PlaceSearch({
           aria-autocomplete="list"
           aria-activedescendant={open && options.length ? `${id}-${cursor}` : undefined}
           autoComplete="off"
-          placeholder="Search pilot streets & places"
-          value={open ? query : (value?.name ?? query)}
+          placeholder={t('Search pilot streets & places')}
+          value={open ? query : value ? t(value.name) : query}
           onFocus={() => {
-            setQuery(value?.name ?? query);
+            setQuery(value ? t(value.name) : query);
             setOpen(true);
             setCursor(0);
           }}
@@ -76,7 +80,7 @@ export function PlaceSearch({
         <button
           type="button"
           className="map-pick"
-          aria-label={`Choose ${label.toLowerCase()} on map`}
+          aria-label={t('Choose {label} on map', { label: label.toLowerCase() })}
           onClick={() => {
             setOpen(false);
             onPick();
@@ -97,14 +101,16 @@ export function PlaceSearch({
                 <MapPin size={15} />
                 <span>
                   {p.name}
-                  <small>{p.kind} · Zurich</small>
+                  <small>
+                    {t(p.kind)} · {cityName}
+                  </small>
                 </span>
               </button>
             </li>
           ))}
           {!options.length && (
             <li className="search-empty">
-              No match in this pilot. Search a central Zurich street or choose a point on the map.
+              {t('No match in this pilot. Search another street or choose a point on the map.')}
             </li>
           )}
         </ul>

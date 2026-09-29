@@ -1,3 +1,4 @@
+import { useI18n } from '../i18n';
 import { useEffect, useRef, useState } from 'react';
 import * as maplibregl from 'maplibre-gl';
 import { type GeoJSONSource, type Map as LibreMap } from 'maplibre-gl';
@@ -41,6 +42,7 @@ export function WalkingMap({
   onCoverage,
   hero = false,
 }: Props) {
+  const { t } = useI18n();
   const container = useRef<HTMLDivElement>(null),
     map = useRef<LibreMap | null>(null),
     callbacks = useRef({ pick, onPick, onSelect });
@@ -398,10 +400,19 @@ export function WalkingMap({
     const chosen = routes.find((r) => r.id === selected);
     (m.getSource('exposure') as GeoJSONSource).setData(
       collection(
-        chosen && result?.mode === 'shade'
+        chosen && (result?.mode === 'shade' || result?.preference === 'calm')
           ? chosen.samples.map((s) => ({
               type: 'Feature',
-              properties: { exposure: s.exposure },
+              properties: {
+                exposure:
+                  result?.preference === 'calm'
+                    ? s.traffic === 'major'
+                      ? 'sun'
+                      : s.traffic === 'unknown'
+                        ? 'unknown'
+                        : 'shade'
+                    : s.exposure,
+              },
               geometry: { type: 'Point', coordinates: s.point },
             }))
           : [],
@@ -417,10 +428,10 @@ export function WalkingMap({
           el.setAttribute(
             'aria-label',
             isEnd
-              ? 'Destination on walking network'
+              ? t('Destination on walking network')
               : i
-                ? `Stop ${i} on walking network`
-                : 'Start on walking network',
+                ? t('Stop {n} on walking network', { n: i })
+                : t('Start on walking network'),
           );
           markers.current.push(new maplibregl.Marker({ element: el }).setLngLat(p).addTo(m));
         },
@@ -430,7 +441,7 @@ export function WalkingMap({
       markers.current.forEach((marker) => marker.remove());
       markers.current = [];
     };
-  }, [result, selected, ready]);
+  }, [result, selected, ready, t]);
   const tripKey = result
     ? `${result.start.join(',')}:${result.waypoints.map((stop) => stop.point.join(',')).join(':')}:${result.end.join(',')}`
     : '';
@@ -479,33 +490,39 @@ export function WalkingMap({
         ref={container}
         className="map-canvas"
         role="region"
-        aria-label={`${city.name} walking map. Use the labelled search controls to plan without the map.`}
+        aria-label={t(
+          '{city} walking map. Use the labelled search controls to plan without the map.',
+          { city: t(city.name) },
+        )}
       />
       {failure && (
         <div className="map-failure" role="status">
-          {failure}
+          {t(failure)}
         </div>
       )}
       {!hero && (
         <>
           <div className="map-location">
-            <span className="eyebrow">{city.country}</span>
+            <span className="eyebrow">{t(city.country)}</span>
             <strong>{city.localName}</strong>
-            <span>{city.coverageLabel} · pilot</span>
+            <span>
+              {t(city.coverageLabel)}
+              {t(' · pilot')}
+            </span>
           </div>
           <div className="map-tools">
-            <button aria-label="Zoom in" onClick={() => map.current?.zoomIn()}>
+            <button aria-label={t('Zoom in')} onClick={() => map.current?.zoomIn()}>
               <Plus size={19} />
             </button>
-            <button aria-label="Zoom out" onClick={() => map.current?.zoomOut()}>
+            <button aria-label={t('Zoom out')} onClick={() => map.current?.zoomOut()}>
               <Minus size={19} />
             </button>
-            <button aria-label="Fit route to map" onClick={() => fit()}>
+            <button aria-label={t('Fit route to map')} onClick={() => fit()}>
               <LocateFixed size={19} />
             </button>
             <button
-              aria-label="Show whole coverage"
-              title="Show whole coverage"
+              aria-label={t('Show whole coverage')}
+              title={t('Show whole coverage')}
               onClick={() => {
                 if (!showCoverage) onCoverage();
                 map.current?.fitBounds(city.bounds, {
@@ -522,7 +539,7 @@ export function WalkingMap({
               <Scan size={19} />
             </button>
             <button
-              aria-label="Toggle coverage boundary"
+              aria-label={t('Toggle coverage boundary')}
               aria-pressed={showCoverage}
               onClick={onCoverage}
             >
@@ -533,7 +550,11 @@ export function WalkingMap({
       )}
       {pick && (
         <div className="pick-notice">
-          Tap a public path to set your {pick === 'end' ? 'destination' : pick}.
+          {pick === 'end'
+            ? t('Tap a public path to set your destination.')
+            : pick === 'start'
+              ? t('Tap a public path to set your start.')
+              : t('Tap a public path to set stop {n}.', { n: pick.replace('stop ', '') })}
         </div>
       )}
       <div className="map-north" aria-hidden="true">
@@ -544,23 +565,23 @@ export function WalkingMap({
         <div className="map-legend">
           <span>
             <i className="legend-line" />
-            Selected walk
+            {t('Selected walk')}
           </span>
-          {result?.mode === 'shade' ? (
+          {result?.mode === 'shade' || result?.preference === 'calm' ? (
             <>
               <span>
                 <i className="legend-sun" />
-                Direct sun
+                {t(result?.preference === 'calm' ? 'Close to main roads' : 'Direct sun')}
               </span>
               <span>
                 <i className="legend-unknown" />
-                Unknown
+                {t('Unknown')}
               </span>
             </>
           ) : (
             <span>
               <i className="legend-tree" />
-              Recorded tree
+              {t('Recorded tree')}
             </span>
           )}
         </div>

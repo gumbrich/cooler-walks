@@ -40,25 +40,28 @@ export function publicPageHtml(html, filename, config = readSiteConfig()) {
   const draft =
     siteProblems(config).length > 0 ||
     (process.env.CONTEXT && process.env.CONTEXT !== 'production');
-  const route = filename.includes('/privacy/')
-    ? '/privacy/'
-    : filename.includes('/support/')
-      ? '/support/'
-      : '/';
+  const german = /[\/]de[\/]/.test(filename);
+  const route =
+    (german ? '/de' : '') +
+    (filename.includes('/privacy/')
+      ? '/privacy/'
+      : filename.includes('/support/')
+        ? '/support/'
+        : '/');
   const contact =
     config.supportEmail && /^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/.test(config.supportEmail)
       ? `<a href="mailto:${escapeHtml(config.supportEmail)}">${escapeHtml(config.supportEmail)}</a>`
       : 'Support contact will be published before launch.';
   const host =
     config.hostingProvider && httpsUrl(config.hostingPrivacyUrl)
-      ? `<a href="${escapeHtml(config.hostingPrivacyUrl)}" rel="noreferrer">${escapeHtml(config.hostingProvider)} privacy notice</a>`
+      ? `<a href="${escapeHtml(config.hostingPrivacyUrl)}" rel="noreferrer">${escapeHtml(config.hostingProvider)} ${german ? 'Datenschutzhinweise' : 'privacy notice'}</a>`
       : 'The hosting provider will be identified here before launch.';
   return html
     .replace(
       '<!--CW:META-->',
       draft
         ? '<meta name="robots" content="noindex, nofollow" />'
-        : `<link rel="canonical" href="${escapeHtml(new URL(route, config.siteUrl).href)}" />`,
+        : `<link rel="canonical" href="${escapeHtml(new URL(route, config.siteUrl).href)}" /><link rel="alternate" hreflang="en" href="${escapeHtml(new URL(route.replace(/^\/de/, '') || '/', config.siteUrl).href)}" /><link rel="alternate" hreflang="de" href="${escapeHtml(new URL('/de' + (route.replace(/^\/de/, '') || '/'), config.siteUrl).href)}" />`,
     )
     .replaceAll(
       '<!--CW:DRAFT-->',
@@ -75,7 +78,7 @@ export function publicPageHtml(html, filename, config = readSiteConfig()) {
     .replaceAll(
       '<!--CW:HOST-DETAILS-->',
       escapeHtml(
-        config.hostingDetails ||
+        (german ? config.hostingDetailsDe : config.hostingDetails) ||
           'Hosting retention and any provider analytics must be confirmed before publication.',
       ),
     );

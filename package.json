@@ -1,6 +1,6 @@
 {
   "name": "cooler-walks",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "private": true,
   "type": "module",
   "engines": {
@@ -12,7 +12,7 @@
     "preview": "vite preview --host 127.0.0.1",
     "test": "vitest run",
     "check": "tsc -b && vitest run",
-    "data:prepare": "tsx scripts/prepare-data.ts",
+    "data:prepare": "tsx scripts/prepare-data.ts && npm run data:prepare:traffic",
     "data:verify": "tsx scripts/verify-data.ts && tsx scripts/verify-cities.ts && tsx scripts/verify-coverage.ts",
     "data:audit-trees": "tsx scripts/audit-trees.ts",
     "test:e2e": "playwright test",
@@ -43,7 +43,9 @@
     "native:bundle:unsigned": "node scripts/native-build.mjs android-bundle-unsigned",
     "native:bundle": "npm run native:sync && npm run release:check -- --native && node scripts/native-build.mjs android-bundle",
     "native:archive:unsigned": "node scripts/native-build.mjs ios-archive-unsigned",
-    "native:archive": "npm run native:sync && npm run release:check -- --native && node scripts/native-build.mjs ios-archive"
+    "native:archive": "npm run native:sync && npm run release:check -- --native && node scripts/native-build.mjs ios-archive",
+    "data:fetch:traffic": "node scripts/fetch-traffic.mjs",
+    "data:prepare:traffic": "tsx scripts/prepare-traffic.ts"
   },
   "dependencies": {
     "@capacitor/android": "^8.5.2",

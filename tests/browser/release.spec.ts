@@ -37,7 +37,7 @@ test('release pages meet accessibility checks and stay within the phone viewport
   page,
 }) => {
   await page.setViewportSize({ width: 390, height: 844 });
-  for (const route of ['/support/', '/privacy/']) {
+  for (const route of ['/support/', '/privacy/', '/de/support/', '/de/privacy/']) {
     await page.goto(route);
     expect(
       (await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze())
@@ -82,4 +82,40 @@ test('planner runs under production CSP and offline privacy navigation stays on 
   await page.goto('/not-a-page');
   await expect(page.getByRole('heading', { name: 'This path ends here.' })).toBeVisible();
   await page.screenshot({ path: 'docs/screenshots/tablet-release-404.png', fullPage: true });
+});
+
+test('German public pages work without JavaScript and offline navigation stays German', async ({
+  browser,
+  page,
+  context,
+  baseURL,
+}) => {
+  const noScript = await browser.newContext({ javaScriptEnabled: false, baseURL });
+  const publicPage = await noScript.newPage();
+  await publicPage.goto('/de/support/');
+  await expect(
+    publicPage.getByRole('heading', { name: 'Wie funktionieren verkehrsberuhigte Wege?' }),
+  ).toBeVisible();
+  await publicPage.getByRole('link', { name: 'Datenschutz', exact: true }).click();
+  await expect(
+    publicPage.getByRole('heading', { name: 'Der Standort bleibt deine Entscheidung' }),
+  ).toBeVisible();
+  await noScript.close();
+  await page.goto('/de/?view=planner');
+  await expect(page.locator('.route-card').first()).toBeVisible();
+  await page.evaluate(async () => {
+    await navigator.serviceWorker.ready;
+  });
+  await expect.poll(() => page.evaluate(() => !!navigator.serviceWorker.controller)).toBe(true);
+  await context.setOffline(true);
+  await page.reload();
+  await expect(page.locator('.route-card').first()).toBeVisible();
+  await expect(page.locator('html')).toHaveAttribute('lang', 'de');
+  await page.goto('/de/privacy/');
+  await expect(
+    page.getByRole('heading', { name: 'Der Standort bleibt deine Entscheidung' }),
+  ).toBeVisible();
+  await context.setOffline(false);
+  await page.goto('/de/not-a-page');
+  await expect(page.getByRole('heading', { name: 'Hier endet dieser Weg.' })).toBeVisible();
 });
