@@ -23,6 +23,8 @@ whois -h whois.nic.ch -p 4343 coolerwalks.ch
 
 The registry [documents code 1 as available for registration](https://www.nic.ch/whois/domaincheck/). This is an availability check, not a reservation or a purchase. Recheck at checkout, including renewal price and taxes. `coolerwalks.com` and `coolerwalks.app` also returned RDAP 404/no registration record earlier that day, but their registrar availability and price were not confirmed. `.ch` is the user's preferred candidate. It does not change the app's international scope.
 
+Registration started in Infomaniak's browser checkout on 29 September. The basket contains only `coolerwalks.ch`, with the optional Domain Plus add-on removed. Before account/address verification, the displayed first-year price was **EUR 6 excluding tax**; the final tax, renewal price and renewal settings still need checking. The supplied email was accepted for account setup, which requires the owner's name, password and verification. Netlify also requires sign-in. No account creation, domain purchase, payment, DNS change or public deployment has been confirmed. Credentials and verification codes should be entered directly in the provider's browser, never recorded here.
+
 ## Prepare locally
 
 ```sh

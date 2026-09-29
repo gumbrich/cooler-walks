@@ -4,6 +4,10 @@
 
 Added Netlify build configuration, a locally checked upload archive, security/cache/CORS headers, real 404s, hosted smoke checks and standalone privacy/help pages. The provided support email is configured. SWITCH's official Domain Check confirms `coolerwalks.ch` could be registered on 29 September 2026. No domain is reserved or purchased. The hosting guide explains the current 31 MB Cambridge asset constraint and durable retention of native map packs.
 
+Registration is now started: Infomaniak's basket contains only `coolerwalks.ch`, with paid add-ons removed and a provisional EUR 6 first-year price excluding tax. Account creation and Netlify sign-in require the owner to finish the browser steps. No payment, DNS change or deployment has occurred. The website remains available in the local preview.
+
+The pre-launch check uncovered Linux browser-test failures. Full Chromium and request interception installed before page loading resolve them without removing assertions or screenshots. [Complete CI validation passed](https://github.com/gumbrich/cooler-walks/actions/runs/36614132370) on `ac58a9a`, including all twelve browser scenarios; Android and iOS builds passed for that revision too.
+
 Prepared Android upload-key signing and unsigned AAB builds, iOS archive commands, private CI artifacts, listing copy and current store submission instructions. Public deployment remains intentionally blocked until the owned domain and actual host privacy details are filled. Store enrollment, signing and final hosted testing remain separate steps. See [hosting.md](hosting.md) and [app-stores.md](app-stores.md).
 
 Release checks passed locally: 45 unit/model checks, three production-style browser scenarios (CSP, no-JavaScript help/privacy, accessibility, 200% text and offline privacy navigation), five served pack checksums/CORS checks, and three Android public-page navigation checks. Actual phone/desktop/tablet screenshots are included. Android AAB and iOS unsigned archive packaging also passed CI. Emulator testing exposed and fixed Capacitor's folder-URL fallback for the new pages; explicit bundled HTML links now return to the working planner.
