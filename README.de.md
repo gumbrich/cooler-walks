@@ -4,9 +4,11 @@ Ein Atlas für bessere Fusswege: echte Routen, mehr Grün, Wassernähe, geschät
 
 **Öffnen:** [Deutsche Website](https://coolerwalks.ch/de/) · [Direkt zum Planer](https://coolerwalks.ch/de/?view=planner) · [English / technische Dokumentation](README.md)
 
-**Validierung zuerst:** Weitere Funktionen und die Erweiterung der Abdeckung pausieren. Unabhängige Rechenprüfungen bestehen; Unterschiede zwischen den Dach-Datenquellen und echte Schattenbeobachtungen mit Zeitangabe sind noch zu klären. [Prüfergebnisse](docs/shadow-validation.md).
+**Validierungsstand:** Das Verkehrsmodell wird weiterentwickelt. Schatten und Verkehr werden später vor Ort geprüft; beide bleiben experimentell. Offene Dach-Datenunterschiede und Schattenbeobachtungen bleiben zu klären, die Schattenabdeckung wird vorerst nicht erweitert. [Prüfergebnisse](docs/shadow-validation.md).
 
 Die [aktuelle Untersuchung](docs/shadow-validation-followup.md) prüft alle 26 auffälligen Dachpunkte anhand der ursprünglichen LiDAR-Messpunkte sowie 14 Foto-Originale und deren Zeitangaben. Drei Fotos kommen für weitere Prüfungen infrage; ein vorläufiger Widerspruch am Münsterhof bleibt offen. Die Genauigkeit im Freien ist damit noch nicht bestätigt.
+
+**Verkehr 0.11.0:** separate Wege und verkehrsbeschränkte Strassen werden von Tempo-30- und Begegnungszonen unterschieden. Verglichen werden absolute Strecken; historische Zählwerte beziehen sich auf die geschätzte Vorbeigehzeit. [Methode und Vor-Ort-Plan](docs/traffic.md).
 
 **Zürich ist unser Schwerpunkt:** 57,77 km² mit Oerlikon, Altstetten, Höngg, dem Zentrum, Wiedikon und Seefeld. Basel (10,25 km²), München (8,90 km²) und Cambridge, Massachusetts (18,46 km²) bleiben **Beta**. Die Karte zeigt die tatsächliche Grenze. Zürich und München bieten experimentelle Gebäudeschattenschätzungen; Cambridge und Basel Grün- und Wassernähe. Baumschatten, Geländeschatten, Wetter und Live-Navigation sind nicht enthalten.
 

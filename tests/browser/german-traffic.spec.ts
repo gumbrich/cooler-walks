@@ -25,8 +25,14 @@ test('German entry, calmer streets and language switching preserve the trip', as
     useInnerText: true,
   });
   await page.locator('.results').scrollIntoViewIfNeeded();
+  await page.locator('.traffic-profile > summary').focus();
+  await page.keyboard.press('Enter');
+  await expect(page.locator('.traffic-profile')).toHaveAttribute('open', '');
+  await expect(page.locator('.traffic-profile')).toContainText('Tempo-30-Strassen');
+  await expect(page.locator('.traffic-profile')).toContainText('Vor-Ort-Prüfung steht aus');
   await expect(page.locator('.map-shell')).toHaveAttribute('data-map-settled', 'true');
   await page.screenshot({ path: 'docs/screenshots/desktop-german-calm.png', fullPage: true });
+  await page.screenshot({ path: 'docs/screenshots/desktop-traffic-v2.png', fullPage: true });
   expect(
     (await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze())
       .violations,
@@ -51,8 +57,17 @@ test('German phone and tablet layouts, controls, downloads and error recovery', 
   await expect(page.getByRole('button', { name: /Verkehrsberuhigter Weg/ })).toBeVisible();
   await page.screenshot({ path: 'docs/screenshots/phone-german-editor.png', fullPage: true });
   await page.getByRole('button', { name: 'Meinen Weg anzeigen' }).click();
+  await page.locator('.traffic-profile > summary').click();
+  await expect(page.locator('.traffic-profile')).toContainText(
+    'Wege & verkehrsbeschränkte Strassen',
+  );
   await expect(page.locator('.map-shell')).toHaveAttribute('data-map-settled', 'true');
   await page.screenshot({ path: 'docs/screenshots/phone-german-calm.png', fullPage: true });
+  await page.screenshot({ path: 'docs/screenshots/phone-traffic-v2.png', fullPage: true });
+  await page.setViewportSize({ width: 768, height: 1024 });
+  await page.locator('.traffic-profile').scrollIntoViewIfNeeded();
+  await page.screenshot({ path: 'docs/screenshots/tablet-traffic-v2.png', fullPage: true });
+  await page.setViewportSize({ width: 390, height: 844 });
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   await page.locator('.downloads-link').click();
   await expect(page.locator('.area-list')).toBeVisible();

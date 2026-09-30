@@ -1,3 +1,4 @@
+import { version as appVersion } from '../package.json';
 import { useI18n } from './i18n';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import {
@@ -36,6 +37,8 @@ import { getArea, readSavedAreaBytes, bundledAreas } from './lib/areas';
 import { cityForArea } from './lib/area-specs';
 import { AreaDownloads } from './components/AreaDownloads';
 import { TrafficCounts } from './components/TrafficCounts';
+import { TrafficProfile } from './components/TrafficProfile';
+import { trafficCost } from './lib/traffic';
 import { nearbyCounts } from './lib/vehicle-counts';
 
 type InstallEvent = Event & {
@@ -545,8 +548,10 @@ export default function App() {
           <span>
             <strong>{formatDistance(route.majorRoadMeters, units, locale)}</strong>
             {t(' near main roads ·')}{' '}
-            <strong>{Math.round((route.calmedMeters / route.distance) * 100)}%</strong>
-            {t(' calmer streets & paths')}
+            <strong>
+              {Math.round(((route.distance - trafficCost(route).motor) / route.distance) * 100)}%
+            </strong>
+            {t(' paths & restricted streets')}
           </span>
         </div>
       )}
@@ -1080,7 +1085,9 @@ export default function App() {
                       <TrafficCone size={21} />
                       <span>
                         <strong>{t('Prefer calmer streets')}</strong>
-                        <small>{t('Traffic-calmed zones and paths away from main roads')}</small>
+                        <small>
+                          {t('Less walking beside main roads and on motor-access streets')}
+                        </small>
                       </span>
                       <input
                         type="checkbox"
@@ -1242,11 +1249,13 @@ export default function App() {
                         )}
                     </>
                   )}
+                  {chosen && result?.preference === 'calm' && city.capabilities.trafficCalming && (
+                    <TrafficProfile route={chosen} units={units} />
+                  )}
                   {chosen && result && data?.vehicleCounts && city.capabilities.vehicleCounts && (
                     <TrafficCounts
                       data={data.vehicleCounts}
                       observations={counterObservations}
-                      departure={result.departure}
                       expanded={countsExpanded}
                       onExpanded={setCountsExpanded}
                     />
@@ -1319,7 +1328,7 @@ export default function App() {
                       {city.capabilities.trafficCalming && (
                         <p>
                           {t(
-                            'Calmer streets & paths: mapped pedestrian, Begegnungszone and Tempo-30 areas, or walking paths more than 20 m from mapped main roads. Main-road proximity takes precedence; traffic volumes, delivery access, trams and actual noise may differ. Unknown street context:',
+                            'Paths & restricted streets: mapped pedestrian areas, motor-restricted streets and separate paths away from main roads. Begegnungszone and Tempo-30 streets remain separate because they allow motor traffic. Unknown street context:',
                           )}{' '}
                           {formatDistance(chosen.trafficUnknownMeters, units, locale)}.
                         </p>
@@ -1497,7 +1506,7 @@ export default function App() {
                   <h3>{t('Calmer streets, starting in Zurich')}</h3>
                   <p>
                     {t(
-                      'We combine Zurich’s current pedestrian, Begegnungszone and Tempo-30 zones with OpenStreetMap street classes. Sidewalks within 20 metres of a mapped main road also count as main-road proximity. The alternative reduces this distance first, then favours a greater share of calmed streets and separate paths within your time limit. At least 95% classified coverage is required; unknown parts cannot improve a recommendation. This is not a traffic count, noise measurement or safety assessment. Tempo 30 alone does not mean little traffic. Other cities do not yet support this mode.',
+                      'We combine Zurich’s official zones with mapped street types and motor-access restrictions. Paths within 20 metres of a main road at the same recorded level count as main-road proximity. Alternatives first reduce that distance, then walking on other motor-access streets. Tempo-30 streets are not treated like separate paths. Comparisons use absolute distances, so a longer detour cannot win simply by improving a percentage. At least 95% classified context is required, and unknown sections cannot improve a recommendation. Street data may miss changes, deliveries and trams. This experimental mode is neither live traffic nor a noise or safety assessment; field validation is pending.',
                     )}
                   </p>
                 </div>
@@ -1505,7 +1514,7 @@ export default function App() {
               {city.capabilities.vehicleCounts && (
                 <p>
                   {t(
-                    'Nearby counters show measured 2025 weekday/hour averages, with missing coverage explicit. They are historical point observations, not live traffic or whole-route vehicle totals. Street-context ranking stays separate.',
+                    'Nearby counters show measured 2025 weekday/hour averages for your estimated passing time. Missing coverage stays explicit. These are historical point observations, not live traffic or whole-route vehicle totals. Street-context ranking stays separate.',
                   )}
                 </p>
               )}
@@ -1659,7 +1668,8 @@ export default function App() {
               </div>
               <p className="small-copy">
                 {t(
-                  'Development preview · version 0.5.0. This build has not been submitted to the App Store or Google Play.',
+                  'Development preview · version {version}. This build has not been submitted to the App Store or Google Play.',
+                  { version: appVersion },
                 )}
               </p>
             </>

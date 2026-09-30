@@ -1,27 +1,20 @@
 import { CarFront, ChevronDown } from 'lucide-react';
 import { useI18n } from '../i18n';
-import { countTime, type CounterObservation } from '../lib/vehicle-counts';
+import type { CounterObservation } from '../lib/vehicle-counts';
 import type { VehicleCounts } from '../lib/types';
 
 export function TrafficCounts({
   data,
   observations,
-  departure,
   expanded,
   onExpanded,
 }: {
   data: VehicleCounts;
   observations: CounterObservation[];
-  departure: string;
   expanded: boolean;
   onExpanded: (open: boolean) => void;
 }) {
   const { t, number, locale } = useI18n();
-  const { weekday, hour } = countTime(departure, data.timeZone);
-  const day = new Intl.DateTimeFormat(locale, { weekday: 'long', timeZone: data.timeZone }).format(
-    new Date(departure),
-  );
-  const slot = `${day}, ${String(hour).padStart(2, '0')}:00–${String((hour + 1) % 24).padStart(2, '0')}:00`;
   return (
     <details
       className="traffic-counts"
@@ -43,73 +36,92 @@ export function TrafficCounts({
           )}
         </p>
         <p className="counts-slot">
-          <strong>{slot}</strong>
+          <strong>{t('Profiles follow your estimated passing time')}</strong>
           <span>{data.timeZone}</span>
         </p>
         <p>
           {t(
-            'Mean for the same weekday and hour in {year}. Historical reference, not live traffic or a forecast.',
+            'Mean for the weekday and hour you reach each counter, using {year} observations. Historical reference, not live traffic or a forecast.',
             { year: data.year },
           )}
         </p>
         {observations.length ? (
           <ol className="counter-list">
-            {observations.map(({ counter, mean, days, expectedDays }, index) => {
-              const hours = counter.profile.slice(weekday * 24, weekday * 24 + 24);
-              const maximum = Math.max(1, ...hours.map((v) => v?.[0] ?? 0));
-              return (
-                <li key={counter.id} data-counter-id={counter.id}>
-                  <div className="counter-heading">
-                    <span className="counter-number">{index + 1}</span>
-                    <div>
-                      <strong>{counter.street}</strong>
-                      <small>{t('Direction: {direction}', { direction: counter.direction })}</small>
+            {observations.map(
+              ({ counter, mean, days, expectedDays, arrival, weekday, hour }, index) => {
+                const hours = counter.profile.slice(weekday * 24, weekday * 24 + 24);
+                const maximum = Math.max(1, ...hours.map((v) => v?.[0] ?? 0));
+                const day = new Intl.DateTimeFormat(locale, {
+                  weekday: 'long',
+                  timeZone: data.timeZone,
+                }).format(new Date(arrival));
+                const passing = new Intl.DateTimeFormat(locale, {
+                  hour: '2-digit',
+                  minute: '2-digit',
+                  hourCycle: 'h23',
+                  timeZone: data.timeZone,
+                }).format(new Date(arrival));
+                const slot = `${day}, ${String(hour).padStart(2, '0')}:00–${String((hour + 1) % 24).padStart(2, '0')}:00`;
+                return (
+                  <li key={counter.id} data-counter-id={counter.id}>
+                    <div className="counter-heading">
+                      <span className="counter-number">{index + 1}</span>
+                      <div>
+                        <strong>{counter.street}</strong>
+                        <small>
+                          {t('Direction: {direction}', { direction: counter.direction })}
+                        </small>
+                      </div>
                     </div>
-                  </div>
-                  <div className="counter-value">
-                    {mean === null ? (
-                      <strong>{t('Insufficient measured data')}</strong>
-                    ) : (
-                      <>
-                        <strong>
-                          ≈ {mean < 10 ? number(mean, 1) : number(Math.round(mean / 10) * 10)}
-                        </strong>
-                        <span>{t('vehicles/hour')}</span>
-                      </>
-                    )}
-                  </div>
-                  <small className="counter-pattern-label">
-                    {t('Daily pattern · each chart has its own scale')}
-                  </small>
-                  <div className="counter-hours" aria-hidden="true">
-                    {hours.map((value, i) => (
-                      <span
-                        key={i}
-                        className={`${i === hour ? 'current' : ''} ${value?.[0] == null ? 'missing' : ''}`}
-                        style={{
-                          height:
-                            value?.[0] == null
-                              ? '10%'
-                              : `${Math.max(3, (value[0] / maximum) * 100)}%`,
-                        }}
-                      />
-                    ))}
-                  </div>
-                  <div className="counter-axis" aria-hidden="true">
-                    <span>00</span>
-                    <span>12</span>
-                    <span>23</span>
-                  </div>
-                  <small>
-                    {t('{days}/{expected} measured days · {id}', {
-                      days,
-                      expected: expectedDays,
-                      id: counter.id,
-                    })}
-                  </small>
-                </li>
-              );
-            })}
+                    <p className="counter-slot">
+                      <strong>{t('Passing around {time}', { time: passing })}</strong>
+                      <span>{slot}</span>
+                    </p>
+                    <div className="counter-value">
+                      {mean === null ? (
+                        <strong>{t('Insufficient measured data')}</strong>
+                      ) : (
+                        <>
+                          <strong>
+                            ≈ {mean < 10 ? number(mean, 1) : number(Math.round(mean / 10) * 10)}
+                          </strong>
+                          <span>{t('vehicles/hour')}</span>
+                        </>
+                      )}
+                    </div>
+                    <small className="counter-pattern-label">
+                      {t('Daily pattern · each chart has its own scale')}
+                    </small>
+                    <div className="counter-hours" aria-hidden="true">
+                      {hours.map((value, i) => (
+                        <span
+                          key={i}
+                          className={`${i === hour ? 'current' : ''} ${value?.[0] == null ? 'missing' : ''}`}
+                          style={{
+                            height:
+                              value?.[0] == null
+                                ? '10%'
+                                : `${Math.max(3, (value[0] / maximum) * 100)}%`,
+                          }}
+                        />
+                      ))}
+                    </div>
+                    <div className="counter-axis" aria-hidden="true">
+                      <span>00</span>
+                      <span>12</span>
+                      <span>23</span>
+                    </div>
+                    <small>
+                      {t('{days}/{expected} measured days · {id}', {
+                        days,
+                        expected: expectedDays,
+                        id: counter.id,
+                      })}
+                    </small>
+                  </li>
+                );
+              },
+            )}
           </ol>
         ) : (
           <p className="counts-empty">

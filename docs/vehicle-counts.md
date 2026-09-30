@@ -1,6 +1,14 @@
-# Zurich vehicle counts · 0.6.0
+# Zurich vehicle-count evidence
 
-## What is integrated
+## Passing-time profiles · 0.11.0
+
+The current 57.77 km² Zurich extract includes **144 directional counters**. The retained observations are still from **2025**, not a new survey. For each nearby counter, project its point onto the metric route polyline and use the estimated time at the closest point (route duration × fraction of route length). Select the historical weekday/hour in Europe/Zurich at that instant. A repeated equally close pass uses the first; counters are not counted twice. Waypoint travel is included, but stops, signal waits and live congestion are not.
+
+Each counter now shows its own expected passing time and selected weekday/hour. Tests cover midnight, spring and autumn clock changes, loop visits and zero-length geometry. This changes reference-hour selection, not the underlying measured data or street ranking. Geometric proximity still cannot establish same-road/same-level association.
+
+The sections below retain the initial source/aggregation investigation; counts marked 0.6.0/0.7.0 refer to their earlier boundaries.
+
+## Initial integration · 0.6.0
 
 The central Zurich pilot includes **49 directional measuring points at 28 counting sites**, with genuine **2025** observations. Open **Vehicle counts nearby / Fahrzeugzählungen in der Nähe** beneath a selected route. Numbered blue map markers correspond to the list. Changing departure weekday/hour selects the historical profile in **Europe/Zurich**, independently of device time and interface language. English, German, downloaded packs and native bundled data share the implementation.
 
@@ -23,7 +31,7 @@ The profile has 168 slots: Monday–Sunday × 00–23. Each slot is the mean for
 
 The display rounds larger means to tens of vehicles/hour, and very small means to one decimal. A 24-hour bar profile shows the selected weekday; its current hour is highlighted and absent slots have a dashed outline. The numerical value and days denominator remain available without interpreting the chart.
 
-This annual historical reference includes holidays and seasonal variation. It is **not a prediction for the selected date**, an arrival-time simulation or a live feed. The source is normally published daily, including the previous day; this app deliberately ships a versioned snapshot and makes no automatic daily-update claim. A later data release must be reviewed, reprocessed, versioned and deployed. Provider corrections can alter past data.
+This annual historical reference includes holidays and seasonal variation. It is **not a prediction for the selected date**, a forecast of actual traffic at arrival or a live feed. The source is normally published daily, including the previous day; this app deliberately ships a versioned snapshot and makes no automatic daily-update claim. A later data release must be reviewed, reprocessed, versioned and deployed. Provider corrections can alter past data.
 
 ## Reproduce
 

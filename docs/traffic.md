@@ -1,62 +1,81 @@
-# Calmer streets in Zurich
+# Calmer streets in Zurich · 0.11.0
 
-Version 0.5.0 adds an **experimental street-context preference** in the existing 8.06 km² central Zurich pilot. It answers a narrower question than live traffic avoidance: “Can I walk less along mapped main roads, within my extra-time limit?” No traffic counts, noise readings, pollution measurements, accident risk or live closures are inferred.
+**Experimental, map-based street context. Field validation is pending.** The Zurich walking area is 57.77 km². This mode reduces walking beside mapped main roads, then on other streets allowing motor access, within the whole-trip detour budget. It does not estimate vehicle volume, noise, pollution, accident risk or live closures.
 
-## Sources checked on 29 September 2026
+## What changed
 
-- [Zurich Verkehrszonen](https://data.stadt-zuerich.ch/dataset/geo_verkehrszonen), CC0, current-status WFS layer `view_geoserver_zonen_ist`. The actual WGS84 GeoJSON response contains 366 records: 3 pedestrian zones (T0), 172 Begegnungszonen (T20), 191 Tempo-30 zones (T30). One record, ID 65 Goldbrunnen, has null geometry and is excluded, never assigned an invented extent. Catalogue modification: 27 September 2026. Latest non-null implementation date in the response: 15 September 2026. Many individual dates are absent. This is a reported current regime, not a recent traffic survey.
-- The existing buffered [OpenStreetMap](https://www.openstreetmap.org/copyright) extract supplies actual walking topology and nearby `motorway`, `trunk`, `primary`, `secondary`, `tertiary` and corresponding `_link` ways. OSM data is ODbL; credit OpenStreetMap contributors. Extract fetched 28 September 2026; its raw `osm3s.timestamp_osm_base` is not a valid observation date. Do not infer a field-survey date from it.
-- [Signalisierte Geschwindigkeiten](https://data.stadt-zuerich.ch/dataset/geo_signalisierte_geschwindigkeiten) was downloaded and inspected: 5,280 geometries in current-status `view_geoserver_tempo_ist`. **Not used in this release.** The separate published-plan layer can contain future changes. Speed restrictions alone cannot establish low traffic. Robust association of speed axes to parallel paths is a next step.
-- [Zurich road-noise register](https://data.stadt-zuerich.ch/dataset/geo_strassenlaermkataster_der_stadt_zuerich) is a potential next input, with modelled facade-receptor values and distinct 2024/2035 scenarios. Facade values cannot be presented as measurements at a walker’s position. [Road-emission data](https://data.stadt-zuerich.ch/dataset/geo_laermbelastungskataster_fuer_haupt__und_uebrige_strassen) merits investigation for documented vehicle volumes and emissions; no runtime integration is claimed.
+`zurich-street-context-v2` separates pedestrian areas, separate paths and explicitly motor-restricted streets from Begegnungszone and Tempo-30 streets. Tempo 30 limits speed, not vehicle volume. The previous model grouped all these as calmed; v2 retains the regimes in the displayed breakdown and uses **absolute distances**, avoiding detours that merely dilute a percentage.
 
-Exact source hashes, used zone IDs, exclusions and classified graph lengths are in [traffic-validation.json](traffic-validation.json) and the Zurich data manifest. Raw downloads are ignored by Git. The official source geometry is projected from EPSG:4326 into the pilot's LV95 metre coordinates; original municipal geodata uses EPSG:2056.
+OSM crossing segments, explicit motor access (including delivery access), and unresolved conditional access are not rewarded as separate paths. An actual separate path inside a Tempo-30 zone stays a path. Ambiguous layer tags remain unknown. Numeric layers are normalized, so `01` and `1` mean the same recorded level. Main-road proximity always takes priority, including beside a street with a motor restriction.
 
-## Reproduce
+The selected route has an EN/DE street breakdown. Nearby **2025 measured counter profiles** now use the estimated time the walker passes each counter, including midnight and daylight-saving transitions. They remain separate from route ranking; missing counters never mean zero traffic. See [vehicle-counts.md](vehicle-counts.md).
 
-From the project root, with the existing Zurich OSM extract prepared as documented in [data-sources.md](data-sources.md):
+## Sources and provenance
+
+- [City traffic zones](https://data.stadt-zuerich.ch/dataset/geo_verkehrszonen), CC0: current-status WFS `view_geoserver_zonen_ist`, fetched 29 September 2026. 366 records: 3 pedestrian (T0), 172 Begegnungszone (T20), 191 Tempo-30 (T30). ID 65 Goldbrunnen has no geometry and is excluded. Catalogue update: 27 September; latest non-null implementation date: 15 September 2026. Missing individual dates stay missing. Fetch/catalogue dates are not observations of traffic.
+- [OpenStreetMap contributors](https://www.openstreetmap.org/copyright), ODbL: buffered north/west Zurich extract fetched 30 September 2026, used for walking topology, street classes, motor-access tags, bridge/layer, covered and tunnel tags. The raw provider base timestamp is not a verified field-survey date. [OSM crossing definition](https://wiki.openstreetmap.org/wiki/Tag:footway%3Dcrossing) and [motor-vehicle access](https://wiki.openstreetmap.org/wiki/Key:motor_vehicle) were checked.
+- Coordinates are transformed from WGS84 to **LV95 metres** before distance/polygon calculations. Official municipal source coordinates are EPSG:2056.
+- The downloaded municipal speed-axis and road-emission layers remain **unintegrated**. Speed is not volume; 2024 day/night noise emissions cannot be inverted into vehicle counts.
+
+[traffic-validation.json](traffic-validation.json) records source hashes, zone IDs, excluded geometry and graph lengths. The OSM hash now correctly identifies `data/raw/zurich-north-west/osm.json`, the extract actually consumed by preparation; the older report mistakenly referenced the earlier expansion file. This fixes provenance, not routing geometry. Raw inputs remain ignored.
+
+## Classification
+
+Sample each walking edge at no more than **8 m** spacing. Assign exactly one class in this order:
+
+1. Missing tags, ambiguous layer, tunnels or covered passages: **unknown**.
+2. Within **20 m** of a same-recorded-level OSM motorway/trunk/primary/secondary/tertiary segment or its link: **main-road proximity**. Tunnel road segments are excluded from that association.
+3. Explicitly mapped foot/cycle crossing or unresolved motor/vehicle/access conditional rule: **other**. For explicit motor access, retain a known T20/T30 regime, otherwise use other. Access restrictions are not evaluated as a time-dependent legal-access engine.
+4. Unconditional `motor_vehicle=no` (or `vehicle=no` when no more specific motor tag exists): **restricted**.
+5. Official T0 or mapped pedestrian street: **pedestrian**; T20 or mapped living street: **encounter**.
+6. Separate footway/path/steps/cycleway, excluding a tagged sidewalk: **path**.
+7. Official T30: **tempo30**; remaining mapped streets: **other**.
+
+Ground-level zone polygons are not inherited by elevated paths. Polygon holes are respected. For display, path + pedestrian + restricted form **Paths & restricted streets**; all eight internal classes remain available in the route result. Every segment contributes once, and displayed categories sum to the whole route before rounding.
+
+These are map tags and spatial heuristics, not proof of little/no traffic. Deliveries, permitted exceptions, emergency vehicles, trams, vehicle subclasses, missing tags, barriers between parallel roads/paths and recent changes remain limitations. A pedestrian street may admit deliveries even without an explicit tag. Unknown bridge levels can lead to incorrect associations; the 20 m buffer is not a noise model. Crossing distance is included, but no complete crossing count, waiting delay or crossing-safety assessment is claimed.
+
+## Recommendation rules
+
+Compute the fastest legal pedestrian route first. Generate genuinely different routes using path diversity, main-road avoidance and pedestrian-path preference, with 0, 5 or 10 extra minutes and ordered waypoints. Additional edge-cost weightings only generate candidates; final comparison uses interpretable distances.
+
+Both routes require **at least 95% classified context**. Rank eligible alternatives by:
+
+1. Main-road metres + unknown metres.
+2. All metres outside path/pedestrian/restricted classes, including unknown.
+3. Shorter walking duration.
+
+A recommendation requires at least 10% new path length and either **40 m less conservative main-road exposure**, or no increase in main-road exposure plus **40 m less motor-access/unknown distance**. In those acceptance comparisons, the reference route's unknown sections receive the favourable assumption and the candidate's unknown sections the unfavourable assumption. Missing context therefore cannot create a claimed improvement. A higher preferred-path percentage alone cannot justify a detour. The ranking may accept more local-street walking to reduce main-road walking; the breakdown makes that trade-off visible.
+
+This is the best of evaluated candidates, not global optimality. The 40 m/95%/20 m choices are engineering heuristics for later field checking, not calibrated traffic-effect thresholds. Static street ranking stays fixed across departure times; historical count evidence changes independently. Other cities still have this mode disabled.
+
+## Computed references
+
+[traffic-route-validation.json](traffic-route-validation.json) retains exact results, data hash, street names and passing-time counter evidence for three real trips at each 0/5/10-minute budget. Departure: Monday 22 June 2026, 14:55 Europe/Zurich. Five-minute examples:
+
+| Trip                             | Fastest → alternative | Main-road proximity | Extra walking |
+| -------------------------------- | --------------------- | ------------------- | ------------- |
+| Bahnhofquai → Bürkliplatz        | 18.89 → 21.88 min     | 588 → 303 m         | 2.99 min      |
+| Bahnhof Oerlikon → Campus Irchel | 24.59 → 26.74 min     | 604 → 218 m         | 2.15 min      |
+| Stauffacherstrasse → Lindenhof   | 28.50 → 33.01 min     | 1,313 → 433 m       | 4.51 min      |
+
+These are graph computations, **not measured traffic reductions**. No on-street validation is claimed. Tests include a counterexample where a longer route has a better preferred-path percentage but no reduction in motor-access distance, conditional delivery access, crossings, missing coverage, zero budget, waypoints, numeric/ambiguous levels and passing-time DST/midnight.
+
+## Broader vehicle-volume model investigated
+
+The Canton [GVM-ZH19](https://geolion.zh.ch/geodatensatz/2050) contains modelled 2019 road-section volumes and 2040 scenarios. Its detailed 17.21 network is currently listed in the **non-open geodata shop**, with purpose-specific [reuse conditions](https://geolion.zh.ch/Allgemeine_Bestimmungen_nicht_offene_Geodaten_17032022.pdf); redistribution in a public website/offline pack has not been established. No order, provider message or agreement was submitted.
+
+The [provider's usage note](https://www.zh.ch/content/dam/zhweb/bilder-dokumente/themen/mobilitaet/mobilitaetsplanung/verkehrsgrundlagen/ktzh_afm_verwendungshinweis_daten-fvm-zh19.pdf) also cautions against local-detail interpretation, recommends suppressing values below 500 vehicles/weekday on the subordinate network, and sensible rounding. The metadata notes limited reliability below approximately 1,000. Even with access, low counts cannot certify a quiet local street. Required next steps are reuse clearance, source/geometry inspection, explicit 2019 labelling, defensible network matching and validation before enabling volume-based ranking. No GVM values are shipped in 0.11.0.
+
+## Reproduction and field work
 
 ```sh
-npm run data:fetch:traffic
-npm run data:prepare:traffic
+npm run data:prepare:traffic # retained zone + buffered OSM snapshots required
 npm run data:packs
 npm run check
+node --import tsx scripts/verify-traffic.ts
 ```
 
-`npm run data:prepare` now includes traffic preparation after the base Zurich data. Before accepting a new source response, inspect changed fields/counts/implementation dates, update preparation dates and the city data version, and rerun route validation. The adapter rejects unexpected schema and future implementation dates relative to this release. A later fetch must not silently retain the old provenance date. The prepared, checked-in extract is sufficient to run a fresh checkout without network ingestion.
+A fresh checkout uses the checked-in derived Zurich extract. Fetching new zones uses `npm run data:fetch:traffic`; review schema/dates and update provenance/version before preparation. The current fetch/implementation cutoff is deliberately retained, not silently advanced.
 
-## Model and comparison
-
-`zurich-street-context-v1` samples each walking edge at the shared **8 m maximum spacing**. Each sample receives exactly one class, in priority order:
-
-1. Missing way tags, tunnels or covered passages: unknown.
-2. Within **20 m** of an OSM main-road segment at the same recorded level: main-road proximity. This includes parallel footways and overrides zone membership.
-3. Inside an official T0/T20/T30 polygon (holes respected), or explicitly mapped pedestrian/living street: the corresponding zone class. Elevated paths do not inherit ground-level polygons.
-4. Separate footway/path/steps/cycleway away from main roads, excluding explicitly mapped sidewalks: path.
-5. Remaining mapped streets: other. “Other” does not mean quiet.
-
-The 20 m threshold is a transparent geometric heuristic, not a sound-propagation model. Recorded bridge/layer tags distinguish levels; missing or mistaken tags, stale road classifications, minor-road traffic, trams, delivery access and real conditions remain limitations. Neither Tempo 30 nor a pedestrian-zone label promises little traffic, no vehicles, legal access at every time, or wheelchair suitability.
-
-The original fastest valid pedestrian route remains the reference. Candidate generation evaluates path-diversity penalties plus main-road and calmed-path weighting. Among distinct candidates within **0/5/10 extra minutes**, the calmer preference first minimizes **main-road distance + unknown distance**, then maximizes the known share of pedestrian/Begegnungszone/Tempo-30/separate-path samples, then prefers shorter duration. Both compared routes need at least **95% classified context**. A candidate must have at least 10% new path length and either reduce conservative main-road distance by at least 40 m, or increase the calmed/path share by at least 3 percentage points without increasing main-road exposure. Unknown parts cannot improve either comparison. This is the best of evaluated alternatives, not a proof of global optimality.
-
-The card's primary calmer-mode number is distance near main roads. Its bar shows known distance away from those roads over total route length (unknown parts are not counted as away); the separate calmed-street/path share is also over the whole route. Building shade, tree greenery and water stay separate. The street-context model is static across departure times. Water and calmer-street priorities are mutually exclusive; ordered waypoints and the whole-trip detour limit still apply. Outside Zurich the capability is disabled.
-
-## Real reference result
-
-Bahnhofquai → Bürkliplatz, 21 June 2026 at 14:00 Europe/Zurich, five extra minutes allowed:
-
-| Computed route     | Walking time | Near main roads | Unknown context |
-| ------------------ | -----------: | --------------: | --------------: |
-| Fastest            |    18.89 min |        587.85 m |         35.40 m |
-| Calmer alternative |    21.88 min |        302.92 m |         11.43 m |
-
-The additional 2.99 minutes reduce mapped main-road proximity by 284.93 m. The alternative goes via Waisenhausstrasse, Oetenbachgasse, Lindenhof and Münsterhof. It is a genuine graph route with checked topology; zero extra time retains the fastest route. Rounded UI values intentionally avoid false precision. Automated regression tests recompute the result; screenshots verify the route against the underlying mapped network. No on-street traffic or noise validation has been performed.
-
-Next: compare official street-level vehicle-volume/emission attributes against the OSM geometry, inspect their observation dates and uncertainty, then field-check representative route pairs. Keep such evidence separate from this street-type indicator and only enable it in other cities after their sources have been checked.
-
-## Vehicle-count evidence follow-up
-
-Version 0.6.0 includes dated directional hourly observations near selected Zurich walks. They do not change this street-context ranking because point coverage is insufficient for whole-route vehicle comparisons. [Sources, aggregation, limitations and reproduction](vehicle-counts.md).
-
-## Expanded Zurich coverage · 0.7.0
-
-The existing official zone snapshot is reapplied to the new 30 September OSM extract over 21.81 km². All 73,011 pedestrian edges are classified with the same model, level checks, buffers and coverage thresholds. Current class totals and hashes replace the validation report; the earlier 0.5 figures describe that milestone. No other city gains traffic capability through its beta label.
+[Traffic field protocol](traffic-observations.md): compare representative route pairs, verify the tagged street regime and same-level association, count vehicles separately from noise impressions, record date/time and preserve failures. Shadow field validation and its unresolved roof/photo evidence remain separate. Traffic development is authorized to continue; neither model is field-validated.

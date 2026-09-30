@@ -1,6 +1,6 @@
 {
   "name": "cooler-walks",
-  "version": "0.10.0",
+  "version": "0.11.0",
   "private": true,
   "type": "module",
   "engines": {
@@ -13,7 +13,7 @@
     "test": "vitest run",
     "check": "tsc -b && vitest run",
     "data:prepare": "tsx scripts/prepare-data.ts && npm run data:prepare:traffic && npm run data:attach:counts && npm run data:prepare:addresses && node --import tsx scripts/attach-detailed-shade.ts",
-    "data:verify": "tsx scripts/verify-data.ts && tsx scripts/verify-cities.ts && tsx scripts/verify-coverage.ts && tsx scripts/verify-arrival-shade.ts && node --import tsx scripts/verify-detailed-shade.ts",
+    "data:verify": "tsx scripts/verify-data.ts && tsx scripts/verify-cities.ts && tsx scripts/verify-coverage.ts && tsx scripts/verify-arrival-shade.ts && node --import tsx scripts/verify-detailed-shade.ts && node --import tsx scripts/verify-traffic.ts",
     "data:audit-trees": "tsx scripts/audit-trees.ts",
     "test:e2e": "playwright test",
     "test:pwa": "node scripts/verify-pwa.mjs",

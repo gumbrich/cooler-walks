@@ -160,3 +160,9 @@ The published `0df33ef` update passes actual Chrome 154.0.8037.92 PWA installati
 All four live production-page scenarios also pass (1.6 minutes): English/German pages without JavaScript, accessibility and enlarged text, production CSP and offline privacy navigation. The final Android rerun passes with a settled map capture and explicit address-result selection, retaining the full offline-route and city-switch assertions.
 
 Final acceptance on `0df33ef` includes all 79 unit/model checks, eight Python source checks, real-data verification, formatting, the production build and **all 20 Linux browser scenarios**, plus successful Android/iOS packaging. [CI evidence](releases/0.10.0-ci.json) retains the exact run links and validation scope.
+
+## 0.11.0: street context and passing-time counts
+
+The traffic update passes 85 application/model tests and TypeScript, all real-data verification commands (including nine new traffic route/budget cases), formatting, production compilation and release configuration/hash checks. Three targeted browser flows pass on macOS Chrome in an isolated profile: EN/DE trip preservation, keyboard street-breakdown disclosure, detour limits, accessibility, recoverable errors, city switching and per-counter profiles across an hour boundary. Actual desktop 1440 × 1000, phone 390 × 844 and tablet 768 × 1024 captures were inspected. The first browser invocation found no installed Playwright-managed Chromium; the successful run used the existing Chrome executable.
+
+Android 0.11.0/build 9 compiles and shares the tested web code. Native runtime evidence will be recorded with its completed emulator run. PWA installation was last verified for 0.10.0; it has not been repeated for this update. No iOS interaction, physical-phone, traffic-noise or field-shadow accuracy claim is made.

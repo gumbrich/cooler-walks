@@ -15,7 +15,7 @@ test('Historical counters follow route, local departure time and language withou
   await page.locator('.traffic-counts > summary').click();
   const evidence = page.locator('.traffic-counts');
   await expect(evidence).toContainText('2025 observations');
-  await expect(evidence.locator('.counts-slot')).toContainText('Monday, 14:00–15:00');
+  await expect(evidence.locator('.counter-slot').first()).toContainText('Monday, 14:00–15:00');
   await expect(evidence.locator('.counter-list li')).toHaveCount(3);
   await expect(evidence.locator('[data-counter-id="Z030M002"] .counter-value')).toContainText(
     '310',
@@ -30,11 +30,20 @@ test('Historical counters follow route, local departure time and language withou
   ).toEqual([]);
   const value = await evidence.locator('[data-counter-id="Z030M002"] .counter-value').innerText();
   await page.getByRole('slider', { name: 'Departure time', exact: true }).fill('480');
-  await expect(evidence.locator('.counts-slot')).toContainText('08:00–09:00');
+  await expect(evidence.locator('.counter-slot').first()).toContainText('08:00–09:00');
   await page.getByRole('button', { name: /Fastest walk/ }).click();
   await expect(evidence.locator('[data-counter-id="Z030M002"] .counter-value')).not.toHaveText(
     value,
     { useInnerText: true },
+  );
+  // One walk crosses an hour boundary: each counter uses its own passing hour.
+  await page.getByRole('slider', { name: 'Departure time', exact: true }).fill('885');
+  await page.getByRole('button', { name: /Fastest walk/ }).click();
+  await expect(evidence.locator('[data-counter-id="Z049M002"] .counter-slot')).toContainText(
+    '14:00–15:00',
+  );
+  await expect(evidence.locator('[data-counter-id="Z031M002"] .counter-slot')).toContainText(
+    '15:00–16:00',
   );
   await page.getByRole('combobox', { name: 'Language', exact: true }).selectOption('de');
   await expect(evidence).toContainText('Fahrzeuge/Stunde');

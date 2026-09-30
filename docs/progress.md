@@ -1,12 +1,18 @@
 # Progress
 
-## Current priority: validate before continuing
+## Traffic model · 0.11.0
 
-Feature work and coverage expansion are on hold at the user's request. The [independent shadow audit](shadow-validation.md) passes 576 NREL SPA comparisons, 1,926 stable original-polygon versus runtime intersections and all 1.25 million ground-grid reconstruction checks. Two boundary rays were excluded under the predefined tolerance. The maintained regression suite now passes 81 tests; the separate reference implementation passes four analytical checks.
+Implemented street-context v2: separate paths/pedestrian/restricted streets from T20/T30 motor-access streets, conservative crossing/conditional-access handling, normalized levels, and absolute-distance comparison that rejects percentage-only detours. Zurich data is v9; the traffic report now hashes the actual north/west OSM input. EN/DE route breakdowns and estimated passing-time 2025 counter profiles share the website/native code.
+
+85 application/model tests plus TypeScript, nine real route/budget cases, the complete data-verification command, formatting, production build and release-configuration checks pass. Three targeted Chrome browser flows pass, including German, keyboard operation, automated accessibility, hour-boundary counter selection and phone/tablet/desktop layouts. Rendered screenshots were inspected. Android 0.11.0/build 9 compiles; completed emulator results are recorded separately in the platform report. No field-validation claim is made. [Method and examples](traffic.md), [traffic observation plan](traffic-observations.md). The next useful milestone is paired field walks and source corrections, with a separately licensed/verified volume network required before count-based routing.
+
+## Shadow validation status
+
+Traffic development now proceeds at the user’s request; shadow and traffic will be field-validated later. Shadow expansion remains on hold. The [independent shadow audit](shadow-validation.md) passes 576 NREL SPA comparisons, 1,926 stable original-polygon versus runtime intersections and all 1.25 million ground-grid reconstruction checks. Two boundary rays were excluded under the predefined tolerance. That audit milestone passed 81 application/model tests; the separate reference implementation passes four analytical checks.
 
 **Validation is not complete:** all 26 flagged roof samples have now been inspected against original LiDAR returns. The largest station differences are consistent with a documented temporary construction roof; the Paradeplatz courtyard has mixed-height returns that cannot support a single-height correction. Other buildings remain unresolved. [Follow-up evidence and source sections](shadow-validation-followup.md).
 
-Fourteen public photo originals were downloaded and their EXIF/hashes checked. Three promising timed photographs cover Münsterhof, Münzplatz and Rennweg. Two frozen exploratory Münsterhof points produce one agreement and one unresolved disagreement; their ground registration does not yet meet the 2 m criterion, so **accepted observations remain zero**. Exclusions, source dates, clock discrepancies and the disagreement are retained. Three new analytical LiDAR checks and all 81 application/model tests pass. [Acceptance protocol](shadow-observations.md) is unchanged. Production geometry and coverage are unchanged; resume expansion only after the open validation requirements are resolved.
+Fourteen public photo originals were downloaded and their EXIF/hashes checked. Three promising timed photographs cover Münsterhof, Münzplatz and Rennweg. Two frozen exploratory Münsterhof points produce one agreement and one unresolved disagreement; their ground registration does not yet meet the 2 m criterion, so **accepted observations remain zero**. Exclusions, source dates, clock discrepancies and the disagreement are retained. Three new analytical LiDAR checks and all 81 application/model tests pass. [Acceptance protocol](shadow-observations.md) is unchanged. Shadow geometry and coverage remain unchanged; resume shadow expansion only after the open validation requirements are resolved.
 
 ## Published milestone: 3D roofs and LiDAR ground · 0.10.0
 

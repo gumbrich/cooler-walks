@@ -4,11 +4,13 @@ A warmer kind of walking atlas: compare real pedestrian routes, greenery, waters
 
 [Deutsch](README.de.md) · English / German website and app interface
 
-**Validation hold:** further features and expansion are paused while Zurich's shadow estimates are checked. Independent calculations pass, but roof-source discrepancies and dated real-world observations remain unresolved. [Audit results](docs/shadow-validation.md).
+**Validation status:** traffic-model development continues; shadow and traffic will be field-validated later. Both remain experimental. Shadow roof-source discrepancies and dated observations are still unresolved; shadow expansion stays on hold. [Audit results](docs/shadow-validation.md).
 
 The [latest evidence review](docs/shadow-validation-followup.md) checks all 26 flagged roof samples against raw LiDAR and screens 14 photo originals and their timestamps. Three photos remain promising; an exploratory Münsterhof mismatch is retained for investigation. This does not establish field accuracy.
 
 **Status:** **Zurich is the primary focus**, with an expanded 57.77 km² walking area and official address search. **Basel, Munich and Cambridge (Massachusetts) are beta**. Cambridge follows its municipal boundary; the other cities cover central areas. These remain experimental services, not field-validated citywide routing. Zurich and Munich estimate building sun/shade; Cambridge and Basel offer greenery and water proximity only. Paris remains under review. Tree shade, hill shadows, weather, live closures and navigation are not included.
+
+**Traffic 0.11.0:** clearer street categories, absolute-distance comparisons, and historical counters selected for estimated passing time. [Method and field plan](docs/traffic.md).
 
 **German version:** [coolerwalks.ch/de/](https://coolerwalks.ch/de/) · switch EN/DE without losing your trip.
 
@@ -129,6 +131,8 @@ The [Zurich tree-position audit](docs/tree-accuracy.md) checks import fidelity a
 Real route checks for every pilot are in [city-route-validation.json](docs/city-route-validation.json), with expanded-area journeys in [coverage-validation.json](docs/coverage-validation.json). Use the selected city’s default trip on **21 June 2026 at 14:00 local time** as a repeatable starting point. Cambridge’s missing building heights and Basel’s unintegrated height layer are documented in [the coverage register](docs/cities.md).
 
 ## Screenshots
+
+Traffic 0.11.0: [desktop](docs/screenshots/desktop-traffic-v2.png), [German phone](docs/screenshots/phone-traffic-v2.png) and [tablet street breakdown](docs/screenshots/tablet-traffic-v2.png).
 
 The 0.10.0 detailed model: [desktop](docs/screenshots/desktop-3d-shade.png), [German phone](docs/screenshots/phone-3d-shade.png) and [tablet explanation](docs/screenshots/tablet-3d-method.png).
 

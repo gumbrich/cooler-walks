@@ -1,6 +1,6 @@
 # Shadow validation gate
 
-Requested on 30 September 2026: validate the existing Zurich model before further feature work or coverage expansion. Passing software checks alone does not clear this gate. The published 0.10.0 application remains experimental.
+The initial audit requested on 30 September 2026 is retained below. The user has since authorized traffic-model development and deferred field validation of shadow and traffic. This does not clear the shadow-validation gate or authorize claims of field accuracy; shadow coverage expansion remains on hold.
 
 **Latest review:** [original LiDAR and timestamped photographs](shadow-validation-followup.md). All 26 roof flags have been inspected against raw returns; 14 photographic originals have been screened. Two exploratory photo points include one unresolved disagreement. No field observations yet meet the acceptance requirements, so the gate remains **HOLD**. The audit below is the earlier computational baseline, retained unchanged with its source hashes.
 

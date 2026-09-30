@@ -1,6 +1,6 @@
 # Next milestones
 
-**Validation hold:** the user's current priority is to validate the existing Zurich shadow model before continuing feature work or expansion. Follow the [validation gate](shadow-validation.md); automated checks alone do not establish field accuracy.
+**Current agreement:** improve Zurich traffic modelling now; field-validate shadow and traffic later. Preserve the [shadow evidence and unresolved issues](shadow-validation.md), keep both capabilities experimental, and retain the hold on shadow expansion. Automated checks alone do not establish field accuracy.
 
 ## Zurich first
 

@@ -11,7 +11,7 @@ Status on 29 September 2026: native Android and iOS projects exist, with the sam
 
 The unsigned Android AAB, iOS simulator build and unsigned iOS device archive passed the [native CI build](https://github.com/gumbrich/cooler-walks/actions/runs/36590625022) for the packaging milestone. Local Xcode device archiving remains blocked by its platform installation; CI provides the working archive path. The new help/privacy navigation was then checked on the Android emulator: explicit `index.html` links are required by Capacitor's bundled asset server, and the pages honor native safe-area insets. Run `npm run test:native:pages` against the dedicated installed debug emulator build to repeat it; see `native-public-pages-validation.json`.
 
-Keep `io.github.gumbrich.coolerwalks` as the provisional application/bundle ID. Confirm it before creating the store records: changing it after publication creates a different app. Current marketing version is 0.9.0, Android versionCode/iOS build number 7. Increment build numbers for later uploaded builds; keep Android, iOS and package.json version values consistent.
+Keep `io.github.gumbrich.coolerwalks` as the provisional application/bundle ID. Confirm it before creating the store records: changing it after publication creates a different app. Current marketing version is 0.11.0, Android versionCode/iOS build number 9. Increment build numbers for later uploaded builds; keep Android, iOS and package.json version values consistent.
 
 ## Accounts and current requirements
 
@@ -111,3 +111,7 @@ Android versionName / iOS marketing version is 0.5.0; native build number is 3. 
 ## Version 0.6.0 count-evidence update
 
 Marketing version 0.6.0 / native build 4 adds historical 2025 directional traffic observations near Zurich walks. Updated review notes must not imply live traffic, forecasts or count-optimized routes: whole-route count coverage is insufficient. Street-context recommendations remain unchanged. Store signing, physical-device review and permanent native-pack retention remain prerequisites for distribution.
+
+## Traffic update · 0.11.0 / build 9
+
+The shared client distinguishes paths and motor-restricted streets from Tempo-30/Begegnungszone streets, compares absolute distances, and selects 2025 counter profiles for estimated passing time. Descriptions must retain experimental/map-based and historical-data wording. Field validation is pending; this is not live traffic, count-optimized routing, a noise model or a safety assessment. No store upload or submission is implied.
