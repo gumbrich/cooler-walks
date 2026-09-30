@@ -1,4 +1,4 @@
-import type { Edge, PilotData, Point, City, Route, RouteResult, Sample } from './types';
+import type { Bounds, Edge, PilotData, Point, City, Route, RouteResult, Sample } from './types';
 import { distance, geographic, gridAzimuth, inBounds, inside, metric, rayHits } from './geo';
 import { solar, shadowVector } from './solar';
 import { isCalmed, MIN_TRAFFIC_COVERAGE, TRAFFIC_MODEL } from './traffic';
@@ -19,7 +19,18 @@ class Grid<T> {
   }
   add(p: Point, value: T) {
     const k = this.key(p);
-    this.cells.set(k, [...(this.cells.get(k) ?? []), value]);
+    const items = this.cells.get(k);
+    if (items) items.push(value);
+    else this.cells.set(k, [value]);
+  }
+  addBounds([w, s, e, n]: Bounds, value: T) {
+    for (let x = Math.floor(w / CELL); x <= Math.floor(e / CELL); x++)
+      for (let y = Math.floor(s / CELL); y <= Math.floor(n / CELL); y++) {
+        const key = `${x},${y}`,
+          items = this.cells.get(key);
+        if (items) items.push(value);
+        else this.cells.set(key, [value]);
+      }
   }
   around(p: Point, r: number): T[] {
     const out: T[] = [];
@@ -97,18 +108,20 @@ export function isWalkable(tags: Record<string, string>) {
   if (tags.highway === 'service' && tags.service === 'driveway' && !explicit) return false;
   return true;
 }
+interface MetricBuilding {
+  ring: Point[];
+  holes: Point[][];
+  height: number;
+  radius: number;
+  center: Point;
+  uncertain: boolean;
+  bounds: Bounds;
+}
 export class Router {
   points: Point[];
   adjacency: { to: number; edge: number }[][];
   treeGrid = new Grid<Point>();
-  buildingGrid = new Grid<{
-    ring: Point[];
-    holes: Point[][];
-    height: number;
-    radius: number;
-    center: Point;
-    uncertain: boolean;
-  }>();
+  buildingGrid = new Grid<MetricBuilding>();
   water: WaterIndex;
   maxHeight = 0;
   maxRadius = 0;
@@ -151,6 +164,12 @@ export class Router {
         uncertain: b.uncertain === true,
         radius,
         center,
+        bounds: [
+          Math.min(...ring.map((p) => p[0])),
+          Math.min(...ring.map((p) => p[1])),
+          Math.max(...ring.map((p) => p[0])),
+          Math.max(...ring.map((p) => p[1])),
+        ],
       });
       this.maxHeight = Math.max(this.maxHeight, b.uncertain ? 150 : b.height);
     });
@@ -281,6 +300,25 @@ export class Router {
             ? 'low-sun'
             : 'shade';
     const edgeSamples = new Map<number, Sample[]>();
+    // Index each building's possible shadow extent for this departure snapshot.
+    // Exact ray/footprint intersection below remains the physical test. This
+    // avoids scanning a citywide tallest-building radius for every 8 m sample.
+    type Candidate = { building: MetricBuilding; vector: Point; bounds: Bounds };
+    const shadows = new Grid<Candidate>();
+    if (mode === 'shade') {
+      for (const cell of this.buildingGrid.cells.values())
+        for (const building of cell) {
+          const vector = shadowVector(building.height, sun.altitude, projectedAzimuth);
+          const [w, s, e, n] = building.bounds;
+          const bounds: Bounds = [
+            w + Math.min(0, vector[0]),
+            s + Math.min(0, vector[1]),
+            e + Math.max(0, vector[0]),
+            n + Math.max(0, vector[1]),
+          ];
+          shadows.addBounds(bounds, { building, vector, bounds });
+        }
+    }
     const sample = (index: number) => {
       const cached = edgeSamples.get(index);
       if (cached) return cached;
@@ -308,9 +346,8 @@ export class Router {
             boundaryPoints.every((p) => inBounds(geographic(this.city, p), this.data.modelBounds))
           ) {
             exposure = 'sun';
-            for (const building of this.buildingGrid.around(pt, reach + this.maxRadius)) {
-              const vec = shadowVector(building.height, sun.altitude, projectedAzimuth);
-              if (distance(pt, building.center) > Math.hypot(...vec) + building.radius) continue;
+            for (const { building, vector: vec, bounds } of shadows.around(pt, 0)) {
+              if (!inBounds(pt, bounds)) continue;
               if (rayHits(pt, [pt[0] - vec[0], pt[1] - vec[1]], building.ring, building.holes)) {
                 if (building.uncertain) exposure = 'unknown';
                 else {

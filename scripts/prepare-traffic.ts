@@ -10,7 +10,7 @@ import type { OSMData } from './lib/osm';
 
 const city = getCity('ch-zurich');
 const data: PilotData = JSON.parse(fs.readFileSync('public/data/zurich.json', 'utf8'));
-const raw: OSMData = JSON.parse(fs.readFileSync('data/raw/zurich-osm.json', 'utf8'));
+const raw: OSMData = JSON.parse(fs.readFileSync('data/raw/zurich-expansion/osm.json', 'utf8'));
 const zones: FeatureCollection<MultiPolygon> = JSON.parse(
   fs.readFileSync('data/raw/traffic/zones.geojson', 'utf8'),
 );
@@ -140,11 +140,14 @@ const report = {
   sampleMeters: SAMPLE_METERS,
   majorRoadDistance: MAJOR_ROAD_DISTANCE,
   graphMetersByClass: counts,
-  sha256: { zones: hash('data/raw/traffic/zones.geojson'), osm: hash('data/raw/zurich-osm.json') },
+  sha256: {
+    zones: hash('data/raw/traffic/zones.geojson'),
+    osm: hash('data/raw/zurich-expansion/osm.json'),
+  },
   note: 'Current-status zones; absent individual implementation dates retained as unknown. Catalogue/fetch dates are not traffic observations. No vehicle counts, live traffic or noise model. Major-road proximity uses OSM class and matching recorded level.',
 };
 data.version = city.dataVersion!;
-data.preparedAt = '2026-09-29';
+data.preparedAt = '2026-09-30';
 data.trafficModel = TRAFFIC_MODEL;
 data.provenance.traffic = report;
 fs.writeFileSync('public/data/zurich.json', JSON.stringify(data));

@@ -25,7 +25,7 @@ describe('Measured vehicle-count evidence', () => {
     const counts = data.vehicleCounts!;
     expect(counts.model).toBe('zurich-measured-hour-profiles-v1');
     expect(counts.year).toBe(2025);
-    expect(counts.counters.length).toBe(49);
+    expect(counts.counters.length).toBe(75);
     expect(new Set(counts.counters.map((c) => c.id)).size).toBe(counts.counters.length);
     for (const counter of counts.counters) {
       expect(inCoverage(city, counter.point)).toBe(true);

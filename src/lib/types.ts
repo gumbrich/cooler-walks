@@ -15,6 +15,8 @@ export interface City {
   crs: string;
   sourceCrs: string[];
   status: 'pilot' | 'review';
+  /** Product rollout, separate from geographic/model coverage. */
+  beta?: boolean;
   capabilities: {
     greenery: boolean;
     buildingShade: boolean;
@@ -24,6 +26,7 @@ export interface City {
     water: boolean;
     trafficCalming?: boolean;
     vehicleCounts?: boolean;
+    addresses?: boolean;
   };
   dataVersion: string | null;
   dataUrl: string | null;
@@ -75,6 +78,9 @@ export interface Place {
   name: string;
   point: Point;
   kind: string;
+  postcode?: string;
+  /** Address points locate buildings; they do not establish a public entrance. */
+  address?: boolean;
 }
 export interface WaterArea {
   id: string;

@@ -2,16 +2,30 @@
   {
     "id": "ch-zurich",
     "cityId": "ch-zurich",
-    "label": "Central Zurich",
-    "description": "An expanded central pilot from Platzspitz and the university area to the lake, including more streets west of the Limmat. The dashed boundary is routing coverage, not the whole city; building-model gaps remain unknown.",
+    "label": "Zurich & inner neighbourhoods",
+    "description": "From Wipkingen and Unterstrass through the city centre to Wiedikon and Seefeld. The dashed boundary shows the supported walking area, not the entire municipality. Building-model gaps and long shadows at the edge remain unknown.",
     "schema": 1,
-    "version": "zurich-2026-09-30-v5",
-    "sha256": "279841bac31a683e80105a2369afe1994cb46ef7c5849be6de90285426297dc8",
-    "bytes": 3866413,
-    "expandedBytes": 21260209,
-    "file": "ch-zurich-279841bac31a683e.cwp",
+    "version": "zurich-2026-09-30-v6",
+    "sha256": "a3aa560e8d283ff5dbd307ac468e25126fa7f3e4bb6f40e0871e68238b6b30ed",
+    "bytes": 8333787,
+    "expandedBytes": 49049970,
+    "file": "ch-zurich-a3aa560e8d283ff5.cwp",
     "preparedAt": "2026-09-30",
-    "areaKm2": 8.06
+    "areaKm2": 21.81
+  },
+  {
+    "id": "ch-basel",
+    "cityId": "ch-basel",
+    "label": "Central Basel & Kleinbasel",
+    "description": "An expanded central pilot spanning Basel SBB, the old town, the Rhine and more of Kleinbasel. Greenery and water proximity are available within the dashed boundary; no sun/shade recommendations yet.",
+    "schema": 1,
+    "version": "basel-2026-09-29-v2",
+    "sha256": "9df9dcd963729817ed62cfc162c28e1820bd669c914385ecabf5d30f0c5e6975",
+    "bytes": 1984628,
+    "expandedBytes": 11628977,
+    "file": "ch-basel-9df9dcd963729817.cwp",
+    "preparedAt": "2026-09-29",
+    "areaKm2": 10.25
   },
   {
     "id": "de-munich",
@@ -40,20 +54,6 @@
     "file": "us-cambridge-ma-5e5f2dccb41db952.cwp",
     "preparedAt": "2026-09-29",
     "areaKm2": 18.46
-  },
-  {
-    "id": "ch-basel",
-    "cityId": "ch-basel",
-    "label": "Central Basel & Kleinbasel",
-    "description": "An expanded central pilot spanning Basel SBB, the old town, the Rhine and more of Kleinbasel. Greenery and water proximity are available within the dashed boundary; no sun/shade recommendations yet.",
-    "schema": 1,
-    "version": "basel-2026-09-29-v2",
-    "sha256": "9df9dcd963729817ed62cfc162c28e1820bd669c914385ecabf5d30f0c5e6975",
-    "bytes": 1984628,
-    "expandedBytes": 11628977,
-    "file": "ch-basel-9df9dcd963729817.cwp",
-    "preparedAt": "2026-09-29",
-    "areaKm2": 10.25
   },
   {
     "id": "de-munich-old-town",

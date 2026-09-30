@@ -4,6 +4,7 @@ import AxeBuilder from '@axe-core/playwright';
 test('Historical counters follow route, local departure time and language without implying zero traffic', async ({
   page,
 }) => {
+  await page.clock.setFixedTime(new Date('2026-06-22T12:00:00Z'));
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto('/?view=planner&lang=en');
   await expect(page.locator('.route-card').first()).toBeVisible();

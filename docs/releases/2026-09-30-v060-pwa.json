@@ -1,0 +1,27 @@
+{
+  "browser": "154.0.8037.92",
+  "verifiedAt": "2026-09-30T06:59:05.330Z",
+  "origin": "https://coolerwalks.ch",
+  "manifestErrors": [],
+  "installabilityErrors": [],
+  "offlineReload": true,
+  "offlineRoutes": true,
+  "offlineMap": true,
+  "verifiedAreaDownload": true,
+  "downloadedAreaColdOfflineReload": true,
+  "offlineWaterPreference": true,
+  "offlineVisitedCitySwitch": true,
+  "unvisitedCityPrecached": false,
+  "offlineUnvisitedCityError": true,
+  "unvisitedCityRecovery": true,
+  "offlineWaypoints": true,
+  "reconnected": true,
+  "installation": {
+    "installed": true,
+    "standalone": true,
+    "germanOffline": true,
+    "vehicleCountsOffline": true,
+    "error": null
+  },
+  "pageErrors": []
+}

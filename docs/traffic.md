@@ -56,3 +56,7 @@ Next: compare official street-level vehicle-volume/emission attributes against t
 ## Vehicle-count evidence follow-up
 
 Version 0.6.0 includes dated directional hourly observations near selected Zurich walks. They do not change this street-context ranking because point coverage is insufficient for whole-route vehicle comparisons. [Sources, aggregation, limitations and reproduction](vehicle-counts.md).
+
+## Expanded Zurich coverage · 0.7.0
+
+The existing official zone snapshot is reapplied to the new 30 September OSM extract over 21.81 km². All 73,011 pedestrian edges are classified with the same model, level checks, buffers and coverage thresholds. Current class totals and hashes replace the validation report; the earlier 0.5 figures describe that milestone. No other city gains traffic capability through its beta label.

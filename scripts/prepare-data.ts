@@ -7,12 +7,11 @@ import type { Building, PilotData, Point, Tree } from '../src/lib/types';
 import type { FeatureCollection } from 'geojson';
 
 const city = cities[0];
-const raw = JSON.parse(fs.readFileSync('data/raw/zurich-osm.json', 'utf8')) as OSMData;
-const areas = JSON.parse(fs.readFileSync('data/raw/zurich-areas.json', 'utf8')) as OSMData;
+const root = 'data/raw/zurich-expansion';
+const raw = JSON.parse(fs.readFileSync(`${root}/osm.json`, 'utf8')) as OSMData;
+const areas = JSON.parse(fs.readFileSync(`${root}/areas.json`, 'utf8')) as OSMData;
 const { nodes, edges: filteredEdges, places, features, water } = prepareOSM(city, raw, areas);
-const treeRaw = JSON.parse(
-  fs.readFileSync('data/raw/zurich-trees.json', 'utf8'),
-) as FeatureCollection;
+const treeRaw = JSON.parse(fs.readFileSync(`${root}/trees.json`, 'utf8')) as FeatureCollection;
 const trees: Tree[] = treeRaw.features.flatMap((f) =>
   f.geometry.type === 'Point' &&
   typeof f.properties?.baumnummer === 'string' &&
@@ -30,7 +29,7 @@ if (trees.length < 100) throw new Error('Unexpectedly few verified trees');
 const buildingRaw = JSON.parse(
   fs.readFileSync('data/raw/buildings-compact-lv95.json', 'utf8'),
 ) as Building[];
-const modelBounds: [number, number, number, number] = [8.523, 47.357, 8.558, 47.394];
+const modelBounds: [number, number, number, number] = [8.5152, 47.351, 8.5717, 47.4041];
 const transform = (p: Point) => geographic(city, p).map((x) => +x.toFixed(7)) as Point;
 const buildings = buildingRaw
   .map((b) => ({ ...b, ring: b.ring.map(transform), holes: b.holes?.map((h) => h.map(transform)) }))
@@ -40,8 +39,8 @@ const hash = (p: string) => crypto.createHash('sha256').update(fs.readFileSync(p
 const data: PilotData = {
   version: city.dataVersion!,
   cityId: city.id,
-  fetchedAt: '2026-09-28',
-  preparedAt: '2026-09-29',
+  fetchedAt: '2026-09-30',
+  preparedAt: '2026-09-30',
   bounds: city.bounds,
   modelBounds,
   nodes,
@@ -56,9 +55,9 @@ const data: PilotData = {
       'City of Zurich Bauminventar, source locations 2021, heights 2018; preparation 2022',
     buildingsSource: 'swissBUILDINGS3D 3.0 beta, 2019 tiles 1091-23 and 1091-41',
     sha256: {
-      osm: hash('data/raw/zurich-osm.json'),
-      areas: hash('data/raw/zurich-areas.json'),
-      trees: hash('data/raw/zurich-trees.json'),
+      osm: hash(`${root}/osm.json`),
+      areas: hash(`${root}/areas.json`),
+      trees: hash(`${root}/trees.json`),
       buildings: hash('data/raw/buildings-lv95.json'),
     },
   },

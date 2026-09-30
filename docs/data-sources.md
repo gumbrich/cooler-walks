@@ -123,3 +123,7 @@ The derived Zurich v4 bundle adds actual current-status municipal traffic zones 
 ## Zurich directional vehicle counts · 30 September 2026
 
 The v5 bundle adds 49 directional measuring points from 28 sites, using actual 2025 measured hourly records and current active-site IDs. Source fields, CC0 attribution, EPSG:2056→WGS84 transforms, hashes, missing-data filtering, daylight-saving aggregation and update instructions are in [vehicle-counts.md](vehicle-counts.md); the complete audit is [vehicle-counts-validation.json](vehicle-counts-validation.json). Imputed and missing values are excluded, not counted as zero. This is historical evidence near a walk; insufficient whole-route count coverage prevents count-based routing. The 2024 street-emission layer was inspected but supplies no usable vehicle totals and remains unintegrated.
+
+## Zurich expansion and addresses · 30 September 2026
+
+Version 0.7 uses new bounded OSM/tree extracts and the official CC0 address layer, while re-extracting the cached 2019 building tiles over the verified full model rectangle. [Detailed source/field/coordinate audit and reproduction](zurich-expansion.md); [address hash and exclusion report](zurich-addresses-validation.json). The official address coordinates are label positions, not verified entrances. Earlier source sections describe historical milestones; current bounds and hashes are in the v6 data manifest.

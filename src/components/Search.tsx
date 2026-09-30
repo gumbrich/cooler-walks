@@ -1,36 +1,41 @@
 import { useI18n } from '../i18n';
-import { useId, useState } from 'react';
+import { useId, useMemo, useState } from 'react';
 import { MapPin, Search as SearchIcon } from 'lucide-react';
-import type { Place, Point } from '../lib/types';
+import type { City, Place, Point } from '../lib/types';
+import { inCoverage } from '../lib/coverage';
+import { indexPlaces, searchPlaces } from '../lib/place-search';
 export interface Endpoint {
   name: string;
   point: Point;
+  address?: boolean;
 }
 export function PlaceSearch({
   label,
-  cityName,
+  city,
   value,
   places,
+  addresses = false,
   onChange,
   onPick,
 }: {
   label: string;
-  cityName: string;
+  city: City;
   value: Endpoint | null;
   places: Place[];
+  addresses?: boolean;
   onChange: (v: Endpoint | null) => void;
   onPick: () => void;
 }) {
   const { t } = useI18n();
+  const cityName = city.localName;
   const id = useId(),
     [query, setQuery] = useState(value?.name ?? ''),
     [open, setOpen] = useState(false),
     [cursor, setCursor] = useState(0);
-  const options = places
-    .filter((p) => p.name.toLocaleLowerCase().includes(query.toLocaleLowerCase()))
-    .slice(0, 6);
+  const index = useMemo(() => indexPlaces(places, cityName), [places, cityName]);
+  const options = searchPlaces(index, query);
   const select = (p: Place) => {
-    onChange({ name: p.name, point: p.point });
+    onChange({ name: p.name, point: p.point, address: p.address });
     setQuery(p.name);
     setOpen(false);
   };
@@ -47,7 +52,9 @@ export function PlaceSearch({
           aria-autocomplete="list"
           aria-activedescendant={open && options.length ? `${id}-${cursor}` : undefined}
           autoComplete="off"
-          placeholder={t('Search pilot streets & places')}
+          placeholder={t(
+            addresses ? 'Street, house number or place' : 'Search pilot streets & places',
+          )}
           value={open ? query : value ? t(value.name) : query}
           onFocus={() => {
             setQuery(value ? t(value.name) : query);
@@ -72,21 +79,27 @@ export function PlaceSearch({
             }
             if (e.key === 'Enter' && open && options[cursor]) {
               e.preventDefault();
+              e.stopPropagation();
               select(options[cursor]);
             }
-            if (e.key === 'Escape') setOpen(false);
+            if (e.key === 'Escape') {
+              e.preventDefault();
+              setOpen(false);
+            }
           }}
         />
         <button
           type="button"
           className="map-pick"
           aria-label={t('Choose {label} on map', { label: label.toLowerCase() })}
+          title={t('Choose on map')}
           onClick={() => {
             setOpen(false);
             onPick();
           }}
         >
           <MapPin size={18} />
+          <span>{t('Map')}</span>
         </button>
       </div>
       {open && (
@@ -102,7 +115,11 @@ export function PlaceSearch({
                 <span>
                   {p.name}
                   <small>
-                    {t(p.kind)} · {cityName}
+                    {t(p.kind)} · {p.postcode ? `${p.postcode} ` : ''}
+                    {cityName}
+                    {p.address && !inCoverage(city, p.point)
+                      ? ` · ${t('Outside walking coverage')}`
+                      : ''}
                   </small>
                 </span>
               </button>
@@ -110,7 +127,11 @@ export function PlaceSearch({
           ))}
           {!options.length && (
             <li className="search-empty">
-              {t('No match in this pilot. Search another street or choose a point on the map.')}
+              {t(
+                addresses
+                  ? 'No matching Zurich address. Try the street and house number, or choose on the map.'
+                  : 'No match in this pilot. Search another street or choose a point on the map.',
+              )}
             </li>
           )}
         </ul>

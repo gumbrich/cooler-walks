@@ -2,9 +2,10 @@ import { defineConfig } from '@playwright/test';
 export default defineConfig({
   testDir: './tests/browser',
   testIgnore: '**/release.spec.ts',
-  // Shared CI runners need more time for multiple software-rendered map captures.
-  // Individual assertions retain the same limit, so stalled interactions still fail.
-  timeout: process.env.CI ? 180000 : 90000,
+  // These multi-step scenarios calculate real routes and capture several WebGL views.
+  // Use the same complete-flow budget locally and in CI; individual assertions
+  // retain their 45-second limit, so stalled interactions still fail.
+  timeout: 180000,
   expect: { timeout: 45000 },
   reporter: process.env.CI ? 'line' : 'list',
   workers: 1,

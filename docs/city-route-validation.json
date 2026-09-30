@@ -1,10 +1,10 @@
 {
   "modelVersion": "flat-buildings-snapshot-v4",
-  "verifiedAt": "2026-09-30T06:22:50.365Z",
+  "verifiedAt": "2026-09-30T07:51:04.316Z",
   "cities": [
     {
       "city": "ch-zurich",
-      "version": "zurich-2026-09-30-v5",
+      "version": "zurich-2026-09-30-v6",
       "from": {
         "id": "way-120613500",
         "name": "Bahnhofquai",
@@ -32,7 +32,8 @@
         "fountains": false,
         "water": true,
         "trafficCalming": true,
-        "vehicleCounts": true
+        "vehicleCounts": true,
+        "addresses": true
       },
       "results": [
         {

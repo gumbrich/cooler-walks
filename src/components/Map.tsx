@@ -2,8 +2,8 @@ import { useI18n } from '../i18n';
 import { useEffect, useRef, useState } from 'react';
 import * as maplibregl from 'maplibre-gl';
 import { type GeoJSONSource, type Map as LibreMap } from 'maplibre-gl';
-import { Layers, LocateFixed, Minus, Plus, Scan } from 'lucide-react';
-import { coverageGeometry } from '../lib/coverage';
+import { Layers, LocateFixed, Minus, Plus, Scan, X, MapPin } from 'lucide-react';
+import { coverageGeometry, inCoverage } from '../lib/coverage';
 import type { FeatureCollection, Feature } from 'geojson';
 import type { City, PilotData, Point, RouteResult } from '../lib/types';
 import type { CounterObservation } from '../lib/vehicle-counts';
@@ -26,6 +26,9 @@ interface Props {
   onSelect: (id: string) => void;
   pick: string | null;
   onPick: (p: Point) => void;
+  onCancelPick: () => void;
+  onChoosePoint: (target: 'start' | 'end' | 'stop', p: Point) => void;
+  canAddStop: boolean;
   showCoverage: boolean;
   onCoverage: () => void;
   hero?: boolean;
@@ -40,6 +43,9 @@ export function WalkingMap({
   onSelect,
   pick,
   onPick,
+  onCancelPick,
+  onChoosePoint,
+  canAddStop,
   showCoverage,
   onCoverage,
   hero = false,
@@ -53,6 +59,29 @@ export function WalkingMap({
   const [ready, setReady] = useState(false),
     [failure, setFailure] = useState('');
   const [settled, setSettled] = useState(false);
+  const [pointChoice, setPointChoice] = useState<Point | null>(null);
+  useEffect(() => {
+    if (!pointChoice || !map.current) return;
+    const marker = new maplibregl.Marker({ color: '#185a65' })
+      .setLngLat(pointChoice)
+      .addTo(map.current);
+    return () => {
+      marker.remove();
+    };
+  }, [pointChoice]);
+  useEffect(() => {
+    const cancel = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setPointChoice(null);
+        if (pick) onCancelPick();
+      }
+    };
+    document.addEventListener('keydown', cancel);
+    return () => document.removeEventListener('keydown', cancel);
+  }, [pick, onCancelPick]);
+  useEffect(() => {
+    setPointChoice(null);
+  }, [pick, city.id]);
   useEffect(() => {
     if (!container.current || city.status !== 'pilot') return;
     setReady(false);
@@ -338,8 +367,12 @@ export function WalkingMap({
       }
       if (m.getLayer('route-lines')) {
         const f = m.queryRenderedFeatures(event.point, { layers: ['route-lines'] })[0];
-        if (f) callbacks.current.onSelect(String(f.properties.id));
+        if (f) {
+          callbacks.current.onSelect(String(f.properties.id));
+          return;
+        }
       }
+      if (!hero) setPointChoice([event.lngLat.lng, event.lngLat.lat]);
     });
     m.on('error', (e) => {
       console.error('Map rendering error', e.error);
@@ -524,7 +557,7 @@ export function WalkingMap({
             <strong>{city.localName}</strong>
             <span>
               {t(city.coverageLabel)}
-              {t(' · pilot')}
+              {city.beta ? ' · Beta' : t(' · pilot')}
             </span>
           </div>
           <div className="map-tools">
@@ -566,12 +599,58 @@ export function WalkingMap({
         </>
       )}
       {pick && (
-        <div className="pick-notice">
-          {pick === 'end'
-            ? t('Tap a public path to set your destination.')
-            : pick === 'start'
-              ? t('Tap a public path to set your start.')
-              : t('Tap a public path to set stop {n}.', { n: pick.replace('stop ', '') })}
+        <div className="pick-notice" role="status">
+          <MapPin size={19} aria-hidden="true" />
+          <span>
+            {pick === 'end'
+              ? t('Tap a public path to set your destination.')
+              : pick === 'start'
+                ? t('Tap a public path to set your start.')
+                : t('Tap a public path to set stop {n}.', { n: pick.replace('stop ', '') })}
+          </span>
+          <button aria-label={t('Cancel map selection')} onClick={onCancelPick}>
+            <X size={19} />
+          </button>
+        </div>
+      )}
+      {pointChoice && !pick && !hero && (
+        <div className="map-point-card" role="group" aria-label={t('Use this map point')}>
+          <div className="map-point-heading">
+            <strong>{t('Use this map point')}</strong>
+            <button aria-label={t('Close map point')} onClick={() => setPointChoice(null)}>
+              <X size={19} />
+            </button>
+          </div>
+          {inCoverage(city, pointChoice) ? (
+            <>
+              <p>{t('Choose a nearby public street or path.')}</p>
+              <div className="map-point-actions">
+                {(['start', 'end', ...(canAddStop ? (['stop'] as const) : [])] as const).map(
+                  (target) => (
+                    <button
+                      key={target}
+                      onClick={() => {
+                        onChoosePoint(target, pointChoice);
+                        setPointChoice(null);
+                      }}
+                    >
+                      {t(
+                        target === 'start'
+                          ? 'Walk from here'
+                          : target === 'end'
+                            ? 'Walk to here'
+                            : 'Add a stop here',
+                      )}
+                    </button>
+                  ),
+                )}
+              </div>
+            </>
+          ) : (
+            <p role="status">
+              {t('Outside walking coverage. Choose a point inside the dashed boundary.')}
+            </p>
+          )}
         </div>
       )}
       <div className="map-north" aria-hidden="true">

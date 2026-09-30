@@ -23,7 +23,8 @@ import {
   TrafficCone,
   X,
 } from 'lucide-react';
-import { cities, getCity } from './lib/cities';
+import { cities, cityOptions, getCity } from './lib/cities';
+import { inCoverage } from './lib/coverage';
 import { formatDistance } from './lib/geo';
 import { localNow, timeLabel, toInstant } from './lib/time';
 import type { PilotData, Point, Route, RouteResult } from './lib/types';
@@ -324,12 +325,18 @@ export default function App() {
         );
     }
   };
-  const mapPick = (p: Point) => {
+  const mapPick = (p: Point, target = pick) => {
+    if (!inCoverage(city, p)) {
+      setError('Outside walking coverage. Choose a point inside the dashed boundary.');
+      return;
+    }
     const value = { name: `Map point · ${p[1].toFixed(4)}, ${p[0].toFixed(4)}`, point: p };
-    if (pick === 'start') setStart(value);
-    else if (pick === 'end') setEnd(value);
+    if (target === 'start') setStart(value);
+    else if (target === 'end') setEnd(value);
     else
-      setStops((current) => current.map((stop) => (stop.id === pick ? { ...stop, value } : stop)));
+      setStops((current) =>
+        current.map((stop) => (stop.id === target ? { ...stop, value } : stop)),
+      );
     setPick(null);
   };
   const chooseMap = (target: 'start' | 'end' | number) => {
@@ -552,6 +559,27 @@ export default function App() {
     pick:
       typeof pick === 'number' ? `stop ${stops.findIndex((stop) => stop.id === pick) + 1}` : pick,
     onPick: mapPick,
+    onCancelPick: () => {
+      setPick(null);
+      if (error === 'Outside walking coverage. Choose a point inside the dashed boundary.')
+        setError('');
+    },
+    onChoosePoint: (target: 'start' | 'end' | 'stop', point: Point) => {
+      if (target === 'stop') {
+        if (stops.length >= 3) return;
+        const id = ++stopId.current;
+        setStops((current) => [
+          ...current,
+          {
+            id,
+            value: { name: `Map point · ${point[1].toFixed(4)}, ${point[0].toFixed(4)}`, point },
+          },
+        ]);
+        setPick(null);
+      } else mapPick(point, target);
+      setEditing(false);
+    },
+    canAddStop: stops.length < 3,
     showCoverage: coverage,
     onCoverage: () => setCoverage(!coverage),
     counterObservations: countsExpanded ? counterObservations : [],
@@ -603,14 +631,13 @@ export default function App() {
               {t('City')}
             </label>
             <select id="city" value={city.id} onChange={(e) => changeCity(e.target.value)}>
-              {[...cities]
-                .sort((a, b) => Number(a.status === 'review') - Number(b.status === 'review'))
-                .map((c) => (
-                  <option value={c.id} key={c.id}>
-                    {c.localName}, {t(c.country ?? '')}
-                    {c.status === 'review' ? t(' · under review') : ''}
-                  </option>
-                ))}
+              {cityOptions.map((c) => (
+                <option value={c.id} key={c.id}>
+                  {c.localName}, {t(c.country ?? '')}
+                  {c.beta && c.status !== 'review' ? ' · Beta' : ''}
+                  {c.status === 'review' ? t(' · under review') : ''}
+                </option>
+              ))}
             </select>
             <ChevronDown size={14} />
           </div>
@@ -658,7 +685,9 @@ export default function App() {
               </button>
               <div className="pilot-note">
                 <span className="pilot-dot" />
-                {t('Starting small. Walking {city}.', { city: t(city.name) })}
+                {city.beta
+                  ? t('Beta · Walking {city}.', { city: t(city.name) })
+                  : t('Made for Zurich. Growing across Switzerland.')}
                 <button onClick={() => setModal('coverage')}>
                   {t('Explore the pilot ')}
                   <ArrowRight size={14} />
@@ -836,6 +865,18 @@ export default function App() {
                     setEditing(false);
                   }}
                 >
+                  {city.beta && (
+                    <p className="beta-notice">
+                      {t('Beta city · Zurich is our main focus. Coverage and features vary here.')}
+                    </p>
+                  )}
+                  <p className="search-guidance">
+                    {t(
+                      city.capabilities.addresses
+                        ? 'Enter a Zurich address or place. You can also tap the map to choose where to walk.'
+                        : 'Search a street or place, or tap the map to choose where to walk.',
+                    )}
+                  </p>
                   <div className="endpoint-fields">
                     <span className="endpoint-track">
                       <i>A</i>
@@ -845,10 +886,11 @@ export default function App() {
                     <div className="fields">
                       <PlaceSearch
                         key={`start-${city.id}`}
-                        cityName={city.localName}
+                        city={city}
                         label={t('From')}
                         value={start}
                         places={data?.places ?? []}
+                        addresses={city.capabilities.addresses}
                         onChange={setStart}
                         onPick={() => chooseMap('start')}
                       />
@@ -859,10 +901,11 @@ export default function App() {
                               {index + 1}
                             </span>
                             <PlaceSearch
-                              cityName={city.localName}
+                              city={city}
                               label={t('Stop {n}', { n: index + 1 })}
                               value={stop.value}
                               places={data?.places ?? []}
+                              addresses={city.capabilities.addresses}
                               onChange={(value) =>
                                 setStops((current) =>
                                   current.map((item) =>
@@ -914,10 +957,11 @@ export default function App() {
                       </div>
                       <PlaceSearch
                         key={`end-${city.id}`}
-                        cityName={city.localName}
+                        city={city}
                         label={t('To')}
                         value={end}
                         places={data?.places ?? []}
+                        addresses={city.capabilities.addresses}
                         onChange={setEnd}
                         onPick={() => chooseMap('end')}
                       />
@@ -1216,6 +1260,15 @@ export default function App() {
                           .join(' → ')}
                       </p>
                       <p>
+                        {(start?.address ||
+                          end?.address ||
+                          stops.some((s) => s.value?.address)) && (
+                          <>
+                            {t(
+                              'Address markers locate buildings, not verified entrances. The walk starts and ends on the nearby mapped path; check the final access on site.',
+                            )}{' '}
+                          </>
+                        )}
                         {chosen.steps ? t('Includes mapped steps. ') : ''}
                         {t('Walking time assumes 4.8 km/h; crossing waits are not included.')}{' '}
                         {result &&
@@ -1445,7 +1498,7 @@ export default function App() {
                 <br />
                 <em>{t('Room to grow.')}</em>
               </h2>
-              {cities.map((coveredCity) => (
+              {cityOptions.map((coveredCity) => (
                 <div className="coverage-city" key={coveredCity.id}>
                   <div>
                     <h3>
@@ -1454,7 +1507,11 @@ export default function App() {
                     <span
                       className={`status-badge ${coveredCity.status === 'review' ? 'muted' : ''}`}
                     >
-                      {coveredCity.status === 'pilot' ? t('Pilot area') : t('Data under review')}
+                      {coveredCity.status === 'review'
+                        ? t('Data under review')
+                        : coveredCity.beta
+                          ? t('Beta · pilot area')
+                          : t('Zurich focus')}
                     </span>
                   </div>
                   <p>{t(coveredCity.coverageDescription ?? '')}</p>

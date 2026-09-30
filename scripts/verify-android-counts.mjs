@@ -51,22 +51,35 @@ try {
   await expect(page.locator('.traffic-counts')).toContainText('Fahrzeuge/Stunde');
   await page.locator('.traffic-counts').scrollIntoViewIfNeeded();
   await device.screenshot({ path: 'docs/screenshots/android-vehicle-counts.png' });
+  await page.getByRole('button', { name: 'Weg bearbeiten', exact: true }).click();
+  await page.getByRole('combobox', { name: 'Von', exact: true }).fill('Bahnhofstrasse 1');
+  await page.getByRole('combobox', { name: 'Von', exact: true }).press('Enter');
+  await page.getByRole('combobox', { name: 'Nach', exact: true }).fill('Münsterhof 2');
+  await page.getByRole('combobox', { name: 'Nach', exact: true }).press('Enter');
+  await expect(page.locator('.spinner')).toHaveCount(0, { timeout: 60000 });
+  await expect(page.getByRole('button', { name: /Schnellster Weg/ })).toBeVisible();
+  await expect(page.locator('.map-marker')).toHaveCount(2);
+  await page.getByRole('button', { name: 'Meinen Weg anzeigen', exact: true }).click();
+  await device.screenshot({ path: 'docs/screenshots/android-zurich-addresses.png' });
   await page.getByRole('combobox', { name: 'Stadt', exact: true }).selectOption('de-munich');
   await expect(page.locator('.route-card').first()).toBeVisible({ timeout: 60000 });
   await expect(page.locator('.traffic-counts')).toHaveCount(0);
   await expect(page.locator('.counter-map-marker')).toHaveCount(0);
+  await expect(page.locator('.map-location')).toContainText('Beta');
   assert.deepEqual(errors, []);
   fs.writeFileSync(
     'docs/native-counts-validation.json',
     JSON.stringify(
       {
         checkedAt: new Date().toISOString(),
-        appVersion: '0.6.0',
+        appVersion: JSON.parse(fs.readFileSync('package.json', 'utf8')).version,
         device: 'CoolerWalks_Test Android emulator',
         passed: [
           'Bundled vehicle-count profiles after offline reload',
           'Real Monday 14:00 reference, three counters and map markers',
           'German labels preserve the observations',
+          'Official Zurich address search and real routes while offline',
+          'Other launched cities labelled beta',
           'City change clears counter data and markers',
         ],
         pageErrors: errors,

@@ -4,6 +4,7 @@
 
 - **Graph, map and places:** © OpenStreetMap contributors, [ODbL 1.0](https://opendatacommons.org/licenses/odbl/1-0/); [copyright and attribution](https://www.openstreetmap.org/copyright). Preserve attribution and applicable database share-alike/source-access obligations when distributing derived databases.
 - **Tree positions:** City of Zurich Bauminventar, [catalogue](https://data.stadt-zuerich.ch/dataset/geo_bauminventar), catalogue licence CC0. Underlying positions from Zurich's register and swissTLM3D; retain the provider attribution. Randomly distributed woodland points excluded.
+- **Zurich official addresses:** City of Zurich / Geomatik + Vermessung, [Adressen Stadt Zürich](https://data.stadt-zuerich.ch/dataset/geo_adressen_stadt_zuerich), CC0. Existing records only; coordinates are map-label positions, not verified entrances. Full-city search includes labelled addresses outside the routing boundary.
 - **Building geometry:** © swisstopo, swissBUILDINGS3D 3.0 beta, [product and terms](https://www.swisstopo.admin.ch/en/landscape-model-swissbuildings3d-3-0-beta). Preserve © swisstopo source acknowledgement.
 
 Data is not licensed under the source-code MIT licence. See `docs/data-sources.md` and `docs/data-manifest.json` for exact fetch resources, versions, transformations and raw input hashes.
@@ -18,3 +19,5 @@ All transformations, actual download URLs, source/update-date distinctions and r
 
 
 Zurich v5 includes derived 2025 directional vehicle-count profiles, CC0 City of Zurich. Their observed year differs from the 30 September 2026 fetch date. Counts remain point evidence, separate from route ranking; see `docs/vehicle-counts.md` and `docs/vehicle-counts-validation.json`. Raw Parquet and service responses remain ignored.
+
+Zurich v6 expands to 21.81 km² and adds 56,704 official address records. It re-clips the existing traffic evidence to the wider area (75 directional counters). See `docs/zurich-expansion.md` and `docs/zurich-addresses-validation.json`.

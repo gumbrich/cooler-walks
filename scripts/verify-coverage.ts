@@ -10,8 +10,12 @@ import type { Bounds, PilotData, Point } from '../src/lib/types';
 const cases: { id: string; old: Bounds; journeys: [string, string][] }[] = [
   {
     id: 'ch-zurich',
-    old: [8.529, 47.362, 8.552, 47.385],
-    journeys: [['Josefstrasse', 'Bürkliplatz']],
+    old: [8.524, 47.359, 8.556, 47.389],
+    journeys: [
+      ['Schaffhauserstrasse 100', 'Röschibachplatz'],
+      ['Dufourstrasse 150', 'Bürkliplatz'],
+      ['Birmensdorferstrasse 93', 'Badenerstrasse 15'],
+    ],
   },
   {
     id: 'de-munich',

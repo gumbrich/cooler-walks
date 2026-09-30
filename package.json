@@ -1,6 +1,6 @@
 {
   "name": "cooler-walks",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "private": true,
   "type": "module",
   "engines": {
@@ -12,7 +12,7 @@
     "preview": "vite preview --host 127.0.0.1",
     "test": "vitest run",
     "check": "tsc -b && vitest run",
-    "data:prepare": "tsx scripts/prepare-data.ts && npm run data:prepare:traffic",
+    "data:prepare": "tsx scripts/prepare-data.ts && npm run data:prepare:traffic && npm run data:attach:counts && npm run data:prepare:addresses",
     "data:verify": "tsx scripts/verify-data.ts && tsx scripts/verify-cities.ts && tsx scripts/verify-coverage.ts",
     "data:audit-trees": "tsx scripts/audit-trees.ts",
     "test:e2e": "playwright test",
@@ -47,7 +47,9 @@
     "data:fetch:traffic": "node scripts/fetch-traffic.mjs",
     "data:prepare:traffic": "tsx scripts/prepare-traffic.ts",
     "data:attach:counts": "node --import tsx scripts/attach-vehicle-counts.ts",
-    "test:native:counts": "node scripts/verify-android-counts.mjs"
+    "test:native:counts": "node scripts/verify-android-counts.mjs",
+    "data:prepare:addresses": "tsx scripts/prepare-zurich-addresses.ts",
+    "data:fetch:zurich": "python3 scripts/fetch-zurich-expansion.py"
   },
   "dependencies": {
     "@capacitor/android": "^8.5.2",

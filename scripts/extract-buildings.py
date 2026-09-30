@@ -2,14 +2,25 @@
 Raw tiles stay in data/raw. No source observation dates are inferred from fetch time.
 """
 import json
+import argparse
 import pathlib
 import xml.etree.ElementTree as ET
 import zipfile
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 NS = {'b':'http://www.opengis.net/citygml/building/2.0','g':'http://www.opengis.net/gml'}
-# LV95 generous buffer around the small centre pilot; refined in TypeScript.
-BBOX = (2681600,1245400,2685100,1250300)
+parser = argparse.ArgumentParser()
+parser.add_argument('--expanded', action='store_true', help='Use the verified two-tile Zurich surroundings')
+args = parser.parse_args()
+# Expanded envelope includes every vertex of the model rectangle in LV95,
+# plus a small margin for footprints intersecting the boundary.
+BBOX = (2681200,1244950,2685675,1251050) if args.expanded else (2681600,1245400,2685100,1250300)
+if args.expanded:
+    from shapely.geometry import shape, box
+    from shapely.ops import unary_union
+    sources = [json.loads((ROOT/'data/raw/zurich-expansion'/('buildings-'+tile+'-stac.json')).read_text()) for tile in ['1091-23','1091-41']]
+    if not unary_union([shape(s['geometry']) for s in sources]).covers(box(8.5152,47.351,8.5717,47.4041)):
+        raise ValueError('The model rectangle is not fully covered by actual source tile polygons')
 buildings = []
 seen = set()
 for archive in sorted((ROOT/'data/raw').glob('buildings-*.zip')):

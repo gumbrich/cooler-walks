@@ -48,3 +48,7 @@ For Bahnhofquai–Bürkliplatz, Monday 22 June 2026 at 14:00 Zurich time, the fa
 The existing calmer alternative has no supported nearby counter. Its actual vehicle volume is **unknown**; the app does not label it zero or claim a measured reduction. This route pair is an intentional regression case for the missing-data explanation.
 
 Next: obtain a documented street-section traffic-volume dataset or a defensible, independently validated count-to-road network model. Establish comparable full-route coverage before making vehicle-volume-based recommendations. Do not fill gaps with noise emissions, speed limits or unverified extrapolation.
+
+## Expanded Zurich coverage · 0.7.0
+
+The same inspected 2025 directional profiles now clip to the larger 21.81 km² walking area, retaining **75 counters at 42 sites**. This is a coverage/preparation change, not a new observation year. The historic 49-counter figures above describe the 0.6.0 boundary. Current counts/IDs and source hashes are in `vehicle-counts-validation.json`. Street-context ranking is unchanged; unknown measured traffic is never zero.

@@ -1,7 +1,19 @@
 import proj4 from 'proj4';
 import type { Bounds, City, Point } from './types';
-export const metric = (city: City, p: Point): Point => proj4('EPSG:4326', city.crs, p) as Point;
-export const geographic = (city: City, p: Point): Point => proj4(city.crs, 'EPSG:4326', p) as Point;
+// Parsing the projection for every route sample dominated larger-city calculations.
+// Reuse the same bidirectional transform; coordinate values and datums are unchanged.
+const createProjection = (crs: string) => proj4('EPSG:4326', crs);
+const transforms = new Map<string, ReturnType<typeof createProjection>>();
+function projection(city: City) {
+  let transform = transforms.get(city.crs);
+  if (!transform) {
+    transform = createProjection(city.crs);
+    transforms.set(city.crs, transform);
+  }
+  return transform;
+}
+export const metric = (city: City, p: Point): Point => projection(city).forward(p) as Point;
+export const geographic = (city: City, p: Point): Point => projection(city).inverse(p) as Point;
 export const inBounds = (p: Point, b: Bounds) =>
   p[0] >= b[0] && p[0] <= b[2] && p[1] >= b[1] && p[1] <= b[3];
 export const distance = (a: Point, b: Point) => Math.hypot(a[0] - b[0], a[1] - b[1]);

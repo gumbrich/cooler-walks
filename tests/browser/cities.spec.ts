@@ -76,6 +76,8 @@ for (const [id, slug, sunlight, timeZone] of [
   ['ch-basel', 'basel', false, 'Zurich'],
 ] as const) {
   test(`${slug} uses its own map, sources, capabilities and local time`, async ({ page }) => {
+    // The initial Zurich route also needs a repeatable solar workload before switching.
+    await page.clock.setFixedTime(new Date('2026-06-21T12:00:00Z'));
     await page.setViewportSize({
       width: slug === 'cambridge' ? 390 : 1440,
       height: slug === 'cambridge' ? 844 : 1000,

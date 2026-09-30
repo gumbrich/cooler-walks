@@ -51,3 +51,7 @@ Desktop/phone German entry and route screenshots, tablet unsupported/error state
 ## Historical count evidence
 
 A pale blue-green disclosure below the selected route separates measured traffic evidence from green route scores. Numbered blue squares connect source measuring positions with direction-specific values; short leader lines keep labels clear of route endpoint markers on phones without relocating the source point. Values use historical-year and weekday/hour labels, measured-day denominators and a 24-hour profile with an explicitly independent vertical scale. Missing values use dashed outlines; no-counter routes state that traffic is unknown. The existing route/time controls remain the primary interaction. English desktop, German phone and tablet missing-data screenshots document the actual implementation.
+
+## Zurich focus · 0.7
+
+The city selector, coverage view and downloads now prioritize Switzerland; every other integrated city has a visible Beta label. Zurich keeps the existing atlas identity, with a clearer address-first trip form. Map pickers have visible text labels, a cancellable prompt, and a compact contextual card for start/destination/stops when the map is tapped. Long official address labels truncate only in the compact trip summary; the editing field and suggestion list preserve the name. Outside-area addresses remain visible and are marked honestly. The phone map remains visible above the route sheet. Timeline tick contrast was strengthened after an actual phone accessibility scan.

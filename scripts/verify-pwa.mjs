@@ -142,6 +142,7 @@ let installation = {
   standalone: false,
   germanOffline: false,
   vehicleCountsOffline: false,
+  addressSearchOffline: false,
   error: null,
 };
 const root = await browser.newBrowserCDPSession();
@@ -196,6 +197,20 @@ try {
   installation.vehicleCountsOffline = true;
   await app.locator('.traffic-counts').scrollIntoViewIfNeeded();
   await app.screenshot({ path: 'docs/screenshots/installed-vehicle-counts.png' });
+  await app.getByRole('checkbox', { name: /Verkehrsberuhigt bevorzugen/ }).uncheck();
+  await app.getByRole('combobox', { name: 'Von', exact: true }).fill('Bahnhofstrasse 1');
+  await app.getByRole('combobox', { name: 'Von', exact: true }).press('Enter');
+  await app.getByRole('combobox', { name: 'Nach', exact: true }).fill('Münsterhof 2');
+  await app.getByRole('combobox', { name: 'Nach', exact: true }).press('Enter');
+  await expect(app.locator('.spinner')).toHaveCount(0, { timeout: 60000 });
+  await expect(app.getByRole('button', { name: /Schnellster Weg/ })).toBeVisible();
+  await expect(app.locator('.map-marker')).toHaveCount(2);
+  installation.addressSearchOffline = true;
+  await app.screenshot({ path: 'docs/screenshots/installed-zurich-addresses.png' });
+  await app.locator('.map-canvas').click({ position: { x: 320, y: 320 } });
+  await expect(app.getByRole('group', { name: 'Diesen Kartenpunkt verwenden' })).toBeVisible();
+  await app.screenshot({ path: 'docs/screenshots/installed-map-selection.png' });
+  await app.getByRole('button', { name: 'Kartenpunkt schliessen' }).click();
   await context.setOffline(false);
 } catch (e) {
   installation.error = e.message;
@@ -203,6 +218,7 @@ try {
   if (installation.installed) await root.send('PWA.uninstall', { manifestId: origin + '/' });
 }
 const report = {
+  appVersion: JSON.parse(fs.readFileSync('package.json', 'utf8')).version,
   browser: await browser.version(),
   verifiedAt: new Date().toISOString(),
   origin,
@@ -231,6 +247,7 @@ if (
   !installation.standalone ||
   !installation.germanOffline ||
   !installation.vehicleCountsOffline ||
+  !installation.addressSearchOffline ||
   installation.error
 )
   process.exitCode = 1;

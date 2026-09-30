@@ -8,7 +8,7 @@ export const cities: City[] = [
     country: 'Switzerland',
     region: 'Zürich',
     center: [8.541, 47.374],
-    bounds: [8.524, 47.359, 8.556, 47.389],
+    bounds: [8.517, 47.353, 8.57, 47.402],
     timeZone: 'Europe/Zurich',
     locale: 'de-CH',
     crs: '+proj=somerc +lat_0=46.95240555555556 +lon_0=7.439583333333333 +k_0=1 +x_0=2600000 +y_0=1200000 +ellps=bessel +towgs84=674.374,15.056,405.346,0,0,0,0 +units=m +no_defs',
@@ -23,23 +23,28 @@ export const cities: City[] = [
       water: true,
       trafficCalming: true,
       vehicleCounts: true,
+      addresses: true,
     },
-    dataVersion: 'zurich-2026-09-30-v5',
+    dataVersion: 'zurich-2026-09-30-v6',
     dataUrl: '/data/zurich.json',
     mapUrl: '/data/zurich-map.geojson',
     providers: ['OpenStreetMap', 'City of Zurich', 'swisstopo'],
     translatedNames: { en: 'Zurich', de: 'Zürich' },
     defaultJourney: ['Bahnhofquai', 'Bürkliplatz'],
-    coverageLabel: 'Central Zurich',
+    coverageLabel: 'Zurich & inner neighbourhoods',
     coverageDescription:
-      'An expanded central pilot from Platzspitz and the university area to the lake, including more streets west of the Limmat. The dashed boundary is routing coverage, not the whole city; building-model gaps remain unknown.',
+      'From Wipkingen and Unterstrass through the city centre to Wiedikon and Seefeld. The dashed boundary shows the supported walking area, not the entire municipality. Building-model gaps and long shadows at the edge remain unknown.',
     treeNotes:
       'The inventory uses 2021 positions from surveys, screen entry and aerial data. Removals and replacements may be missing. Markers are positions, not measured crowns.',
     buildingNotes:
       'Actual swisstopo footprints and roof-to-ground heights, simplified to flat-ground extrusions. Historical geometry and roof simplification affect the estimate.',
     sourceSummary:
-      'Core data fetched 28 September 2026. Building tiles: 2019; tree locations: 2021, prepared 2022. Current-status traffic zones fetched 29 September 2026. Fetch dates are not observation dates.',
+      'Walking network, tree extract and official addresses fetched 30 September 2026. Building tiles: 2019; tree locations: 2021, prepared 2022. Traffic zones fetched 29 September 2026. Fetch dates are not observation dates.',
     sources: [
+      {
+        label: 'Official Zurich building addresses',
+        url: 'https://data.stadt-zuerich.ch/dataset/geo_adressen_stadt_zuerich',
+      },
       {
         label: 'Zurich hourly vehicle counts · 2025 reference',
         url: 'https://data.stadt-zuerich.ch/dataset/sid_dav_verkehrszaehlung_miv_od2031',
@@ -73,6 +78,7 @@ export const cities: City[] = [
     crs: 'EPSG:32631',
     sourceCrs: ['EPSG:4326', 'EPSG:2154'],
     status: 'review',
+    beta: true,
     capabilities: {
       greenery: false,
       buildingShade: false,
@@ -119,6 +125,7 @@ cities.push(
     crs: '+proj=utm +zone=32 +ellps=GRS80 +units=m +no_defs',
     sourceCrs: ['EPSG:4326', 'EPSG:25832 / DHHN2016'],
     status: 'pilot',
+    beta: true,
     capabilities: {
       greenery: true,
       buildingShade: true,
@@ -169,6 +176,7 @@ cities.push(
     crs: '+proj=utm +zone=19 +datum=WGS84 +units=m +no_defs',
     sourceCrs: ['EPSG:4326', 'EPSG:2249'],
     status: 'pilot',
+    beta: true,
     capabilities: {
       greenery: true,
       buildingShade: false,
@@ -222,6 +230,7 @@ cities.push(
     crs: cities[0].crs,
     sourceCrs: ['EPSG:4326', 'EPSG:2056'],
     status: 'pilot',
+    beta: true,
     capabilities: {
       greenery: true,
       buildingShade: false,
@@ -256,3 +265,9 @@ cities.push(
   },
 );
 export const getCity = (id: string) => cities.find((c) => c.id === id) ?? cities[0];
+export const cityOptions = [...cities].sort(
+  (a, b) =>
+    Number(a.status === 'review') - Number(b.status === 'review') ||
+    Number(a.beta === true) - Number(b.beta === true) ||
+    Number(b.country === 'Switzerland') - Number(a.country === 'Switzerland'),
+);

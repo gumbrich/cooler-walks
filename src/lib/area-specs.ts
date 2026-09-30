@@ -1,4 +1,4 @@
-import { cities, getCity } from './cities';
+import { cityOptions, getCity } from './cities';
 import type { Bounds, City } from './types';
 
 export interface AreaSpec {
@@ -9,7 +9,7 @@ export interface AreaSpec {
   bounds?: Bounds;
 }
 export const areaSpecs: AreaSpec[] = [
-  ...cities
+  ...cityOptions
     .filter((city) => city.status === 'pilot')
     .map((city) => ({
       id: city.id,

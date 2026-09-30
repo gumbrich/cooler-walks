@@ -154,6 +154,7 @@ export function AreaDownloads({
                   <div className="area-card-top">
                     <span className="eyebrow">
                       {city.localName} · {t(city.country)}
+                      {city.beta ? ' · Beta' : ''}
                     </span>
                     <span className="area-state">
                       {ready && <Check size={13} />}
