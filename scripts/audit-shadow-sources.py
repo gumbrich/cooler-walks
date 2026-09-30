@@ -87,6 +87,9 @@ class Rasters:
             archive, name = self.files[key]
             with rasterio.open(f'/vsizip/{archive}/{name}') as raster:
                 assert raster.res == (.25, .25)
+                _, x, y = key
+                assert raster.shape == (2000, 2000)
+                assert tuple(raster.bounds) == (x, y, x+500, y+500)
                 self.cache[key] = (raster.read(1), raster.read_masks(1))
             if len(self.cache) > 4:
                 self.cache.popitem(last=False)
