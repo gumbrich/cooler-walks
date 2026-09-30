@@ -29,6 +29,10 @@ try {
   await shell(`am start -n ${pkg}/.MainActivity`);
   const page = await (await device.webView({ pkg })).page();
   page.on('pageerror', (e) => errors.push(e.message));
+  // Keep this count regression independent of wall-clock solar conditions.
+  // Reload starts a fresh worker at the real reference date in both runs.
+  await page.clock.setFixedTime(new Date('2026-06-22T12:00:00Z'));
+  await page.reload();
   await expect(page.locator('.route-card').first()).toBeVisible({ timeout: 60000 });
   await shell('svc wifi disable');
   await shell('svc data disable');

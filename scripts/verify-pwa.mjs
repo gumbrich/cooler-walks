@@ -178,7 +178,9 @@ try {
   await expect(app.locator('html')).toHaveAttribute('lang', 'de');
   await expect(app.locator('.route-card').first()).toBeVisible({ timeout: 60000 });
   await app.getByRole('checkbox', { name: /Verkehrsberuhigt bevorzugen/ }).check();
-  await expect(app.getByRole('button', { name: /Verkehrsberuhigter Weg/ })).toBeVisible();
+  await expect(app.getByRole('button', { name: /Verkehrsberuhigter Weg/ })).toBeVisible({
+    timeout: 60000,
+  });
   await expect(app.locator('.map-shell')).toHaveAttribute('data-map-settled', 'true', {
     timeout: 60000,
   });
