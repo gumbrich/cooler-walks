@@ -1,9 +1,7 @@
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 
-test('Zurich addresses, beta labels, direct map selection and honest outside coverage', async ({
-  page,
-}) => {
+test('Zurich whole-area map renders at desktop size', async ({ page }) => {
   await page.clock.setFixedTime(new Date('2026-06-21T12:00:00Z'));
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto('/?view=planner');
@@ -13,6 +11,17 @@ test('Zurich addresses, beta labels, direct map selection and honest outside cov
   await expect(page.locator('.map-shell')).toHaveAttribute('data-map-settled', 'true');
   console.log(`Zurich whole-area map settled in ${Date.now() - overviewStarted} ms`);
   await page.screenshot({ path: 'docs/screenshots/desktop-zurich-coverage.png' });
+});
+
+test('Zurich addresses, beta labels, direct map selection and honest outside coverage', async ({
+  page,
+}) => {
+  // Keep the expensive city overview in its own scenario. Each complete flow
+  // retains the same timeout and route assertions on slower software-rendering CI.
+  await page.clock.setFixedTime(new Date('2026-06-21T12:00:00Z'));
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  await page.goto('/?view=planner');
+  await expect(page.getByRole('button', { name: /Fastest walk/ })).toBeVisible();
   const from = page.getByRole('combobox', { name: 'From', exact: true });
   const to = page.getByRole('combobox', { name: 'To', exact: true });
   await from.fill('8048 Altstetterstr. 145');

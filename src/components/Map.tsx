@@ -639,7 +639,7 @@ export function WalkingMap({
           top: matchMedia('(max-width:620px)').matches ? (hero ? 95 : 110) : hero ? 100 : 145,
           bottom: matchMedia('(max-width:620px)').matches ? (hero ? 140 : 95) : hero ? 170 : 240,
           left: matchMedia('(max-width:620px)').matches ? 28 : 45,
-          right: hero ? 35 : matchMedia('(max-width:620px)').matches ? 65 : 95,
+          right: hero ? 35 : 95,
         },
         maxZoom: 16,
         duration: instant || matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 600,
