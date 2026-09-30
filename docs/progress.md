@@ -1,6 +1,18 @@
 # Progress
 
-## Current milestone: shadows along the walk · 0.9.0
+## Current milestone: 3D roofs and LiDAR ground · 0.10.0
+
+Central Zurich now has a separate 3.36 km² detailed model inside the existing 57.77 km² walking area. It combines real 2019 swisstopo roof/facade surfaces from 4,577 buildings with 2021–2022 LiDAR-derived receiver elevations. A 5 km² model rectangle buffers the pilot. Exact 3D ray intersection retains roof slopes, overhang geometry and courtyards. Missing ground and tagged non-ground paths remain unknown. The rest of Zurich and Munich retain their flat-ground building model; other city capabilities and beta labels are unchanged.
+
+Route cards disclose detailed-model share separately from known model coverage. The dotted plum boundary, English/German explanations and compact phone map label identify the new area. Both candidate generation and arrival-time scoring use the detailed model. Shade comparisons require comparable model detail as well as ≥95% daylight coverage. Waterside ranking remains independent of missing shadow data. Offline packs, browser/PWA and native clients share the same versioned model.
+
+Validation: 79 TypeScript/unit checks, three new source-triangulation checks and five existing count-source checks pass. Real routes, detours, coverage, arrival-time behavior and beta-city checks pass. All 20 browser scenarios pass locally (Basel rerun in a fresh context after a development hot reload interrupted its language provider). Rendered phone, desktop and tablet screenshots were inspected. Exact grid traversal was checked against a full-mesh scan and preserves the reference route results while reducing the comparison runtime from around 6–7 s to 2.3 s on this development machine. This is a benchmark, not a phone-speed promise. Android 0.10.0/build 8 passes the 2 GB emulator flow: initial and offline 3D routes, historical counts, German, Oerlikon addresses and beta-city switching. Publication evidence is recorded after deployment.
+
+The June 21, 14:00 Bahnhofquai–Bürkliplatz example remains a 1,511 m fastest walk: roughly 16% estimated building shade over the modelled portion, versus 49% on a 1,686 m alternative (+2.2 minutes), with 95% and 97% model coverage. These are computed results, not field measurements. [Method and data](detailed-shade.md), [comparison audit](detailed-shade-validation.json), [desktop](screenshots/desktop-3d-shade.png), [German phone](screenshots/phone-3d-shade.png).
+
+Next: validate timestamped shadows and historical-building changes before citywide rollout; obtain a wider terrain horizon and evidence for crown base, foliage and transmission before enabling hill or tree shade. The surveyed vegetation was mainly leaf-off, so canopy height is not credited as summer shade. Physical-phone and field-shadow validation remain outstanding.
+
+## Previous milestone: shadows along the walk · 0.9.0
 
 Implemented `flat-buildings-arrival-v6`: every candidate uses solar position at each sample's expected arrival, including all legs through stops and repeated paths. The static footprint index supports changing rays without duplicating city geometry. Estimated arrival times appear in English/German. Low sun, missing geometry and night stay distinct; a detour cannot win merely by reaching darkness. Source data, traffic and city coverage are unchanged. Candidate generation still uses departure-time exposure; final filtering and ranking use each candidate's arrival-time exposure.
 

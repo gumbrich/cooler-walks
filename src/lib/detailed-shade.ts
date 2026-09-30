@@ -29,7 +29,9 @@ function decode(value: string, max: number) {
   )
     throw new Error('Invalid detailed shadow geometry');
   const raw = atob(value);
-  return Uint8Array.from(raw, (c) => c.charCodeAt(0));
+  const bytes = new Uint8Array(raw.length);
+  for (let i = 0; i < raw.length; i++) bytes[i] = raw.charCodeAt(i);
+  return bytes;
 }
 
 /** Two-sided Möller–Trumbore intersection; t is horizontal ray distance. */
@@ -68,7 +70,7 @@ export function rayTriangle(
   const v = (direction[0] * qx + direction[1] * qy + direction[2] * qz) / det;
   if (v < -1e-7 || u + v > 1 + 1e-7) return null;
   const t = (vx * qx + vy * qy + vz * qz) / det;
-  return t > 1e-5 ? t : null;
+  return t > 1e-5 / Math.hypot(...direction) ? t : null;
 }
 
 /** Real roof/facade intersections. Terrain is a receiver height, not an occluder. */
@@ -78,6 +80,8 @@ export class DetailedShade {
   ground: Int16Array;
   cells = new Map<string, number[]>();
   maxZ = -Infinity;
+  seen: Uint32Array;
+  query = 0;
   data: Omit<DetailedShadeData, 'vertices' | 'triangles' | 'ground'>;
   constructor(data: DetailedShadeData, reference: { crs: string; verticalDatum: string }) {
     const { vertices: _vertices, triangles: _mesh, ground: _ground, ...metadata } = data;
@@ -134,6 +138,7 @@ export class DetailedShade {
       if (value >= this.vertices.length / 3) throw new Error('Invalid roof triangle index');
       return value;
     });
+    this.seen = new Uint32Array(this.triangles.length / 3);
     const groundView = new DataView(dem.buffer);
     this.ground = Int16Array.from({ length: dem.length / 2 }, (_, i) =>
       groundView.getInt16(i * 2, true),
@@ -180,24 +185,47 @@ export class DetailedShade {
     const end: Point = [point[0] + dx * reach, point[1] + dy * reach];
     const origin = [point[0] - this.data.bounds[0], point[1] - this.data.bounds[1], z];
     const direction = [dx, dy, tan];
-    // Traverse only cells touched by the ray; diagonal rays do not scan their entire rectangle.
-    const count = Math.max(1, Math.ceil(reach / (CELL / 2)));
-    const visited = new Set<number>(),
-      cells = new Set<string>();
-    for (let step = 0; step <= count; step++) {
-      const x = (origin[0] + (dx * reach * step) / count) / CELL;
-      const y = (origin[1] + (dy * reach * step) / count) / CELL;
-      // Adjacent cells ensure that even a grazing/corner crossing is included.
-      for (let cx = Math.floor(x) - 1; cx <= Math.floor(x) + 1; cx++)
-        for (let cy = Math.floor(y) - 1; cy <= Math.floor(y) + 1; cy++) cells.add(`${cx},${cy}`);
+    // Exact grid traversal visits the cells crossed by the ray, not a band
+    // of neighbours. Reusable stamps avoid allocating a Set for every sample.
+    if (++this.query === 0xffffffff) {
+      this.seen.fill(0);
+      this.query = 1;
     }
-    for (const cell of cells)
-      for (const i of this.cells.get(cell) ?? []) {
-        if (visited.has(i)) continue;
-        visited.add(i);
+    const hit = (x: number, y: number) => {
+      for (const i of this.cells.get(`${x},${y}`) ?? []) {
+        if (this.seen[i / 3] === this.query) continue;
+        this.seen[i / 3] = this.query;
         const t = rayTriangle(origin, direction, this.vertices, i, this.triangles);
-        if (t !== null && t <= reach + 0.01) return 'shade';
+        if (t !== null && t <= reach + 0.01) return true;
       }
+      return false;
+    };
+    let x = Math.floor(origin[0] / CELL),
+      y = Math.floor(origin[1] / CELL);
+    const sx = Math.sign(dx),
+      sy = Math.sign(dy);
+    const deltaX = sx ? CELL / Math.abs(dx) : Infinity;
+    const deltaY = sy ? CELL / Math.abs(dy) : Infinity;
+    let tx = sx ? ((x + (sx > 0 ? 1 : 0)) * CELL - origin[0]) / dx : Infinity;
+    let ty = sy ? ((y + (sy > 0 ? 1 : 0)) * CELL - origin[1]) / dy : Infinity;
+    while (true) {
+      if (hit(x, y)) return 'shade';
+      if (Math.min(tx, ty) > reach) break;
+      if (Math.abs(tx - ty) < 1e-9) {
+        // A corner touches both side cells as well as the diagonal cell.
+        if (hit(x + sx, y) || hit(x, y + sy)) return 'shade';
+        x += sx;
+        y += sy;
+        tx += deltaX;
+        ty += deltaY;
+      } else if (tx < ty) {
+        x += sx;
+        tx += deltaX;
+      } else {
+        y += sy;
+        ty += deltaY;
+      }
+    }
     return contains(end, this.data.bounds) ? 'sun' : 'unknown';
   }
 }

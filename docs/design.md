@@ -67,3 +67,7 @@ City overview maps show neighbourhoods, waterways, parks and the street structur
 ## Arrival-aware shadows · 0.9.0
 
 Route cards now include a compact clock row with estimated arrival in the route city’s time zone. The arrival label includes a date when the walk crosses midnight. The existing warm/green visual hierarchy and map gestures stay intact. A distinct low-sun/night transition message replaces unsupported sun/shade comparisons; the timeline explains the changing-light state. Method copy in both languages explains cumulative walking time through stops without suggesting pauses or crossing waits are modelled. Desktop, German phone and tablet transition captures are linked from the README.
+
+## Detailed-model coverage · 0.10.0
+
+A dotted plum line (`#776075`) marks the central Zurich 3D pilot separately from the green walking boundary and sun/shade encoding. Route cards show the share inside this pilot as a small secondary line, alongside overall model coverage. The phone map label is shorter and fit padding leaves the start marker clear. Method text distinguishes roof geometry, LiDAR receiver heights and unsupported foliage/hill effects in English and German. Actual desktop/phone planner and tablet method captures are in `docs/screenshots/*-3d-*.png`.

@@ -438,5 +438,6 @@
   "The 2021–2022 LiDAR survey was mainly flown without leaves. Canopy height does not establish summer foliage or light transmission, so it is not yet counted as tree shade.": "Die LiDAR-Befliegung 2021–2022 fand überwiegend ohne Laub statt. Aus der Kronenhöhe lassen sich weder Sommerbelaubung noch Lichtdurchlässigkeit bestimmen. Sie wird deshalb noch nicht als Baumschatten gewertet.",
   "3D roofs in central pilot · flat buildings elsewhere": "3D-Dächer im zentralen Pilotgebiet · sonst vereinfachte Gebäude",
   "Tree shade, hill shadows, fountains": "Baum- und Geländeschatten, Brunnen",
-  "Dotted plum boundary: 3D model pilot": "Violett gepunktet: 3D-Pilotgebiet"
+  "Dotted plum boundary: 3D model pilot": "Violett gepunktet: 3D-Pilotgebiet",
+  "3D model pilot boundary": "Grenze des 3D-Pilotgebiets"
 }

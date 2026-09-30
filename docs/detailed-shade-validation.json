@@ -2,14 +2,14 @@
   "model": "roof-mesh-ground-arrival-v7",
   "dataVersion": "zurich-2026-09-30-v8",
   "geometryVersion": "zurich-roofs-dtm-2026-09-30-v1",
-  "checkedAt": "2026-09-30T13:31:22.394Z",
+  "checkedAt": "2026-09-30T13:37:21.375Z",
   "from": "Bahnhofquai",
   "to": "Bürkliplatz",
   "results": [
     {
       "departure": "2026-06-21T08:00:00Z",
       "mode": "greenery",
-      "calculationMs": 6891,
+      "calculationMs": 2451,
       "distance": 1511.2300000000007,
       "detailedMeters": 1511.2300000000018,
       "legacyShadeMeters": 668.4870833333329,
@@ -26,7 +26,7 @@
     {
       "departure": "2026-06-21T12:00:00Z",
       "mode": "shade",
-      "calculationMs": 6283,
+      "calculationMs": 2264,
       "distance": 1511.2300000000007,
       "detailedMeters": 1511.2300000000018,
       "legacyShadeMeters": 353.57733333333346,
@@ -43,7 +43,7 @@
     {
       "departure": "2026-09-30T12:00:00Z",
       "mode": "greenery",
-      "calculationMs": 6974,
+      "calculationMs": 2290,
       "distance": 1511.2300000000007,
       "detailedMeters": 1511.2300000000018,
       "legacyShadeMeters": 636.0441190476187,

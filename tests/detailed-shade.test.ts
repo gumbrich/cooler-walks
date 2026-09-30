@@ -67,6 +67,30 @@ describe('ground-referenced roof mesh', () => {
     ];
     expect(detailed(model(roof)).exposure([90, 100], Math.PI / 4, Math.PI / 2)).toBe('sun');
   });
+  it('matches an independent full-mesh scan across grid boundaries and at zenith', () => {
+    const data = model(gable),
+      m = detailed(data);
+    // Full scan is deliberately independent of the cell traversal and stamps.
+    for (let x = 40; x <= 160; x += 20)
+      for (let y = 40; y <= 160; y += 20)
+        for (const azimuth of [
+          0,
+          Math.PI / 4,
+          Math.PI / 2,
+          Math.PI,
+          Math.PI * 1.25,
+          Math.PI * 1.5,
+        ]) {
+          const direction = [Math.sin(azimuth), Math.cos(azimuth), 1];
+          const expected = Array.from({ length: gable.length / 9 }, (_, i) =>
+            rayTriangle([x, y, 400], direction, gable, i * 9),
+          ).some((t) => t !== null);
+          expect(m.exposure([x, y], Math.PI / 4, azimuth), `${x},${y}; ${azimuth}`).toBe(
+            expected ? 'shade' : 'sun',
+          );
+        }
+    expect(m.exposure([110, 100], Math.PI / 2, 0)).toBe('shade');
+  });
   it('rejects incompatible datums, truncated buffers and invalid vertices', () => {
     expect(() => detailed({ ...model(gable), verticalDatum: 'LHN95' as 'LN02' })).toThrow();
     expect(() => detailed({ ...model(gable), ground: 'AA==' })).toThrow();

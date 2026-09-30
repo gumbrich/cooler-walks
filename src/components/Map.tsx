@@ -636,7 +636,13 @@ export function WalkingMap({
       result.alternative?.coordinates.forEach((p) => box.extend(p));
       m.fitBounds(box, {
         padding: {
-          top: hero ? 100 : matchMedia('(max-width:620px)').matches ? 125 : 145,
+          top: hero
+            ? 100
+            : matchMedia('(max-width:620px)').matches
+              ? city.detailedShade
+                ? 140
+                : 125
+              : 145,
           bottom: hero ? 170 : matchMedia('(max-width:620px)').matches ? 105 : 280,
           left: 45,
           right: hero ? 45 : 95,
@@ -693,7 +699,7 @@ export function WalkingMap({
             {showCoverage && city.detailedShade && (
               <span className="map-model-key">
                 <i className="model-swatch" />
-                {t('Dotted plum boundary: 3D model pilot')}
+                {t('3D model pilot boundary')}
               </span>
             )}
           </div>

@@ -25,7 +25,8 @@ const areaIds = catalog
   .map((area) => area.id);
 if (lite)
   for (const file of fs.readdirSync('native-web/data')) {
-    if (!['zurich.json', 'zurich-map.geojson'].includes(file)) fs.rmSync(`native-web/data/${file}`);
+    if (!['zurich.json', 'zurich-map.geojson', 'zurich-detailed-shade.json'].includes(file))
+      fs.rmSync(`native-web/data/${file}`);
   }
 fs.writeFileSync('native-web/native-areas.json', JSON.stringify({ schema: 1, areaIds }));
 const result = spawnSync(process.platform === 'win32' ? 'npx.cmd' : 'npx', ['cap', 'sync'], {

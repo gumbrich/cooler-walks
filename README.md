@@ -78,7 +78,7 @@ npm run native:open:ios      # open Xcode
 
 Detailed setup, signing boundaries and offline behaviour are in [docs/mobile.md](docs/mobile.md). Actual platform test results are in [docs/platform.md](docs/platform.md). Signing credentials and generated native build outputs are ignored.
 
-Android **0.9.0/build 7** compiled and passed offline arrival-time shade, address-search/routing, vehicle-count, German and beta city-switch checks in an Android 16 emulator. Its debug APK is available locally as `native-artifacts/cooler-walks-0.9.0-debug.apk`. The earlier 0.5.0 build passed twelve broader checks covering native permissions, Back/resume, all four cities offline and cold launch. iOS 0.9.0 compiles in GitHub Actions; the previous 0.5.0 build launched in English and German on the local iPhone 16e simulator. iOS count interactions and physical phones remain untested; neither app has been submitted to a store.
+Android **0.10.0/build 8** compiled and passed offline 3D-roof shade, address-search/routing, vehicle-count, German and beta city-switch checks in the 2 GB Android 16 emulator. Its debug APK is available locally as `native-artifacts/cooler-walks-0.10.0-debug.apk`. The earlier 0.5.0 build passed twelve broader checks covering native permissions, Back/resume, all four cities offline and cold launch. iOS 0.9.0 compiles in GitHub Actions; the previous 0.5.0 build launched in English and German on the local iPhone 16e simulator. iOS count interactions and physical phones remain untested; neither app has been submitted to a store.
 
 ## Develop and verify
 
@@ -125,6 +125,8 @@ The [Zurich tree-position audit](docs/tree-accuracy.md) checks import fidelity a
 Real route checks for every pilot are in [city-route-validation.json](docs/city-route-validation.json), with expanded-area journeys in [coverage-validation.json](docs/coverage-validation.json). Use the selected city’s default trip on **21 June 2026 at 14:00 local time** as a repeatable starting point. Cambridge’s missing building heights and Basel’s unintegrated height layer are documented in [the coverage register](docs/cities.md).
 
 ## Screenshots
+
+The 0.10.0 detailed model: [desktop](docs/screenshots/desktop-3d-shade.png), [German phone](docs/screenshots/phone-3d-shade.png) and [tablet explanation](docs/screenshots/tablet-3d-method.png).
 
 Shadow timing in 0.9.0: [desktop](docs/screenshots/desktop-arrival-shade.png), [German phone](docs/screenshots/phone-arrival-shade.png) and [low-sun transition](docs/screenshots/tablet-changing-light.png).
 

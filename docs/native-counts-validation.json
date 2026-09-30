@@ -1,8 +1,9 @@
 {
-  "checkedAt": "2026-09-30T12:35:39.268Z",
-  "appVersion": "0.9.0",
+  "checkedAt": "2026-09-30T13:41:15.116Z",
+  "appVersion": "0.10.0",
   "device": "CoolerWalks_Test Android emulator",
   "passed": [
+    "Ground-referenced 3D roofs compute offline in the central Zurich pilot",
     "Whole Zurich coverage view renders on the 2 GB emulator",
     "Bundled vehicle-count profiles after offline reload",
     "Real Monday 14:00 reference, three counters and map markers",
