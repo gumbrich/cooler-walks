@@ -1,0 +1,26 @@
+{
+  "checkedAt": "2026-09-30T12:41:29.882489+00:00",
+  "origin": "https://coolerwalks.ch",
+  "sourceCommit": "2f662ebc0aee94e644d42ffd301d6a809672a62f",
+  "appVersion": "0.9.0",
+  "modelVersion": "flat-buildings-arrival-v6",
+  "script": "/assets/main-BB2GcgTl.js",
+  "scriptSha256": "1c0a208c3ef52a65dbf015679b3a8be2ff2049f359607f98dac887aac7c74be1",
+  "routeWorker": "/assets/route-worker-D9ZkJeQW.js",
+  "routeWorkerSha256": "00577cc18ce6daf8ad598254cb85292d6ce53f13e6196c2964b783b8024e55a2",
+  "routeWorkerMatchesLocalBuild": true,
+  "serviceWorkerSha256": "35828d9207c70f681f33cbf75ef8751bb53370c2796a65fa2a9f1deaa61d10e1",
+  "interfaceAssets": 46,
+  "hostedPackReferencesUnchanged": true,
+  "packCatalogue": "0.8.0-hosted-catalog.json",
+  "publicArrivalBrowserScenario": "passed: both route arrivals, English/German phone layout, low-sun transition and recovery",
+  "hostedSmoke": {
+    "htmlPages": 6,
+    "true404s": true,
+    "securityAndCacheHeaders": true,
+    "englishAndGermanManifests": true,
+    "packChecksumsAndNativeCors": 5
+  },
+  "liveReleaseBrowserScenarios": 4,
+  "publicPwaReport": "../pwa-validation.json"
+}

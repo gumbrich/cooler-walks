@@ -12,6 +12,9 @@ const context = await chromium.launchPersistentContext(profile, {
 });
 const browser = context.browser();
 const page = await context.newPage();
+// Route eligibility changes with the real solar date/time. Use the same
+// documented summer reference as the browser water/waypoint regression.
+await page.clock.setFixedTime(new Date('2026-06-21T12:00:00Z'));
 const errors = [];
 page.on('pageerror', (e) => errors.push(e.message));
 page.on('console', (m) => {
