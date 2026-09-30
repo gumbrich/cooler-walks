@@ -5,7 +5,7 @@ import type { FeatureCollection, MultiPolygon } from 'geojson';
 import { getCity } from '../src/lib/cities';
 import { inside, metric, distance } from '../src/lib/geo';
 import { SAMPLE_METERS } from '../src/lib/routing';
-import { trafficClass, TRAFFIC_MODEL, MAJOR_ROAD_DISTANCE } from '../src/lib/traffic';
+import { trafficClass, streetLevel, TRAFFIC_MODEL, MAJOR_ROAD_DISTANCE } from '../src/lib/traffic';
 import type { PilotData, Point } from '../src/lib/types';
 import type { OSMData } from './lib/osm';
 
@@ -21,7 +21,7 @@ const ways = new Map(raw.elements.filter((e) => e.type === 'way').map((w) => [w.
 const nodes = new Map(
   raw.elements.filter((e) => e.type === 'node').map((n) => [n.id, metric(city, [n.lon, n.lat])]),
 );
-type Segment = { a: Point; b: Point; layer: string };
+type Segment = { a: Point; b: Point; layer: number };
 const grid = new Map<string, Segment[]>();
 const cell = 50;
 const key = (x: number, y: number) => `${x},${y}`;
@@ -30,6 +30,8 @@ for (const way of ways.values()) {
   if (!/^(motorway|trunk|primary|secondary|tertiary)(_link)?$/.test(way.tags?.highway ?? ''))
     continue;
   if (way.tags?.tunnel && way.tags.tunnel !== 'no') continue;
+  const layer = streetLevel(way.tags);
+  if (layer === null) continue;
   for (let i = 1; i < way.nodes.length; i++) {
     const a = nodes.get(way.nodes[i - 1]),
       b = nodes.get(way.nodes[i]);
@@ -37,7 +39,7 @@ for (const way of ways.values()) {
     const segment = {
       a,
       b,
-      layer: way.tags?.layer ?? (way.tags?.bridge && way.tags.bridge !== 'no' ? '1' : '0'),
+      layer,
     };
     for (
       let x = Math.floor((Math.min(a[0], b[0]) - MAJOR_ROAD_DISTANCE) / cell);
@@ -97,7 +99,7 @@ for (const edge of data.edges) {
   const tags = ways.get(edge.way)?.tags;
   const a = metric(city, data.nodes[edge.a].point),
     b = metric(city, data.nodes[edge.b].point);
-  const layer = tags?.layer ?? (tags?.bridge && tags.bridge !== 'no' ? '1' : '0');
+  const layer = streetLevel(tags);
   const count = Math.max(1, Math.ceil(edge.length / SAMPLE_METERS));
   edge.traffic = Array.from({ length: count }, (_, i) => {
     const f = (i + 0.5) / count,
@@ -118,7 +120,7 @@ for (const edge of data.edges) {
     matches.forEach((z) => usedZones.add(z.id));
     // Elevated paths do not inherit ground-level zone polygons.
     const zone =
-      layer === '0'
+      layer === 0
         ? matches.sort((x, y) => Number(x.type.slice(1)) - Number(y.type.slice(1)))[0]?.type
         : undefined;
     const value = trafficClass(tags, major, zone);
@@ -143,9 +145,9 @@ const report = {
   graphMetersByClass: counts,
   sha256: {
     zones: hash('data/raw/traffic/zones.geojson'),
-    osm: hash('data/raw/zurich-expansion/osm.json'),
+    osm: hash(`${zurichExtract.rawDirectory}/osm.json`),
   },
-  note: 'Current-status zones; absent individual implementation dates retained as unknown. Catalogue/fetch dates are not traffic observations. No vehicle counts, live traffic or noise model. Major-road proximity uses OSM class and matching recorded level.',
+  note: 'Current-status zones; absent individual implementation dates retained as unknown. Catalogue/fetch dates are not traffic observations. No vehicle counts, live traffic or noise model. Main-road proximity uses OSM class and matching recorded level. Crossings, conditional motor access and explicit motor access are not rewarded as separate paths. Tempo-30/encounter streets remain distinct from pedestrian paths and restricted streets; ranking uses absolute distances, not share dilution.',
 };
 data.version = city.dataVersion!;
 data.preparedAt = '2026-09-30';

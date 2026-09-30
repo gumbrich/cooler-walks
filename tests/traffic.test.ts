@@ -1,6 +1,12 @@
 import fs from 'node:fs';
 import { describe, it, expect } from 'vitest';
-import { trafficClass, TRAFFIC_MODEL } from '../src/lib/traffic';
+import {
+  trafficClass,
+  streetLevel,
+  summarizeTraffic,
+  trafficImproves,
+  TRAFFIC_MODEL,
+} from '../src/lib/traffic';
 import { Router, SAMPLE_METERS } from '../src/lib/routing';
 import { getCity } from '../src/lib/cities';
 import { geographic, metric } from '../src/lib/geo';
@@ -76,6 +82,108 @@ describe('Zurich street context', () => {
     expect(trafficClass({ highway: 'footway', covered: 'yes' }, true)).toBe('unknown');
     expect(trafficClass(undefined, false)).toBe('unknown');
   });
+  it('separates motor-access streets from paths, including restrictions and crossings', () => {
+    expect(trafficClass({ highway: 'path' }, false, 'T30')).toBe('path');
+    expect(trafficClass({ highway: 'residential', motor_vehicle: 'yes' }, false, 'T30')).toBe(
+      'tempo30',
+    );
+    expect(trafficClass({ highway: 'footway', footway: 'crossing' }, false)).toBe('other');
+    expect(trafficClass({ highway: 'footway', motor_vehicle: 'delivery' }, false)).toBe('other');
+    expect(trafficClass({ highway: 'residential', motor_vehicle: 'no' }, false)).toBe('restricted');
+    expect(
+      trafficClass(
+        {
+          highway: 'residential',
+          motor_vehicle: 'no',
+          'motor_vehicle:conditional': 'delivery @ (06:00-10:00)',
+        },
+        false,
+      ),
+    ).toBe('other');
+    expect(trafficClass({ highway: 'residential', motor_vehicle: 'no' }, true)).toBe('major');
+    expect(trafficClass({ highway: 'footway', layer: '0;1' }, false)).toBe('unknown');
+    expect(streetLevel({ highway: 'footway', bridge: 'yes' })).toBe(1);
+    expect(streetLevel({ highway: 'footway', layer: '01' })).toBe(1);
+    expect(streetLevel({ highway: 'footway', layer: '-1' })).toBe(-1);
+  });
+  it('prefers a separate walking path over an otherwise equally calmed Tempo-30 street', () => {
+    const data = fixture();
+    for (const edge of data.edges.slice(0, 2)) edge.traffic = edge.traffic!.map(() => 'tempo30');
+    const result = run(data);
+    expect(result.fastest.trafficBreakdown?.tempo30).toBeCloseTo(200);
+    expect(result.alternative?.trafficBreakdown?.path).toBeCloseTo(Math.sqrt(20000) * 2);
+    expect(result.alternative!.minutes - result.fastest.minutes).toBeLessThan(5);
+    expect(run(data, 0).alternative).toBeNull();
+  });
+  it('rejects percentage dilution and unknown-data gains while retaining genuine distance savings', () => {
+    const base = run(fixture()).fastest;
+    const route = (values: [TrafficClass, number][]) => {
+      const samples = values.map(([traffic, meters]) => ({ ...base.samples[0], traffic, meters }));
+      return {
+        ...base,
+        samples,
+        distance: samples.reduce((n, s) => n + s.meters, 0),
+        trafficBreakdown: summarizeTraffic(samples),
+      };
+    };
+    const reference = route([
+      ['other', 100],
+      ['path', 100],
+    ]);
+    expect(
+      trafficImproves(
+        route([
+          ['other', 100],
+          ['path', 180],
+        ]),
+        reference,
+      ),
+    ).toBe(false);
+    expect(
+      trafficImproves(
+        route([
+          ['tempo30', 100],
+          ['path', 180],
+        ]),
+        reference,
+      ),
+    ).toBe(false);
+    expect(
+      trafficImproves(
+        route([
+          ['other', 50],
+          ['path', 180],
+        ]),
+        reference,
+      ),
+    ).toBe(true);
+    expect(
+      trafficImproves(
+        route([
+          ['other', 100],
+          ['path', 100],
+        ]),
+        route([
+          ['other', 100],
+          ['unknown', 50],
+          ['path', 50],
+        ]),
+      ),
+    ).toBe(false);
+    expect(
+      trafficImproves(
+        route([
+          ['other', 100],
+          ['unknown', 50],
+          ['path', 50],
+        ]),
+        reference,
+      ),
+    ).toBe(false);
+    const summary = summarizeTraffic([{ meters: 10 }, { traffic: 'path', meters: 20 }]);
+    expect(summary.unknown).toBe(10);
+    expect(Object.values(summary).reduce((a, b) => a + b, 0)).toBe(30);
+  });
   it('reduces main-road length within the budget and keeps ordered stops and direct routing', () => {
     const data = fixture();
     const r = run(data);
@@ -127,6 +235,7 @@ describe('Zurich street context', () => {
     const classes: TrafficClass[] = [
       'major',
       'pedestrian',
+      'restricted',
       'encounter',
       'tempo30',
       'path',

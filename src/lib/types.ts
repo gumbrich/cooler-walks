@@ -70,7 +70,7 @@ export interface Edge {
   nonGround?: boolean;
 }
 export type TrafficClass =
-  'major' | 'pedestrian' | 'encounter' | 'tempo30' | 'path' | 'other' | 'unknown';
+  'major' | 'pedestrian' | 'restricted' | 'encounter' | 'tempo30' | 'path' | 'other' | 'unknown';
 export interface Building {
   id: string;
   ring: Point[];
@@ -170,6 +170,8 @@ export interface Route {
   majorRoadMeters: number;
   calmedMeters: number;
   trafficUnknownMeters: number;
+  /** Mutually exclusive street-context lengths; sum to the whole route. */
+  trafficBreakdown?: Record<TrafficClass, number>;
   samples: Sample[];
   streets: string[];
   steps: boolean;

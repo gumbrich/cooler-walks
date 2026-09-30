@@ -4,7 +4,8 @@ import { countTime, nearbyCounts, pointSegmentDistance } from '../src/lib/vehicl
 import { Router } from '../src/lib/routing';
 import { getCity } from '../src/lib/cities';
 import { inCoverage } from '../src/lib/coverage';
-import type { PilotData } from '../src/lib/types';
+import { geographic, metric } from '../src/lib/geo';
+import type { PilotData, Point, Route, VehicleCounts } from '../src/lib/types';
 const city = getCity('ch-zurich');
 const data: PilotData = JSON.parse(fs.readFileSync('public/data/zurich.json', 'utf8'));
 
@@ -20,6 +21,55 @@ describe('Measured vehicle-count evidence', () => {
     expect(pointSegmentDistance([50, 10], [0, 0], [100, 0])).toBe(10);
     expect(pointSegmentDistance([110, 0], [0, 0], [100, 0])).toBe(10);
     expect(pointSegmentDistance([3, 4], [0, 0], [0, 0])).toBe(5);
+  });
+  it('uses passing-time weekday/hour across midnight and DST, with the first equally close loop pass', () => {
+    const origin = metric(city, city.center);
+    const points = [0, 800, 1600].map((offset) =>
+      geographic(city, [origin[0] + offset, origin[1]] as Point),
+    );
+    const profile = Array.from({ length: 168 }, (_, i) => [i, 52] as [number, number]);
+    const counts: VehicleCounts = {
+      model: 'zurich-measured-hour-profiles-v1',
+      year: 2025,
+      timeZone: city.timeZone,
+      expectedDays: [52, 52, 52, 52, 52, 52, 52],
+      counters: [
+        {
+          id: 'synthetic',
+          siteId: 'test',
+          street: 'Test only',
+          direction: 'test',
+          point: points[1],
+          profile,
+        },
+      ],
+    };
+    // Only the geometry and duration fields are consumed by nearbyCounts.
+    const route = { coordinates: points, minutes: 20 } as Route;
+    const crossingMidnight = nearbyCounts(counts, city, route, '2026-06-21T21:55:00Z')[0];
+    expect(crossingMidnight.weekday).toBe(0);
+    expect(crossingMidnight.hour).toBe(0);
+    expect(crossingMidnight.mean).toBe(0);
+    const spring = nearbyCounts(counts, city, route, '2026-03-29T00:55:00Z')[0];
+    expect(spring.hour).toBe(3);
+    expect(spring.mean).toBe(6 * 24 + 3);
+    const autumn = nearbyCounts(counts, city, route, '2026-10-25T00:55:00Z')[0];
+    expect(autumn.hour).toBe(2);
+    const loop = { coordinates: [...points, points[1], points[0]], minutes: 40 } as Route;
+    const observed = nearbyCounts(counts, city, loop, '2026-06-22T12:55:00Z')[0];
+    expect(Date.parse(observed.arrival) - Date.parse('2026-06-22T12:55:00Z')).toBeCloseTo(
+      10 * 60000,
+      0,
+    );
+    expect(observed.hour).toBe(15);
+    expect(
+      nearbyCounts(
+        counts,
+        city,
+        { coordinates: [points[0], points[0]], minutes: 0 } as Route,
+        '2026-06-22T12:55:00Z',
+      ),
+    ).toEqual([]);
   });
   it('ships dated directional profiles with explicit gaps and sufficient measured-day coverage', () => {
     const counts = data.vehicleCounts!;

@@ -1,0 +1,693 @@
+{
+  "model": "zurich-street-context-v2",
+  "dataVersion": "zurich-2026-09-30-v9",
+  "dataSha256": "ac763ac2889de015af036ae9f2f8fe91e22baead35cbdb407410b64ec44e83b6",
+  "scope": "Nine real graph-route computations; budget, coverage, breakdown and passing-time invariants. No observed traffic reduction, field accuracy, noise or safety validation is claimed.",
+  "cases": [
+    {
+      "pair": ["Bahnhofquai", "Bürkliplatz"],
+      "departure": "2026-06-22T12:55:00Z",
+      "budgetMinutes": 0,
+      "fastest": {
+        "meters": 1511.2300000000007,
+        "minutes": 18.89037500000001,
+        "breakdownMeters": {
+          "major": 587.8466666666664,
+          "pedestrian": 162.1900000000001,
+          "restricted": 0,
+          "encounter": 0,
+          "tempo30": 339.3133333333334,
+          "path": 60.22,
+          "other": 326.25999999999993,
+          "unknown": 35.4
+        },
+        "conservativeDistances": {
+          "main": 623.2466666666663,
+          "motor": 1288.8200000000006
+        },
+        "streets": [
+          "Bahnhofquai",
+          "Walking path",
+          "Bahnhofquai",
+          "Walking path",
+          "Steps",
+          "Heiristeg",
+          "Schipfe",
+          "Strehlgasse",
+          "Weinplatz",
+          "Storchengasse",
+          "Münsterhof",
+          "Walking path",
+          "Fraumünsterstrasse",
+          "Walking path"
+        ],
+        "nearbyCounters": [
+          {
+            "id": "Z030M002",
+            "arrival": "2026-06-22T13:00:09.813Z",
+            "weekday": 0,
+            "hour": 15,
+            "mean": 305.25
+          },
+          {
+            "id": "Z031M002",
+            "arrival": "2026-06-22T13:12:41.526Z",
+            "weekday": 0,
+            "hour": 15,
+            "mean": 1252.69
+          },
+          {
+            "id": "Z049M002",
+            "arrival": "2026-06-22T12:56:19.074Z",
+            "weekday": 0,
+            "hour": 14,
+            "mean": 364.61
+          }
+        ]
+      },
+      "alternative": null
+    },
+    {
+      "pair": ["Bahnhofquai", "Bürkliplatz"],
+      "departure": "2026-06-22T12:55:00Z",
+      "budgetMinutes": 5,
+      "fastest": {
+        "meters": 1511.2300000000007,
+        "minutes": 18.89037500000001,
+        "breakdownMeters": {
+          "major": 587.8466666666664,
+          "pedestrian": 162.1900000000001,
+          "restricted": 0,
+          "encounter": 0,
+          "tempo30": 339.3133333333334,
+          "path": 60.22,
+          "other": 326.25999999999993,
+          "unknown": 35.4
+        },
+        "conservativeDistances": {
+          "main": 623.2466666666663,
+          "motor": 1288.8200000000006
+        },
+        "streets": [
+          "Bahnhofquai",
+          "Walking path",
+          "Bahnhofquai",
+          "Walking path",
+          "Steps",
+          "Heiristeg",
+          "Schipfe",
+          "Strehlgasse",
+          "Weinplatz",
+          "Storchengasse",
+          "Münsterhof",
+          "Walking path",
+          "Fraumünsterstrasse",
+          "Walking path"
+        ],
+        "nearbyCounters": [
+          {
+            "id": "Z030M002",
+            "arrival": "2026-06-22T13:00:09.813Z",
+            "weekday": 0,
+            "hour": 15,
+            "mean": 305.25
+          },
+          {
+            "id": "Z031M002",
+            "arrival": "2026-06-22T13:12:41.526Z",
+            "weekday": 0,
+            "hour": 15,
+            "mean": 1252.69
+          },
+          {
+            "id": "Z049M002",
+            "arrival": "2026-06-22T12:56:19.074Z",
+            "weekday": 0,
+            "hour": 14,
+            "mean": 364.61
+          }
+        ]
+      },
+      "alternative": {
+        "meters": 1750.2299999999987,
+        "minutes": 21.87787499999998,
+        "breakdownMeters": {
+          "major": 302.91666666666674,
+          "pedestrian": 353.54999999999995,
+          "restricted": 49.730000000000004,
+          "encounter": 0,
+          "tempo30": 275.38,
+          "path": 62.519999999999996,
+          "other": 694.7033333333333,
+          "unknown": 11.43
+        },
+        "conservativeDistances": {
+          "main": 314.34666666666675,
+          "motor": 1284.4299999999987
+        },
+        "streets": [
+          "Bahnhofquai",
+          "Bahnhofplatz",
+          "Walking path",
+          "Schützengasse",
+          "Waisenhausstrasse",
+          "Werdmühlestrasse",
+          "Lindenhofstrasse",
+          "Oetenbachgasse",
+          "Lindenhofstrasse",
+          "Fortunagasse",
+          "Lindenhofstrasse",
+          "Lindenhof",
+          "Pfalzgasse",
+          "Strehlgasse",
+          "Schlüsselgasse",
+          "In Gassen",
+          "Storchengasse",
+          "Münsterhof",
+          "Walking path",
+          "Fraumünsterstrasse",
+          "Walking path"
+        ],
+        "nearbyCounters": []
+      }
+    },
+    {
+      "pair": ["Bahnhofquai", "Bürkliplatz"],
+      "departure": "2026-06-22T12:55:00Z",
+      "budgetMinutes": 10,
+      "fastest": {
+        "meters": 1511.2300000000007,
+        "minutes": 18.89037500000001,
+        "breakdownMeters": {
+          "major": 587.8466666666664,
+          "pedestrian": 162.1900000000001,
+          "restricted": 0,
+          "encounter": 0,
+          "tempo30": 339.3133333333334,
+          "path": 60.22,
+          "other": 326.25999999999993,
+          "unknown": 35.4
+        },
+        "conservativeDistances": {
+          "main": 623.2466666666663,
+          "motor": 1288.8200000000006
+        },
+        "streets": [
+          "Bahnhofquai",
+          "Walking path",
+          "Bahnhofquai",
+          "Walking path",
+          "Steps",
+          "Heiristeg",
+          "Schipfe",
+          "Strehlgasse",
+          "Weinplatz",
+          "Storchengasse",
+          "Münsterhof",
+          "Walking path",
+          "Fraumünsterstrasse",
+          "Walking path"
+        ],
+        "nearbyCounters": [
+          {
+            "id": "Z030M002",
+            "arrival": "2026-06-22T13:00:09.813Z",
+            "weekday": 0,
+            "hour": 15,
+            "mean": 305.25
+          },
+          {
+            "id": "Z031M002",
+            "arrival": "2026-06-22T13:12:41.526Z",
+            "weekday": 0,
+            "hour": 15,
+            "mean": 1252.69
+          },
+          {
+            "id": "Z049M002",
+            "arrival": "2026-06-22T12:56:19.074Z",
+            "weekday": 0,
+            "hour": 14,
+            "mean": 364.61
+          }
+        ]
+      },
+      "alternative": {
+        "meters": 1750.2299999999987,
+        "minutes": 21.87787499999998,
+        "breakdownMeters": {
+          "major": 302.91666666666674,
+          "pedestrian": 353.54999999999995,
+          "restricted": 49.730000000000004,
+          "encounter": 0,
+          "tempo30": 275.38,
+          "path": 62.519999999999996,
+          "other": 694.7033333333333,
+          "unknown": 11.43
+        },
+        "conservativeDistances": {
+          "main": 314.34666666666675,
+          "motor": 1284.4299999999987
+        },
+        "streets": [
+          "Bahnhofquai",
+          "Bahnhofplatz",
+          "Walking path",
+          "Schützengasse",
+          "Waisenhausstrasse",
+          "Werdmühlestrasse",
+          "Lindenhofstrasse",
+          "Oetenbachgasse",
+          "Lindenhofstrasse",
+          "Fortunagasse",
+          "Lindenhofstrasse",
+          "Lindenhof",
+          "Pfalzgasse",
+          "Strehlgasse",
+          "Schlüsselgasse",
+          "In Gassen",
+          "Storchengasse",
+          "Münsterhof",
+          "Walking path",
+          "Fraumünsterstrasse",
+          "Walking path"
+        ],
+        "nearbyCounters": []
+      }
+    },
+    {
+      "pair": ["Bahnhof Oerlikon", "Campus Irchel"],
+      "departure": "2026-06-22T12:55:00Z",
+      "budgetMinutes": 0,
+      "fastest": {
+        "meters": 1967.0199999999998,
+        "minutes": 24.587749999999996,
+        "breakdownMeters": {
+          "major": 603.7039999999998,
+          "pedestrian": 0,
+          "restricted": 123.35000000000002,
+          "encounter": 199.30800000000002,
+          "tempo30": 831.2280000000011,
+          "path": 85.4,
+          "other": 87.21,
+          "unknown": 36.82
+        },
+        "conservativeDistances": {
+          "main": 640.5239999999999,
+          "motor": 1758.2699999999998
+        },
+        "streets": [
+          "Walking path",
+          "Nansenstrasse",
+          "Walking path",
+          "Edisonstrasse",
+          "Welchogasse",
+          "Walking path",
+          "Gubelplatz",
+          "Walking path",
+          "Steps",
+          "Walking path"
+        ],
+        "nearbyCounters": []
+      },
+      "alternative": null
+    },
+    {
+      "pair": ["Bahnhof Oerlikon", "Campus Irchel"],
+      "departure": "2026-06-22T12:55:00Z",
+      "budgetMinutes": 5,
+      "fastest": {
+        "meters": 1967.0199999999998,
+        "minutes": 24.587749999999996,
+        "breakdownMeters": {
+          "major": 603.7039999999998,
+          "pedestrian": 0,
+          "restricted": 123.35000000000002,
+          "encounter": 199.30800000000002,
+          "tempo30": 831.2280000000011,
+          "path": 85.4,
+          "other": 87.21,
+          "unknown": 36.82
+        },
+        "conservativeDistances": {
+          "main": 640.5239999999999,
+          "motor": 1758.2699999999998
+        },
+        "streets": [
+          "Walking path",
+          "Nansenstrasse",
+          "Walking path",
+          "Edisonstrasse",
+          "Welchogasse",
+          "Walking path",
+          "Gubelplatz",
+          "Walking path",
+          "Steps",
+          "Walking path"
+        ],
+        "nearbyCounters": []
+      },
+      "alternative": {
+        "meters": 2139.0499999999993,
+        "minutes": 26.73812499999999,
+        "breakdownMeters": {
+          "major": 218.45769841269833,
+          "pedestrian": 0,
+          "restricted": 405.4499999999998,
+          "encounter": 761.3644444444448,
+          "tempo30": 438.33285714285716,
+          "path": 178.42000000000007,
+          "other": 100.205,
+          "unknown": 36.82
+        },
+        "conservativeDistances": {
+          "main": 255.27769841269833,
+          "motor": 1555.1799999999994
+        },
+        "streets": [
+          "Walking path",
+          "Nansenstrasse",
+          "Walking path",
+          "Schulsteig",
+          "Walking path",
+          "Schulsteig",
+          "Walking path",
+          "Venusstrasse",
+          "Walking path",
+          "Beckhammer",
+          "Anna-Heer-Strasse",
+          "Walking path",
+          "Steinkluppenweg",
+          "Walking path",
+          "Steps",
+          "Walking path"
+        ],
+        "nearbyCounters": []
+      }
+    },
+    {
+      "pair": ["Bahnhof Oerlikon", "Campus Irchel"],
+      "departure": "2026-06-22T12:55:00Z",
+      "budgetMinutes": 10,
+      "fastest": {
+        "meters": 1967.0199999999998,
+        "minutes": 24.587749999999996,
+        "breakdownMeters": {
+          "major": 603.7039999999998,
+          "pedestrian": 0,
+          "restricted": 123.35000000000002,
+          "encounter": 199.30800000000002,
+          "tempo30": 831.2280000000011,
+          "path": 85.4,
+          "other": 87.21,
+          "unknown": 36.82
+        },
+        "conservativeDistances": {
+          "main": 640.5239999999999,
+          "motor": 1758.2699999999998
+        },
+        "streets": [
+          "Walking path",
+          "Nansenstrasse",
+          "Walking path",
+          "Edisonstrasse",
+          "Welchogasse",
+          "Walking path",
+          "Gubelplatz",
+          "Walking path",
+          "Steps",
+          "Walking path"
+        ],
+        "nearbyCounters": []
+      },
+      "alternative": {
+        "meters": 2139.0499999999993,
+        "minutes": 26.73812499999999,
+        "breakdownMeters": {
+          "major": 218.45769841269833,
+          "pedestrian": 0,
+          "restricted": 405.4499999999998,
+          "encounter": 761.3644444444448,
+          "tempo30": 438.33285714285716,
+          "path": 178.42000000000007,
+          "other": 100.205,
+          "unknown": 36.82
+        },
+        "conservativeDistances": {
+          "main": 255.27769841269833,
+          "motor": 1555.1799999999994
+        },
+        "streets": [
+          "Walking path",
+          "Nansenstrasse",
+          "Walking path",
+          "Schulsteig",
+          "Walking path",
+          "Schulsteig",
+          "Walking path",
+          "Venusstrasse",
+          "Walking path",
+          "Beckhammer",
+          "Anna-Heer-Strasse",
+          "Walking path",
+          "Steinkluppenweg",
+          "Walking path",
+          "Steps",
+          "Walking path"
+        ],
+        "nearbyCounters": []
+      }
+    },
+    {
+      "pair": ["Stauffacherstrasse", "Lindenhof"],
+      "departure": "2026-06-22T12:55:00Z",
+      "budgetMinutes": 0,
+      "fastest": {
+        "meters": 2280.2,
+        "minutes": 28.502499999999998,
+        "breakdownMeters": {
+          "major": 1313.1883333333335,
+          "pedestrian": 55.92,
+          "restricted": 0,
+          "encounter": 26.03181818181818,
+          "tempo30": 527.7248484848487,
+          "path": 0,
+          "other": 357.33500000000004,
+          "unknown": 0
+        },
+        "conservativeDistances": {
+          "main": 1313.1883333333335,
+          "motor": 2224.2799999999997
+        },
+        "streets": ["Walking path", "Rennweg", "Fortunagasse", "Steps", "Lindenhof"],
+        "nearbyCounters": [
+          {
+            "id": "Z066M001",
+            "arrival": "2026-06-22T13:01:01.005Z",
+            "weekday": 0,
+            "hour": 15,
+            "mean": 124.29
+          },
+          {
+            "id": "Z066M002",
+            "arrival": "2026-06-22T13:01:11.666Z",
+            "weekday": 0,
+            "hour": 15,
+            "mean": 118.84
+          },
+          {
+            "id": "Z069M001",
+            "arrival": "2026-06-22T12:58:22.242Z",
+            "weekday": 0,
+            "hour": 14,
+            "mean": 795.54
+          },
+          {
+            "id": "Z069M002",
+            "arrival": "2026-06-22T12:58:13.735Z",
+            "weekday": 0,
+            "hour": 14,
+            "mean": 360.1
+          }
+        ]
+      },
+      "alternative": null
+    },
+    {
+      "pair": ["Stauffacherstrasse", "Lindenhof"],
+      "departure": "2026-06-22T12:55:00Z",
+      "budgetMinutes": 5,
+      "fastest": {
+        "meters": 2280.2,
+        "minutes": 28.502499999999998,
+        "breakdownMeters": {
+          "major": 1313.1883333333335,
+          "pedestrian": 55.92,
+          "restricted": 0,
+          "encounter": 26.03181818181818,
+          "tempo30": 527.7248484848487,
+          "path": 0,
+          "other": 357.33500000000004,
+          "unknown": 0
+        },
+        "conservativeDistances": {
+          "main": 1313.1883333333335,
+          "motor": 2224.2799999999997
+        },
+        "streets": ["Walking path", "Rennweg", "Fortunagasse", "Steps", "Lindenhof"],
+        "nearbyCounters": [
+          {
+            "id": "Z066M001",
+            "arrival": "2026-06-22T13:01:01.005Z",
+            "weekday": 0,
+            "hour": 15,
+            "mean": 124.29
+          },
+          {
+            "id": "Z066M002",
+            "arrival": "2026-06-22T13:01:11.666Z",
+            "weekday": 0,
+            "hour": 15,
+            "mean": 118.84
+          },
+          {
+            "id": "Z069M001",
+            "arrival": "2026-06-22T12:58:22.242Z",
+            "weekday": 0,
+            "hour": 14,
+            "mean": 795.54
+          },
+          {
+            "id": "Z069M002",
+            "arrival": "2026-06-22T12:58:13.735Z",
+            "weekday": 0,
+            "hour": 14,
+            "mean": 360.1
+          }
+        ]
+      },
+      "alternative": {
+        "meters": 2640.400000000001,
+        "minutes": 33.00500000000001,
+        "breakdownMeters": {
+          "major": 432.5782539682537,
+          "pedestrian": 136.49999999999997,
+          "restricted": 0,
+          "encounter": 97.91000000000001,
+          "tempo30": 1064.1617460317455,
+          "path": 0,
+          "other": 909.2499999999999,
+          "unknown": 0
+        },
+        "conservativeDistances": {
+          "main": 432.5782539682537,
+          "motor": 2503.900000000001
+        },
+        "streets": [
+          "Walking path",
+          "Münzplatz",
+          "Widdergasse",
+          "Rennweg",
+          "Strehlgasse",
+          "Steps",
+          "Walking path",
+          "Lindenhof"
+        ],
+        "nearbyCounters": []
+      }
+    },
+    {
+      "pair": ["Stauffacherstrasse", "Lindenhof"],
+      "departure": "2026-06-22T12:55:00Z",
+      "budgetMinutes": 10,
+      "fastest": {
+        "meters": 2280.2,
+        "minutes": 28.502499999999998,
+        "breakdownMeters": {
+          "major": 1313.1883333333335,
+          "pedestrian": 55.92,
+          "restricted": 0,
+          "encounter": 26.03181818181818,
+          "tempo30": 527.7248484848487,
+          "path": 0,
+          "other": 357.33500000000004,
+          "unknown": 0
+        },
+        "conservativeDistances": {
+          "main": 1313.1883333333335,
+          "motor": 2224.2799999999997
+        },
+        "streets": ["Walking path", "Rennweg", "Fortunagasse", "Steps", "Lindenhof"],
+        "nearbyCounters": [
+          {
+            "id": "Z066M001",
+            "arrival": "2026-06-22T13:01:01.005Z",
+            "weekday": 0,
+            "hour": 15,
+            "mean": 124.29
+          },
+          {
+            "id": "Z066M002",
+            "arrival": "2026-06-22T13:01:11.666Z",
+            "weekday": 0,
+            "hour": 15,
+            "mean": 118.84
+          },
+          {
+            "id": "Z069M001",
+            "arrival": "2026-06-22T12:58:22.242Z",
+            "weekday": 0,
+            "hour": 14,
+            "mean": 795.54
+          },
+          {
+            "id": "Z069M002",
+            "arrival": "2026-06-22T12:58:13.735Z",
+            "weekday": 0,
+            "hour": 14,
+            "mean": 360.1
+          }
+        ]
+      },
+      "alternative": {
+        "meters": 3050.34,
+        "minutes": 38.12925,
+        "breakdownMeters": {
+          "major": 288.40960714285717,
+          "pedestrian": 124.63000000000004,
+          "restricted": 64.22,
+          "encounter": 815.4513333333327,
+          "tempo30": 1149.0478095238095,
+          "path": 0,
+          "other": 597.1512500000002,
+          "unknown": 11.43
+        },
+        "conservativeDistances": {
+          "main": 299.8396071428572,
+          "motor": 2861.4900000000002
+        },
+        "streets": [
+          "Walking path",
+          "Kernstrasse",
+          "Walking path",
+          "Europaallee",
+          "Kasernenstrasse",
+          "Postbrücke",
+          "Bahnhofplatz",
+          "Gessnerallee",
+          "Walking path",
+          "Schützengasse",
+          "Waisenhausstrasse",
+          "Werdmühlestrasse",
+          "Lindenhofstrasse",
+          "Oetenbachgasse",
+          "Lindenhofstrasse",
+          "Fortunagasse",
+          "Lindenhofstrasse",
+          "Lindenhof"
+        ],
+        "nearbyCounters": []
+      }
+    }
+  ]
+}

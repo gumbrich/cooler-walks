@@ -9,15 +9,21 @@ export interface CounterObservation {
   days: number;
   expectedDays: number;
   distance: number;
+  arrival: string;
+  weekday: number;
+  hour: number;
 }
 export function pointSegmentDistance(p: Point, a: Point, b: Point) {
+  return nearestOnSegment(p, a, b).distance;
+}
+function nearestOnSegment(p: Point, a: Point, b: Point) {
   const dx = b[0] - a[0],
     dy = b[1] - a[1];
   const f = Math.max(
     0,
     Math.min(1, ((p[0] - a[0]) * dx + (p[1] - a[1]) * dy) / (dx * dx + dy * dy || 1)),
   );
-  return distance(p, [a[0] + f * dx, a[1] + f * dy]);
+  return { distance: distance(p, [a[0] + f * dx, a[1] + f * dy]), fraction: f };
 }
 export function countTime(departure: string, zone: string) {
   const time = Temporal.Instant.from(departure).toZonedDateTimeISO(zone);
@@ -32,15 +38,30 @@ export function nearbyCounts(
   departure: string,
 ): CounterObservation[] {
   if (!data || !city.capabilities.vehicleCounts || !route) return [];
-  const { weekday, hour } = countTime(departure, data.timeZone);
   const points = route.coordinates.map((p) => metric(city, p));
+  const lengths = points.slice(1).map((point, i) => distance(points[i], point));
+  const total = lengths.reduce((sum, length) => sum + length, 0);
+  if (!total) return [];
   return data.counters
     .flatMap((counter) => {
       const p = metric(city, counter.point);
-      let nearest = Infinity;
-      for (let i = 1; i < points.length; i++)
-        nearest = Math.min(nearest, pointSegmentDistance(p, points[i - 1], points[i]));
+      let nearest = Infinity,
+        walked = 0,
+        along = 0;
+      for (let i = 1; i < points.length; i++) {
+        const hit = nearestOnSegment(p, points[i - 1], points[i]);
+        // Repeated equally close passes use the first; do not count a detector twice.
+        if (hit.distance < nearest - 1e-6) {
+          nearest = hit.distance;
+          along = walked + lengths[i - 1] * hit.fraction;
+        }
+        walked += lengths[i - 1];
+      }
       if (nearest > COUNTER_PROXIMITY_METERS) return [];
+      const arrival = new Date(
+        Date.parse(departure) + route.minutes * (along / total) * 60000,
+      ).toISOString();
+      const { weekday, hour } = countTime(arrival, data.timeZone);
       const value = counter.profile[weekday * 24 + hour];
       return [
         {
@@ -49,6 +70,9 @@ export function nearbyCounts(
           days: value?.[1] ?? 0,
           expectedDays: data.expectedDays[weekday],
           distance: nearest,
+          arrival,
+          weekday,
+          hour,
         },
       ];
     })

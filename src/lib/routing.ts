@@ -2,7 +2,15 @@ import type { Bounds, Edge, PilotData, Point, City, Route, RouteResult, Sample }
 import { distance, geographic, gridAzimuth, inBounds, inside, metric, rayHits } from './geo';
 import { DetailedShade } from './detailed-shade';
 import { solar, shadowVector } from './solar';
-import { isCalmed, MIN_TRAFFIC_COVERAGE, TRAFFIC_MODEL } from './traffic';
+import {
+  isCalmed,
+  isPedestrianPriority,
+  summarizeTraffic,
+  trafficCost,
+  trafficImproves,
+  MIN_TRAFFIC_COVERAGE,
+  TRAFFIC_MODEL,
+} from './traffic';
 import { WaterIndex } from './water';
 import { inCoverage, segmentInCoverage } from './coverage';
 
@@ -521,6 +529,7 @@ export class Router {
         majorRoadMeters: sum((s) => s.traffic === 'major'),
         calmedMeters: sum((s) => isCalmed(s.traffic)),
         trafficUnknownMeters: sum((s) => s.traffic === 'unknown'),
+        trafficBreakdown: summarizeTraffic(samples),
       };
     };
     const fastest = buildRoute(
@@ -591,7 +600,7 @@ export class Router {
         const candidate = buildRoute(
           throughStops((edge, index) => {
             const good = sample(index).reduce(
-              (sum, item) => sum + (isCalmed(item.traffic) ? item.meters : 0),
+              (sum, item) => sum + (isPedestrianPriority(item.traffic) ? item.meters : 0),
               0,
             );
             return edge.length * emphasis + edge.length - good;
@@ -633,7 +642,6 @@ export class Router {
       0.05 + 1e-9;
     const trafficCovered = (r: Route) =>
       1 - r.trafficUnknownMeters / r.distance >= MIN_TRAFFIC_COVERAGE;
-    const trafficCost = (r: Route) => r.majorRoadMeters + r.trafficUnknownMeters;
     const eligible = candidates.filter(
       (r) =>
         valid(r) &&
@@ -661,11 +669,7 @@ export class Router {
       return (
         novel / r.distance >= 0.1 &&
         (preferCalm
-          ? fastest.majorRoadMeters - trafficCost(r) >= 40 ||
-            (trafficCost(r) <= fastest.majorRoadMeters + 1e-9 &&
-              r.calmedMeters / r.distance -
-                (fastest.calmedMeters + fastest.trafficUnknownMeters) / fastest.distance >=
-                0.03)
+          ? trafficImproves(r, fastest)
           : preferWater
             ? r.waterMeters / r.distance - fastest.waterMeters / fastest.distance >= 0.03
             : sunlight === 'sun'
@@ -681,8 +685,7 @@ export class Router {
     better.sort(
       (x, y) =>
         (preferCalm
-          ? trafficCost(x) - trafficCost(y) ||
-            y.calmedMeters / y.distance - x.calmedMeters / x.distance
+          ? trafficCost(x).main - trafficCost(y).main || trafficCost(x).motor - trafficCost(y).motor
           : preferWater
             ? y.waterMeters / y.distance - x.waterMeters / x.distance
             : sunlight === 'sun'

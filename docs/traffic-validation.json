@@ -1,5 +1,5 @@
 {
-  "model": "zurich-street-context-v1",
+  "model": "zurich-street-context-v2",
   "fetchedAt": "2026-09-29",
   "sourceLayer": "view_geoserver_zonen_ist",
   "zoneCatalogueUpdated": "2026-09-27",
@@ -322,16 +322,17 @@
   "majorRoadDistance": 20,
   "graphMetersByClass": {
     "major": 445245.55859959335,
-    "tempo30": 847071.7441932868,
-    "path": 308392.01922638936,
-    "pedestrian": 14868.580440476233,
-    "encounter": 85731.80566281006,
-    "other": 290578.76187748736,
+    "restricted": 136839.88419617608,
+    "path": 543195.429014143,
+    "pedestrian": 11353.34775000005,
+    "tempo30": 511772.0845783708,
+    "encounter": 82367.4646628101,
+    "other": 261114.70119891508,
     "unknown": 25395.240000000063
   },
   "sha256": {
     "zones": "bfbfd367c2bf92941a4bf8f1c1820a5c1af44c2784b1735fb16abdb908cb009c",
-    "osm": "0091efd7cbdc0a1c76aa11891de2189cbe1e6c1e9a9b9ca239979eb0602c2abb"
+    "osm": "e9d22f78af806498cbd3915bf57d4b96f4850bd091b03f95bf45d5ce3609e12d"
   },
-  "note": "Current-status zones; absent individual implementation dates retained as unknown. Catalogue/fetch dates are not traffic observations. No vehicle counts, live traffic or noise model. Major-road proximity uses OSM class and matching recorded level."
+  "note": "Current-status zones; absent individual implementation dates retained as unknown. Catalogue/fetch dates are not traffic observations. No vehicle counts, live traffic or noise model. Main-road proximity uses OSM class and matching recorded level. Crossings, conditional motor access and explicit motor access are not rewarded as separate paths. Tempo-30/encounter streets remain distinct from pedestrian paths and restricted streets; ranking uses absolute distances, not share dilution."
 }
