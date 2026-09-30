@@ -67,6 +67,28 @@ const germanManifest = await (await get(new URL('/manifest-de.webmanifest', site
 assert.equal(germanManifest.lang, 'de');
 assert.equal(germanManifest.id, manifest.id);
 assert.equal(germanManifest.start_url, '/de/?view=planner');
+// The expanded model is also served as independent, immutable online tiles.
+// A valid full offline pack alone does not prove that every district can load.
+const libraryPath = '/data/zurich-shade-library.json';
+const localLibrary = fs.readFileSync(`public${libraryPath}`);
+const libraryResponse = await get(new URL(libraryPath, site));
+assert.equal(libraryResponse.status, 200);
+const libraryBytes = Buffer.from(await libraryResponse.arrayBuffer());
+assert.deepEqual(libraryBytes, localLibrary, 'Hosted 3D manifest matches the audited library');
+const tiles = JSON.parse(libraryBytes.toString()).tiles;
+for (let first = 0; first < tiles.length; first += 3) {
+  await Promise.all(
+    tiles.slice(first, first + 3).map(async (tile) => {
+      const response = await get(new URL(tile.url, site));
+      assert.equal(response.status, 200, tile.id);
+      assert.ok(!(response.headers.get('content-encoding') ?? '').includes('gzip'));
+      const bytes = Buffer.from(await response.arrayBuffer());
+      assert.equal(bytes.length, tile.bytes, tile.id);
+      assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'), tile.sha256, tile.id);
+    }),
+  );
+}
+checks.push(`Zurich 3D library: manifest and all ${tiles.length} hosted tile hashes verified`);
 for (const entry of JSON.parse(fs.readFileSync(catalogPath, 'utf8'))) {
   const url = new URL(entry.file, packOrigin);
   const response = await get(url, { headers: { Origin: 'capacitor://localhost' } });

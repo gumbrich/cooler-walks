@@ -1,0 +1,46 @@
+{
+  "appVersion": "0.13.0",
+  "sourceRevision": "0417b8a6dcb56437847eeaafa8d94a40fa4026d2",
+  "verifiedAt": "2026-09-30T19:40:13.532Z",
+  "origin": "https://coolerwalks.ch",
+  "mainScript": "/assets/main-r-0DMdq4.js",
+  "testedAssets": [
+    {
+      "name": "info-xXFSMg7A.css",
+      "bytes": 3408,
+      "sha256": "296ae83ee98c80b4c29e80a8895a720ca8fecc2b54443d335b1f2a12fb20a6ba"
+    },
+    {
+      "name": "main-DQWSE3_G.css",
+      "bytes": 136769,
+      "sha256": "3685692cc19e4ded5a9f742d3c4d8f91803e3941496b16c4339b1e4204cdc0ae"
+    },
+    {
+      "name": "route-worker-nu5HJR0g.js",
+      "bytes": 251893,
+      "sha256": "cf6bbce32b5fd006efb824eac7c08efe7f8fe2943a614a279be3dc7401b09fee"
+    }
+  ],
+  "libraryVersion": "zurich-roofs-dtm-library-2026-09-30-v2",
+  "libraryTilesVerified": 81,
+  "checks": [
+    "/: real HTML and security headers",
+    "/de/: real HTML and security headers",
+    "/de/privacy/: real HTML and security headers",
+    "/de/support/: real HTML and security headers",
+    "/privacy/: real HTML and security headers",
+    "/support/: real HTML and security headers",
+    "Zurich 3D library: manifest and all 81 hosted tile hashes verified",
+    "ch-zurich: hosted bytes, SHA-256 and native CORS verified",
+    "ch-basel: hosted bytes, SHA-256 and native CORS verified",
+    "de-munich: hosted bytes, SHA-256 and native CORS verified",
+    "us-cambridge-ma: hosted bytes, SHA-256 and native CORS verified",
+    "de-munich-old-town: hosted bytes, SHA-256 and native CORS verified",
+    "Hosted smoke check passed. Browser/PWA/native download verification remains required on this deployment."
+  ],
+  "hostedCatalogue": "0.13.0-hosted-catalog.json",
+  "limitations": [
+    "Computational and delivery validation only; field accuracy remains unvalidated.",
+    "Platform-specific compression changes pack hashes; hosted checks use the actual deployment catalogue."
+  ]
+}

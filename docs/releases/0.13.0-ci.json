@@ -1,0 +1,47 @@
+{
+  "appVersion": "0.13.0",
+  "sourceRevision": "0417b8a6dcb56437847eeaafa8d94a40fa4026d2",
+  "checkedAt": "2026-09-30T19:54:07.973233+00:00",
+  "runs": [
+    {
+      "conclusion": "success",
+      "databaseId": 36766606915,
+      "headSha": "0417b8a6dcb56437847eeaafa8d94a40fa4026d2",
+      "name": "Native iOS build",
+      "status": "completed",
+      "url": "https://github.com/gumbrich/cooler-walks/actions/runs/36766606915"
+    },
+    {
+      "conclusion": "success",
+      "databaseId": 36766606778,
+      "headSha": "0417b8a6dcb56437847eeaafa8d94a40fa4026d2",
+      "name": "Checks",
+      "status": "completed",
+      "url": "https://github.com/gumbrich/cooler-walks/actions/runs/36766606778"
+    },
+    {
+      "conclusion": "success",
+      "databaseId": 36766606613,
+      "headSha": "0417b8a6dcb56437847eeaafa8d94a40fa4026d2",
+      "name": "Native Android build",
+      "status": "completed",
+      "url": "https://github.com/gumbrich/cooler-walks/actions/runs/36766606613"
+    }
+  ],
+  "scope": {
+    "applicationModelTests": 91,
+    "ciBrowserScenarios": 22,
+    "localFocusedBrowserScenarios": 6,
+    "data": "Complete real-route verification plus twelve tiled-library trip/time cases across six Zurich districts",
+    "sourceAudits": "472 independent original-polygon cases and 625000 terrain comparisons; historical references retained",
+    "android": "Build 11; 2 GB Android 16 emulator; eleven offline-flow checks, including Oerlikon full geographic 3D coverage",
+    "ios": "CI build and unsigned archive; no interaction testing",
+    "hosting": "Six EN/DE public pages, headers, manifests, exact worker/styles, all 81 3D tile hashes and all five download hashes",
+    "pwa": "Installed from https://coolerwalks.ch; standalone and complete-Zurich downloaded offline routing"
+  },
+  "limitations": [
+    "Not the whole municipality: all 57.77 square kilometres of the supported walking area.",
+    "No field accuracy claim: unresolved historical-roof differences and dated observations remain.",
+    "No physical-phone or current iOS interaction validation."
+  ]
+}
