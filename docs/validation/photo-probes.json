@@ -1,0 +1,27 @@
+{
+  "status": "exploratory-only",
+  "classifiedBeforePrediction": true,
+  "reasonNotAcceptanceEvidence": "Ground points are approximate manual map placements, not a surveyed or independently checked image registration; the <=2 m location criterion is not established. These probes must not enter acceptance denominators.",
+  "photo": "photo-04",
+  "photoSha256": "ae7645ee8d680622d48a6e87240125bbbbd66c5c64bd910d4bf9dcc2c82491ff",
+  "captureGPSUTC": "2018-09-05T14:03:51Z",
+  "cameraLocalTime": "2018-09-05T16:03:02+02:00",
+  "timestampDifferenceSeconds": 49,
+  "sensitivityTimeSeconds": 60,
+  "sensitivityPositionMeters": 3,
+  "locationMethod": "Identify the permanent 6 m diameter M\u00fcnsterhof fountain in the original photo and in the SWISSIMAGE georeferenced WMS crop (bounds [2683170,1247130,2683280,1247240], 1100 x 1100 pixels). Approximate fountain centre [2683234.6,1247165.5]. Mosaic used only for location, not shadow/time reference.",
+  "observations": [
+    {
+      "id": "munsterhof-north",
+      "pointLV95": [2683234, 1247171],
+      "observed": "sun",
+      "description": "Paving north of the fountain, beyond its far rim, visibly directly lit in photo."
+    },
+    {
+      "id": "munsterhof-south",
+      "pointLV95": [2683233, 1247160],
+      "observed": "shade",
+      "description": "Paving south of the fountain in the broad foreground shadow; avoid the basin and its immediate self-shadow."
+    }
+  ]
+}

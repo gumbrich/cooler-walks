@@ -2,6 +2,8 @@
 
 Requested on 30 September 2026: validate the existing Zurich model before further feature work or coverage expansion. Passing software checks alone does not clear this gate. The published 0.10.0 application remains experimental.
 
+**Latest review:** [original LiDAR and timestamped photographs](shadow-validation-followup.md). All 26 roof flags have been inspected against raw returns; 14 photographic originals have been screened. Two exploratory photo points include one unresolved disagreement. No field observations yet meet the acceptance requirements, so the gate remains **HOLD**. The audit below is the earlier computational baseline, retained unchanged with its source hashes.
+
 ## Protocol, defined before running the audit
 
 1. **Solar reference:** compare the production SunCalc output with pvlib 0.16.1's independent NREL SPA implementation, using geometric elevation (no atmospheric refraction). Cover both hemispheres, equinoxes/solstices, UTC instants, night and high latitudes. The engineering tolerance is 0.25° of angular separation between solar direction vectors; azimuth alone is unstable near zenith. This tolerance is not a statement of field accuracy.
@@ -20,7 +22,7 @@ Expansion stays on hold until computational defects/source discrepancies are res
 
 ## Result: HOLD — validation is incomplete
 
-The audit of application revision `be43222` / model `roof-mesh-ground-arrival-v7` has completed. **Do not expand coverage or add shadow capabilities yet.** The computational checks pass, but source discrepancies need investigation and no dated field observations have been evaluated.
+The initial computational audit of application revision `be43222` / model `roof-mesh-ground-arrival-v7` has completed. **Do not expand coverage or add shadow capabilities yet.** Computational checks pass. Source/observation follow-up is recorded separately above; the table below describes the initial audit.
 
 | Check                                          | Result                                                                                    | What this establishes                                                                                                                                                                  |
 | ---------------------------------------------- | ----------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -56,6 +58,6 @@ The audit verifies source and runtime hashes, writes predictions to ignored `dat
 
 ## Required next validation work
 
-1. Resolve the flagged roof-height differences with the original surfaces, LiDAR returns and suitable dated imagery. Record each resolution; do not silently replace source geometry or relax the threshold.
-2. Obtain independent observations using the [collection and acceptance protocol](shadow-observations.md), or a small timestamped SWISSIMAGE RS extract. The public sample worldfiles were checked and lie outside the Zurich pilot. No imagery order or email has been sent.
+1. Continue the [raw-LiDAR investigation](shadow-validation-followup.md): verify post-renovation station geometry and remaining roof differences. Do not silently replace source geometry or relax the threshold.
+2. Register the three promising timestamped photographs and resolve the retained Münsterhof disagreement, following the [acceptance protocol](shadow-observations.md). SWISSIMAGE RS remains an alternative; its public sample is outside Zurich and no imagery order or email has been sent.
 3. Review point classifications, shadow-boundary errors and failures by location/time. Only then decide whether the limited pilot passes and whether expansion can resume.

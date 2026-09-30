@@ -6,6 +6,8 @@ A warmer kind of walking atlas: compare real pedestrian routes, greenery, waters
 
 **Validation hold:** further features and expansion are paused while Zurich's shadow estimates are checked. Independent calculations pass, but roof-source discrepancies and dated real-world observations remain unresolved. [Audit results](docs/shadow-validation.md).
 
+The [latest evidence review](docs/shadow-validation-followup.md) checks all 26 flagged roof samples against raw LiDAR and screens 14 photo originals and their timestamps. Three photos remain promising; an exploratory Münsterhof mismatch is retained for investigation. This does not establish field accuracy.
+
 **Status:** **Zurich is the primary focus**, with an expanded 57.77 km² walking area and official address search. **Basel, Munich and Cambridge (Massachusetts) are beta**. Cambridge follows its municipal boundary; the other cities cover central areas. These remain experimental services, not field-validated citywide routing. Zurich and Munich estimate building sun/shade; Cambridge and Basel offer greenery and water proximity only. Paris remains under review. Tree shade, hill shadows, weather, live closures and navigation are not included.
 
 **German version:** [coolerwalks.ch/de/](https://coolerwalks.ch/de/) · switch EN/DE without losing your trip.

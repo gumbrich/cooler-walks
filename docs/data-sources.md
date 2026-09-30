@@ -1,5 +1,7 @@
 # Data sources and preparation
 
+Validation-only additions (30 September 2026): original Canton Zurich classified LiDAR, fourteen Commons photo originals with retained EXIF, and official LUBIS acquisition metadata. See the [source/evidence review](shadow-validation-followup.md), [LAZ hashes and coordinate datums](shadow-lidar-review.json), and [photo provenance/licences](validation/photo-register.json). None of these review inputs changes the released model or adds an advertised capability. Large/raw files remain ignored.
+
 Source review and fetch date: **28 September 2026**. Runtime arrays and raw hashes are recorded in `data-manifest.json`. Raw downloads remain ignored under `data/raw/`. Data is never filled in by a language model or replaced by a synthetic fallback.
 
 ## OpenStreetMap: walking graph, places and map

@@ -1,0 +1,35 @@
+{
+  "status": "exploratory-only",
+  "acceptedObservations": 0,
+  "reason": "Ground points are approximate manual map placements, not a surveyed or independently checked image registration; the <=2 m location criterion is not established. These probes must not enter acceptance denominators.",
+  "scope": "Two approximate photo-derived locations; perturbations are model queries, not additional observations or confidence probabilities.",
+  "inputSha256": "2d6d2f39139899746c7ae092dff0291682cbedd38b6509e463fc024b144a24bd",
+  "modelSha256": "0d7efed8059cae99431ea2a32c75905667dbc7c0aca376477cac473cc7a5e51c",
+  "records": [
+    {
+      "id": "munsterhof-north",
+      "pointLV95": [2683234, 1247171],
+      "observed": "sun",
+      "description": "Paving north of the fountain, beyond its far rim, visibly directly lit in photo.",
+      "centralPrediction": "shade",
+      "sensitivity": {
+        "sun": 6,
+        "shade": 81,
+        "unknown": 0
+      }
+    },
+    {
+      "id": "munsterhof-south",
+      "pointLV95": [2683233, 1247160],
+      "observed": "shade",
+      "description": "Paving south of the fountain in the broad foreground shadow; avoid the basin and its immediate self-shadow.",
+      "centralPrediction": "shade",
+      "sensitivity": {
+        "sun": 0,
+        "shade": 87,
+        "unknown": 0
+      }
+    }
+  ],
+  "expansionGate": "hold"
+}

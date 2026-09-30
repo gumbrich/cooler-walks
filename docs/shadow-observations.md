@@ -1,6 +1,6 @@
 # Zurich shadow observation protocol
 
-This is a collection plan, not completed validation. Do not copy model predictions into the observed-result field. Keep original photos/records in ignored `data/raw/shadow-validation/observations/`; publish only reviewed, de-identified validation evidence with permission to use the images.
+This is an acceptance protocol, not completed validation. [The public-photo review](shadow-validation-followup.md) has found three promising timestamped originals and retained one disagreement in two exploratory probes; none yet qualifies for the acceptance denominator. Do not copy model predictions into the observed-result field. Keep original photos/records in ignored `data/raw/shadow-validation/observations/`; publish only reviewed, de-identified validation evidence with permission to use the images.
 
 ## First collection
 

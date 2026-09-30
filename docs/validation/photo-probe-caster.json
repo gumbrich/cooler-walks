@@ -1,0 +1,20 @@
+{
+  "status": "diagnostic-only",
+  "scope": "First triangle hit at the frozen approximate sunlit probe. Shares production intersection code; not independent validation or proof of photo ground registration or historical caster correctness.",
+  "inputSha256": "2d6d2f39139899746c7ae092dff0291682cbedd38b6509e463fc024b144a24bd",
+  "modelSha256": "0d7efed8059cae99431ea2a32c75905667dbc7c0aca376477cac473cc7a5e51c",
+  "point": [2683234, 1247171],
+  "ground": 408.9,
+  "solar": {
+    "altitude": 0.6496914137917952,
+    "azimuth": 4.062138119821597
+  },
+  "azimuth": 4.048090061488531,
+  "firstIntersection": [2683218.5364570003, 1247158.891793165, 423.82085804604446],
+  "horizontalDistance": 19.640005979223524,
+  "triangle": [
+    [2683221.808959961, 1247156.4909667969, 406.3489990234375],
+    [2683216.776977539, 1247160.182006836, 423.70599365234375],
+    [2683220.9689941406, 1247157.1080322266, 423.99700927734375]
+  ]
+}
