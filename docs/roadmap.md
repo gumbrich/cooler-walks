@@ -1,5 +1,7 @@
 # Next milestones
 
+**Validation hold:** the user's current priority is to validate the existing Zurich shadow model before continuing feature work or expansion. Follow the [validation gate](shadow-validation.md); automated checks alone do not establish field accuracy.
+
 ## Zurich first
 
 Version 0.8.0 makes Zurich the main experience: a 57.77 km² walking area, official address search and direct map selection. Other integrated cities are beta, with Swiss cities listed first. Next, verify entrances and route access in the field, measure performance on ordinary phones and assess newer building geometry against the historical regional model. Improve Basel’s beta after the Zurich experience is dependable; international expansion is deferred.

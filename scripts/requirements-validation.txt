@@ -1,0 +1,9 @@
+-r requirements-shade.txt
+pvlib==0.16.1
+pandas==3.0.6
+scipy==1.18.1
+h5py==3.16.0
+pytz==2026.4
+tzdata==2026.4
+python-dateutil==2.9.0.post0
+six==1.17.0

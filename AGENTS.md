@@ -17,6 +17,8 @@ This file defines the product and development constraints. Follow the user's cur
 
 Current rollout priority: Swiss cities first, with Zurich as the primary experience to polish and expand. Keep Basel and the integrated international cities available as clearly labelled beta pilots. This prioritization does not remove reusable international architecture or permit claims beyond validated coverage.
 
+Current validation gate: validate the existing Zurich shadow model before further feature work or coverage expansion. Computational checks and dated real-world shadow observations are separate requirements. Keep expansion on hold while either remains unresolved; see `docs/shadow-validation.md` for the protocol and evidence.
+
 Working name: **Cooler Walks**. This name describes the product goal; it does not establish a measured temperature benefit.
 
 Deliver a responsive website and an installable mobile web app from a shared codebase. Give both desktop planning and walking with a phone a deliberately designed experience. Use English initially and keep interface text easy to translate. Default to metric distances, with a user-selectable imperial display; keep calculations in consistent internal units. Interpret departure times in the route location's IANA time zone, including local daylight-saving rules. Use Europe/Zurich only for the Zurich pilot, not as a global default. Make the route's local time zone visible when it differs from the device's zone.

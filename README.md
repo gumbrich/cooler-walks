@@ -4,6 +4,8 @@ A warmer kind of walking atlas: compare real pedestrian routes, greenery, waters
 
 [Deutsch](README.de.md) · English / German website and app interface
 
+**Validation hold:** further features and expansion are paused while Zurich's shadow estimates are checked. Independent calculations pass, but roof-source discrepancies and dated real-world observations remain unresolved. [Audit results](docs/shadow-validation.md).
+
 **Status:** **Zurich is the primary focus**, with an expanded 57.77 km² walking area and official address search. **Basel, Munich and Cambridge (Massachusetts) are beta**. Cambridge follows its municipal boundary; the other cities cover central areas. These remain experimental services, not field-validated citywide routing. Zurich and Munich estimate building sun/shade; Cambridge and Basel offer greenery and water proximity only. Paris remains under review. Tree shade, hill shadows, weather, live closures and navigation are not included.
 
 **German version:** [coolerwalks.ch/de/](https://coolerwalks.ch/de/) · switch EN/DE without losing your trip.

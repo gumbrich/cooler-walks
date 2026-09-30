@@ -20,8 +20,9 @@ jobs:
           /tmp/cooler-counts-venv/bin/python scripts/test-vehicle-counts.py
       - run: |
           python3 -m venv /tmp/cooler-shade-venv
-          /tmp/cooler-shade-venv/bin/pip install -r scripts/requirements-shade.txt
+          /tmp/cooler-shade-venv/bin/pip install -r scripts/requirements-validation.txt
           /tmp/cooler-shade-venv/bin/python scripts/test-detailed-shade.py
+          /tmp/cooler-shade-venv/bin/python scripts/test-shadow-audit.py
       - run: npm run check
       - run: npm run data:verify
       - run: npm run format:check

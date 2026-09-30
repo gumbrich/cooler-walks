@@ -1,6 +1,12 @@
 # Progress
 
-## Current milestone: 3D roofs and LiDAR ground · 0.10.0
+## Current priority: validate before continuing
+
+Feature work and coverage expansion are on hold at the user's request. The [independent shadow audit](shadow-validation.md) passes 576 NREL SPA comparisons, 1,926 stable original-polygon versus runtime intersections and all 1.25 million ground-grid reconstruction checks. Two boundary rays were excluded under the predefined tolerance. The maintained regression suite now passes 81 tests; the separate reference implementation passes four analytical checks.
+
+**Validation is not complete:** 26 of 588 interior-roof samples differ by more than 2 m between CityGML and the separate LiDAR raster (21 buildings, maximum 17.85 m). These are source discrepancies requiring investigation, not measured model errors. No dated field-shadow observations have been evaluated. [Observation protocol and acceptance criteria](shadow-observations.md) are ready; timestamped aerial strips require a provider request. The production model and coverage are unchanged. Resume expansion only after these open validation requirements are resolved.
+
+## Published milestone: 3D roofs and LiDAR ground · 0.10.0
 
 Central Zurich now has a separate 3.36 km² detailed model inside the existing 57.77 km² walking area. It combines real 2019 swisstopo roof/facade surfaces from 4,577 buildings with 2021–2022 LiDAR-derived receiver elevations. A 5 km² model rectangle buffers the pilot. Exact 3D ray intersection retains roof slopes, overhang geometry and courtyards. Missing ground and tagged non-ground paths remain unknown. The rest of Zurich and Munich retain their flat-ground building model; other city capabilities and beta labels are unchanged.
 

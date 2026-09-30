@@ -4,6 +4,8 @@ Ein Atlas für bessere Fusswege: echte Routen, mehr Grün, Wassernähe, geschät
 
 **Öffnen:** [Deutsche Website](https://coolerwalks.ch/de/) · [Direkt zum Planer](https://coolerwalks.ch/de/?view=planner) · [English / technische Dokumentation](README.md)
 
+**Validierung zuerst:** Weitere Funktionen und die Erweiterung der Abdeckung pausieren. Unabhängige Rechenprüfungen bestehen; Unterschiede zwischen den Dach-Datenquellen und echte Schattenbeobachtungen mit Zeitangabe sind noch zu klären. [Prüfergebnisse](docs/shadow-validation.md).
+
 **Zürich ist unser Schwerpunkt:** 57,77 km² mit Oerlikon, Altstetten, Höngg, dem Zentrum, Wiedikon und Seefeld. Basel (10,25 km²), München (8,90 km²) und Cambridge, Massachusetts (18,46 km²) bleiben **Beta**. Die Karte zeigt die tatsächliche Grenze. Zürich und München bieten experimentelle Gebäudeschattenschätzungen; Cambridge und Basel Grün- und Wassernähe. Baumschatten, Geländeschatten, Wetter und Live-Navigation sind nicht enthalten.
 
 In Zürich berücksichtigt **Verkehrsberuhigt bevorzugen** offizielle Fussgänger-, Begegnungs- und Tempo-30-Zonen sowie die Nähe zu kartierten Hauptstrassen. Die Route reduziert zuerst die Strecke nahe Hauptstrassen und hält dein Umweglimit ein. Das ist ein Strassenindikator, keine Messung von Verkehrsaufkommen, Lärm oder Sicherheit. [Daten und Berechnung](docs/traffic.md)
