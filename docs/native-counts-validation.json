@@ -1,6 +1,6 @@
 {
-  "checkedAt": "2026-09-30T16:23:19.317Z",
-  "appVersion": "0.11.0",
+  "checkedAt": "2026-09-30T18:25:48.718Z",
+  "appVersion": "0.12.0",
   "device": "CoolerWalks_Test Android emulator",
   "passed": [
     "Ground-referenced 3D roofs compute offline in the central Zurich pilot",

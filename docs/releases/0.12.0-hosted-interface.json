@@ -1,0 +1,14 @@
+{
+  "appVersion": "0.12.0",
+  "sourceRevision": "12f0f57b7b0de3964ff8e03865d54a60a3bde766",
+  "checkedAt": "2026-09-30T18:22:19.622527+00:00",
+  "pages": ["/", "/de/", "/support/", "/de/support/", "/privacy/", "/de/privacy/"],
+  "uiAsset": "/assets/main-CFEtfSHN.js",
+  "uiSha256": "77468d3312c91dcc4dac7e6056d771c9c126f3be8f6225a54a19cbd0be73accf",
+  "newEnglishAndGermanCopyPresent": true,
+  "oldPlannerSlogansAbsent": true,
+  "stylesMatchLocalBuild": true,
+  "routingWorkerMatchesLocalBuild": true,
+  "mapPacks": "All five hosted hashes and native CORS pass scripts/verify-hosted.mjs with the unchanged 0.11.0 hosted catalogue. Both PWA manifests, 404 and security/cache checks pass.",
+  "scope": "Main JS includes platform-dependent compressed-pack catalogue hashes and is not byte-compared across Mac/Netlify builds."
+}

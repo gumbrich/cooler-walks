@@ -1,0 +1,50 @@
+{
+  "appVersion": "0.12.0",
+  "sourceRevision": "12f0f57b7b0de3964ff8e03865d54a60a3bde766",
+  "checkedAt": "2026-09-30T18:26:27.644942+00:00",
+  "runs": [
+    {
+      "conclusion": "success",
+      "databaseId": 36757827930,
+      "headSha": "12f0f57b7b0de3964ff8e03865d54a60a3bde766",
+      "name": "Native Android build",
+      "status": "completed",
+      "url": "https://github.com/gumbrich/cooler-walks/actions/runs/36757827930"
+    },
+    {
+      "conclusion": "",
+      "databaseId": 36757827895,
+      "headSha": "12f0f57b7b0de3964ff8e03865d54a60a3bde766",
+      "name": "Checks",
+      "status": "in_progress",
+      "url": "https://github.com/gumbrich/cooler-walks/actions/runs/36757827895"
+    },
+    {
+      "conclusion": "success",
+      "databaseId": 36757827871,
+      "headSha": "12f0f57b7b0de3964ff8e03865d54a60a3bde766",
+      "name": "Native iOS build",
+      "status": "completed",
+      "url": "https://github.com/gumbrich/cooler-walks/actions/runs/36757827871"
+    }
+  ],
+  "scope": {
+    "applicationModelTests": 85,
+    "localBrowserScenarios": 17,
+    "ciBrowserScenarios": 21,
+    "android": "Build 10; dedicated Android 16 emulator; eleven offline-flow checks and one responsive departure control",
+    "ios": "CI build and unsigned archive; no interaction testing",
+    "hosting": "Six public pages, new copy, styles and routing worker, manifests, all five map-pack hashes and native CORS"
+  },
+  "initialCIFindings": {
+    "revision": "c08ed01",
+    "checks": "Model/data/source validation and native Android/iOS packaging passed; 18 of 20 browser scenarios passed",
+    "corrections": "Phone-map toolbar padding corrected for Cambridge; Zurich overview and address checks separated, retaining all assertions and time limits. Four city cases and three Zurich cases pass locally after correction."
+  },
+  "limitations": [
+    "Final CI run may still be in progress at this snapshot; use its linked run for the current result.",
+    "No physical-phone or iOS interaction test for this interface update.",
+    "PWA installation last checked in 0.10.0; manifest/install settings unchanged.",
+    "Shadow and traffic estimates still await field validation."
+  ]
+}
