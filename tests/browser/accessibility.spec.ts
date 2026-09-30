@@ -1,6 +1,9 @@
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 test('planner accessibility and 200% text enlargement', async ({ page }) => {
+  // Keep the layout and shadow workload independent of the runner's wall clock.
+  // Seasonal, low-sun and night behaviour have separate model/browser checks.
+  await page.clock.setFixedTime(new Date('2026-06-21T12:00:00Z'));
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto('/?view=planner');
   await expect(page.locator('.route-card').first()).toBeVisible();
