@@ -162,7 +162,6 @@
   "A clearer choice.": "Eine bewusstere Wahl.",
   "Cooler Walks compares the fastest mapped walking route with the best of a small set of alternatives within your extra-time limit.": "Cooler Walks vergleicht den schnellsten kartierten Fussweg mit der besten von mehreren untersuchten Alternativen innerhalb deines Zeitlimits.",
   "Estimated building shade": "Geschätzter Gebäudeschatten",
-  "Where enabled, we sample paths every 8 metres at your selected departure instant. This is a flat-ground snapshot, not a measurement of heat or a weather forecast.": "Wo verfügbar, prüfen wir die Wege alle 8 Meter zum gewählten Startzeitpunkt. Das ist eine Momentaufnahme auf ebenem Gelände, keine Temperaturmessung oder Wettervorhersage.",
   "Greenery is a separate measure": "Grün ist ein eigener Indikator",
   "“Near trees” is the share of a walk within 15 metres of a recorded tree. It is not canopy coverage or shade. Tree crowns, foliage, clouds and terrain shadows are not modelled.": "«Nahe Bäumen» ist der Weganteil innerhalb von 15 Metern um einen erfassten Baum. Das bedeutet weder Kronenabdeckung noch Schatten. Baumkronen, Laub, Wolken und Geländeschatten werden nicht modelliert.",
   "Water is a separate preference": "Wasser ist eine eigene Präferenz",
@@ -284,7 +283,6 @@
   "Unfolding the {city} map…": "Die Karte von {city} wird geöffnet…",
   "Departure: {date} · {zone}.": "Start: {date} · {zone}.",
   "Start and destination snap {start} m and {end} m to the mapped network.": "Start und Ziel liegen {start} m bzw. {end} m vom gewählten Punkt im Wegenetz entfernt.",
-  "Direct sun: about {minutes} min. Unknown: {distance}. Percentage uses modelled distance only. Flat-ground buildings; no clouds, trees or terrain shadows.": "Direkte Sonne: etwa {minutes} Min. Unbekannt: {distance}. Der Prozentwert bezieht sich nur auf die modellierte Strecke. Gebäude auf ebenem Gelände; ohne Wolken, Baum- oder Geländeschatten.",
   "{area} pilot": "Pilotgebiet {area}",
   "Switch to imperial units": "Zu imperialen Einheiten wechseln",
   "Switch to metric units": "Zu metrischen Einheiten wechseln",
@@ -424,5 +422,11 @@
   "Outside walking coverage": "Ausserhalb des Gehgebiets",
   "Zurich · centre, north & west": "Zürich · Zentrum, Nord und West",
   "From Altstetten and Oerlikon through Höngg, Wipkingen and the city centre to Wiedikon and Seefeld. The dashed boundary shows the supported walking area, not the entire municipality. Building-model gaps and long shadows at the edge remain unknown.": "Von Altstetten und Oerlikon über Höngg, Wipkingen und das Zentrum bis Wiedikon und Seefeld. Die gestrichelte Grenze zeigt das unterstützte Gehgebiet, nicht die ganze Stadt. Lücken im Gebäudemodell und lange Schatten am Rand bleiben unbekannt.",
-  "Zurich municipal boundary · CC0": "Zürcher Gemeindegrenze · CC0"
+  "Zurich municipal boundary · CC0": "Zürcher Gemeindegrenze · CC0",
+  "Arrive around {time}": "Ankunft gegen {time}",
+  "Light changes during this walk · comparison unavailable": "Lichtwechsel unterwegs · Vergleich nicht verfügbar",
+  "This walk crosses low sun or night. A shade or sun comparison is unavailable; tree proximity is shown separately.": "Bei diesem Weg fällt ein Teil in tiefen Sonnenstand oder Dunkelheit. Ein Sonnen- oder Schattenvergleich ist nicht verfügbar; die Baumnähe wird separat angezeigt.",
+  "After dark: about {minutes} min. Darkness is kept separate from building shade.": "Im Dunkeln: etwa {minutes} Min. Dunkelheit wird getrennt vom Gebäudeschatten erfasst.",
+  "Direct sun: about {minutes} min. Unknown: {distance}. Shadows follow your expected arrival along the walk at 4.8 km/h. Percentage uses modelled daylight distance only. Flat-ground buildings; no clouds, trees or terrain shadows.": "Direkte Sonne: etwa {minutes} Min. Unbekannt: {distance}. Der Schatten wird für deine erwartete Ankunft entlang des Wegs bei 4,8 km/h berechnet. Der Prozentwert bezieht sich nur auf die modellierte Strecke bei Tageslicht. Gebäude auf ebenem Gelände; keine Wolken, Baum- oder Geländeschatten.",
+  "Where enabled, we sample paths at intervals of at most 8 metres, using the sun position when you are expected to reach each point. Each route uses its own walking time at 4.8 km/h, including all legs through your stops. Pauses and crossing waits are not included. This estimates direct sunlight on flat ground; it is not a heat measurement or weather forecast.": "Wo verfügbar, prüfen wir die Wege in Abständen von höchstens 8 Metern mit dem Sonnenstand bei deiner erwarteten Ankunft am jeweiligen Punkt. Jeder Weg berücksichtigt seine eigene Gehzeit bei 4,8 km/h und alle Etappen über deine Zwischenziele. Pausen und Wartezeiten an Kreuzungen sind nicht enthalten. Geschätzt wird direkte Sonneneinstrahlung auf ebenem Gelände; keine Temperatur oder Wettervorhersage."
 }

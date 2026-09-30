@@ -1,6 +1,6 @@
 {
-  "verifiedAt": "2026-09-30T10:37:49.121Z",
-  "modelVersion": "flat-buildings-snapshot-v5",
+  "verifiedAt": "2026-09-30T12:27:24.162Z",
+  "modelVersion": "flat-buildings-arrival-v6",
   "cities": [
     {
       "city": "ch-zurich",
@@ -35,7 +35,7 @@
             "address": true
           },
           "mode": "shade",
-          "elapsedMs": 379,
+          "elapsedMs": 328,
           "routes": [
             {
               "meters": 800,
@@ -85,14 +85,14 @@
             "address": true
           },
           "mode": "shade",
-          "elapsedMs": 224,
+          "elapsedMs": 193,
           "routes": [
             {
               "meters": 498,
               "minutes": 6.2,
               "greeneryPercent": 84,
               "modelCoveragePercent": 100,
-              "shadedMeters": 125,
+              "shadedMeters": 122,
               "streets": [
                 "Walking path"
               ]
@@ -123,7 +123,7 @@
             "address": true
           },
           "mode": "shade",
-          "elapsedMs": 1594,
+          "elapsedMs": 1491,
           "routes": [
             {
               "meters": 2722,
@@ -140,7 +140,7 @@
               "minutes": 35.6,
               "greeneryPercent": 80,
               "modelCoveragePercent": 100,
-              "shadedMeters": 1112,
+              "shadedMeters": 1035,
               "streets": [
                 "Walking path",
                 "Riedenhaldensteig",
@@ -184,14 +184,14 @@
             "kind": "Street or path"
           },
           "mode": "shade",
-          "elapsedMs": 225,
+          "elapsedMs": 244,
           "routes": [
             {
               "meters": 3152,
               "minutes": 39.4,
               "greeneryPercent": 68,
               "modelCoveragePercent": 100,
-              "shadedMeters": 893,
+              "shadedMeters": 946,
               "streets": [
                 "Karlsplatz (Stachus)",
                 "Walking path",
@@ -225,7 +225,7 @@
               "minutes": 42.7,
               "greeneryPercent": 41,
               "modelCoveragePercent": 100,
-              "shadedMeters": 1683,
+              "shadedMeters": 1734,
               "streets": [
                 "Karlsplatz (Stachus)",
                 "Walking path",
@@ -304,7 +304,7 @@
             "kind": "Street or path"
           },
           "mode": "greenery",
-          "elapsedMs": 1059,
+          "elapsedMs": 940,
           "routes": [
             {
               "meters": 7139,
@@ -373,7 +373,7 @@
             "kind": "Street or path"
           },
           "mode": "greenery",
-          "elapsedMs": 1051,
+          "elapsedMs": 974,
           "routes": [
             {
               "meters": 6817,
@@ -461,7 +461,7 @@
             "kind": "Street or path"
           },
           "mode": "greenery",
-          "elapsedMs": 198,
+          "elapsedMs": 170,
           "routes": [
             {
               "meters": 2815,
@@ -542,7 +542,7 @@
             "kind": "Street or path"
           },
           "mode": "greenery",
-          "elapsedMs": 102,
+          "elapsedMs": 94,
           "routes": [
             {
               "meters": 1645,

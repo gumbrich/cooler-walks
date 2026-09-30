@@ -48,6 +48,12 @@ try {
   await page.getByRole('slider', { name: 'Departure time', exact: true }).fill('840');
   await expect(page.locator('.spinner')).toHaveCount(0, { timeout: 60000 });
   await page.getByRole('button', { name: /Fastest walk/ }).click();
+  await expect(page.locator('.route-arrival').first()).toContainText('Arrive around 14:19');
+  await page.locator('.walk-details > summary').click();
+  await expect(page.locator('.walk-details')).toContainText(
+    'Shadows follow your expected arrival along the walk',
+  );
+  await page.locator('.walk-details > summary').click();
   await page.locator('.traffic-counts > summary').click();
   await expect(page.locator('.counter-list li')).toHaveCount(3);
   await expect(page.locator('[data-counter-id="Z030M002"] .counter-value')).toContainText('310');
@@ -63,6 +69,7 @@ try {
   await page.getByRole('combobox', { name: 'Nach', exact: true }).press('Enter');
   await expect(page.locator('.spinner')).toHaveCount(0, { timeout: 60000 });
   await expect(page.getByRole('button', { name: /Schnellster Weg/ })).toBeVisible();
+  await expect(page.locator('.route-arrival').first()).toContainText('Ankunft gegen 14:10');
   await expect(page.locator('.map-marker')).toHaveCount(2);
   await page.getByRole('button', { name: 'Meinen Weg anzeigen', exact: true }).click();
   await expect(page.locator('.map-shell')).toHaveAttribute('data-map-settled', 'true', {
@@ -90,6 +97,7 @@ try {
           'Real Monday 14:00 reference, three counters and map markers',
           'German labels preserve the observations',
           'Official Oerlikon address search, real routes and settled map while offline',
+          'Arrival-time shadow explanation and city-local arrival times in English/German while offline',
           'Other launched cities labelled beta',
           'City change clears counter data and markers',
         ],

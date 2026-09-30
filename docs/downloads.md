@@ -68,3 +68,5 @@ Physical-device performance, interruption by OS termination during a write, very
 The current Zurich pack covers the municipality-clipped 57.77 km² area. It is approximately **16.8 MB compressed / 100.1 MB expanded**, including official addresses and conservative shade-coverage data. The running app validates the complete pack against its compiled catalogue and does not mix old and new graph versions. Ordinary-device memory/performance testing remains necessary; a successful desktop/emulator result is not a physical-phone benchmark.
 
 In 0.8.0, opening a saved area transfers its compressed bytes to the routing worker for checksum verification and decoding. This avoids keeping the complete routing model in both the interface and worker. Download installation still verifies the same bounded, checksummed format and retains the existing atomic storage rules.
+
+In 0.9.0, arrival-time shadow calculations are part of the shared application code. The source geometry and all area-pack versions remain unchanged; saved areas work with the new model after the app updates. This does not turn saved traffic profiles into live data.

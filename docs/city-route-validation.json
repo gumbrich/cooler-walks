@@ -1,6 +1,6 @@
 {
-  "modelVersion": "flat-buildings-snapshot-v5",
-  "verifiedAt": "2026-09-30T10:37:40.070Z",
+  "modelVersion": "flat-buildings-arrival-v6",
+  "verifiedAt": "2026-09-30T12:27:16.281Z",
   "cities": [
     {
       "city": "ch-zurich",
@@ -45,8 +45,8 @@
             {
               "meters": 1511.2300000000007,
               "minutes": 18.89037500000001,
-              "sunMeters": 1173.7995714285723,
-              "shadeMeters": 337.43042857142876,
+              "sunMeters": 1157.6526666666678,
+              "shadeMeters": 353.57733333333346,
               "unknownMeters": 0,
               "treeProximityMeters": 422.89785714285705,
               "waterProximityMeters": 1023.0766666666666,
@@ -70,9 +70,9 @@
             {
               "meters": 1779.3899999999996,
               "minutes": 22.242374999999996,
-              "sunMeters": 673.9475227272727,
-              "shadeMeters": 1098.6824772727261,
-              "unknownMeters": 6.76,
+              "sunMeters": 670.0312727272726,
+              "shadeMeters": 1095.678727272726,
+              "unknownMeters": 13.68,
               "treeProximityMeters": 1216.4079999999985,
               "waterProximityMeters": 308.83,
               "streets": [
@@ -93,8 +93,8 @@
             {
               "meters": 1511.2300000000007,
               "minutes": 18.89037500000001,
-              "sunMeters": 1173.7995714285723,
-              "shadeMeters": 337.43042857142876,
+              "sunMeters": 1157.6526666666678,
+              "shadeMeters": 353.57733333333346,
               "unknownMeters": 0,
               "treeProximityMeters": 422.89785714285705,
               "waterProximityMeters": 1023.0766666666666,
@@ -118,8 +118,8 @@
             {
               "meters": 1574.2,
               "minutes": 19.677500000000002,
-              "sunMeters": 1574.2000000000019,
-              "shadeMeters": 0,
+              "sunMeters": 1570.8700000000017,
+              "shadeMeters": 3.33,
               "unknownMeters": 0,
               "treeProximityMeters": 1242.5915000000014,
               "waterProximityMeters": 144.74,
@@ -140,8 +140,8 @@
             {
               "meters": 1511.2300000000007,
               "minutes": 18.89037500000001,
-              "sunMeters": 1173.7995714285723,
-              "shadeMeters": 337.43042857142876,
+              "sunMeters": 1157.6526666666678,
+              "shadeMeters": 353.57733333333346,
               "unknownMeters": 0,
               "treeProximityMeters": 422.89785714285705,
               "waterProximityMeters": 1023.0766666666666,
@@ -165,8 +165,8 @@
             {
               "meters": 1542.230000000001,
               "minutes": 19.277875000000012,
-              "sunMeters": 1455.3166666666682,
-              "shadeMeters": 86.91333333333336,
+              "sunMeters": 1458.716666666668,
+              "shadeMeters": 83.51333333333335,
               "unknownMeters": 0,
               "treeProximityMeters": 487.56214285714276,
               "waterProximityMeters": 1501.9800000000014,
@@ -188,8 +188,8 @@
             {
               "meters": 1511.2300000000007,
               "minutes": 18.89037500000001,
-              "sunMeters": 750.7279166666663,
-              "shadeMeters": 672.9520833333329,
+              "sunMeters": 755.1929166666663,
+              "shadeMeters": 668.4870833333329,
               "unknownMeters": 87.55,
               "treeProximityMeters": 422.89785714285705,
               "waterProximityMeters": 1023.0766666666666,
@@ -221,9 +221,9 @@
             {
               "meters": 1511.2300000000007,
               "minutes": 18.89037500000001,
-              "sunMeters": 810.5358571428574,
-              "shadeMeters": 597.0291428571428,
-              "unknownMeters": 103.66500000000002,
+              "sunMeters": 772.8774761904764,
+              "shadeMeters": 619.7468095238094,
+              "unknownMeters": 118.60571428571428,
               "treeProximityMeters": 422.89785714285705,
               "waterProximityMeters": 1023.0766666666666,
               "streets": [
@@ -287,8 +287,8 @@
             {
               "meters": 1236.3900000000003,
               "minutes": 15.454875000000005,
-              "sunMeters": 1059.5449999999994,
-              "shadeMeters": 176.84500000000003,
+              "sunMeters": 1057.5349999999994,
+              "shadeMeters": 178.85500000000002,
               "unknownMeters": 0,
               "treeProximityMeters": 626.9309523809525,
               "waterProximityMeters": 0,
@@ -312,8 +312,8 @@
             {
               "meters": 1431.03,
               "minutes": 17.887875,
-              "sunMeters": 661.1374166666667,
-              "shadeMeters": 769.8925833333337,
+              "sunMeters": 648.2240833333333,
+              "shadeMeters": 782.8059166666671,
               "unknownMeters": 0,
               "treeProximityMeters": 445.3810476190476,
               "waterProximityMeters": 0,
@@ -350,8 +350,8 @@
             {
               "meters": 1236.3900000000003,
               "minutes": 15.454875000000005,
-              "sunMeters": 1059.5449999999994,
-              "shadeMeters": 176.84500000000003,
+              "sunMeters": 1057.5349999999994,
+              "shadeMeters": 178.85500000000002,
               "unknownMeters": 0,
               "treeProximityMeters": 626.9309523809525,
               "waterProximityMeters": 0,
@@ -375,8 +375,8 @@
             {
               "meters": 1303.6299999999999,
               "minutes": 16.295375,
-              "sunMeters": 1289.3522222222232,
-              "shadeMeters": 14.277777777777779,
+              "sunMeters": 1238.8688888888892,
+              "shadeMeters": 64.7611111111111,
               "unknownMeters": 0,
               "treeProximityMeters": 574.3126190476188,
               "waterProximityMeters": 0,
@@ -404,8 +404,8 @@
             {
               "meters": 1236.3900000000003,
               "minutes": 15.454875000000005,
-              "sunMeters": 1059.5449999999994,
-              "shadeMeters": 176.84500000000003,
+              "sunMeters": 1057.5349999999994,
+              "shadeMeters": 178.85500000000002,
               "unknownMeters": 0,
               "treeProximityMeters": 626.9309523809525,
               "waterProximityMeters": 0,
@@ -470,8 +470,8 @@
             {
               "meters": 1236.3900000000003,
               "minutes": 15.454875000000005,
-              "sunMeters": 832.9954999999999,
-              "shadeMeters": 403.3945,
+              "sunMeters": 852.0374999999998,
+              "shadeMeters": 384.35249999999996,
               "unknownMeters": 0,
               "treeProximityMeters": 626.9309523809525,
               "waterProximityMeters": 0,
@@ -495,8 +495,8 @@
             {
               "meters": 1343.9799999999996,
               "minutes": 16.799749999999996,
-              "sunMeters": 1064.2434999999996,
-              "shadeMeters": 279.7365,
+              "sunMeters": 1071.3429999999996,
+              "shadeMeters": 272.63700000000006,
               "unknownMeters": 0,
               "treeProximityMeters": 568.686619047619,
               "waterProximityMeters": 0,

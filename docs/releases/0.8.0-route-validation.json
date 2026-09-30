@@ -1,0 +1,349 @@
+{
+  "modelVersion": "flat-buildings-snapshot-v5",
+  "from": {
+    "id": "way-120613500",
+    "name": "Bahnhofquai",
+    "point": [8.5414987, 47.3776445],
+    "kind": "Street or path"
+  },
+  "to": {
+    "id": "node-305674981",
+    "name": "Bürkliplatz",
+    "point": [8.5415362, 47.3661084],
+    "kind": "Mapped path 5 m from place"
+  },
+  "version": "zurich-2026-09-30-v7",
+  "verifiedAt": "2026-09-30T10:37:31.873Z",
+  "results": [
+    {
+      "date": "2026-06-21T08:00:00Z",
+      "extra": 5,
+      "calculationMs": 1866,
+      "mode": "greenery",
+      "candidates": 4,
+      "fastest": {
+        "meters": 1511.2300000000007,
+        "minutes": 18.89037500000001,
+        "shade": 672.9520833333329,
+        "green": 422.89785714285705,
+        "water": 1023.0766666666666,
+        "unknown": 87.55,
+        "streets": [
+          "Bahnhofquai",
+          "Walking path",
+          "Bahnhofquai",
+          "Walking path",
+          "Steps",
+          "Heiristeg",
+          "Schipfe",
+          "Strehlgasse",
+          "Weinplatz",
+          "Storchengasse",
+          "Münsterhof",
+          "Walking path",
+          "Fraumünsterstrasse",
+          "Walking path"
+        ]
+      },
+      "alternative": {
+        "meters": 1559.62,
+        "minutes": 19.49525,
+        "shade": 884.7112698412699,
+        "green": 1244.8999999999996,
+        "water": 151.85999999999999,
+        "unknown": 41.57,
+        "streets": ["Bahnhofquai", "Bahnhofplatz", "Walking path"]
+      }
+    },
+    {
+      "date": "2026-06-21T12:00:00Z",
+      "extra": 5,
+      "calculationMs": 1727,
+      "mode": "shade",
+      "candidates": 4,
+      "fastest": {
+        "meters": 1511.2300000000007,
+        "minutes": 18.89037500000001,
+        "shade": 337.43042857142876,
+        "green": 422.89785714285705,
+        "water": 1023.0766666666666,
+        "unknown": 0,
+        "streets": [
+          "Bahnhofquai",
+          "Walking path",
+          "Bahnhofquai",
+          "Walking path",
+          "Steps",
+          "Heiristeg",
+          "Schipfe",
+          "Strehlgasse",
+          "Weinplatz",
+          "Storchengasse",
+          "Münsterhof",
+          "Walking path",
+          "Fraumünsterstrasse",
+          "Walking path"
+        ]
+      },
+      "alternative": {
+        "meters": 1779.3899999999996,
+        "minutes": 22.242374999999996,
+        "shade": 1098.6824772727261,
+        "green": 1216.4079999999985,
+        "water": 308.83,
+        "unknown": 6.76,
+        "streets": ["Bahnhofquai", "Walking path", "Seidengasse", "Walking path"]
+      }
+    },
+    {
+      "date": "2026-06-21T16:00:00Z",
+      "extra": 5,
+      "calculationMs": 1483,
+      "mode": "greenery",
+      "candidates": 5,
+      "fastest": {
+        "meters": 1511.2300000000007,
+        "minutes": 18.89037500000001,
+        "shade": 960.753988095238,
+        "green": 422.89785714285705,
+        "water": 1023.0766666666666,
+        "unknown": 157.7420833333334,
+        "streets": [
+          "Bahnhofquai",
+          "Walking path",
+          "Bahnhofquai",
+          "Walking path",
+          "Steps",
+          "Heiristeg",
+          "Schipfe",
+          "Strehlgasse",
+          "Weinplatz",
+          "Storchengasse",
+          "Münsterhof",
+          "Walking path",
+          "Fraumünsterstrasse",
+          "Walking path"
+        ]
+      },
+      "alternative": {
+        "meters": 1559.62,
+        "minutes": 19.49525,
+        "shade": 1081.9185833333331,
+        "green": 1244.8999999999996,
+        "water": 151.85999999999999,
+        "unknown": 247.56900000000005,
+        "streets": ["Bahnhofquai", "Bahnhofplatz", "Walking path"]
+      }
+    },
+    {
+      "date": "2026-06-21T12:00:00Z",
+      "extra": 0,
+      "calculationMs": 76,
+      "mode": "shade",
+      "candidates": 1,
+      "fastest": {
+        "meters": 1511.2300000000007,
+        "minutes": 18.89037500000001,
+        "shade": 337.43042857142876,
+        "green": 422.89785714285705,
+        "water": 1023.0766666666666,
+        "unknown": 0,
+        "streets": [
+          "Bahnhofquai",
+          "Walking path",
+          "Bahnhofquai",
+          "Walking path",
+          "Steps",
+          "Heiristeg",
+          "Schipfe",
+          "Strehlgasse",
+          "Weinplatz",
+          "Storchengasse",
+          "Münsterhof",
+          "Walking path",
+          "Fraumünsterstrasse",
+          "Walking path"
+        ]
+      },
+      "alternative": null
+    },
+    {
+      "date": "2026-06-21T12:00:00Z",
+      "extra": 10,
+      "calculationMs": 1892,
+      "mode": "shade",
+      "candidates": 4,
+      "fastest": {
+        "meters": 1511.2300000000007,
+        "minutes": 18.89037500000001,
+        "shade": 337.43042857142876,
+        "green": 422.89785714285705,
+        "water": 1023.0766666666666,
+        "unknown": 0,
+        "streets": [
+          "Bahnhofquai",
+          "Walking path",
+          "Bahnhofquai",
+          "Walking path",
+          "Steps",
+          "Heiristeg",
+          "Schipfe",
+          "Strehlgasse",
+          "Weinplatz",
+          "Storchengasse",
+          "Münsterhof",
+          "Walking path",
+          "Fraumünsterstrasse",
+          "Walking path"
+        ]
+      },
+      "alternative": {
+        "meters": 1779.3899999999996,
+        "minutes": 22.242374999999996,
+        "shade": 1098.6824772727261,
+        "green": 1216.4079999999985,
+        "water": 308.83,
+        "unknown": 6.76,
+        "streets": ["Bahnhofquai", "Walking path", "Seidengasse", "Walking path"]
+      }
+    },
+    {
+      "date": "2026-06-21T00:00:00Z",
+      "extra": 5,
+      "calculationMs": 943,
+      "mode": "night",
+      "candidates": 4,
+      "fastest": {
+        "meters": 1511.2300000000007,
+        "minutes": 18.89037500000001,
+        "shade": 0,
+        "green": 422.89785714285705,
+        "water": 1023.0766666666666,
+        "unknown": 0,
+        "streets": [
+          "Bahnhofquai",
+          "Walking path",
+          "Bahnhofquai",
+          "Walking path",
+          "Steps",
+          "Heiristeg",
+          "Schipfe",
+          "Strehlgasse",
+          "Weinplatz",
+          "Storchengasse",
+          "Münsterhof",
+          "Walking path",
+          "Fraumünsterstrasse",
+          "Walking path"
+        ]
+      },
+      "alternative": {
+        "meters": 1596.59,
+        "minutes": 19.957375,
+        "shade": 0,
+        "green": 1312.6800000000005,
+        "water": 167.51000000000005,
+        "unknown": 0,
+        "streets": ["Bahnhofquai", "Bahnhofplatz", "Walking path", "Bahnhofstrasse", "Walking path"]
+      }
+    }
+  ],
+  "waterAndStops": [
+    {
+      "stops": [],
+      "mode": "shade",
+      "candidates": 3,
+      "fastest": {
+        "meters": 1511.2300000000007,
+        "minutes": 18.89037500000001,
+        "shade": 337.43042857142876,
+        "green": 422.89785714285705,
+        "water": 1023.0766666666666,
+        "unknown": 0,
+        "streets": [
+          "Bahnhofquai",
+          "Walking path",
+          "Bahnhofquai",
+          "Walking path",
+          "Steps",
+          "Heiristeg",
+          "Schipfe",
+          "Strehlgasse",
+          "Weinplatz",
+          "Storchengasse",
+          "Münsterhof",
+          "Walking path",
+          "Fraumünsterstrasse",
+          "Walking path"
+        ]
+      },
+      "alternative": {
+        "meters": 1542.230000000001,
+        "minutes": 19.277875000000012,
+        "shade": 86.91333333333336,
+        "green": 487.56214285714276,
+        "water": 1501.9800000000014,
+        "unknown": 0,
+        "streets": ["Bahnhofquai", "Walking path", "Bahnhofquai", "Walking path"]
+      }
+    },
+    {
+      "stops": ["Rennweg"],
+      "mode": "shade",
+      "candidates": 5,
+      "fastest": {
+        "meters": 1643.06,
+        "minutes": 20.538249999999998,
+        "shade": 392.6156666666668,
+        "green": 645.8416666666664,
+        "water": 212.21,
+        "unknown": 0,
+        "streets": [
+          "Bahnhofquai",
+          "Bahnhofplatz",
+          "Walking path",
+          "Rennweg",
+          "Strehlgasse",
+          "Robert-Walser-Gasse",
+          "Glockengasse",
+          "Robert-Walser-Gasse",
+          "St. Peterhofstatt",
+          "Walking path",
+          "Schlüsselgasse",
+          "In Gassen",
+          "Storchengasse",
+          "Münsterhof",
+          "Walking path",
+          "Fraumünsterstrasse",
+          "Walking path"
+        ]
+      },
+      "alternative": {
+        "meters": 1827.290000000001,
+        "minutes": 22.841125000000012,
+        "shade": 509.49476190476156,
+        "green": 635.5948571428568,
+        "water": 1589.610000000001,
+        "unknown": 0,
+        "streets": [
+          "Bahnhofquai",
+          "Walking path",
+          "Bahnhofquai",
+          "Walking path",
+          "Steps",
+          "Heiristeg",
+          "Schipfe",
+          "Schwanengasse",
+          "Strehlgasse",
+          "Rennweg",
+          "Strehlgasse",
+          "Schwanengasse",
+          "Schipfe",
+          "Strehlgasse",
+          "Hilfsbrücke Süd",
+          "Walking path"
+        ]
+      }
+    }
+  ]
+}

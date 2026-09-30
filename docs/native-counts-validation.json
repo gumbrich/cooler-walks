@@ -1,6 +1,6 @@
 {
-  "checkedAt": "2026-09-30T11:15:40.675Z",
-  "appVersion": "0.8.0",
+  "checkedAt": "2026-09-30T12:35:39.268Z",
+  "appVersion": "0.9.0",
   "device": "CoolerWalks_Test Android emulator",
   "passed": [
     "Whole Zurich coverage view renders on the 2 GB emulator",
@@ -8,6 +8,7 @@
     "Real Monday 14:00 reference, three counters and map markers",
     "German labels preserve the observations",
     "Official Oerlikon address search, real routes and settled map while offline",
+    "Arrival-time shadow explanation and city-local arrival times in English/German while offline",
     "Other launched cities labelled beta",
     "City change clears counter data and markers"
   ],

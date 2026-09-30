@@ -213,6 +213,13 @@ try {
   await app.getByRole('combobox', { name: 'Nach', exact: true }).fill('Wallisellenstrasse 45');
   await app.getByRole('combobox', { name: 'Nach', exact: true }).press('Enter');
   await expect(app.locator('.spinner')).toHaveCount(0, { timeout: 60000 });
+  await expect(app.locator('.route-arrival').first()).toContainText('Ankunft gegen 14:10');
+  await app.locator('.walk-details > summary').click();
+  await expect(app.locator('.walk-details')).toContainText(
+    'Schatten wird für deine erwartete Ankunft',
+  );
+  await app.locator('.walk-details > summary').click();
+  installation.arrivalShadeOffline = true;
   await expect(app.getByRole('button', { name: /Schnellster Weg/ })).toBeVisible();
   await expect(app.locator('.map-marker')).toHaveCount(2);
   await expect(app.locator('.map-shell')).toHaveAttribute('data-map-settled', 'true', {

@@ -775,6 +775,17 @@ small {
   line-height: 1.5;
   margin-top: 8px;
 }
+.route-arrival {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+.route-arrival svg {
+  flex-shrink: 0;
+}
 .result-note {
   font-size: 0.8125rem;
   line-height: 1.65;

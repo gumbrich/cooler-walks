@@ -26,7 +26,7 @@ import {
 import { cities, cityOptions, getCity } from './lib/cities';
 import { inCoverage } from './lib/coverage';
 import { formatDistance } from './lib/geo';
-import { localNow, timeLabel, toInstant } from './lib/time';
+import { arrivalLabel, localNow, timeLabel, toInstant } from './lib/time';
 import type { PlannerData, Point, Route, RouteResult } from './lib/types';
 import { PlaceSearch, type Endpoint } from './components/Search';
 import { WalkingMap } from './components/Map';
@@ -362,7 +362,7 @@ export default function App() {
       result?.preference === 'calm'
         ? ((r.distance - r.majorRoadMeters - r.trafficUnknownMeters) / r.distance) * 100
         : isShade
-          ? ((showSun ? r.sunMeters : r.shadeMeters) / Math.max(1, r.distance - r.unknownMeters)) *
+          ? ((showSun ? r.sunMeters : r.shadeMeters) / Math.max(1, r.shadeMeters + r.sunMeters)) *
             100
           : (r.greenMeters / r.distance) * 100,
     );
@@ -413,13 +413,15 @@ export default function App() {
                 ? t('After dark · direct sun is not relevant')
                 : result?.mode === 'low-sun'
                   ? t('Low sun · building estimate unavailable')
-                  : isShade
-                    ? t(
-                        showSun
-                          ? 'Move time. See the estimated sun change.'
-                          : 'Move time. See the estimated shade change.',
-                      )
-                    : t('Tree proximity stays the same throughout the day.')}
+                  : result?.mode === 'transition'
+                    ? t('Light changes during this walk · comparison unavailable')
+                    : isShade
+                      ? t(
+                          showSun
+                            ? 'Move time. See the estimated sun change.'
+                            : 'Move time. See the estimated shade change.',
+                        )
+                      : t('Tree proximity stays the same throughout the day.')}
         </span>
         <label className="date-label">
           {t('Date')}
@@ -515,6 +517,12 @@ export default function App() {
                 coverage: Math.round((1 - route.unknownMeters / route.distance) * 100),
               })
             : t('Within 15 m of a recorded tree · not canopy shade')}
+      </div>
+      <div className="route-arrival">
+        <Clock3 size={14} />
+        {t('Arrive around {time}', {
+          time: arrivalLabel(route.arrival, result!.departure, city.timeZone, locale),
+        })}
       </div>
       {city.capabilities.trafficCalming && (
         <div className="route-traffic">
@@ -1201,6 +1209,13 @@ export default function App() {
                           )}
                         </p>
                       )}
+                      {result.mode === 'transition' && !preferCalm && (
+                        <p className="result-note">
+                          {t(
+                            'This walk crosses low sun or night. A shade or sun comparison is unavailable; tree proximity is shown separately.',
+                          )}
+                        </p>
+                      )}
                       {result.mode === 'greenery' &&
                         city.capabilities.buildingShade &&
                         !preferCalm && (
@@ -1297,10 +1312,20 @@ export default function App() {
                       {isShade && (
                         <p>
                           {t(
-                            'Direct sun: about {minutes} min. Unknown: {distance}. Percentage uses modelled distance only. Flat-ground buildings; no clouds, trees or terrain shadows.',
+                            'Direct sun: about {minutes} min. Unknown: {distance}. Shadows follow your expected arrival along the walk at 4.8 km/h. Percentage uses modelled daylight distance only. Flat-ground buildings; no clouds, trees or terrain shadows.',
                             {
                               minutes: Math.round(chosen.sunMeters / 80),
                               distance: formatDistance(chosen.unknownMeters, units, locale),
+                            },
+                          )}
+                        </p>
+                      )}
+                      {!!chosen.nightMeters && (
+                        <p>
+                          {t(
+                            'After dark: about {minutes} min. Darkness is kept separate from building shade.',
+                            {
+                              minutes: Math.round(chosen.nightMeters / 80),
                             },
                           )}
                         </p>
@@ -1397,7 +1422,7 @@ export default function App() {
                   <p>
                     {t(city.buildingNotes ?? '')}
                     {t(
-                      ' Where enabled, we sample paths every 8 metres at your selected departure instant. This is a flat-ground snapshot, not a measurement of heat or a weather forecast.',
+                      ' Where enabled, we sample paths at intervals of at most 8 metres, using the sun position when you are expected to reach each point. Each route uses its own walking time at 4.8 km/h, including all legs through your stops. Pauses and crossing waits are not included. This estimates direct sunlight on flat ground; it is not a heat measurement or weather forecast.',
                     )}
                   </p>
                 </div>

@@ -1,0 +1,736 @@
+{
+  "modelVersion": "flat-buildings-snapshot-v5",
+  "verifiedAt": "2026-09-30T10:37:40.070Z",
+  "cities": [
+    {
+      "city": "ch-zurich",
+      "version": "zurich-2026-09-30-v7",
+      "from": {
+        "id": "way-120613500",
+        "name": "Bahnhofquai",
+        "point": [8.5414987, 47.3776445],
+        "kind": "Street or path"
+      },
+      "to": {
+        "id": "node-305674981",
+        "name": "Bürkliplatz",
+        "point": [8.5415362, 47.3661084],
+        "kind": "Mapped path 5 m from place"
+      },
+      "timeZone": "Europe/Zurich",
+      "capabilities": {
+        "greenery": true,
+        "buildingShade": true,
+        "treeShade": false,
+        "terrain": false,
+        "fountains": false,
+        "water": true,
+        "trafficCalming": true,
+        "vehicleCounts": true,
+        "addresses": true
+      },
+      "results": [
+        {
+          "mode": "shade",
+          "preference": "environment",
+          "departure": "2026-06-21T12:00:00Z",
+          "candidates": 4,
+          "routes": [
+            {
+              "meters": 1511.2300000000007,
+              "minutes": 18.89037500000001,
+              "sunMeters": 1173.7995714285723,
+              "shadeMeters": 337.43042857142876,
+              "unknownMeters": 0,
+              "treeProximityMeters": 422.89785714285705,
+              "waterProximityMeters": 1023.0766666666666,
+              "streets": [
+                "Bahnhofquai",
+                "Walking path",
+                "Bahnhofquai",
+                "Walking path",
+                "Steps",
+                "Heiristeg",
+                "Schipfe",
+                "Strehlgasse",
+                "Weinplatz",
+                "Storchengasse",
+                "Münsterhof",
+                "Walking path",
+                "Fraumünsterstrasse",
+                "Walking path"
+              ]
+            },
+            {
+              "meters": 1779.3899999999996,
+              "minutes": 22.242374999999996,
+              "sunMeters": 673.9475227272727,
+              "shadeMeters": 1098.6824772727261,
+              "unknownMeters": 6.76,
+              "treeProximityMeters": 1216.4079999999985,
+              "waterProximityMeters": 308.83,
+              "streets": ["Bahnhofquai", "Walking path", "Seidengasse", "Walking path"]
+            }
+          ]
+        },
+        {
+          "mode": "shade",
+          "preference": "sun",
+          "departure": "2026-06-21T12:00:00Z",
+          "candidates": 4,
+          "routes": [
+            {
+              "meters": 1511.2300000000007,
+              "minutes": 18.89037500000001,
+              "sunMeters": 1173.7995714285723,
+              "shadeMeters": 337.43042857142876,
+              "unknownMeters": 0,
+              "treeProximityMeters": 422.89785714285705,
+              "waterProximityMeters": 1023.0766666666666,
+              "streets": [
+                "Bahnhofquai",
+                "Walking path",
+                "Bahnhofquai",
+                "Walking path",
+                "Steps",
+                "Heiristeg",
+                "Schipfe",
+                "Strehlgasse",
+                "Weinplatz",
+                "Storchengasse",
+                "Münsterhof",
+                "Walking path",
+                "Fraumünsterstrasse",
+                "Walking path"
+              ]
+            },
+            {
+              "meters": 1574.2,
+              "minutes": 19.677500000000002,
+              "sunMeters": 1574.2000000000019,
+              "shadeMeters": 0,
+              "unknownMeters": 0,
+              "treeProximityMeters": 1242.5915000000014,
+              "waterProximityMeters": 144.74,
+              "streets": ["Bahnhofquai", "Bahnhofplatz", "Walking path"]
+            }
+          ]
+        },
+        {
+          "mode": "shade",
+          "preference": "water",
+          "departure": "2026-06-21T12:00:00Z",
+          "candidates": 3,
+          "routes": [
+            {
+              "meters": 1511.2300000000007,
+              "minutes": 18.89037500000001,
+              "sunMeters": 1173.7995714285723,
+              "shadeMeters": 337.43042857142876,
+              "unknownMeters": 0,
+              "treeProximityMeters": 422.89785714285705,
+              "waterProximityMeters": 1023.0766666666666,
+              "streets": [
+                "Bahnhofquai",
+                "Walking path",
+                "Bahnhofquai",
+                "Walking path",
+                "Steps",
+                "Heiristeg",
+                "Schipfe",
+                "Strehlgasse",
+                "Weinplatz",
+                "Storchengasse",
+                "Münsterhof",
+                "Walking path",
+                "Fraumünsterstrasse",
+                "Walking path"
+              ]
+            },
+            {
+              "meters": 1542.230000000001,
+              "minutes": 19.277875000000012,
+              "sunMeters": 1455.3166666666682,
+              "shadeMeters": 86.91333333333336,
+              "unknownMeters": 0,
+              "treeProximityMeters": 487.56214285714276,
+              "waterProximityMeters": 1501.9800000000014,
+              "streets": ["Bahnhofquai", "Walking path", "Bahnhofquai", "Walking path"]
+            }
+          ]
+        },
+        {
+          "mode": "greenery",
+          "preference": "environment",
+          "departure": "2026-06-21T08:00:00Z",
+          "candidates": 1,
+          "routes": [
+            {
+              "meters": 1511.2300000000007,
+              "minutes": 18.89037500000001,
+              "sunMeters": 750.7279166666663,
+              "shadeMeters": 672.9520833333329,
+              "unknownMeters": 87.55,
+              "treeProximityMeters": 422.89785714285705,
+              "waterProximityMeters": 1023.0766666666666,
+              "streets": [
+                "Bahnhofquai",
+                "Walking path",
+                "Bahnhofquai",
+                "Walking path",
+                "Steps",
+                "Heiristeg",
+                "Schipfe",
+                "Strehlgasse",
+                "Weinplatz",
+                "Storchengasse",
+                "Münsterhof",
+                "Walking path",
+                "Fraumünsterstrasse",
+                "Walking path"
+              ]
+            }
+          ]
+        },
+        {
+          "mode": "greenery",
+          "preference": "sun",
+          "departure": "2026-12-21T11:00:00Z",
+          "candidates": 5,
+          "routes": [
+            {
+              "meters": 1511.2300000000007,
+              "minutes": 18.89037500000001,
+              "sunMeters": 810.5358571428574,
+              "shadeMeters": 597.0291428571428,
+              "unknownMeters": 103.66500000000002,
+              "treeProximityMeters": 422.89785714285705,
+              "waterProximityMeters": 1023.0766666666666,
+              "streets": [
+                "Bahnhofquai",
+                "Walking path",
+                "Bahnhofquai",
+                "Walking path",
+                "Steps",
+                "Heiristeg",
+                "Schipfe",
+                "Strehlgasse",
+                "Weinplatz",
+                "Storchengasse",
+                "Münsterhof",
+                "Walking path",
+                "Fraumünsterstrasse",
+                "Walking path"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "city": "de-munich",
+      "version": "munich-2026-09-29-v2",
+      "from": {
+        "id": "way-116514205",
+        "name": "Karlsplatz (Stachus)",
+        "point": [11.5650186, 48.1394243],
+        "kind": "Street or path"
+      },
+      "to": {
+        "id": "way-120199713",
+        "name": "Odeonsplatz",
+        "point": [11.5775867, 48.1439182],
+        "kind": "Street or path"
+      },
+      "timeZone": "Europe/Berlin",
+      "capabilities": {
+        "greenery": true,
+        "buildingShade": true,
+        "treeShade": false,
+        "terrain": false,
+        "fountains": false,
+        "water": true
+      },
+      "results": [
+        {
+          "mode": "shade",
+          "preference": "environment",
+          "departure": "2026-06-21T12:00:00Z",
+          "candidates": 5,
+          "routes": [
+            {
+              "meters": 1236.3900000000003,
+              "minutes": 15.454875000000005,
+              "sunMeters": 1059.5449999999994,
+              "shadeMeters": 176.84500000000003,
+              "unknownMeters": 0,
+              "treeProximityMeters": 626.9309523809525,
+              "waterProximityMeters": 0,
+              "streets": [
+                "Karlsplatz (Stachus)",
+                "Walking path",
+                "Lenbachplatz",
+                "Maximiliansplatz",
+                "Oskar-von-Miller-Ring",
+                "Brienner Straße",
+                "Walking path",
+                "Brienner Straße",
+                "Walking path",
+                "Finkenstraße",
+                "Wittelsbacherplatz",
+                "Kardinal-Döpfner-Straße",
+                "Franz-Xaver-Schweyer-Straße",
+                "Odeonsplatz"
+              ]
+            },
+            {
+              "meters": 1431.03,
+              "minutes": 17.887875,
+              "sunMeters": 661.1374166666667,
+              "shadeMeters": 769.8925833333337,
+              "unknownMeters": 0,
+              "treeProximityMeters": 445.3810476190476,
+              "waterProximityMeters": 0,
+              "streets": [
+                "Karlsplatz (Stachus)",
+                "Walking path",
+                "Karlsplatz (Stachus)",
+                "Lenbachplatz",
+                "Walking path",
+                "Pacellistraße",
+                "Walking path",
+                "Pacellipassage",
+                "Walking path",
+                "Rochusstraße",
+                "Rochusberg",
+                "Walking path",
+                "Jungfernturmstraße",
+                "Walking path",
+                "Brienner Straße",
+                "Walking path",
+                "Brienner Straße",
+                "Walking path",
+                "Odeonsplatz"
+              ]
+            }
+          ]
+        },
+        {
+          "mode": "shade",
+          "preference": "sun",
+          "departure": "2026-06-21T12:00:00Z",
+          "candidates": 4,
+          "routes": [
+            {
+              "meters": 1236.3900000000003,
+              "minutes": 15.454875000000005,
+              "sunMeters": 1059.5449999999994,
+              "shadeMeters": 176.84500000000003,
+              "unknownMeters": 0,
+              "treeProximityMeters": 626.9309523809525,
+              "waterProximityMeters": 0,
+              "streets": [
+                "Karlsplatz (Stachus)",
+                "Walking path",
+                "Lenbachplatz",
+                "Maximiliansplatz",
+                "Oskar-von-Miller-Ring",
+                "Brienner Straße",
+                "Walking path",
+                "Brienner Straße",
+                "Walking path",
+                "Finkenstraße",
+                "Wittelsbacherplatz",
+                "Kardinal-Döpfner-Straße",
+                "Franz-Xaver-Schweyer-Straße",
+                "Odeonsplatz"
+              ]
+            },
+            {
+              "meters": 1303.6299999999999,
+              "minutes": 16.295375,
+              "sunMeters": 1289.3522222222232,
+              "shadeMeters": 14.277777777777779,
+              "unknownMeters": 0,
+              "treeProximityMeters": 574.3126190476188,
+              "waterProximityMeters": 0,
+              "streets": [
+                "Karlsplatz (Stachus)",
+                "Walking path",
+                "Lenbachplatz",
+                "Maximiliansplatz",
+                "Oskar-von-Miller-Ring",
+                "Brienner Straße",
+                "Walking path",
+                "Brienner Straße",
+                "Walking path",
+                "Odeonsplatz"
+              ]
+            }
+          ]
+        },
+        {
+          "mode": "shade",
+          "preference": "water",
+          "departure": "2026-06-21T12:00:00Z",
+          "candidates": 3,
+          "routes": [
+            {
+              "meters": 1236.3900000000003,
+              "minutes": 15.454875000000005,
+              "sunMeters": 1059.5449999999994,
+              "shadeMeters": 176.84500000000003,
+              "unknownMeters": 0,
+              "treeProximityMeters": 626.9309523809525,
+              "waterProximityMeters": 0,
+              "streets": [
+                "Karlsplatz (Stachus)",
+                "Walking path",
+                "Lenbachplatz",
+                "Maximiliansplatz",
+                "Oskar-von-Miller-Ring",
+                "Brienner Straße",
+                "Walking path",
+                "Brienner Straße",
+                "Walking path",
+                "Finkenstraße",
+                "Wittelsbacherplatz",
+                "Kardinal-Döpfner-Straße",
+                "Franz-Xaver-Schweyer-Straße",
+                "Odeonsplatz"
+              ]
+            }
+          ]
+        },
+        {
+          "mode": "shade",
+          "preference": "environment",
+          "departure": "2026-06-21T08:00:00Z",
+          "candidates": 1,
+          "routes": [
+            {
+              "meters": 1236.3900000000003,
+              "minutes": 15.454875000000005,
+              "sunMeters": 1130.2633333333322,
+              "shadeMeters": 106.12666666666667,
+              "unknownMeters": 0,
+              "treeProximityMeters": 626.9309523809525,
+              "waterProximityMeters": 0,
+              "streets": [
+                "Karlsplatz (Stachus)",
+                "Walking path",
+                "Lenbachplatz",
+                "Maximiliansplatz",
+                "Oskar-von-Miller-Ring",
+                "Brienner Straße",
+                "Walking path",
+                "Brienner Straße",
+                "Walking path",
+                "Finkenstraße",
+                "Wittelsbacherplatz",
+                "Kardinal-Döpfner-Straße",
+                "Franz-Xaver-Schweyer-Straße",
+                "Odeonsplatz"
+              ]
+            }
+          ]
+        },
+        {
+          "mode": "shade",
+          "preference": "sun",
+          "departure": "2026-12-21T11:00:00Z",
+          "candidates": 4,
+          "routes": [
+            {
+              "meters": 1236.3900000000003,
+              "minutes": 15.454875000000005,
+              "sunMeters": 832.9954999999999,
+              "shadeMeters": 403.3945,
+              "unknownMeters": 0,
+              "treeProximityMeters": 626.9309523809525,
+              "waterProximityMeters": 0,
+              "streets": [
+                "Karlsplatz (Stachus)",
+                "Walking path",
+                "Lenbachplatz",
+                "Maximiliansplatz",
+                "Oskar-von-Miller-Ring",
+                "Brienner Straße",
+                "Walking path",
+                "Brienner Straße",
+                "Walking path",
+                "Finkenstraße",
+                "Wittelsbacherplatz",
+                "Kardinal-Döpfner-Straße",
+                "Franz-Xaver-Schweyer-Straße",
+                "Odeonsplatz"
+              ]
+            },
+            {
+              "meters": 1343.9799999999996,
+              "minutes": 16.799749999999996,
+              "sunMeters": 1064.2434999999996,
+              "shadeMeters": 279.7365,
+              "unknownMeters": 0,
+              "treeProximityMeters": 568.686619047619,
+              "waterProximityMeters": 0,
+              "streets": [
+                "Karlsplatz (Stachus)",
+                "Walking path",
+                "Lenbachplatz",
+                "Walking path",
+                "Lenbachplatz",
+                "Maximiliansplatz",
+                "Oskar-von-Miller-Ring",
+                "Brienner Straße",
+                "Walking path",
+                "Brienner Straße",
+                "Walking path",
+                "Odeonsplatz"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "city": "us-cambridge-ma",
+      "version": "cambridge-2026-09-29-v2",
+      "from": {
+        "id": "way-260323504",
+        "name": "Brattle Street",
+        "point": [-71.1317704, 42.3775096],
+        "kind": "Street or path"
+      },
+      "to": {
+        "id": "way-591217341",
+        "name": "Cambridge Street",
+        "point": [-71.0855325, 42.371758],
+        "kind": "Street or path"
+      },
+      "timeZone": "America/New_York",
+      "capabilities": {
+        "greenery": true,
+        "buildingShade": false,
+        "treeShade": false,
+        "terrain": false,
+        "fountains": false,
+        "water": true
+      },
+      "results": [
+        {
+          "mode": "greenery",
+          "preference": "environment",
+          "departure": "2026-06-21T18:00:00Z",
+          "candidates": 6,
+          "routes": [
+            {
+              "meters": 3994.629999999999,
+              "minutes": 49.93287499999999,
+              "sunMeters": 0,
+              "shadeMeters": 0,
+              "unknownMeters": 3994.6299999999956,
+              "treeProximityMeters": 3389.1929523809436,
+              "waterProximityMeters": 0,
+              "streets": ["Brattle Street", "Walking path", "Cambridge Street"]
+            },
+            {
+              "meters": 4327.670000000002,
+              "minutes": 54.09587500000002,
+              "sunMeters": 0,
+              "shadeMeters": 0,
+              "unknownMeters": 4327.670000000002,
+              "treeProximityMeters": 4162.738666666672,
+              "waterProximityMeters": 0,
+              "streets": [
+                "Brattle Street",
+                "Craigie Street",
+                "Walking path",
+                "Brattle Street",
+                "Walking path",
+                "James Street",
+                "Mason Street",
+                "Garden Street",
+                "Massachusetts Avenue",
+                "Walking path",
+                "Cambridge Street",
+                "Walking path",
+                "Leonard Avenue",
+                "Cambridge Street",
+                "Ellsworth Avenue",
+                "Walking path",
+                "Cambridge Street",
+                "Walking path",
+                "Cambridge Street",
+                "Walking path",
+                "Cambridge Street",
+                "Max Avenue",
+                "Walking path",
+                "Cambridge Street"
+              ]
+            }
+          ]
+        },
+        {
+          "mode": "greenery",
+          "preference": "water",
+          "departure": "2026-06-21T18:00:00Z",
+          "candidates": 4,
+          "routes": [
+            {
+              "meters": 3994.629999999999,
+              "minutes": 49.93287499999999,
+              "sunMeters": 0,
+              "shadeMeters": 0,
+              "unknownMeters": 3994.6299999999956,
+              "treeProximityMeters": 3389.1929523809436,
+              "waterProximityMeters": 0,
+              "streets": ["Brattle Street", "Walking path", "Cambridge Street"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "city": "ch-basel",
+      "version": "basel-2026-09-29-v2",
+      "from": {
+        "id": "way-132752291",
+        "name": "Aeschenplatz",
+        "point": [7.5954497, 47.5514153],
+        "kind": "Street or path"
+      },
+      "to": {
+        "id": "way-137472353",
+        "name": "Mittlere Rheinbrücke",
+        "point": [7.5906926, 47.5606382],
+        "kind": "Street or path"
+      },
+      "timeZone": "Europe/Zurich",
+      "capabilities": {
+        "greenery": true,
+        "buildingShade": false,
+        "treeShade": false,
+        "terrain": false,
+        "fountains": false,
+        "water": true
+      },
+      "results": [
+        {
+          "mode": "greenery",
+          "preference": "environment",
+          "departure": "2026-06-21T12:00:00Z",
+          "candidates": 4,
+          "routes": [
+            {
+              "meters": 1299.5200000000002,
+              "minutes": 16.244000000000003,
+              "sunMeters": 0,
+              "shadeMeters": 0,
+              "unknownMeters": 1299.5200000000032,
+              "treeProximityMeters": 338.7208333333332,
+              "waterProximityMeters": 627.1299999999995,
+              "streets": [
+                "Aeschenplatz",
+                "Dufourstrasse",
+                "Walking path",
+                "Rittergasse",
+                "Münsterplatz",
+                "Augustinergasse",
+                "Rheinsprung",
+                "Walking path"
+              ]
+            },
+            {
+              "meters": 1572.8300000000002,
+              "minutes": 19.660375000000002,
+              "sunMeters": 0,
+              "shadeMeters": 0,
+              "unknownMeters": 1572.830000000003,
+              "treeProximityMeters": 954.6899999999988,
+              "waterProximityMeters": 913.1641666666659,
+              "streets": [
+                "Aeschenplatz",
+                "Dufourstrasse",
+                "Walking path",
+                "Dufourstrasse",
+                "Walking path",
+                "St. Alban-Graben",
+                "Wettsteinbrücke",
+                "Wettsteinstrasse",
+                "Walking path",
+                "Steps",
+                "Walking path",
+                "Oberer Rheinweg",
+                "Unterer Rheinweg",
+                "Walking path",
+                "Steps",
+                "Walking path"
+              ]
+            }
+          ]
+        },
+        {
+          "mode": "greenery",
+          "preference": "water",
+          "departure": "2026-06-21T12:00:00Z",
+          "candidates": 4,
+          "routes": [
+            {
+              "meters": 1299.5200000000002,
+              "minutes": 16.244000000000003,
+              "sunMeters": 0,
+              "shadeMeters": 0,
+              "unknownMeters": 1299.5200000000032,
+              "treeProximityMeters": 338.7208333333332,
+              "waterProximityMeters": 627.1299999999995,
+              "streets": [
+                "Aeschenplatz",
+                "Dufourstrasse",
+                "Walking path",
+                "Rittergasse",
+                "Münsterplatz",
+                "Augustinergasse",
+                "Rheinsprung",
+                "Walking path"
+              ]
+            },
+            {
+              "meters": 1612.5900000000001,
+              "minutes": 20.157375000000002,
+              "sunMeters": 0,
+              "shadeMeters": 0,
+              "unknownMeters": 1612.5900000000036,
+              "treeProximityMeters": 608.5383333333338,
+              "waterProximityMeters": 1118.7466666666678,
+              "streets": [
+                "Aeschenplatz",
+                "Dufourstrasse",
+                "Walking path",
+                "St. Alban-Graben",
+                "Walking path",
+                "Steps",
+                "St. Alban-Rheinweg",
+                "Walking path",
+                "Steps",
+                "Walking path",
+                "Steps",
+                "Walking path",
+                "Steps",
+                "Walking path",
+                "Steps",
+                "Walking path",
+                "Steps",
+                "Walking path",
+                "Münsterplatz",
+                "Augustinergasse",
+                "Rheinsprung",
+                "Walking path"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

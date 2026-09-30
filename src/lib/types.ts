@@ -134,6 +134,8 @@ export interface Sample {
   green: boolean;
   water: boolean;
   traffic?: TrafficClass;
+  /** Arrival at this sample midpoint, including all preceding walking legs. */
+  elapsedMinutes: number;
 }
 export interface Route {
   id: string;
@@ -146,6 +148,10 @@ export interface Route {
   shadeMeters: number;
   sunMeters: number;
   unknownMeters: number;
+  nightMeters: number;
+  /** Part of unknownMeters where solar elevation is between 0 and 10 degrees. */
+  lowSunMeters: number;
+  arrival: string;
   majorRoadMeters: number;
   calmedMeters: number;
   trafficUnknownMeters: number;
@@ -157,7 +163,7 @@ export interface RouteResult {
   fastest: Route;
   alternative: Route | null;
   candidateCount: number;
-  mode: 'shade' | 'greenery' | 'night' | 'low-sun';
+  mode: 'shade' | 'greenery' | 'night' | 'low-sun' | 'transition';
   start: Point;
   end: Point;
   startSnap: number;

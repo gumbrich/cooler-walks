@@ -9,7 +9,7 @@ export const WALK_METERS_PER_MINUTE = 80;
 export const SAMPLE_METERS = 8;
 export const TREE_PROXIMITY_METERS = 15;
 export const MIN_SHADE_COVERAGE = 0.95;
-export const MODEL_VERSION = 'flat-buildings-snapshot-v5';
+export const MODEL_VERSION = 'flat-buildings-arrival-v6';
 export const MAX_WAYPOINTS = 3;
 const CELL = 60;
 class Grid<T> {
@@ -38,6 +38,13 @@ class Grid<T> {
       for (let y = Math.floor((p[1] - r) / CELL); y <= Math.floor((p[1] + r) / CELL); y++)
         out.push(...(this.cells.get(`${x},${y}`) ?? []));
     return out;
+  }
+  intersecting([w, s, e, n]: Bounds): T[] {
+    const found = new Set<T>();
+    for (let x = Math.floor(w / CELL); x <= Math.floor(e / CELL); x++)
+      for (let y = Math.floor(s / CELL); y <= Math.floor(n / CELL); y++)
+        for (const item of this.cells.get(`${x},${y}`) ?? []) found.add(item);
+    return [...found];
   }
 }
 class MinHeap {
@@ -122,14 +129,17 @@ export class Router {
   adjacency: { to: number; edge: number }[][];
   treeGrid = new Grid<Point>();
   buildingGrid = new Grid<MetricBuilding>();
+  footprintGrid = new Grid<MetricBuilding>();
   water: WaterIndex;
   maxHeight = 0;
   maxRadius = 0;
+  gridRotation: number;
   constructor(
     public data: PilotData,
     public city: City,
     consumeSource = false,
   ) {
+    this.gridRotation = gridAzimuth(city, 0);
     if (data.cityId !== city.id || data.version !== city.dataVersion)
       throw new Error('The city data version does not match. Reload the app.');
     if (!data.nodes.length || !data.edges.length || !data.trees.length)
@@ -169,7 +179,7 @@ export class Router {
       ];
       const radius = Math.max(...ring.map((p) => distance(p, center)));
       this.maxRadius = Math.max(this.maxRadius, radius);
-      this.buildingGrid.add(center, {
+      const building: MetricBuilding = {
         ring,
         holes,
         // Ground-referenced source geometry can bound an open object’s reach.
@@ -184,10 +194,59 @@ export class Router {
           Math.max(...ring.map((p) => p[0])),
           Math.max(...ring.map((p) => p[1])),
         ],
-      });
+      };
+      this.buildingGrid.add(center, building);
+      this.footprintGrid.addBounds(building.bounds, building);
       this.maxHeight = Math.max(this.maxHeight, shadowHeight);
     });
     if (consumeSource) data.buildings = [];
+  }
+  /** Exact solar instant at a sample's expected arrival; no time buckets. */
+  exposureAt(point: Point, date: Date, clearance?: number) {
+    const sun = solar(date, point);
+    const lowSun =
+      this.city.capabilities.buildingShade &&
+      this.maxHeight > 0 &&
+      sun.altitude > 0 &&
+      sun.altitude < Math.PI / 18;
+    let exposure: Sample['exposure'] = sun.altitude <= 0 ? 'night' : 'unknown';
+    if (exposure === 'night' || lowSun || !this.city.capabilities.buildingShade || !this.maxHeight)
+      return { exposure, lowSun };
+    const pt = metric(this.city, point);
+    const reach = this.maxHeight / Math.tan(sun.altitude);
+    if (
+      (clearance !== undefined && clearance < reach) ||
+      ![
+        [pt[0] - reach, pt[1] - reach],
+        [pt[0] + reach, pt[1] + reach],
+      ].every((p) => inBounds(geographic(this.city, p as Point), this.data.modelBounds))
+    )
+      return { exposure, lowSun };
+    const vector = shadowVector(this.maxHeight, sun.altitude, sun.azimuth + this.gridRotation);
+    const end: Point = [pt[0] - vector[0], pt[1] - vector[1]];
+    exposure = 'sun';
+    // Query the fixed footprint index along the sun ray. Only the ray changes
+    // with arrival time; we never construct another city-sized shadow grid.
+    for (const building of this.footprintGrid.intersecting([
+      Math.min(pt[0], end[0]),
+      Math.min(pt[1], end[1]),
+      Math.max(pt[0], end[0]),
+      Math.max(pt[1], end[1]),
+    ])) {
+      const fraction = building.height / this.maxHeight;
+      if (
+        rayHits(
+          pt,
+          [pt[0] - vector[0] * fraction, pt[1] - vector[1] * fraction],
+          building.ring,
+          building.holes,
+        )
+      ) {
+        if (building.uncertain) exposure = 'unknown';
+        else return { exposure: 'shade' as const, lowSun };
+      }
+    }
+    return { exposure, lowSun };
   }
   snap(point: Point) {
     if (!inCoverage(this.city, point))
@@ -306,7 +365,7 @@ export class Router {
     const sun = solar(date, this.city.center),
       projectedAzimuth = gridAzimuth(this.city, sun.azimuth),
       altDeg = (sun.altitude * 180) / Math.PI;
-    const mode: RouteResult['mode'] =
+    const departureMode: RouteResult['mode'] =
       altDeg <= 0
         ? 'night'
         : !this.city.capabilities.buildingShade || !this.maxHeight
@@ -314,13 +373,15 @@ export class Router {
           : altDeg < 10
             ? 'low-sun'
             : 'shade';
-    const edgeSamples = new Map<number, Sample[]>();
-    // Index each building's possible shadow extent for this departure snapshot.
+    type SpatialSample = Omit<Sample, 'elapsedMinutes'>;
+    const edgeSamples = new Map<number, SpatialSample[]>();
+    // Departure exposure guides candidate generation only. Every actual route
+    // is re-evaluated at its own sample arrival times before comparison.
     // Exact ray/footprint intersection below remains the physical test. This
     // avoids scanning a citywide tallest-building radius for every 8 m sample.
     type Candidate = { building: MetricBuilding; vector: Point; bounds: Bounds };
     const shadows = new Grid<Candidate>();
-    if (mode === 'shade') {
+    if (departureMode === 'shade') {
       for (const cell of this.buildingGrid.cells.values())
         for (const building of cell) {
           const vector = shadowVector(building.height, sun.altitude, projectedAzimuth);
@@ -341,7 +402,7 @@ export class Router {
         p = this.points[e.a],
         q = this.points[e.b],
         count = Math.max(1, Math.ceil(e.length / SAMPLE_METERS));
-      const samples: Sample[] = [];
+      const samples: SpatialSample[] = [];
       for (let i = 0; i < count; i++) {
         const f = (i + 0.5) / count,
           pt: Point = [p[0] + (q[0] - p[0]) * f, p[1] + (q[1] - p[1]) * f],
@@ -349,8 +410,8 @@ export class Router {
         const green = this.treeGrid
           .around(pt, TREE_PROXIMITY_METERS)
           .some((t) => distance(t, pt) <= TREE_PROXIMITY_METERS);
-        let exposure: Sample['exposure'] = mode === 'night' ? 'night' : 'unknown';
-        if (mode === 'shade') {
+        let exposure: Sample['exposure'] = departureMode === 'night' ? 'night' : 'unknown';
+        if (departureMode === 'shade') {
           // Model boundary includes surrounding objects; low sun is withheld.
           const reach = this.maxHeight / Math.tan(sun.altitude);
           const boundaryPoints: Point[] = [
@@ -388,17 +449,26 @@ export class Router {
     };
     const buildRoute = (nodes: number[], id: string): Route => {
       let distance = 0,
+        lowSunMeters = 0,
         steps = false;
       const samples: Sample[] = [],
         streets: string[] = [];
       for (let n = 1; n < nodes.length; n++) {
         const index = this.adjacency[nodes[n - 1]].find((e) => e.to === nodes[n])!.edge,
           e = this.data.edges[index];
-        distance += e.length;
         steps ||= e.steps;
         if (e.name && streets.at(-1) !== e.name) streets.push(e.name);
         const part = sample(index);
-        samples.push(...(e.a === nodes[n - 1] ? part : [...part].reverse()));
+        let walked = distance;
+        for (const sample of e.a === nodes[n - 1] ? part : [...part].reverse()) {
+          const elapsedMinutes = (walked + sample.meters / 2) / WALK_METERS_PER_MINUTE;
+          const arrival = new Date(date.getTime() + elapsedMinutes * 60000);
+          const { exposure, lowSun } = this.exposureAt(sample.point, arrival, e.modelClearance);
+          samples.push({ ...sample, exposure, elapsedMinutes });
+          if (lowSun) lowSunMeters += sample.meters;
+          walked += sample.meters;
+        }
+        distance += e.length;
       }
       const sum = (f: (s: Sample) => boolean) =>
         samples.reduce((n, s) => n + (f(s) ? s.meters : 0), 0);
@@ -416,6 +486,11 @@ export class Router {
         shadeMeters: sum((s) => s.exposure === 'shade'),
         sunMeters: sum((s) => s.exposure === 'sun'),
         unknownMeters: sum((s) => s.exposure === 'unknown'),
+        nightMeters: sum((s) => s.exposure === 'night'),
+        lowSunMeters,
+        arrival: new Date(
+          date.getTime() + (distance / WALK_METERS_PER_MINUTE) * 60000,
+        ).toISOString(),
         majorRoadMeters: sum((s) => s.traffic === 'major'),
         calmedMeters: sum((s) => isCalmed(s.traffic)),
         trafficUnknownMeters: sum((s) => s.traffic === 'unknown'),
@@ -469,7 +544,7 @@ export class Router {
                     ? s.traffic !== 'major' && s.traffic !== 'unknown'
                     : preferWater
                       ? s.water
-                      : mode === 'shade'
+                      : departureMode === 'shade'
                         ? s.exposure === sunlight
                         : s.green
                 )
@@ -507,8 +582,23 @@ export class Router {
       throw new Error(
         'This route leaves the pilot’s data coverage. Try closer points inside the boundary.',
       );
-    const covered = (r: Route) => 1 - r.unknownMeters / r.distance >= MIN_SHADE_COVERAGE;
-    const shade = mode === 'shade' && covered(fastest);
+    const covered = (r: Route) =>
+      r.nightMeters === 0 &&
+      r.lowSunMeters === 0 &&
+      (r.shadeMeters + r.sunMeters) / r.distance >= MIN_SHADE_COVERAGE;
+    const mode: RouteResult['mode'] =
+      fastest.nightMeters >= fastest.distance - 1e-6
+        ? 'night'
+        : !this.city.capabilities.buildingShade
+          ? 'greenery'
+          : fastest.lowSunMeters >= fastest.distance - 1e-6
+            ? 'low-sun'
+            : fastest.nightMeters > 0 || fastest.lowSunMeters > 0
+              ? 'transition'
+              : this.city.capabilities.buildingShade && covered(fastest)
+                ? 'shade'
+                : 'greenery';
+    const shade = mode === 'shade';
     const trafficCovered = (r: Route) =>
       1 - r.trafficUnknownMeters / r.distance >= MIN_TRAFFIC_COVERAGE;
     const trafficCost = (r: Route) => r.majorRoadMeters + r.trafficUnknownMeters;
@@ -567,7 +657,7 @@ export class Router {
       fastest,
       alternative: better[0] ?? null,
       candidateCount: candidates.length + 1,
-      mode: mode === 'shade' && !shade ? 'greenery' : mode,
+      mode,
       start: this.data.nodes[a.index].point,
       end: this.data.nodes[b.index].point,
       startSnap: a.meters,

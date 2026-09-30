@@ -63,3 +63,7 @@ The existing atlas design now displays the larger, municipality-clipped Zurich b
 For the expanded extent, neighbourhood labels use actual OSM names. Individual tree dots appear at street scale (zoom 14+) and load only around the viewport; the complete inventory still informs route greenery. This keeps phone maps lighter without moving or inventing trees. Map and route workers release resources explicitly during reload.
 
 City overview maps show neighbourhoods, waterways, parks and the street structure. Building footprints, individual trees and minor paths appear from zoom 14. This reduces clutter and expensive full-city geometry rendering; detailed route views and the complete routing/shadow model retain all data. The Linux coverage-view check exposed the need for this map hierarchy.
+
+## Arrival-aware shadows · 0.9.0
+
+Route cards now include a compact clock row with estimated arrival in the route city’s time zone. The arrival label includes a date when the walk crosses midnight. The existing warm/green visual hierarchy and map gestures stay intact. A distinct low-sun/night transition message replaces unsupported sun/shade comparisons; the timeline explains the changing-light state. Method copy in both languages explains cumulative walking time through stops without suggesting pauses or crossing waits are modelled. Desktop, German phone and tablet transition captures are linked from the README.

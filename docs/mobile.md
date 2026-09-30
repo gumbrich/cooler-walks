@@ -6,7 +6,7 @@ The user requested a mobile app in addition to the browser. A shared native cont
 
 ## Implemented
 
-- Native projects in `ios/` and `android/`, with application ID `io.github.gumbrich.coolerwalks`, version 0.8.0.
+- Native projects in `ios/` and `android/`, with application ID `io.github.gumbrich.coolerwalks`, version 0.9.0.
 - Direct launch into the planner; selected city and units remembered locally.
 - All four city map/model bundles packaged by default; an optional lite build includes Zurich and downloads other areas. See [downloads.md](downloads.md). Planning does not need a first online visit. Native builds do not register the website service worker.
 - Native one-shot location permission only after “Use my location”; no background tracking. Denial preserves the trip and offers map/search input. A late location response cannot replace inputs after a city change.
@@ -80,3 +80,7 @@ Test the native app on physical iPhone and Android devices, including location d
 App Store/TestFlight and Google Play distribution are separate future steps: confirm the final application identifier, prepare signing, privacy declarations and listings, and obtain store review. No store listing, certificate upload, account creation or publication has been performed. Versioned downloadable areas are implemented; compatible catalogues ship with app updates. Public HTTPS data hosting and signed tester distribution remain release steps.
 
 Release commands and draft listing materials are now prepared in [app-stores.md](app-stores.md). Android's unsigned App Bundle build has been verified locally; upload-key signing uses environment variables and refuses missing credentials. The website/pack-host setup is documented in [hosting.md](hosting.md).
+
+## Version 0.9.0 · arrival-time shadows
+
+Android build 7 passes the focused offline regression on the existing 2 GB Android 16 emulator, including arrival-time shade explanation, English/German city-local arrival labels, Oerlikon addresses/routes, the whole Zurich map, historical counts and beta switching. No page errors occurred. The checked debug APK is `native-artifacts/cooler-walks-0.9.0-debug.apk` (44,665,413 bytes; SHA-256 `ec50480c68e242d7029d1653459a9128e4c1ca044e5172deb0a1cfe43b9533c6`). [Current report](native-counts-validation.json). Physical-phone and current iOS interactions remain untested.

@@ -1,5 +1,5 @@
 {
-  "modelVersion": "flat-buildings-snapshot-v5",
+  "modelVersion": "flat-buildings-arrival-v6",
   "from": {
     "id": "way-120613500",
     "name": "Bahnhofquai",
@@ -19,18 +19,18 @@
     "kind": "Mapped path 5 m from place"
   },
   "version": "zurich-2026-09-30-v7",
-  "verifiedAt": "2026-09-30T10:37:31.873Z",
+  "verifiedAt": "2026-09-30T12:27:09.215Z",
   "results": [
     {
       "date": "2026-06-21T08:00:00Z",
       "extra": 5,
-      "calculationMs": 1866,
+      "calculationMs": 1556,
       "mode": "greenery",
       "candidates": 4,
       "fastest": {
         "meters": 1511.2300000000007,
         "minutes": 18.89037500000001,
-        "shade": 672.9520833333329,
+        "shade": 668.4870833333329,
         "green": 422.89785714285705,
         "water": 1023.0766666666666,
         "unknown": 87.55,
@@ -54,7 +54,7 @@
       "alternative": {
         "meters": 1559.62,
         "minutes": 19.49525,
-        "shade": 884.7112698412699,
+        "shade": 849.2742063492063,
         "green": 1244.8999999999996,
         "water": 151.85999999999999,
         "unknown": 41.57,
@@ -68,13 +68,13 @@
     {
       "date": "2026-06-21T12:00:00Z",
       "extra": 5,
-      "calculationMs": 1727,
+      "calculationMs": 1440,
       "mode": "shade",
       "candidates": 4,
       "fastest": {
         "meters": 1511.2300000000007,
         "minutes": 18.89037500000001,
-        "shade": 337.43042857142876,
+        "shade": 353.57733333333346,
         "green": 422.89785714285705,
         "water": 1023.0766666666666,
         "unknown": 0,
@@ -98,10 +98,10 @@
       "alternative": {
         "meters": 1779.3899999999996,
         "minutes": 22.242374999999996,
-        "shade": 1098.6824772727261,
+        "shade": 1095.678727272726,
         "green": 1216.4079999999985,
         "water": 308.83,
-        "unknown": 6.76,
+        "unknown": 13.68,
         "streets": [
           "Bahnhofquai",
           "Walking path",
@@ -113,16 +113,16 @@
     {
       "date": "2026-06-21T16:00:00Z",
       "extra": 5,
-      "calculationMs": 1483,
+      "calculationMs": 1360,
       "mode": "greenery",
       "candidates": 5,
       "fastest": {
         "meters": 1511.2300000000007,
         "minutes": 18.89037500000001,
-        "shade": 960.753988095238,
+        "shade": 972.248988095238,
         "green": 422.89785714285705,
         "water": 1023.0766666666666,
-        "unknown": 157.7420833333334,
+        "unknown": 210.68208333333337,
         "streets": [
           "Bahnhofquai",
           "Walking path",
@@ -143,10 +143,10 @@
       "alternative": {
         "meters": 1559.62,
         "minutes": 19.49525,
-        "shade": 1081.9185833333331,
+        "shade": 1096.194833333333,
         "green": 1244.8999999999996,
         "water": 151.85999999999999,
-        "unknown": 247.56900000000005,
+        "unknown": 233.17775000000003,
         "streets": [
           "Bahnhofquai",
           "Bahnhofplatz",
@@ -157,13 +157,13 @@
     {
       "date": "2026-06-21T12:00:00Z",
       "extra": 0,
-      "calculationMs": 76,
+      "calculationMs": 65,
       "mode": "shade",
       "candidates": 1,
       "fastest": {
         "meters": 1511.2300000000007,
         "minutes": 18.89037500000001,
-        "shade": 337.43042857142876,
+        "shade": 353.57733333333346,
         "green": 422.89785714285705,
         "water": 1023.0766666666666,
         "unknown": 0,
@@ -189,13 +189,13 @@
     {
       "date": "2026-06-21T12:00:00Z",
       "extra": 10,
-      "calculationMs": 1892,
+      "calculationMs": 1680,
       "mode": "shade",
       "candidates": 4,
       "fastest": {
         "meters": 1511.2300000000007,
         "minutes": 18.89037500000001,
-        "shade": 337.43042857142876,
+        "shade": 353.57733333333346,
         "green": 422.89785714285705,
         "water": 1023.0766666666666,
         "unknown": 0,
@@ -219,10 +219,10 @@
       "alternative": {
         "meters": 1779.3899999999996,
         "minutes": 22.242374999999996,
-        "shade": 1098.6824772727261,
+        "shade": 1095.678727272726,
         "green": 1216.4079999999985,
         "water": 308.83,
-        "unknown": 6.76,
+        "unknown": 13.68,
         "streets": [
           "Bahnhofquai",
           "Walking path",
@@ -234,7 +234,7 @@
     {
       "date": "2026-06-21T00:00:00Z",
       "extra": 5,
-      "calculationMs": 943,
+      "calculationMs": 847,
       "mode": "night",
       "candidates": 4,
       "fastest": {
@@ -286,7 +286,7 @@
       "fastest": {
         "meters": 1511.2300000000007,
         "minutes": 18.89037500000001,
-        "shade": 337.43042857142876,
+        "shade": 353.57733333333346,
         "green": 422.89785714285705,
         "water": 1023.0766666666666,
         "unknown": 0,
@@ -310,7 +310,7 @@
       "alternative": {
         "meters": 1542.230000000001,
         "minutes": 19.277875000000012,
-        "shade": 86.91333333333336,
+        "shade": 83.51333333333335,
         "green": 487.56214285714276,
         "water": 1501.9800000000014,
         "unknown": 0,
@@ -331,7 +331,7 @@
       "fastest": {
         "meters": 1643.06,
         "minutes": 20.538249999999998,
-        "shade": 392.6156666666668,
+        "shade": 402.6631666666668,
         "green": 645.8416666666664,
         "water": 212.21,
         "unknown": 0,
@@ -358,7 +358,7 @@
       "alternative": {
         "meters": 1827.290000000001,
         "minutes": 22.841125000000012,
-        "shade": 509.49476190476156,
+        "shade": 527.258333333333,
         "green": 635.5948571428568,
         "water": 1589.610000000001,
         "unknown": 0,
