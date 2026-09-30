@@ -137,7 +137,13 @@ await expect(page.locator('.map-shell')).toHaveAttribute('data-map-ready', 'true
   timeout: 60000,
 });
 await expect(page.locator('.map-failure')).toHaveCount(0);
-let installation = { installed: false, standalone: false, germanOffline: false, error: null };
+let installation = {
+  installed: false,
+  standalone: false,
+  germanOffline: false,
+  vehicleCountsOffline: false,
+  error: null,
+};
 const root = await browser.newBrowserCDPSession();
 try {
   await root.send('PWA.install', { manifestId: origin + '/', installUrlOrBundleUrl: origin + '/' });
@@ -178,6 +184,16 @@ try {
   });
   installation.germanOffline = true;
   await app.screenshot({ path: 'docs/screenshots/installed-german-app.png' });
+  await app.getByLabel('Startdatum', { exact: true }).fill('2026-06-22');
+  await app.getByRole('slider', { name: 'Startzeit', exact: true }).fill('840');
+  await expect(app.locator('.spinner')).toHaveCount(0, { timeout: 60000 });
+  await app.getByRole('button', { name: /Schnellster Weg/ }).click();
+  await app.locator('.traffic-counts > summary').click();
+  await expect(app.locator('.counter-list li')).toHaveCount(3);
+  await expect(app.locator('[data-counter-id="Z030M002"] .counter-value')).toContainText('310');
+  installation.vehicleCountsOffline = true;
+  await app.locator('.traffic-counts').scrollIntoViewIfNeeded();
+  await app.screenshot({ path: 'docs/screenshots/installed-vehicle-counts.png' });
   await context.setOffline(false);
 } catch (e) {
   installation.error = e.message;
@@ -208,5 +224,11 @@ const report = {
 fs.writeFileSync('docs/pwa-validation.json', JSON.stringify(report, null, 2) + '\n');
 console.log(JSON.stringify(report, null, 2));
 await context.close();
-if (errors.length || !installation.standalone || !installation.germanOffline || installation.error)
+if (
+  errors.length ||
+  !installation.standalone ||
+  !installation.germanOffline ||
+  !installation.vehicleCountsOffline ||
+  installation.error
+)
   process.exitCode = 1;

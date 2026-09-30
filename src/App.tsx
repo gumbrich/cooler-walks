@@ -34,6 +34,8 @@ import type { FeatureCollection } from 'geojson';
 import { getArea, loadSavedArea, bundledAreas } from './lib/areas';
 import { cityForArea } from './lib/area-specs';
 import { AreaDownloads } from './components/AreaDownloads';
+import { TrafficCounts } from './components/TrafficCounts';
+import { nearbyCounts } from './lib/vehicle-counts';
 
 type InstallEvent = Event & {
   prompt: () => Promise<void>;
@@ -75,6 +77,7 @@ export default function App() {
   const [stops, setStops] = useState<{ id: number; value: Endpoint | null }[]>([]);
   const stopId = useRef(0);
   const [preferCalm, setPreferCalm] = useState(false);
+  const [countsExpanded, setCountsExpanded] = useState(false);
   const [preferWater, setPreferWater] = useState(false);
   const [sunlight, setSunlight] = useState<'shade' | 'sun'>('shade');
   const [departure, setDeparture] = useState(() => localNow(city.timeZone)),
@@ -108,6 +111,7 @@ export default function App() {
     setStops([]);
     setPreferWater(false);
     setPreferCalm(false);
+    setCountsExpanded(false);
     setSunlight('shade');
     setError('');
     setDataState('loading');
@@ -350,6 +354,11 @@ export default function App() {
       : (result.alternative ?? result.fastest)
     : null;
   const isShade = result?.mode === 'shade';
+  const counterObservations = useMemo(
+    () =>
+      nearbyCounts(data?.vehicleCounts, city, chosen, result?.departure ?? '2000-01-01T00:00:00Z'),
+    [data, city, chosen, result?.departure],
+  );
   const showSun = isShade && sunlight === 'sun';
   const percentage = (r: Route) =>
     Math.round(
@@ -402,7 +411,7 @@ export default function App() {
           {busy
             ? t('Updating your walk…')
             : preferCalm
-              ? t('Street context stays the same throughout the day.')
+              ? t('Street ranking stays fixed; historical counts follow weekday and hour.')
               : result?.mode === 'night'
                 ? t('After dark · direct sun is not relevant')
                 : result?.mode === 'low-sun'
@@ -545,6 +554,7 @@ export default function App() {
     onPick: mapPick,
     showCoverage: coverage,
     onCoverage: () => setCoverage(!coverage),
+    counterObservations: countsExpanded ? counterObservations : [],
   };
   return (
     <>
@@ -1168,6 +1178,15 @@ export default function App() {
                         )}
                     </>
                   )}
+                  {chosen && result && data?.vehicleCounts && city.capabilities.vehicleCounts && (
+                    <TrafficCounts
+                      data={data.vehicleCounts}
+                      observations={counterObservations}
+                      departure={result.departure}
+                      expanded={countsExpanded}
+                      onExpanded={setCountsExpanded}
+                    />
+                  )}
                   {chosen && (
                     <details className="walk-details">
                       <summary>
@@ -1385,6 +1404,13 @@ export default function App() {
                   </p>
                 </div>
               </div>
+              {city.capabilities.vehicleCounts && (
+                <p>
+                  {t(
+                    'Nearby counters show measured 2025 weekday/hour averages, with missing coverage explicit. They are historical point observations, not live traffic or whole-route vehicle totals. Street-context ranking stays separate.',
+                  )}
+                </p>
+              )}
               <h3>{t('Sources & privacy')}</h3>
               <p>
                 <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">

@@ -56,6 +56,7 @@ describe('German interface', () => {
       'src/components/Map.tsx',
       'src/components/Search.tsx',
       'src/components/AreaDownloads.tsx',
+      'src/components/TrafficCounts.tsx',
     ]) {
       const source = ts.createSourceFile(
         file,

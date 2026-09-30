@@ -23,6 +23,7 @@ export interface City {
     fountains: boolean;
     water: boolean;
     trafficCalming?: boolean;
+    vehicleCounts?: boolean;
   };
   dataVersion: string | null;
   dataUrl: string | null;
@@ -95,6 +96,23 @@ export interface PilotData {
   places: Place[];
   provenance: Record<string, unknown>;
   trafficModel?: string;
+  vehicleCounts?: VehicleCounts;
+}
+export interface TrafficCounter {
+  id: string;
+  siteId: string;
+  street: string;
+  direction: string;
+  point: Point;
+  /** Monday–Sunday, then 00–23 local hour. Mean vehicles/hour and measured days. */
+  profile: ([number | null, number] | null)[];
+}
+export interface VehicleCounts {
+  model: 'zurich-measured-hour-profiles-v1';
+  year: number;
+  timeZone: string;
+  expectedDays: number[];
+  counters: TrafficCounter[];
 }
 export type Exposure = 'shade' | 'sun' | 'unknown' | 'night';
 export interface Sample {

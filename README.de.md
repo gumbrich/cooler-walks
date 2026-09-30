@@ -10,6 +10,8 @@ In Zürich berücksichtigt **Verkehrsberuhigt bevorzugen** offizielle Fussgänge
 
 Wähle Start, Ziel, bis zu drei Zwischenziele, Startzeit und 0/5/10 zusätzliche Minuten. EN/DE wechselt die Sprache, ohne den aktuellen Weg zurückzusetzen. Ortsnamen, Zeitzone der Route und Einheiten sind davon unabhängig. Die Website funktioniert ohne Installation; PWA und native Android/iOS-Entwicklungsprojekte teilen denselben Planer. Es gibt noch keine App-Store-Veröffentlichung.
 
+**Fahrzeugzählungen in der Nähe:** 49 gerichtete Messstellen an 28 Standorten im Zürcher Pilotgebiet. Die Ansicht zeigt historische Durchschnittswerte aus 2025 für den gewählten Wochentag und die Stunde, mit Datenvollständigkeit und nummerierten Kartenmarkern. Keine Live-Daten oder Vorhersage. Die lückenhaften Zählungen ändern die Routenbewertung nicht; fehlende Messstellen bedeuten unbekannten Verkehr. [Quellen und Aufbereitung](docs/vehicle-counts.md)
+
 ## Lokal entwickeln
 
 Node.js 22.12+ und npm; keine API-Schlüssel erforderlich. Aufbereitete Pilotdaten sind enthalten.

@@ -1,10 +1,10 @@
 {
-  "verifiedAt": "2026-09-29T20:28:44.617Z",
+  "verifiedAt": "2026-09-30T06:23:02.168Z",
   "modelVersion": "flat-buildings-snapshot-v4",
   "cities": [
     {
       "city": "ch-zurich",
-      "version": "zurich-2026-09-29-v4",
+      "version": "zurich-2026-09-30-v5",
       "areaKm2": 8.06,
       "previousAreaKm2": 4.44,
       "areaFactor": 1.81,
@@ -31,7 +31,7 @@
             "kind": "Mapped path 5 m from place"
           },
           "mode": "shade",
-          "elapsedMs": 2496,
+          "elapsedMs": 3142,
           "routes": [
             {
               "meters": 2658,
@@ -100,7 +100,7 @@
             "kind": "Street or path"
           },
           "mode": "shade",
-          "elapsedMs": 1321,
+          "elapsedMs": 1445,
           "routes": [
             {
               "meters": 3152,
@@ -218,7 +218,7 @@
             "kind": "Street or path"
           },
           "mode": "greenery",
-          "elapsedMs": 1330,
+          "elapsedMs": 1448,
           "routes": [
             {
               "meters": 7139,
@@ -285,7 +285,7 @@
             "kind": "Street or path"
           },
           "mode": "greenery",
-          "elapsedMs": 1310,
+          "elapsedMs": 1621,
           "routes": [
             {
               "meters": 6817,
@@ -371,7 +371,7 @@
             "kind": "Street or path"
           },
           "mode": "greenery",
-          "elapsedMs": 267,
+          "elapsedMs": 295,
           "routes": [
             {
               "meters": 2815,
@@ -450,7 +450,7 @@
             "kind": "Street or path"
           },
           "mode": "greenery",
-          "elapsedMs": 142,
+          "elapsedMs": 149,
           "routes": [
             {
               "meters": 1645,

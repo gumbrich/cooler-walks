@@ -4,7 +4,7 @@
 
 Previously delivered: **Prefer waterside**, a separate mapped-water proximity metric, up to three ordered stops (waypoints / Wegpunkte), and a new route-shaped C mark for the site and app. The [tree audit](tree-accuracy.md) checks position fidelity and freshness; it does not silently move source positions.
 
-- **Calmer Zurich streets:** version 0.5.0 integrates official current traffic zones and main-road proximity. Next, inspect documented vehicle-volume/emission inputs and field-check route pairs; never equate speed limits with measured low traffic. Other cities require their own validated sources.
+- **Calmer Zurich streets:** version 0.5.0 integrates official current traffic zones and main-road proximity. Version 0.6.0 adds measured 2025 directional count profiles near routes. Their sparse point coverage cannot rank whole walks. Next, obtain documented street-section traffic volumes or independently validate a count-to-network model, then field-check route pairs; never equate speed limits with measured low traffic. Other cities require their own validated sources.
 - **German:** full website/shared app language and static help/privacy are implemented. Next, review wording with German-speaking walkers and test additional browser/OS locales; keep local place names and route time zones independent.
 - **Winter / sunny walks:** the explicit “Prefer shade / Prefer sun” choice is now implemented for Zurich and Munich. Four surrounding Munich building tiles are now integrated; validate real dated shadows and resolve uncertain elevated structures. Tree foliage still requires separate evidence; the app does not assume a universal seasonal calendar.
 - **Tree refresh:** reconcile moved and unmatched IDs, replacements and duplicates; check dated aerial imagery and a field sample before publishing a versioned data refresh. Tree positions alone do not establish canopy shade.
@@ -13,7 +13,7 @@ Previously delivered: **Prefer waterside**, a separate mapped-water proximity me
 - **Cities and platforms:** deepen the new Munich, Cambridge (MA) and Basel pilots before adding more cities. Native iOS/Android development projects now exist at the user’s request. iOS now builds on CI and launches in the simulator. Keep the published map downloads in a permanent archive, then prepare signed private test distribution; physical-phone testing remains deferred at the user’s request. Maintain one shared planner and budget for two native SDK/signing paths.
 - **Existing-app research:** deferred, as requested. No competitor investigation was performed in this iteration.
 
-Current delivery adds Zurich calmer-street routing and German to the expanded areas, native apps, downloads, sun, greenery, water and waypoints features. The remaining items above are backlog work; weather and public feedback posting are not implemented.
+Current delivery adds Zurich historical count evidence, calmer-street routing and German to the expanded areas, native apps, downloads, sun, greenery, water and waypoints features. The remaining items above are backlog work; weather and public feedback posting are not implemented.
 
 ## Model and release work
 

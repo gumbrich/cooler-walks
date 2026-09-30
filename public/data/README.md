@@ -15,3 +15,6 @@ Additional bounded pilots use the same arrays in `munich.json`, `cambridge.json`
 - **Basel trees:** Geodaten Kanton Basel-Stadt, [dataset 100052](https://data.bs.ch/explore/dataset/100052/), CC BY 4.0 with the portal's OSM conditions. The derived file is a bounded subset of the maintained-tree register. Map, graph and water remain attributed to OpenStreetMap contributors under ODbL.
 
 All transformations, actual download URLs, source/update-date distinctions and raw SHA-256 hashes are in `docs/data-sources.md` and the city-specific `docs/*-data-manifest.json` files. Keep these notices and database obligations when redistributing.
+
+
+Zurich v5 includes derived 2025 directional vehicle-count profiles, CC0 City of Zurich. Their observed year differs from the 30 September 2026 fetch date. Counts remain point evidence, separate from route ranking; see `docs/vehicle-counts.md` and `docs/vehicle-counts-validation.json`. Raw Parquet and service responses remain ignored.

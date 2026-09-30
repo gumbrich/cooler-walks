@@ -5,12 +5,12 @@
     "label": "Central Zurich",
     "description": "An expanded central pilot from Platzspitz and the university area to the lake, including more streets west of the Limmat. The dashed boundary is routing coverage, not the whole city; building-model gaps remain unknown.",
     "schema": 1,
-    "version": "zurich-2026-09-29-v4",
-    "sha256": "e8545b21c9d8ac3c1e54d5d88acf4c1887d338e629a87c9a61677325d0511ed5",
-    "bytes": 3835656,
-    "expandedBytes": 21152471,
-    "file": "ch-zurich-e8545b21c9d8ac3c.cwp",
-    "preparedAt": "2026-09-29",
+    "version": "zurich-2026-09-30-v5",
+    "sha256": "279841bac31a683e80105a2369afe1994cb46ef7c5849be6de90285426297dc8",
+    "bytes": 3866413,
+    "expandedBytes": 21260209,
+    "file": "ch-zurich-279841bac31a683e.cwp",
+    "preparedAt": "2026-09-30",
     "areaKm2": 8.06
   },
   {

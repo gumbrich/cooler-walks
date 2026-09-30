@@ -44,6 +44,8 @@ The upload files are in ignored `release-artifacts/`. `release/site.json` now co
 
 ## What works
 
+- **Zurich vehicle-count evidence:** 49 directional counters at 28 pilot sites. View 2025 weekday/hour averages near the selected route, measured-day completeness and numbered map markers. Counts are historical and sparse; they do not replace street-context ranking or imply zero traffic elsewhere. [Sources and preparation](docs/vehicle-counts.md).
+
 - **Prefer calmer streets / Verkehrsberuhigt bevorzugen** in Zurich: current official pedestrian, Begegnungszone and Tempo-30 zones plus mapped main-road proximity. Reduces distance near main roads first, within the same detour limit. No live traffic counts, noise or safety rating. See [sources, model and real route result](docs/traffic.md).
 - Full **English / German** interface, including source explanations, errors, downloads, static privacy/help and PWA metadata. Language changes preserve the current trip. [Localization guide](docs/localization.md).
 
@@ -119,6 +121,8 @@ The [Zurich tree-position audit](docs/tree-accuracy.md) checks import fidelity a
 Real route checks for every pilot are in [city-route-validation.json](docs/city-route-validation.json), with expanded-area journeys in [coverage-validation.json](docs/coverage-validation.json). Use the selected city’s default trip on **21 June 2026 at 14:00 local time** as a repeatable starting point. Cambridge’s missing building heights and Basel’s unintegrated height layer are documented in [the coverage register](docs/cities.md).
 
 ## Screenshots
+
+Version 0.6.0: [Vehicle counts on desktop](docs/screenshots/desktop-vehicle-counts.png), [German phone](docs/screenshots/phone-vehicle-counts.png) and [missing observations](docs/screenshots/tablet-counts-unavailable.png).
 
 Version 0.5.0: [German desktop comparison](docs/screenshots/desktop-german-calm.png), [German phone](docs/screenshots/phone-german-calm.png), [German entry](docs/screenshots/desktop-german-home.png), [recoverable error state](docs/screenshots/tablet-german-error.png), [installed German PWA](docs/screenshots/installed-german-app.png), [Android calmer route](docs/screenshots/android-german-calm.png) and [German iOS launch](docs/screenshots/ios-v050-german.png).
 

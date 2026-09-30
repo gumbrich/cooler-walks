@@ -107,3 +107,7 @@ Follow the live [Apple screenshot specifications](https://developer.apple.com/he
 ## Version 0.5.0 localization update
 
 Android versionName / iOS marketing version is 0.5.0; native build number is 3. German listing copy is prepared in `release/store-listing.de.json`, with German privacy/help paths. The shared app supports EN/DE; iOS permission descriptions include both localizations. Zurich's calmer-street preference must be described as an experimental street-context indicator, never live traffic/noise avoidance or guaranteed quiet/safe routing. Use new screenshots from the tested build, and retain the existing signing, developer-account and durable-download prerequisites before submission. No store submission is implied by this update.
+
+## Version 0.6.0 count-evidence update
+
+Marketing version 0.6.0 / native build 4 adds historical 2025 directional traffic observations near Zurich walks. Updated review notes must not imply live traffic, forecasts or count-optimized routes: whole-route count coverage is insufficient. Street-context recommendations remain unchanged. Store signing, physical-device review and permanent native-pack retention remain prerequisites for distribution.

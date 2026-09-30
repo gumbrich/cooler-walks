@@ -45,3 +45,7 @@ Source dates, exact resources, attribution, transformations and known gaps are i
 ## Download areas
 
 All four larger pilots can be packaged for offline use. Munich also has an optional **Old Town essentials** rectangle (11.560–11.582° E, 48.135–48.146° N; 2.00 km²), with a separately clipped walking graph and preserved surrounding building/tree geometry. It is a download area, not an administrative district, and advertises the same experimental building-only shade capability. The larger Munich pilot remains the city-selector default. See [downloads.md](downloads.md) for pack sizes, storage, versioning and hosting requirements.
+
+## Vehicle-count evidence · 0.6.0
+
+Zurich alone has dated hourly observations: 49 directional counters at 28 sites in the same 8.06 km² pilot. This is sparse point coverage, **not full-city or full-route measured traffic**. Profiles use 2025 measured weekdays/hours, with the existing route-local time selector; street-context ranking remains separate. Other cities do not inherit these counts. [Coverage and preparation](vehicle-counts.md).

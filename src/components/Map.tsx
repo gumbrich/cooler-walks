@@ -6,6 +6,7 @@ import { Layers, LocateFixed, Minus, Plus, Scan } from 'lucide-react';
 import { coverageGeometry } from '../lib/coverage';
 import type { FeatureCollection, Feature } from 'geojson';
 import type { City, PilotData, Point, RouteResult } from '../lib/types';
+import type { CounterObservation } from '../lib/vehicle-counts';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import mapWorkerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url';
 
@@ -28,6 +29,7 @@ interface Props {
   showCoverage: boolean;
   onCoverage: () => void;
   hero?: boolean;
+  counterObservations?: CounterObservation[];
 }
 export function WalkingMap({
   city,
@@ -41,6 +43,7 @@ export function WalkingMap({
   showCoverage,
   onCoverage,
   hero = false,
+  counterObservations,
 }: Props) {
   const { t } = useI18n();
   const container = useRef<HTMLDivElement>(null),
@@ -379,6 +382,20 @@ export function WalkingMap({
     if (map.current) map.current.getCanvas().style.cursor = pick ? 'crosshair' : '';
   }, [pick]);
   const markers = useRef<maplibregl.Marker[]>([]);
+  useEffect(() => {
+    const m = map.current;
+    if (!m || !ready || hero) return;
+    const counters = (counterObservations ?? []).map(({ counter }, index) => {
+      const element = document.createElement('div');
+      element.className = 'counter-map-marker';
+      const label = document.createElement('span');
+      label.textContent = String(index + 1);
+      element.append(label);
+      element.setAttribute('aria-hidden', 'true');
+      return new maplibregl.Marker({ element, anchor: 'left' }).setLngLat(counter.point).addTo(m);
+    });
+    return () => counters.forEach((marker) => marker.remove());
+  }, [ready, counterObservations, hero]);
   useEffect(() => {
     const m = map.current;
     if (!m || !ready) return;

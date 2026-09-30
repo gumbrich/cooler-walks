@@ -22,8 +22,9 @@ export const cities: City[] = [
       fountains: false,
       water: true,
       trafficCalming: true,
+      vehicleCounts: true,
     },
-    dataVersion: 'zurich-2026-09-29-v4',
+    dataVersion: 'zurich-2026-09-30-v5',
     dataUrl: '/data/zurich.json',
     mapUrl: '/data/zurich-map.geojson',
     providers: ['OpenStreetMap', 'City of Zurich', 'swisstopo'],
@@ -39,6 +40,10 @@ export const cities: City[] = [
     sourceSummary:
       'Core data fetched 28 September 2026. Building tiles: 2019; tree locations: 2021, prepared 2022. Current-status traffic zones fetched 29 September 2026. Fetch dates are not observation dates.',
     sources: [
+      {
+        label: 'Zurich hourly vehicle counts · 2025 reference',
+        url: 'https://data.stadt-zuerich.ch/dataset/sid_dav_verkehrszaehlung_miv_od2031',
+      },
       {
         label: 'City of Zurich traffic zones',
         url: 'https://data.stadt-zuerich.ch/dataset/geo_verkehrszonen',

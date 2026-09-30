@@ -1,6 +1,6 @@
 {
   "name": "cooler-walks",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "private": true,
   "type": "module",
   "engines": {
@@ -45,7 +45,9 @@
     "native:archive:unsigned": "node scripts/native-build.mjs ios-archive-unsigned",
     "native:archive": "npm run native:sync && npm run release:check -- --native && node scripts/native-build.mjs ios-archive",
     "data:fetch:traffic": "node scripts/fetch-traffic.mjs",
-    "data:prepare:traffic": "tsx scripts/prepare-traffic.ts"
+    "data:prepare:traffic": "tsx scripts/prepare-traffic.ts",
+    "data:attach:counts": "node --import tsx scripts/attach-vehicle-counts.ts",
+    "test:native:counts": "node scripts/verify-android-counts.mjs"
   },
   "dependencies": {
     "@capacitor/android": "^8.5.2",

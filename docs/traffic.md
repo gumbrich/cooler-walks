@@ -52,3 +52,7 @@ Bahnhofquai → Bürkliplatz, 21 June 2026 at 14:00 Europe/Zurich, five extra mi
 The additional 2.99 minutes reduce mapped main-road proximity by 284.93 m. The alternative goes via Waisenhausstrasse, Oetenbachgasse, Lindenhof and Münsterhof. It is a genuine graph route with checked topology; zero extra time retains the fastest route. Rounded UI values intentionally avoid false precision. Automated regression tests recompute the result; screenshots verify the route against the underlying mapped network. No on-street traffic or noise validation has been performed.
 
 Next: compare official street-level vehicle-volume/emission attributes against the OSM geometry, inspect their observation dates and uncertainty, then field-check representative route pairs. Keep such evidence separate from this street-type indicator and only enable it in other cities after their sources have been checked.
+
+## Vehicle-count evidence follow-up
+
+Version 0.6.0 includes dated directional hourly observations near selected Zurich walks. They do not change this street-context ranking because point coverage is insufficient for whole-route vehicle comparisons. [Sources, aggregation, limitations and reproduction](vehicle-counts.md).

@@ -1,6 +1,12 @@
 # Progress
 
-## Current milestone: Zurich calmer streets and German · 0.5.0
+## Current milestone: Zurich measured vehicle-count evidence · 0.6.0
+
+Integrated 49 directional counters from 28 sites in the Zurich pilot. English/German selected-route details show numbered map markers, 2025 same-weekday/hour means, daily profiles and measured-day completeness. The selected route, city and local departure time control the evidence; imputed, missing and insufficiently observed values remain excluded or unknown. Data stays available in shared web/native offline bundles.
+
+The source does not support measured traffic across complete routes: street-context ranking is intentionally retained, and absence of a nearby counter never means zero traffic. The inspected street-emission dataset has no usable vehicle totals. Reproducible Parquet aggregation, raw-source hashes, exclusions and next integration requirements are documented in [vehicle-counts.md](vehicle-counts.md). Verification outcomes are recorded in [platform.md](platform.md).
+
+## Previous milestone: Zurich calmer streets and German · 0.5.0
 
 Implemented a Zurich-only street-context preference using the actual current municipal traffic-zone response and buffered OSM main roads. It preserves fastest-route comparison, ordered stops and the 0/5/10-minute budget. A real Bahnhofquai–Bürkliplatz alternative adds 2.99 minutes and reduces main-road proximity from 587.85 m to 302.92 m. Unknown context is penalized and both comparison routes require 95% classified coverage. This remains an experimental geometric street indicator, not traffic/noise measurement. [Source audit and model](traffic.md).
 
