@@ -1,0 +1,30 @@
+{
+  "sourceCommit": "f6e1bbef14ca50df2e8ffef5f223cfa866308a36",
+  "completedAt": "2026-09-30T11:27:24Z",
+  "checks": {
+    "url": "https://github.com/gumbrich/cooler-walks/actions/runs/36707730409",
+    "conclusion": "success",
+    "unitModelTests": 64,
+    "pythonSourceTests": 5,
+    "browserScenarios": 17,
+    "browserShards": 4,
+    "freshInstall": true,
+    "typeCheck": true,
+    "realDataValidation": true,
+    "formatCheck": true,
+    "productionBuild": true
+  },
+  "android": {
+    "url": "https://github.com/gumbrich/cooler-walks/actions/runs/36707730388",
+    "conclusion": "success"
+  },
+  "ios": {
+    "url": "https://github.com/gumbrich/cooler-walks/actions/runs/36707730372",
+    "conclusion": "success"
+  },
+  "limitations": [
+    "Native CI compilation is not physical-device or store-release validation",
+    "Current Android interactions verified separately on the dedicated 2 GB emulator",
+    "iOS interaction tests were not repeated for this release"
+  ]
+}

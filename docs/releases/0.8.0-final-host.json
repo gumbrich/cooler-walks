@@ -1,0 +1,11 @@
+{
+  "checkedAt": "2026-09-30T11:22:10.947Z",
+  "origin": "https://coolerwalks.ch",
+  "sourceCommit": "f6e1bbef14ca50df2e8ffef5f223cfa866308a36",
+  "script": "/assets/main-BOL43mMC.js",
+  "scriptSha256": "2a71742a708011994dbfcab32151bf6809c1d11f4f2a368e9f1190d97fba0e20",
+  "serviceWorkerSha256": "a5dfd083f6360effc37cb8f4d3031fe847864efd9686295feded419687852588",
+  "interfaceAssets": 46,
+  "overviewRefinement": true,
+  "hostedCatalogueUnchanged": true
+}
