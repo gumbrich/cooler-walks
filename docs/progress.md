@@ -4,7 +4,7 @@
 
 Zurich is the primary experience; other integrated cities are beta, with Swiss cities ordered first. The supported Zurich area grows from 8.06 to 21.81 km². Official offline search covers 56,704 existing Zurich addresses, of which 21,318 lie inside the walking boundary. Map clicks now offer start, destination and stop actions, with cancellation and explicit outside-area handling. Source coordinates locate buildings, not verified entrances.
 
-The larger bundle contains 75 directional counters at 42 sites. Building surroundings have been checked against actual source-tile polygons. Projection reuse and a spatial shadow index reduce repeated computation without changing the model. [Implementation, source audit and setup](zurich-expansion.md). Validation and deployment are in progress.
+The larger bundle contains 75 directional counters at 42 sites. Building surroundings have been checked against actual source-tile polygons. Projection reuse and a spatial shadow index reduce repeated computation without changing the model. [Implementation, source audit and setup](zurich-expansion.md). Published to **https://coolerwalks.ch/** from `a65c3e8`. Local verification passes 61 unit/model/search tests, five source-aggregation tests, real routes across all four cities, all 17 browser scenarios after targeted reruns, four live release-browser scenarios, every hosted pack checksum/payload comparison, actual Chrome PWA installation/offline address planning and Android emulator offline address/count/city checks. The full Linux workflow, including all 17 browser scenarios, and both Android/iOS CI builds pass. See [platform results](platform.md) for exact scope and limitations.
 
 ## Previous milestone: Zurich measured vehicle-count evidence · 0.6.0
 

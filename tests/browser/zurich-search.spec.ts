@@ -21,7 +21,9 @@ test('Zurich addresses, beta labels, direct map selection and honest outside cov
   await expect(to).toHaveValue('Münsterhof 2');
   await expect(page.getByRole('button', { name: /Fastest walk/ })).toBeVisible();
   await expect(page.locator('.map-shell')).toHaveAttribute('data-map-settled', 'true');
-  await page.screenshot({ path: 'docs/screenshots/desktop-zurich-addresses.png', fullPage: true });
+  // The desktop planner fits the viewport. Full-page capture resizes the WebGL
+  // surface unnecessarily and can stall Chrome's software compositor.
+  await page.screenshot({ path: 'docs/screenshots/desktop-zurich-addresses.png' });
   await page.getByRole('button', { name: 'Choose to on map', exact: true }).click();
   await expect(page.getByText('Tap a public path to set your destination.')).toBeVisible();
   await page.getByRole('button', { name: 'Cancel map selection' }).click();
@@ -38,7 +40,7 @@ test('Zurich addresses, beta labels, direct map selection and honest outside cov
   await expect(page.locator('.route-card')).toHaveCount(0);
   await expect(to).toHaveValue('Wehntalerstrasse 500');
   await page.setViewportSize({ width: 820, height: 1180 });
-  await page.screenshot({ path: 'docs/screenshots/tablet-zurich-outside.png', fullPage: true });
+  await page.screenshot({ path: 'docs/screenshots/tablet-zurich-outside.png' });
   await page.getByLabel('City', { exact: true }).selectOption('ch-basel');
   await expect(page.locator('.map-location')).toContainText('Beta');
   await expect(

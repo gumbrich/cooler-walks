@@ -78,7 +78,7 @@ npm run native:open:ios      # open Xcode
 
 Detailed setup, signing boundaries and offline behaviour are in [docs/mobile.md](docs/mobile.md). Actual platform test results are in [docs/platform.md](docs/platform.md). Signing credentials and generated native build outputs are ignored.
 
-Android **0.7.0/build 5** compiled and passed offline address-search/routing, vehicle-count, German and beta city-switch checks in an Android 16 emulator. Its debug APK is available locally as `native-artifacts/cooler-walks-0.7.0-debug.apk`. The earlier 0.5.0 build passed twelve broader checks covering native permissions, Back/resume, all four cities offline and cold launch. iOS 0.6.0 compiles in GitHub Actions; the previous 0.5.0 build launched in English and German on the local iPhone 16e simulator. iOS count interactions and physical phones remain untested; neither app has been submitted to a store.
+Android **0.7.0/build 5** compiled and passed offline address-search/routing, vehicle-count, German and beta city-switch checks in an Android 16 emulator. Its debug APK is available locally as `native-artifacts/cooler-walks-0.7.0-debug.apk`. The earlier 0.5.0 build passed twelve broader checks covering native permissions, Back/resume, all four cities offline and cold launch. iOS 0.7.0 compiles in GitHub Actions; the previous 0.5.0 build launched in English and German on the local iPhone 16e simulator. iOS count interactions and physical phones remain untested; neither app has been submitted to a store.
 
 ## Develop and verify
 
@@ -124,11 +124,11 @@ Real route checks for every pilot are in [city-route-validation.json](docs/city-
 
 ## Screenshots
 
-Version 0.7.0: [Address search on desktop](docs/screenshots/desktop-zurich-addresses.png), [German phone search](docs/screenshots/phone-zurich-search.png), [expanded-area walk](docs/screenshots/phone-zurich-expanded.png) and [outside-area state](docs/screenshots/tablet-zurich-outside.png).
+Version 0.7.0: [Address search on desktop](docs/screenshots/desktop-zurich-addresses.png), [German phone search](docs/screenshots/phone-zurich-search.png), [expanded-area walk](docs/screenshots/phone-zurich-expanded.png) and [outside-area state](docs/screenshots/tablet-zurich-outside.png), [installed map selection](docs/screenshots/installed-map-selection.png) and [Android address planning](docs/screenshots/android-zurich-addresses.png).
 
-Version 0.6.0: [Vehicle counts on desktop](docs/screenshots/desktop-vehicle-counts.png), [German phone](docs/screenshots/phone-vehicle-counts.png), [missing observations](docs/screenshots/tablet-counts-unavailable.png), [Android counts](docs/screenshots/android-vehicle-counts.png) and [installed PWA counts](docs/screenshots/installed-vehicle-counts.png).
+Vehicle-count views: [Vehicle counts on desktop](docs/screenshots/desktop-vehicle-counts.png), [German phone](docs/screenshots/phone-vehicle-counts.png), [missing observations](docs/screenshots/tablet-counts-unavailable.png), [Android counts](docs/screenshots/android-vehicle-counts.png) and [installed PWA counts](docs/screenshots/installed-vehicle-counts.png).
 
-Version 0.5.0: [German desktop comparison](docs/screenshots/desktop-german-calm.png), [German phone](docs/screenshots/phone-german-calm.png), [German entry](docs/screenshots/desktop-german-home.png), [recoverable error state](docs/screenshots/tablet-german-error.png), [installed German PWA](docs/screenshots/installed-german-app.png), [Android calmer route](docs/screenshots/android-german-calm.png) and [German iOS launch](docs/screenshots/ios-v050-german.png).
+German interface views: [German desktop comparison](docs/screenshots/desktop-german-calm.png), [German phone](docs/screenshots/phone-german-calm.png), [German entry](docs/screenshots/desktop-german-home.png), [recoverable error state](docs/screenshots/tablet-german-error.png), [installed German PWA](docs/screenshots/installed-german-app.png), [Android calmer route](docs/screenshots/android-german-calm.png) and [German iOS launch](docs/screenshots/ios-v050-german.png).
 
 Actual browser, Android emulator and iOS simulator captures are in [docs/screenshots](docs/screenshots), including [expanded Cambridge on desktop](docs/screenshots/desktop-expanded-cambridge.png) and [offline Munich in the native app](docs/screenshots/android-offline-munich.png). The [download manager](docs/screenshots/desktop-downloads.png) and [compact Munich phone view](docs/screenshots/phone-downloaded-area.png) show the new flow. They document visual review, not physical-device or field validation.
 

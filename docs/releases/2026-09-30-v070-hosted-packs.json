@@ -1,0 +1,42 @@
+{
+  "verifiedAt": "2026-09-30T08:12:23.859Z",
+  "origin": "https://coolerwalks.ch",
+  "sourceCommit": "a65c3e871966f00a3988c117caf9e6e4f891f94e",
+  "packs": [
+    {
+      "id": "ch-zurich",
+      "version": "zurich-2026-09-30-v6",
+      "sha256": "80ac79281e23ef152c88b847a7cfdef0e335c72e2cc21cab95c5f6664022b02a",
+      "uncompressedSha256": "dade6bacec82775c4dc31cd85eaa2a60530fbb1c2298d580669fce6cf6333c98",
+      "matchesLocalSourcePayload": true
+    },
+    {
+      "id": "ch-basel",
+      "version": "basel-2026-09-29-v2",
+      "sha256": "0d6d9b904ff8f315b356c253c076c1e3b7b5142b60c5493c8b44a0f515ba8c2e",
+      "uncompressedSha256": "cb6252c059c70642dd39ed394f09d06bc91f982799575c33512987e4e142d6b7",
+      "matchesLocalSourcePayload": true
+    },
+    {
+      "id": "de-munich",
+      "version": "munich-2026-09-29-v2",
+      "sha256": "11abcf79c70191990d629ba7def6cd6b9742f4e25c0b28c7050f486c10bdc075",
+      "uncompressedSha256": "f6c3918feb4d54682048a1cca6da075d0e38fb7e68953ad5ce668e485261bbd3",
+      "matchesLocalSourcePayload": true
+    },
+    {
+      "id": "us-cambridge-ma",
+      "version": "cambridge-2026-09-29-v2",
+      "sha256": "f2cca82e97e6e9a8696c75750ef5301f2547a128b5998f914b6593e74caf73ff",
+      "uncompressedSha256": "696c6a7de507d6da4e266337535973c889e8311f3f6b65524756fa10c7ab3a49",
+      "matchesLocalSourcePayload": true
+    },
+    {
+      "id": "de-munich-old-town",
+      "version": "munich-2026-09-29-v2-de-munich-old-town-v1",
+      "sha256": "0f8a602649abe3f6ec91032e35bf41b42e4d7b95b0eba87a6017b84e2dccca7c",
+      "uncompressedSha256": "f88792ae110f46602ebb76a8652231522feca7fe0827da67b21cf8def5d6c17b",
+      "matchesLocalSourcePayload": true
+    }
+  ]
+}
