@@ -1,0 +1,48 @@
+{
+  "appVersion": "0.11.0",
+  "sourceRevision": "6d3f38dbb48f39701fdb151b20b609329f3b38c1",
+  "checkedAt": "2026-09-30T16:47:55.822087+00:00",
+  "runs": [
+    {
+      "conclusion": "success",
+      "databaseId": 36744849683,
+      "headSha": "6d3f38dbb48f39701fdb151b20b609329f3b38c1",
+      "name": "Checks",
+      "status": "completed",
+      "url": "https://github.com/gumbrich/cooler-walks/actions/runs/36744849683"
+    },
+    {
+      "conclusion": "success",
+      "databaseId": 36744849578,
+      "headSha": "6d3f38dbb48f39701fdb151b20b609329f3b38c1",
+      "name": "Native iOS build",
+      "status": "completed",
+      "url": "https://github.com/gumbrich/cooler-walks/actions/runs/36744849578"
+    },
+    {
+      "conclusion": "success",
+      "databaseId": 36744849542,
+      "headSha": "6d3f38dbb48f39701fdb151b20b609329f3b38c1",
+      "name": "Native Android build",
+      "status": "completed",
+      "url": "https://github.com/gumbrich/cooler-walks/actions/runs/36744849542"
+    }
+  ],
+  "scope": {
+    "applicationModelTests": 85,
+    "browserScenarios": 20,
+    "newTrafficRouteBudgetCases": 9,
+    "dataVerification": "All configured city, coverage, arrival-shade, detailed-shade and traffic checks pass",
+    "sourceChecks": "All Python vehicle-count and shadow source/analytical programs in CI pass",
+    "liveHost": "Six public pages, 404s, security/cache headers, both manifests and five map-pack SHA-256/native-CORS checks; live German traffic comparison and retry recovery inspected",
+    "android": "Eleven offline-flow checks on the 2 GB Android 16 emulator; build 9",
+    "ios": "Simulator build and unsigned archive only",
+    "pwa": "Installation not repeated; last installation check was 0.10.0"
+  },
+  "limitations": [
+    "No physical-phone validation",
+    "No field traffic or shadow accuracy validation",
+    "Historical 2025 counters are not live traffic",
+    "Returning browser required Retry after a cached data-version mismatch"
+  ]
+}
