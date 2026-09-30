@@ -1,3 +1,4 @@
+import { loadData } from './lib/load-data';
 import fs from 'node:fs';
 import assert from 'node:assert/strict';
 import { cities } from '../src/lib/cities';
@@ -24,7 +25,7 @@ const summarize = (r: RouteResult) => ({
 });
 const report = [];
 for (const city of cities.filter((c) => c.status === 'pilot')) {
-  const data = JSON.parse(fs.readFileSync(`public${city.dataUrl}`, 'utf8')) as PilotData;
+  const data = loadData(city);
   assert.equal(data.cityId, city.id);
   assert.equal(data.version, city.dataVersion);
   const [from, to] = city.defaultJourney!.map((name) => data.places.find((p) => p.name === name)!);

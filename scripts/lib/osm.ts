@@ -155,6 +155,11 @@ export function prepareOSM(city: City, raw: OSMData, areas: OSMData, areaFeature
           name: t.name ?? (t.highway === 'steps' ? 'Steps' : 'Walking path'),
           way: way.id,
           steps: t.highway === 'steps',
+          ...(['bridge', 'tunnel', 'covered', 'layer', 'level'].some(
+            (key) => t[key] && !['no', '0', 'false'].includes(t[key]),
+          )
+            ? { nonGround: true }
+            : {}),
         });
       }
     }

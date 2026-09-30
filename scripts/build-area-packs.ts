@@ -24,6 +24,11 @@ for (const spec of areaSpecs) {
   const base = getCity(spec.cityId),
     city = cityForArea(spec);
   let data: PilotData = JSON.parse(fs.readFileSync(`public${base.dataUrl}`, 'utf8'));
+  if (base.detailedShade) {
+    data.detailedShade = JSON.parse(fs.readFileSync(`public${base.detailedShade.dataUrl}`, 'utf8'));
+    if (data.detailedShade?.version !== base.detailedShade.version)
+      throw new Error('Detailed shadow data version mismatch');
+  }
   let map: FeatureCollection = JSON.parse(fs.readFileSync(`public${base.mapUrl}`, 'utf8'));
   if (spec.bounds) {
     const remap = new Map<number, number>();

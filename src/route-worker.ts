@@ -42,6 +42,18 @@ self.onmessage = async (
         !Array.isArray(data.water)
       )
         throw new Error('Pilot data version mismatch');
+      if (m.city.detailedShade) {
+        if (!saved) {
+          const response = await fetch(m.city.detailedShade.dataUrl, {
+            signal: AbortSignal.timeout(30000),
+          });
+          if (!response.ok)
+            throw new Error('The pilot data could not load. Check your connection and try again.');
+          data.detailedShade = await response.json();
+        }
+        if (data.detailedShade?.version !== m.city.detailedShade.version)
+          throw new Error('Pilot data version mismatch');
+      }
       // Only UI data crosses to the main thread. All routing geometry is parsed
       // and indexed here, without cloning the whole city into a second heap.
       self.postMessage({

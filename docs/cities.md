@@ -57,3 +57,7 @@ The larger Zurich pilot includes official offline address search (56,704 existin
 ## Zurich north and west · 0.8.0
 
 The current 57.77 km² area includes Oerlikon and Altstetten and is clipped to the official municipal boundary. It contains 45,795 of the 56,704 searchable real addresses and 144 historical directional counters at 80 sites. Municipal-edge gaps, open structures and source objects without ground geometry remain unknown in the building-shade model. [Source verification and preparation](zurich-north-west.md).
+
+## Zurich building detail · 0.10.0
+
+The walking boundary remains 57.77 km². Within it, a separate **3.36 km² central pilot** uses 3D roofs/facades and LiDAR ground elevations, marked by a dotted plum boundary. Remaining Zurich coverage uses flat-ground building extrusions. Terrain supplies receiver elevation only: terrain shadows, tree shade and fountains remain unsupported. Route cards disclose the detailed-model share; missing elevations and non-ground paths remain unknown. [Extent, data and limitations](detailed-shade.md). Other cities remain beta with their existing capabilities.

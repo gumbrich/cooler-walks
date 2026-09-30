@@ -1,0 +1,559 @@
+{
+  "version": "zurich-roofs-dtm-2026-09-30-v1",
+  "fetchedAt": "2026-09-30",
+  "modelBoundsLV95": [2682000, 1246000, 2684000, 1248500],
+  "receiverCoverageLV95": [2682200, 1246200, 2683800, 1248300],
+  "groundResolutionMeters": 2,
+  "groundQuantizationMeters": 0.1,
+  "triangles": 794462,
+  "vertices": 548369,
+  "buildings": 4577,
+  "rejectedBuildings": [],
+  "validGroundCells": 1250000,
+  "missingGroundCells": 0,
+  "groundRangeLN02": [392.5486145019531, 501.8424072265625],
+  "roofsAndFacades": [
+    {
+      "tile": "1091-12",
+      "sha256": "e97e536ac200189b1bb6c5595807766da91534ad1e890fec40c8ab756110c427",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissbuildings3d_3_0/swissbuildings3d_3_0_2019_1091-12/swissbuildings3d_3_0_2019_1091-12_2056_5728.citygml.zip",
+      "observation": "2019",
+      "crs": "EPSG:2056 / EPSG:5728 (LN02)"
+    },
+    {
+      "tile": "1091-14",
+      "sha256": "103eb01c42ce5a6a4a672b08349912ebf041c152016f6ac34111c62186b1df9b",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissbuildings3d_3_0/swissbuildings3d_3_0_2019_1091-14/swissbuildings3d_3_0_2019_1091-14_2056_5728.citygml.zip",
+      "observation": "2019",
+      "crs": "EPSG:2056 / EPSG:5728 (LN02)"
+    },
+    {
+      "tile": "1091-21",
+      "sha256": "d546ea067715771758d7674cf1cead6d3f930aaaf9c4d429c6883225250ccf57",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissbuildings3d_3_0/swissbuildings3d_3_0_2019_1091-21/swissbuildings3d_3_0_2019_1091-21_2056_5728.citygml.zip",
+      "observation": "2019",
+      "crs": "EPSG:2056 / EPSG:5728 (LN02)"
+    },
+    {
+      "tile": "1091-23",
+      "sha256": "be328f3b9fc414de6ef67be1754ff73c627ce419a2940efc986a080a9cec4695",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissbuildings3d_3_0/swissbuildings3d_3_0_2019_1091-23/swissbuildings3d_3_0_2019_1091-23_2056_5728.citygml.zip",
+      "observation": "2019",
+      "crs": "EPSG:2056 / EPSG:5728 (LN02)"
+    },
+    {
+      "tile": "1091-32",
+      "sha256": "ade439b1c7b5decb59f9708775f593d7f70f492aa242f3a966f92d343f3da47e",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissbuildings3d_3_0/swissbuildings3d_3_0_2019_1091-32/swissbuildings3d_3_0_2019_1091-32_2056_5728.citygml.zip",
+      "observation": "2019",
+      "crs": "EPSG:2056 / EPSG:5728 (LN02)"
+    },
+    {
+      "tile": "1091-41",
+      "sha256": "ea9784ef0da5c96d57606dd6378e3bb9ad89787850b2057fc19c079e796bb359",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissbuildings3d_3_0/swissbuildings3d_3_0_2019_1091-41/swissbuildings3d_3_0_2019_1091-41_2056_5728.citygml.zip",
+      "observation": "2019",
+      "crs": "EPSG:2056 / EPSG:5728 (LN02)"
+    }
+  ],
+  "groundSources": [
+    {
+      "archive": "raster-south.zip",
+      "sha256": "da688db079e38f08a2dc8453d01ed9c9e951cf82f42f2e7f4537ac8548964632",
+      "member": "Digitales_Terrainmodell_-DTM-_2021_bis_2022_-OGD/2681500_1245500.tif",
+      "crs": "LV95 assigned from product 555 metadata; checked against tile worldfile",
+      "resolution": [0.25, 0.25],
+      "nodata": -9999.0,
+      "bounds": [2681500.0, 1245500.0, 2682000.0, 1246000.0]
+    },
+    {
+      "archive": "raster-south.zip",
+      "sha256": "da688db079e38f08a2dc8453d01ed9c9e951cf82f42f2e7f4537ac8548964632",
+      "member": "Digitales_Terrainmodell_-DTM-_2021_bis_2022_-OGD/2681500_1246000.tif",
+      "crs": "LV95 assigned from product 555 metadata; checked against tile worldfile",
+      "resolution": [0.25, 0.25],
+      "nodata": -9999.0,
+      "bounds": [2681500.0, 1246000.0, 2682000.0, 1246500.0]
+    },
+    {
+      "archive": "raster-south.zip",
+      "sha256": "da688db079e38f08a2dc8453d01ed9c9e951cf82f42f2e7f4537ac8548964632",
+      "member": "Digitales_Terrainmodell_-DTM-_2021_bis_2022_-OGD/2681500_1246500.tif",
+      "crs": "LV95 assigned from product 555 metadata; checked against tile worldfile",
+      "resolution": [0.25, 0.25],
+      "nodata": -9999.0,
+      "bounds": [2681500.0, 1246500.0, 2682000.0, 1247000.0]
+    },
+    {
+      "archive": "raster-south.zip",
+      "sha256": "da688db079e38f08a2dc8453d01ed9c9e951cf82f42f2e7f4537ac8548964632",
+      "member": "Digitales_Terrainmodell_-DTM-_2021_bis_2022_-OGD/2681500_1247000.tif",
+      "crs": "LV95 assigned from product 555 metadata; checked against tile worldfile",
+      "resolution": [0.25, 0.25],
+      "nodata": -9999.0,
+      "bounds": [2681500.0, 1247000.0, 2682000.0, 1247500.0]
+    },
+    {
+      "archive": "raster-south.zip",
+      "sha256": "da688db079e38f08a2dc8453d01ed9c9e951cf82f42f2e7f4537ac8548964632",
+      "member": "Digitales_Terrainmodell_-DTM-_2021_bis_2022_-OGD/2681500_1247500.tif",
+      "crs": "LV95 assigned from product 555 metadata; checked against tile worldfile",
+      "resolution": [0.25, 0.25],
+      "nodata": -9999.0,
+      "bounds": [2681500.0, 1247500.0, 2682000.0, 1248000.0]
+    },
+    {
+      "archive": "raster-south.zip",
+      "sha256": "da688db079e38f08a2dc8453d01ed9c9e951cf82f42f2e7f4537ac8548964632",
+      "member": "Digitales_Terrainmodell_-DTM-_2021_bis_2022_-OGD/2681500_1248000.tif",
+      "crs": "LV95 assigned from product 555 metadata; checked against tile worldfile",
+      "resolution": [0.25, 0.25],
+      "nodata": -9999.0,
+      "bounds": [2681500.0, 1248000.0, 2682000.0, 1248500.0]
+    },
+    {
+      "archive": "raster-south.zip",
+      "sha256": "da688db079e38f08a2dc8453d01ed9c9e951cf82f42f2e7f4537ac8548964632",
+      "member": "Digitales_Terrainmodell_-DTM-_2021_bis_2022_-OGD/2682000_1245500.tif",
+      "crs": "LV95 assigned from product 555 metadata; checked against tile worldfile",
+      "resolution": [0.25, 0.25],
+      "nodata": -9999.0,
+      "bounds": [2682000.0, 1245500.0, 2682500.0, 1246000.0]
+    },
+    {
+      "archive": "raster-south.zip",
+      "sha256": "da688db079e38f08a2dc8453d01ed9c9e951cf82f42f2e7f4537ac8548964632",
+      "member": "Digitales_Terrainmodell_-DTM-_2021_bis_2022_-OGD/2682000_1246000.tif",
+      "crs": "LV95 assigned from product 555 metadata; checked against tile worldfile",
+      "resolution": [0.25, 0.25],
+      "nodata": -9999.0,
+      "bounds": [2682000.0, 1246000.0, 2682500.0, 1246500.0]
+    },
+    {
+      "archive": "raster-south.zip",
+      "sha256": "da688db079e38f08a2dc8453d01ed9c9e951cf82f42f2e7f4537ac8548964632",
+      "member": "Digitales_Terrainmodell_-DTM-_2021_bis_2022_-OGD/2682000_1246500.tif",
+      "crs": "LV95 assigned from product 555 metadata; checked against tile worldfile",
+      "resolution": [0.25, 0.25],
+      "nodata": -9999.0,
+      "bounds": [2682000.0, 1246500.0, 2682500.0, 1247000.0]
+    },
+    {
+      "archive": "raster-south.zip",
+      "sha256": "da688db079e38f08a2dc8453d01ed9c9e951cf82f42f2e7f4537ac8548964632",
+      "member": "Digitales_Terrainmodell_-DTM-_2021_bis_2022_-OGD/2682000_1247000.tif",
+      "crs": "LV95 assigned from product 555 metadata; checked against tile worldfile",
+      "resolution": [0.25, 0.25],
+      "nodata": -9999.0,
+      "bounds": [2682000.0, 1247000.0, 2682500.0, 1247500.0]
+    },
+    {
+      "archive": "raster-south.zip",
+      "sha256": "da688db079e38f08a2dc8453d01ed9c9e951cf82f42f2e7f4537ac8548964632",
+      "member": "Digitales_Terrainmodell_-DTM-_2021_bis_2022_-OGD/2682000_1247500.tif",
+      "crs": "LV95 assigned from product 555 metadata; checked against tile worldfile",
+      "resolution": [0.25, 0.25],
+      "nodata": -9999.0,
+      "bounds": [2682000.0, 1247500.0, 2682500.0, 1248000.0]
+    },
+    {
+      "archive": "raster-south.zip",
+      "sha256": "da688db079e38f08a2dc8453d01ed9c9e951cf82f42f2e7f4537ac8548964632",
+      "member": "Digitales_Terrainmodell_-DTM-_2021_bis_2022_-OGD/2682000_1248000.tif",
+      "crs": "LV95 assigned from product 555 metadata; checked against tile worldfile",
+      "resolution": [0.25, 0.25],
+      "nodata": -9999.0,
+      "bounds": [2682000.0, 1248000.0, 2682500.0, 1248500.0]
+    },
+    {
+      "archive": "raster-south.zip",
+      "sha256": "da688db079e38f08a2dc8453d01ed9c9e951cf82f42f2e7f4537ac8548964632",
+      "member": "Digitales_Terrainmodell_-DTM-_2021_bis_2022_-OGD/2682500_1245500.tif",
+      "crs": "LV95 assigned from product 555 metadata; checked against tile worldfile",
+      "resolution": [0.25, 0.25],
+      "nodata": -9999.0,
+      "bounds": [2682500.0, 1245500.0, 2683000.0, 1246000.0]
+    },
+    {
+      "archive": "raster-south.zip",
+      "sha256": "da688db079e38f08a2dc8453d01ed9c9e951cf82f42f2e7f4537ac8548964632",
+      "member": "Digitales_Terrainmodell_-DTM-_2021_bis_2022_-OGD/2682500_1246000.tif",
+      "crs": "LV95 assigned from product 555 metadata; checked against tile worldfile",
+      "resolution": [0.25, 0.25],
+      "nodata": -9999.0,
+      "bounds": [2682500.0, 1246000.0, 2683000.0, 1246500.0]
+    },
+    {
+      "archive": "raster-south.zip",
+      "sha256": "da688db079e38f08a2dc8453d01ed9c9e951cf82f42f2e7f4537ac8548964632",
+      "member": "Digitales_Terrainmodell_-DTM-_2021_bis_2022_-OGD/2682500_1246500.tif",
+      "crs": "LV95 assigned from product 555 metadata; checked against tile worldfile",
+      "resolution": [0.25, 0.25],
+      "nodata": -9999.0,
+      "bounds": [2682500.0, 1246500.0, 2683000.0, 1247000.0]
+    },
+    {
+      "archive": "raster-south.zip",
+      "sha256": "da688db079e38f08a2dc8453d01ed9c9e951cf82f42f2e7f4537ac8548964632",
+      "member": "Digitales_Terrainmodell_-DTM-_2021_bis_2022_-OGD/2682500_1247000.tif",
+      "crs": "LV95 assigned from product 555 metadata; checked against tile worldfile",
+      "resolution": [0.25, 0.25],
+      "nodata": -9999.0,
+      "bounds": [2682500.0, 1247000.0, 2683000.0, 1247500.0]
+    },
+    {
+      "archive": "raster-south.zip",
+      "sha256": "da688db079e38f08a2dc8453d01ed9c9e951cf82f42f2e7f4537ac8548964632",
+      "member": "Digitales_Terrainmodell_-DTM-_2021_bis_2022_-OGD/2682500_1247500.tif",
+      "crs": "LV95 assigned from product 555 metadata; checked against tile worldfile",
+      "resolution": [0.25, 0.25],
+      "nodata": -9999.0,
+      "bounds": [2682500.0, 1247500.0, 2683000.0, 1248000.0]
+    },
+    {
+      "archive": "raster-south.zip",
+      "sha256": "da688db079e38f08a2dc8453d01ed9c9e951cf82f42f2e7f4537ac8548964632",
+      "member": "Digitales_Terrainmodell_-DTM-_2021_bis_2022_-OGD/2682500_1248000.tif",
+      "crs": "LV95 assigned from product 555 metadata; checked against tile worldfile",
+      "resolution": [0.25, 0.25],
+      "nodata": -9999.0,
+      "bounds": [2682500.0, 1248000.0, 2683000.0, 1248500.0]
+    },
+    {
+      "archive": "raster-south.zip",
+      "sha256": "da688db079e38f08a2dc8453d01ed9c9e951cf82f42f2e7f4537ac8548964632",
+      "member": "Digitales_Terrainmodell_-DTM-_2021_bis_2022_-OGD/2683000_1245500.tif",
+      "crs": "LV95 assigned from product 555 metadata; checked against tile worldfile",
+      "resolution": [0.25, 0.25],
+      "nodata": -9999.0,
+      "bounds": [2683000.0, 1245500.0, 2683500.0, 1246000.0]
+    },
+    {
+      "archive": "raster-south.zip",
+      "sha256": "da688db079e38f08a2dc8453d01ed9c9e951cf82f42f2e7f4537ac8548964632",
+      "member": "Digitales_Terrainmodell_-DTM-_2021_bis_2022_-OGD/2683000_1246000.tif",
+      "crs": "LV95 assigned from product 555 metadata; checked against tile worldfile",
+      "resolution": [0.25, 0.25],
+      "nodata": -9999.0,
+      "bounds": [2683000.0, 1246000.0, 2683500.0, 1246500.0]
+    },
+    {
+      "archive": "raster-south.zip",
+      "sha256": "da688db079e38f08a2dc8453d01ed9c9e951cf82f42f2e7f4537ac8548964632",
+      "member": "Digitales_Terrainmodell_-DTM-_2021_bis_2022_-OGD/2683000_1246500.tif",
+      "crs": "LV95 assigned from product 555 metadata; checked against tile worldfile",
+      "resolution": [0.25, 0.25],
+      "nodata": -9999.0,
+      "bounds": [2683000.0, 1246500.0, 2683500.0, 1247000.0]
+    },
+    {
+      "archive": "raster-south.zip",
+      "sha256": "da688db079e38f08a2dc8453d01ed9c9e951cf82f42f2e7f4537ac8548964632",
+      "member": "Digitales_Terrainmodell_-DTM-_2021_bis_2022_-OGD/2683000_1247000.tif",
+      "crs": "LV95 assigned from product 555 metadata; checked against tile worldfile",
+      "resolution": [0.25, 0.25],
+      "nodata": -9999.0,
+      "bounds": [2683000.0, 1247000.0, 2683500.0, 1247500.0]
+    },
+    {
+      "archive": "raster-south.zip",
+      "sha256": "da688db079e38f08a2dc8453d01ed9c9e951cf82f42f2e7f4537ac8548964632",
+      "member": "Digitales_Terrainmodell_-DTM-_2021_bis_2022_-OGD/2683000_1247500.tif",
+      "crs": "LV95 assigned from product 555 metadata; checked against tile worldfile",
+      "resolution": [0.25, 0.25],
+      "nodata": -9999.0,
+      "bounds": [2683000.0, 1247500.0, 2683500.0, 1248000.0]
+    },
+    {
+      "archive": "raster-south.zip",
+      "sha256": "da688db079e38f08a2dc8453d01ed9c9e951cf82f42f2e7f4537ac8548964632",
+      "member": "Digitales_Terrainmodell_-DTM-_2021_bis_2022_-OGD/2683000_1248000.tif",
+      "crs": "LV95 assigned from product 555 metadata; checked against tile worldfile",
+      "resolution": [0.25, 0.25],
+      "nodata": -9999.0,
+      "bounds": [2683000.0, 1248000.0, 2683500.0, 1248500.0]
+    },
+    {
+      "archive": "raster-south.zip",
+      "sha256": "da688db079e38f08a2dc8453d01ed9c9e951cf82f42f2e7f4537ac8548964632",
+      "member": "Digitales_Terrainmodell_-DTM-_2021_bis_2022_-OGD/2683500_1245500.tif",
+      "crs": "LV95 assigned from product 555 metadata; checked against tile worldfile",
+      "resolution": [0.25, 0.25],
+      "nodata": -9999.0,
+      "bounds": [2683500.0, 1245500.0, 2684000.0, 1246000.0]
+    },
+    {
+      "archive": "raster-south.zip",
+      "sha256": "da688db079e38f08a2dc8453d01ed9c9e951cf82f42f2e7f4537ac8548964632",
+      "member": "Digitales_Terrainmodell_-DTM-_2021_bis_2022_-OGD/2683500_1246000.tif",
+      "crs": "LV95 assigned from product 555 metadata; checked against tile worldfile",
+      "resolution": [0.25, 0.25],
+      "nodata": -9999.0,
+      "bounds": [2683500.0, 1246000.0, 2684000.0, 1246500.0]
+    },
+    {
+      "archive": "raster-south.zip",
+      "sha256": "da688db079e38f08a2dc8453d01ed9c9e951cf82f42f2e7f4537ac8548964632",
+      "member": "Digitales_Terrainmodell_-DTM-_2021_bis_2022_-OGD/2683500_1246500.tif",
+      "crs": "LV95 assigned from product 555 metadata; checked against tile worldfile",
+      "resolution": [0.25, 0.25],
+      "nodata": -9999.0,
+      "bounds": [2683500.0, 1246500.0, 2684000.0, 1247000.0]
+    },
+    {
+      "archive": "raster-south.zip",
+      "sha256": "da688db079e38f08a2dc8453d01ed9c9e951cf82f42f2e7f4537ac8548964632",
+      "member": "Digitales_Terrainmodell_-DTM-_2021_bis_2022_-OGD/2683500_1247000.tif",
+      "crs": "LV95 assigned from product 555 metadata; checked against tile worldfile",
+      "resolution": [0.25, 0.25],
+      "nodata": -9999.0,
+      "bounds": [2683500.0, 1247000.0, 2684000.0, 1247500.0]
+    },
+    {
+      "archive": "raster-south.zip",
+      "sha256": "da688db079e38f08a2dc8453d01ed9c9e951cf82f42f2e7f4537ac8548964632",
+      "member": "Digitales_Terrainmodell_-DTM-_2021_bis_2022_-OGD/2683500_1247500.tif",
+      "crs": "LV95 assigned from product 555 metadata; checked against tile worldfile",
+      "resolution": [0.25, 0.25],
+      "nodata": -9999.0,
+      "bounds": [2683500.0, 1247500.0, 2684000.0, 1248000.0]
+    },
+    {
+      "archive": "raster-south.zip",
+      "sha256": "da688db079e38f08a2dc8453d01ed9c9e951cf82f42f2e7f4537ac8548964632",
+      "member": "Digitales_Terrainmodell_-DTM-_2021_bis_2022_-OGD/2683500_1248000.tif",
+      "crs": "LV95 assigned from product 555 metadata; checked against tile worldfile",
+      "resolution": [0.25, 0.25],
+      "nodata": -9999.0,
+      "bounds": [2683500.0, 1248000.0, 2684000.0, 1248500.0]
+    },
+    {
+      "archive": "raster-south.zip",
+      "sha256": "da688db079e38f08a2dc8453d01ed9c9e951cf82f42f2e7f4537ac8548964632",
+      "member": "Digitales_Terrainmodell_-DTM-_2021_bis_2022_-OGD/2684000_1245500.tif",
+      "crs": "LV95 assigned from product 555 metadata; checked against tile worldfile",
+      "resolution": [0.25, 0.25],
+      "nodata": -9999.0,
+      "bounds": [2684000.0, 1245500.0, 2684500.0, 1246000.0]
+    },
+    {
+      "archive": "raster-south.zip",
+      "sha256": "da688db079e38f08a2dc8453d01ed9c9e951cf82f42f2e7f4537ac8548964632",
+      "member": "Digitales_Terrainmodell_-DTM-_2021_bis_2022_-OGD/2684000_1246000.tif",
+      "crs": "LV95 assigned from product 555 metadata; checked against tile worldfile",
+      "resolution": [0.25, 0.25],
+      "nodata": -9999.0,
+      "bounds": [2684000.0, 1246000.0, 2684500.0, 1246500.0]
+    },
+    {
+      "archive": "raster-south.zip",
+      "sha256": "da688db079e38f08a2dc8453d01ed9c9e951cf82f42f2e7f4537ac8548964632",
+      "member": "Digitales_Terrainmodell_-DTM-_2021_bis_2022_-OGD/2684000_1246500.tif",
+      "crs": "LV95 assigned from product 555 metadata; checked against tile worldfile",
+      "resolution": [0.25, 0.25],
+      "nodata": -9999.0,
+      "bounds": [2684000.0, 1246500.0, 2684500.0, 1247000.0]
+    },
+    {
+      "archive": "raster-south.zip",
+      "sha256": "da688db079e38f08a2dc8453d01ed9c9e951cf82f42f2e7f4537ac8548964632",
+      "member": "Digitales_Terrainmodell_-DTM-_2021_bis_2022_-OGD/2684000_1247000.tif",
+      "crs": "LV95 assigned from product 555 metadata; checked against tile worldfile",
+      "resolution": [0.25, 0.25],
+      "nodata": -9999.0,
+      "bounds": [2684000.0, 1247000.0, 2684500.0, 1247500.0]
+    },
+    {
+      "archive": "raster-south.zip",
+      "sha256": "da688db079e38f08a2dc8453d01ed9c9e951cf82f42f2e7f4537ac8548964632",
+      "member": "Digitales_Terrainmodell_-DTM-_2021_bis_2022_-OGD/2684000_1247500.tif",
+      "crs": "LV95 assigned from product 555 metadata; checked against tile worldfile",
+      "resolution": [0.25, 0.25],
+      "nodata": -9999.0,
+      "bounds": [2684000.0, 1247500.0, 2684500.0, 1248000.0]
+    },
+    {
+      "archive": "raster-south.zip",
+      "sha256": "da688db079e38f08a2dc8453d01ed9c9e951cf82f42f2e7f4537ac8548964632",
+      "member": "Digitales_Terrainmodell_-DTM-_2021_bis_2022_-OGD/2684000_1248000.tif",
+      "crs": "LV95 assigned from product 555 metadata; checked against tile worldfile",
+      "resolution": [0.25, 0.25],
+      "nodata": -9999.0,
+      "bounds": [2684000.0, 1248000.0, 2684500.0, 1248500.0]
+    },
+    {
+      "archive": "raster-north.zip",
+      "sha256": "b9c01ae11576d724b129ab16b944561e0ba1d5a2afb3834fb43a0a941822e48c",
+      "member": "Digitales_Terrainmodell_-DTM-_2021_bis_2022_-OGD/2681500_1247500.tif",
+      "crs": "LV95 assigned from product 555 metadata; checked against tile worldfile",
+      "resolution": [0.25, 0.25],
+      "nodata": -9999.0,
+      "bounds": [2681500.0, 1247500.0, 2682000.0, 1248000.0]
+    },
+    {
+      "archive": "raster-north.zip",
+      "sha256": "b9c01ae11576d724b129ab16b944561e0ba1d5a2afb3834fb43a0a941822e48c",
+      "member": "Digitales_Terrainmodell_-DTM-_2021_bis_2022_-OGD/2681500_1248000.tif",
+      "crs": "LV95 assigned from product 555 metadata; checked against tile worldfile",
+      "resolution": [0.25, 0.25],
+      "nodata": -9999.0,
+      "bounds": [2681500.0, 1248000.0, 2682000.0, 1248500.0]
+    },
+    {
+      "archive": "raster-north.zip",
+      "sha256": "b9c01ae11576d724b129ab16b944561e0ba1d5a2afb3834fb43a0a941822e48c",
+      "member": "Digitales_Terrainmodell_-DTM-_2021_bis_2022_-OGD/2681500_1248500.tif",
+      "crs": "LV95 assigned from product 555 metadata; checked against tile worldfile",
+      "resolution": [0.25, 0.25],
+      "nodata": -9999.0,
+      "bounds": [2681500.0, 1248500.0, 2682000.0, 1249000.0]
+    },
+    {
+      "archive": "raster-north.zip",
+      "sha256": "b9c01ae11576d724b129ab16b944561e0ba1d5a2afb3834fb43a0a941822e48c",
+      "member": "Digitales_Terrainmodell_-DTM-_2021_bis_2022_-OGD/2682000_1247500.tif",
+      "crs": "LV95 assigned from product 555 metadata; checked against tile worldfile",
+      "resolution": [0.25, 0.25],
+      "nodata": -9999.0,
+      "bounds": [2682000.0, 1247500.0, 2682500.0, 1248000.0]
+    },
+    {
+      "archive": "raster-north.zip",
+      "sha256": "b9c01ae11576d724b129ab16b944561e0ba1d5a2afb3834fb43a0a941822e48c",
+      "member": "Digitales_Terrainmodell_-DTM-_2021_bis_2022_-OGD/2682000_1248000.tif",
+      "crs": "LV95 assigned from product 555 metadata; checked against tile worldfile",
+      "resolution": [0.25, 0.25],
+      "nodata": -9999.0,
+      "bounds": [2682000.0, 1248000.0, 2682500.0, 1248500.0]
+    },
+    {
+      "archive": "raster-north.zip",
+      "sha256": "b9c01ae11576d724b129ab16b944561e0ba1d5a2afb3834fb43a0a941822e48c",
+      "member": "Digitales_Terrainmodell_-DTM-_2021_bis_2022_-OGD/2682000_1248500.tif",
+      "crs": "LV95 assigned from product 555 metadata; checked against tile worldfile",
+      "resolution": [0.25, 0.25],
+      "nodata": -9999.0,
+      "bounds": [2682000.0, 1248500.0, 2682500.0, 1249000.0]
+    },
+    {
+      "archive": "raster-north.zip",
+      "sha256": "b9c01ae11576d724b129ab16b944561e0ba1d5a2afb3834fb43a0a941822e48c",
+      "member": "Digitales_Terrainmodell_-DTM-_2021_bis_2022_-OGD/2682500_1247500.tif",
+      "crs": "LV95 assigned from product 555 metadata; checked against tile worldfile",
+      "resolution": [0.25, 0.25],
+      "nodata": -9999.0,
+      "bounds": [2682500.0, 1247500.0, 2683000.0, 1248000.0]
+    },
+    {
+      "archive": "raster-north.zip",
+      "sha256": "b9c01ae11576d724b129ab16b944561e0ba1d5a2afb3834fb43a0a941822e48c",
+      "member": "Digitales_Terrainmodell_-DTM-_2021_bis_2022_-OGD/2682500_1248000.tif",
+      "crs": "LV95 assigned from product 555 metadata; checked against tile worldfile",
+      "resolution": [0.25, 0.25],
+      "nodata": -9999.0,
+      "bounds": [2682500.0, 1248000.0, 2683000.0, 1248500.0]
+    },
+    {
+      "archive": "raster-north.zip",
+      "sha256": "b9c01ae11576d724b129ab16b944561e0ba1d5a2afb3834fb43a0a941822e48c",
+      "member": "Digitales_Terrainmodell_-DTM-_2021_bis_2022_-OGD/2682500_1248500.tif",
+      "crs": "LV95 assigned from product 555 metadata; checked against tile worldfile",
+      "resolution": [0.25, 0.25],
+      "nodata": -9999.0,
+      "bounds": [2682500.0, 1248500.0, 2683000.0, 1249000.0]
+    },
+    {
+      "archive": "raster-north.zip",
+      "sha256": "b9c01ae11576d724b129ab16b944561e0ba1d5a2afb3834fb43a0a941822e48c",
+      "member": "Digitales_Terrainmodell_-DTM-_2021_bis_2022_-OGD/2683000_1247500.tif",
+      "crs": "LV95 assigned from product 555 metadata; checked against tile worldfile",
+      "resolution": [0.25, 0.25],
+      "nodata": -9999.0,
+      "bounds": [2683000.0, 1247500.0, 2683500.0, 1248000.0]
+    },
+    {
+      "archive": "raster-north.zip",
+      "sha256": "b9c01ae11576d724b129ab16b944561e0ba1d5a2afb3834fb43a0a941822e48c",
+      "member": "Digitales_Terrainmodell_-DTM-_2021_bis_2022_-OGD/2683000_1248000.tif",
+      "crs": "LV95 assigned from product 555 metadata; checked against tile worldfile",
+      "resolution": [0.25, 0.25],
+      "nodata": -9999.0,
+      "bounds": [2683000.0, 1248000.0, 2683500.0, 1248500.0]
+    },
+    {
+      "archive": "raster-north.zip",
+      "sha256": "b9c01ae11576d724b129ab16b944561e0ba1d5a2afb3834fb43a0a941822e48c",
+      "member": "Digitales_Terrainmodell_-DTM-_2021_bis_2022_-OGD/2683000_1248500.tif",
+      "crs": "LV95 assigned from product 555 metadata; checked against tile worldfile",
+      "resolution": [0.25, 0.25],
+      "nodata": -9999.0,
+      "bounds": [2683000.0, 1248500.0, 2683500.0, 1249000.0]
+    },
+    {
+      "archive": "raster-north.zip",
+      "sha256": "b9c01ae11576d724b129ab16b944561e0ba1d5a2afb3834fb43a0a941822e48c",
+      "member": "Digitales_Terrainmodell_-DTM-_2021_bis_2022_-OGD/2683500_1247500.tif",
+      "crs": "LV95 assigned from product 555 metadata; checked against tile worldfile",
+      "resolution": [0.25, 0.25],
+      "nodata": -9999.0,
+      "bounds": [2683500.0, 1247500.0, 2684000.0, 1248000.0]
+    },
+    {
+      "archive": "raster-north.zip",
+      "sha256": "b9c01ae11576d724b129ab16b944561e0ba1d5a2afb3834fb43a0a941822e48c",
+      "member": "Digitales_Terrainmodell_-DTM-_2021_bis_2022_-OGD/2683500_1248000.tif",
+      "crs": "LV95 assigned from product 555 metadata; checked against tile worldfile",
+      "resolution": [0.25, 0.25],
+      "nodata": -9999.0,
+      "bounds": [2683500.0, 1248000.0, 2684000.0, 1248500.0]
+    },
+    {
+      "archive": "raster-north.zip",
+      "sha256": "b9c01ae11576d724b129ab16b944561e0ba1d5a2afb3834fb43a0a941822e48c",
+      "member": "Digitales_Terrainmodell_-DTM-_2021_bis_2022_-OGD/2683500_1248500.tif",
+      "crs": "LV95 assigned from product 555 metadata; checked against tile worldfile",
+      "resolution": [0.25, 0.25],
+      "nodata": -9999.0,
+      "bounds": [2683500.0, 1248500.0, 2684000.0, 1249000.0]
+    },
+    {
+      "archive": "raster-north.zip",
+      "sha256": "b9c01ae11576d724b129ab16b944561e0ba1d5a2afb3834fb43a0a941822e48c",
+      "member": "Digitales_Terrainmodell_-DTM-_2021_bis_2022_-OGD/2684000_1247500.tif",
+      "crs": "LV95 assigned from product 555 metadata; checked against tile worldfile",
+      "resolution": [0.25, 0.25],
+      "nodata": -9999.0,
+      "bounds": [2684000.0, 1247500.0, 2684500.0, 1248000.0]
+    },
+    {
+      "archive": "raster-north.zip",
+      "sha256": "b9c01ae11576d724b129ab16b944561e0ba1d5a2afb3834fb43a0a941822e48c",
+      "member": "Digitales_Terrainmodell_-DTM-_2021_bis_2022_-OGD/2684000_1248000.tif",
+      "crs": "LV95 assigned from product 555 metadata; checked against tile worldfile",
+      "resolution": [0.25, 0.25],
+      "nodata": -9999.0,
+      "bounds": [2684000.0, 1248000.0, 2684500.0, 1248500.0]
+    },
+    {
+      "archive": "raster-north.zip",
+      "sha256": "b9c01ae11576d724b129ab16b944561e0ba1d5a2afb3834fb43a0a941822e48c",
+      "member": "Digitales_Terrainmodell_-DTM-_2021_bis_2022_-OGD/2684000_1248500.tif",
+      "crs": "LV95 assigned from product 555 metadata; checked against tile worldfile",
+      "resolution": [0.25, 0.25],
+      "nodata": -9999.0,
+      "bounds": [2684000.0, 1248500.0, 2684500.0, 1249000.0]
+    }
+  ],
+  "derivedSha256": "0d7efed8059cae99431ea2a32c75905667dbc7c0aca376477cac473cc7a5e51c",
+  "derivedBytes": 24818911,
+  "nonGroundWays": 5084,
+  "treeDecision": "2021/2022 LiDAR was predominantly leaf-off; canopy height alone does not establish crown base or leaf-on transmission. No tree shade credited.",
+  "terrainDecision": "DTM provides receiver elevation. No terrain obstruction: the bounded extract cannot establish distant hill horizons.",
+  "limitations": [
+    "Historical 2019 buildings with 2021/2022 ground",
+    "Roof holes retained; glass/open structures remain uncertain",
+    "Ground grid averaged to 2 m; not pavement-side precision",
+    "No field observation validation",
+    "Outside detailed coverage: existing flat-ground model; bridges/tunnels in detailed area: unknown"
+  ]
+}

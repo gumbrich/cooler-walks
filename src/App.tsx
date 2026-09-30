@@ -149,7 +149,10 @@ export default function App() {
         if (!isNativeApp && city.dataUrl && import.meta.env.PROD && 'serviceWorker' in navigator) {
           const saveCity = (target: ServiceWorker | null) => {
             if (!controller.signal.aborted)
-              target?.postMessage({ type: 'CACHE_CITY', urls: [city.dataUrl, city.mapUrl] });
+              target?.postMessage({
+                type: 'CACHE_CITY',
+                urls: [city.dataUrl, city.mapUrl, city.detailedShade?.dataUrl].filter(Boolean),
+              });
           };
           navigator.serviceWorker.addEventListener(
             'controllerchange',
@@ -494,7 +497,9 @@ export default function App() {
         <span className="exposure-number">
           {result?.preference === 'calm'
             ? formatDistance(route.majorRoadMeters, units, locale)
-            : `${percentage(route)}%`}
+            : isShade && route.shadeMeters + route.sunMeters < 1
+              ? '—'
+              : `${percentage(route)}%`}
           <small>
             {result?.preference === 'calm'
               ? t('near main roads')
@@ -514,10 +519,20 @@ export default function App() {
           ? t('{share}% away from main roads · street context', { share: percentage(route) })
           : isShade
             ? t('{coverage}% model coverage · buildings only', {
-                coverage: Math.round((1 - route.unknownMeters / route.distance) * 100),
+                coverage: Math.round(
+                  ((route.shadeMeters + route.sunMeters) / route.distance) * 100,
+                ),
               })
             : t('Within 15 m of a recorded tree · not canopy shade')}
       </div>
+      {isShade && !!route.detailedMeters && (
+        <div className="route-model-note">
+          <span className="model-swatch" aria-hidden="true" />
+          {t('3D roofs + ground elevation · {share}% of walk', {
+            share: Math.round((route.detailedMeters / route.distance) * 100),
+          })}
+        </div>
+      )}
       <div className="route-arrival">
         <Clock3 size={14} />
         {t('Arrive around {time}', {
@@ -1312,11 +1327,19 @@ export default function App() {
                       {isShade && (
                         <p>
                           {t(
-                            'Direct sun: about {minutes} min. Unknown: {distance}. Shadows follow your expected arrival along the walk at 4.8 km/h. Percentage uses modelled daylight distance only. Flat-ground buildings; no clouds, trees or terrain shadows.',
+                            'Direct sun: about {minutes} min. Unknown: {distance}. Shadows follow your expected arrival along the walk at 4.8 km/h. Percentage uses modelled daylight distance only. Buildings obstruct sunlight; tree shade, hill shadows and clouds are not included.',
                             {
                               minutes: Math.round(chosen.sunMeters / 80),
                               distance: formatDistance(chosen.unknownMeters, units, locale),
                             },
+                          )}
+                        </p>
+                      )}
+                      {!!chosen.detailedMeters && (
+                        <p>
+                          {t(
+                            '3D roofs and LiDAR ground elevations cover {share}% of this walk. The remaining area uses flat-ground buildings. Bridges, tunnels and missing ground elevations in the 3D area stay unknown.',
+                            { share: Math.round((chosen.detailedMeters / chosen.distance) * 100) },
                           )}
                         </p>
                       )}
@@ -1422,7 +1445,7 @@ export default function App() {
                   <p>
                     {t(city.buildingNotes ?? '')}
                     {t(
-                      ' Where enabled, we sample paths at intervals of at most 8 metres, using the sun position when you are expected to reach each point. Each route uses its own walking time at 4.8 km/h, including all legs through your stops. Pauses and crossing waits are not included. This estimates direct sunlight on flat ground; it is not a heat measurement or weather forecast.',
+                      ' Where enabled, we sample paths at intervals of at most 8 metres, using the sun position when you are expected to reach each point. Each route uses its own walking time at 4.8 km/h, including all legs through your stops. Pauses and crossing waits are not included. This estimates obstruction of direct sunlight; it is not a heat measurement or weather forecast.',
                     )}
                   </p>
                 </div>
@@ -1437,6 +1460,13 @@ export default function App() {
                     )}
                   </p>
                   <p>{t(city.treeNotes ?? '')}</p>
+                  {city.detailedShade && (
+                    <p>
+                      {t(
+                        'The 2021–2022 LiDAR survey was mainly flown without leaves. Canopy height does not establish summer foliage or light transmission, so it is not yet counted as tree shade.',
+                      )}
+                    </p>
+                  )}
                 </div>
               </div>
               <div className="method-item">
@@ -1545,7 +1575,9 @@ export default function App() {
                           <dt>{t('Sun & shade')}</dt>
                           <dd>
                             {coveredCity.capabilities.buildingShade
-                              ? t('Buildings only · experimental')
+                              ? coveredCity.detailedShade
+                                ? t('3D roofs in central pilot · flat buildings elsewhere')
+                                : t('Buildings only · experimental')
                               : t('Not enabled')}
                           </dd>
                         </div>
@@ -1567,7 +1599,7 @@ export default function App() {
                         </div>
                         <div>
                           <dt>{t('Not included')}</dt>
-                          <dd>{t('Tree shade, terrain, fountains')}</dd>
+                          <dd>{t('Tree shade, hill shadows, fountains')}</dd>
                         </div>
                       </dl>
                       <button

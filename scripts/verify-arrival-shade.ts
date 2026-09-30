@@ -1,3 +1,4 @@
+import { loadData } from './lib/load-data';
 import fs from 'node:fs';
 import assert from 'node:assert/strict';
 import { getCity } from '../src/lib/cities';
@@ -8,7 +9,7 @@ import type { PilotData, Route } from '../src/lib/types';
 const report = [];
 for (const id of ['ch-zurich', 'de-munich']) {
   const city = getCity(id);
-  const data = JSON.parse(fs.readFileSync(`public${city.dataUrl}`, 'utf8')) as PilotData;
+  const data = loadData(city);
   const router = new Router(data, city);
   const [from, to] = city.defaultJourney!.map((name) => data.places.find((p) => p.name === name)!);
   const results = [];
@@ -41,6 +42,7 @@ for (const id of ['ch-zurich', 'de-munich']) {
             sample.point,
             new Date(departure),
             edge.modelClearance,
+            edge.nonGround,
           );
           if (snapshot.exposure === 'shade') snapshotShade += sample.meters;
           if (snapshot.exposure !== sample.exposure) changedMeters += sample.meters;

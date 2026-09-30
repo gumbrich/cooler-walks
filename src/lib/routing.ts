@@ -1,5 +1,6 @@
 import type { Bounds, Edge, PilotData, Point, City, Route, RouteResult, Sample } from './types';
 import { distance, geographic, gridAzimuth, inBounds, inside, metric, rayHits } from './geo';
+import { DetailedShade } from './detailed-shade';
 import { solar, shadowVector } from './solar';
 import { isCalmed, MIN_TRAFFIC_COVERAGE, TRAFFIC_MODEL } from './traffic';
 import { WaterIndex } from './water';
@@ -9,7 +10,7 @@ export const WALK_METERS_PER_MINUTE = 80;
 export const SAMPLE_METERS = 8;
 export const TREE_PROXIMITY_METERS = 15;
 export const MIN_SHADE_COVERAGE = 0.95;
-export const MODEL_VERSION = 'flat-buildings-arrival-v6';
+export const MODEL_VERSION = 'roof-mesh-ground-arrival-v7';
 export const MAX_WAYPOINTS = 3;
 const CELL = 60;
 class Grid<T> {
@@ -130,10 +131,12 @@ export class Router {
   treeGrid = new Grid<Point>();
   buildingGrid = new Grid<MetricBuilding>();
   footprintGrid = new Grid<MetricBuilding>();
+  uncertainGrid = new Grid<MetricBuilding>();
   water: WaterIndex;
   maxHeight = 0;
   maxRadius = 0;
   gridRotation: number;
+  detailed: DetailedShade | null = null;
   constructor(
     public data: PilotData,
     public city: City,
@@ -144,6 +147,13 @@ export class Router {
       throw new Error('The city data version does not match. Reload the app.');
     if (!data.nodes.length || !data.edges.length || !data.trees.length)
       throw new Error('The pilot data is incomplete.');
+    if (data.detailedShade) {
+      if (!city.detailedShade)
+        throw new Error('Detailed model coordinate system does not match city');
+      this.detailed = new DetailedShade(data.detailedShade, city.detailedShade);
+      if (consumeSource) delete data.detailedShade;
+    }
+    const excluded = new Set(this.detailed?.data.excludedBuildings ?? []);
     this.water = new WaterIndex(city, data.water);
     if (consumeSource) data.water = [];
     this.points = data.nodes.map((n) => metric(city, n.point));
@@ -185,7 +195,7 @@ export class Router {
         // Ground-referenced source geometry can bound an open object’s reach.
         // Without a valid bound, retain the conservative 150 m model ceiling.
         height: shadowHeight,
-        uncertain: b.uncertain === true,
+        uncertain: b.uncertain === true || excluded.has(b.id.split(':')[0]),
         radius,
         center,
         bounds: [
@@ -197,12 +207,13 @@ export class Router {
       };
       this.buildingGrid.add(center, building);
       this.footprintGrid.addBounds(building.bounds, building);
+      if (building.uncertain) this.uncertainGrid.addBounds(building.bounds, building);
       this.maxHeight = Math.max(this.maxHeight, shadowHeight);
     });
     if (consumeSource) data.buildings = [];
   }
   /** Exact solar instant at a sample's expected arrival; no time buckets. */
-  exposureAt(point: Point, date: Date, clearance?: number) {
+  exposureAt(point: Point, date: Date, clearance?: number, nonGround = false) {
     const sun = solar(date, point);
     const lowSun =
       this.city.capabilities.buildingShade &&
@@ -213,6 +224,14 @@ export class Router {
     if (exposure === 'night' || lowSun || !this.city.capabilities.buildingShade || !this.maxHeight)
       return { exposure, lowSun };
     const pt = metric(this.city, point);
+    const detailed = this.detailed?.contains(pt) === true;
+    const detailedExposure = detailed
+      ? nonGround
+        ? 'unknown'
+        : this.detailed!.exposure(pt, sun.altitude, sun.azimuth + this.gridRotation)
+      : null;
+    if (detailedExposure === 'shade' || detailedExposure === 'unknown')
+      return { exposure: detailedExposure, lowSun, detailed };
     const reach = this.maxHeight / Math.tan(sun.altitude);
     if (
       (clearance !== undefined && clearance < reach) ||
@@ -221,13 +240,13 @@ export class Router {
         [pt[0] + reach, pt[1] + reach],
       ].every((p) => inBounds(geographic(this.city, p as Point), this.data.modelBounds))
     )
-      return { exposure, lowSun };
+      return { exposure, lowSun, detailed };
     const vector = shadowVector(this.maxHeight, sun.altitude, sun.azimuth + this.gridRotation);
     const end: Point = [pt[0] - vector[0], pt[1] - vector[1]];
     exposure = 'sun';
     // Query the fixed footprint index along the sun ray. Only the ray changes
     // with arrival time; we never construct another city-sized shadow grid.
-    for (const building of this.footprintGrid.intersecting([
+    for (const building of (detailed ? this.uncertainGrid : this.footprintGrid).intersecting([
       Math.min(pt[0], end[0]),
       Math.min(pt[1], end[1]),
       Math.max(pt[0], end[0]),
@@ -243,10 +262,10 @@ export class Router {
         )
       ) {
         if (building.uncertain) exposure = 'unknown';
-        else return { exposure: 'shade' as const, lowSun };
+        else if (!detailed) return { exposure: 'shade' as const, lowSun, detailed };
       }
     }
-    return { exposure, lowSun };
+    return { exposure, lowSun, detailed };
   }
   snap(point: Point) {
     if (!inCoverage(this.city, point))
@@ -411,7 +430,7 @@ export class Router {
           .around(pt, TREE_PROXIMITY_METERS)
           .some((t) => distance(t, pt) <= TREE_PROXIMITY_METERS);
         let exposure: Sample['exposure'] = departureMode === 'night' ? 'night' : 'unknown';
-        if (departureMode === 'shade') {
+        if (departureMode === 'shade' && !this.detailed?.contains(pt)) {
           // Model boundary includes surrounding objects; low sun is withheld.
           const reach = this.maxHeight / Math.tan(sun.altitude);
           const boundaryPoints: Point[] = [
@@ -435,6 +454,8 @@ export class Router {
             }
           }
         }
+        if (this.detailed?.contains(pt))
+          exposure = this.exposureAt(geo, date, e.modelClearance, e.nonGround).exposure;
         samples.push({
           point: geo,
           meters: e.length / count,
@@ -463,8 +484,13 @@ export class Router {
         for (const sample of e.a === nodes[n - 1] ? part : [...part].reverse()) {
           const elapsedMinutes = (walked + sample.meters / 2) / WALK_METERS_PER_MINUTE;
           const arrival = new Date(date.getTime() + elapsedMinutes * 60000);
-          const { exposure, lowSun } = this.exposureAt(sample.point, arrival, e.modelClearance);
-          samples.push({ ...sample, exposure, elapsedMinutes });
+          const { exposure, lowSun, detailed } = this.exposureAt(
+            sample.point,
+            arrival,
+            e.modelClearance,
+            e.nonGround,
+          );
+          samples.push({ ...sample, exposure, elapsedMinutes, ...(detailed ? { detailed } : {}) });
           if (lowSun) lowSunMeters += sample.meters;
           walked += sample.meters;
         }
@@ -488,6 +514,7 @@ export class Router {
         unknownMeters: sum((s) => s.exposure === 'unknown'),
         nightMeters: sum((s) => s.exposure === 'night'),
         lowSunMeters,
+        detailedMeters: sum((s) => s.detailed === true),
         arrival: new Date(
           date.getTime() + (distance / WALK_METERS_PER_MINUTE) * 60000,
         ).toISOString(),
@@ -599,6 +626,11 @@ export class Router {
                 ? 'shade'
                 : 'greenery';
     const shade = mode === 'shade';
+    const comparableModel = (r: Route) =>
+      Math.abs(
+        (r.detailedMeters ?? 0) / r.distance - (fastest.detailedMeters ?? 0) / fastest.distance,
+      ) <=
+      0.05 + 1e-9;
     const trafficCovered = (r: Route) =>
       1 - r.trafficUnknownMeters / r.distance >= MIN_TRAFFIC_COVERAGE;
     const trafficCost = (r: Route) => r.majorRoadMeters + r.trafficUnknownMeters;
@@ -606,7 +638,13 @@ export class Router {
       (r) =>
         valid(r) &&
         r.minutes <= fastest.minutes + extra + 1e-9 &&
-        (preferCalm ? trafficCovered(fastest) && trafficCovered(r) : shade ? covered(r) : true),
+        (preferCalm
+          ? trafficCovered(fastest) && trafficCovered(r)
+          : preferWater
+            ? true
+            : shade
+              ? covered(r) && comparableModel(r)
+              : true),
     );
     // Require a material improvement and a genuinely different path (at least 10% new length).
     const better = eligible.filter((r) => {

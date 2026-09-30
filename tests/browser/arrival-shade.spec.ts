@@ -9,7 +9,7 @@ test('arrival-aware shade explains route timing and a walk crossing into low sun
   const fastest = page.getByRole('button', { name: /Fastest walk/ });
   await expect(fastest).toContainText('Arrive around 14:19');
   await expect(page.getByRole('button', { name: /More estimated shade/ })).toContainText(
-    'Arrive around 14:23',
+    'Arrive around 14:22',
   );
   await fastest.click();
   await page.locator('.walk-details > summary').click();

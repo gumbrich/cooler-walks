@@ -24,6 +24,7 @@ page.on('requestfailed', (r) => console.log('Request failed:', r.url(), r.failur
 const origin = (process.env.PWA_ORIGIN ?? 'http://127.0.0.1:4173').replace(/\/$/, '');
 await page.goto(origin + '/?view=planner');
 await expect(page.locator('.route-card').first()).toBeVisible({ timeout: 60000 });
+await expect(page.locator('.route-model-note').first()).toContainText('3D roofs');
 await expect(page.locator('.map-shell')).toHaveAttribute('data-map-ready', 'true', {
   timeout: 60000,
 });
@@ -34,7 +35,8 @@ await page.waitForFunction(() => navigator.serviceWorker.controller !== null);
 await page.waitForFunction(
   async () =>
     Boolean(await caches.match('/data/zurich.json')) &&
-    Boolean(await caches.match('/data/zurich-map.geojson')),
+    Boolean(await caches.match('/data/zurich-map.geojson')) &&
+    Boolean(await caches.match('/data/zurich-detailed-shade.json')),
 );
 const cdp = await context.newCDPSession(page);
 const manifest = await cdp.send('Page.getAppManifest');

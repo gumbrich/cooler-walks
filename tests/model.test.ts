@@ -484,6 +484,32 @@ describe('route constraints', () => {
       r.calculate(d.nodes[0].point, d.nodes[2].point, '2026-06-21T12:00:00Z', 0, [], true)
         .alternative,
     ).toBeNull();
+    // A source gap on the waterside detour must not veto a water preference.
+    // Shade ranking still rejects this same poorly modelled alternative.
+    const uncertain = new Router(d, cities[0]);
+    uncertain.maxHeight = 10;
+    uncertain.exposureAt = (point) => ({
+      exposure: metric(cities[0], point)[1] > p[1] - 95 ? 'unknown' : 'sun',
+      lowSun: false,
+      detailed: false,
+    });
+    const waterWithGap = uncertain.calculate(
+      d.nodes[0].point,
+      d.nodes[2].point,
+      '2026-06-21T12:00:00Z',
+      5,
+      [],
+      true,
+    );
+    expect(waterWithGap.mode).toBe('shade');
+    expect(waterWithGap.alternative!.unknownMeters).toBeGreaterThan(
+      waterWithGap.alternative!.distance / 2,
+    );
+    expect(waterWithGap.alternative!.waterMeters).toBeGreaterThan(50);
+    expect(
+      uncertain.calculate(d.nodes[0].point, d.nodes[2].point, '2026-06-21T12:00:00Z', 5)
+        .alternative,
+    ).toBeNull();
     d.water = [];
     expect(() =>
       new Router(d, cities[0]).calculate(

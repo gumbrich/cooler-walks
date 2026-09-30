@@ -44,6 +44,8 @@ try {
   await expect.poll(() => page.evaluate(() => navigator.onLine)).toBe(false);
   await page.reload();
   await expect(page.locator('.route-card').first()).toBeVisible({ timeout: 60000 });
+  await expect(page.locator('.route-model-note').first()).toContainText('3D roofs');
+  await device.screenshot({ path: 'docs/screenshots/android-3d-shade.png' });
   await page.getByLabel('Departure date', { exact: true }).fill('2026-06-22');
   await page.getByRole('slider', { name: 'Departure time', exact: true }).fill('840');
   await expect(page.locator('.spinner')).toHaveCount(0, { timeout: 60000 });
@@ -92,6 +94,7 @@ try {
         appVersion: JSON.parse(fs.readFileSync('package.json', 'utf8')).version,
         device: 'CoolerWalks_Test Android emulator',
         passed: [
+          'Ground-referenced 3D roofs compute offline in the central Zurich pilot',
           'Whole Zurich coverage view renders on the 2 GB emulator',
           'Bundled vehicle-count profiles after offline reload',
           'Real Monday 14:00 reference, three counters and map markers',

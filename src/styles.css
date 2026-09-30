@@ -862,7 +862,7 @@ small {
   line-height: 1.3;
   letter-spacing: -0.03em;
 }
-.map-location > span:last-child {
+.map-location > span:not(.eyebrow) {
   font-size: 0.75rem;
   color: #677060;
 }
@@ -1849,7 +1849,7 @@ small {
   .map-location .eyebrow {
     font-size: 0.75rem;
   }
-  .map-location > span:last-child {
+  .map-location > span:not(.eyebrow) {
     font-size: 0.75rem;
   }
   .map-tools {
@@ -3203,5 +3203,44 @@ html[lang='de'] .icon-text {
   }
   .search-guidance {
     margin-bottom: 10px;
+  }
+}
+
+/* A separate cartographic key for model detail, never an exposure colour. */
+.model-swatch {
+  display: inline-block;
+  width: 17px;
+  flex: 0 0 17px;
+  border-top: 2px dotted #776075;
+}
+.route-model-note,
+.map-location .map-model-key {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.7rem;
+  line-height: 1.4;
+  color: #665163;
+}
+.route-model-note {
+  margin-top: 7px;
+}
+.map-location .map-model-key {
+  margin-top: 7px;
+  max-width: 230px;
+}
+
+@media (max-width: 620px) {
+  .map-location {
+    max-width: calc(100% - 100px);
+  }
+  .map-location .eyebrow {
+    display: none;
+  }
+  .map-location strong {
+    font-size: 1.65rem;
+  }
+  .map-location .map-model-key {
+    margin-top: 4px;
   }
 }

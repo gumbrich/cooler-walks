@@ -1,3 +1,4 @@
+import type { DetailedShadeData } from './detailed-shade';
 export type Point = [number, number];
 export type Bounds = [number, number, number, number];
 export interface City {
@@ -31,6 +32,13 @@ export interface City {
   dataVersion: string | null;
   dataUrl: string | null;
   mapUrl: string | null;
+  detailedShade?: {
+    dataUrl: string;
+    version: string;
+    coverage: Point[];
+    crs: string;
+    verticalDatum: string;
+  };
   providers: string[];
   translatedNames: Record<string, string>;
   defaultJourney: [string, string] | null;
@@ -58,6 +66,8 @@ export interface Edge {
   traffic?: TrafficClass[];
   /** Conservative metre clearance from the whole edge to an irregular model-data boundary. */
   modelClearance?: number;
+  /** Bridge, tunnel, covered or nonzero OSM level: bare-earth height is not a deck height. */
+  nonGround?: boolean;
 }
 export type TrafficClass =
   'major' | 'pedestrian' | 'encounter' | 'tempo30' | 'path' | 'other' | 'unknown';
@@ -107,6 +117,7 @@ export interface PilotData {
   provenance: Record<string, unknown>;
   trafficModel?: string;
   vehicleCounts?: VehicleCounts;
+  detailedShade?: DetailedShadeData;
 }
 /** The UI retains only search, map points and counter evidence. Heavy graph/model geometry belongs to the routing worker. */
 export type PlannerData = Pick<PilotData, 'places' | 'trees' | 'vehicleCounts'>;
@@ -136,6 +147,8 @@ export interface Sample {
   traffic?: TrafficClass;
   /** Arrival at this sample midpoint, including all preceding walking legs. */
   elapsedMinutes: number;
+  /** This sample lies in the 3D-roof/DTM pilot, including unknown samples. */
+  detailed?: boolean;
 }
 export interface Route {
   id: string;
@@ -151,6 +164,8 @@ export interface Route {
   nightMeters: number;
   /** Part of unknownMeters where solar elevation is between 0 and 10 degrees. */
   lowSunMeters: number;
+  /** Distance evaluated in the detailed model, including explicit gaps. */
+  detailedMeters?: number;
   arrival: string;
   majorRoadMeters: number;
   calmedMeters: number;

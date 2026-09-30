@@ -131,3 +131,7 @@ Version 0.7 uses new bounded OSM/tree extracts and the official CC0 address laye
 ## Zurich north and west · 0.8.0
 
 [Oerlikon/Altstetten source audit and reproducible preparation](zurich-north-west.md) records the six checksum-verified historical tiles, actual polygon-union coverage, new bounded walking/tree extracts, official municipal coverage and source-type uncertainty masks and retained full-city address/traffic sources. The current runtime is `zurich-2026-09-30-v7`; earlier sections document previous extracts.
+
+## Central Zurich 3D shade model · 0.10.0
+
+The runtime now also uses actual roof/facade surfaces from the existing 2019 CityGML archives and 2021–2022 Canton Zurich LiDAR-derived ground elevations. Detailed coverage is 3.36 km² inside a 5 km² model rectangle. Source CRS, LN02 datum checks, licences, exact export requests, raw hashes, missing-data rules and reproduction commands are documented in [detailed-shade.md](detailed-shade.md) and [detailed-shade-data.json](detailed-shade-data.json). No tree shade or distant terrain-shadow capability is enabled by this addition.

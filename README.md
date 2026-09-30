@@ -54,7 +54,7 @@ The upload files are in ignored `release-artifacts/`. `release/site.json` now co
 - Fastest graph route and genuinely different alternatives within 0, 5 or 10 extra minutes; 5 minutes is the default.
 - Up to three ordered stops, with search/map selection, reordering, removal and trip reversal. The extra-time budget applies to the whole trip through all stops; dwell time is excluded.
 - Optional **Prefer waterside** routing and a separate measure of distance within 50 m of mapped surface water. Proximity does not establish views, bank access, drinking water or cooling.
-- **Prefer shade / Prefer sun** in Zurich and Munich, including winter dates. Uses actual Swiss or Bavarian building geometry and solar position, sampled every 8 m at the selected departure instant. Unknown coverage cannot count as sunshine. Greenery remains a separate 15 m tree-proximity measure.
+- **Prefer shade / Prefer sun** in Zurich and Munich, including winter dates. Uses actual Swiss or Bavarian building geometry and solar position, sampled at most every 8 m at the expected arrival instant. Unknown coverage cannot count as sunshine. Greenery remains a separate 15 m tree-proximity measure.
 - Four city configurations with local sources, metric coordinate systems, coverage and IANA time zones. Cambridge uses America/New_York, independently of the device’s zone. Local date/time rejects ambiguous or skipped DST times. Metric/imperial display, a responsive phone sheet and source/coverage views are shared.
 - PWA icons, manifest and installation guidance. The interface installs separately; city bundles are cached when visited. A city’s map and routing downloads must finish online before offline use. Source data stays dated; no live updates are implied.
 
@@ -114,7 +114,7 @@ The browser makes no third-party search, route, tile or font requests. Your prec
 
 Read [data sources and preparation](docs/data-sources.md), [the model](docs/model.md), [city coverage](docs/cities.md), [design](docs/design.md), [platform checks](docs/platform.md), and [roadmap](docs/roadmap.md).
 
-The building model uses footprints extruded to maximum roof height above local minimum ground, with preserved courtyards and a flat-ground approximation. Slopes, roof shape and changing height along the walk affect real shadows. Centreline geometry does not establish which pavement is shaded. The model is not field-validated and provides no measured temperature or comfort benefit.
+Version **0.10.0** adds actual 3D roofs/facades and LiDAR ground elevations in a **3.36 km² central Zurich pilot**, marked on the map. Outside it, buildings remain flat-ground extrusions. Route cards show the detailed-model share. This refines roof shape and receiver elevation; tree and distant hill shadows remain excluded. [Method, sources and reproducible preparation](docs/detailed-shade.md). Centreline geometry does not establish which pavement is shaded. The model is not field-validated and provides no measured temperature or comfort benefit.
 
 Version **0.9.0** evaluates shadows at the expected arrival at every route sample (at most 8 m apart), using each alternative's own walking time and every leg through ordered stops. Cards show estimated arrival times in the city’s zone. Walks crossing low sun or night have a separate explanation; darkness cannot improve a shade recommendation. Walking speed remains 4.8 km/h without pauses or crossing waits. [Method and computed comparisons](docs/arrival-shade-validation.json).
 

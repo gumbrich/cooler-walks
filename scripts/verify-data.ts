@@ -1,8 +1,9 @@
+import { loadData } from './lib/load-data';
 import fs from 'node:fs';
 import { MODEL_VERSION, Router } from '../src/lib/routing';
 import { cities } from '../src/lib/cities';
 import type { PilotData, RouteResult } from '../src/lib/types';
-const data = JSON.parse(fs.readFileSync('public/data/zurich.json', 'utf8')) as PilotData;
+const data = loadData(cities[0]);
 const router = new Router(data, cities[0]);
 const from = data.places.find((p) => p.name === 'Bahnhofquai')!,
   to =

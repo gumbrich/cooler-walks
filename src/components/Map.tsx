@@ -267,6 +267,26 @@ export function WalkingMap({
         source: 'coverage',
         paint: { 'line-color': '#62816c', 'line-width': 2, 'line-dasharray': [3, 3] },
       });
+      m.addSource('detailed-coverage', {
+        type: 'geojson',
+        data: collection(
+          city.detailedShade
+            ? [
+                {
+                  type: 'Feature',
+                  properties: {},
+                  geometry: { type: 'Polygon', coordinates: [city.detailedShade.coverage] },
+                },
+              ]
+            : [],
+        ),
+      });
+      m.addLayer({
+        id: 'detailed-coverage-line',
+        type: 'line',
+        source: 'detailed-coverage',
+        paint: { 'line-color': '#776075', 'line-width': 2, 'line-dasharray': [1, 2] },
+      });
       m.addSource('trees', { type: 'geojson', data: collection([]) });
       m.addLayer({
         id: 'trees',
@@ -429,6 +449,7 @@ export function WalkingMap({
         paint: { 'fill-color': '#f8f6ef', 'fill-opacity': 0.65 },
       });
       m.moveLayer('coverage-line');
+      m.moveLayer('detailed-coverage-line');
       setReady(true);
     });
     m.on('click', (event) => {
@@ -518,7 +539,7 @@ export function WalkingMap({
   }, [ready, data]);
   useEffect(() => {
     if (ready && map.current)
-      for (const layer of ['coverage-line', 'coverage-mask'])
+      for (const layer of ['coverage-line', 'coverage-mask', 'detailed-coverage-line'])
         map.current.setLayoutProperty(layer, 'visibility', showCoverage ? 'visible' : 'none');
   }, [ready, showCoverage]);
   useEffect(() => {
@@ -669,6 +690,12 @@ export function WalkingMap({
               {t(city.coverageLabel)}
               {city.beta ? ' · Beta' : t(' · pilot')}
             </span>
+            {showCoverage && city.detailedShade && (
+              <span className="map-model-key">
+                <i className="model-swatch" />
+                {t('Dotted plum boundary: 3D model pilot')}
+              </span>
+            )}
           </div>
           <div className="map-tools">
             <button aria-label={t('Zoom in')} onClick={() => map.current?.zoomIn()}>

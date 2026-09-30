@@ -1,3 +1,4 @@
+import { loadData } from './lib/load-data';
 import fs from 'node:fs';
 import assert from 'node:assert/strict';
 import { getCity } from '../src/lib/cities';
@@ -42,7 +43,7 @@ const cases: { id: string; old: Bounds; journeys: [string, string][] }[] = [
 const report = [];
 for (const entry of cases) {
   const city = getCity(entry.id);
-  const data = JSON.parse(fs.readFileSync(`public${city.dataUrl}`, 'utf8')) as PilotData;
+  const data = loadData(city);
   const router = new Router(data, city);
   const area = (ring: Point[]) => {
     const points = ring.map((p) => metric(city, p));
