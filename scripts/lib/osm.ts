@@ -39,6 +39,23 @@ export function prepareOSM(city: City, raw: OSMData, areas: OSMData, areaFeature
   };
   const feature = (geometry: Geometry, properties: Record<string, unknown>) =>
     features.push({ type: 'Feature', geometry, properties });
+  for (const node of raw.elements.filter(
+    (e) =>
+      e.type === 'node' &&
+      e.tags?.name &&
+      ['suburb', 'quarter'].includes(e.tags?.place ?? '') &&
+      inCoverage(city, [e.lon, e.lat]),
+  )) {
+    feature(
+      { type: 'Point', coordinates: [node.lon, node.lat] },
+      {
+        kind: 'neighbourhood',
+        name: node.tags!.name,
+        id: `node-${node.id}`,
+        rank: node.tags!.place === 'suburb' ? 1 : 2,
+      },
+    );
+  }
   // Assemble actual relation rings by matching OSM endpoint identities. Never invent a closure.
   const areaNodes = new Map(
     areas.elements.filter((e) => e.type === 'node').map((e) => [e.id, [e.lon, e.lat] as Point]),

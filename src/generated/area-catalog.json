@@ -2,16 +2,16 @@
   {
     "id": "ch-zurich",
     "cityId": "ch-zurich",
-    "label": "Zurich & inner neighbourhoods",
-    "description": "From Wipkingen and Unterstrass through the city centre to Wiedikon and Seefeld. The dashed boundary shows the supported walking area, not the entire municipality. Building-model gaps and long shadows at the edge remain unknown.",
+    "label": "Zurich · centre, north & west",
+    "description": "From Altstetten and Oerlikon through Höngg, Wipkingen and the city centre to Wiedikon and Seefeld. The dashed boundary shows the supported walking area, not the entire municipality. Building-model gaps and long shadows at the edge remain unknown.",
     "schema": 1,
-    "version": "zurich-2026-09-30-v6",
-    "sha256": "a3aa560e8d283ff5dbd307ac468e25126fa7f3e4bb6f40e0871e68238b6b30ed",
-    "bytes": 8333787,
-    "expandedBytes": 49049970,
-    "file": "ch-zurich-a3aa560e8d283ff5.cwp",
+    "version": "zurich-2026-09-30-v7",
+    "sha256": "b27c58dec9836299673de9d82e83e29af37b9f2f196b356f55975823876e00c4",
+    "bytes": 16788605,
+    "expandedBytes": 100085998,
+    "file": "ch-zurich-b27c58dec9836299.cwp",
     "preparedAt": "2026-09-30",
-    "areaKm2": 21.81
+    "areaKm2": 57.77
   },
   {
     "id": "ch-basel",

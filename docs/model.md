@@ -22,7 +22,11 @@ After calculating the fastest route, a Euclidean lower bound excludes candidate 
 4. Sample each walking edge at intervals no longer than 8 m, weighting by segment length. Cast a ray towards the sun against each extruded footprint; horizontal reach is `height / tan(altitude)`. Preserve courtyard openings. Use a spatial grid to bound candidate objects.
 5. Use a **departure-time snapshot** for the entire walk. This does not model the time of arrival at each segment. Flat-ground prisms overstate some roof shadows and do not capture terrain. Opposite pavements cannot be distinguished from street centrelines.
 
+Zurich also stores a conservative whole-edge clearance from the official municipal model-data boundary. Samples with insufficient clearance for the maximum possible shadow reach remain unknown, even inside the tile envelope. See `zurich-north-west.md` for the source and distance proof.
+
 Object data extends beyond the routing boundary. Samples are unknown if their potential source reach exceeds the model bounds. Solar altitude below 10° is withheld because a bounded flat-ground model becomes particularly unreliable; solar altitude at or below 0° is night. Tree shadows, leaf seasonality, clouds, weather and terrain effects are disabled.
+
+Zurich’s open buildings, canopies, construction sites, greenhouses and unrecognized source types use the same uncertain-obstruction mask described below. When a valid GroundSurface supplies a known height bound, uncertain geometry uses that actual bound for possible shadow reach. Source `OBJEKTART` categories are retained in the building audit; none establishes solid shade or blocks graph snapping. Objects without GroundSurface retain their actual XY convex hull as an unknown mask; their ground reference stays null and 150 m is only the documented conservative model ceiling.
 
 Munich’s 61 unsupported elevated structures or conflicting source heights are potential unknown obstructions, not shade-producing building prisms. They use the supported model height ceiling of 150 m solely to conservatively mask possible obstruction along the sun ray. A sample remains unknown unless a separate accepted building establishes shade. These objects do not block snapping as though their elevated slab touched the ground. This conservative ceiling is a model limit, not a measurement of those objects.
 

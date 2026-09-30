@@ -52,14 +52,19 @@ try {
   await page.locator('.traffic-counts').scrollIntoViewIfNeeded();
   await device.screenshot({ path: 'docs/screenshots/android-vehicle-counts.png' });
   await page.getByRole('button', { name: 'Weg bearbeiten', exact: true }).click();
-  await page.getByRole('combobox', { name: 'Von', exact: true }).fill('Bahnhofstrasse 1');
+  await page.getByRole('combobox', { name: 'Von', exact: true }).fill('Hofwiesenstrasse 350');
   await page.getByRole('combobox', { name: 'Von', exact: true }).press('Enter');
-  await page.getByRole('combobox', { name: 'Nach', exact: true }).fill('Münsterhof 2');
+  await page.getByRole('combobox', { name: 'Nach', exact: true }).fill('Wallisellenstrasse 45');
   await page.getByRole('combobox', { name: 'Nach', exact: true }).press('Enter');
   await expect(page.locator('.spinner')).toHaveCount(0, { timeout: 60000 });
   await expect(page.getByRole('button', { name: /Schnellster Weg/ })).toBeVisible();
   await expect(page.locator('.map-marker')).toHaveCount(2);
   await page.getByRole('button', { name: 'Meinen Weg anzeigen', exact: true }).click();
+  await expect(page.locator('.map-shell')).toHaveAttribute('data-map-settled', 'true', {
+    timeout: 60000,
+  });
+  await expect(page.locator('.map-failure')).toHaveCount(0);
+  await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
   await device.screenshot({ path: 'docs/screenshots/android-zurich-addresses.png' });
   await page.getByRole('combobox', { name: 'Stadt', exact: true }).selectOption('de-munich');
   await expect(page.locator('.route-card').first()).toBeVisible({ timeout: 60000 });
@@ -78,7 +83,7 @@ try {
           'Bundled vehicle-count profiles after offline reload',
           'Real Monday 14:00 reference, three counters and map markers',
           'German labels preserve the observations',
-          'Official Zurich address search and real routes while offline',
+          'Official Oerlikon address search, real routes and settled map while offline',
           'Other launched cities labelled beta',
           'City change clears counter data and markers',
         ],

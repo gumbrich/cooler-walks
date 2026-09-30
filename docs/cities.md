@@ -4,7 +4,7 @@
 
 | City                                    | Status / route bounds (W, S, E, N)                                                                             | Greenery                                            | Building sun/shade                                                  | Water                   |
 | --------------------------------------- | -------------------------------------------------------------------------------------------------------------- | --------------------------------------------------- | ------------------------------------------------------------------- | ----------------------- |
-| Zurich, Switzerland                     | Pilot: `[8.517,47.353,8.570,47.402]`, Zurich and inner neighbourhoods, **21.81 km²** (2.71× the 0.6 area)      | Recorded tree proximity                             | Experimental, buildings only                                        | Surface-water proximity |
+| Zurich, Switzerland                     | Pilot: `[8.472,47.353,8.570,47.427]`, centre, Oerlikon and Altstetten, **57.77 km²** (2.65× the 0.7 area)      | Recorded tree proximity                             | Experimental, buildings only                                        | Surface-water proximity |
 | Munich, Bavaria, Germany                | Beta pilot: `[11.558,48.133,11.601,48.158]`, old town, Lehel and southern English Garden, **8.90 km²** (4.44×) | Automatic tree detections; false positives possible | Experimental, buildings only; tile-edge gaps can prevent comparison | Surface-water proximity |
 | Cambridge, Massachusetts, United States | Beta pilot: Official municipal polygon within `[-71.161,42.352,-71.063,42.405]`, **18.46 km²** (4.95×)         | Municipal records marked Tree                       | **Not enabled**                                                     | Surface-water proximity |
 | Basel, Basel-Stadt, Switzerland         | Beta pilot: `[7.576,47.541,7.611,47.576]`, central Basel and Kleinbasel, **10.25 km²** (2.14×)                 | Maintained-tree register                            | **Not enabled**                                                     | Surface-water proximity |
@@ -53,3 +53,7 @@ Zurich alone has dated hourly observations: 49 directional counters at 28 sites 
 ## Zurich focus update · 0.7.0
 
 The larger Zurich pilot includes official offline address search (56,704 existing city addresses, 21,318 within walking coverage) and 75 historical directional counters at 42 sites. All other integrated cities are visibly beta. Their geographic capabilities are unchanged. See [expanded coverage, exact source semantics and preparation](zurich-expansion.md).
+
+## Zurich north and west · 0.8.0
+
+The current 57.77 km² area includes Oerlikon and Altstetten and is clipped to the official municipal boundary. It contains 45,795 of the 56,704 searchable real addresses and 144 historical directional counters at 80 sites. Municipal-edge gaps, open structures and source objects without ground geometry remain unknown in the building-shade model. [Source verification and preparation](zurich-north-west.md).

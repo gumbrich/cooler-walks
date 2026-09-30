@@ -21,3 +21,5 @@ All transformations, actual download URLs, source/update-date distinctions and r
 Zurich v5 includes derived 2025 directional vehicle-count profiles, CC0 City of Zurich. Their observed year differs from the 30 September 2026 fetch date. Counts remain point evidence, separate from route ranking; see `docs/vehicle-counts.md` and `docs/vehicle-counts-validation.json`. Raw Parquet and service responses remain ignored.
 
 Zurich v6 expands to 21.81 km² and adds 56,704 official address records. It re-clips the existing traffic evidence to the wider area (75 directional counters). See `docs/zurich-expansion.md` and `docs/zurich-addresses-validation.json`.
+
+Zurich v7 expands to **57.77 km²**, including Oerlikon and Altstetten, and uses the official municipal polygon as a conservative data limit (Kanton Zürich, CC0). There are 155,277 walking nodes, 170,105 edges, 112,794 retained tree positions, 42,719 building/mask polygons, 45,795 in-area official addresses and 144 directional counters at 80 sites. Exact sources, source checksums and uncertainty rules are in `docs/zurich-north-west.md`. Raw downloads remain excluded.

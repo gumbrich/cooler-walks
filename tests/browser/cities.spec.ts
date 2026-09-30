@@ -31,12 +31,23 @@ async function expectMarkersVisible(page: Page) {
 }
 
 test('prefer sun works in winter and respects the direct-walk limit', async ({ page }) => {
+  await page.clock.setFixedTime(new Date('2026-06-21T12:00:00Z'));
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto('/?view=planner');
+  await expect(page.locator('.route-card').first()).toBeVisible();
   await page.getByLabel('Departure date', { exact: true }).fill('2026-12-21');
   await page.getByRole('slider', { name: 'Departure time' }).fill('720');
   await page.getByRole('radio', { name: 'Prefer sun', exact: true }).check();
   await expect(page.locator('.spinner')).toHaveCount(0);
+  await expect(
+    page.getByText(
+      'A sun-based recommendation is unavailable for this time or coverage. The fastest walk is shown.',
+    ),
+  ).toBeVisible();
+  await page.getByRole('combobox', { name: 'From', exact: true }).fill('Hofwiesenstrasse 350');
+  await page.getByRole('combobox', { name: 'From', exact: true }).press('Enter');
+  await page.getByRole('combobox', { name: 'To', exact: true }).fill('Wallisellenstrasse 45');
+  await page.getByRole('combobox', { name: 'To', exact: true }).press('Enter');
   await expect(page.locator('.route-card').first()).toContainText('estimated sun');
   await expect(page.locator('.map-shell')).toHaveAttribute('data-map-settled', 'true');
   await expectMarkersVisible(page);

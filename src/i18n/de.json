@@ -419,9 +419,10 @@
   "Add a stop here": "Hier Zwischenziel setzen",
   "Outside walking coverage. Choose a point inside the dashed boundary.": "Ausserhalb des Gehgebiets. Wähle einen Punkt innerhalb der gestrichelten Grenze.",
   "Address markers locate buildings, not verified entrances. The walk starts and ends on the nearby mapped path; check the final access on site.": "Adresspunkte zeigen Gebäude, keine geprüften Eingänge. Der Weg beginnt und endet auf dem nahegelegenen kartierten Weg; prüfe den letzten Zugang vor Ort.",
-  "Zurich & inner neighbourhoods": "Zürich und innere Quartiere",
-  "From Wipkingen and Unterstrass through the city centre to Wiedikon and Seefeld. The dashed boundary shows the supported walking area, not the entire municipality. Building-model gaps and long shadows at the edge remain unknown.": "Von Wipkingen und Unterstrass durch das Zentrum bis Wiedikon und Seefeld. Die gestrichelte Grenze zeigt das unterstützte Gehgebiet, nicht die ganze Stadt. Lücken im Gebäudemodell und lange Schatten am Rand bleiben unbekannt.",
   "Walking network, tree extract and official addresses fetched 30 September 2026. Building tiles: 2019; tree locations: 2021, prepared 2022. Traffic zones fetched 29 September 2026. Fetch dates are not observation dates.": "Wegnetz, Baumausschnitt und amtliche Adressen am 30. September 2026 abgerufen. Gebäudekacheln: 2019; Baumstandorte: 2021, aufbereitet 2022. Verkehrszonen am 29. September 2026 abgerufen. Abrufdaten sind keine Beobachtungsdaten.",
   "Official Zurich building addresses": "Amtliche Zürcher Gebäudeadressen",
-  "Outside walking coverage": "Ausserhalb des Gehgebiets"
+  "Outside walking coverage": "Ausserhalb des Gehgebiets",
+  "Zurich · centre, north & west": "Zürich · Zentrum, Nord und West",
+  "From Altstetten and Oerlikon through Höngg, Wipkingen and the city centre to Wiedikon and Seefeld. The dashed boundary shows the supported walking area, not the entire municipality. Building-model gaps and long shadows at the edge remain unknown.": "Von Altstetten und Oerlikon über Höngg, Wipkingen und das Zentrum bis Wiedikon und Seefeld. Die gestrichelte Grenze zeigt das unterstützte Gehgebiet, nicht die ganze Stadt. Lücken im Gebäudemodell und lange Schatten am Rand bleiben unbekannt.",
+  "Zurich municipal boundary · CC0": "Zürcher Gemeindegrenze · CC0"
 }

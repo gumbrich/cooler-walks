@@ -55,3 +55,9 @@ A pale blue-green disclosure below the selected route separates measured traffic
 ## Zurich focus · 0.7
 
 The city selector, coverage view and downloads now prioritize Switzerland; every other integrated city has a visible Beta label. Zurich keeps the existing atlas identity, with a clearer address-first trip form. Map pickers have visible text labels, a cancellable prompt, and a compact contextual card for start/destination/stops when the map is tapped. Long official address labels truncate only in the compact trip summary; the editing field and suggestion list preserve the name. Outside-area addresses remain visible and are marked honestly. The phone map remains visible above the route sheet. Timeline tick contrast was strengthened after an actual phone accessibility scan.
+
+## Zurich north and west · 0.8
+
+The existing atlas design now displays the larger, municipality-clipped Zurich boundary. The whole-area control exposes the reach to Oerlikon and Altstetten; detailed planning retains readable street labels, separate tree positions and route casing. The coverage label is translated in both languages. Actual desktop Altstetten, German phone Oerlikon and tablet outside-area screenshots were inspected; the existing spacing and controls remain usable. Unknown open structures and municipal-edge gaps stay visually distinct from sun and shade.
+
+For the expanded extent, neighbourhood labels use actual OSM names. Individual tree dots appear at street scale (zoom 14+) and load only around the viewport; the complete inventory still informs route greenery. This keeps phone maps lighter without moving or inventing trees. Map and route workers release resources explicitly during reload.

@@ -1,3 +1,4 @@
+import zurichExtract from '../src/lib/coverage/zurich-extract.json';
 import fs from 'node:fs';
 import crypto from 'node:crypto';
 import type { FeatureCollection, MultiPolygon } from 'geojson';
@@ -10,7 +11,7 @@ import type { OSMData } from './lib/osm';
 
 const city = getCity('ch-zurich');
 const data: PilotData = JSON.parse(fs.readFileSync('public/data/zurich.json', 'utf8'));
-const raw: OSMData = JSON.parse(fs.readFileSync('data/raw/zurich-expansion/osm.json', 'utf8'));
+const raw: OSMData = JSON.parse(fs.readFileSync(`${zurichExtract.rawDirectory}/osm.json`, 'utf8'));
 const zones: FeatureCollection<MultiPolygon> = JSON.parse(
   fs.readFileSync('data/raw/traffic/zones.geojson', 'utf8'),
 );

@@ -1,5 +1,7 @@
-import type { City, Point } from './types';
+import type { Bounds, City, Point } from './types';
 import cambridgeCoverage from './coverage/cambridge.json';
+import zurichExtract from './coverage/zurich-extract.json';
+import zurichCoverage from './coverage/zurich.json';
 export const cities: City[] = [
   {
     id: 'ch-zurich',
@@ -8,7 +10,8 @@ export const cities: City[] = [
     country: 'Switzerland',
     region: 'Zürich',
     center: [8.541, 47.374],
-    bounds: [8.517, 47.353, 8.57, 47.402],
+    bounds: zurichExtract.routeBounds as Bounds,
+    coverage: zurichCoverage as Point[][][],
     timeZone: 'Europe/Zurich',
     locale: 'de-CH',
     crs: '+proj=somerc +lat_0=46.95240555555556 +lon_0=7.439583333333333 +k_0=1 +x_0=2600000 +y_0=1200000 +ellps=bessel +towgs84=674.374,15.056,405.346,0,0,0,0 +units=m +no_defs',
@@ -25,15 +28,15 @@ export const cities: City[] = [
       vehicleCounts: true,
       addresses: true,
     },
-    dataVersion: 'zurich-2026-09-30-v6',
+    dataVersion: zurichExtract.version,
     dataUrl: '/data/zurich.json',
     mapUrl: '/data/zurich-map.geojson',
-    providers: ['OpenStreetMap', 'City of Zurich', 'swisstopo'],
+    providers: ['OpenStreetMap', 'City of Zurich', 'Kanton Zürich', 'swisstopo'],
     translatedNames: { en: 'Zurich', de: 'Zürich' },
     defaultJourney: ['Bahnhofquai', 'Bürkliplatz'],
-    coverageLabel: 'Zurich & inner neighbourhoods',
+    coverageLabel: 'Zurich · centre, north & west',
     coverageDescription:
-      'From Wipkingen and Unterstrass through the city centre to Wiedikon and Seefeld. The dashed boundary shows the supported walking area, not the entire municipality. Building-model gaps and long shadows at the edge remain unknown.',
+      'From Altstetten and Oerlikon through Höngg, Wipkingen and the city centre to Wiedikon and Seefeld. The dashed boundary shows the supported walking area, not the entire municipality. Building-model gaps and long shadows at the edge remain unknown.',
     treeNotes:
       'The inventory uses 2021 positions from surveys, screen entry and aerial data. Removals and replacements may be missing. Markers are positions, not measured crowns.',
     buildingNotes:
@@ -41,6 +44,10 @@ export const cities: City[] = [
     sourceSummary:
       'Walking network, tree extract and official addresses fetched 30 September 2026. Building tiles: 2019; tree locations: 2021, prepared 2022. Traffic zones fetched 29 September 2026. Fetch dates are not observation dates.',
     sources: [
+      {
+        label: 'Zurich municipal boundary · CC0',
+        url: 'https://data.stadt-zuerich.ch/dataset/ktzh_gemeindegrenzen__ogd_',
+      },
       {
         label: 'Official Zurich building addresses',
         url: 'https://data.stadt-zuerich.ch/dataset/geo_adressen_stadt_zuerich',

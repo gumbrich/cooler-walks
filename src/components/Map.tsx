@@ -5,7 +5,7 @@ import { type GeoJSONSource, type Map as LibreMap } from 'maplibre-gl';
 import { Layers, LocateFixed, Minus, Plus, Scan, X, MapPin } from 'lucide-react';
 import { coverageGeometry, inCoverage } from '../lib/coverage';
 import type { FeatureCollection, Feature } from 'geojson';
-import type { City, PilotData, Point, RouteResult } from '../lib/types';
+import type { City, PlannerData, Point, RouteResult } from '../lib/types';
 import type { CounterObservation } from '../lib/vehicle-counts';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import mapWorkerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url';
@@ -19,7 +19,7 @@ const collection = (features: Feature[]): FeatureCollection => ({
 });
 interface Props {
   city: City;
-  data: PilotData | null;
+  data: PlannerData | null;
   mapData?: FeatureCollection | null;
   result: RouteResult | null;
   selected: string;
@@ -56,6 +56,7 @@ export function WalkingMap({
     map = useRef<LibreMap | null>(null),
     callbacks = useRef({ pick, onPick, onSelect });
   callbacks.current = { pick, onPick, onSelect };
+  const baseSource = useRef<FeatureCollection | string | null>(null);
   const [ready, setReady] = useState(false),
     [failure, setFailure] = useState('');
   const [settled, setSettled] = useState(false);
@@ -88,12 +89,14 @@ export function WalkingMap({
     setFailure('');
     let m: LibreMap;
     try {
+      baseSource.current = mapData ?? city.mapUrl ?? collection([]);
       m = new maplibregl.Map({
         container: container.current,
         center: city.center,
         zoom: 14.4,
         minZoom: 11,
         maxZoom: 18.5,
+        maxTileCacheSize: 32,
         attributionControl: false,
         maxBounds: [
           [city.bounds[0] - 0.015, city.bounds[1] - 0.015],
@@ -102,7 +105,7 @@ export function WalkingMap({
         style: {
           version: 8,
           glyphs: '/fonts/{fontstack}/{range}.pbf',
-          sources: { base: { type: 'geojson', data: mapData ?? city.mapUrl ?? collection([]) } },
+          sources: { base: { type: 'geojson', data: baseSource.current } },
           layers: [
             { id: 'paper', type: 'background', paint: { 'background-color': '#eeede4' } },
             {
@@ -219,6 +222,7 @@ export function WalkingMap({
         id: 'trees',
         type: 'circle',
         source: 'trees',
+        minzoom: 14,
         paint: {
           'circle-radius': ['interpolate', ['linear'], ['zoom'], 11, 0.35, 13, 1, 17, 5],
           'circle-color': '#91b681',
@@ -321,6 +325,23 @@ export function WalkingMap({
         paint: { 'text-color': '#4a6941', 'text-halo-color': '#f4f2e8', 'text-halo-width': 2 },
       });
       const [w, s, e, n] = city.bounds;
+      m.addLayer({
+        id: 'neighbourhood-labels',
+        type: 'symbol',
+        source: 'base',
+        maxzoom: 14,
+        filter: ['==', ['get', 'kind'], 'neighbourhood'],
+        layout: {
+          'text-field': ['get', 'name'],
+          'text-font': ['Open Sans Semibold'],
+          'text-size': 14,
+          'text-letter-spacing': 0.05,
+          'text-max-width': 10,
+          'text-padding': 12,
+          'symbol-sort-key': ['get', 'rank'],
+        },
+        paint: { 'text-color': '#365747', 'text-halo-color': '#f8f6ec', 'text-halo-width': 2 },
+      });
       const polygons = coverageGeometry(city).coordinates;
       m.addSource('coverage-surround', {
         type: 'geojson',
@@ -382,29 +403,68 @@ export function WalkingMap({
     });
     const observer = new ResizeObserver(() => m.resize());
     observer.observe(container.current);
-    return () => {
+    let disposed = false;
+    const dispose = () => {
+      if (disposed) return;
+      disposed = true;
       observer.disconnect();
       attributionObserver.disconnect();
       m.remove();
       map.current = null;
     };
+    const leaving = (event: PageTransitionEvent) => {
+      if (!event.persisted) dispose();
+    };
+    window.addEventListener('pagehide', leaving);
+    return () => {
+      window.removeEventListener('pagehide', leaving);
+      dispose();
+    };
   }, [city]);
   useEffect(() => {
     const source = map.current?.getSource('base') as GeoJSONSource | undefined;
-    if (ready && source) source.setData(mapData ?? city.mapUrl ?? collection([]));
+    const next = mapData ?? city.mapUrl;
+    // Avoid rebuilding the full GeoJSON index after the initial source load.
+    if (ready && source && next && baseSource.current !== next) {
+      baseSource.current = next;
+      source.setData(next);
+    }
   }, [ready, city, mapData]);
   useEffect(() => {
     const m = map.current;
     if (!m || !ready || !data) return;
-    (m.getSource('trees') as GeoJSONSource).setData(
-      collection(
-        data.trees.map((t) => ({
-          type: 'Feature',
-          properties: {},
-          geometry: { type: 'Point', coordinates: t.point },
-        })),
-      ),
-    );
+    // Individual tree markers are useful at street scale. Keep only the visible
+    // neighbourhood in the display source; routing still uses every source tree.
+    const updateTrees = () => {
+      if (map.current !== m) return;
+      const bounds = m.getBounds(),
+        padX = (bounds.getEast() - bounds.getWest()) * 0.2,
+        padY = (bounds.getNorth() - bounds.getSouth()) * 0.2;
+      const visible =
+        m.getZoom() < 14
+          ? []
+          : data.trees.filter(
+              ({ point: [x, y] }) =>
+                x >= bounds.getWest() - padX &&
+                x <= bounds.getEast() + padX &&
+                y >= bounds.getSouth() - padY &&
+                y <= bounds.getNorth() + padY,
+            );
+      (m.getSource('trees') as GeoJSONSource).setData(
+        collection(
+          visible.map((t) => ({
+            type: 'Feature',
+            properties: {},
+            geometry: { type: 'Point', coordinates: t.point },
+          })),
+        ),
+      );
+    };
+    updateTrees();
+    m.on('moveend', updateTrees);
+    return () => {
+      m.off('moveend', updateTrees);
+    };
   }, [ready, data]);
   useEffect(() => {
     if (ready && map.current)

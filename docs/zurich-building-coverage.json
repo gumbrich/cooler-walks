@@ -1,0 +1,154 @@
+{
+  "modelBounds": [8.468, 47.3514, 8.5717, 47.431],
+  "routeBounds": [8.472, 47.353, 8.57, 47.427],
+  "sourcePolygonsCoverModel": true,
+  "sourceCrs": "EPSG:2056 / LN02 (EPSG:5728)",
+  "extractionBoundsLV95": [
+    2677609.5248860214, 1244965.1152093776, 2685660.2665011664, 1254022.287168565
+  ],
+  "tiles": [
+    {
+      "item": "swissbuildings3d_3_0_2019_1091-12",
+      "sourceDate": "2019-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissbuildings3d_3_0/swissbuildings3d_3_0_2019_1091-12/swissbuildings3d_3_0_2019_1091-12_2056_5728.citygml.zip",
+      "sha256": "e97e536ac200189b1bb6c5595807766da91534ad1e890fec40c8ab756110c427",
+      "bytes": 28966146,
+      "groundSurfaces": 29268,
+      "sourceBuildings": 2433,
+      "uncertainBuildings": 8,
+      "sourceTypes": [
+        "Gebaeude Einzelhaus",
+        "Hochhaus",
+        "Im Bau",
+        "Lagertank",
+        "Sakraler Turm",
+        "Sakrales Gebaeude",
+        "Treibhaus"
+      ]
+    },
+    {
+      "item": "swissbuildings3d_3_0_2019_1091-14",
+      "sourceDate": "2019-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissbuildings3d_3_0/swissbuildings3d_3_0_2019_1091-14/swissbuildings3d_3_0_2019_1091-14_2056_5728.citygml.zip",
+      "sha256": "103eb01c42ce5a6a4a672b08349912ebf041c152016f6ac34111c62186b1df9b",
+      "bytes": 87582766,
+      "groundSurfaces": 77865,
+      "sourceBuildings": 6261,
+      "uncertainBuildings": 69,
+      "sourceTypes": [
+        "Flugdach",
+        "Gebaeude Einzelhaus",
+        "Hochhaus",
+        "Hochkamin",
+        "Im Bau",
+        "Kapelle",
+        "Lagertank",
+        "Mauer gross",
+        "Offenes Gebaeude",
+        "Sakraler Turm",
+        "Sakrales Gebaeude",
+        "Treibhaus",
+        "Turm",
+        "Verbindungsbruecke"
+      ]
+    },
+    {
+      "item": "swissbuildings3d_3_0_2019_1091-21",
+      "sourceDate": "2019-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissbuildings3d_3_0/swissbuildings3d_3_0_2019_1091-21/swissbuildings3d_3_0_2019_1091-21_2056_5728.citygml.zip",
+      "sha256": "d546ea067715771758d7674cf1cead6d3f930aaaf9c4d429c6883225250ccf57",
+      "bytes": 85896346,
+      "groundSurfaces": 82812,
+      "sourceBuildings": 7517,
+      "uncertainBuildings": 46,
+      "sourceTypes": [
+        "Gebaeude Einzelhaus",
+        "Hochhaus",
+        "Hochkamin",
+        "Im Bau",
+        "Lagertank",
+        "Offenes Gebaeude",
+        "Sakraler Turm",
+        "Sakrales Gebaeude",
+        "Treibhaus",
+        "Turm"
+      ]
+    },
+    {
+      "item": "swissbuildings3d_3_0_2019_1091-23",
+      "sourceDate": "2019-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissbuildings3d_3_0/swissbuildings3d_3_0_2019_1091-23/swissbuildings3d_3_0_2019_1091-23_2056_5728.citygml.zip",
+      "sha256": "be328f3b9fc414de6ef67be1754ff73c627ce419a2940efc986a080a9cec4695",
+      "bytes": 190870064,
+      "groundSurfaces": 157980,
+      "sourceBuildings": 9090,
+      "uncertainBuildings": 82,
+      "sourceTypes": [
+        "Gebaeude Einzelhaus",
+        "Gebaeude unsichtbar",
+        "Hochhaus",
+        "Hochkamin",
+        "Im Bau",
+        "Kapelle",
+        "Lagertank",
+        "Lueftungsschacht",
+        "Sakraler Turm",
+        "Sakrales Gebaeude",
+        "Treibhaus",
+        "Turm",
+        "Unterirdisches Gebaeude"
+      ]
+    },
+    {
+      "item": "swissbuildings3d_3_0_2019_1091-32",
+      "sourceDate": "2019-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissbuildings3d_3_0/swissbuildings3d_3_0_2019_1091-32/swissbuildings3d_3_0_2019_1091-32_2056_5728.citygml.zip",
+      "sha256": "ade439b1c7b5decb59f9708775f593d7f70f492aa242f3a966f92d343f3da47e",
+      "bytes": 53620191,
+      "groundSurfaces": 52599,
+      "sourceBuildings": 4877,
+      "uncertainBuildings": 26,
+      "sourceTypes": [
+        "Gebaeude Einzelhaus",
+        "Hochhaus",
+        "Im Bau",
+        "Mauer gross",
+        "Sakraler Turm",
+        "Sakrales Gebaeude",
+        "Treibhaus",
+        "Turm"
+      ]
+    },
+    {
+      "item": "swissbuildings3d_3_0_2019_1091-41",
+      "sourceDate": "2019-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissbuildings3d_3_0/swissbuildings3d_3_0_2019_1091-41/swissbuildings3d_3_0_2019_1091-41_2056_5728.citygml.zip",
+      "sha256": "ea9784ef0da5c96d57606dd6378e3bb9ad89787850b2057fc19c079e796bb359",
+      "bytes": 251354356,
+      "groundSurfaces": 231599,
+      "sourceBuildings": 11161,
+      "uncertainBuildings": 74,
+      "sourceTypes": [
+        "Gebaeude Einzelhaus",
+        "Hochhaus",
+        "Hochkamin",
+        "Im Bau",
+        "Lagertank",
+        "Mauer gross",
+        "Sakraler Turm",
+        "Sakrales Gebaeude",
+        "Treibhaus",
+        "Turm",
+        "Unterirdisches Gebaeude",
+        "Verbindungsbruecke"
+      ]
+    }
+  ],
+  "groundSurfaces": 631409,
+  "sourceBuildings": 41338,
+  "uncertainBuildings": 304,
+  "typeRule": "Open buildings, canopies, construction sites, greenhouses and unrecognized types remain uncertain; never solid shade prisms.",
+  "limitations": "2019 geometry; flat extrusions; no terrain or tree shadows. Source coverage is not field validation.",
+  "objectsWithoutGroundSurface": 508,
+  "noGroundRule": "Source XY convex hulls without GroundSurface are unknown masks; 150 m is the conservative supported model ceiling, never a measured height. Ground reference stays null."
+}

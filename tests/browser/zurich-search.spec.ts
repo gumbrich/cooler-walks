@@ -8,17 +8,20 @@ test('Zurich addresses, beta labels, direct map selection and honest outside cov
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto('/?view=planner');
   await expect(page.getByRole('button', { name: /Fastest walk/ })).toBeVisible();
+  await page.getByRole('button', { name: 'Show whole coverage', exact: true }).click();
+  await expect(page.locator('.map-shell')).toHaveAttribute('data-map-settled', 'true');
+  await page.screenshot({ path: 'docs/screenshots/desktop-zurich-coverage.png' });
   const from = page.getByRole('combobox', { name: 'From', exact: true });
   const to = page.getByRole('combobox', { name: 'To', exact: true });
-  await from.fill('8001 Bahnhofstr. 1');
+  await from.fill('8048 Altstetterstr. 145');
   await expect(
-    page.getByRole('option', { name: /Bahnhofstrasse 1 Official address/ }),
+    page.getByRole('option', { name: /Altstetterstrasse 145 Official address/ }),
   ).toBeVisible();
   await from.press('Enter');
-  await expect(from).toHaveValue('Bahnhofstrasse 1');
-  await to.fill('Muensterhof 2');
+  await expect(from).toHaveValue('Altstetterstrasse 145');
+  await to.fill('Hohlstrasse 554');
   await to.press('Enter');
-  await expect(to).toHaveValue('Münsterhof 2');
+  await expect(to).toHaveValue('Hohlstrasse 554');
   await expect(page.getByRole('button', { name: /Fastest walk/ })).toBeVisible();
   await expect(page.locator('.map-shell')).toHaveAttribute('data-map-settled', 'true');
   // The desktop planner fits the viewport. Full-page capture resizes the WebGL
@@ -27,18 +30,18 @@ test('Zurich addresses, beta labels, direct map selection and honest outside cov
   await page.getByRole('button', { name: 'Choose to on map', exact: true }).click();
   await expect(page.getByText('Tap a public path to set your destination.')).toBeVisible();
   await page.getByRole('button', { name: 'Cancel map selection' }).click();
-  await expect(to).toHaveValue('Münsterhof 2');
+  await expect(to).toHaveValue('Hohlstrasse 554');
   // A normal map click opens actions; choosing one changes only that trip endpoint.
   await page.locator('.map-canvas').click({ position: { x: 320, y: 320 } });
   await expect(page.getByRole('group', { name: 'Use this map point' })).toBeVisible();
   await page.getByRole('button', { name: 'Walk to here', exact: true }).click();
   await expect(to).toHaveValue(/^Map point ·/);
-  await expect(from).toHaveValue('Bahnhofstrasse 1');
-  await to.fill('Wehntalerstrasse 500');
+  await expect(from).toHaveValue('Altstetterstrasse 145');
+  await to.fill('Wehntalerstrasse 790');
   await to.press('Enter');
   await expect(page.getByText(/This point is outside the Zurich pilot/)).toBeVisible();
   await expect(page.locator('.route-card')).toHaveCount(0);
-  await expect(to).toHaveValue('Wehntalerstrasse 500');
+  await expect(to).toHaveValue('Wehntalerstrasse 790');
   await page.setViewportSize({ width: 820, height: 1180 });
   await page.screenshot({ path: 'docs/screenshots/tablet-zurich-outside.png' });
   await page.getByLabel('City', { exact: true }).selectOption('ch-basel');
@@ -56,11 +59,11 @@ test('German phone address search and map controls stay usable', async ({ page }
   await expect(page.getByRole('button', { name: /Schnellster Weg/ })).toBeVisible();
   await page.getByRole('button', { name: 'Weg bearbeiten', exact: true }).click();
   const from = page.getByRole('combobox', { name: 'Von', exact: true });
-  await from.fill('Schaffhauserstrasse 100');
+  await from.fill('Hofwiesenstrasse 350');
   await expect(page.getByRole('listbox')).toContainText('Amtliche Adresse');
   await page.screenshot({ path: 'docs/screenshots/phone-zurich-search.png', fullPage: true });
   await from.press('Enter');
-  await page.getByRole('combobox', { name: 'Nach', exact: true }).fill('Röschibachplatz');
+  await page.getByRole('combobox', { name: 'Nach', exact: true }).fill('Wallisellenstrasse 45');
   await page.getByRole('combobox', { name: 'Nach', exact: true }).press('Enter');
   await expect(page.getByRole('button', { name: /Schnellster Weg/ })).toBeVisible();
   await page.getByRole('button', { name: 'Meinen Weg anzeigen', exact: true }).click();

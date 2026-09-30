@@ -62,3 +62,9 @@ npm run test:native:downloads
 The test sets up ADB reverse for port 4180, downloads the compact Munich pack, verifies private filesystem storage and real routes, removes the reverse connection, disables Wi-Fi/mobile data, cold-restarts the app and checks offline routes. Finally it verifies removal and restores emulator network settings. HTTP/mixed content is enabled only by this explicit development flag. Run ordinary `npm run native:sync` and rebuild before distributing the normal app. The development URL is not a production service.
 
 Physical-device performance, interruption by OS termination during a write, very low disk space, production-host update rollout and migration across model revisions still require release testing.
+
+## Zurich 0.8 expansion
+
+The current Zurich pack covers the municipality-clipped 57.77 km² area. It is approximately **16.8 MB compressed / 100.1 MB expanded**, including official addresses and conservative shade-coverage data. The running app validates the complete pack against its compiled catalogue and does not mix old and new graph versions. Ordinary-device memory/performance testing remains necessary; a successful desktop/emulator result is not a physical-phone benchmark.
+
+In 0.8.0, opening a saved area transfers its compressed bytes to the routing worker for checksum verification and decoding. This avoids keeping the complete routing model in both the interface and worker. Download installation still verifies the same bounded, checksummed format and retains the existing atomic storage rules.

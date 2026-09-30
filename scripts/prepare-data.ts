@@ -1,17 +1,53 @@
+import zurichExtract from '../src/lib/coverage/zurich-extract.json';
 import fs from 'node:fs';
 import crypto from 'node:crypto';
 import { cities } from '../src/lib/cities';
-import { geographic, inBounds } from '../src/lib/geo';
+import { geographic, inBounds, metric, distance } from '../src/lib/geo';
 import { prepareOSM, type OSMData } from './lib/osm';
 import type { Building, PilotData, Point, Tree } from '../src/lib/types';
 import type { FeatureCollection } from 'geojson';
 
 const city = cities[0];
-const root = 'data/raw/zurich-expansion';
+const root = zurichExtract.rawDirectory;
 const raw = JSON.parse(fs.readFileSync(`${root}/osm.json`, 'utf8')) as OSMData;
 const areas = JSON.parse(fs.readFileSync(`${root}/areas.json`, 'utf8')) as OSMData;
 const { nodes, edges: filteredEdges, places, features, water } = prepareOSM(city, raw, areas);
+const clearance = JSON.parse(fs.readFileSync(`${root}/model-clearance.json`, 'utf8')) as {
+  osmSha256: string;
+  nodes: Record<string, number>;
+};
+if (
+  clearance.osmSha256 !==
+  crypto
+    .createHash('sha256')
+    .update(fs.readFileSync(`${root}/osm.json`))
+    .digest('hex')
+)
+  throw new Error('Rebuild municipal clearance for the current walking extract');
+for (const edge of filteredEdges) {
+  const a = clearance.nodes[nodes[edge.a].id],
+    b = clearance.nodes[nodes[edge.b].id];
+  if (![a, b].every(Number.isFinite)) throw new Error('Missing municipal model clearance');
+  edge.modelClearance = Math.max(0, Math.floor(Math.min(a, b) - edge.length / 2));
+}
 const treeRaw = JSON.parse(fs.readFileSync(`${root}/trees.json`, 'utf8')) as FeatureCollection;
+// Source LV95 fields independently check the expanded WGS84 point extract.
+const coordinateOffsets = treeRaw.features.flatMap((f) => {
+  if (f.geometry.type !== 'Point') throw new Error('Unexpected tree geometry');
+  const point = f.geometry.coordinates as Point;
+  const xy: Point = [f.properties?.x, f.properties?.y];
+  if (!point.every(Number.isFinite) || !xy.every(Number.isFinite))
+    throw new Error('Tree coordinate schema changed');
+  const offset = distance(metric(city, point), xy);
+  if (offset > 1) throw new Error('Tree source coordinate systems disagree');
+  return [offset];
+});
+const treeCoordinateAudit = {
+  sourceRecords: treeRaw.features.length,
+  maximumCoordinateDifferenceMeters: coordinateOffsets.reduce((a, b) => Math.max(a, b), 0),
+  positionMeaning:
+    'Unaltered source points; CRS agreement is not a field survey or proof of current presence.',
+};
 const trees: Tree[] = treeRaw.features.flatMap((f) =>
   f.geometry.type === 'Point' &&
   typeof f.properties?.baumnummer === 'string' &&
@@ -27,9 +63,14 @@ const trees: Tree[] = treeRaw.features.flatMap((f) =>
 );
 if (trees.length < 100) throw new Error('Unexpectedly few verified trees');
 const buildingRaw = JSON.parse(
-  fs.readFileSync('data/raw/buildings-compact-lv95.json', 'utf8'),
+  fs.readFileSync(`${root}/buildings-compact-lv95.json`, 'utf8'),
 ) as Building[];
-const modelBounds: [number, number, number, number] = [8.5152, 47.351, 8.5717, 47.4041];
+const modelBounds: [number, number, number, number] = zurichExtract.modelBounds as [
+  number,
+  number,
+  number,
+  number,
+];
 const transform = (p: Point) => geographic(city, p).map((x) => +x.toFixed(7)) as Point;
 const buildings = buildingRaw
   .map((b) => ({ ...b, ring: b.ring.map(transform), holes: b.holes?.map((h) => h.map(transform)) }))
@@ -51,14 +92,17 @@ const data: PilotData = {
   places,
   provenance: {
     osmTimestamp: raw.osm3s?.timestamp_osm_base,
+    treeCoordinateAudit,
+    buildingCoverage: JSON.parse(fs.readFileSync('docs/zurich-building-coverage.json', 'utf8')),
+    municipalCoverage: JSON.parse(fs.readFileSync('docs/zurich-municipal-coverage.json', 'utf8')),
     treeSource:
       'City of Zurich Bauminventar, source locations 2021, heights 2018; preparation 2022',
-    buildingsSource: 'swissBUILDINGS3D 3.0 beta, 2019 tiles 1091-23 and 1091-41',
+    buildingsSource: `swissBUILDINGS3D 3.0 beta, ${zurichExtract.buildingYear} tiles ${zurichExtract.buildingTiles.join(', ')}`,
     sha256: {
       osm: hash(`${root}/osm.json`),
       areas: hash(`${root}/areas.json`),
       trees: hash(`${root}/trees.json`),
-      buildings: hash('data/raw/buildings-lv95.json'),
+      buildings: hash(`${root}/buildings-lv95.json`),
     },
   },
 };

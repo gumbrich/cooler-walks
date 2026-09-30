@@ -9,7 +9,7 @@ export const WALK_METERS_PER_MINUTE = 80;
 export const SAMPLE_METERS = 8;
 export const TREE_PROXIMITY_METERS = 15;
 export const MIN_SHADE_COVERAGE = 0.95;
-export const MODEL_VERSION = 'flat-buildings-snapshot-v4';
+export const MODEL_VERSION = 'flat-buildings-snapshot-v5';
 export const MAX_WAYPOINTS = 3;
 const CELL = 60;
 class Grid<T> {
@@ -128,12 +128,14 @@ export class Router {
   constructor(
     public data: PilotData,
     public city: City,
+    consumeSource = false,
   ) {
     if (data.cityId !== city.id || data.version !== city.dataVersion)
       throw new Error('The city data version does not match. Reload the app.');
     if (!data.nodes.length || !data.edges.length || !data.trees.length)
       throw new Error('The pilot data is incomplete.');
     this.water = new WaterIndex(city, data.water);
+    if (consumeSource) data.water = [];
     this.points = data.nodes.map((n) => metric(city, n.point));
     this.adjacency = data.nodes.map(() => []);
     data.edges.forEach((e, i) => {
@@ -146,9 +148,21 @@ export class Router {
       const p = metric(city, t.point);
       this.treeGrid.add(p, p);
     });
+    if (consumeSource) data.trees = [];
     data.buildings.forEach((b) => {
       if (!Number.isFinite(b.height) || b.height <= 0 || b.height > 150) return;
-      const ring = b.ring.map((p) => metric(city, p));
+      const shadowHeight = b.uncertain ? (b.shadowHeightBound ?? 150) : b.height;
+      if (!Number.isFinite(shadowHeight) || shadowHeight <= 0 || shadowHeight > 150)
+        throw new Error('Invalid uncertainty height bound');
+      // The dedicated worker owns this payload. Project its arrays in place to
+      // avoid a second full set of building coordinates on memory-limited phones.
+      const project = (points: Point[]) => {
+        if (!consumeSource) return points.map((p) => metric(city, p));
+        for (let i = 0; i < points.length; i++) points[i] = metric(city, points[i]);
+        return points;
+      };
+      const ring = project(b.ring),
+        holes = (b.holes ?? []).map(project);
       const center: Point = [
         ring.reduce((s, p) => s + p[0], 0) / ring.length,
         ring.reduce((s, p) => s + p[1], 0) / ring.length,
@@ -157,10 +171,10 @@ export class Router {
       this.maxRadius = Math.max(this.maxRadius, radius);
       this.buildingGrid.add(center, {
         ring,
-        holes: (b.holes ?? []).map((h) => h.map((p) => metric(city, p))),
-        // Unknown objects can potentially obstruct sunlight anywhere up to the
-        // model's supported 150 m height ceiling, not just their conflicting value.
-        height: b.uncertain ? 150 : b.height,
+        holes,
+        // Ground-referenced source geometry can bound an open object’s reach.
+        // Without a valid bound, retain the conservative 150 m model ceiling.
+        height: shadowHeight,
         uncertain: b.uncertain === true,
         radius,
         center,
@@ -171,8 +185,9 @@ export class Router {
           Math.max(...ring.map((p) => p[1])),
         ],
       });
-      this.maxHeight = Math.max(this.maxHeight, b.uncertain ? 150 : b.height);
+      this.maxHeight = Math.max(this.maxHeight, shadowHeight);
     });
+    if (consumeSource) data.buildings = [];
   }
   snap(point: Point) {
     if (!inCoverage(this.city, point))
@@ -254,7 +269,7 @@ export class Router {
     )
       throw new Error('Calmer-street data is unavailable for this area.');
     if (waypoints.length > MAX_WAYPOINTS) throw new Error('Choose up to three stops.');
-    if (preferWater && (!this.city.capabilities.water || !this.data.water.length))
+    if (preferWater && (!this.city.capabilities.water || !this.water.areas.length))
       throw new Error('Water proximity is unavailable in this pilot.');
     if (![0, 5, 10].includes(extra)) throw new Error('Choose 0, 5 or 10 extra minutes.');
     const date = new Date(departure);
@@ -343,6 +358,7 @@ export class Router {
             [pt[0] + reach, pt[1] + reach],
           ];
           if (
+            (e.modelClearance === undefined || e.modelClearance >= reach) &&
             boundaryPoints.every((p) => inBounds(geographic(this.city, p), this.data.modelBounds))
           ) {
             exposure = 'sun';

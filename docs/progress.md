@@ -1,6 +1,12 @@
 # Progress
 
-## Current milestone: Zurich focus, expanded map and addresses · 0.7.0
+## Current milestone: Zurich north and west · 0.8.0
+
+Expanded Zurich to **57.77 km² (2.65×)**, including Oerlikon and Altstetten. The official municipal polygon now clips the walking boundary; conservative per-edge clearance keeps missing surroundings unknown. Six building archives pass official checksums and source-polygon coverage checks. Open structures, construction and objects without ground geometry remain uncertainty masks. The larger bundle contains 45,795 in-area official addresses and 144 historical vehicle counters at 80 sites. Other cities remain beta. [Source audit, data preparation and real examples](zurich-north-west.md).
+
+Local verification passes **64 unit/model tests**, **five Python source checks**, complete graph/route checks across all four cities, moving shadows, night, sun/water preferences and zero detour. Production build and all five pack hashes pass. All 17 browser scenarios and focused Android offline route/address/count checks pass. Worker-owned geometry and viewport map rendering resolve the larger model’s emulator memory failure. Publication and final hosted verification are in progress.
+
+## Previous milestone: Zurich focus, expanded map and addresses · 0.7.0
 
 Zurich is the primary experience; other integrated cities are beta, with Swiss cities ordered first. The supported Zurich area grows from 8.06 to 21.81 km². Official offline search covers 56,704 existing Zurich addresses, of which 21,318 lie inside the walking boundary. Map clicks now offer start, destination and stop actions, with cancellation and explicit outside-area handling. Source coordinates locate buildings, not verified entrances.
 
@@ -62,4 +68,4 @@ Added five reproducible packs, SHA-256 and size/schema verification, progress/ca
 
 ## Next useful milestone
 
-Keep the next milestone focused on Zurich: field-check address-to-path connections and representative summer/winter shadows, benchmark the expanded map on lower-memory phones, and investigate the additional building tiles needed for Oerlikon and Altstetten. Full-municipality coverage must follow the same source-boundary and complete-route checks. Then improve Basel’s beta with verified building heights before considering another Swiss city. International pilots remain beta. Retain released native map packs and prepare a signed internal tester build; physical-phone testing was deferred at the user’s request. Tree shade, terrain and weather remain separate roadmap items. Help pages provide email feedback without a public posting system.
+Keep the next milestone focused on Zurich: field-check address-to-path connections and representative summer/winter shadows, benchmark the expanded map on lower-memory phones, and investigate newer building geometry against this historical six-tile model. Full-municipality coverage must follow the same source-boundary and complete-route checks. Then improve Basel’s beta with verified building heights before considering another Swiss city. International pilots remain beta. Retain released native map packs and prepare a signed internal tester build; physical-phone testing was deferred at the user’s request. Tree shade, terrain and weather remain separate roadmap items. Help pages provide email feedback without a public posting system.

@@ -56,7 +56,7 @@ test('German phone and tablet layouts, controls, downloads and error recovery', 
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   await page.locator('.downloads-link').click();
   await expect(page.locator('.area-list')).toBeVisible();
-  await expect(page.locator('.area-list')).toContainText('Zürich und innere Quartiere');
+  await expect(page.locator('.area-list')).toContainText('Zürich · Zentrum, Nord und West');
   await page.screenshot({ path: 'docs/screenshots/phone-german-downloads.png', fullPage: true });
   await page.locator('.dialog-close').click();
   await page.setViewportSize({ width: 768, height: 1024 });

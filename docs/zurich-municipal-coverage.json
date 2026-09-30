@@ -1,0 +1,15 @@
+{
+  "source": "https://data.stadt-zuerich.ch/dataset/ktzh_gemeindegrenzen__ogd_",
+  "service": "https://maps.zh.ch/wfs/GemZHWFS",
+  "layer": "gem_grenzen",
+  "bfs": 261,
+  "licence": "CC0",
+  "sourceCrs": "EPSG:2056",
+  "sha256": "02144209daed4a6b297fdfcc30a2a28b811b63c9309f70f9be54da0b8b12e6df",
+  "fetchedAt": "2026-09-30T10:07:59.049625+00:00",
+  "routeAreaKm2": 57.77,
+  "sourceVertices": 8865,
+  "graphSourceNodes": 216291,
+  "clearanceRule": "Whole-edge lower bound: min(endpoint clearance) minus half edge length; source clearance rounded down with an additional 1 m guard. Shade requires clearance >= maximum model shadow reach.",
+  "limitations": "Municipal boundary is a conservative data limit, not a field survey or a claim of complete current buildings."
+}

@@ -198,13 +198,17 @@ try {
   await app.locator('.traffic-counts').scrollIntoViewIfNeeded();
   await app.screenshot({ path: 'docs/screenshots/installed-vehicle-counts.png' });
   await app.getByRole('checkbox', { name: /Verkehrsberuhigt bevorzugen/ }).uncheck();
-  await app.getByRole('combobox', { name: 'Von', exact: true }).fill('Bahnhofstrasse 1');
+  await app.getByRole('combobox', { name: 'Von', exact: true }).fill('Hofwiesenstrasse 350');
   await app.getByRole('combobox', { name: 'Von', exact: true }).press('Enter');
-  await app.getByRole('combobox', { name: 'Nach', exact: true }).fill('Münsterhof 2');
+  await app.getByRole('combobox', { name: 'Nach', exact: true }).fill('Wallisellenstrasse 45');
   await app.getByRole('combobox', { name: 'Nach', exact: true }).press('Enter');
   await expect(app.locator('.spinner')).toHaveCount(0, { timeout: 60000 });
   await expect(app.getByRole('button', { name: /Schnellster Weg/ })).toBeVisible();
   await expect(app.locator('.map-marker')).toHaveCount(2);
+  await expect(app.locator('.map-shell')).toHaveAttribute('data-map-settled', 'true', {
+    timeout: 60000,
+  });
+  await expect(app.locator('.map-failure')).toHaveCount(0);
   installation.addressSearchOffline = true;
   await app.screenshot({ path: 'docs/screenshots/installed-zurich-addresses.png' });
   await app.locator('.map-canvas').click({ position: { x: 320, y: 320 } });

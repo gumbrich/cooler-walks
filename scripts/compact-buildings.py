@@ -8,7 +8,8 @@ from shapely.geometry import Polygon
 from shapely.ops import unary_union
 from shapely import make_valid
 
-path = Path('data/raw/buildings-lv95.json')
+root = Path(json.loads(Path('src/lib/coverage/zurich-extract.json').read_text())['rawDirectory'])
+path = root / 'buildings-lv95.json'
 raw = json.loads(path.read_text())
 groups = defaultdict(list)
 for b in raw:
@@ -22,6 +23,8 @@ for bid, parts in groups.items():
         if polygon.geom_type != 'Polygon' or polygon.area < 1: continue
         result.append({'id':bid+':'+str(i), 'ring':list(polygon.exterior.coords),
           'holes':[list(r.coords) for r in polygon.interiors],
-          'height':parts[0]['height'],'ground':parts[0]['ground'],'tile':parts[0]['tile']})
-Path('data/raw/buildings-compact-lv95.json').write_text(json.dumps(result,separators=(',',':')))
+          'height':parts[0]['height'],'ground':parts[0]['ground'],'tile':parts[0]['tile'], **({'uncertain':True,'shadowHeightBound':parts[0]['height']} if any(b.get('uncertain') for b in parts) else {})})
+# Unknown hulls are already conservative polygons; do not merge them into solid buildings.
+result.extend(json.loads((root / 'unsupported-building-masks-lv95.json').read_text()))
+(root / 'buildings-compact-lv95.json').write_text(json.dumps(result,separators=(',',':')))
 print('Consolidated',len(raw),'triangles into',len(result),'footprints, preserving',sum(len(b['holes']) for b in result),'courtyards')

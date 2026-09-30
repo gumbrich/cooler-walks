@@ -56,6 +56,8 @@ export interface Edge {
   steps: boolean;
   /** Samples at the shared 8 m resolution, from the versioned traffic adapter. */
   traffic?: TrafficClass[];
+  /** Conservative metre clearance from the whole edge to an irregular model-data boundary. */
+  modelClearance?: number;
 }
 export type TrafficClass =
   'major' | 'pedestrian' | 'encounter' | 'tempo30' | 'path' | 'other' | 'unknown';
@@ -64,9 +66,11 @@ export interface Building {
   ring: Point[];
   holes?: Point[][];
   height: number;
-  ground: number;
-  /** Unsupported elevated geometry or conflicting source heights. Never scored as shade. */
+  ground: number | null;
+  /** Unsupported/open geometry or conflicting source heights. Never scored as shade. */
   uncertain?: boolean;
+  /** Verified source geometry can bound an uncertain object’s height; absent means the 150 m model ceiling. */
+  shadowHeightBound?: number;
 }
 export interface Tree {
   id: string;
@@ -104,6 +108,8 @@ export interface PilotData {
   trafficModel?: string;
   vehicleCounts?: VehicleCounts;
 }
+/** The UI retains only search, map points and counter evidence. Heavy graph/model geometry belongs to the routing worker. */
+export type PlannerData = Pick<PilotData, 'places' | 'trees' | 'vehicleCounts'>;
 export interface TrafficCounter {
   id: string;
   siteId: string;

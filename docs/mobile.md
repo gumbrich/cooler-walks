@@ -6,7 +6,7 @@ The user requested a mobile app in addition to the browser. A shared native cont
 
 ## Implemented
 
-- Native projects in `ios/` and `android/`, with application ID `io.github.gumbrich.coolerwalks`, version 0.7.0.
+- Native projects in `ios/` and `android/`, with application ID `io.github.gumbrich.coolerwalks`, version 0.8.0.
 - Direct launch into the planner; selected city and units remembered locally.
 - All four city map/model bundles packaged by default; an optional lite build includes Zurich and downloads other areas. See [downloads.md](downloads.md). Planning does not need a first online visit. Native builds do not register the website service worker.
 - Native one-shot location permission only after “Use my location”; no background tracking. Denial preserves the trip and offers map/search input. A late location response cannot replace inputs after a city change.
@@ -50,7 +50,7 @@ See [Capacitor’s environment requirements](https://capacitorjs.com/docs/gettin
 
 Shared TypeScript, routing, real-data and browser checks cover the planner. Native verification results and platform limitations are recorded in [platform.md](platform.md). Browser viewport screenshots do not count as native-device tests.
 
-Version 0.7.0/build 5 packages the expanded Zurich map and official address index. `npm run test:native:counts` now also verifies address search and routing offline, alongside a fixed Monday 14:00 count reference, German text and beta city-switch cleanup on the dedicated emulator. These checks pass with zero page errors; the current report is `docs/native-counts-validation.json` and the tested APK is `native-artifacts/cooler-walks-0.7.0-debug.apk` locally. Physical phones and current iOS interactions remain untested.
+Version 0.8.0/build 6 packages the 57.77 km² Zurich map and official address index. Worker-owned geometry loading, viewport tree rendering and explicit navigation cleanup address the larger model’s Android memory pressure. `npm run test:native:counts` now also verifies address search and routing offline, alongside a fixed Monday 14:00 count reference, German text and beta city-switch cleanup on the dedicated emulator. These checks pass with zero page errors; the current report is `docs/native-counts-validation.json` and the tested APK is `native-artifacts/cooler-walks-0.8.0-debug.apk` locally. Physical phones and current iOS interactions remain untested.
 
 The Android build workflow uploads a debug APK as a private GitHub Actions artifact (retained for 14 days). It builds `:app:assembleDebug`, not every dependency's distributable library. Local builds use the same target. This is a development-signed APK, not a signed production release.
 

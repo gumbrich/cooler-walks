@@ -1,0 +1,15 @@
+{
+  "checkedAt": "2026-09-30T08:04:40.402Z",
+  "appVersion": "0.7.0",
+  "device": "CoolerWalks_Test Android emulator",
+  "passed": [
+    "Bundled vehicle-count profiles after offline reload",
+    "Real Monday 14:00 reference, three counters and map markers",
+    "German labels preserve the observations",
+    "Official Zurich address search and real routes while offline",
+    "Other launched cities labelled beta",
+    "City change clears counter data and markers"
+  ],
+  "pageErrors": [],
+  "limitations": ["No physical-phone test", "iOS interactions not tested for this update"]
+}

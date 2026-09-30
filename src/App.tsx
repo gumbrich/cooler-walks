@@ -27,12 +27,12 @@ import { cities, cityOptions, getCity } from './lib/cities';
 import { inCoverage } from './lib/coverage';
 import { formatDistance } from './lib/geo';
 import { localNow, timeLabel, toInstant } from './lib/time';
-import type { PilotData, Point, Route, RouteResult } from './lib/types';
+import type { PlannerData, Point, Route, RouteResult } from './lib/types';
 import { PlaceSearch, type Endpoint } from './components/Search';
 import { WalkingMap } from './components/Map';
 import { currentLocation, isNativeApp } from './lib/platform';
 import type { FeatureCollection } from 'geojson';
-import { getArea, loadSavedArea, bundledAreas } from './lib/areas';
+import { getArea, readSavedAreaBytes, bundledAreas } from './lib/areas';
 import { cityForArea } from './lib/area-specs';
 import { AreaDownloads } from './components/AreaDownloads';
 import { TrafficCounts } from './components/TrafficCounts';
@@ -70,7 +70,7 @@ export default function App() {
       ? 'planner'
       : 'home',
   );
-  const [data, setData] = useState<PilotData | null>(null),
+  const [data, setData] = useState<PlannerData | null>(null),
     [dataState, setDataState] = useState('loading'),
     [retry, setRetry] = useState(0);
   const [start, setStart] = useState<Endpoint | null>(null),
@@ -98,8 +98,7 @@ export default function App() {
   const [online, setOnline] = useState(navigator.onLine),
     [installEvent, setInstallEvent] = useState<InstallEvent | null>(null);
   const worker = useRef<Worker | null>(null),
-    requestId = useRef(0),
-    initialized = useRef(false);
+    requestId = useRef(0);
   const locationRequest = useRef(0);
   useEffect(() => {
     locationRequest.current++;
@@ -121,45 +120,32 @@ export default function App() {
     requestId.current++;
     worker.current?.terminate();
     worker.current = null;
-    initialized.current = false;
     if (city.status !== 'pilot') {
       setDataState('review');
       return () => controller.abort();
     }
-    (async () => {
-      if (area) {
-        const saved = await loadSavedArea(area);
-        if (controller.signal.aborted) return;
-        if (saved) {
-          setMapData(saved.map);
-          return saved.data;
-        }
-      }
-      if (!city.dataUrl || (isNativeApp && !(await bundledAreas()).includes(area?.id ?? city.id))) {
-        throw new Error('Download this walking area to open its map and plan offline.');
-      }
-      const r = await fetch(city.dataUrl, {
-        signal: AbortSignal.any([controller.signal, AbortSignal.timeout(30000)]),
-      });
-      if (!r.ok)
-        throw new Error('The pilot data could not load. Check your connection and try again.');
-      return r.json();
-    })()
-      .then((d: PilotData) => {
-        if (controller.signal.aborted) return;
-        if (
-          d.cityId !== city.id ||
-          d.version !== city.dataVersion ||
-          !Array.isArray(d.nodes) ||
-          !Array.isArray(d.edges) ||
-          !d.places?.length ||
-          !Array.isArray(d.water)
-        )
-          throw new Error('Pilot data version mismatch');
-        setData(d);
+    const w = new Worker(new URL('./route-worker.ts', import.meta.url), { type: 'module' });
+    worker.current = w;
+    let planner: PlannerData | null = null;
+    const loadError = (e: unknown) => {
+      if (controller.signal.aborted) return;
+      setDataState('error');
+      setError(e instanceof Error ? e.message : String(e));
+    };
+    w.onmessage = (e) => {
+      if (controller.signal.aborted) return;
+      if (e.data.type === 'planner') {
+        planner = e.data.data;
+        if (e.data.map) setMapData(e.data.map);
+      } else if (e.data.type === 'ready' && planner) {
+        const from = planner.places.find((p) => p.name === city.defaultJourney?.[0]),
+          to = planner.places.find((p) => p.name === city.defaultJourney?.[1]);
+        if (!from || !to) return loadError('Reference places are missing from the city bundle');
+        setData(planner);
+        planner = null;
         setDataState('ready');
-        // The first city request can precede worker activation. Save that city
-        // explicitly once the production worker is ready, including after updates.
+        setStart({ name: from.name, point: from.point });
+        setEnd({ name: to.name, point: to.point });
         if (!isNativeApp && city.dataUrl && import.meta.env.PROD && 'serviceWorker' in navigator) {
           const saveCity = (target: ServiceWorker | null) => {
             if (!controller.signal.aborted)
@@ -170,50 +156,56 @@ export default function App() {
             () => saveCity(navigator.serviceWorker.controller),
             { signal: controller.signal },
           );
-          void navigator.serviceWorker.ready.then((registration) => {
-            saveCity(navigator.serviceWorker.controller ?? registration.active);
-          });
-        }
-        const from = d.places.find((p) => p.name === city.defaultJourney?.[0]),
-          to = d.places.find((p) => p.name === city.defaultJourney?.[1]);
-        if (!from || !to) throw new Error('Reference places are missing from the city bundle');
-        setStart({ name: from.name, point: from.point });
-        setEnd({ name: to.name, point: to.point });
-        const w = new Worker(new URL('./route-worker.ts', import.meta.url), { type: 'module' });
-        worker.current = w;
-        w.onmessage = (e) => {
-          if (e.data.id !== requestId.current) return;
-          setBusy(false);
-          if (e.data.error) {
-            setError(e.data.error);
-            setResult(null);
-          } else {
-            setError('');
-            setResult(e.data.result);
-            setSelected(e.data.result.alternative?.id ?? 'fastest');
-          }
-        };
-        w.onerror = () => {
-          if (worker.current !== w) return;
-          setBusy(false);
-          setError('The route calculator could not start. Reload to try again.');
-        };
-      })
-      .catch((e) => {
-        if (!controller.signal.aborted && e.name !== 'AbortError') {
-          setDataState('error');
-          setError(
-            e instanceof TypeError || e.name === 'TimeoutError'
-              ? 'The pilot data could not load. Check your connection and try again.'
-              : e instanceof Error
-                ? e.message
-                : 'The walking area could not load. Open downloads to try again.',
+          void navigator.serviceWorker.ready.then((registration) =>
+            saveCity(navigator.serviceWorker.controller ?? registration.active),
           );
         }
-      });
-    return () => {
+      } else if (e.data.type === 'load-error') {
+        loadError(e.data.error);
+      } else if (e.data.id === requestId.current) {
+        setBusy(false);
+        if (e.data.error) {
+          setError(e.data.error);
+          setResult(null);
+        } else {
+          setError('');
+          setResult(e.data.result);
+          setSelected(e.data.result.alternative?.id ?? 'fastest');
+        }
+      }
+    };
+    w.onerror = () => {
+      if (controller.signal.aborted) return;
+      setBusy(false);
+      loadError('The route calculator could not start. Reload to try again.');
+    };
+    void (async () => {
+      const bytes = area ? await readSavedAreaBytes(area) : null;
+      if (controller.signal.aborted) return;
+      if (bytes && area) {
+        w.postMessage({ type: 'initialize', city, area, bytes }, [bytes.buffer]);
+      } else {
+        if (!city.dataUrl || (isNativeApp && !(await bundledAreas()).includes(area?.id ?? city.id)))
+          throw new Error('Download this walking area to open its map and plan offline.');
+        if (!controller.signal.aborted)
+          w.postMessage({
+            type: 'initialize',
+            city,
+            url: new URL(city.dataUrl, location.href).href,
+          });
+      }
+    })().catch(loadError);
+    const dispose = () => {
       controller.abort();
-      worker.current?.terminate();
+      w.terminate();
+    };
+    const leaving = (event: PageTransitionEvent) => {
+      if (!event.persisted) dispose();
+    };
+    window.addEventListener('pagehide', leaving);
+    return () => {
+      window.removeEventListener('pagehide', leaving);
+      dispose();
     };
   }, [city, retry]);
   useEffect(() => {
@@ -240,7 +232,6 @@ export default function App() {
     const timer = setTimeout(() => {
       worker.current?.postMessage({
         id,
-        ...(!initialized.current ? { data, city } : {}),
         start: start.point,
         end: end.point,
         departure: instant,
@@ -250,7 +241,6 @@ export default function App() {
         preferCalm,
         sunlight,
       });
-      initialized.current = true;
     }, 180);
     return () => clearTimeout(timer);
   }, [data, start, end, stops, preferWater, preferCalm, sunlight, departure, extra, city]);

@@ -2,7 +2,7 @@
 
 ## Zurich first
 
-Version 0.7.0 makes Zurich the main experience: a 21.81 km² walking area, official address search and direct map selection. Other integrated cities are beta, with Swiss cities listed first. Next, verify entrances and route access in the field, measure performance on ordinary phones and evaluate Oerlikon/Altstetten source tiles. Improve Basel’s beta after the Zurich experience is dependable; international expansion is deferred.
+Version 0.8.0 makes Zurich the main experience: a 57.77 km² walking area, official address search and direct map selection. Other integrated cities are beta, with Swiss cities listed first. Next, verify entrances and route access in the field, measure performance on ordinary phones and assess newer building geometry against the historical regional model. Improve Basel’s beta after the Zurich experience is dependable; international expansion is deferred.
 
 ## Product feedback and priorities
 

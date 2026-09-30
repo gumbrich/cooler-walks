@@ -184,6 +184,122 @@ function fixture(): PilotData {
   };
 }
 describe('route constraints', () => {
+  it('retains routes and water scoring after worker source geometry is released', () => {
+    const d = fixture();
+    d.water = [
+      {
+        id: 'test-water',
+        name: 'Synthetic test water',
+        rings: [
+          [
+            [8.539, 47.373],
+            [8.545, 47.373],
+            [8.545, 47.379],
+            [8.539, 47.379],
+            [8.539, 47.373],
+          ],
+        ],
+      },
+    ];
+    d.buildings = [
+      {
+        id: 'test-building',
+        height: 8,
+        ground: 0,
+        ring: d.water[0].rings[0],
+        holes: [d.water[0].rings[0].map(([x, y]) => [x + 0.01, y])],
+      },
+    ];
+    const original = structuredClone(d);
+    const regular = new Router(d, cities[0]);
+    const owned = structuredClone(d);
+    const compact = new Router(owned, cities[0], true);
+    const calculate = (router: Router) =>
+      router.calculate(
+        original.nodes[0].point,
+        original.nodes[2].point,
+        '2026-06-21T12:00:00Z',
+        5,
+        [],
+        true,
+      );
+    expect(calculate(compact)).toEqual(calculate(regular));
+    expect(d).toEqual(original);
+    expect(owned.buildings).toEqual([]);
+    expect(owned.water).toEqual([]);
+    expect(owned.trees).toEqual([]);
+  });
+  it('uses a real ground-referenced height bound without treating open geometry as solid shade', () => {
+    const d = fixture();
+    d.modelBounds = [8.5, 47.34, 8.58, 47.41];
+    const origin = metric(cities[0], d.nodes[0].point);
+    d.buildings = [
+      {
+        id: 'synthetic-open-structure',
+        height: 3,
+        ground: 0,
+        uncertain: true,
+        ring: [
+          [-50, -30],
+          [250, -30],
+          [250, -20],
+          [-50, -20],
+          [-50, -30],
+        ].map(([x, y]) => geographic(cities[0], [origin[0] + x, origin[1] + y])),
+      },
+    ];
+    const calculate = () =>
+      new Router(d, cities[0]).calculate(
+        d.nodes[0].point,
+        d.nodes[2].point,
+        '2026-06-21T12:00:00Z',
+        0,
+      ).fastest;
+    expect(calculate().unknownMeters).toBeGreaterThan(0);
+    d.buildings[0].shadowHeightBound = 3;
+    expect(calculate().sunMeters).toBeCloseTo(200);
+    expect(calculate().shadeMeters).toBe(0);
+    d.buildings[0].shadowHeightBound = Number.NaN;
+    expect(() => calculate()).toThrow('Invalid uncertainty height bound');
+  });
+  it('keeps missing surroundings unknown inside a rectangular tile envelope', () => {
+    const d = fixture();
+    d.modelBounds = [8.5, 47.34, 8.58, 47.41];
+    const origin = metric(cities[0], d.nodes[0].point);
+    d.buildings = [
+      {
+        id: 'synthetic-distant-block',
+        height: 30,
+        ground: 0,
+        ring: [
+          [400, 400],
+          [410, 400],
+          [410, 410],
+          [400, 410],
+          [400, 400],
+        ].map(([x, y]) => geographic(cities[0], [origin[0] + x, origin[1] + y])),
+      },
+    ];
+    const calculate = () =>
+      new Router(d, cities[0]).calculate(
+        d.nodes[0].point,
+        d.nodes[2].point,
+        '2026-06-21T12:00:00Z',
+        0,
+      );
+    expect(calculate().fastest.sunMeters).toBeCloseTo(200);
+    d.edges.forEach((e) => {
+      e.modelClearance = 0;
+    });
+    const missing = calculate();
+    expect(missing.fastest.unknownMeters).toBeCloseTo(200);
+    expect(missing.fastest.sunMeters).toBe(0);
+    expect(missing.mode).toBe('greenery');
+    d.edges.forEach((e) => {
+      e.modelClearance = 1000;
+    });
+    expect(calculate().fastest.sunMeters).toBeCloseTo(200);
+  });
   it('keeps potential shadows from uncertain structures unknown unless a known object blocks the sun', () => {
     const d = fixture();
     const origin = metric(cities[0], d.nodes[0].point);

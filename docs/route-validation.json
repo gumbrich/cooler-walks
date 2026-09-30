@@ -1,5 +1,5 @@
 {
-  "modelVersion": "flat-buildings-snapshot-v4",
+  "modelVersion": "flat-buildings-snapshot-v5",
   "from": {
     "id": "way-120613500",
     "name": "Bahnhofquai",
@@ -18,14 +18,14 @@
     ],
     "kind": "Mapped path 5 m from place"
   },
-  "version": "zurich-2026-09-30-v6",
-  "verifiedAt": "2026-09-30T07:50:45.103Z",
+  "version": "zurich-2026-09-30-v7",
+  "verifiedAt": "2026-09-30T10:37:31.873Z",
   "results": [
     {
       "date": "2026-06-21T08:00:00Z",
       "extra": 5,
-      "calculationMs": 3415,
-      "mode": "shade",
+      "calculationMs": 1866,
+      "mode": "greenery",
       "candidates": 4,
       "fastest": {
         "meters": 1511.2300000000007,
@@ -33,7 +33,7 @@
         "shade": 672.9520833333329,
         "green": 422.89785714285705,
         "water": 1023.0766666666666,
-        "unknown": 0,
+        "unknown": 87.55,
         "streets": [
           "Bahnhofquai",
           "Walking path",
@@ -52,16 +52,15 @@
         ]
       },
       "alternative": {
-        "meters": 1781.8900000000006,
-        "minutes": 22.273625000000006,
-        "shade": 1327.8756785714295,
-        "green": 955.7050000000008,
-        "water": 308.83,
-        "unknown": 0,
+        "meters": 1559.62,
+        "minutes": 19.49525,
+        "shade": 884.7112698412699,
+        "green": 1244.8999999999996,
+        "water": 151.85999999999999,
+        "unknown": 41.57,
         "streets": [
           "Bahnhofquai",
-          "Walking path",
-          "Rennweg",
+          "Bahnhofplatz",
           "Walking path"
         ]
       }
@@ -69,9 +68,9 @@
     {
       "date": "2026-06-21T12:00:00Z",
       "extra": 5,
-      "calculationMs": 4312,
+      "calculationMs": 1727,
       "mode": "shade",
-      "candidates": 5,
+      "candidates": 4,
       "fastest": {
         "meters": 1511.2300000000007,
         "minutes": 18.89037500000001,
@@ -97,20 +96,16 @@
         ]
       },
       "alternative": {
-        "meters": 1788.3399999999997,
-        "minutes": 22.354249999999997,
-        "shade": 1109.699537878787,
-        "green": 1010.4920000000003,
-        "water": 399.91,
-        "unknown": 0,
+        "meters": 1779.3899999999996,
+        "minutes": 22.242374999999996,
+        "shade": 1098.6824772727261,
+        "green": 1216.4079999999985,
+        "water": 308.83,
+        "unknown": 6.76,
         "streets": [
           "Bahnhofquai",
           "Walking path",
-          "Bahnhofquai",
-          "Walking path",
-          "Lindenhofstrasse",
-          "Oetenbachgasse",
-          "Lindenhofstrasse",
+          "Seidengasse",
           "Walking path"
         ]
       }
@@ -118,16 +113,16 @@
     {
       "date": "2026-06-21T16:00:00Z",
       "extra": 5,
-      "calculationMs": 3323,
-      "mode": "shade",
+      "calculationMs": 1483,
+      "mode": "greenery",
       "candidates": 5,
       "fastest": {
         "meters": 1511.2300000000007,
         "minutes": 18.89037500000001,
-        "shade": 1026.1177380952379,
+        "shade": 960.753988095238,
         "green": 422.89785714285705,
         "water": 1023.0766666666666,
-        "unknown": 0,
+        "unknown": 157.7420833333334,
         "streets": [
           "Bahnhofquai",
           "Walking path",
@@ -146,33 +141,15 @@
         ]
       },
       "alternative": {
-        "meters": 1856.87,
-        "minutes": 23.210874999999998,
-        "shade": 1588.2290909090893,
-        "green": 714.2960000000002,
-        "water": 568.7166666666668,
-        "unknown": 0,
+        "meters": 1559.62,
+        "minutes": 19.49525,
+        "shade": 1081.9185833333331,
+        "green": 1244.8999999999996,
+        "water": 151.85999999999999,
+        "unknown": 247.56900000000005,
         "streets": [
           "Bahnhofquai",
-          "Walking path",
-          "Bahnhofquai",
-          "Walking path",
-          "Beatenplatz",
-          "Beatengasse",
-          "Walking path",
-          "Steps",
-          "Walking path",
-          "Steps",
-          "Walking path",
-          "Lindenhofstrasse",
-          "Oetenbachgasse",
-          "Lindenhofstrasse",
-          "Walking path",
-          "Kaminfegergasse",
-          "Fortunagasse",
-          "Rennweg",
-          "Widdergasse",
-          "Münzplatz",
+          "Bahnhofplatz",
           "Walking path"
         ]
       }
@@ -180,7 +157,7 @@
     {
       "date": "2026-06-21T12:00:00Z",
       "extra": 0,
-      "calculationMs": 109,
+      "calculationMs": 76,
       "mode": "shade",
       "candidates": 1,
       "fastest": {
@@ -212,9 +189,9 @@
     {
       "date": "2026-06-21T12:00:00Z",
       "extra": 10,
-      "calculationMs": 4474,
+      "calculationMs": 1892,
       "mode": "shade",
-      "candidates": 5,
+      "candidates": 4,
       "fastest": {
         "meters": 1511.2300000000007,
         "minutes": 18.89037500000001,
@@ -240,20 +217,16 @@
         ]
       },
       "alternative": {
-        "meters": 1788.3399999999997,
-        "minutes": 22.354249999999997,
-        "shade": 1109.699537878787,
-        "green": 1010.4920000000003,
-        "water": 399.91,
-        "unknown": 0,
+        "meters": 1779.3899999999996,
+        "minutes": 22.242374999999996,
+        "shade": 1098.6824772727261,
+        "green": 1216.4079999999985,
+        "water": 308.83,
+        "unknown": 6.76,
         "streets": [
           "Bahnhofquai",
           "Walking path",
-          "Bahnhofquai",
-          "Walking path",
-          "Lindenhofstrasse",
-          "Oetenbachgasse",
-          "Lindenhofstrasse",
+          "Seidengasse",
           "Walking path"
         ]
       }
@@ -261,7 +234,7 @@
     {
       "date": "2026-06-21T00:00:00Z",
       "extra": 5,
-      "calculationMs": 2633,
+      "calculationMs": 943,
       "mode": "night",
       "candidates": 4,
       "fastest": {

@@ -10,11 +10,11 @@ import type { Bounds, PilotData, Point } from '../src/lib/types';
 const cases: { id: string; old: Bounds; journeys: [string, string][] }[] = [
   {
     id: 'ch-zurich',
-    old: [8.524, 47.359, 8.556, 47.389],
+    old: [8.517, 47.353, 8.57, 47.402],
     journeys: [
-      ['Schaffhauserstrasse 100', 'Röschibachplatz'],
-      ['Dufourstrasse 150', 'Bürkliplatz'],
-      ['Birmensdorferstrasse 93', 'Badenerstrasse 15'],
+      ['Hofwiesenstrasse 350', 'Wallisellenstrasse 45'],
+      ['Altstetterstrasse 145', 'Hohlstrasse 554'],
+      ['Wehntalerstrasse 490', 'Hofwiesenstrasse 350'],
     ],
   },
   {
@@ -90,6 +90,10 @@ for (const entry of cases) {
       assert(route.samples.every((s) => inCoverage(city, s.point)));
       assert(route.minutes <= r.fastest.minutes + 5 + 1e-8);
       assert(route.distance > 200);
+      if (city.id === 'ch-zurich') {
+        assert.equal(r.mode, 'shade', 'New Zurich routes need supported shade estimates');
+        assert(1 - route.unknownMeters / route.distance >= 0.95);
+      }
     }
     assert.equal(router.calculate(from.point, to.point, r.departure, 0).alternative, null);
     return {
@@ -102,6 +106,7 @@ for (const entry of cases) {
         minutes: +walk.minutes.toFixed(1),
         greeneryPercent: Math.round((100 * walk.greenMeters) / walk.distance),
         modelCoveragePercent: Math.round(100 * (1 - walk.unknownMeters / walk.distance)),
+        shadedMeters: Math.round(walk.shadeMeters),
         streets: walk.streets,
       })),
     };

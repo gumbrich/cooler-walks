@@ -126,4 +126,8 @@ The v5 bundle adds 49 directional measuring points from 28 sites, using actual 2
 
 ## Zurich expansion and addresses · 30 September 2026
 
-Version 0.7 uses new bounded OSM/tree extracts and the official CC0 address layer, while re-extracting the cached 2019 building tiles over the verified full model rectangle. [Detailed source/field/coordinate audit and reproduction](zurich-expansion.md); [address hash and exclusion report](zurich-addresses-validation.json). The official address coordinates are label positions, not verified entrances. Earlier source sections describe historical milestones; current bounds and hashes are in the v6 data manifest.
+Version 0.7 uses new bounded OSM/tree extracts and the official CC0 address layer, while re-extracting the cached 2019 building tiles over the verified full model rectangle. [Detailed source/field/coordinate audit and reproduction](zurich-expansion.md); [address hash and exclusion report](zurich-addresses-validation.json). The official address coordinates are label positions, not verified entrances. Earlier source sections describe historical milestones; current bounds and hashes are in the data manifest.
+
+## Zurich north and west · 0.8.0
+
+[Oerlikon/Altstetten source audit and reproducible preparation](zurich-north-west.md) records the six checksum-verified historical tiles, actual polygon-union coverage, new bounded walking/tree extracts, official municipal coverage and source-type uncertainty masks and retained full-city address/traffic sources. The current runtime is `zurich-2026-09-30-v7`; earlier sections document previous extracts.

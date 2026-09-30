@@ -1,3 +1,4 @@
+import zurichExtract from '../src/lib/coverage/zurich-extract.json';
 import fs from 'node:fs';
 import crypto from 'node:crypto';
 import type { FeatureCollection, Point as GeoPoint } from 'geojson';
@@ -6,7 +7,7 @@ import { getCity } from '../src/lib/cities';
 import { inCoverage } from '../src/lib/coverage';
 import { metric, distance } from '../src/lib/geo';
 
-const root = 'data/raw/zurich-expansion';
+const root = zurichExtract.addressDirectory;
 const bytes = fs.readFileSync(`${root}/addresses.json`);
 const raw = JSON.parse(bytes.toString()) as FeatureCollection<GeoPoint>;
 const data = JSON.parse(fs.readFileSync('public/data/zurich.json', 'utf8')) as PilotData;

@@ -1,15 +1,15 @@
 import catalog from '../generated/area-catalog.json';
-import { cityForArea } from './area-specs';
+import { boundedBytes, decodeArea } from './area-codec';
+export { decodeArea } from './area-codec';
 import { areaStore } from './area-store';
 import { isNativeApp } from './platform';
-import type { AreaDescriptor, AreaPayload, AreaStore, SavedArea } from './area-types';
+import type { AreaDescriptor, AreaStore, SavedArea } from './area-types';
 
 export const areas = catalog as AreaDescriptor[];
 export const getArea = (areaId: string, cityId: string) =>
   areas.find((a) => a.id === areaId && a.cityId === cityId) ?? areas.find((a) => a.id === cityId);
 export const sizeLabel = (bytes: number) => `${(bytes / 1e6).toFixed(1)} MB`;
 const packageLimit = 80 * 1024 * 1024;
-const expandedLimit = 200 * 1024 * 1024;
 const configuredOrigin = import.meta.env.VITE_AREA_BASE_URL as string | undefined;
 export function areaDownloadURL(area: AreaDescriptor) {
   if (!configuredOrigin && isNativeApp) return null;
@@ -21,76 +21,6 @@ export function areaDownloadURL(area: AreaDescriptor) {
     throw new Error('Map downloads require HTTPS');
   base.pathname = base.pathname.replace(/\/?$/, '/');
   return new URL(area.file, base).href;
-}
-
-async function boundedBytes(
-  stream: ReadableStream<Uint8Array>,
-  max: number,
-  signal?: AbortSignal,
-  progress?: (bytes: number) => void,
-) {
-  const reader = stream.getReader(),
-    chunks: Uint8Array[] = [];
-  let length = 0;
-  try {
-    while (true) {
-      signal?.throwIfAborted();
-      const { done, value } = await reader.read();
-      if (done) break;
-      length += value.byteLength;
-      if (length > max) throw new Error('The area file is larger than expected');
-      chunks.push(value);
-      progress?.(length);
-    }
-  } catch (error) {
-    await reader.cancel().catch(() => {});
-    throw error;
-  } finally {
-    reader.releaseLock();
-  }
-  const result = new Uint8Array(length);
-  let offset = 0;
-  for (const chunk of chunks) {
-    result.set(chunk, offset);
-    offset += chunk.length;
-  }
-  return result;
-}
-
-export async function decodeArea(bytes: Uint8Array, area: AreaDescriptor): Promise<AreaPayload> {
-  if (
-    bytes.length !== area.bytes ||
-    bytes.length > packageLimit ||
-    area.expandedBytes > expandedLimit
-  )
-    throw new Error('The area download is incomplete');
-  const digest = await crypto.subtle.digest('SHA-256', new Uint8Array(bytes));
-  const hash = [...new Uint8Array(digest)].map((n) => n.toString(16).padStart(2, '0')).join('');
-  if (hash !== area.sha256)
-    throw new Error('The download could not be verified. Please try again.');
-  const output = new Blob([new Uint8Array(bytes)])
-    .stream()
-    .pipeThrough(new DecompressionStream('gzip'));
-  const expanded = await boundedBytes(output, area.expandedBytes);
-  if (expanded.length !== area.expandedBytes)
-    throw new Error('The area file has an unexpected size');
-  const value = JSON.parse(new TextDecoder().decode(expanded)) as AreaPayload;
-  const expected = cityForArea(area);
-  if (
-    value.schema !== 1 ||
-    value.areaId !== area.id ||
-    value.data?.cityId !== area.cityId ||
-    value.data.version !== area.version ||
-    JSON.stringify(value.data.bounds) !== JSON.stringify(expected.bounds) ||
-    !Array.isArray(value.data.nodes) ||
-    !Array.isArray(value.data.edges) ||
-    !value.data.places?.length ||
-    !Array.isArray(value.data.water) ||
-    value.map?.type !== 'FeatureCollection' ||
-    !Array.isArray(value.map.features)
-  )
-    throw new Error('This area is not compatible with this app');
-  return value;
 }
 
 export async function installArea(
@@ -134,14 +64,14 @@ export async function installArea(
   options.progress(1);
 }
 
-export async function loadSavedArea(area: AreaDescriptor) {
+export async function readSavedAreaBytes(area: AreaDescriptor) {
   const saved = (await areaStore().list()).find((entry) => entry.areaId === area.id);
   if (!saved) return null;
   if (saved.sha256 !== area.sha256)
     throw new Error('This saved area needs an update before it can be used with this app.');
   const bytes = await areaStore().read(area.id);
   if (!bytes) throw new Error('The saved area is unavailable. Download it again.');
-  return decodeArea(bytes, area);
+  return bytes;
 }
 
 let bundledPromise: Promise<string[]> | undefined;
