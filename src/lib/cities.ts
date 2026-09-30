@@ -1,7 +1,6 @@
 import type { Bounds, City, Point } from './types';
 import cambridgeCoverage from './coverage/cambridge.json';
 import zurichExtract from './coverage/zurich-extract.json';
-import zurichShade from './coverage/zurich-shade.json';
 import zurichCoverage from './coverage/zurich.json';
 export const cities: City[] = [
   {
@@ -33,11 +32,12 @@ export const cities: City[] = [
     dataUrl: '/data/zurich.json',
     mapUrl: '/data/zurich-map.geojson',
     detailedShade: {
-      dataUrl: '/data/zurich-detailed-shade.json',
-      version: 'zurich-roofs-dtm-2026-09-30-v1',
+      format: 'library',
+      dataUrl: '/data/zurich-shade-library.json',
+      version: 'zurich-roofs-dtm-library-2026-09-30-v2',
       crs: 'EPSG:2056',
       verticalDatum: 'LN02',
-      coverage: zurichShade as Point[],
+      coverage: zurichCoverage[0][0] as Point[],
     },
     providers: ['OpenStreetMap', 'City of Zurich', 'Kanton Zürich', 'swisstopo'],
     translatedNames: { en: 'Zurich', de: 'Zürich' },
@@ -48,7 +48,7 @@ export const cities: City[] = [
     treeNotes:
       'The inventory uses 2021 positions from surveys, screen entry and aerial data. Removals and replacements may be missing. Markers are positions, not measured crowns.',
     buildingNotes:
-      'In the central 3D pilot, actual swisstopo roofs and facades use LiDAR ground elevations. Outside the plum boundary, buildings remain flat-ground extrusions. Buildings date from 2019; ground elevations from 2021–2022. Historical changes and ground-grid detail limit accuracy.',
+      '3D roofs and facades with LiDAR ground elevations cover the supported Zurich walking area. Buildings date from 2019; ground elevations from 2021–2022. Missing ground and bridge heights stay unknown. These estimates still need field validation.',
     sourceSummary:
       'Walking network, tree extract and official addresses fetched 30 September 2026. Building tiles: 2019; tree locations: 2021, prepared 2022. Traffic zones fetched 29 September 2026. Fetch dates are not observation dates.',
     sources: [

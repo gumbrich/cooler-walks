@@ -17,7 +17,7 @@ This file defines the product and development constraints. Follow the user's cur
 
 Current rollout priority: Swiss cities first, with Zurich as the primary experience to polish and expand. Keep Basel and the integrated international cities available as clearly labelled beta pilots. This prioritization does not remove reusable international architecture or permit claims beyond validated coverage.
 
-Current validation agreement: traffic-model development may proceed. The user will field-validate shadow and traffic estimates later; computational checks do not replace that validation. Keep both models explicitly experimental, preserve unresolved evidence in `docs/shadow-validation.md`, and do not claim field accuracy or expand shadow coverage before its validation requirements are met.
+Current validation agreement: traffic-model development may proceed. The user will field-validate shadow and traffic estimates later; computational checks do not replace that validation. Keep both models explicitly experimental, preserve unresolved evidence in `docs/shadow-validation.md`, and do not claim field accuracy. The user has subsequently authorized extending the experimental 3D model library across the supported Zurich walking area where suitable source data is available. Keep the earlier validation hold as an accuracy/release claim limitation, not a claim that wider coverage has been validated.
 
 Working name: **Cooler Walks**. This name describes the product goal; it does not establish a measured temperature benefit.
 

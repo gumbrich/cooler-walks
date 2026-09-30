@@ -843,6 +843,14 @@ small {
   min-width: 0;
   overflow: hidden;
 }
+.native-map-loading {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: var(--paper);
+  color: var(--ink);
+}
 .map-location {
   position: absolute;
   top: 31px;
@@ -3811,4 +3819,8 @@ html[lang='de'] .icon-text {
   .info-dialog h2 {
     font-size: 1.5rem;
   }
+}
+
+.model-swatch-full {
+  border-color: #62816c;
 }

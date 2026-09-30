@@ -85,3 +85,7 @@ The public entry now has one headline, one paragraph, one main action and a comp
 Each route card leads with duration, distance, arrival and the metric for the chosen preference. Coverage and model limitations remain visible; extra street/water figures and the number of evaluated candidates sit in the route details. Traffic evidence uses flat disclosures rather than another stack of filled cards.
 
 On phones, the departure control sits immediately above the comparison. A single “Edit” / “Ändern” button opens the trip editor. There is no decorative drag handle. The shorter map has compact city labels and revised route framing; endpoint markers must stay clear of the header and legend. Resizing preserves the departure and renders exactly one time control. The warm palette, labelled controls, large touch targets and visible keyboard focus remain.
+
+## Expanded Zurich 3D coverage · 0.13.0
+
+The detailed model now shares the existing walking boundary. Removed the smaller plum boundary and retained a compact “3D buildings · experimental” key. Route details keep geographic model share separate from classified sun/shade coverage. A failed tile download offers a plain-language retry that preserves the trip; Help and Privacy explain the on-demand tiles in EN/DE.

@@ -1,6 +1,6 @@
 # Shadow validation gate
 
-The initial audit requested on 30 September 2026 is retained below. The user has since authorized traffic-model development and deferred field validation of shadow and traffic. This does not clear the shadow-validation gate or authorize claims of field accuracy; shadow coverage expansion remains on hold.
+The initial audit requested on 30 September 2026 is retained below. The user has since authorized traffic-model development and deferred field validation of shadow and traffic. The user subsequently requested the experimental 3D library across the supported Zurich walking area. That expansion is documented separately in [shade-library.md](shade-library.md). This does not clear the field-validation gate or authorize claims of field accuracy. The original expansion hold below records the earlier decision; it is not the current scope authorization.
 
 **Latest review:** [original LiDAR and timestamped photographs](shadow-validation-followup.md). All 26 roof flags have been inspected against raw returns; 14 photographic originals have been screened. Two exploratory photo points include one unresolved disagreement. No field observations yet meet the acceptance requirements, so the gate remains **HOLD**. The audit below is the earlier computational baseline, retained unchanged with its source hashes.
 

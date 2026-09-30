@@ -1,11 +1,11 @@
 {
-  "modelVersion": "roof-mesh-ground-arrival-v7",
-  "checkedAt": "2026-09-30T16:05:26.083Z",
+  "modelVersion": "roof-mesh-tiled-ground-arrival-v8",
+  "checkedAt": "2026-09-30T19:29:27.341Z",
   "comparison": "Same source geometry and sample positions, exact arrival time versus departure time. Computed estimates, not field observations.",
   "cities": [
     {
       "city": "ch-zurich",
-      "dataVersion": "zurich-2026-09-30-v9",
+      "dataVersion": "zurich-2026-09-30-v10",
       "from": "Bahnhofquai",
       "to": "Bürkliplatz",
       "results": [
@@ -13,7 +13,7 @@
           "local": "2026-06-21T10:00",
           "departure": "2026-06-21T08:00:00Z",
           "mode": "greenery",
-          "calculationMs": 1942,
+          "calculationMs": 2059,
           "fastest": {
             "distance": 1511.2300000000007,
             "minutes": 18.89037500000001,
@@ -43,7 +43,7 @@
           "local": "2026-06-21T14:00",
           "departure": "2026-06-21T12:00:00Z",
           "mode": "shade",
-          "calculationMs": 1830,
+          "calculationMs": 1902,
           "fastest": {
             "distance": 1511.2300000000007,
             "minutes": 18.89037500000001,
@@ -73,7 +73,7 @@
           "local": "2026-06-21T20:00",
           "departure": "2026-06-21T18:00:00Z",
           "mode": "transition",
-          "calculationMs": 2132,
+          "calculationMs": 2376,
           "fastest": {
             "distance": 1511.2300000000007,
             "minutes": 18.89037500000001,
@@ -103,7 +103,7 @@
           "local": "2026-06-21T21:15",
           "departure": "2026-06-21T19:15:00Z",
           "mode": "transition",
-          "calculationMs": 831,
+          "calculationMs": 867,
           "fastest": {
             "distance": 1511.2300000000007,
             "minutes": 18.89037500000001,
@@ -141,7 +141,7 @@
           "local": "2026-06-21T10:00",
           "departure": "2026-06-21T08:00:00Z",
           "mode": "shade",
-          "calculationMs": 93,
+          "calculationMs": 117,
           "fastest": {
             "distance": 1236.3900000000003,
             "minutes": 15.454875000000005,
@@ -171,7 +171,7 @@
           "local": "2026-06-21T14:00",
           "departure": "2026-06-21T12:00:00Z",
           "mode": "shade",
-          "calculationMs": 84,
+          "calculationMs": 86,
           "fastest": {
             "distance": 1236.3900000000003,
             "minutes": 15.454875000000005,
@@ -201,7 +201,7 @@
           "local": "2026-06-21T20:00",
           "departure": "2026-06-21T18:00:00Z",
           "mode": "transition",
-          "calculationMs": 76,
+          "calculationMs": 75,
           "fastest": {
             "distance": 1236.3900000000003,
             "minutes": 15.454875000000005,
@@ -220,7 +220,7 @@
           "local": "2026-06-21T21:15",
           "departure": "2026-06-21T19:15:00Z",
           "mode": "night",
-          "calculationMs": 45,
+          "calculationMs": 48,
           "fastest": {
             "distance": 1236.3900000000003,
             "minutes": 15.454875000000005,

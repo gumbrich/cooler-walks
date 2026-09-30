@@ -270,7 +270,7 @@ export function WalkingMap({
       m.addSource('detailed-coverage', {
         type: 'geojson',
         data: collection(
-          city.detailedShade
+          city.detailedShade && city.detailedShade.format !== 'library'
             ? [
                 {
                   type: 'Feature',
@@ -695,8 +695,14 @@ export function WalkingMap({
             </span>
             {showCoverage && city.detailedShade && (
               <span className="map-model-key">
-                <i className="model-swatch" />
-                {t('3D model pilot boundary')}
+                <i
+                  className={`model-swatch${city.detailedShade.format === 'library' ? ' model-swatch-full' : ''}`}
+                />
+                {t(
+                  city.detailedShade.format === 'library'
+                    ? '3D buildings · experimental'
+                    : '3D model pilot boundary',
+                )}
               </span>
             )}
           </div>

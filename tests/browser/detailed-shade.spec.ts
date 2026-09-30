@@ -11,7 +11,7 @@ test('central Zurich discloses 3D building coverage, preserves German and clears
   await expect(page.locator('.route-model-note').first()).toContainText(
     '3D roofs + ground elevation · 100% of walk',
   );
-  await expect(page.locator('.map-model-key')).toContainText('3D model pilot');
+  await expect(page.locator('.map-model-key')).toContainText('3D buildings · experimental');
   await page.getByRole('button', { name: /Fastest walk/ }).click();
   await page.locator('.walk-details > summary').click();
   await expect(page.locator('.walk-details')).toContainText(
@@ -41,7 +41,7 @@ test('central Zurich discloses 3D building coverage, preserves German and clears
 });
 
 test('missing detailed source cannot silently substitute the old model', async ({ page }) => {
-  await page.route('**/data/zurich-detailed-shade.json', (route) =>
+  await page.route('**/data/zurich-shade-library.json', (route) =>
     route.fulfill({ status: 503, body: 'Unavailable' }),
   );
   await page.goto('/?view=planner&lang=en');

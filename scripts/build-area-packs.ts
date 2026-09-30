@@ -25,9 +25,19 @@ for (const spec of areaSpecs) {
     city = cityForArea(spec);
   let data: PilotData = JSON.parse(fs.readFileSync(`public${base.dataUrl}`, 'utf8'));
   if (base.detailedShade) {
-    data.detailedShade = JSON.parse(fs.readFileSync(`public${base.detailedShade.dataUrl}`, 'utf8'));
-    if (data.detailedShade?.version !== base.detailedShade.version)
+    const model = JSON.parse(fs.readFileSync(`public${base.detailedShade.dataUrl}`, 'utf8'));
+    if (model.version !== base.detailedShade.version)
       throw new Error('Detailed shadow data version mismatch');
+    if (base.detailedShade.format === 'library') {
+      data.shadeLibrary = model;
+      model.packedTiles = {};
+      for (const tile of data.shadeLibrary!.tiles) {
+        const bytes = fs.readFileSync(`public${tile.url}`);
+        if (crypto.createHash('sha256').update(bytes).digest('hex') !== tile.sha256)
+          throw new Error('Detailed tile checksum mismatch');
+        model.packedTiles[tile.id] = bytes.toString('base64');
+      }
+    } else data.detailedShade = model;
   }
   let map: FeatureCollection = JSON.parse(fs.readFileSync(`public${base.mapUrl}`, 'utf8'));
   if (spec.bounds) {
@@ -109,6 +119,8 @@ for (const spec of areaSpecs) {
   const payload: AreaPayload = { schema: 1, areaId: spec.id, data, map };
   const json = Buffer.from(JSON.stringify(payload));
   const packed = gzipSync(json, { level: 9 });
+  if (packed.length > 80 * 1024 * 1024 || json.length > 200 * 1024 * 1024)
+    throw new Error(`Area pack exceeds verified device budget: ${spec.id}`);
   const sha256 = crypto.createHash('sha256').update(packed).digest('hex');
   const file = `${spec.id}-${sha256.slice(0, 16)}.cwp`;
   fs.writeFileSync(`public/packs/${file}`, packed);

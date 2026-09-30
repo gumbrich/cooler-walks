@@ -1,5 +1,5 @@
 {
-  "modelVersion": "roof-mesh-ground-arrival-v7",
+  "modelVersion": "roof-mesh-tiled-ground-arrival-v8",
   "from": {
     "id": "way-120613500",
     "name": "Bahnhofquai",
@@ -18,13 +18,13 @@
     ],
     "kind": "Mapped path 5 m from place"
   },
-  "version": "zurich-2026-09-30-v9",
-  "verifiedAt": "2026-09-30T16:05:01.074Z",
+  "version": "zurich-2026-09-30-v10",
+  "verifiedAt": "2026-09-30T19:28:51.876Z",
   "results": [
     {
       "date": "2026-06-21T08:00:00Z",
       "extra": 5,
-      "calculationMs": 1952,
+      "calculationMs": 2197,
       "mode": "greenery",
       "candidates": 4,
       "fastest": {
@@ -68,7 +68,7 @@
     {
       "date": "2026-06-21T12:00:00Z",
       "extra": 5,
-      "calculationMs": 1825,
+      "calculationMs": 2069,
       "mode": "shade",
       "candidates": 4,
       "fastest": {
@@ -113,7 +113,7 @@
     {
       "date": "2026-06-21T16:00:00Z",
       "extra": 5,
-      "calculationMs": 1787,
+      "calculationMs": 2094,
       "mode": "greenery",
       "candidates": 5,
       "fastest": {
@@ -157,7 +157,7 @@
     {
       "date": "2026-06-21T12:00:00Z",
       "extra": 0,
-      "calculationMs": 73,
+      "calculationMs": 104,
       "mode": "shade",
       "candidates": 1,
       "fastest": {
@@ -189,7 +189,7 @@
     {
       "date": "2026-06-21T12:00:00Z",
       "extra": 10,
-      "calculationMs": 2065,
+      "calculationMs": 2350,
       "mode": "shade",
       "candidates": 4,
       "fastest": {
@@ -234,7 +234,7 @@
     {
       "date": "2026-06-21T00:00:00Z",
       "extra": 5,
-      "calculationMs": 844,
+      "calculationMs": 910,
       "mode": "night",
       "candidates": 4,
       "fastest": {

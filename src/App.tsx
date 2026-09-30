@@ -65,6 +65,10 @@ export default function App() {
   const area = getArea(areaId, cityId);
   const city = useMemo(() => (area ? cityForArea(area) : getCity(cityId)), [area, cityId]);
   const [mapData, setMapData] = useState<FeatureCollection | null>(null);
+  // On small native devices, indexing the city basemap and loading the 3D
+  // model together can exhaust memory. Finish the first route before starting
+  // the renderer; subsequent edits retain the map as usual.
+  const [mapReady, setMapReady] = useState(!isNativeApp);
   const [view, setView] = useState(() =>
     isNativeApp ||
     new URLSearchParams(location.search).get('view') === 'planner' ||
@@ -74,7 +78,8 @@ export default function App() {
   );
   const [data, setData] = useState<PlannerData | null>(null),
     [dataState, setDataState] = useState('loading'),
-    [retry, setRetry] = useState(0);
+    [retry, setRetry] = useState(0),
+    [routeRetry, setRouteRetry] = useState(0);
   const [start, setStart] = useState<Endpoint | null>(null),
     [end, setEnd] = useState<Endpoint | null>(null);
   const [stops, setStops] = useState<{ id: number; value: Endpoint | null }[]>([]);
@@ -121,6 +126,7 @@ export default function App() {
     const controller = new AbortController();
     setData(null);
     setMapData(null);
+    setMapReady(!isNativeApp);
     setResult(null);
     setStart(null);
     setEnd(null);
@@ -145,6 +151,7 @@ export default function App() {
     let planner: PlannerData | null = null;
     const loadError = (e: unknown) => {
       if (controller.signal.aborted) return;
+      setMapReady(true);
       setDataState('error');
       setError(e instanceof Error ? e.message : String(e));
     };
@@ -183,11 +190,26 @@ export default function App() {
         loadError(e.data.error);
       } else if (e.data.id === requestId.current) {
         setBusy(false);
+        setMapReady(true);
         if (e.data.error) {
           setError(e.data.error);
           setResult(null);
         } else {
           setError('');
+          if (
+            !isNativeApp &&
+            import.meta.env.PROD &&
+            'serviceWorker' in navigator &&
+            e.data.cacheUrls?.length
+          ) {
+            void navigator.serviceWorker.ready.then((registration) => {
+              if (!controller.signal.aborted)
+                (navigator.serviceWorker.controller ?? registration.active)?.postMessage({
+                  type: 'CACHE_CITY',
+                  urls: e.data.cacheUrls,
+                });
+            });
+          }
           setResult(e.data.result);
           setSelected(e.data.result.alternative?.id ?? 'fastest');
         }
@@ -228,6 +250,10 @@ export default function App() {
     };
   }, [city, retry]);
   useEffect(() => {
+    // Map picking and an incomplete/invalid trip must never wait for a result.
+    if (data && (!start || !end || pick !== null || error)) setMapReady(true);
+  }, [data, start, end, pick, error]);
+  useEffect(() => {
     requestId.current++;
     setResult(null);
     if (!data || !start || !end || stops.some((stop) => !stop.value) || !worker.current) {
@@ -262,7 +288,19 @@ export default function App() {
       });
     }, 180);
     return () => clearTimeout(timer);
-  }, [data, start, end, stops, preferWater, preferCalm, sunlight, departure, extra, city]);
+  }, [
+    data,
+    start,
+    end,
+    stops,
+    preferWater,
+    preferCalm,
+    sunlight,
+    departure,
+    extra,
+    city,
+    routeRetry,
+  ]);
   useEffect(() => {
     const a = () => setOnline(true),
       b = () => setOnline(false),
@@ -441,7 +479,7 @@ export default function App() {
                     ? t('Low sun · building estimate unavailable')
                     : result?.mode === 'transition'
                       ? t('Light changes during this walk · comparison unavailable')
-                      : isShade
+                      : isShade || (!result && city.capabilities.buildingShade)
                         ? t('Estimates change with departure time.')
                         : t('Tree proximity does not depend on the time.')}
         </span>
@@ -1055,6 +1093,11 @@ export default function App() {
                         <div>
                           <strong>{t('Route unavailable')}</strong>
                           <p>{t(error)}</p>
+                          {dataState === 'ready' && (
+                            <button onClick={() => setRouteRetry((n) => n + 1)}>
+                              {t('Try again')}
+                            </button>
+                          )}
                           {dataState === 'error' && (
                             <>
                               <button onClick={() => setRetry(retry + 1)}>
@@ -1292,7 +1335,7 @@ export default function App() {
                       {!!chosen.detailedMeters && (
                         <p>
                           {t(
-                            '3D roofs and LiDAR ground elevations cover {share}% of this walk. The remaining area uses flat-ground buildings. Bridges, tunnels and missing ground elevations in the 3D area stay unknown.',
+                            '3D roofs and LiDAR ground elevations cover {share}% of this walk. Bridges, tunnels and missing ground elevations stay unknown. The model has not been field-validated.',
                             { share: Math.round((chosen.detailedMeters / chosen.distance) * 100) },
                           )}
                         </p>
@@ -1336,7 +1379,13 @@ export default function App() {
                 </div>
               </aside>
               <section className="planner-map" aria-label={t('Walking route map')}>
-                <WalkingMap key={`${city.id}:${retry}`} {...mapProps} />
+                {mapReady ? (
+                  <WalkingMap key={`${city.id}:${retry}`} {...mapProps} />
+                ) : (
+                  <div className="native-map-loading" role="status">
+                    {t('Loading the {city} map…', { city: t(city.name) })}
+                  </div>
+                )}
               </section>
               {!compactScreen && <div className="timeline-wrap">{timeControl}</div>}
             </>
@@ -1516,7 +1565,7 @@ export default function App() {
                           <dd>
                             {coveredCity.capabilities.buildingShade
                               ? coveredCity.detailedShade
-                                ? t('3D roofs in central pilot · flat buildings elsewhere')
+                                ? t('3D roofs + ground elevations · experimental')
                                 : t('Buildings only · experimental')
                               : t('Not enabled')}
                           </dd>
@@ -1621,7 +1670,7 @@ export default function App() {
               )}
               <p className="small-copy">
                 {t(
-                  'After a successful online load and cache installation, the saved interface and visited city’s map and route data can work offline. Saved data keeps its source dates; closures and live navigation are not provided.',
+                  'Download a map for complete offline planning. Without a download, the app may only have the map and 3D tiles used on previous trips. Saved data keeps its source dates; closures and live navigation are not provided.',
                 )}
               </p>
             </>

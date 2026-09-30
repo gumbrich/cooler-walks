@@ -1,6 +1,7 @@
 import type { Bounds, Edge, PilotData, Point, City, Route, RouteResult, Sample } from './types';
 import { distance, geographic, gridAzimuth, inBounds, inside, metric, rayHits } from './geo';
 import { DetailedShade } from './detailed-shade';
+import { ShadeLibrary } from './shade-library';
 import { solar, shadowVector } from './solar';
 import {
   isCalmed,
@@ -18,7 +19,7 @@ export const WALK_METERS_PER_MINUTE = 80;
 export const SAMPLE_METERS = 8;
 export const TREE_PROXIMITY_METERS = 15;
 export const MIN_SHADE_COVERAGE = 0.95;
-export const MODEL_VERSION = 'roof-mesh-ground-arrival-v7';
+export const MODEL_VERSION = 'roof-mesh-tiled-ground-arrival-v8';
 export const MAX_WAYPOINTS = 3;
 const CELL = 60;
 class Grid<T> {
@@ -144,7 +145,8 @@ export class Router {
   maxHeight = 0;
   maxRadius = 0;
   gridRotation: number;
-  detailed: DetailedShade | null = null;
+  detailed: DetailedShade | ShadeLibrary | null = null;
+  private detailedOnly = false;
   constructor(
     public data: PilotData,
     public city: City,
@@ -155,7 +157,19 @@ export class Router {
       throw new Error('The city data version does not match. Reload the app.');
     if (!data.nodes.length || !data.edges.length || !data.trees.length)
       throw new Error('The pilot data is incomplete.');
-    if (data.detailedShade) {
+    if (data.shadeLibrary) {
+      if (!city.detailedShade || data.shadeLibrary.version !== city.detailedShade.version)
+        throw new Error('Detailed model version does not match city');
+      const library = new ShadeLibrary(data.shadeLibrary, city.detailedShade);
+      for (const tile of library.data.tiles) {
+        if (data.shadeTiles?.[tile.id]) library.add(tile, data.shadeTiles[tile.id]);
+      }
+      this.detailed = library;
+      if (consumeSource) {
+        delete data.shadeLibrary;
+        delete data.shadeTiles;
+      }
+    } else if (data.detailedShade) {
       if (!city.detailedShade)
         throw new Error('Detailed model coordinate system does not match city');
       this.detailed = new DetailedShade(data.detailedShade, city.detailedShade);
@@ -165,6 +179,14 @@ export class Router {
     this.water = new WaterIndex(city, data.water);
     if (consumeSource) data.water = [];
     this.points = data.nodes.map((n) => metric(city, n.point));
+    // Once a convex library domain covers the entire graph, normal flat
+    // building polygons cannot participate in routing. Keep uncertainty masks
+    // and the height ceiling, but avoid a second city-sized geometry index in
+    // the phone's dedicated worker. Validation tools may retain both models.
+    this.detailedOnly =
+      consumeSource &&
+      this.detailed instanceof ShadeLibrary &&
+      this.points.every((point) => this.detailed!.contains(point));
     this.adjacency = data.nodes.map(() => []);
     data.edges.forEach((e, i) => {
       if (!this.points[e.a] || !this.points[e.b] || !(e.length > 0))
@@ -182,6 +204,9 @@ export class Router {
       const shadowHeight = b.uncertain ? (b.shadowHeightBound ?? 150) : b.height;
       if (!Number.isFinite(shadowHeight) || shadowHeight <= 0 || shadowHeight > 150)
         throw new Error('Invalid uncertainty height bound');
+      this.maxHeight = Math.max(this.maxHeight, shadowHeight);
+      const uncertain = b.uncertain === true || excluded.has(b.id.split(':')[0]);
+      if (this.detailedOnly && !uncertain) return;
       // The dedicated worker owns this payload. Project its arrays in place to
       // avoid a second full set of building coordinates on memory-limited phones.
       const project = (points: Point[]) => {
@@ -203,7 +228,7 @@ export class Router {
         // Ground-referenced source geometry can bound an open object’s reach.
         // Without a valid bound, retain the conservative 150 m model ceiling.
         height: shadowHeight,
-        uncertain: b.uncertain === true || excluded.has(b.id.split(':')[0]),
+        uncertain,
         radius,
         center,
         bounds: [
@@ -223,6 +248,8 @@ export class Router {
   /** Exact solar instant at a sample's expected arrival; no time buckets. */
   exposureAt(point: Point, date: Date, clearance?: number, nonGround = false) {
     const sun = solar(date, point);
+    const pt = metric(this.city, point);
+    const detailed = this.detailed?.contains(pt) === true;
     const lowSun =
       this.city.capabilities.buildingShade &&
       this.maxHeight > 0 &&
@@ -230,9 +257,8 @@ export class Router {
       sun.altitude < Math.PI / 18;
     let exposure: Sample['exposure'] = sun.altitude <= 0 ? 'night' : 'unknown';
     if (exposure === 'night' || lowSun || !this.city.capabilities.buildingShade || !this.maxHeight)
-      return { exposure, lowSun };
-    const pt = metric(this.city, point);
-    const detailed = this.detailed?.contains(pt) === true;
+      return { exposure, lowSun, detailed };
+    if (this.detailedOnly && !detailed) return { exposure, lowSun, detailed };
     const detailedExposure = detailed
       ? nonGround
         ? 'unknown'

@@ -139,3 +139,7 @@ Version 0.7 uses new bounded OSM/tree extracts and the official CC0 address laye
 ## Central Zurich 3D shade model · 0.10.0
 
 The runtime now also uses actual roof/facade surfaces from the existing 2019 CityGML archives and 2021–2022 Canton Zurich LiDAR-derived ground elevations. Detailed coverage is 3.36 km² inside a 5 km² model rectangle. Source CRS, LN02 datum checks, licences, exact export requests, raw hashes, missing-data rules and reproduction commands are documented in [detailed-shade.md](detailed-shade.md) and [detailed-shade-data.json](detailed-shade-data.json). No tree shade or distant terrain-shadow capability is enabled by this addition.
+
+## Zurich 3D library expansion · 0.13.0
+
+The same six 2019 CityGML archives now supply 81 verified tiles covering all 57.77 km² of supported Zurich walking coverage, with a 77.616 km² casting/ground rectangle. Canton Zurich product 555 / WCS DTM 2022 supplies receiver heights; 625,000 cell comparisons against native 25 cm files verify the 2 m delivery. [Source URLs, hashes, counts and exclusions](shade-library-data.json), [ground audit](shade-library-ground-audit.json), [original-polygon audit](shade-library-geometry-audit.json), [preparation and limitations](shade-library.md). Source dates, LN02 datum, no-tree/no-hill restrictions and unresolved field evidence remain explicit.

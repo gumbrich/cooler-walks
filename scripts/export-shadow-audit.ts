@@ -13,7 +13,9 @@ import { loadData } from './lib/load-data';
 const output = 'data/raw/shadow-validation';
 fs.mkdirSync(output, { recursive: true });
 const city = getCity('ch-zurich');
-const data = loadData(city);
+// Keep the original central-pilot source audit reproducible. The expanded
+// library has its own source/seam/route audit; do not overwrite that evidence.
+const data = loadData(city, true);
 const router = new Router(data, city);
 const mesh = new DetailedShade(data.detailedShade!, city.detailedShade!);
 const solarCases = [];

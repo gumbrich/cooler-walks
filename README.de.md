@@ -2,11 +2,11 @@
 
 Fusswege nach geschätztem Schatten, Grün, Wassernähe und Verkehrsberuhigung vergleichen.
 
-**Version 0.12.0:** kürzere, direkte Texte auf Deutsch und Englisch. Kompakte Routenkarten; auf dem Handy steht die Startzeit direkt über den Ergebnissen. Website und native App nutzen dieselbe Oberfläche.
+**Oberfläche seit 0.12.0:** kürzere, direkte Texte auf Deutsch und Englisch. Kompakte Routenkarten; auf dem Handy steht die Startzeit direkt über den Ergebnissen. Website und native App nutzen dieselbe Oberfläche.
 
 **Öffnen:** [Deutsche Website](https://coolerwalks.ch/de/) · [Direkt zum Planer](https://coolerwalks.ch/de/?view=planner) · [English / technische Dokumentation](README.md)
 
-**Validierungsstand:** Das Verkehrsmodell wird weiterentwickelt. Schatten und Verkehr werden später vor Ort geprüft; beide bleiben experimentell. Offene Dach-Datenunterschiede und Schattenbeobachtungen bleiben zu klären, die Schattenabdeckung wird vorerst nicht erweitert. [Prüfergebnisse](docs/shadow-validation.md).
+**Validierungsstand:** Das Verkehrsmodell wird weiterentwickelt. Schatten und Verkehr werden später vor Ort geprüft; beide bleiben experimentell. Offene Dach-Datenunterschiede und Schattenbeobachtungen bleiben zu klären, die gewünschte Erweiterung der 3D-Bibliothek bleibt experimentell. [Prüfergebnisse](docs/shadow-validation.md).
 
 Die [aktuelle Untersuchung](docs/shadow-validation-followup.md) prüft alle 26 auffälligen Dachpunkte anhand der ursprünglichen LiDAR-Messpunkte sowie 14 Foto-Originale und deren Zeitangaben. Drei Fotos kommen für weitere Prüfungen infrage; ein vorläufiger Widerspruch am Münsterhof bleibt offen. Die Genauigkeit im Freien ist damit noch nicht bestätigt.
 
@@ -18,7 +18,7 @@ In Zürich berücksichtigt **Verkehrsberuhigt bevorzugen** offizielle Fussgänge
 
 Wähle Start, Ziel, bis zu drei Zwischenziele, Startzeit und 0/5/10 zusätzliche Minuten. EN/DE wechselt die Sprache, ohne den aktuellen Weg zurückzusetzen. Ortsnamen, Zeitzone der Route und Einheiten sind davon unabhängig. Die Website funktioniert ohne Installation; PWA und native Android/iOS-Entwicklungsprojekte teilen denselben Planer. Es gibt noch keine App-Store-Veröffentlichung.
 
-**3D-Dächer und LiDAR-Bodenhöhen · 0.10.0:** Ein markiertes Pilotgebiet von 3,36 km² im Zentrum verwendet echte Dach- und Fassadenflächen von 4.577 Gebäuden sowie Bodenhöhen aus Laserscandaten. Dadurch berücksichtigt die Schätzung Dachformen und unterschiedliche Höhen entlang des Wegs. Die Routenkarten zeigen den Anteil im detaillierten Modell. Ausserhalb bleiben die bisherigen vereinfachten Gebäude erhalten. Baum- und Geländeschatten sind weiterhin nicht enthalten; eine Überprüfung mit zeitlich dokumentierten Schattenbeobachtungen steht noch aus. [Methode und Daten](docs/detailed-shade.md)
+**3D-Dächer und LiDAR-Bodenhöhen · 0.13.0:** Das detaillierte Modell deckt jetzt alle 57,77 km² des unterstützten Zürcher Gehgebiets ab – etwa 17,2-mal so viel wie zuvor. 81 Kacheln enthalten 41.042 Gebäude einschliesslich der Umgebung, die Schatten hineinwerfen kann. Online werden nur benötigte Kacheln geladen; der vollständige Zürich-Download umfasst 80,2 MB. Die ganze Stadtgemeinde ist damit noch nicht abgedeckt. [Daten und Prüfungen](docs/shade-library.md). Baum- und Geländeschatten sind weiterhin nicht enthalten; eine Überprüfung mit zeitlich dokumentierten Schattenbeobachtungen steht noch aus. [Methode und Daten](docs/detailed-shade.md)
 
 **Schatten unterwegs · 0.9.0:** Der Sonnenstand wird für deine erwartete Ankunft an jedem Prüfpunkt entlang des Wegs berechnet. Jede Alternative berücksichtigt ihre eigene Gehzeit und alle Etappen über Zwischenziele. Die Karten zeigen die erwartete Ankunftszeit. Bei einem Wechsel zu tiefem Sonnenstand oder Dunkelheit entfällt der Schattenvergleich. Grundlage sind 4,8 km/h ohne Pausen oder Wartezeiten. Baum- und Geländeschatten sind weiterhin nicht enthalten.
 

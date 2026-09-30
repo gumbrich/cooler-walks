@@ -5,6 +5,8 @@ const walk = (dir) =>
   fs
     .readdirSync(dir, { withFileTypes: true })
     .flatMap((f) => (f.isDirectory() ? walk(path.join(dir, f.name)) : [path.join(dir, f.name)]));
+// The original central mesh is retained in Git only to reproduce the frozen source audit.
+fs.rmSync('dist/data/zurich-detailed-shade.json', { force: true });
 const files = walk('dist').filter(
   (f) => !f.endsWith('sw.js') && !f.startsWith('dist/packs/') && !path.basename(f).startsWith('_'),
 );
@@ -20,7 +22,7 @@ fs.writeFileSync(
   'dist/sw.js',
   `const CACHE='cooler-walks-${version}';
 const ASSETS=${JSON.stringify(urls)};
-const CITY_ASSETS=${JSON.stringify(files.filter((f) => /^dist\/data\/.*\.(json|geojson)$/.test(f)).map((f) => '/' + f.slice(5)))};
+const CITY_ASSETS=${JSON.stringify(files.filter((f) => /^dist\/data\/.*\.(json|geojson|shade)$/.test(f)).map((f) => '/' + f.slice(5)))};
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('cooler-walks-')&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
 self.addEventListener('message',event=>{

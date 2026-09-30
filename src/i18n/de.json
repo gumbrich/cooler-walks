@@ -481,5 +481,12 @@
   "Within 50 m of mapped water": "Bis zu 50 m von kartierten Gewässern entfernt",
   "more greenery.": "mehr Grün.",
   "Pilot": "Pilotgebiet",
-  "Water proximity does not depend on the time.": "Die Nähe zum Wasser ist unabhängig von der Uhrzeit."
+  "Water proximity does not depend on the time.": "Die Nähe zum Wasser ist unabhängig von der Uhrzeit.",
+  "3D roofs and facades with LiDAR ground elevations cover the supported Zurich walking area. Buildings date from 2019; ground elevations from 2021–2022. Missing ground and bridge heights stay unknown. These estimates still need field validation.": "3D-Dächer und Fassaden mit LiDAR-Bodenhöhen decken das unterstützte Zürcher Gehgebiet ab. Gebäude: Stand 2019, Bodenhöhen: 2021–2022. Fehlende Boden- und Brückenhöhen bleiben unbekannt. Die Schätzungen müssen noch vor Ort geprüft werden.",
+  "3D roofs + ground elevations · experimental": "3D-Dächer + Bodenhöhen · experimentell",
+  "3D buildings · experimental": "3D-Gebäude · experimentell",
+  "3D roofs and LiDAR ground elevations cover {share}% of this walk. Bridges, tunnels and missing ground elevations stay unknown. The model has not been field-validated.": "3D-Dächer und LiDAR-Bodenhöhen decken {share}% dieses Wegs ab. Brücken, Tunnel und fehlende Bodenhöhen bleiben unbekannt. Das Modell wurde noch nicht vor Ort überprüft.",
+  "Download a map for complete offline planning. Without a download, the app may only have the map and 3D tiles used on previous trips. Saved data keeps its source dates; closures and live navigation are not provided.": "Lade eine Karte herunter, um im ganzen Gehgebiet offline zu planen. Ohne Download sind möglicherweise nur die Karte und 3D-Kacheln früherer Wege gespeichert. Gespeicherte Daten behalten ihren ursprünglichen Stand; Sperrungen und Live-Navigation sind nicht enthalten.",
+  "The 3D model could not load. Reconnect or download the Zurich map.": "Das 3D-Modell konnte nicht geladen werden. Stelle die Verbindung wieder her oder lade die Zürich-Karte herunter.",
+  "Try again": "Erneut versuchen"
 }

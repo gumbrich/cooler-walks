@@ -36,7 +36,7 @@ await page.waitForFunction(
   async () =>
     Boolean(await caches.match('/data/zurich.json')) &&
     Boolean(await caches.match('/data/zurich-map.geojson')) &&
-    Boolean(await caches.match('/data/zurich-detailed-shade.json')),
+    Boolean(await caches.match('/data/zurich-shade-library.json')),
 );
 const cdp = await context.newCDPSession(page);
 const manifest = await cdp.send('Page.getAppManifest');
@@ -152,6 +152,13 @@ await expect(page.locator('.map-shell')).toHaveAttribute('data-map-ready', 'true
   timeout: 60000,
 });
 await expect(page.locator('.map-failure')).toHaveCount(0);
+// A visited trip only caches its 3D working set. Exercise the complete 80 MB
+// Zurich download before planning in an unvisited district while offline.
+await page.getByRole('button', { name: 'Offline maps', exact: true }).click();
+const zurichPack = page.locator('[data-area-id="ch-zurich"]');
+await zurichPack.getByRole('button', { name: 'Download area', exact: true }).click();
+await expect(zurichPack.locator('.area-state')).toHaveText('Saved', { timeout: 120000 });
+await page.getByRole('button', { name: 'Close information' }).click();
 let installation = {
   installed: false,
   standalone: false,
@@ -254,6 +261,7 @@ const report = {
   offlineRoutes: true,
   offlineMap: true,
   verifiedAreaDownload: true,
+  verifiedCompleteZurichDownload: true,
   downloadedAreaColdOfflineReload: true,
   offlineWaterPreference: true,
   offlineVisitedCitySwitch: true,

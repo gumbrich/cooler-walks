@@ -115,9 +115,8 @@ export class DetailedShade {
     const indices = decode(data.triangles, 12 * 1_000_000);
     const dem = decode(data.ground, data.width * data.height * 2);
     if (
-      !mesh.length ||
+      (mesh.length === 0) !== (indices.length === 0) ||
       mesh.length % 12 ||
-      !indices.length ||
       indices.length % 12 ||
       dem.length !== data.width * data.height * 2
     )
@@ -183,6 +182,22 @@ export class DetailedShade {
       dy = Math.cos(azimuth);
     const reach = Math.max(0, (this.maxZ - z) / tan);
     const end: Point = [point[0] + dx * reach, point[1] + dy * reach];
+    if (this.intersectsRay(point, z, altitude, azimuth, 0, reach)) return 'shade';
+    return contains(end, this.data.bounds) ? 'sun' : 'unknown';
+  }
+  /** Test only a ray interval, including a ray entering from a neighbouring tile. */
+  intersectsRay(
+    point: Point,
+    z: number,
+    altitude: number,
+    azimuth: number,
+    from: number,
+    to: number,
+  ) {
+    if (to < from || !this.triangles.length) return false;
+    const tan = Math.tan(altitude),
+      dx = Math.sin(azimuth),
+      dy = Math.cos(azimuth);
     const origin = [point[0] - this.data.bounds[0], point[1] - this.data.bounds[1], z];
     const direction = [dx, dy, tan];
     // Exact grid traversal visits the cells crossed by the ray, not a band
@@ -196,12 +211,12 @@ export class DetailedShade {
         if (this.seen[i / 3] === this.query) continue;
         this.seen[i / 3] = this.query;
         const t = rayTriangle(origin, direction, this.vertices, i, this.triangles);
-        if (t !== null && t <= reach + 0.01) return true;
+        if (t !== null && t >= from - 0.01 && t <= to + 0.01) return true;
       }
       return false;
     };
-    let x = Math.floor(origin[0] / CELL),
-      y = Math.floor(origin[1] / CELL);
+    let x = Math.floor((origin[0] + dx * from) / CELL),
+      y = Math.floor((origin[1] + dy * from) / CELL);
     const sx = Math.sign(dx),
       sy = Math.sign(dy);
     const deltaX = sx ? CELL / Math.abs(dx) : Infinity;
@@ -209,11 +224,11 @@ export class DetailedShade {
     let tx = sx ? ((x + (sx > 0 ? 1 : 0)) * CELL - origin[0]) / dx : Infinity;
     let ty = sy ? ((y + (sy > 0 ? 1 : 0)) * CELL - origin[1]) / dy : Infinity;
     while (true) {
-      if (hit(x, y)) return 'shade';
-      if (Math.min(tx, ty) > reach) break;
+      if (hit(x, y)) return true;
+      if (Math.min(tx, ty) > to) break;
       if (Math.abs(tx - ty) < 1e-9) {
         // A corner touches both side cells as well as the diagonal cell.
-        if (hit(x + sx, y) || hit(x, y + sy)) return 'shade';
+        if (hit(x + sx, y) || hit(x, y + sy)) return true;
         x += sx;
         y += sy;
         tx += deltaX;
@@ -226,6 +241,6 @@ export class DetailedShade {
         ty += deltaY;
       }
     }
-    return contains(end, this.data.bounds) ? 'sun' : 'unknown';
+    return false;
   }
 }

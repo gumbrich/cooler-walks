@@ -1,5 +1,5 @@
 {
-  "version": "zurich-2026-09-30-v9",
+  "version": "zurich-2026-09-30-v10",
   "fetchedAt": "2026-09-30",
   "preparedAt": "2026-09-30",
   "routeBounds": [
@@ -886,10 +886,10 @@
     "freshness": "Snapshot, not live search. Catalogue/fetch dates do not establish the individual survey date."
   },
   "detailedShade": {
-    "version": "zurich-roofs-dtm-2026-09-30-v1",
-    "dataUrl": "/data/zurich-detailed-shade.json",
-    "sha256": "0d7efed8059cae99431ea2a32c75905667dbc7c0aca376477cac473cc7a5e51c",
-    "note": "Real 3D roofs/facades with LiDAR receiver elevations in a bounded central pilot. No tree or terrain occlusion."
+    "version": "zurich-roofs-dtm-library-2026-09-30-v2",
+    "dataUrl": "/data/zurich-shade-library.json",
+    "sha256": "681fe96e53409d97b6961c88c58f81d04c781c492a726db39aa869ca56eb2d66",
+    "note": "Real 3D roofs/facades with LiDAR receiver elevations across the supported Zurich walking area. Experimental; no tree or terrain occlusion. Tile checksums are recorded in the library manifest."
   },
   "nonGroundEdges": 5119
 }

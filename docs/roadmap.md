@@ -1,6 +1,6 @@
 # Next milestones
 
-**Current agreement:** improve Zurich traffic modelling now; field-validate shadow and traffic later. Preserve the [shadow evidence and unresolved issues](shadow-validation.md), keep both capabilities experimental, and retain the hold on shadow expansion. Automated checks alone do not establish field accuracy.
+**Current agreement:** improve Zurich traffic modelling now; field-validate shadow and traffic later. Preserve the [shadow evidence and unresolved issues](shadow-validation.md), keep both capabilities experimental, and treat the requested 0.13.0 library expansion as experimental. Automated checks alone do not establish field accuracy.
 
 ## Zurich first
 
@@ -23,9 +23,9 @@ Current delivery adds expanded Zurich coverage, official addresses, direct map a
 
 ## Model and release work
 
-1. **Validate the Zurich estimate in the street.** Audit the reference walks and snapping near rivers, gates and entrances; compare timestamped building shadows with independent observations at morning/noon/evening. Compare the new central 3D/LiDAR-ground pilot against the previous flat blocks and quantify remaining source-age and pavement-location errors. Keep the experimental label until this is done.
+1. **Validate the Zurich estimate in the street.** Audit the reference walks and snapping near rivers, gates and entrances; compare timestamped building shadows with independent observations at morning/noon/evening. Compare the expanded 3D/LiDAR-ground library against the previous flat blocks and quantify remaining source-age and pavement-location errors. Keep the experimental label until this is done.
 2. **Improve source fidelity and runtime size.** Verify OSM snapshot freshness, audit multipolygon water/park geometry, consolidate building fragments, benchmark a lower-end phone and evaluate a smaller binary model bundle. Extend coverage only after full-route validation.
-3. **Improve shadow geometry.** Arrival-time exposure is implemented in 0.9.0, including ordered stops, repeated paths and low-sun/night transitions. Version 0.10.0 adds actual roof/facade intersections and LiDAR ground elevations in a bounded central pilot. Next, validate dated observations, add a wider terrain horizon, then trial LiDAR-derived crowns with local foliage and transmission evidence. Keep experimental limits until independent dated observations establish accuracy. Candidate generation still uses departure-time weights; additional time-dependent search heuristics need a measured benefit and a phone-performance budget.
+3. **Improve shadow geometry.** Arrival-time exposure is implemented in 0.9.0, including ordered stops, repeated paths and low-sun/night transitions. Version 0.13.0 extends actual roof/facade intersections and LiDAR ground elevations across the current Zurich walking area with on-demand verified tiles. Next, validate dated observations, add a wider terrain horizon, then trial LiDAR-derived crowns with local foliage and transmission evidence. Keep experimental limits until independent dated observations establish accuracy. Candidate generation still uses departure-time weights; additional time-dependent search heuristics need a measured benefit and a phone-performance budget.
 4. **Deepen city capabilities.** Prioritize verified Basel building heights after Zurich validation. Cambridge’s vertical units and missing-height masks, and Munich’s uncertain structure masks, remain beta follow-ups. Validate each before enabling or expanding sun/shade. Paris remains a later bounded integration candidate.
 5. **Release hardening.** Physical iPhone/Android install and outdoor usability checks, further languages and RTL layouts, broader browser support, explicit source-update workflow and error telemetry that does not collect precise journeys.
 

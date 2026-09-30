@@ -4,6 +4,7 @@ import { getCity } from '../src/lib/cities';
 import type { PilotData } from '../src/lib/types';
 import extract from '../src/lib/coverage/zurich-extract.json';
 import { DetailedShade } from '../src/lib/detailed-shade';
+import { ShadeLibrary } from '../src/lib/shade-library';
 
 const city = getCity('ch-zurich');
 const osm = fs.readFileSync(`${extract.rawDirectory}/osm.json`);
@@ -28,7 +29,8 @@ if (
 const mesh = JSON.parse(fs.readFileSync(`public${city.detailedShade!.dataUrl}`, 'utf8'));
 if (mesh.version !== city.detailedShade!.version)
   throw new Error('Detailed shade version mismatch');
-new DetailedShade(mesh, city.detailedShade!); // Validate the actual binary payload, dimensions and datum.
+if (city.detailedShade!.format === 'library') new ShadeLibrary(mesh, city.detailedShade!);
+else new DetailedShade(mesh, city.detailedShade!);
 data.version = city.dataVersion!;
 for (const edge of data.edges) {
   if (nonGround.has(edge.way)) edge.nonGround = true;
@@ -41,7 +43,7 @@ data.provenance.detailedShade = {
     .createHash('sha256')
     .update(fs.readFileSync(`public${city.detailedShade!.dataUrl}`))
     .digest('hex'),
-  note: 'Real 3D roofs/facades with LiDAR receiver elevations in a bounded central pilot. No tree or terrain occlusion.',
+  note: 'Real 3D roofs/facades with LiDAR receiver elevations across the supported Zurich walking area. Experimental; no tree or terrain occlusion. Tile checksums are recorded in the library manifest.',
 };
 fs.writeFileSync(`public${city.dataUrl}`, JSON.stringify(data));
 const manifest = JSON.parse(fs.readFileSync('docs/data-manifest.json', 'utf8'));

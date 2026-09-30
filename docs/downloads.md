@@ -4,7 +4,7 @@ Version 0.4 adds an offline-map manager for the website/PWA and the shared nativ
 
 | Area                              | Supported footprint | Compressed download |
 | --------------------------------- | ------------------- | ------------------- |
-| Zurich, central pilot             | 8.06 km²            | 3.8 MB              |
+| Zurich, centre, north & west      | 57.77 km²           | 80.2 MB             |
 | Munich, Old Town, Lehel & gardens | 8.90 km²            | 4.4 MB              |
 | Munich, Old Town essentials       | 2.00 km²            | 2.3 MB              |
 | Cambridge, MA, municipal boundary | 18.46 km²           | 6.8 MB              |
@@ -70,3 +70,7 @@ The current Zurich pack covers the municipality-clipped 57.77 km² area. It is a
 In 0.8.0, opening a saved area transfers its compressed bytes to the routing worker for checksum verification and decoding. This avoids keeping the complete routing model in both the interface and worker. Download installation still verifies the same bounded, checksummed format and retains the existing atomic storage rules.
 
 In 0.9.0, arrival-time shadow calculations are part of the shared application code. The source geometry and all area-pack versions remain unchanged; saved areas work with the new model after the app updates. This does not turn saved traffic profiles into live data.
+
+## Zurich 3D tiles · 0.13.0
+
+The complete Zurich pack embeds all 81 compressed 3D tiles and expands to 184.9 MB. Its 80.2 MB compressed size remains below the 80 MiB decoder limit. Online planning loads only required tiles, while the complete pack supports the full walking area offline. Merely visiting the website caches used tiles and does not establish complete offline coverage. Content-hashed `.shade` files are gzip containers decoded by the app: serve them as ordinary binary files without a `Content-Encoding: gzip` header, like `.cwp` packs. Do not strip the `data/zurich-shade/` directory from native bundles. [Library implementation](shade-library.md).

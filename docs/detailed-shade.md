@@ -1,5 +1,9 @@
 # Zurich: 3D roofs and LiDAR ground elevations
 
+**Current implementation:** version 0.13.0 extends the model across the full supported Zurich walking area using a tiled library. See [shade-library.md](shade-library.md) for current coverage, loading, preparation and checks. The original central pilot described below and its files are retained to reproduce the historical validation audit.
+
+## Original central pilot · 0.10
+
 Version 0.10 adds a bounded **3.36 km²** central Zurich model inside the existing 57.77 km² walking area. The dotted plum boundary identifies its extent. It uses actual roof and facade geometry with a terrain-derived receiver elevation; it does **not** claim tree shade or shadows from distant hills. Outside this pilot the existing flat-ground building model remains available. Other cities keep their existing capabilities and beta status.
 
 ## What changes
@@ -38,7 +42,7 @@ A fresh checkout includes the small derived model and can run with the normal `n
 python3 -m venv .venv-geo
 .venv-geo/bin/pip install -r scripts/requirements-shade.txt
 .venv-geo/bin/python scripts/fetch-zurich-shade.py
-npm run data:prepare:shade
+.venv-geo/bin/python scripts/prepare-detailed-shade.py
 npm run data:packs
 .venv-geo/bin/python scripts/test-detailed-shade.py
 npm run data:verify

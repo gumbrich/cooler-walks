@@ -8,7 +8,10 @@ import { loadData } from './lib/load-data';
 const city = getCity('ch-zurich'),
   data = loadData(city);
 const detailed = new Router(data, city);
-const legacy = new Router({ ...data, detailedShade: undefined }, city);
+const legacy = new Router(
+  { ...data, detailedShade: undefined, shadeLibrary: undefined, shadeTiles: undefined },
+  city,
+);
 const [from, to] = city.defaultJourney!.map((name) => data.places.find((p) => p.name === name)!);
 const results = [];
 for (const departure of ['2026-06-21T08:00:00Z', '2026-06-21T12:00:00Z', '2026-09-30T12:00:00Z']) {
@@ -61,16 +64,13 @@ assert.equal(
   'unknown',
   'Bare earth cannot establish bridge deck height',
 );
-const outside = geographic(city, [2681000, 1249000]);
-assert.deepEqual(
-  detailed.exposureAt(outside, new Date('2026-06-21T12:00:00Z')),
-  legacy.exposureAt(outside, new Date('2026-06-21T12:00:00Z')),
-);
+const expanded = geographic(city, [2681000, 1249000]);
+assert.equal(detailed.exposureAt(expanded, new Date('2026-06-21T12:00:00Z')).detailed, true);
 assert.equal(detailed.calculate(from.point, to.point, '2026-06-21T12:00:00Z', 0).alternative, null);
 const report = {
   model: MODEL_VERSION,
   dataVersion: data.version,
-  geometryVersion: data.detailedShade!.version,
+  geometryVersion: (data.shadeLibrary ?? data.detailedShade)!.version,
   checkedAt: new Date().toISOString(),
   from: from.name,
   to: to.name,

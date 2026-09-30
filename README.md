@@ -4,11 +4,13 @@ Compare walking routes by estimated shade, greenery, nearby water and calmer str
 
 [Deutsch](README.de.md) · English / German website and app interface
 
-**Validation status:** traffic-model development continues; shadow and traffic will be field-validated later. Both remain experimental. Shadow roof-source discrepancies and dated observations are still unresolved; shadow expansion stays on hold. [Audit results](docs/shadow-validation.md).
+**Validation status:** traffic-model development continues; shadow and traffic will be field-validated later. Both remain experimental. Shadow roof-source discrepancies and dated observations are still unresolved; the requested 3D-library expansion remains experimental and does not clear the field-validation hold. [Audit results](docs/shadow-validation.md).
 
 The [latest evidence review](docs/shadow-validation-followup.md) checks all 26 flagged roof samples against raw LiDAR and screens 14 photo originals and their timestamps. Three photos remain promising; an exploratory Münsterhof mismatch is retained for investigation. This does not establish field accuracy.
 
 **Status:** **Zurich is the primary focus**, with an expanded 57.77 km² walking area and official address search. **Basel, Munich and Cambridge (Massachusetts) are beta**. Cambridge follows its municipal boundary; the other cities cover central areas. These remain experimental services, not field-validated citywide routing. Zurich and Munich estimate building sun/shade; Cambridge and Basel offer greenery and water proximity only. Paris remains under review. Tree shade, hill shadows, weather, live closures and navigation are not included.
+
+**3D library 0.13.0:** the whole supported Zurich walking area now uses detailed roofs and ground elevations. [Expansion and checks](docs/shade-library.md).
 
 **Interface 0.12.0:** simpler English/German copy, compact route cards, and departure controls above phone results. The website and native apps share the same interface. [Design notes](docs/design.md#plain-language-and-simpler-layouts--0120).
 
@@ -64,7 +66,7 @@ The upload files are in ignored `release-artifacts/`. `release/site.json` now co
 - Optional **Prefer waterside** routing and a separate measure of distance within 50 m of mapped surface water. Proximity does not establish views, bank access, drinking water or cooling.
 - **Prefer shade / Prefer sun** in Zurich and Munich, including winter dates. Uses actual Swiss or Bavarian building geometry and solar position, sampled at most every 8 m at the expected arrival instant. Unknown coverage cannot count as sunshine. Greenery remains a separate 15 m tree-proximity measure.
 - Four city configurations with local sources, metric coordinate systems, coverage and IANA time zones. Cambridge uses America/New_York, independently of the device’s zone. Local date/time rejects ambiguous or skipped DST times. Metric/imperial display, a responsive phone sheet and source/coverage views are shared.
-- PWA icons, manifest and installation guidance. The interface installs separately; city bundles are cached when visited. A city’s map and routing downloads must finish online before offline use. Source data stays dated; no live updates are implied.
+- PWA icons, manifest and installation guidance. The interface installs separately; city bundles are cached when visited. Zurich now caches 3D tiles as needed; download the full area for complete offline planning. Source data stays dated; no live updates are implied.
 
 Use Bahnhofquai → Bürkliplatz on **21 June 2026**, compare **10:00, 14:00 and 18:00 Europe/Zurich**. The exact computed validation results are stored in [docs/route-validation.json](docs/route-validation.json). At 10:00 and 18:00, the current uncertainty checks withhold the shade comparison and show greenery; the 14:00 shade/sun comparison is supported. No examples use synthetic production routes.
 
@@ -86,7 +88,7 @@ npm run native:open:ios      # open Xcode
 
 Detailed setup, signing boundaries and offline behaviour are in [docs/mobile.md](docs/mobile.md). Actual platform test results are in [docs/platform.md](docs/platform.md). Signing credentials and generated native build outputs are ignored.
 
-Android **0.12.0/build 10** compiled and passed offline traffic-v2 comparison, passing-time counts, 3D-roof shade, address-search/routing, German and beta city-switch checks in the 2 GB Android 16 emulator. Its debug APK is available locally as `native-artifacts/cooler-walks-0.12.0-debug.apk`. The earlier 0.5.0 build passed twelve broader checks covering native permissions, Back/resume, all four cities offline and cold launch. iOS 0.12.0 compiles and archives in GitHub Actions; the previous 0.5.0 build launched in English and German on the local iPhone 16e simulator. iOS count interactions and physical phones remain untested; neither app has been submitted to a store.
+Android **0.13.0/build 11** compiled and passed offline traffic-v2 comparison, passing-time counts, 3D-roof shade, address-search/routing, German and beta city-switch checks in the 2 GB Android 16 emulator. Its debug APK is available locally as `native-artifacts/cooler-walks-0.13.0-debug.apk`. The earlier 0.5.0 build passed twelve broader checks covering native permissions, Back/resume, all four cities offline and cold launch. The last verified iOS CI build/archive is 0.12.0; the previous 0.5.0 build launched in English and German on the local iPhone 16e simulator. iOS count interactions and physical phones remain untested; neither app has been submitted to a store.
 
 ## Develop and verify
 
@@ -122,7 +124,7 @@ The browser makes no third-party search, route, tile or font requests. Your prec
 
 Read [data sources and preparation](docs/data-sources.md), [the model](docs/model.md), [city coverage](docs/cities.md), [design](docs/design.md), [platform checks](docs/platform.md), and [roadmap](docs/roadmap.md).
 
-Version **0.10.0** adds actual 3D roofs/facades and LiDAR ground elevations in a **3.36 km² central Zurich pilot**, marked on the map. Outside it, buildings remain flat-ground extrusions. Route cards show the detailed-model share. This refines roof shape and receiver elevation; tree and distant hill shadows remain excluded. [Method, sources and reproducible preparation](docs/detailed-shade.md). Centreline geometry does not establish which pavement is shaded. The model is not field-validated and provides no measured temperature or comfort benefit.
+Version **0.13.0** extends actual 3D roofs/facades and LiDAR ground elevations across **all 57.77 km² of the supported Zurich walking area**, about 17.2× the original detailed pilot. An 81-tile library includes 41,042 buildings and surrounding shadow casters. Online trips load only needed tiles; the complete Zurich offline pack is 80.2 MB. [Data, architecture and validation](docs/shade-library.md). Route cards distinguish geographic 3D coverage from classified sun/shade coverage. This refines roof shape and receiver elevation; tree and distant hill shadows remain excluded. [Method, sources and reproducible preparation](docs/detailed-shade.md). Centreline geometry does not establish which pavement is shaded. The model is not field-validated and provides no measured temperature or comfort benefit.
 
 Version **0.9.0** evaluates shadows at the expected arrival at every route sample (at most 8 m apart), using each alternative's own walking time and every leg through ordered stops. Cards show estimated arrival times in the city’s zone. Walks crossing low sun or night have a separate explanation; darkness cannot improve a shade recommendation. Walking speed remains 4.8 km/h without pauses or crossing waits. [Method and computed comparisons](docs/arrival-shade-validation.json).
 
@@ -133,6 +135,8 @@ The [Zurich tree-position audit](docs/tree-accuracy.md) checks import fidelity a
 Real route checks for every pilot are in [city-route-validation.json](docs/city-route-validation.json), with expanded-area journeys in [coverage-validation.json](docs/coverage-validation.json). Use the selected city’s default trip on **21 June 2026 at 14:00 local time** as a repeatable starting point. Cambridge’s missing building heights and Basel’s unintegrated height layer are documented in [the coverage register](docs/cities.md).
 
 ## Screenshots
+
+3D library 0.13.0: [Oerlikon desktop](docs/screenshots/desktop-3d-oerlikon.png), [German phone](docs/screenshots/phone-3d-oerlikon-de.png), [Android offline](docs/screenshots/android-3d-oerlikon.png), and [coverage](docs/screenshots/desktop-zurich-coverage.png).
 
 Interface 0.12.0: [desktop entry](docs/screenshots/desktop-lean-entry.png), [German entry](docs/screenshots/desktop-lean-de.png), [phone planner](docs/screenshots/phone-lean-planner.png) and [Android app](docs/screenshots/android-lean-planner.png).
 

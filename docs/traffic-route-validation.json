@@ -1,7 +1,7 @@
 {
   "model": "zurich-street-context-v2",
-  "dataVersion": "zurich-2026-09-30-v9",
-  "dataSha256": "ac763ac2889de015af036ae9f2f8fe91e22baead35cbdb407410b64ec44e83b6",
+  "dataVersion": "zurich-2026-09-30-v10",
+  "dataSha256": "8adce2269f9f8bb99de444b27d9e62f01ff352f20cf1f4949bb42ccb197c5dfb",
   "scope": "Nine real graph-route computations; budget, coverage, breakdown and passing-time invariants. No observed traffic reduction, field accuracy, noise or safety validation is claimed.",
   "cases": [
     {

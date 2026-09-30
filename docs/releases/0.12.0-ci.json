@@ -1,7 +1,7 @@
 {
   "appVersion": "0.12.0",
   "sourceRevision": "12f0f57b7b0de3964ff8e03865d54a60a3bde766",
-  "checkedAt": "2026-09-30T18:26:27.644942+00:00",
+  "checkedAt": "2026-09-30T19:32:04.199009+00:00",
   "runs": [
     {
       "conclusion": "success",
@@ -12,11 +12,11 @@
       "url": "https://github.com/gumbrich/cooler-walks/actions/runs/36757827930"
     },
     {
-      "conclusion": "",
+      "conclusion": "success",
       "databaseId": 36757827895,
       "headSha": "12f0f57b7b0de3964ff8e03865d54a60a3bde766",
       "name": "Checks",
-      "status": "in_progress",
+      "status": "completed",
       "url": "https://github.com/gumbrich/cooler-walks/actions/runs/36757827895"
     },
     {
@@ -42,7 +42,6 @@
     "corrections": "Phone-map toolbar padding corrected for Cambridge; Zurich overview and address checks separated, retaining all assertions and time limits. Four city cases and three Zurich cases pass locally after correction."
   },
   "limitations": [
-    "Final CI run may still be in progress at this snapshot; use its linked run for the current result.",
     "No physical-phone or iOS interaction test for this interface update.",
     "PWA installation last checked in 0.10.0; manifest/install settings unchanged.",
     "Shadow and traffic estimates still await field validation."

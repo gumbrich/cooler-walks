@@ -120,6 +120,7 @@ try {
   );
   await expect(page.locator('.spinner')).toHaveCount(0, { timeout: 60000 });
   await expect(page.getByRole('button', { name: /Schnellster Weg/ })).toBeVisible();
+  await expect(page.locator('.route-model-note').first()).toContainText('100%');
   await expect(page.locator('.route-arrival').first()).toContainText('Ankunft gegen 14:10');
   await expect(page.locator('.map-marker')).toHaveCount(2);
   await page.getByRole('button', { name: 'Routen anzeigen', exact: true }).click();
@@ -143,14 +144,14 @@ try {
         appVersion: JSON.parse(fs.readFileSync('package.json', 'utf8')).version,
         device: 'CoolerWalks_Test Android emulator',
         passed: [
-          'Ground-referenced 3D roofs compute offline in the central Zurich pilot',
+          'Ground-referenced 3D roofs compute after an offline reload in central Zurich',
           'Whole Zurich coverage view renders on the 2 GB emulator',
           'Bundled vehicle-count profiles after offline reload',
           'Real Monday 14:00 reference, three counters and map markers',
           'Each nearby counter selects its own passing hour across the 15:00 boundary while offline',
           'Traffic v2 alternatives and German street-distance breakdown while offline',
           'German labels preserve the observations',
-          'Official Oerlikon address search, real routes and settled map while offline',
+          'Official Oerlikon addresses, real routes with 100% geographic 3D coverage and a settled map while offline',
           'Arrival-time shadow explanation and city-local arrival times in English/German while offline',
           'Other launched cities labelled beta',
           'City change clears counter data and markers',
