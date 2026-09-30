@@ -60,6 +60,8 @@ The upload files are in ignored `release-artifacts/`. `release/site.json` now co
 
 Use Bahnhofquai → Bürkliplatz on **21 June 2026**, compare **10:00, 14:00 and 18:00 Europe/Zurich**. The exact computed validation results are stored in [docs/route-validation.json](docs/route-validation.json). No examples use synthetic production routes.
 
+For vehicle counts, use the same trip on **Monday 22 June 2026 at 14:00**, select **Fastest walk**, then open **Vehicle counts nearby**. Its three directional measuring points show rounded historical means of 310, 1,220 and 360 vehicles/hour for Mondays at 14:00 in 2025. The calmer alternative has no supported nearby counter; its vehicle volume is unknown.
+
 - **Offline maps** manager: versioned, checksum-verified downloads with progress, cancellation, removal and offline reopening. Four larger pilot packs plus a compact 2 km² Munich Old Town pack. Browser IndexedDB and private native filesystem storage share the same format. See [download setup and limitations](docs/downloads.md).
 
 ## Native iOS and Android apps
@@ -76,7 +78,7 @@ npm run native:open:ios      # open Xcode
 
 Detailed setup, signing boundaries and offline behaviour are in [docs/mobile.md](docs/mobile.md). Actual platform test results are in [docs/platform.md](docs/platform.md). Signing credentials and generated native build outputs are ignored.
 
-Android 0.5.0 compiled and passed twelve checks in an Android 16 emulator, including German calmer-route comparison, native permission dismissal, Back/resume, all four cities offline and cold offline launch. The iOS simulator build passes in GitHub Actions and launched in English and German in the local iPhone 16e simulator. Neither platform has been tested on a physical phone or submitted to a store.
+Android **0.6.0/build 4** compiled and passed the focused offline vehicle-count, German and city-switch checks in an Android 16 emulator. Its debug APK is available locally as `native-artifacts/cooler-walks-0.6.0-debug.apk`. The earlier 0.5.0 build passed twelve broader checks covering native permissions, Back/resume, all four cities offline and cold launch. iOS 0.6.0 compiles in GitHub Actions; the previous 0.5.0 build launched in English and German on the local iPhone 16e simulator. iOS count interactions and physical phones remain untested; neither app has been submitted to a store.
 
 ## Develop and verify
 
@@ -122,7 +124,7 @@ Real route checks for every pilot are in [city-route-validation.json](docs/city-
 
 ## Screenshots
 
-Version 0.6.0: [Vehicle counts on desktop](docs/screenshots/desktop-vehicle-counts.png), [German phone](docs/screenshots/phone-vehicle-counts.png) and [missing observations](docs/screenshots/tablet-counts-unavailable.png).
+Version 0.6.0: [Vehicle counts on desktop](docs/screenshots/desktop-vehicle-counts.png), [German phone](docs/screenshots/phone-vehicle-counts.png), [missing observations](docs/screenshots/tablet-counts-unavailable.png), [Android counts](docs/screenshots/android-vehicle-counts.png) and [installed PWA counts](docs/screenshots/installed-vehicle-counts.png).
 
 Version 0.5.0: [German desktop comparison](docs/screenshots/desktop-german-calm.png), [German phone](docs/screenshots/phone-german-calm.png), [German entry](docs/screenshots/desktop-german-home.png), [recoverable error state](docs/screenshots/tablet-german-error.png), [installed German PWA](docs/screenshots/installed-german-app.png), [Android calmer route](docs/screenshots/android-german-calm.png) and [German iOS launch](docs/screenshots/ios-v050-german.png).
 

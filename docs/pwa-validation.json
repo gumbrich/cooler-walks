@@ -1,6 +1,6 @@
 {
   "browser": "154.0.8037.92",
-  "verifiedAt": "2026-09-29T21:34:09.724Z",
+  "verifiedAt": "2026-09-30T06:59:05.330Z",
   "origin": "https://coolerwalks.ch",
   "manifestErrors": [],
   "installabilityErrors": [],
@@ -20,6 +20,7 @@
     "installed": true,
     "standalone": true,
     "germanOffline": true,
+    "vehicleCountsOffline": true,
     "error": null
   },
   "pageErrors": []

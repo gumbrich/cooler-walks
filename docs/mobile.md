@@ -50,6 +50,8 @@ See [Capacitor’s environment requirements](https://capacitorjs.com/docs/gettin
 
 Shared TypeScript, routing, real-data and browser checks cover the planner. Native verification results and platform limitations are recorded in [platform.md](platform.md). Browser viewport screenshots do not count as native-device tests.
 
+Version 0.6.0/build 4 adds Zurich's historical vehicle-count evidence to the shared offline bundle. `npm run test:native:counts` checks a fixed Monday 14:00 reference, German text and city-switch cleanup on the dedicated emulator. Its report is `docs/native-counts-validation.json`; the corresponding tested debug APK is `native-artifacts/cooler-walks-0.6.0-debug.apk` locally. The new iOS build passed CI; count interactions were not retested on iOS or a physical phone.
+
 The Android build workflow uploads a debug APK as a private GitHub Actions artifact (retained for 14 days). It builds `:app:assembleDebug`, not every dependency's distributable library. Local builds use the same target. This is a development-signed APK, not a signed production release.
 
 For native interaction checks, create an isolated Android Studio virtual device named **CoolerWalks_Test**, start it, and install the debug APK. Disconnect other devices before running the test:

@@ -12,6 +12,8 @@ Wähle Start, Ziel, bis zu drei Zwischenziele, Startzeit und 0/5/10 zusätzliche
 
 **Fahrzeugzählungen in der Nähe:** 49 gerichtete Messstellen an 28 Standorten im Zürcher Pilotgebiet. Die Ansicht zeigt historische Durchschnittswerte aus 2025 für den gewählten Wochentag und die Stunde, mit Datenvollständigkeit und nummerierten Kartenmarkern. Keine Live-Daten oder Vorhersage. Die lückenhaften Zählungen ändern die Routenbewertung nicht; fehlende Messstellen bedeuten unbekannten Verkehr. [Quellen und Aufbereitung](docs/vehicle-counts.md)
 
+Zum Ausprobieren: Bahnhofquai → Bürkliplatz, Montag **22. Juni 2026 um 14:00 Uhr**, «Schnellster Weg» wählen und «Fahrzeugzählungen in der Nähe» öffnen. Die drei Messstellen zeigen gerundet 310, 1.220 und 360 Fahrzeuge pro Stunde – historische Montag-14-Uhr-Mittel aus 2025. Für die verkehrsberuhigte Alternative fehlen passende Zählungen; ihr Verkehrsaufkommen bleibt unbekannt.
+
 ## Lokal entwickeln
 
 Node.js 22.12+ und npm; keine API-Schlüssel erforderlich. Aufbereitete Pilotdaten sind enthalten.

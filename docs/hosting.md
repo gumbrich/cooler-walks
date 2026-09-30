@@ -1,6 +1,6 @@
 # Hosting and domain launch
 
-Updated 29 September 2026. **The website is live at https://coolerwalks.ch/ with valid HTTPS. The domain is registered in the owner's Infomaniak account; the Netlify project deploys the private GitHub repository.** The public support email is `knoerzerjohannes@protonmail.com`, as requested. “Cooler Walks” is the public brand; store enrollment and legal publisher details remain separate steps.
+Updated 30 September 2026. **The website is live at https://coolerwalks.ch/ with valid HTTPS. The domain is registered in the owner's Infomaniak account; the Netlify project deploys the private GitHub repository.** The public support email is `knoerzerjohannes@protonmail.com`, as requested. “Cooler Walks” is the public brand; store enrollment and legal publisher details remain separate steps.
 
 ## Recommended launch setup
 
@@ -71,7 +71,7 @@ npm run release:smoke -- https://coolerwalks.ch https://maps.coolerwalks.ch/pack
 Use the actual owned URLs and the matching app checkout/catalogue. For the initial same-origin website deployment, use:
 
 ```sh
-npm run release:smoke -- https://coolerwalks.ch --catalog docs/releases/2026-09-29-v050-netlify-catalog.json
+npm run release:smoke -- https://coolerwalks.ch --catalog docs/releases/2026-09-30-v060-netlify-catalog.json
 PWA_ORIGIN=https://coolerwalks.ch PWA_HEADFUL=1 npm run test:pwa
 RELEASE_ORIGIN=https://coolerwalks.ch npm run test:release:browser
 ```
@@ -92,7 +92,7 @@ No host plan upgrade, R2 account/bucket, store enrollment or app submission was 
 
 The initial live PWA check detected Netlify's automatically injected badge script conflicting with the strict CSP. Disabled **Project configuration → General → Powered by Netlify badge** using the [supported setting](https://docs.netlify.com/manage/projects/powered-by-netlify-badge/). Public HTML was rechecked: only the application's own module script remains. No CSP exception or third-party script allowance was added.
 
-Final custom-domain checks passed on Chrome 154/macOS: actual PWA installation and standalone launch, real pack download, cold offline reopening of Munich Old Town, offline routes/water preference/waypoints, cached-city switching, an honest unvisited-city error and recovery after reconnecting. Three release browser scenarios passed on `https://coolerwalks.ch`: no-JavaScript help/privacy, WCAG A/AA scan and 200% text, production CSP, offline privacy and real 404. Two existing desktop/phone planner scenarios also passed on the identical Netlify deployment. Screenshots were inspected; [PWA report](pwa-validation.json) records the final origin. Physical phone and native-app downloads from the final host remain untested.
+Final custom-domain checks passed on Chrome 154/macOS: actual PWA installation and standalone launch, real pack download, cold offline reopening of Munich Old Town, offline routes/water preference/waypoints, cached-city switching, an honest unvisited-city error and recovery after reconnecting. Three release browser scenarios passed on `https://coolerwalks.ch`: no-JavaScript help/privacy, WCAG A/AA scan and 200% text, production CSP, offline privacy and real 404. Two existing desktop/phone planner scenarios also passed on the identical Netlify deployment. Screenshots were inspected; [PWA report](releases/2026-09-29-v050-pwa.json) records the final origin. Physical phone and native-app downloads from the final host remain untested.
 
 ## Version 0.5.0 release — 29 September 2026
 
@@ -101,3 +101,11 @@ Published source `e0a0795ffa8990a24f87786b572e51c0e5ba1f8b` adds Zurich calmer s
 The live smoke test passed six HTML pages, English/German 404s, security/cache headers, service-worker and manifest checks, and all five compressed pack lengths, SHA-256 hashes and native CORS. The [deployed catalogue](releases/2026-09-29-v050-netlify-catalog.json) is retained. The changed Zurich payload was independently decompressed and compared with source; the four unchanged hashes retain their earlier verified source comparisons. See [payload verification](releases/2026-09-29-v050-hosted-packs.json).
 
 Four release browser scenarios passed on the domain, including no-JavaScript German pages, accessibility and 200% text, production CSP, German offline navigation and a true German 404. Chrome 154.0.8037.92 installed and launched the PWA, cold-reopened a downloaded area offline, switched to German and calculated the Zurich calmer route offline. No page errors occurred. No hosting plan, DNS, billing or store account changes were needed for this update.
+
+## Version 0.6.0 release — 30 September 2026
+
+Published source `5fbde0d55d50e3e4a2584caa9fc247aa3d10b069` adds Zurich historical vehicle-count evidence. [Its verified deployment](https://app.netlify.com/projects/cooler-walks/deploys/6abcb20187b26e0008443eda) completed in 1m 28s. Test-only follow-up `b198a3c62d2af9933dbdc28f4014094a998565e5` was also [published successfully](https://app.netlify.com/projects/cooler-walks/deploys/6abcb851f1e0fe0008719950), in 1m 12s, with unchanged application source. The public catalogue reports `zurich-2026-09-30-v5`. Two earlier attempts failed during the build; the release corrects a cold Vite worker-dependency reload and the time allowance for a two-route integration test. Publishing remains automatic from `main`; no plan, DNS, security or billing changes were made.
+
+The public smoke test passed all six English/German HTML pages, true 404s, security/cache headers, manifests and every one of the five pack lengths, compressed SHA-256 hashes and native CORS checks. The exact [deployed catalogue](releases/2026-09-30-v060-netlify-catalog.json) is retained. The changed Zurich file was independently decompressed and compared with local source; the four unchanged hashes retain their verified comparisons in the [payload record](releases/2026-09-30-v060-hosted-packs.json).
+
+All four release browser scenarios passed against `https://coolerwalks.ch`. Chrome 154.0.8037.92 installed and launched its PWA, reopened the downloaded Munich area offline and displayed the real Monday 14:00 Zurich counter reference in German after an offline reload. Manifest/installability checks and recorded page errors were empty. See [PWA results](pwa-validation.json) and [installed counter view](screenshots/installed-vehicle-counts.png). Android and iOS CI builds passed; focused Android count interactions passed offline in the dedicated emulator. Physical phones and iOS count interactions remain untested.
