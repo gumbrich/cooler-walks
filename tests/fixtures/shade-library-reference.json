@@ -1,0 +1,3781 @@
+{
+  "manifestSha256": "681fe96e53409d97b6961c88c58f81d04c781c492a726db39aa869ca56eb2d66",
+  "cases": [
+    {
+      "district": "Centre",
+      "point": [2683288.970972538, 1247960.4671983942],
+      "ground": 408.4,
+      "altitude": 0.7439506301152398,
+      "azimuth": 1.7599091908708437,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683314.0427094596, 1247896.1497118433],
+      "ground": 408.1,
+      "altitude": 0.7473913774651059,
+      "azimuth": 1.7643782849872565,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683322.6329856594, 1247854.4771688269],
+      "ground": 408.2,
+      "altitude": 0.748931871922155,
+      "azimuth": 1.7663842248212862,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683332.6326936143, 1247824.4357951668],
+      "ground": 408.5,
+      "altitude": 0.7501878372443213,
+      "azimuth": 1.768023808853141,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683331.284922912, 1247788.416218721],
+      "ground": 408.5,
+      "altitude": 0.7515546805761255,
+      "azimuth": 1.7698110680396197,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683328.374232747, 1247750.2045504197],
+      "ground": 408.3,
+      "altitude": 0.7529398902111686,
+      "azimuth": 1.771625792781635,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683323.4266851204, 1247710.620930294],
+      "ground": 408.6,
+      "altitude": 0.7543894157834399,
+      "azimuth": 1.7735289461137789,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683319.006710719, 1247669.0424673096],
+      "ground": 408.6,
+      "altitude": 0.7558976693910712,
+      "azimuth": 1.7755136067752015,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683321.0385855823, 1247641.5269248611],
+      "ground": 408.5,
+      "altitude": 0.7569212872934163,
+      "azimuth": 1.7768632912565898,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683324.456415086, 1247586.4677058195],
+      "ground": 406.8,
+      "altitude": 0.7590932058614162,
+      "azimuth": 1.7797347780697226,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683315.123155284, 1247545.7462600796],
+      "ground": 407.3,
+      "altitude": 0.7606925854568048,
+      "azimuth": 1.7818555248039114,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683309.827935653, 1247501.9360267592],
+      "ground": 408.8,
+      "altitude": 0.7622824844496294,
+      "azimuth": 1.7839683224950764,
+      "expected": "shade"
+    },
+    {
+      "district": "Centre",
+      "point": [2683312.365014448, 1247470.5680077465],
+      "ground": 409.1,
+      "altitude": 0.7634214777871007,
+      "azimuth": 1.7854851599583437,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683315.7950166906, 1247446.609659571],
+      "ground": 407.7,
+      "altitude": 0.7642966572385953,
+      "azimuth": 1.7866525506845157,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683320.628600378, 1247443.4363399362],
+      "ground": 406.9,
+      "altitude": 0.764509996108062,
+      "azimuth": 1.7869378747069138,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683314.656107269, 1247395.9841588468],
+      "ground": 407.4,
+      "altitude": 0.7662500468042592,
+      "azimuth": 1.7892646062594053,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683298.632532121, 1247391.311196439],
+      "ground": 408.3,
+      "altitude": 0.7668554893139878,
+      "azimuth": 1.7900780599397172,
+      "expected": "shade"
+    },
+    {
+      "district": "Centre",
+      "point": [2683283.429460714, 1247359.963493785],
+      "ground": 410.1,
+      "altitude": 0.768203202655934,
+      "azimuth": 1.7918874954326938,
+      "expected": "shade"
+    },
+    {
+      "district": "Centre",
+      "point": [2683297.7016634266, 1247329.4998404146],
+      "ground": 408.1,
+      "altitude": 0.769520398522963,
+      "azimuth": 1.793659727239368,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683302.0890582064, 1247312.2626642257],
+      "ground": 408,
+      "altitude": 0.7702466390086947,
+      "azimuth": 1.7946383989110266,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683299.463149911, 1247282.2370166546],
+      "ground": 408.2,
+      "altitude": 0.7713335408143978,
+      "azimuth": 1.796104445917371,
+      "expected": "shade"
+    },
+    {
+      "district": "Centre",
+      "point": [2683286.49897626, 1247250.9263493805],
+      "ground": 408.6,
+      "altitude": 0.7725514334237926,
+      "azimuth": 1.797750769604918,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683277.295708579, 1247223.9717267493],
+      "ground": 408.6,
+      "altitude": 0.7735762367055453,
+      "azimuth": 1.7991385084881102,
+      "expected": "shade"
+    },
+    {
+      "district": "Centre",
+      "point": [2683277.2126315683, 1247203.0051351052],
+      "ground": 408.6,
+      "altitude": 0.7743484412735177,
+      "azimuth": 1.8001855912014626,
+      "expected": "shade"
+    },
+    {
+      "district": "Centre",
+      "point": [2683265.9010232803, 1247181.5416396707],
+      "ground": 408.4,
+      "altitude": 0.7753419788140611,
+      "azimuth": 1.8015359052076565,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683245.4561568256, 1247148.9528933954],
+      "ground": 409,
+      "altitude": 0.7767427633663282,
+      "azimuth": 1.8034430524265523,
+      "expected": "shade"
+    },
+    {
+      "district": "Centre",
+      "point": [2683243.837190445, 1247123.0416702195],
+      "ground": 409.3,
+      "altitude": 0.7778380153827301,
+      "azimuth": 1.8049372107215145,
+      "expected": "shade"
+    },
+    {
+      "district": "Centre",
+      "point": [2683244.1098603667, 1247105.7800260906],
+      "ground": 409,
+      "altitude": 0.7784597185829139,
+      "azimuth": 1.805786048993524,
+      "expected": "shade"
+    },
+    {
+      "district": "Centre",
+      "point": [2683250.484933513, 1247073.886333846],
+      "ground": 409,
+      "altitude": 0.7796268569385997,
+      "azimuth": 1.8073820828206617,
+      "expected": "shade"
+    },
+    {
+      "district": "Centre",
+      "point": [2683256.3418729804, 1247050.783506064],
+      "ground": 408.9,
+      "altitude": 0.7804962103895134,
+      "azimuth": 1.8085730806247546,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683259.7356786085, 1247028.6621105222],
+      "ground": 408.8,
+      "altitude": 0.7813072506173661,
+      "azimuth": 1.8096856651735755,
+      "expected": "shade"
+    },
+    {
+      "district": "Centre",
+      "point": [2683269.2001518547, 1246985.4409902957],
+      "ground": 408.7,
+      "altitude": 0.7828920426129357,
+      "azimuth": 1.8118641170767382,
+      "expected": "shade"
+    },
+    {
+      "district": "Centre",
+      "point": [2683273.8733274587, 1246952.507385961],
+      "ground": 408.6,
+      "altitude": 0.7841683086764176,
+      "azimuth": 1.8136231676991865,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683267.5893385587, 1246936.8354205748],
+      "ground": 408.7,
+      "altitude": 0.7850078357473864,
+      "azimuth": 1.8147836482208557,
+      "expected": "shade"
+    },
+    {
+      "district": "Centre",
+      "point": [2683273.9377132156, 1246899.7517425257],
+      "ground": 408.5,
+      "altitude": 0.7863779377940708,
+      "azimuth": 1.8166787341275696,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683283.4278413355, 1246855.550850298],
+      "ground": 408.5,
+      "altitude": 0.7879941814622112,
+      "azimuth": 1.8189199833827743,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683292.9024933996, 1246813.233360904],
+      "ground": 408.3,
+      "altitude": 0.7895438063905627,
+      "azimuth": 1.821074818332321,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683307.3535261448, 1246798.2642053787],
+      "ground": 408.3,
+      "altitude": 0.790550284607211,
+      "azimuth": 1.8224801401052282,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683323.6106907525, 1246802.5568323266],
+      "ground": 408.4,
+      "altitude": 0.7911517771601363,
+      "azimuth": 1.8233239609116818,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683342.966222654, 1246800.5939991986],
+      "ground": 408.8,
+      "altitude": 0.7920121233213163,
+      "azimuth": 1.8245308012643544,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683347.4940839545, 1246788.3097098717],
+      "ground": 409.1,
+      "altitude": 0.792483571097443,
+      "azimuth": 1.825190550225808,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683354.2829148034, 1246777.2136264306],
+      "ground": 409,
+      "altitude": 0.7929485379559653,
+      "azimuth": 1.82584198194258,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683341.651648007, 1246766.307749562],
+      "ground": 408.8,
+      "altitude": 0.7936527380307098,
+      "azimuth": 1.8268309405348837,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683307.4304924975, 1246754.4942466381],
+      "ground": 408.2,
+      "altitude": 0.794938458581551,
+      "azimuth": 1.828641566115009,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683310.3925069915, 1246727.1713368066],
+      "ground": 407.6,
+      "altitude": 0.7960408772810635,
+      "azimuth": 1.830193630401978,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683256.8959168354, 1247951.0820875876],
+      "ground": 408.1,
+      "altitude": 0.7442551866719983,
+      "azimuth": 1.7603032693394602,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683221.228608967, 1247946.500278096],
+      "ground": 408,
+      "altitude": 0.7455827394604339,
+      "azimuth": 1.7620295007906914,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683180.593750902, 1247962.6476419733],
+      "ground": 408.1,
+      "altitude": 0.747156726998064,
+      "azimuth": 1.7640845769101634,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683165.5212647025, 1247955.158480896],
+      "ground": 407.9,
+      "altitude": 0.7480130733386451,
+      "azimuth": 1.7652016846904022,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683160.97546595, 1247943.7807849078],
+      "ground": 407.8,
+      "altitude": 0.7484554950035506,
+      "azimuth": 1.765777988897036,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683155.634386404, 1247930.407135932],
+      "ground": 407.6,
+      "altitude": 0.748974857201215,
+      "azimuth": 1.76645499902881,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683148.9716389934, 1247901.489219482],
+      "ground": 407.8,
+      "altitude": 0.7500557451614069,
+      "azimuth": 1.7678654548502954,
+      "expected": "shade"
+    },
+    {
+      "district": "Centre",
+      "point": [2683135.3691869467, 1247860.702730216],
+      "ground": 408.3,
+      "altitude": 0.751607082044945,
+      "azimuth": 1.7698939504936184,
+      "expected": "shade"
+    },
+    {
+      "district": "Centre",
+      "point": [2683120.3786491076, 1247815.7394605607],
+      "ground": 408.8,
+      "altitude": 0.753316416568522,
+      "azimuth": 1.772134547409913,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683106.585685941, 1247774.371211034],
+      "ground": 409.1,
+      "altitude": 0.7548883243358248,
+      "azimuth": 1.7742001477047367,
+      "expected": "shade"
+    },
+    {
+      "district": "Centre",
+      "point": [2683094.6259753606, 1247738.49996991],
+      "ground": 409.3,
+      "altitude": 0.7562510628867083,
+      "azimuth": 1.7759949079783215,
+      "expected": "shade"
+    },
+    {
+      "district": "Centre",
+      "point": [2683080.691952178, 1247696.6806167164],
+      "ground": 410,
+      "altitude": 0.7578388603928111,
+      "azimuth": 1.7780908269092197,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683069.276722304, 1247668.3426015647],
+      "ground": 410.1,
+      "altitude": 0.7590001375566441,
+      "azimuth": 1.7796274304832618,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683058.211572533, 1247635.704336781],
+      "ground": 410.6,
+      "altitude": 0.7602408087401754,
+      "azimuth": 1.7812717057867686,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683043.7646041494, 1247595.3704578723],
+      "ground": 411,
+      "altitude": 0.7617961727478417,
+      "azimuth": 1.7833376758722632,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683042.2138998113, 1247583.1341799437],
+      "ground": 411,
+      "altitude": 0.7623184444054013,
+      "azimuth": 1.7840327801564395,
+      "expected": "shade"
+    },
+    {
+      "district": "Centre",
+      "point": [2683040.2893733806, 1247551.5469442161],
+      "ground": 410.9,
+      "altitude": 0.7634820546408212,
+      "azimuth": 1.7855826797966674,
+      "expected": "shade"
+    },
+    {
+      "district": "Centre",
+      "point": [2683042.867195296, 1247504.8597871677],
+      "ground": 410.7,
+      "altitude": 0.765165466415668,
+      "azimuth": 1.7878298010180014,
+      "expected": "shade"
+    },
+    {
+      "district": "Centre",
+      "point": [2683044.797853429, 1247464.6609425042],
+      "ground": 410.5,
+      "altitude": 0.7666136111548005,
+      "azimuth": 1.7897676981867832,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683047.379665346, 1247420.6758424002],
+      "ground": 410.3,
+      "altitude": 0.7681985443294136,
+      "azimuth": 1.791893812338199,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683055.4979876396, 1247384.6609542358],
+      "ground": 410.3,
+      "altitude": 0.769528236953236,
+      "azimuth": 1.793681891756745,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683066.4888566397, 1247343.5039727585],
+      "ground": 410.1,
+      "altitude": 0.771060234026178,
+      "azimuth": 1.795746871265419,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683077.19653132, 1247301.3637043429],
+      "ground": 410,
+      "altitude": 0.7726231321027467,
+      "azimuth": 1.7978588056738107,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683086.5748715764, 1247262.1960259106],
+      "ground": 409.8,
+      "altitude": 0.7740708476471294,
+      "azimuth": 1.799819915706817,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683097.3348717117, 1247225.3898684643],
+      "ground": 409.7,
+      "altitude": 0.7754490186915584,
+      "azimuth": 1.8016912767503992,
+      "expected": "shade"
+    },
+    {
+      "district": "Centre",
+      "point": [2683108.1461340864, 1247184.4064592936],
+      "ground": 409.6,
+      "altitude": 0.7769704563609633,
+      "azimuth": 1.8037620932514666,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683117.9323850847, 1247149.6148456356],
+      "ground": 409.3,
+      "altitude": 0.7782708642303412,
+      "azimuth": 1.8055362959850132,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683127.3972640047, 1247137.064196704],
+      "ground": 409.5,
+      "altitude": 0.7788478854192803,
+      "azimuth": 1.8063253659701324,
+      "expected": "shade"
+    },
+    {
+      "district": "Centre",
+      "point": [2683132.663977197, 1247113.9728937268],
+      "ground": 409.1,
+      "altitude": 0.7797540082242147,
+      "azimuth": 1.8075653701011756,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683131.61405373, 1247098.3494709067],
+      "ground": 409.2,
+      "altitude": 0.7803374554151825,
+      "azimuth": 1.8083646667404885,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683140.492214967, 1247058.373985118],
+      "ground": 409,
+      "altitude": 0.7818059520208377,
+      "azimuth": 1.8103797826332115,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683151.8092915933, 1247016.40846545],
+      "ground": 408.9,
+      "altitude": 0.7833627695456622,
+      "azimuth": 1.8125216943897253,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683163.4697910603, 1246973.1557285786],
+      "ground": 408.8,
+      "altitude": 0.7849664579337252,
+      "azimuth": 1.8147340803940295,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683175.3755925563, 1246928.983550849],
+      "ground": 408.6,
+      "altitude": 0.7866033343637894,
+      "azimuth": 1.816998575850797,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683185.533217078, 1246891.9475505408],
+      "ground": 408.5,
+      "altitude": 0.7879766428946079,
+      "azimuth": 1.8189034259259287,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683197.9613686805, 1246847.8207007796],
+      "ground": 408.2,
+      "altitude": 0.7896151059625955,
+      "azimuth": 1.821182064453798,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683209.4879575246, 1246814.926296977],
+      "ground": 408.2,
+      "altitude": 0.7908963965376694,
+      "azimuth": 1.8229688936467194,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683218.266544633, 1246781.167716216],
+      "ground": 408,
+      "altitude": 0.7921417927415373,
+      "azimuth": 1.8247091823421975,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683222.7935279557, 1246763.2792081407],
+      "ground": 407.9,
+      "altitude": 0.7928784253057369,
+      "azimuth": 1.8257407930648106,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683217.3906809897, 1246749.660068509],
+      "ground": 407.8,
+      "altitude": 0.7935763017192948,
+      "azimuth": 1.8267201167979408,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683231.962940422, 1246741.8810481403],
+      "ground": 407.8,
+      "altitude": 0.7942654410514779,
+      "azimuth": 1.8276895322173086,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683244.609014629, 1246726.8289490135],
+      "ground": 407.8,
+      "altitude": 0.7950107996769604,
+      "azimuth": 1.8287379794057184,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683274.040880258, 1246712.6112789018],
+      "ground": 407.7,
+      "altitude": 0.7964361963256071,
+      "azimuth": 1.8307500325344737,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683300.7127536237, 1246723.5827503903],
+      "ground": 407.6,
+      "altitude": 0.7975639873182434,
+      "azimuth": 1.832350468684189,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683287.171301908, 1248006.0227566315],
+      "ground": 407.9,
+      "altitude": 1.138154147565428,
+      "azimuth": 3.4389945855115216,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683279.0562801305, 1247977.5016317903],
+      "ground": 408.1,
+      "altitude": 1.1378200646397603,
+      "azimuth": 3.4424521773036045,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683288.970972538, 1247960.4671983942],
+      "ground": 408.4,
+      "altitude": 1.1375176310903952,
+      "azimuth": 3.445533332972961,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683322.044348972, 1247954.8888037389],
+      "ground": 408.3,
+      "altitude": 1.1371273745945545,
+      "azimuth": 3.4494363233976117,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683318.6912533366, 1247931.22423101],
+      "ground": 408.4,
+      "altitude": 1.1368309581595684,
+      "azimuth": 3.4523964938401694,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683314.0427094596, 1247896.1497118433],
+      "ground": 408.1,
+      "altitude": 1.136410725144694,
+      "azimuth": 3.456545730330767,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683322.6329856594, 1247854.4771688269],
+      "ground": 408.2,
+      "altitude": 1.1359049718556586,
+      "azimuth": 3.4614641429805837,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683332.6326936143, 1247824.4357951668],
+      "ground": 408.5,
+      "altitude": 1.1354864355732435,
+      "azimuth": 3.465468462466124,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683331.284922912, 1247788.416218721],
+      "ground": 408.5,
+      "altitude": 1.1350257736643146,
+      "azimuth": 3.4698204746833103,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683328.374232747, 1247750.2045504197],
+      "ground": 408.3,
+      "altitude": 1.1345531590573148,
+      "azimuth": 3.474224739882493,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683323.4266851204, 1247710.620930294],
+      "ground": 408.6,
+      "altitude": 1.134052046116719,
+      "azimuth": 3.478826676519351,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683319.006710719, 1247669.0424673096],
+      "ground": 408.6,
+      "altitude": 1.1335236628123049,
+      "azimuth": 3.4836076152039746,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683321.0385855823, 1247641.5269248611],
+      "ground": 408.5,
+      "altitude": 1.1331608837236427,
+      "azimuth": 3.4868479458535053,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683324.456415086, 1247586.4677058195],
+      "ground": 406.8,
+      "altitude": 1.1323797110625944,
+      "azimuth": 3.4937114178133553,
+      "expected": "shade"
+    },
+    {
+      "district": "Centre",
+      "point": [2683315.123155284, 1247545.7462600796],
+      "ground": 407.3,
+      "altitude": 1.1317950153008796,
+      "azimuth": 3.498755222251312,
+      "expected": "shade"
+    },
+    {
+      "district": "Centre",
+      "point": [2683309.827935653, 1247501.9360267592],
+      "ground": 408.8,
+      "altitude": 1.1312064029984243,
+      "azimuth": 3.5037603147229928,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683312.365014448, 1247470.5680077465],
+      "ground": 409.1,
+      "altitude": 1.130779887962988,
+      "azimuth": 3.507340477691287,
+      "expected": "shade"
+    },
+    {
+      "district": "Centre",
+      "point": [2683315.7950166906, 1247446.609659571],
+      "ground": 407.7,
+      "altitude": 1.130449398926168,
+      "azimuth": 3.510088275510992,
+      "expected": "shade"
+    },
+    {
+      "district": "Centre",
+      "point": [2683320.628600378, 1247443.4363399362],
+      "ground": 406.9,
+      "altitude": 1.1303680598349999,
+      "azimuth": 3.5107576501276907,
+      "expected": "shade"
+    },
+    {
+      "district": "Centre",
+      "point": [2683314.656107269, 1247395.9841588468],
+      "ground": 407.4,
+      "altitude": 1.1297026915238124,
+      "azimuth": 3.516211431022079,
+      "expected": "shade"
+    },
+    {
+      "district": "Centre",
+      "point": [2683298.632532121, 1247391.311196439],
+      "ground": 408.3,
+      "altitude": 1.1294670599629901,
+      "azimuth": 3.5181063359893128,
+      "expected": "shade"
+    },
+    {
+      "district": "Centre",
+      "point": [2683283.429460714, 1247359.963493785],
+      "ground": 410.1,
+      "altitude": 1.12894184984947,
+      "azimuth": 3.522319910127273,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683297.7016634266, 1247329.4998404146],
+      "ground": 408.1,
+      "altitude": 1.1284231414334973,
+      "azimuth": 3.5264316930199233,
+      "expected": "shade"
+    },
+    {
+      "district": "Centre",
+      "point": [2683302.0890582064, 1247312.2626642257],
+      "ground": 408,
+      "altitude": 1.1281349224058326,
+      "azimuth": 3.528696018059693,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683299.463149911, 1247282.2370166546],
+      "ground": 408.2,
+      "altitude": 1.1277011832800352,
+      "azimuth": 3.532081286174194,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683286.49897626, 1247250.9263493805],
+      "ground": 408.6,
+      "altitude": 1.1272104576900996,
+      "azimuth": 3.5358693011052975,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683277.295708579, 1247223.9717267493],
+      "ground": 408.6,
+      "altitude": 1.1267941017102299,
+      "azimuth": 3.5390524917086528,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683277.2126315683, 1247203.0051351052],
+      "ground": 408.6,
+      "altitude": 1.1264783617456482,
+      "azimuth": 3.5414484931253623,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683265.9010232803, 1247181.5416396707],
+      "ground": 408.4,
+      "altitude": 1.126068530722288,
+      "azimuth": 3.5445278692459774,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683245.4561568256, 1247148.9528933954],
+      "ground": 409,
+      "altitude": 1.1254859398660249,
+      "azimuth": 3.548863184913835,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683243.837190445, 1247123.0416702195],
+      "ground": 409.3,
+      "altitude": 1.125026346526781,
+      "azimuth": 3.552247725657836,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683244.1098603667, 1247105.7800260906],
+      "ground": 409,
+      "altitude": 1.1247642478700914,
+      "azimuth": 3.5541669129576303,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683250.484933513, 1247073.886333846],
+      "ground": 409,
+      "altitude": 1.1242689539973627,
+      "azimuth": 3.557765864435169,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683256.3418729804, 1247050.783506064],
+      "ground": 408.9,
+      "altitude": 1.1238972354052705,
+      "azimuth": 3.5604431696055454,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683259.7356786085, 1247028.6621105222],
+      "ground": 408.8,
+      "altitude": 1.123548466356303,
+      "azimuth": 3.562938275718191,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683269.2001518547, 1246985.4409902957],
+      "ground": 408.7,
+      "altitude": 1.1228612112452871,
+      "azimuth": 3.567806431932443,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683273.8733274587, 1246952.507385961],
+      "ground": 408.6,
+      "altitude": 1.1223019180081777,
+      "azimuth": 3.5717197314330638,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683267.5893385587, 1246936.8354205748],
+      "ground": 408.7,
+      "altitude": 1.1219303551418895,
+      "azimuth": 3.5742903183683397,
+      "expected": "shade"
+    },
+    {
+      "district": "Centre",
+      "point": [2683273.9377132156, 1246899.7517425257],
+      "ground": 408.5,
+      "altitude": 1.1213212731184983,
+      "azimuth": 3.5784797748471573,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683283.4278413355, 1246855.550850298],
+      "ground": 408.5,
+      "altitude": 1.1205955784762502,
+      "azimuth": 3.5834123869399908,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683292.9024933996, 1246813.233360904],
+      "ground": 408.3,
+      "altitude": 1.1198924199020084,
+      "azimuth": 3.588131963133574,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683307.3535261448, 1246798.2642053787],
+      "ground": 408.3,
+      "altitude": 1.119429885586881,
+      "azimuth": 3.5911919639036545,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683323.6106907525, 1246802.5568323266],
+      "ground": 408.4,
+      "altitude": 1.1191499233933446,
+      "azimuth": 3.593018493421717,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683342.966222654, 1246800.5939991986],
+      "ground": 408.8,
+      "altitude": 1.1187488824942218,
+      "azimuth": 3.5956287087428795,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683347.4940839545, 1246788.3097098717],
+      "ground": 409.1,
+      "altitude": 1.1185299580789159,
+      "azimuth": 3.5970580068605362,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683354.2829148034, 1246777.2136264306],
+      "ground": 409,
+      "altitude": 1.1183132371211129,
+      "azimuth": 3.598466756797253,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683341.651648007, 1246766.307749562],
+      "ground": 408.8,
+      "altitude": 1.1179827907930202,
+      "azimuth": 3.6005985437808623,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683307.4304924975, 1246754.4942466381],
+      "ground": 408.2,
+      "altitude": 1.117374337736045,
+      "azimuth": 3.6044854132407402,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683310.3925069915, 1246727.1713368066],
+      "ground": 407.6,
+      "altitude": 1.1168515319366223,
+      "azimuth": 3.607813175952352,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683287.171301908, 1248006.0227566315],
+      "ground": 407.9,
+      "altitude": 1.138154147565428,
+      "azimuth": 3.4389945855115216,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683279.0562801305, 1247977.5016317903],
+      "ground": 408.1,
+      "altitude": 1.1378200646397603,
+      "azimuth": 3.4424521773036045,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683288.970972538, 1247960.4671983942],
+      "ground": 408.4,
+      "altitude": 1.1375176310903952,
+      "azimuth": 3.445533332972961,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683322.044348972, 1247954.8888037389],
+      "ground": 408.3,
+      "altitude": 1.1371273745945545,
+      "azimuth": 3.4494363233976117,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683318.6912533366, 1247931.22423101],
+      "ground": 408.4,
+      "altitude": 1.1368309581595684,
+      "azimuth": 3.4523964938401694,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683296.3141861665, 1247918.1613552913],
+      "ground": 408.4,
+      "altitude": 1.1364374302822289,
+      "azimuth": 3.4562527379159094,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683298.988740188, 1247848.4958655082],
+      "ground": 408.2,
+      "altitude": 1.1354080133130369,
+      "azimuth": 3.4661676959489314,
+      "expected": "shade"
+    },
+    {
+      "district": "Centre",
+      "point": [2683298.0803722637, 1247817.606445313],
+      "ground": 408.4,
+      "altitude": 1.1349545875751066,
+      "azimuth": 3.4704354387462097,
+      "expected": "shade"
+    },
+    {
+      "district": "Centre",
+      "point": [2683261.912589614, 1247804.7140173248],
+      "ground": 408.5,
+      "altitude": 1.134463195948047,
+      "azimuth": 3.474964601523084,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683255.8921120143, 1247767.3510199871],
+      "ground": 408.5,
+      "altitude": 1.133985561991307,
+      "azimuth": 3.47934161499453,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683242.903910805, 1247750.093007578],
+      "ground": 408.8,
+      "altitude": 1.1336486848106242,
+      "azimuth": 3.482379674653171,
+      "expected": "shade"
+    },
+    {
+      "district": "Centre",
+      "point": [2683232.5876662377, 1247747.0348442788],
+      "ground": 408.6,
+      "altitude": 1.1334987093020388,
+      "azimuth": 3.4837162918296944,
+      "expected": "shade"
+    },
+    {
+      "district": "Centre",
+      "point": [2683196.3702699197, 1247719.4293383402],
+      "ground": 408.8,
+      "altitude": 1.1329140636446011,
+      "azimuth": 3.4888964079460636,
+      "expected": "shade"
+    },
+    {
+      "district": "Centre",
+      "point": [2683181.502136663, 1247703.9529935275],
+      "ground": 408.7,
+      "altitude": 1.1326162405800029,
+      "azimuth": 3.4915057128147393,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683180.840346646, 1247672.6706625808],
+      "ground": 409.2,
+      "altitude": 1.1322076898757705,
+      "azimuth": 3.4950657408857357,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683172.7830330604, 1247668.3544751154],
+      "ground": 409.2,
+      "altitude": 1.1320368086975992,
+      "azimuth": 3.4965312472898487,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683160.003255276, 1247664.828213379],
+      "ground": 409.5,
+      "altitude": 1.131848836557516,
+      "azimuth": 3.498134103773968,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683145.765509498, 1247657.545435955],
+      "ground": 409.5,
+      "altitude": 1.1315600830303372,
+      "azimuth": 3.500583940994137,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683134.469767931, 1247649.453340965],
+      "ground": 409.6,
+      "altitude": 1.1312946494136225,
+      "azimuth": 3.5028220306006124,
+      "expected": "shade"
+    },
+    {
+      "district": "Centre",
+      "point": [2683102.8260772415, 1247650.19649303],
+      "ground": 410.1,
+      "altitude": 1.130865872793707,
+      "azimuth": 3.5063874396086985,
+      "expected": "shade"
+    },
+    {
+      "district": "Centre",
+      "point": [2683079.856202631, 1247627.1146074745],
+      "ground": 410.7,
+      "altitude": 1.1303609452206902,
+      "azimuth": 3.5105699767208027,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683066.4568113917, 1247591.1962954337],
+      "ground": 411.1,
+      "altitude": 1.129834635529077,
+      "azimuth": 3.514891088943213,
+      "expected": "shade"
+    },
+    {
+      "district": "Centre",
+      "point": [2683047.9322046754, 1247579.3336783743],
+      "ground": 410.9,
+      "altitude": 1.1294688915906967,
+      "azimuth": 3.5178450934943553,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683040.2893733806, 1247551.5469442161],
+      "ground": 410.9,
+      "altitude": 1.1289787193989267,
+      "azimuth": 3.521780242903303,
+      "expected": "shade"
+    },
+    {
+      "district": "Centre",
+      "point": [2683042.867195296, 1247504.8597871677],
+      "ground": 410.7,
+      "altitude": 1.128317896101013,
+      "azimuth": 3.5270276700389513,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683044.797853429, 1247464.6609425042],
+      "ground": 410.5,
+      "altitude": 1.1277424644801455,
+      "azimuth": 3.531533374739015,
+      "expected": "shade"
+    },
+    {
+      "district": "Centre",
+      "point": [2683047.379665346, 1247420.6758424002],
+      "ground": 410.3,
+      "altitude": 1.1271052898287413,
+      "azimuth": 3.536455891923169,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683055.4979876396, 1247384.6609542358],
+      "ground": 410.3,
+      "altitude": 1.1265647055470636,
+      "azimuth": 3.5405781498542592,
+      "expected": "shade"
+    },
+    {
+      "district": "Centre",
+      "point": [2683066.4888566397, 1247343.5039727585],
+      "ground": 410.1,
+      "altitude": 1.125935092115987,
+      "azimuth": 3.5453196270097664,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683077.19653132, 1247301.3637043429],
+      "ground": 410,
+      "altitude": 1.1252854552674143,
+      "azimuth": 3.5501474250235625,
+      "expected": "shade"
+    },
+    {
+      "district": "Centre",
+      "point": [2683086.5748715764, 1247262.1960259106],
+      "ground": 409.8,
+      "altitude": 1.1246770926236658,
+      "azimuth": 3.554611105270873,
+      "expected": "shade"
+    },
+    {
+      "district": "Centre",
+      "point": [2683097.3348717117, 1247225.3898684643],
+      "ground": 409.7,
+      "altitude": 1.124091997122562,
+      "azimuth": 3.5588527295544776,
+      "expected": "shade"
+    },
+    {
+      "district": "Centre",
+      "point": [2683108.1461340864, 1247184.4064592936],
+      "ground": 409.6,
+      "altitude": 1.1234394363663343,
+      "azimuth": 3.5635269264798706,
+      "expected": "shade"
+    },
+    {
+      "district": "Centre",
+      "point": [2683117.9323850847, 1247149.6148456356],
+      "ground": 409.3,
+      "altitude": 1.1228761023984069,
+      "azimuth": 3.567514928705814,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683127.3972640047, 1247137.064196704],
+      "ground": 409.5,
+      "altitude": 1.1226240566287915,
+      "azimuth": 3.5692823331834433,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683132.663977197, 1247113.9728937268],
+      "ground": 409.1,
+      "altitude": 1.1222267325445414,
+      "azimuth": 3.5720553355116054,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683131.61405373, 1247098.3494709067],
+      "ground": 409.2,
+      "altitude": 1.121969713833887,
+      "azimuth": 3.5738390783300997,
+      "expected": "shade"
+    },
+    {
+      "district": "Centre",
+      "point": [2683140.492214967, 1247058.373985118],
+      "ground": 409,
+      "altitude": 1.1213184240619352,
+      "azimuth": 3.5783227012736227,
+      "expected": "shade"
+    },
+    {
+      "district": "Centre",
+      "point": [2683151.8092915933, 1247016.40846545],
+      "ground": 408.9,
+      "altitude": 1.1206208462414842,
+      "azimuth": 3.583066650915861,
+      "expected": "shade"
+    },
+    {
+      "district": "Centre",
+      "point": [2683163.4697910603, 1246973.1557285786],
+      "ground": 408.8,
+      "altitude": 1.1198946939395003,
+      "azimuth": 3.5879433486947367,
+      "expected": "shade"
+    },
+    {
+      "district": "Centre",
+      "point": [2683175.3755925563, 1246928.983550849],
+      "ground": 408.6,
+      "altitude": 1.119145630685073,
+      "azimuth": 3.592910221392492,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683185.533217078, 1246891.9475505408],
+      "ground": 408.5,
+      "altitude": 1.1185109883959978,
+      "azimuth": 3.597069287589529,
+      "expected": "shade"
+    },
+    {
+      "district": "Centre",
+      "point": [2683197.9613686805, 1246847.8207007796],
+      "ground": 408.2,
+      "altitude": 1.1177465074932589,
+      "azimuth": 3.602021230532945,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683209.4879575246, 1246814.926296977],
+      "ground": 408.2,
+      "altitude": 1.1171429074705848,
+      "azimuth": 3.605885930824279,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683218.266544633, 1246781.167716216],
+      "ground": 408,
+      "altitude": 1.116551802495667,
+      "azimuth": 3.6096362790583716,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683222.7935279557, 1246763.2792081407],
+      "ground": 407.9,
+      "altitude": 1.1161997240675228,
+      "azimuth": 3.6118512922300927,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683217.3906809897, 1246749.660068509],
+      "ground": 407.8,
+      "altitude": 1.1158640999155094,
+      "azimuth": 3.613947908179775,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683231.962940422, 1246741.8810481403],
+      "ground": 407.8,
+      "altitude": 1.115530459006117,
+      "azimuth": 3.6160159036155535,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683244.609014629, 1246726.8289490135],
+      "ground": 407.8,
+      "altitude": 1.1151690283281703,
+      "azimuth": 3.61825087096916,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683274.040880258, 1246712.6112789018],
+      "ground": 407.7,
+      "altitude": 1.1144710423892,
+      "azimuth": 3.6225179170054145,
+      "expected": "sun"
+    },
+    {
+      "district": "Centre",
+      "point": [2683300.7127536237, 1246723.5827503903],
+      "ground": 407.6,
+      "altitude": 1.113911039812972,
+      "azimuth": 3.6258875576100675,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683320.3991531567, 1251668.013726219],
+      "ground": 441.9,
+      "altitude": 0.7417709327450138,
+      "azimuth": 1.757755091393421,
+      "expected": "shade"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683299.4408431393, 1251651.9682122741],
+      "ground": 441.9,
+      "altitude": 0.7427926879649573,
+      "azimuth": 1.7590783678015665,
+      "expected": "shade"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683318.0386408023, 1251636.2667900277],
+      "ground": 441.9,
+      "altitude": 0.743727183106548,
+      "azimuth": 1.7602900850672494,
+      "expected": "shade"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683353.0960098743, 1251615.5953948481],
+      "ground": 441.8,
+      "altitude": 0.7452039394405274,
+      "azimuth": 1.7622090724891446,
+      "expected": "shade"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683387.1931493445, 1251595.5911943205],
+      "ground": 441.8,
+      "altitude": 0.746637766716425,
+      "azimuth": 1.7640763065284595,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683417.6816152795, 1251578.6987167262],
+      "ground": 441.8,
+      "altitude": 0.7479040818528645,
+      "azimuth": 1.765728855214001,
+      "expected": "shade"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683440.8425201066, 1251567.257864717],
+      "ground": 442,
+      "altitude": 0.7488838352115171,
+      "azimuth": 1.767009893929793,
+      "expected": "shade"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683473.832099979, 1251580.9943782184],
+      "ground": 442.1,
+      "altitude": 0.750180852626305,
+      "azimuth": 1.7687140445745981,
+      "expected": "shade"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683510.3261118634, 1251594.6042394957],
+      "ground": 442.4,
+      "altitude": 0.7515910310031553,
+      "azimuth": 1.7705704631686323,
+      "expected": "shade"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683548.207847415, 1251608.7559389612],
+      "ground": 442.8,
+      "altitude": 0.7530545217201904,
+      "azimuth": 1.7725013252994912,
+      "expected": "shade"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683577.995094257, 1251617.8422169571],
+      "ground": 443.4,
+      "altitude": 0.7542525211673656,
+      "azimuth": 1.7740846933080572,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683597.474684914, 1251617.216491447],
+      "ground": 443.3,
+      "altitude": 0.7551154621318028,
+      "azimuth": 1.775225693736698,
+      "expected": "shade"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683620.883237926, 1251628.7016448341],
+      "ground": 442.2,
+      "altitude": 0.7560812660643358,
+      "azimuth": 1.776506822759642,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683664.6842253124, 1251635.4007595417],
+      "ground": 439.9,
+      "altitude": 0.7576834541519487,
+      "azimuth": 1.7786340181891986,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683699.532164121, 1251639.5709415486],
+      "ground": 438.2,
+      "altitude": 0.7589571716113781,
+      "azimuth": 1.7803287082550632,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683732.8481509355, 1251644.2478404446],
+      "ground": 436.8,
+      "altitude": 0.7601729220663245,
+      "azimuth": 1.7819495856068481,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683761.324007378, 1251645.973752543],
+      "ground": 435.8,
+      "altitude": 0.7612348651559226,
+      "azimuth": 1.7833675071431354,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683802.911815462, 1251655.7857312008],
+      "ground": 433.7,
+      "altitude": 0.7627971865041802,
+      "azimuth": 1.7854593134080232,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683848.031407361, 1251662.579011981],
+      "ground": 432.1,
+      "altitude": 0.7644435005055008,
+      "azimuth": 1.7876685643097907,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683877.6310991943, 1251662.8925154286],
+      "ground": 431.7,
+      "altitude": 0.7655176980565634,
+      "azimuth": 1.7891124291847358,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683899.62302937, 1251664.7440892877],
+      "ground": 431.4,
+      "altitude": 0.7663732740824923,
+      "azimuth": 1.7902645515687634,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683908.2735098302, 1251679.9112645881],
+      "ground": 431.2,
+      "altitude": 0.7670517183072819,
+      "azimuth": 1.791182000283025,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683925.1014979403, 1251688.7506278742],
+      "ground": 431,
+      "altitude": 0.7679996659630266,
+      "azimuth": 1.7924631620649147,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683955.830641309, 1251690.9365890282],
+      "ground": 430.4,
+      "altitude": 0.7691096159721467,
+      "azimuth": 1.7939641617564603,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683320.3991531567, 1251668.013726219],
+      "ground": 441.9,
+      "altitude": 0.7417709327450138,
+      "azimuth": 1.757755091393421,
+      "expected": "shade"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683350.2256051926, 1251689.2668337228],
+      "ground": 441.8,
+      "altitude": 0.7431306337766618,
+      "azimuth": 1.7595240988533412,
+      "expected": "shade"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683371.944321884, 1251699.3481969677],
+      "ground": 441.8,
+      "altitude": 0.7440233140142595,
+      "azimuth": 1.7606867327434486,
+      "expected": "shade"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683380.6029710877, 1251712.015605565],
+      "ground": 441.7,
+      "altitude": 0.744691501139349,
+      "azimuth": 1.7615589555114723,
+      "expected": "shade"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683412.2917086002, 1251729.7716928918],
+      "ground": 441.8,
+      "altitude": 0.7460114441383116,
+      "azimuth": 1.7632831505882212,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683439.3455077317, 1251738.5956053366],
+      "ground": 441.8,
+      "altitude": 0.7470976777709938,
+      "azimuth": 1.7647035570292988,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683453.9901273167, 1251713.9333441406],
+      "ground": 442,
+      "altitude": 0.7481569979219389,
+      "azimuth": 1.7660848803712816,
+      "expected": "shade"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683465.5117131816, 1251692.6240862547],
+      "ground": 441.9,
+      "altitude": 0.7490451850187205,
+      "azimuth": 1.7672446201106122,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683477.78747497, 1251687.7655708508],
+      "ground": 442,
+      "altitude": 0.7497500962424424,
+      "azimuth": 1.7681683833169373,
+      "expected": "shade"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683508.271621238, 1251703.6291658005],
+      "ground": 442.4,
+      "altitude": 0.7510210619811492,
+      "azimuth": 1.769841015970379,
+      "expected": "shade"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683540.491834739, 1251717.076649829],
+      "ground": 442.8,
+      "altitude": 0.7522896909927271,
+      "azimuth": 1.771513376109877,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683561.577228643, 1251712.687294851],
+      "ground": 442.9,
+      "altitude": 0.7531420300544935,
+      "azimuth": 1.7726362778675895,
+      "expected": "shade"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683573.074146519, 1251691.403469239],
+      "ground": 443,
+      "altitude": 0.7542053727704834,
+      "azimuth": 1.7740362820592448,
+      "expected": "shade"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683593.6749965902, 1251659.6669090106],
+      "ground": 442.6,
+      "altitude": 0.756053342379422,
+      "azimuth": 1.776475766038392,
+      "expected": "shade"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683615.525330469, 1251668.477588267],
+      "ground": 441.5,
+      "altitude": 0.7572789683801745,
+      "azimuth": 1.7781032122976217,
+      "expected": "shade"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683635.411519488, 1251707.1941465593],
+      "ground": 440,
+      "altitude": 0.758847598891164,
+      "azimuth": 1.780195966620165,
+      "expected": "shade"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683648.874059515, 1251733.484401029],
+      "ground": 438.8,
+      "altitude": 0.7599164928287282,
+      "azimuth": 1.7816249840682914,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683668.3911723555, 1251728.6637094035],
+      "ground": 438.1,
+      "altitude": 0.7609464629299431,
+      "azimuth": 1.782998446649844,
+      "expected": "shade"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683700.0364665734, 1251699.7537154325],
+      "ground": 437.4,
+      "altitude": 0.762493954615165,
+      "azimuth": 1.7850620445892253,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683729.473770473, 1251673.3664312505],
+      "ground": 436.7,
+      "altitude": 0.763920050820397,
+      "azimuth": 1.7869682969044252,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683751.1529396647, 1251661.438826046],
+      "ground": 435.9,
+      "altitude": 0.7648712132960206,
+      "azimuth": 1.788243220234581,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683796.425620229, 1251667.8822242822],
+      "ground": 433.8,
+      "altitude": 0.7665199238017429,
+      "azimuth": 1.7904630407314854,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683839.4443877824, 1251675.7062518764],
+      "ground": 432.3,
+      "altitude": 0.7680961273050109,
+      "azimuth": 1.7925911390184115,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683871.805450584, 1251690.6280817292],
+      "ground": 431.5,
+      "altitude": 0.7694569341601382,
+      "azimuth": 1.7944344720803158,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683885.594224096, 1251696.7472726798],
+      "ground": 431.3,
+      "altitude": 0.7701331552287947,
+      "azimuth": 1.795351762326631,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683900.9520792165, 1251696.9370419267],
+      "ground": 431.2,
+      "altitude": 0.7706860532919095,
+      "azimuth": 1.796101560833146,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683913.5418053214, 1251688.4589334596],
+      "ground": 431.2,
+      "altitude": 0.7713409169889315,
+      "azimuth": 1.796988807967822,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683947.855622543, 1251690.3407487755],
+      "ground": 430.4,
+      "altitude": 0.7725811976697896,
+      "azimuth": 1.7986753918875393,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683986.5103924414, 1251693.4991598583],
+      "ground": 429.9,
+      "altitude": 0.7739761541190122,
+      "azimuth": 1.8005766855157865,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683320.3991531567, 1251668.013726219],
+      "ground": 441.9,
+      "altitude": 1.1376156333186282,
+      "azimuth": 3.43852538230418,
+      "expected": "shade"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683299.4408431393, 1251651.9682122741],
+      "ground": 441.9,
+      "altitude": 1.1372974096200892,
+      "azimuth": 3.4418047756103687,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683318.0386408023, 1251636.2667900277],
+      "ground": 441.9,
+      "altitude": 1.137003686876579,
+      "azimuth": 3.444801321362388,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683387.1931493445, 1251595.5911943205],
+      "ground": 441.8,
+      "altitude": 1.1360697099254735,
+      "azimuth": 3.454117013684581,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683417.6816152795, 1251578.6987167262],
+      "ground": 441.8,
+      "altitude": 1.1356548103309856,
+      "azimuth": 3.4581617094609354,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683440.8425201066, 1251567.257864717],
+      "ground": 442,
+      "altitude": 1.1353300435644396,
+      "azimuth": 3.4612875882919227,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683473.832099979, 1251580.9943782184],
+      "ground": 442.1,
+      "altitude": 1.1348908293645876,
+      "azimuth": 3.465420753718569,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683510.3261118634, 1251594.6042394957],
+      "ground": 442.4,
+      "altitude": 1.1344074582086319,
+      "azimuth": 3.469908308278829,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683548.207847415, 1251608.7559389612],
+      "ground": 442.8,
+      "altitude": 1.1338991572651436,
+      "azimuth": 3.474558582818528,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683577.995094257, 1251617.8422169571],
+      "ground": 443.4,
+      "altitude": 1.133478427295496,
+      "azimuth": 3.4783599754802546,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683597.474684914, 1251617.216491447],
+      "ground": 443.3,
+      "altitude": 1.1331737020214507,
+      "azimuth": 3.4810952677957627,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683620.883237926, 1251628.7016448341],
+      "ground": 442.2,
+      "altitude": 1.1328279341851042,
+      "azimuth": 3.4841535337599123,
+      "expected": "shade"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683664.6842253124, 1251635.4007595417],
+      "ground": 439.9,
+      "altitude": 1.1322498476121245,
+      "azimuth": 3.4892200401512157,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683699.532164121, 1251639.5709415486],
+      "ground": 438.2,
+      "altitude": 1.1317847118962483,
+      "azimuth": 3.493241584929454,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683732.8481509355, 1251644.2478404446],
+      "ground": 436.8,
+      "altitude": 1.1313358921076393,
+      "azimuth": 3.4970748801771774,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683761.324007378, 1251645.973752543],
+      "ground": 435.8,
+      "altitude": 1.130940446701609,
+      "azimuth": 3.5004190210501176,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683802.911815462, 1251655.7857312008],
+      "ground": 433.7,
+      "altitude": 1.1303511086823426,
+      "azimuth": 3.505331640559755,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683848.031407361, 1251662.579011981],
+      "ground": 432.1,
+      "altitude": 1.1297224258825413,
+      "azimuth": 3.510499054779864,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683877.6310991943, 1251662.8925154286],
+      "ground": 431.7,
+      "altitude": 1.1293083301310298,
+      "azimuth": 3.513865572618123,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683899.62302937, 1251664.7440892877],
+      "ground": 431.4,
+      "altitude": 1.1289756907167054,
+      "azimuth": 3.516543943131325,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683908.2735098302, 1251679.9112645881],
+      "ground": 431.2,
+      "altitude": 1.1287081006095392,
+      "azimuth": 3.5186657622152695,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683925.1014979403, 1251688.7506278742],
+      "ground": 431,
+      "altitude": 1.1283338054833707,
+      "azimuth": 3.521627804834188,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683955.830641309, 1251690.9365890282],
+      "ground": 430.4,
+      "altitude": 1.1278933371921334,
+      "azimuth": 3.5250920042381506,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683320.3991531567, 1251668.013726219],
+      "ground": 441.9,
+      "altitude": 1.1376156333186282,
+      "azimuth": 3.43852538230418,
+      "expected": "shade"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683350.2256051926, 1251689.2668337228],
+      "ground": 441.8,
+      "altitude": 1.1371847663147685,
+      "azimuth": 3.4428885859433263,
+      "expected": "shade"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683371.944321884, 1251699.3481969677],
+      "ground": 441.8,
+      "altitude": 1.136899296882674,
+      "azimuth": 3.445750060744443,
+      "expected": "shade"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683380.6029710877, 1251712.015605565],
+      "ground": 441.7,
+      "altitude": 1.1366831203264536,
+      "azimuth": 3.447890276395285,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683412.2917086002, 1251729.7716928918],
+      "ground": 441.8,
+      "altitude": 1.1362530856921582,
+      "azimuth": 3.4521140104852184,
+      "expected": "shade"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683439.3455077317, 1251738.5956053366],
+      "ground": 441.8,
+      "altitude": 1.1358959524611796,
+      "azimuth": 3.455585798435401,
+      "expected": "shade"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683453.7735074977, 1251743.1632917614],
+      "ground": 441.8,
+      "altitude": 1.135606788005292,
+      "azimuth": 3.458371452605548,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683475.892756983, 1251757.6541870097],
+      "ground": 442.1,
+      "altitude": 1.1352624197655874,
+      "azimuth": 3.461642069068564,
+      "expected": "shade"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683501.5758529147, 1251775.802744615],
+      "ground": 442.2,
+      "altitude": 1.13487047009273,
+      "azimuth": 3.4653198304205444,
+      "expected": "shade"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683524.5541930925, 1251781.2778766304],
+      "ground": 442.2,
+      "altitude": 1.1345639864455546,
+      "azimuth": 3.468178275146807,
+      "expected": "shade"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683539.2602418186, 1251751.6774303897],
+      "ground": 442.7,
+      "altitude": 1.1341504221701046,
+      "azimuth": 3.47204813000057,
+      "expected": "shade"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683561.265444363, 1251744.5456515553],
+      "ground": 442.7,
+      "altitude": 1.1337459950516968,
+      "azimuth": 3.4757550794585375,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683578.074840957, 1251732.7961125376],
+      "ground": 441.9,
+      "altitude": 1.133395391643364,
+      "azimuth": 3.4789417024219937,
+      "expected": "shade"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683614.7980314996, 1251741.5584710506],
+      "ground": 439.4,
+      "altitude": 1.1329097711600362,
+      "azimuth": 3.48326798485104,
+      "expected": "shade"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683628.30741286, 1251725.8606539278],
+      "ground": 439.3,
+      "altitude": 1.1325785950427742,
+      "azimuth": 3.486215476160457,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683639.564477731, 1251722.455853706],
+      "ground": 439.4,
+      "altitude": 1.132425886438695,
+      "azimuth": 3.487560279653874,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683661.179980332, 1251715.9449702736],
+      "ground": 438.2,
+      "altitude": 1.1320305579819263,
+      "azimuth": 3.491012612311906,
+      "expected": "shade"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683692.436394745, 1251687.9431312387],
+      "ground": 437.4,
+      "altitude": 1.1314789555860054,
+      "azimuth": 3.495795348647843,
+      "expected": "shade"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683721.741217513, 1251661.445476741],
+      "ground": 437,
+      "altitude": 1.1309533224233195,
+      "azimuth": 3.500288923493461,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683743.9421005263, 1251661.2006299652],
+      "ground": 436.3,
+      "altitude": 1.1306325960343293,
+      "azimuth": 3.5029799194319797,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683781.473515234, 1251665.617735539],
+      "ground": 434.5,
+      "altitude": 1.1301133118298796,
+      "azimuth": 3.507285159981255,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683824.8996315873, 1251672.5692500442],
+      "ground": 432.8,
+      "altitude": 1.1295044705396897,
+      "azimuth": 3.512261576679434,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683866.386027085, 1251683.0206841838],
+      "ground": 431.7,
+      "altitude": 1.1289021512056006,
+      "azimuth": 3.517109527138182,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683881.062373488, 1251696.688639524],
+      "ground": 431.2,
+      "altitude": 1.1285618313796402,
+      "azimuth": 3.5198086438184064,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683896.276842123, 1251696.8763652742],
+      "ground": 431.3,
+      "altitude": 1.128345759812294,
+      "azimuth": 3.5215223723719427,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683909.717931553, 1251693.836601277],
+      "ground": 431.3,
+      "altitude": 1.1281204921336698,
+      "azimuth": 3.5233041298071766,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683938.3738756785, 1251689.628135968],
+      "ground": 430.7,
+      "altitude": 1.127662345450878,
+      "azimuth": 3.52689754198633,
+      "expected": "sun"
+    },
+    {
+      "district": "Oerlikon",
+      "point": [2683971.1705168756, 1251692.2178744422],
+      "ground": 430.2,
+      "altitude": 1.1271859413597212,
+      "azimuth": 3.530586902086999,
+      "expected": "sun"
+    },
+    {
+      "district": "Altstetten",
+      "point": [2679145.554027878, 1249150.775903142],
+      "ground": 401.3,
+      "altitude": 0.7412866888614625,
+      "azimuth": 1.7566813987697898,
+      "expected": "shade"
+    },
+    {
+      "district": "Altstetten",
+      "point": [2679144.6214874345, 1249186.4330635937],
+      "ground": 401,
+      "altitude": 0.7425766592825414,
+      "azimuth": 1.7583595001782466,
+      "expected": "shade"
+    },
+    {
+      "district": "Altstetten",
+      "point": [2679142.4888341157, 1249219.554759962],
+      "ground": 400.6,
+      "altitude": 0.7437758984475016,
+      "azimuth": 1.7599224672688585,
+      "expected": "sun"
+    },
+    {
+      "district": "Altstetten",
+      "point": [2679142.034719447, 1249254.1156591787],
+      "ground": 400.3,
+      "altitude": 0.7450249331199648,
+      "azimuth": 1.7615533298244734,
+      "expected": "shade"
+    },
+    {
+      "district": "Altstetten",
+      "point": [2679146.331403917, 1249284.9150027705],
+      "ground": 400,
+      "altitude": 0.7461591204497197,
+      "azimuth": 1.7630367776362366,
+      "expected": "sun"
+    },
+    {
+      "district": "Altstetten",
+      "point": [2679158.408315903, 1249299.9705853567],
+      "ground": 399.8,
+      "altitude": 0.7469901324667263,
+      "azimuth": 1.7641238996732038,
+      "expected": "shade"
+    },
+    {
+      "district": "Altstetten",
+      "point": [2679155.4582578964, 1249313.2131170393],
+      "ground": 399.7,
+      "altitude": 0.7475465347621701,
+      "azimuth": 1.7648531547639361,
+      "expected": "shade"
+    },
+    {
+      "district": "Altstetten",
+      "point": [2679168.5855721757, 1249341.056004319],
+      "ground": 399.5,
+      "altitude": 0.7486604550322152,
+      "azimuth": 1.7663151820439598,
+      "expected": "shade"
+    },
+    {
+      "district": "Altstetten",
+      "point": [2679185.255812704, 1249375.417669801],
+      "ground": 399.2,
+      "altitude": 0.7500427929681197,
+      "azimuth": 1.7681329346073216,
+      "expected": "shade"
+    },
+    {
+      "district": "Altstetten",
+      "point": [2679188.3022724213, 1249406.7980087285],
+      "ground": 399.1,
+      "altitude": 0.7511824446353755,
+      "azimuth": 1.7696350580500144,
+      "expected": "shade"
+    },
+    {
+      "district": "Altstetten",
+      "point": [2679204.804260798, 1249437.3408127974],
+      "ground": 398.8,
+      "altitude": 0.7525382190637874,
+      "azimuth": 1.7714241840788787,
+      "expected": "sun"
+    },
+    {
+      "district": "Altstetten",
+      "point": [2679242.289996807, 1249425.9639985051],
+      "ground": 398.9,
+      "altitude": 0.7539829910482734,
+      "azimuth": 1.7733265660432511,
+      "expected": "sun"
+    },
+    {
+      "district": "Altstetten",
+      "point": [2679278.1099333186, 1249412.0075844352],
+      "ground": 398.9,
+      "altitude": 0.7553748509761538,
+      "azimuth": 1.7751627115766684,
+      "expected": "sun"
+    },
+    {
+      "district": "Altstetten",
+      "point": [2679321.386976945, 1249396.4417112134],
+      "ground": 399,
+      "altitude": 0.7570391233170874,
+      "azimuth": 1.7773636281360818,
+      "expected": "sun"
+    },
+    {
+      "district": "Altstetten",
+      "point": [2679344.92651616, 1249384.8870700179],
+      "ground": 398.9,
+      "altitude": 0.7580026080866453,
+      "azimuth": 1.7786399115315124,
+      "expected": "sun"
+    },
+    {
+      "district": "Altstetten",
+      "point": [2679145.554027878, 1249150.775903142],
+      "ground": 401.3,
+      "altitude": 1.1381581224576427,
+      "azimuth": 3.4369778656052437,
+      "expected": "sun"
+    },
+    {
+      "district": "Altstetten",
+      "point": [2679144.6214874345, 1249186.4330635937],
+      "ground": 401,
+      "altitude": 1.1377489898110764,
+      "azimuth": 3.4411205826348596,
+      "expected": "sun"
+    },
+    {
+      "district": "Altstetten",
+      "point": [2679142.4888341157, 1249219.554759962],
+      "ground": 400.6,
+      "altitude": 1.1373638590002675,
+      "azimuth": 3.4449673026425605,
+      "expected": "sun"
+    },
+    {
+      "district": "Altstetten",
+      "point": [2679142.034719447, 1249254.1156591787],
+      "ground": 400.3,
+      "altitude": 1.1369578438605044,
+      "azimuth": 3.4489689775750016,
+      "expected": "sun"
+    },
+    {
+      "district": "Altstetten",
+      "point": [2679146.331403917, 1249284.9150027705],
+      "ground": 400,
+      "altitude": 1.1365849533148644,
+      "azimuth": 3.452598431140134,
+      "expected": "sun"
+    },
+    {
+      "district": "Altstetten",
+      "point": [2679158.408315903, 1249299.9705853567],
+      "ground": 399.8,
+      "altitude": 1.1363103508007009,
+      "azimuth": 3.455255165231247,
+      "expected": "sun"
+    },
+    {
+      "district": "Altstetten",
+      "point": [2679155.4582578964, 1249313.2131170393],
+      "ground": 399.7,
+      "altitude": 1.1361247368017355,
+      "azimuth": 3.457032713080619,
+      "expected": "sun"
+    },
+    {
+      "district": "Altstetten",
+      "point": [2679168.5855721757, 1249341.056004319],
+      "ground": 399.5,
+      "altitude": 1.135750005763005,
+      "azimuth": 3.4605883833437443,
+      "expected": "sun"
+    },
+    {
+      "district": "Altstetten",
+      "point": [2679185.255812704, 1249375.417669801],
+      "ground": 399.2,
+      "altitude": 1.1352795292762194,
+      "azimuth": 3.464995253629804,
+      "expected": "sun"
+    },
+    {
+      "district": "Altstetten",
+      "point": [2679188.3022724213, 1249406.7980087285],
+      "ground": 399.1,
+      "altitude": 1.1348865847870009,
+      "azimuth": 3.4686237216306233,
+      "expected": "sun"
+    },
+    {
+      "district": "Altstetten",
+      "point": [2679204.804260798, 1249437.3408127974],
+      "ground": 398.8,
+      "altitude": 1.1344148774059954,
+      "azimuth": 3.472934741858318,
+      "expected": "sun"
+    },
+    {
+      "district": "Altstetten",
+      "point": [2679242.289996807, 1249425.9639985051],
+      "ground": 398.9,
+      "altitude": 1.13391285201867,
+      "azimuth": 3.477522370854811,
+      "expected": "sun"
+    },
+    {
+      "district": "Altstetten",
+      "point": [2679278.1099333186, 1249412.0075844352],
+      "ground": 398.9,
+      "altitude": 1.1334234640592622,
+      "azimuth": 3.481935405998414,
+      "expected": "shade"
+    },
+    {
+      "district": "Altstetten",
+      "point": [2679321.386976945, 1249396.4417112134],
+      "ground": 399,
+      "altitude": 1.1328301104093839,
+      "azimuth": 3.487203569496771,
+      "expected": "shade"
+    },
+    {
+      "district": "Altstetten",
+      "point": [2679344.92651616, 1249384.8870700179],
+      "ground": 398.9,
+      "altitude": 1.1324830297619308,
+      "azimuth": 3.490249136221227,
+      "expected": "sun"
+    },
+    {
+      "district": "Altstetten",
+      "point": [2679362.376747077, 1249388.2731087855],
+      "ground": 398.9,
+      "altitude": 1.1322025599788483,
+      "azimuth": 3.492671906437318,
+      "expected": "sun"
+    },
+    {
+      "district": "H\u00f6ngg",
+      "point": [2680047.7796021164, 1250686.2984943248],
+      "ground": 461.6,
+      "altitude": 0.7413310497447263,
+      "azimuth": 1.7570149528678491,
+      "expected": "sun"
+    },
+    {
+      "district": "H\u00f6ngg",
+      "point": [2680018.1502337223, 1250685.4700558332],
+      "ground": 460.2,
+      "altitude": 0.7424052508342627,
+      "azimuth": 1.7584076745140738,
+      "expected": "sun"
+    },
+    {
+      "district": "H\u00f6ngg",
+      "point": [2679978.475596568, 1250680.6532811415],
+      "ground": 458.3,
+      "altitude": 0.7438446271266681,
+      "azimuth": 1.7602766343524479,
+      "expected": "sun"
+    },
+    {
+      "district": "H\u00f6ngg",
+      "point": [2679949.3539263373, 1250679.5429306326],
+      "ground": 456.5,
+      "altitude": 0.7448999337906308,
+      "azimuth": 1.761649872294307,
+      "expected": "sun"
+    },
+    {
+      "district": "H\u00f6ngg",
+      "point": [2679918.489198961, 1250689.8398681208],
+      "ground": 455,
+      "altitude": 0.7460715752293307,
+      "azimuth": 1.763179138428099,
+      "expected": "shade"
+    },
+    {
+      "district": "H\u00f6ngg",
+      "point": [2679886.7575206636, 1250694.8769596308],
+      "ground": 454.7,
+      "altitude": 0.7472396836523294,
+      "azimuth": 1.7647055099922244,
+      "expected": "sun"
+    },
+    {
+      "district": "H\u00f6ngg",
+      "point": [2680047.7796021164, 1250686.2984943248],
+      "ground": 461.6,
+      "altitude": 1.1379018055789836,
+      "azimuth": 3.4371154799752017,
+      "expected": "sun"
+    },
+    {
+      "district": "H\u00f6ngg",
+      "point": [2680018.1502337223, 1250685.4700558332],
+      "ground": 460.2,
+      "altitude": 1.137566110068282,
+      "azimuth": 3.4405649081807135,
+      "expected": "sun"
+    },
+    {
+      "district": "H\u00f6ngg",
+      "point": [2679978.475596568, 1250680.6532811415],
+      "ground": 458.3,
+      "altitude": 1.137111095534904,
+      "azimuth": 3.445181458460596,
+      "expected": "sun"
+    },
+    {
+      "district": "H\u00f6ngg",
+      "point": [2679949.3539263373, 1250679.5429306326],
+      "ground": 456.5,
+      "altitude": 1.1367729026960336,
+      "azimuth": 3.4485620786822992,
+      "expected": "sun"
+    },
+    {
+      "district": "H\u00f6ngg",
+      "point": [2679918.489198961, 1250689.8398681208],
+      "ground": 455,
+      "altitude": 1.1363914327090916,
+      "azimuth": 3.4523112416970023,
+      "expected": "sun"
+    },
+    {
+      "district": "H\u00f6ngg",
+      "point": [2679886.7575206636, 1250694.8769596308],
+      "ground": 454.7,
+      "altitude": 1.1360075900649602,
+      "azimuth": 3.456044806418092,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683867.7345898002, 1247682.5911903372],
+      "ground": 449.2,
+      "altitude": 0.7420066024782541,
+      "azimuth": 1.7573355765845153,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683890.650243816, 1247701.0734032746],
+      "ground": 448.6,
+      "altitude": 0.7433810289609573,
+      "azimuth": 1.7591207509161897,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683877.827803285, 1247741.41626887],
+      "ground": 450.4,
+      "altitude": 0.7449092661181949,
+      "azimuth": 1.7611137133539099,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683867.0886922693, 1247774.394297828],
+      "ground": 451.4,
+      "altitude": 0.746161606736627,
+      "azimuth": 1.7627502841723206,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683867.2921800115, 1247787.501301531],
+      "ground": 451.7,
+      "altitude": 0.7468915254661274,
+      "azimuth": 1.763704434509832,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683880.277496438, 1247794.7375258273],
+      "ground": 452.1,
+      "altitude": 0.7475496700873654,
+      "azimuth": 1.7645647843929637,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683868.482460632, 1247824.812364655],
+      "ground": 452.6,
+      "altitude": 0.7487147375980255,
+      "azimuth": 1.7660931918596094,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683856.95558691, 1247858.7633287418],
+      "ground": 453.1,
+      "altitude": 0.7500068793484442,
+      "azimuth": 1.7677915935301989,
+      "expected": "shade"
+    },
+    {
+      "district": "University",
+      "point": [2683844.21588828, 1247899.435467629],
+      "ground": 453.9,
+      "altitude": 0.751542333828863,
+      "azimuth": 1.769814252932911,
+      "expected": "shade"
+    },
+    {
+      "district": "University",
+      "point": [2683836.672198179, 1247930.0069615222],
+      "ground": 454.6,
+      "altitude": 0.752678824897442,
+      "azimuth": 1.7713145302458837,
+      "expected": "shade"
+    },
+    {
+      "district": "University",
+      "point": [2683833.3669291553, 1247947.9512733791],
+      "ground": 454.8,
+      "altitude": 0.7533556465606315,
+      "azimuth": 1.7722092047075602,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683823.8118961807, 1247970.9498687072],
+      "ground": 455,
+      "altitude": 0.7542624223602041,
+      "azimuth": 1.7734091453803422,
+      "expected": "shade"
+    },
+    {
+      "district": "University",
+      "point": [2683812.118699732, 1248006.6832232326],
+      "ground": 455.8,
+      "altitude": 0.7556152766687825,
+      "azimuth": 1.7752028081395295,
+      "expected": "shade"
+    },
+    {
+      "district": "University",
+      "point": [2683799.39845635, 1248044.8205346027],
+      "ground": 456.5,
+      "altitude": 0.7570612214358046,
+      "azimuth": 1.7771241011795922,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683794.7432809365, 1248082.3936402628],
+      "ground": 457.4,
+      "altitude": 0.7584330497843442,
+      "azimuth": 1.7789512175864803,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683794.446664888, 1248121.461390383],
+      "ground": 458.6,
+      "altitude": 0.7598385592936484,
+      "azimuth": 1.7808274251064773,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683794.778952998, 1248157.1928880285],
+      "ground": 460.3,
+      "altitude": 0.7611237378958476,
+      "azimuth": 1.7825466942076893,
+      "expected": "shade"
+    },
+    {
+      "district": "University",
+      "point": [2683794.660786386, 1248202.5459754537],
+      "ground": 462.9,
+      "altitude": 0.7627541139976457,
+      "azimuth": 1.7847328774460898,
+      "expected": "shade"
+    },
+    {
+      "district": "University",
+      "point": [2683794.432102619, 1248248.4676205476],
+      "ground": 465.6,
+      "altitude": 0.7644040203934093,
+      "azimuth": 1.7869511270091418,
+      "expected": "shade"
+    },
+    {
+      "district": "University",
+      "point": [2683794.6342629567, 1248285.0419807206],
+      "ground": 467.7,
+      "altitude": 0.7657179736043718,
+      "azimuth": 1.788721959409563,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683794.0136096994, 1248323.3226469476],
+      "ground": 469.9,
+      "altitude": 0.7670919554106919,
+      "azimuth": 1.7905777772789164,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683791.8305818653, 1248353.1448871095],
+      "ground": 471.3,
+      "altitude": 0.7681653231823173,
+      "azimuth": 1.7920304672974214,
+      "expected": "shade"
+    },
+    {
+      "district": "University",
+      "point": [2683791.568044939, 1248399.214166383],
+      "ground": 473.9,
+      "altitude": 0.7698175799141479,
+      "azimuth": 1.7942716884937358,
+      "expected": "shade"
+    },
+    {
+      "district": "University",
+      "point": [2683791.3054739246, 1248445.2190463666],
+      "ground": 476.4,
+      "altitude": 0.7714665664275492,
+      "azimuth": 1.796514624704259,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683791.277044919, 1248487.194166944],
+      "ground": 479,
+      "altitude": 0.772972114790943,
+      "azimuth": 1.7985678617479788,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683791.4186247094, 1248517.8766660679],
+      "ground": 480.5,
+      "altitude": 0.7740734221425948,
+      "azimuth": 1.8000730946786792,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683791.5339584746, 1248564.4420412586],
+      "ground": 483.2,
+      "altitude": 0.7757399748172753,
+      "azimuth": 1.8023562544947633,
+      "expected": "shade"
+    },
+    {
+      "district": "University",
+      "point": [2683792.9933677837, 1248599.7351037886],
+      "ground": 484.8,
+      "altitude": 0.7770053097489668,
+      "azimuth": 1.804094060953761,
+      "expected": "shade"
+    },
+    {
+      "district": "University",
+      "point": [2683792.8569509373, 1248642.2229852208],
+      "ground": 485.9,
+      "altitude": 0.7785244390825815,
+      "azimuth": 1.806185432005045,
+      "expected": "shade"
+    },
+    {
+      "district": "University",
+      "point": [2683792.9506039014, 1248673.3371770354],
+      "ground": 486.2,
+      "altitude": 0.7796362795473176,
+      "azimuth": 1.8077195615507804,
+      "expected": "shade"
+    },
+    {
+      "district": "University",
+      "point": [2683867.7345898002, 1247682.5911903372],
+      "ground": 449.2,
+      "altitude": 0.7420066024782541,
+      "azimuth": 1.7573355765845153,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683863.646795054, 1247693.9028444681],
+      "ground": 449.2,
+      "altitude": 0.7427394076013927,
+      "azimuth": 1.758287235325567,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683849.1036774544, 1247710.578033283],
+      "ground": 449.3,
+      "altitude": 0.7436700345848041,
+      "azimuth": 1.7594977341349487,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683834.981194469, 1247730.7191755534],
+      "ground": 449.6,
+      "altitude": 0.7447332768184686,
+      "azimuth": 1.760882980985827,
+      "expected": "shade"
+    },
+    {
+      "district": "University",
+      "point": [2683821.012382564, 1247773.8202147903],
+      "ground": 450.2,
+      "altitude": 0.7463679137572269,
+      "azimuth": 1.7630191950639371,
+      "expected": "shade"
+    },
+    {
+      "district": "University",
+      "point": [2683840.2497364962, 1247791.6553231145],
+      "ground": 451.3,
+      "altitude": 0.7476410835450915,
+      "azimuth": 1.764683705033829,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683852.996605456, 1247797.1951960442],
+      "ground": 451.7,
+      "altitude": 0.7484561856613243,
+      "azimuth": 1.7657499420584208,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683849.276040486, 1247814.055042962],
+      "ground": 452.1,
+      "altitude": 0.7490865277994424,
+      "azimuth": 1.7665777647484215,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683861.977856607, 1247819.572061595],
+      "ground": 452.5,
+      "altitude": 0.7496472036550372,
+      "azimuth": 1.7673129623123127,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683862.548469425, 1247841.42961179],
+      "ground": 452.9,
+      "altitude": 0.7506942955394957,
+      "azimuth": 1.7686898802468611,
+      "expected": "shade"
+    },
+    {
+      "district": "University",
+      "point": [2683850.2843013303, 1247879.9846780165],
+      "ground": 453.5,
+      "altitude": 0.752151496310207,
+      "azimuth": 1.7706113375813828,
+      "expected": "shade"
+    },
+    {
+      "district": "University",
+      "point": [2683839.503750236, 1247917.0526988918],
+      "ground": 454.2,
+      "altitude": 0.7535416790415024,
+      "azimuth": 1.7724485219651267,
+      "expected": "shade"
+    },
+    {
+      "district": "University",
+      "point": [2683837.5065700733, 1247934.0272841016],
+      "ground": 454.6,
+      "altitude": 0.754175187004519,
+      "azimuth": 1.773287055730617,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683829.8807805623, 1247953.055763419],
+      "ground": 454.8,
+      "altitude": 0.7549240421397263,
+      "azimuth": 1.774279155695816,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683817.5321135186, 1247990.0492931027],
+      "ground": 455.4,
+      "altitude": 0.7563273862764952,
+      "azimuth": 1.7761417221945386,
+      "expected": "shade"
+    },
+    {
+      "district": "University",
+      "point": [2683805.867569944, 1248025.9215979893],
+      "ground": 456.1,
+      "altitude": 0.7576837208127293,
+      "azimuth": 1.7779458327360878,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683795.702647516, 1248062.0866282561],
+      "ground": 456.8,
+      "altitude": 0.7590410988548394,
+      "azimuth": 1.779755260483191,
+      "expected": "shade"
+    },
+    {
+      "district": "University",
+      "point": [2683794.531654636, 1248103.1004039994],
+      "ground": 458,
+      "altitude": 0.7605178611783469,
+      "azimuth": 1.781728571456459,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683794.719869692, 1248179.8694317362],
+      "ground": 461.6,
+      "altitude": 0.7632776257231719,
+      "azimuth": 1.7854288587733016,
+      "expected": "shade"
+    },
+    {
+      "district": "University",
+      "point": [2683794.6017030803, 1248225.222519165],
+      "ground": 464.2,
+      "altitude": 0.7649068816753436,
+      "azimuth": 1.7876211343670512,
+      "expected": "shade"
+    },
+    {
+      "district": "University",
+      "point": [2683794.408480461, 1248271.9012899185],
+      "ground": 466.9,
+      "altitude": 0.7665829249349094,
+      "azimuth": 1.7898824546251297,
+      "expected": "shade"
+    },
+    {
+      "district": "University",
+      "point": [2683794.3877576264, 1248303.2742103676],
+      "ground": 469.4,
+      "altitude": 0.7677090529540969,
+      "azimuth": 1.791405324561725,
+      "expected": "shade"
+    },
+    {
+      "district": "University",
+      "point": [2683804.5591873657, 1248326.8965451005],
+      "ground": 471,
+      "altitude": 0.7688868404457486,
+      "azimuth": 1.792999240173988,
+      "expected": "shade"
+    },
+    {
+      "district": "University",
+      "point": [2683839.591575628, 1248346.2282939632],
+      "ground": 475.2,
+      "altitude": 0.7703296401283919,
+      "azimuth": 1.7949540636787222,
+      "expected": "shade"
+    },
+    {
+      "district": "University",
+      "point": [2683867.5687302486, 1248360.2982304927],
+      "ground": 479,
+      "altitude": 0.771463963907095,
+      "azimuth": 1.7964939942126026,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683877.0654033627, 1248372.3386895163],
+      "ground": 481.2,
+      "altitude": 0.772223182998784,
+      "azimuth": 1.7975268633873778,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683874.021918506, 1248392.8719619757],
+      "ground": 481.6,
+      "altitude": 0.7732537445958727,
+      "azimuth": 1.798931857210836,
+      "expected": "shade"
+    },
+    {
+      "district": "University",
+      "point": [2683848.383382845, 1248428.131605214],
+      "ground": 481,
+      "altitude": 0.7748110051393495,
+      "azimuth": 1.8010604475722978,
+      "expected": "shade"
+    },
+    {
+      "district": "University",
+      "point": [2683822.906442452, 1248463.4575290827],
+      "ground": 480.4,
+      "altitude": 0.7763659119360404,
+      "azimuth": 1.803191447859384,
+      "expected": "shade"
+    },
+    {
+      "district": "University",
+      "point": [2683796.7917098603, 1248499.1031408971],
+      "ground": 479.9,
+      "altitude": 0.7779426646951221,
+      "azimuth": 1.8053581217426575,
+      "expected": "shade"
+    },
+    {
+      "district": "University",
+      "point": [2683791.519143863, 1248540.8884614496],
+      "ground": 481.8,
+      "altitude": 0.7794997716439649,
+      "azimuth": 1.807504833689374,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683792.8315962516, 1248581.2691387099],
+      "ground": 484.1,
+      "altitude": 0.780945029398099,
+      "azimuth": 1.8095028228590955,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683792.9282423905, 1248620.3605738936],
+      "ground": 485.5,
+      "altitude": 0.7823408307142822,
+      "azimuth": 1.8114372302006234,
+      "expected": "shade"
+    },
+    {
+      "district": "University",
+      "point": [2683792.8471937305, 1248657.598127765],
+      "ground": 486.1,
+      "altitude": 0.7836695687767634,
+      "azimuth": 1.8132830878309771,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683867.7345898002, 1247682.5911903372],
+      "ground": 449.2,
+      "altitude": 1.1381776749358778,
+      "azimuth": 3.4392962723980998,
+      "expected": "shade"
+    },
+    {
+      "district": "University",
+      "point": [2683890.650243816, 1247701.0734032746],
+      "ground": 448.6,
+      "altitude": 1.1377415795574168,
+      "azimuth": 3.4437079324535085,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683877.827803285, 1247741.41626887],
+      "ground": 450.4,
+      "altitude": 1.1372463540964586,
+      "azimuth": 3.44860629467706,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683867.0886922693, 1247774.394297828],
+      "ground": 451.4,
+      "altitude": 1.1368349881279638,
+      "azimuth": 3.4526148560488363,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683867.2921800115, 1247787.501301531],
+      "ground": 451.7,
+      "altitude": 1.1365939086321881,
+      "azimuth": 3.4549489526680905,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683880.277496438, 1247794.7375258273],
+      "ground": 452.1,
+      "altitude": 1.1363758386330378,
+      "azimuth": 3.4570521072063483,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683868.482460632, 1247824.812364655],
+      "ground": 452.6,
+      "altitude": 1.135983600994862,
+      "azimuth": 3.460771634835121,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683856.95558691, 1247858.7633287418],
+      "ground": 453.1,
+      "altitude": 1.1355434496158012,
+      "azimuth": 3.4648916797938196,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683844.21588828, 1247899.435467629],
+      "ground": 453.9,
+      "altitude": 1.1350134832133487,
+      "azimuth": 3.469780418821497,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683836.672198179, 1247930.0069615222],
+      "ground": 454.6,
+      "altitude": 1.1346163451474176,
+      "azimuth": 3.4733938546547773,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683833.3669291553, 1247947.9512733791],
+      "ground": 454.8,
+      "altitude": 1.1343779408302646,
+      "azimuth": 3.475543732251101,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683823.8118961807, 1247970.9498687072],
+      "ground": 455,
+      "altitude": 1.1340564245174232,
+      "azimuth": 3.478421645714001,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683812.118699732, 1248006.6832232326],
+      "ground": 455.8,
+      "altitude": 1.1335717028267922,
+      "azimuth": 3.482710132853431,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683799.39845635, 1248044.8205346027],
+      "ground": 456.5,
+      "altitude": 1.1330472664964817,
+      "azimuth": 3.4872868146272613,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683794.7432809365, 1248082.3936402628],
+      "ground": 457.4,
+      "altitude": 1.1325434368154674,
+      "azimuth": 3.491622225419573,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683794.446664888, 1248121.461390383],
+      "ground": 458.6,
+      "altitude": 1.1320210349407398,
+      "azimuth": 3.4960573060305244,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683794.778952998, 1248157.1928880285],
+      "ground": 460.3,
+      "altitude": 1.1315379480492376,
+      "azimuth": 3.500106614811003,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683794.660786386, 1248202.5459754537],
+      "ground": 462.9,
+      "altitude": 1.1309176750248549,
+      "azimuth": 3.5052351742127965,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683794.432102619, 1248248.4676205476],
+      "ground": 465.6,
+      "altitude": 1.1302815329246902,
+      "azimuth": 3.5104155247218345,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683794.6342629567, 1248285.0419807206],
+      "ground": 467.7,
+      "altitude": 1.1297688651551074,
+      "azimuth": 3.514534062134896,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683794.0136096994, 1248323.3226469476],
+      "ground": 469.9,
+      "altitude": 1.1292270374493711,
+      "azimuth": 3.5188340611089193,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683791.8305818653, 1248353.1448871095],
+      "ground": 471.3,
+      "altitude": 1.1287996969136416,
+      "azimuth": 3.5221884671617922,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683791.568044939, 1248399.214166383],
+      "ground": 473.9,
+      "altitude": 1.1281348993810205,
+      "azimuth": 3.5273437123841824,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683791.3054739246, 1248445.2190463666],
+      "ground": 476.4,
+      "altitude": 1.1274630135793666,
+      "azimuth": 3.5324786874369924,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683791.277044919, 1248487.194166944],
+      "ground": 479,
+      "altitude": 1.1268422656036061,
+      "azimuth": 3.5371581439793887,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683791.4186247094, 1248517.8766660679],
+      "ground": 480.5,
+      "altitude": 1.1263837821063913,
+      "azimuth": 3.540575777771434,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683791.5339584746, 1248564.4420412586],
+      "ground": 483.2,
+      "altitude": 1.1256828881856493,
+      "azimuth": 3.5457388001067316,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683792.9933677837, 1248599.7351037886],
+      "ground": 484.8,
+      "altitude": 1.1251450677976838,
+      "azimuth": 3.54965180254005,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683792.8569509373, 1248642.2229852208],
+      "ground": 485.9,
+      "altitude": 1.1244928944627839,
+      "azimuth": 3.5543415570622376,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683792.9506039014, 1248673.3371770354],
+      "ground": 486.2,
+      "altitude": 1.1240111121990741,
+      "azimuth": 3.557768341422634,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683867.7345898002, 1247682.5911903372],
+      "ground": 449.2,
+      "altitude": 1.1381776749358778,
+      "azimuth": 3.4392962723980998,
+      "expected": "shade"
+    },
+    {
+      "district": "University",
+      "point": [2683863.646795054, 1247693.9028444681],
+      "ground": 449.2,
+      "altitude": 1.1379456447494467,
+      "azimuth": 3.441649163527537,
+      "expected": "shade"
+    },
+    {
+      "district": "University",
+      "point": [2683849.1036774544, 1247710.578033283],
+      "ground": 449.3,
+      "altitude": 1.1376481125951527,
+      "azimuth": 3.4446348152413333,
+      "expected": "shade"
+    },
+    {
+      "district": "University",
+      "point": [2683871.2531130463, 1247727.5130118092],
+      "ground": 450.6,
+      "altitude": 1.137235161838929,
+      "azimuth": 3.4487394239635827,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683865.0509269442, 1247765.2086948464],
+      "ground": 451.6,
+      "altitude": 1.1367660937053528,
+      "azimuth": 3.4533039164830748,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683854.2570942757, 1247792.4539616054],
+      "ground": 451.7,
+      "altitude": 1.1363766935337565,
+      "azimuth": 3.45704680635725,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683849.0627055145, 1247813.118001023],
+      "ground": 452,
+      "altitude": 1.1361171709605535,
+      "azimuth": 3.4595118650231815,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683841.4812885243, 1247838.0764795537],
+      "ground": 453.1,
+      "altitude": 1.1357963352656326,
+      "azimuth": 3.4625326667274128,
+      "expected": "shade"
+    },
+    {
+      "district": "University",
+      "point": [2683827.101305922, 1247881.3518269274],
+      "ground": 453.7,
+      "altitude": 1.1352328474903688,
+      "azimuth": 3.467767649848032,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683814.1577618583, 1247921.1265925241],
+      "ground": 454.4,
+      "altitude": 1.1347086864741736,
+      "azimuth": 3.4725595014311073,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683803.6774138073, 1247953.6108113625],
+      "ground": 454.8,
+      "altitude": 1.1342757711791207,
+      "azimuth": 3.476462958732793,
+      "expected": "shade"
+    },
+    {
+      "district": "University",
+      "point": [2683795.1209995593, 1247972.0952252618],
+      "ground": 454.9,
+      "altitude": 1.1340087674978179,
+      "azimuth": 3.478848712943354,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683787.8759332113, 1247989.5835552614],
+      "ground": 454.8,
+      "altitude": 1.1337497037224327,
+      "azimuth": 3.4811471309993594,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683789.149455365, 1248004.612657211],
+      "ground": 455.7,
+      "altitude": 1.1334605738139722,
+      "azimuth": 3.483699428813703,
+      "expected": "shade"
+    },
+    {
+      "district": "University",
+      "point": [2683779.0937006553, 1248041.5423220063],
+      "ground": 456.6,
+      "altitude": 1.1329599421636107,
+      "azimuth": 3.4880557502180864,
+      "expected": "shade"
+    },
+    {
+      "district": "University",
+      "point": [2683776.248232618, 1248063.040235296],
+      "ground": 456.7,
+      "altitude": 1.1326457892770652,
+      "azimuth": 3.4907620948394222,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683779.685184601, 1248084.5783258507],
+      "ground": 457.4,
+      "altitude": 1.132353063263196,
+      "azimuth": 3.493261783185359,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683779.7002377147, 1248125.1938458595],
+      "ground": 458.9,
+      "altitude": 1.131807442690298,
+      "azimuth": 3.4978699518360625,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683779.522096783, 1248165.9981690242],
+      "ground": 460.8,
+      "altitude": 1.1312528939663378,
+      "azimuth": 3.502489201908738,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683779.084772334, 1248209.321809717],
+      "ground": 463.2,
+      "altitude": 1.130657028470634,
+      "azimuth": 3.5073830310678287,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683778.492618397, 1248246.7161038963],
+      "ground": 465.3,
+      "altitude": 1.1301368202510012,
+      "azimuth": 3.5115986671824193,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683776.8603708055, 1248276.426133319],
+      "ground": 467.1,
+      "altitude": 1.129719122860325,
+      "azimuth": 3.514946499811009,
+      "expected": "shade"
+    },
+    {
+      "district": "University",
+      "point": [2683776.813586373, 1248314.4563879867],
+      "ground": 469.1,
+      "altitude": 1.1291802928092531,
+      "azimuth": 3.519217823715819,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683776.9605780197, 1248348.1732299482],
+      "ground": 471.2,
+      "altitude": 1.1286979461991278,
+      "azimuth": 3.522997462561119,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683777.2585358415, 1248391.153880021],
+      "ground": 473.6,
+      "altitude": 1.1280767479532696,
+      "azimuth": 3.5278059517750884,
+      "expected": "shade"
+    },
+    {
+      "district": "University",
+      "point": [2683777.622799657, 1248435.8988125804],
+      "ground": 475.9,
+      "altitude": 1.1274225928647135,
+      "azimuth": 3.5327999396729663,
+      "expected": "shade"
+    },
+    {
+      "district": "University",
+      "point": [2683777.6462825397, 1248475.0996817958],
+      "ground": 478.2,
+      "altitude": 1.1268433491657517,
+      "azimuth": 3.537164478759339,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683777.2540266756, 1248518.865941074],
+      "ground": 480.6,
+      "altitude": 1.126189809654071,
+      "azimuth": 3.542026163956614,
+      "expected": "shade"
+    },
+    {
+      "district": "University",
+      "point": [2683776.9270256804, 1248563.1356027068],
+      "ground": 483,
+      "altitude": 1.125521451500556,
+      "azimuth": 3.5469317020629636,
+      "expected": "shade"
+    },
+    {
+      "district": "University",
+      "point": [2683775.7742138677, 1248601.5820502746],
+      "ground": 484.9,
+      "altitude": 1.1249323162120721,
+      "azimuth": 3.5512021554911635,
+      "expected": "shade"
+    },
+    {
+      "district": "University",
+      "point": [2683776.6097243843, 1248646.421516335],
+      "ground": 485.8,
+      "altitude": 1.1242402451675924,
+      "azimuth": 3.5561563640046487,
+      "expected": "shade"
+    },
+    {
+      "district": "University",
+      "point": [2683783.6941143926, 1248646.9164271113],
+      "ground": 485.8,
+      "altitude": 1.1241188318465158,
+      "azimuth": 3.5570273351554467,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683790.6775844065, 1248646.270185889],
+      "ground": 485.9,
+      "altitude": 1.1240104605710781,
+      "azimuth": 3.55780428973252,
+      "expected": "sun"
+    },
+    {
+      "district": "University",
+      "point": [2683792.912547752, 1248667.662063826],
+      "ground": 486.2,
+      "altitude": 1.1236402812298467,
+      "azimuth": 3.560418561732171,
+      "expected": "sun"
+    },
+    {
+      "district": "Seefeld",
+      "point": [2683887.5555214374, 1246006.3944422605],
+      "ground": 407.9,
+      "altitude": 0.7421247259236982,
+      "azimuth": 1.757184217965812,
+      "expected": "sun"
+    },
+    {
+      "district": "Seefeld",
+      "point": [2683908.8684067507, 1245965.0136718939],
+      "ground": 408.1,
+      "altitude": 0.7438138992983785,
+      "azimuth": 1.7593658190364738,
+      "expected": "sun"
+    },
+    {
+      "district": "Seefeld",
+      "point": [2683919.8967190213, 1245936.1435386795],
+      "ground": 408.2,
+      "altitude": 0.7449692877153467,
+      "azimuth": 1.7608610366686264,
+      "expected": "sun"
+    },
+    {
+      "district": "Seefeld",
+      "point": [2683937.9417060413, 1245907.9198125214],
+      "ground": 408.8,
+      "altitude": 0.7462326737008476,
+      "azimuth": 1.762499524330187,
+      "expected": "sun"
+    },
+    {
+      "district": "Seefeld",
+      "point": [2683887.5555214374, 1246006.3944422605],
+      "ground": 407.9,
+      "altitude": 1.1384075423763491,
+      "azimuth": 3.439682291258285,
+      "expected": "shade"
+    },
+    {
+      "district": "Seefeld",
+      "point": [2683908.8684067507, 1245965.0136718939],
+      "ground": 408.1,
+      "altitude": 1.137880301724291,
+      "azimuth": 3.4451042362569155,
+      "expected": "shade"
+    },
+    {
+      "district": "Seefeld",
+      "point": [2683919.8967190213, 1245936.1435386795],
+      "ground": 408.2,
+      "altitude": 1.1375145013129426,
+      "azimuth": 3.4488077578772374,
+      "expected": "sun"
+    },
+    {
+      "district": "Seefeld",
+      "point": [2683937.9417060413, 1245907.9198125214],
+      "ground": 408.8,
+      "altitude": 1.1371091149153303,
+      "azimuth": 3.4528526665117174,
+      "expected": "sun"
+    }
+  ]
+}

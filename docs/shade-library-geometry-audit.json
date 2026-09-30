@@ -1,0 +1,12 @@
+{
+  "checkedAt": "2026-09-30T19:00:12.092686+00:00",
+  "libraryVersion": "zurich-roofs-dtm-library-2026-09-30-v2",
+  "manifestSha256": "681fe96e53409d97b6961c88c58f81d04c781c492a726db39aa869ca56eb2d66",
+  "sourceBuildingsCompared": 1861,
+  "queries": 472,
+  "stableComparisons": 472,
+  "excludedWithin2cmOfFaceEdge": 0,
+  "mismatches": [],
+  "passed": true,
+  "scope": "Original CityGML polygon versus runtime tiled triangle intersections. Historical source consistency and field accuracy remain unvalidated."
+}

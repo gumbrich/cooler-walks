@@ -1,0 +1,2883 @@
+{
+  "version": "zurich-roofs-dtm-library-2026-09-30-v2",
+  "sourceBoundsLV95": [2677000, 1245000, 2685624, 1254000],
+  "tiles": 81,
+  "buildings": 41042,
+  "sourceTriangles": 4347681,
+  "storedTrianglesIncludingSeams": 4375006,
+  "derivedBytes": 63546642,
+  "validGroundCells": 19404000,
+  "missingGroundCells": 0,
+  "groundResolutionMeters": 2,
+  "groundQuantizationMeters": 0.1,
+  "rejectedBuildings": [
+    {
+      "id": "ID_EDB27F64-8D09-41E4-A325-C7252FEC3E39",
+      "reason": "Degenerate surface"
+    },
+    {
+      "id": "ID_4E13EF8C-F936-406F-9FA4-7BF5DB9FA90C",
+      "reason": "Degenerate surface"
+    },
+    {
+      "id": "ID_C1681284-BDB6-4C80-9729-A6414CACACA0",
+      "reason": "Degenerate surface"
+    },
+    {
+      "id": "ID_7F8F1B16-ED32-4215-AD3A-67F692E72E76",
+      "reason": "Degenerate surface"
+    },
+    {
+      "id": "ID_6B349F5B-06E5-4663-9694-06D1CBBD5E92",
+      "reason": "Degenerate surface"
+    }
+  ],
+  "buildingsSource": [
+    {
+      "tile": "1091-12",
+      "sha256": "e97e536ac200189b1bb6c5595807766da91534ad1e890fec40c8ab756110c427",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissbuildings3d_3_0/swissbuildings3d_3_0_2019_1091-12/swissbuildings3d_3_0_2019_1091-12_2056_5728.citygml.zip",
+      "observation": "2019"
+    },
+    {
+      "tile": "1091-14",
+      "sha256": "103eb01c42ce5a6a4a672b08349912ebf041c152016f6ac34111c62186b1df9b",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissbuildings3d_3_0/swissbuildings3d_3_0_2019_1091-14/swissbuildings3d_3_0_2019_1091-14_2056_5728.citygml.zip",
+      "observation": "2019"
+    },
+    {
+      "tile": "1091-21",
+      "sha256": "d546ea067715771758d7674cf1cead6d3f930aaaf9c4d429c6883225250ccf57",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissbuildings3d_3_0/swissbuildings3d_3_0_2019_1091-21/swissbuildings3d_3_0_2019_1091-21_2056_5728.citygml.zip",
+      "observation": "2019"
+    },
+    {
+      "tile": "1091-23",
+      "sha256": "be328f3b9fc414de6ef67be1754ff73c627ce419a2940efc986a080a9cec4695",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissbuildings3d_3_0/swissbuildings3d_3_0_2019_1091-23/swissbuildings3d_3_0_2019_1091-23_2056_5728.citygml.zip",
+      "observation": "2019"
+    },
+    {
+      "tile": "1091-32",
+      "sha256": "ade439b1c7b5decb59f9708775f593d7f70f492aa242f3a966f92d343f3da47e",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissbuildings3d_3_0/swissbuildings3d_3_0_2019_1091-32/swissbuildings3d_3_0_2019_1091-32_2056_5728.citygml.zip",
+      "observation": "2019"
+    },
+    {
+      "tile": "1091-41",
+      "sha256": "ea9784ef0da5c96d57606dd6378e3bb9ad89787850b2057fc19c079e796bb359",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissbuildings3d_3_0/swissbuildings3d_3_0_2019_1091-41/swissbuildings3d_3_0_2019_1091-41_2056_5728.citygml.zip",
+      "observation": "2019"
+    }
+  ],
+  "terrainSources": [
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/dtm/tif/2677000_1245000.tif",
+      "sha256": "a023e5b305cd2e924382c4f9180ee48d19ca781108a1d0b979b7bf521eda1f1f",
+      "bytes": 11071203,
+      "fetchedAt": "2026-09-30T18:41:55.645347+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/dtm/tif/2677000_1245500.tif",
+      "sha256": "f659a31f01823cf1bde12fe1ba7ffe24063f2740875bab074ced9c5ed507ac93",
+      "bytes": 11193824,
+      "fetchedAt": "2026-09-30T18:41:46.888137+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/dtm/tif/2677500_1245000.tif",
+      "sha256": "9d9206a9e9c1e720008a48d153df3f44b5ad12b5da77138a89887b62eab6dc4e",
+      "bytes": 11760789,
+      "fetchedAt": "2026-09-30T18:44:13.878058+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/dtm/tif/2677500_1245500.tif",
+      "sha256": "109931d088b1e6fd808cc3acc4c378ae3399ac5007b3e13a40eb04c49ef1278b",
+      "bytes": 11486213,
+      "fetchedAt": "2026-09-30T18:44:35.525186+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/dtm/tif/2677000_1246000.tif",
+      "sha256": "cd68191b687b1ab4656d3ea0fccad2c769e89392351e1331547a0fb110d94fe4",
+      "bytes": 10861090,
+      "fetchedAt": "2026-09-30T18:42:01.865133+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/dtm/tif/2677000_1246500.tif",
+      "sha256": "df870b966eeec7526a0bc449e6c6498a248f171ed3c2e2e6ae83a41d7c112820",
+      "bytes": 11015352,
+      "fetchedAt": "2026-09-30T18:41:41.158781+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/dtm/tif/2677500_1246000.tif",
+      "sha256": "62566ba3f21fbe3342c72683770795d9785e68affc9de6fa5e3e1e2026f1b41c",
+      "bytes": 11371541,
+      "fetchedAt": "2026-09-30T18:44:33.278791+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/dtm/tif/2677500_1246500.tif",
+      "sha256": "c4cfec9d2c22af210834ff399f1e1e68a5c40a8e1eb9fcc247d4375173dd7b3c",
+      "bytes": 10376134,
+      "fetchedAt": "2026-09-30T18:44:41.677784+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/dtm/tif/2677000_1247000.tif",
+      "sha256": "c882edefba0afa822a27a3f6337fd6118b9b9a6d8b4d9bbc93557e9bf2167aa5",
+      "bytes": 10368948,
+      "fetchedAt": "2026-09-30T18:42:13.878899+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/dtm/tif/2677000_1247500.tif",
+      "sha256": "12868a085e887f94946399d8df5b8b2e9c10a2f4b39c12c02e10659955d80208",
+      "bytes": 11212718,
+      "fetchedAt": "2026-09-30T18:42:13.879016+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/dtm/tif/2677500_1247000.tif",
+      "sha256": "7b3004373f5ecc1bb806172790be3722749cf5d03dc0b848c577b4f0427921b4",
+      "bytes": 10936711,
+      "fetchedAt": "2026-09-30T18:44:47.820550+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/dtm/tif/2677500_1247500.tif",
+      "sha256": "4473e0b8ce1be0b50b553dff57b26ff1e6af51b0ea21ec5beb52935d95aacdad",
+      "bytes": 11581550,
+      "fetchedAt": "2026-09-30T18:45:05.795617+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/dtm/tif/2677000_1248000.tif",
+      "sha256": "2f1dd89f60cb0d7ee3c7ab92ed8a4c8a4ffcd32c56d5c97a192744ebbcd14509",
+      "bytes": 11156287,
+      "fetchedAt": "2026-09-30T18:42:42.358431+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/dtm/tif/2677000_1248500.tif",
+      "sha256": "c90d325f2f75bc0dd80595e3a17f688812983a3eff6ffb48d2059d372cd3aa4b",
+      "bytes": 11655609,
+      "fetchedAt": "2026-09-30T18:42:36.995887+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/dtm/tif/2677500_1248000.tif",
+      "sha256": "a4be30ef50b5e9e04776d3afa9a5a1d570491e3449b0ca1e17aca3ebcafe3234",
+      "bytes": 11700961,
+      "fetchedAt": "2026-09-30T18:45:30.031078+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/dtm/tif/2677500_1248500.tif",
+      "sha256": "5f3f9b14fca34e8e5cc97eec095d64ac3369246596a76725e7201a181ae95236",
+      "bytes": 10740614,
+      "fetchedAt": "2026-09-30T18:45:17.266931+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/dtm/tif/2677000_1249000.tif",
+      "sha256": "21eb37ec09faa97087c3717489bf70e92ca963ada0affbf911e4bd20d8c6fa85",
+      "bytes": 11002114,
+      "fetchedAt": "2026-09-30T18:42:50.276784+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/dtm/tif/2677000_1249500.tif",
+      "sha256": "aba5d5a73cc6e01e2fa173346d06384ed9cf1ff39a3918c208a4a69800141576",
+      "bytes": 10761801,
+      "fetchedAt": "2026-09-30T18:42:46.130084+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/dtm/tif/2677500_1249000.tif",
+      "sha256": "8d64b7eb0f0a6356757c5fd228c8597555b722cdf5ccb491ca07d0e465d7d4d2",
+      "bytes": 10623095,
+      "fetchedAt": "2026-09-30T18:45:27.885698+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/dtm/tif/2677500_1249500.tif",
+      "sha256": "4524584f1d6f45533379752445a764fce7db57f20e3663314ca4823460c378dc",
+      "bytes": 10624123,
+      "fetchedAt": "2026-09-30T18:45:34.519789+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/dtm/tif/2677000_1250000.tif",
+      "sha256": "a0c4be87d2dab5d6c85053d6a085ed7676adc678155340174717f2e60238a46c",
+      "bytes": 8660427,
+      "fetchedAt": "2026-09-30T18:43:16.575796+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/dtm/tif/2677000_1250500.tif",
+      "sha256": "fd2cf7035a1f4e279a610a284c418104f01d2a845964adacdc1ccd612fecb0cd",
+      "bytes": 8037677,
+      "fetchedAt": "2026-09-30T18:43:07.357538+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/dtm/tif/2677500_1250000.tif",
+      "sha256": "fec8e8e696c2bc123e7545d5cce95a14814ad32738cd84ae1cc27b92e40fd920",
+      "bytes": 8376157,
+      "fetchedAt": "2026-09-30T18:45:42.298482+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/dtm/tif/2677500_1250500.tif",
+      "sha256": "03d08c203d92d6fb59be391b9200e0a4c399799908d0c73a50129e3086f8d38b",
+      "bytes": 8774121,
+      "fetchedAt": "2026-09-30T18:45:58.046442+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/dtm/tif/2677000_1251000.tif",
+      "sha256": "7cfb9306debbcb8a735cc13bf8f2f2653abd8e9abaae96fd9f932868c99b3d9a",
+      "bytes": 9662774,
+      "fetchedAt": "2026-09-30T18:43:16.258660+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/dtm/tif/2677000_1251500.tif",
+      "sha256": "374155e6e1cd244ae46de09f323f26684200f2790750837c691d5df12fa2b69b",
+      "bytes": 10502834,
+      "fetchedAt": "2026-09-30T18:43:24.241742+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/dtm/tif/2677500_1251000.tif",
+      "sha256": "d5175341b9e42b63f225e3ae06fc56152cdee5b7b220378ded8d39548778f738",
+      "bytes": 10536834,
+      "fetchedAt": "2026-09-30T18:46:08.855308+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/dtm/tif/2677500_1251500.tif",
+      "sha256": "8958ed58709a4dc062996690b1fcf7d9d1c9c1cf2c0c76eab3c8c7fe6322f94e",
+      "bytes": 11155536,
+      "fetchedAt": "2026-09-30T18:46:10.901979+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/dtm/tif/2677000_1252000.tif",
+      "sha256": "b4a4ab894faa93e87fd2a27b0a0074b180b2e1878f8e088da32751885635b34a",
+      "bytes": 10591636,
+      "fetchedAt": "2026-09-30T18:43:39.916181+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/dtm/tif/2677000_1252500.tif",
+      "sha256": "5b8a4d8b56ea7aa349e353635d925eff5cd75b49bbfcc030a5bbdffa88d58608",
+      "bytes": 11018769,
+      "fetchedAt": "2026-09-30T18:43:58.046662+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/dtm/tif/2677500_1252000.tif",
+      "sha256": "d8f784389fd05a8017dd6eec372baa4ee9a2ae24e9a7cb198bd56e41329ca7c2",
+      "bytes": 10457953,
+      "fetchedAt": "2026-09-30T18:46:22.988677+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/dtm/tif/2677500_1252500.tif",
+      "sha256": "8782658e275df889dcf533f7758dbadef1e75b0db8581beca1be02d4dbfc92d5",
+      "bytes": 10969944,
+      "fetchedAt": "2026-09-30T18:46:32.966929+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/dtm/tif/2677000_1253000.tif",
+      "sha256": "de3461c76c1de878f02ac282d39d0cacdf13c1d4a259628a7a81c2286e29792e",
+      "bytes": 11037704,
+      "fetchedAt": "2026-09-30T18:43:47.973875+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/dtm/tif/2677000_1253500.tif",
+      "sha256": "89255ce6c898485109670f2eb3153669cb9491fb7e22a90223efbf5d70fb57d0",
+      "bytes": 9891307,
+      "fetchedAt": "2026-09-30T18:44:07.564477+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/dtm/tif/2677500_1253000.tif",
+      "sha256": "fb5c295246281da4275cbc1a7018f5d8f6f6f1b09a9b74939000a63bf55721e8",
+      "bytes": 11154412,
+      "fetchedAt": "2026-09-30T18:46:51.311060+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/dtm/tif/2677500_1253500.tif",
+      "sha256": "c04c340681c76e8fb2acb3cd5a02b0604c61f64a203308e82b6458d375889875",
+      "bytes": 9379878,
+      "fetchedAt": "2026-09-30T18:46:39.793359+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/dtm/tif/2678000_1245000.tif",
+      "sha256": "8b3c65569461089d751bc1778334fd645621a82f09ae8b493b073524a12c7deb",
+      "bytes": 12499671,
+      "fetchedAt": "2026-09-30T18:47:14.307137+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/dtm/tif/2678000_1245500.tif",
+      "sha256": "4d335ff114753704f14038afc1019d5ecd4cfa27472f067464fb38f6a9d7ab41",
+      "bytes": 11488392,
+      "fetchedAt": "2026-09-30T18:47:02.171905+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2678500%2C1245000%2C2679000%2C1245500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "cbc395ba09d8f06aeaf3677802e56ab2241a7d1da8e3f85a7820c12bed6d21d2",
+      "bytes": 247766,
+      "fetchedAt": "2026-09-30T18:51:48.559711+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/dtm/tif/2678500_1245500.tif",
+      "sha256": "ad6e84c0e811fae3f27b4de95b87000efce9507e16cb882f8702cb121e199091",
+      "bytes": 11681582,
+      "fetchedAt": "2026-09-30T18:49:42.112428+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/dtm/tif/2678000_1246000.tif",
+      "sha256": "deece6fae7f45ce408b536e0cc9d8b38a869b2ea4b6ce8331abe3cc70945f2d4",
+      "bytes": 10653996,
+      "fetchedAt": "2026-09-30T18:47:20.732178+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/dtm/tif/2678000_1246500.tif",
+      "sha256": "7e0532a760f9d15e585b9bcc8020548d9cf8856d2f716292e9f1a864081d4558",
+      "bytes": 10459397,
+      "fetchedAt": "2026-09-30T18:47:20.489375+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2678500%2C1246000%2C2679000%2C1246500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "c10a1eee816c4a609e0ac9b80ed77a4d8704c6344cf5d17bc0247fcfcfa1057b",
+      "bytes": 223208,
+      "fetchedAt": "2026-09-30T18:51:48.559668+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2678500%2C1246500%2C2679000%2C1247000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "136f4870d55e4d5ae66f0f7bc386884ea854049db8594819444c0c97ac645a76",
+      "bytes": 241111,
+      "fetchedAt": "2026-09-30T18:51:48.559743+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/dtm/tif/2678000_1247000.tif",
+      "sha256": "f943b8d97ba872b01bbd3cf461d19febf113ffa37bc16fdb6376f16adf76c809",
+      "bytes": 11884522,
+      "fetchedAt": "2026-09-30T18:47:39.308535+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/dtm/tif/2678000_1247500.tif",
+      "sha256": "b70c461ab3a2c72fc2fc3bc5b490a24adb0bb200c405c98011437610fe11891d",
+      "bytes": 11290480,
+      "fetchedAt": "2026-09-30T18:47:49.920180+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2678500%2C1247000%2C2679000%2C1247500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "087980300459f09df77cb1f94ad0591b3a67b960aaee80e252f9ffaacca0dbc3",
+      "bytes": 248857,
+      "fetchedAt": "2026-09-30T18:51:48.559771+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2678500%2C1247500%2C2679000%2C1248000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "682b4fdb7a9519f9423ba013c2f51565de22950dd3664c7d61a7d8fb4de9b9d7",
+      "bytes": 245737,
+      "fetchedAt": "2026-09-30T18:49:52.167061+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/dtm/tif/2678000_1248000.tif",
+      "sha256": "ceffbb9f15e232a2caea22c2a99948e4d6bcca0b9aacf0175f33432921de0ea8",
+      "bytes": 11405806,
+      "fetchedAt": "2026-09-30T18:47:56.417093+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/dtm/tif/2678000_1248500.tif",
+      "sha256": "661dc3286acdd775bd0548880427b94714ff8d84a08503e7b4d4cb8ab70c335f",
+      "bytes": 10575758,
+      "fetchedAt": "2026-09-30T18:48:04.073609+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2678500%2C1248000%2C2679000%2C1248500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "8d3bb2d6b82d151d9ae071cb809c7215af8a593f1c33db1211fa809577f982e6",
+      "bytes": 234724,
+      "fetchedAt": "2026-09-30T18:49:54.009889+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2678500%2C1248500%2C2679000%2C1249000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "e8277edcf4660abb0929952c3bd52d72d668e63581fa6c60c631bb5ad42b3ee8",
+      "bytes": 225563,
+      "fetchedAt": "2026-09-30T18:49:53.178276+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/dtm/tif/2678000_1249000.tif",
+      "sha256": "edc6cd40f39b0ecf511d2ad324ceee922a8d182500f97a2ec73aaf855c6c62d6",
+      "bytes": 10285730,
+      "fetchedAt": "2026-09-30T18:48:19.199923+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/dtm/tif/2678000_1249500.tif",
+      "sha256": "7666070552da314163473fbd19e118a632e3e411bf4651b4f38c6f2beed37c72",
+      "bytes": 8798628,
+      "fetchedAt": "2026-09-30T18:48:20.909945+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2678500%2C1249000%2C2679000%2C1249500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "a712ddc3392461f8c23e472b82683b7d5aec32d63b1cd9e118f83888d5f751c2",
+      "bytes": 205545,
+      "fetchedAt": "2026-09-30T18:49:53.949232+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2678500%2C1249500%2C2679000%2C1250000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "29bafe6878ce92a85a2762ac725f2f1f742f839a131ced9dd21c060fcf90bb9b",
+      "bytes": 191650,
+      "fetchedAt": "2026-09-30T18:49:55.248010+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/dtm/tif/2678000_1250000.tif",
+      "sha256": "35a555c23defb112c58b1634d0c1a04a0cef04c0c694e5d1bed1c5bf6437b63c",
+      "bytes": 8658165,
+      "fetchedAt": "2026-09-30T18:48:32.048270+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/dtm/tif/2678000_1250500.tif",
+      "sha256": "58d35a5cbaf6a57712d9fe46d4625f65ceaf17978645bcff01e66050684e3591",
+      "bytes": 8945947,
+      "fetchedAt": "2026-09-30T18:48:22.209751+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2678500%2C1250000%2C2679000%2C1250500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "11fddba176425c9d661878deb01a0dbba5248180484c5f3f3358f388fe299c4e",
+      "bytes": 198545,
+      "fetchedAt": "2026-09-30T18:49:54.958598+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2678500%2C1250500%2C2679000%2C1251000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "36bbc7706cdb90aeb2c3c2dfa0b33f272274cfd5c7679487b63e00d436bc5894",
+      "bytes": 215218,
+      "fetchedAt": "2026-09-30T18:49:55.470046+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/dtm/tif/2678000_1251000.tif",
+      "sha256": "59450b0feca0040d5ecd5cedfd4fc1d98f190104632d40e0eb9a22d4478175dc",
+      "bytes": 10641930,
+      "fetchedAt": "2026-09-30T18:48:42.872267+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/dtm/tif/2678000_1251500.tif",
+      "sha256": "b6800f1e5211c0c5d6dcaf093037a9e972ee4256c09a981db5c495c528dccce9",
+      "bytes": 10839200,
+      "fetchedAt": "2026-09-30T18:49:06.332803+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2678500%2C1251000%2C2679000%2C1251500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "68b01213d75bfe492f01baf7351dafa22f4d3883ae95db530fbda4202e77d46e",
+      "bytes": 231973,
+      "fetchedAt": "2026-09-30T18:49:56.487434+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2678500%2C1251500%2C2679000%2C1252000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "6f2643bd74301f45a278f225e38b19d77d73758a48e2864ecdd52e726f5273dd",
+      "bytes": 239288,
+      "fetchedAt": "2026-09-30T18:50:00.322419+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/dtm/tif/2678000_1252000.tif",
+      "sha256": "241b77657ced91938733b7fb1d097fdf36c39c009653bcd7287da9342ffd470d",
+      "bytes": 10846856,
+      "fetchedAt": "2026-09-30T18:49:00.570548+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/dtm/tif/2678000_1252500.tif",
+      "sha256": "6988558c56474217b1faea84476ff8409b5afdfa306dc8590c0d240915271d83",
+      "bytes": 10819800,
+      "fetchedAt": "2026-09-30T18:49:30.376267+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2678500%2C1252000%2C2679000%2C1252500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "2c89c5e3b3a2dddd4be0d780fceb0965359b1470f7019111123c5a4252c886b0",
+      "bytes": 219616,
+      "fetchedAt": "2026-09-30T18:49:56.173330+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2678500%2C1252500%2C2679000%2C1253000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "00fb90e37aedd4cdf1887757eb26d2dcdf569c5840e0d60855b964200f35a4ad",
+      "bytes": 227141,
+      "fetchedAt": "2026-09-30T18:49:58.704342+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/dtm/tif/2678000_1253000.tif",
+      "sha256": "1bbeac26ff9b4d759893bd373cbc562bd555d2cadf8a35b3b9b24bf475842048",
+      "bytes": 10524682,
+      "fetchedAt": "2026-09-30T18:49:08.027707+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/dtm/tif/2678000_1253500.tif",
+      "sha256": "8c32b6c3f475c147ff89d41d2136ff8fde87dec49456899dc341dae3a705cc03",
+      "bytes": 9739908,
+      "fetchedAt": "2026-09-30T18:49:34.114504+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2678500%2C1253000%2C2679000%2C1253500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "eecb70679197dbee4dcb23643077b83407b3676f9c0e47fd137a7a82573beb4b",
+      "bytes": 224668,
+      "fetchedAt": "2026-09-30T18:49:56.740606+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2678500%2C1253500%2C2679000%2C1254000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "ede39f1b72ff15f3bac7557eb90dc0a664bb9763ffa2dc6146230dfe06af92f9",
+      "bytes": 216177,
+      "fetchedAt": "2026-09-30T18:49:57.663962+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2679000%2C1245000%2C2679500%2C1245500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "c630643598f82eb1b785c101ee8cbc7131fdeabb1e2fe0f0e0f134a60b8580d4",
+      "bytes": 242711,
+      "fetchedAt": "2026-09-30T18:49:57.847823+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2679000%2C1245500%2C2679500%2C1246000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "44529370241509e57ebad44c75b8cfa48b3806bf039b217d8abda3936038f434",
+      "bytes": 237970,
+      "fetchedAt": "2026-09-30T18:49:58.626604+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2679500%2C1245000%2C2680000%2C1245500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "ee392521c7c3fb963a1a2bda6af3f9f93a7db495aa5edd225b9d561cea87e7e4",
+      "bytes": 255470,
+      "fetchedAt": "2026-09-30T18:50:07.287406+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2679500%2C1245500%2C2680000%2C1246000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "b0467c36622c92fb9192fea601b128cea5685024a78ae652c2cc37487f156745",
+      "bytes": 251048,
+      "fetchedAt": "2026-09-30T18:50:07.627484+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2679000%2C1246000%2C2679500%2C1246500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "fa8bba78ba16386c175f9c05cedeeb497615d6330843634f7cbce4e0223b929f",
+      "bytes": 247522,
+      "fetchedAt": "2026-09-30T18:50:00.060517+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2679000%2C1246500%2C2679500%2C1247000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "c36d4e7b2810090f5acbb476c8f0c52a4f81ee750e994a22fe2218520aa3e3a5",
+      "bytes": 249578,
+      "fetchedAt": "2026-09-30T18:50:01.395680+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2679500%2C1246000%2C2680000%2C1246500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "bc619da4a749bb93ab8625311cb6ae0659b0a2368ec7151b16da1f94e72a0257",
+      "bytes": 249387,
+      "fetchedAt": "2026-09-30T18:50:10.533578+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2679500%2C1246500%2C2680000%2C1247000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "a059497a724142a1d1672a6bd5866702d8b742efaf2c037d9839bd73fd1e1746",
+      "bytes": 226508,
+      "fetchedAt": "2026-09-30T18:50:10.374181+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2679000%2C1247000%2C2679500%2C1247500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "66dbbce88b233363e89096fc1bc8ab994d06736c970cbf2d3d1f80c2ad0e0598",
+      "bytes": 236002,
+      "fetchedAt": "2026-09-30T18:49:59.756729+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2679000%2C1247500%2C2679500%2C1248000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "6631c4358334b7375f55cb20ff0d32af7aadc5c3b7dbb74b158c439bbfc8d8c1",
+      "bytes": 222280,
+      "fetchedAt": "2026-09-30T18:50:01.090144+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2679500%2C1247000%2C2680000%2C1247500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "36ccc97adcdbdf6d72390eac2d3e27daa09c4c03af5f6a230c3dd96b92d7f408",
+      "bytes": 208920,
+      "fetchedAt": "2026-09-30T18:50:08.441048+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2679500%2C1247500%2C2680000%2C1248000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "890b960ac1493854199a633b50ac59c3f7b48362cc5ef2d821abd3112eaf7085",
+      "bytes": 206004,
+      "fetchedAt": "2026-09-30T18:50:08.878139+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2679000%2C1248000%2C2679500%2C1248500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "e92729507325bb99d25562a905da80bd501edb15ac0bb0d42d22f4b396883c64",
+      "bytes": 205510,
+      "fetchedAt": "2026-09-30T18:50:02.957811+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2679000%2C1248500%2C2679500%2C1249000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "2036d09c61cda0f7b0137afefb7b7c785da08055311160fb09e0cd28ecc565cf",
+      "bytes": 198586,
+      "fetchedAt": "2026-09-30T18:50:00.959813+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2679500%2C1248000%2C2680000%2C1248500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "bb4addf8874b67f22adc0182d1b0c57d9c5343f0ee2fe1cb219df94b1d3861b0",
+      "bytes": 195650,
+      "fetchedAt": "2026-09-30T18:50:09.237633+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2679500%2C1248500%2C2680000%2C1249000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "34c63e741ac00caf6760251ba0b5b7d88570f22cdca6a464d4d01c62bb035e2a",
+      "bytes": 200103,
+      "fetchedAt": "2026-09-30T18:50:11.421999+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2679000%2C1249000%2C2679500%2C1249500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "030949955fb5a0b69b89bdd96fc2bd05a849cd5e76c94656836f11475cf86343",
+      "bytes": 195012,
+      "fetchedAt": "2026-09-30T18:50:02.896271+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2679000%2C1249500%2C2679500%2C1250000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "e276817d4f2b0864e727cb5caea140efc53aa303fd830f9ddf8d94b0e1583432",
+      "bytes": 196381,
+      "fetchedAt": "2026-09-30T18:50:03.329551+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2679500%2C1249000%2C2680000%2C1249500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "a83b5dc14f4257be177a432ebc84c4963abfc743e4a36672b8ac41203610d8d7",
+      "bytes": 195466,
+      "fetchedAt": "2026-09-30T18:50:09.920388+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2679500%2C1249500%2C2680000%2C1250000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "c0dc2ae3f9c1c4ec631004920300ef5ca77afe6c79d81dfa2cd19cf2a4b3fa86",
+      "bytes": 201005,
+      "fetchedAt": "2026-09-30T18:50:13.369332+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2679000%2C1250000%2C2679500%2C1250500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "30111990ded716029e538898708f7af1ee8cf4eb03e17e5400b9c7effc7d145f",
+      "bytes": 200935,
+      "fetchedAt": "2026-09-30T18:50:02.076182+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2679000%2C1250500%2C2679500%2C1251000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "15c7f49ee6cf805738bd91c2d7306fff971f7b09c622d2c3cfd985a3b5172f63",
+      "bytes": 231749,
+      "fetchedAt": "2026-09-30T18:50:05.220368+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2679500%2C1250000%2C2680000%2C1250500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "f4f03805797ef733a7c8b39d9ff2e8011c5132d680e852433862fed904ab0907",
+      "bytes": 209357,
+      "fetchedAt": "2026-09-30T18:50:11.505395+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2679500%2C1250500%2C2680000%2C1251000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "1f614babff8df289e6b2cee63db184a4aa28842386ba99c136cc26a11c04aa5f",
+      "bytes": 233314,
+      "fetchedAt": "2026-09-30T18:50:12.953756+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2679000%2C1251000%2C2679500%2C1251500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "b9fedf36da3a0cf80ea35465089b09bd3140138bc1a612cd1804fc9fe8402d4c",
+      "bytes": 238051,
+      "fetchedAt": "2026-09-30T18:50:06.773817+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2679000%2C1251500%2C2679500%2C1252000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "7f510ea521c9e27b2a0b3fda33d4ea96e7e837defc812aa634b1d01466727b5f",
+      "bytes": 214601,
+      "fetchedAt": "2026-09-30T18:50:05.864076+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2679500%2C1251000%2C2680000%2C1251500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "7382330ace8a7fb03650eb8c424f09fa042ea41353db701ccc8f9adcac1bcc87",
+      "bytes": 230931,
+      "fetchedAt": "2026-09-30T18:50:12.317424+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2679500%2C1251500%2C2680000%2C1252000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "2fa8ed032f21c559ee8067326eb21f5099ec6e74b74db6ab3a9c7276f3f73de3",
+      "bytes": 202235,
+      "fetchedAt": "2026-09-30T18:50:12.395468+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2679000%2C1252000%2C2679500%2C1252500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "7aaf89353f7ed261e1a05b66bf2cb2b9e6f397938bdd8040fbd20e23403506d2",
+      "bytes": 206672,
+      "fetchedAt": "2026-09-30T18:50:04.062081+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2679000%2C1252500%2C2679500%2C1253000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "f3ab206499b118905c0666ba99dc37b183a12846c534a8b65ea220f2a12d7166",
+      "bytes": 220335,
+      "fetchedAt": "2026-09-30T18:50:07.437562+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2679500%2C1252000%2C2680000%2C1252500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "e6b74a33082923ed1afa14c4971254170c0631ac9ee0ba86fc1c1190370535a0",
+      "bytes": 221468,
+      "fetchedAt": "2026-09-30T18:50:13.042192+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2679500%2C1252500%2C2680000%2C1253000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "9a0d1dcd3c02b737deeef36acc0c2eddcb5cd86cbd82e96f770184e642bc880f",
+      "bytes": 230137,
+      "fetchedAt": "2026-09-30T18:50:14.095739+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2679000%2C1253000%2C2679500%2C1253500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "86b3397258b927ba19c87b2b10c1747cfeba6e0c10cf6cf0e404477796842cdf",
+      "bytes": 219924,
+      "fetchedAt": "2026-09-30T18:50:07.794862+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2679000%2C1253500%2C2679500%2C1254000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "1b9e666662c91482fa1547ff03c2b13d0114f09ff2620ef9e7e8b37a2128fa27",
+      "bytes": 181663,
+      "fetchedAt": "2026-09-30T18:50:06.623661+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2679500%2C1253000%2C2680000%2C1253500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "f43c55b075ca3336143dee7e017bab39829b91224c4ceec4e9e7ca11120dda3f",
+      "bytes": 214087,
+      "fetchedAt": "2026-09-30T18:50:13.901038+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2679500%2C1253500%2C2680000%2C1254000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "69976b9d06aedac25f996b18bda02e5392fc4585ba4e030f9f212c02eaf5b4cd",
+      "bytes": 196055,
+      "fetchedAt": "2026-09-30T18:50:13.749178+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2680000%2C1245000%2C2680500%2C1245500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "b54adca7fe8d476e3883402dc8f4577a551e3b94af62de07408ec7433ba0e264",
+      "bytes": 244591,
+      "fetchedAt": "2026-09-30T18:50:13.986785+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2680000%2C1245500%2C2680500%2C1246000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "fb27e47d41833340303438db57706c735d04414e813adf468cdcd0149e894d2a",
+      "bytes": 246257,
+      "fetchedAt": "2026-09-30T18:50:15.715778+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2680500%2C1245000%2C2681000%2C1245500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "266d1124fd8b71919f893ba8b3e97a3d101362cb489363f09a43c59ab8f7997a",
+      "bytes": 243849,
+      "fetchedAt": "2026-09-30T18:50:17.988983+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2680500%2C1245500%2C2681000%2C1246000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "c6681a8d3f1c8f6a9081413f2af573ff2781fb2bcb3572cff4fcf8b54e60a958",
+      "bytes": 242601,
+      "fetchedAt": "2026-09-30T18:50:18.123665+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2680000%2C1246000%2C2680500%2C1246500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "86ed10dac342b7627186fef0cf2a9328d058981f7811c31975ac76f1096e59e0",
+      "bytes": 239019,
+      "fetchedAt": "2026-09-30T18:50:14.975008+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2680000%2C1246500%2C2680500%2C1247000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "62c3fa5362e800d338d2f9e903b9d27870b2e9f720a6b371171efa59bf682475",
+      "bytes": 227893,
+      "fetchedAt": "2026-09-30T18:50:15.048844+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2680500%2C1246000%2C2681000%2C1246500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "b0fff51113bcc1fbc3b142f8817b3f076ab405eadabd8aba070bb3ed49b529ad",
+      "bytes": 238778,
+      "fetchedAt": "2026-09-30T18:50:18.293884+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2680500%2C1246500%2C2681000%2C1247000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "c551e9af4f0b01a6724b65fbbd6e07a3aa8af569f3a214d70af95f992a3a9972",
+      "bytes": 223412,
+      "fetchedAt": "2026-09-30T18:50:18.425033+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2680000%2C1247000%2C2680500%2C1247500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "61977db8b876d451ff77d00eb418ff124cf3e11e1ce13e8dd17e28d066fb9f9c",
+      "bytes": 207515,
+      "fetchedAt": "2026-09-30T18:50:14.975705+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2680000%2C1247500%2C2680500%2C1248000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "292e751a395b4d03be5eeefb167e5057daa04dcac22c6fa5eae0406ce68da5a8",
+      "bytes": 195994,
+      "fetchedAt": "2026-09-30T18:50:15.511848+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2680500%2C1247000%2C2681000%2C1247500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "c2b7f30613f0c5915f76cd3b498d37dcbc884122c91fda64a57dc98cb3093b9f",
+      "bytes": 207690,
+      "fetchedAt": "2026-09-30T18:50:18.485654+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2680500%2C1247500%2C2681000%2C1248000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "24015a1816aaff780d3ad6cbd641ddd4694934086e47c49e6a89d9fbf97402b4",
+      "bytes": 187220,
+      "fetchedAt": "2026-09-30T18:50:18.696918+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2680000%2C1248000%2C2680500%2C1248500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "2f3c699795bed840cf254288f6bd0516e618f0e4f8e34119bd23d8d9aa9f9695",
+      "bytes": 197604,
+      "fetchedAt": "2026-09-30T18:50:15.594481+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2680000%2C1248500%2C2680500%2C1249000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "c4b60031eb47fa1738df9dacd90011401e52a1657cd653db29bb0ed89311073c",
+      "bytes": 203767,
+      "fetchedAt": "2026-09-30T18:50:15.664085+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2680500%2C1248000%2C2681000%2C1248500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "639af38309eb9da623e15ff21b445e159b1d6bc832e2f7116cb2e44db9114809",
+      "bytes": 193681,
+      "fetchedAt": "2026-09-30T18:50:18.728699+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2680500%2C1248500%2C2681000%2C1249000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "786133fc601772ea9513d559c700b6a5b1a183a1c7aaac2e056302eb1dd60103",
+      "bytes": 199928,
+      "fetchedAt": "2026-09-30T18:50:18.961770+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2680000%2C1249000%2C2680500%2C1249500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "672c2658dfb853485cc6894bdfd1c3b6aadf90a6e8e2c7a01209d56bfec939f3",
+      "bytes": 191592,
+      "fetchedAt": "2026-09-30T18:50:16.005435+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2680000%2C1249500%2C2680500%2C1250000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "a7dc37a0bd06abc07a05976ecafb6c2fc654528d0431d181062ff4d6e7af8ec1",
+      "bytes": 198228,
+      "fetchedAt": "2026-09-30T18:50:16.046351+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2680500%2C1249000%2C2681000%2C1249500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "2821267a64dbaa02d916f2405eea65ff6a001589218861a22dd5abe4d502aeb6",
+      "bytes": 190313,
+      "fetchedAt": "2026-09-30T18:50:20.402773+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2680500%2C1249500%2C2681000%2C1250000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "1fd8c54021cd0a17e8b7e06fe3076550f95f00761f5ce601ff7cbb134dc2f4d9",
+      "bytes": 199871,
+      "fetchedAt": "2026-09-30T18:50:19.525830+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2680000%2C1250000%2C2680500%2C1250500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "9e59f03d69e13307a91c1528e8ed686d1786706c7fe406710c946486166e1d98",
+      "bytes": 227547,
+      "fetchedAt": "2026-09-30T18:50:16.203544+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2680000%2C1250500%2C2680500%2C1251000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "d5583cd2b559cf9f946d1a43094169af79f95c7c2755c6dec444205c244b67ce",
+      "bytes": 237585,
+      "fetchedAt": "2026-09-30T18:50:16.270153+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2680500%2C1250000%2C2681000%2C1250500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "5db5d703b40f98e9a53199d2a5dde75971b70a8be0d9d6de426787ab0d6c1676",
+      "bytes": 248451,
+      "fetchedAt": "2026-09-30T18:50:19.523713+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2680500%2C1250500%2C2681000%2C1251000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "c8b4ba3ddfcfeeaa3a865af36d78581e27a79a1904fcf2caece49a3fe6da6221",
+      "bytes": 242612,
+      "fetchedAt": "2026-09-30T18:50:19.775126+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2680000%2C1251000%2C2680500%2C1251500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "b437d92e816f17d52e7be8a61ea30ec2de69b3f6053985adcb6e88e22eb286cb",
+      "bytes": 206197,
+      "fetchedAt": "2026-09-30T18:50:17.648444+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2680000%2C1251500%2C2680500%2C1252000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "4396dcfb56b6d4d72343d97c6f07d514c97ec5e99e68b1c543b4997aa7618ddc",
+      "bytes": 214501,
+      "fetchedAt": "2026-09-30T18:50:17.570076+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2680500%2C1251000%2C2681000%2C1251500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "a77322c1a83482bf380eedaebd18f2d3dfe8e1d9cf2afed312de5f64661b4899",
+      "bytes": 212367,
+      "fetchedAt": "2026-09-30T18:50:20.026283+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2680500%2C1251500%2C2681000%2C1252000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "16b756bf396682058030dd80d3aba460f04c77a85fc9c10262997c13957a2d3d",
+      "bytes": 225375,
+      "fetchedAt": "2026-09-30T18:50:20.122030+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2680000%2C1252000%2C2680500%2C1252500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "eabf1fc2a4b06baef872f565a4879905fbd9527b0dbc84cabecd23435a379e36",
+      "bytes": 238747,
+      "fetchedAt": "2026-09-30T18:50:16.867832+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2680000%2C1252500%2C2680500%2C1253000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "bb16bae9f4e0fc5b4a63e4f2061300412aaf7a9ab6ebf4cea6cc12651c3e577c",
+      "bytes": 219024,
+      "fetchedAt": "2026-09-30T18:50:17.462881+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2680500%2C1252000%2C2681000%2C1252500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "128475b2c14e69fedb027d6f5cce4c2ffa558798f584247b569ddae02cd101f0",
+      "bytes": 233700,
+      "fetchedAt": "2026-09-30T18:50:20.402823+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2680500%2C1252500%2C2681000%2C1253000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "b01e5ec7589d681a2c737f9b4a2b674c5f58436d9bbaf0ce628f6d20b85d9efb",
+      "bytes": 204721,
+      "fetchedAt": "2026-09-30T18:50:20.506697+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2680000%2C1253000%2C2680500%2C1253500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "e94d98252f1606998f50398a97af5d4bc3c56245e835f5d1960e8fd37b0b23ee",
+      "bytes": 206246,
+      "fetchedAt": "2026-09-30T18:50:17.381539+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2680000%2C1253500%2C2680500%2C1254000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "ab1e2e9b354945b5aa66290356a34d95d3449786f53719f0f5614ff52c0aee7c",
+      "bytes": 222284,
+      "fetchedAt": "2026-09-30T18:50:17.924777+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2680500%2C1253000%2C2681000%2C1253500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "05abd5bd0185102fb58ade8b4240d2b0dcb8fea0cfc0f54e6eff10595a4a7248",
+      "bytes": 208975,
+      "fetchedAt": "2026-09-30T18:50:20.681771+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2680500%2C1253500%2C2681000%2C1254000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "c0a7dabf6d0509474c1b3c372d5eb3981bb4d550e48c96de14ffe21f02275804",
+      "bytes": 205312,
+      "fetchedAt": "2026-09-30T18:50:20.884012+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2681000%2C1245000%2C2681500%2C1245500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "49362f25edfbe1882194c1f50f6e5cd5cbda35262a235a7ad2811bc8988ee885",
+      "bytes": 245888,
+      "fetchedAt": "2026-09-30T18:50:21.390446+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2681000%2C1245500%2C2681500%2C1246000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "48f0fe48c4315101411adcc810a5c32a7dbb99c0bc2aae015eb746bf8211fb92",
+      "bytes": 236372,
+      "fetchedAt": "2026-09-30T18:50:21.087399+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2681500%2C1245000%2C2682000%2C1245500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "f103d59e2b83a135dc4a3fcd5c7d2cce4478fb4b91cebfc2fbf9ace7344cbe6c",
+      "bytes": 203992,
+      "fetchedAt": "2026-09-30T18:50:25.531109+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2681500%2C1245500%2C2682000%2C1246000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "2ae912d5699de0f1168f914a1701ad1b9f9dc8c799648df790ab102daaab07ac",
+      "bytes": 215182,
+      "fetchedAt": "2026-09-30T18:50:25.702743+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2681000%2C1246000%2C2681500%2C1246500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "d9f023423cfea21971e488f0b5110664c576f532f68ebafba8a63ee1bc13166d",
+      "bytes": 217118,
+      "fetchedAt": "2026-09-30T18:50:25.182194+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2681000%2C1246500%2C2681500%2C1247000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "b63cc9cce83c782f4480cc7de554852e97a05ee9319a812d95f227ac71d01b42",
+      "bytes": 212504,
+      "fetchedAt": "2026-09-30T18:50:21.431385+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2681500%2C1246000%2C2682000%2C1246500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "922f721839b7f3c2ca6003c164cdc552b8785ddb9ddc238be3e980818f74ad74",
+      "bytes": 213875,
+      "fetchedAt": "2026-09-30T18:50:25.948887+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2681500%2C1246500%2C2682000%2C1247000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "396db497d34d991b29ab1409c6fb1c729c3a74f413cc77a910f5a632a67ffed7",
+      "bytes": 212370,
+      "fetchedAt": "2026-09-30T18:50:26.037551+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2681000%2C1247000%2C2681500%2C1247500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "c7c7ade00ac1a76efd391b761632d239808ebd628d477ed8a1054b56c44983f2",
+      "bytes": 207564,
+      "fetchedAt": "2026-09-30T18:50:21.598968+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2681000%2C1247500%2C2681500%2C1248000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "1ff1dad27ce57e54a4b5cd37417f69f22923dd8e0416daa03521f8f65b47a1c9",
+      "bytes": 194512,
+      "fetchedAt": "2026-09-30T18:50:23.252711+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2681500%2C1247000%2C2682000%2C1247500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "62e057a34203bc2b74952016f6dea63c36f857b044350a026441f25a6763940d",
+      "bytes": 197329,
+      "fetchedAt": "2026-09-30T18:50:26.035924+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2681500%2C1247500%2C2682000%2C1248000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "c16ff60011fe78fe8144257baf8aa0fb30e716719beef7d7790e95e53305ee71",
+      "bytes": 196006,
+      "fetchedAt": "2026-09-30T18:50:26.183224+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2681000%2C1248000%2C2681500%2C1248500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "6a7b12a5e8acdc3e1bfef4bb2a99bd3bb9780f0c7c43f542b744afa3cfe9f437",
+      "bytes": 192616,
+      "fetchedAt": "2026-09-30T18:50:23.315369+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2681000%2C1248500%2C2681500%2C1249000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "d496eeb067792f8bfc8a56ba4c98ce9415cfa08feb7bf78a8f1f0f6f5ab2b5a3",
+      "bytes": 195806,
+      "fetchedAt": "2026-09-30T18:50:23.804335+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2681500%2C1248000%2C2682000%2C1248500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "d505456856a3ce2391ee6ef4d59f8b6fec8717c677ddd0141f584e1491359cb1",
+      "bytes": 204168,
+      "fetchedAt": "2026-09-30T18:50:26.469038+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2681500%2C1248500%2C2682000%2C1249000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "0c959386386954122a163430d32083f9779a15e6cf9df3005a38a793b1a69377",
+      "bytes": 191101,
+      "fetchedAt": "2026-09-30T18:50:26.548033+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2681000%2C1249000%2C2681500%2C1249500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "61867871cf165ddf5e7381dd293f0f8380bc6d6638b245b82bb1a31f4ef95b16",
+      "bytes": 192077,
+      "fetchedAt": "2026-09-30T18:50:23.774656+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2681000%2C1249500%2C2681500%2C1250000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "a16ebeb4960c229d8005699293d9fa27bb810b74833e7959441901e046749b98",
+      "bytes": 205172,
+      "fetchedAt": "2026-09-30T18:50:23.885062+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2681500%2C1249000%2C2682000%2C1249500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "a662954a43f286317ca15f8b8453d57f7cce9daf15118d61cb2510c396cf39cb",
+      "bytes": 185585,
+      "fetchedAt": "2026-09-30T18:50:26.534328+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2681500%2C1249500%2C2682000%2C1250000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "c5c711525d2b9ca8de978f34a11a5f42923b919a17a79c43a81f01048b7699b5",
+      "bytes": 218214,
+      "fetchedAt": "2026-09-30T18:50:26.698603+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2681000%2C1250000%2C2681500%2C1250500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "c894fdcebdeaee3c5c17b164de590b2efd2e5bbb5d46646c7538e39c9b51b611",
+      "bytes": 231716,
+      "fetchedAt": "2026-09-30T18:50:24.395387+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2681000%2C1250500%2C2681500%2C1251000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "a5c9b4bbebb9188747583b86a7970c427758a6bd4912c075c522c9f488affb7c",
+      "bytes": 220177,
+      "fetchedAt": "2026-09-30T18:50:24.442669+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2681500%2C1250000%2C2682000%2C1250500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "d2a6a39f13800871b784ecd567162b641f932b4590f74ba3af33f664e4ee486d",
+      "bytes": 221828,
+      "fetchedAt": "2026-09-30T18:50:27.096129+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2681500%2C1250500%2C2682000%2C1251000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "c368894b879658ca0a3186684b555631e9d72d3ddcf2a94de2aad327167d04bf",
+      "bytes": 217504,
+      "fetchedAt": "2026-09-30T18:50:27.042332+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2681000%2C1251000%2C2681500%2C1251500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "7cf5c17c0f3963f0d48b467d28f657a985226e020ae0e20eb92485b34c0a4035",
+      "bytes": 214560,
+      "fetchedAt": "2026-09-30T18:50:24.561259+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2681000%2C1251500%2C2681500%2C1252000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "a9ff6fab80b11ebc20a49012f712796f8f5e2b5090142aad9dec04751b7bf967",
+      "bytes": 228515,
+      "fetchedAt": "2026-09-30T18:50:24.951686+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2681500%2C1251000%2C2682000%2C1251500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "7e71cc37eea95d8c0a62e83195d3d4b870b4762abedffe70f9c1b3f3c5078232",
+      "bytes": 234773,
+      "fetchedAt": "2026-09-30T18:50:28.390426+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2681500%2C1251500%2C2682000%2C1252000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "b4f57728d0c2c27e25876e2d862e39c68490855efbaaac037a4bcc70af00826f",
+      "bytes": 241253,
+      "fetchedAt": "2026-09-30T18:50:27.307406+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2681000%2C1252000%2C2681500%2C1252500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "a327afa6078ac6fa51e5edb4c4e8b25b3214b557383acdc391494901ab394103",
+      "bytes": 217828,
+      "fetchedAt": "2026-09-30T18:50:24.972688+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2681000%2C1252500%2C2681500%2C1253000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "7e7fd6e3b49ee5e84715c6bcc7b05cf7d322d06d67c69dc03f5624fe2102a3ae",
+      "bytes": 212395,
+      "fetchedAt": "2026-09-30T18:50:25.081736+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2681500%2C1252000%2C2682000%2C1252500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "8d53dfe558c3828dcd61185bf2d796ef92d67b3e42c87390329f800a3ed47d2d",
+      "bytes": 220988,
+      "fetchedAt": "2026-09-30T18:50:27.570799+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2681500%2C1252500%2C2682000%2C1253000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "f37a34c914e9e27eec5de7810d02125cd5846de2414b1e9e20c240df27c53f65",
+      "bytes": 220988,
+      "fetchedAt": "2026-09-30T18:50:27.683125+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2681000%2C1253000%2C2681500%2C1253500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "b05518caacca28cea4dd0ba89d059362917b935bbc9897e8d6c3881395700241",
+      "bytes": 212816,
+      "fetchedAt": "2026-09-30T18:50:25.493299+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2681000%2C1253500%2C2681500%2C1254000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "82f184056763b4659246a3fb3513ebaddaeffe8d1fe6d7af5f1abc7e8ce667fe",
+      "bytes": 211110,
+      "fetchedAt": "2026-09-30T18:50:25.445716+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2681500%2C1253000%2C2682000%2C1253500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "6a5aa7946cdddfb4ea4f47a474ae778f90cfe802c68a0d498439c4348ad2134f",
+      "bytes": 209586,
+      "fetchedAt": "2026-09-30T18:50:27.826623+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2681500%2C1253500%2C2682000%2C1254000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "211e678c2a499f6996f323b41cb831f5264267589559351bd5ebcb501bbbdf66",
+      "bytes": 202577,
+      "fetchedAt": "2026-09-30T18:50:28.077442+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2682000%2C1245000%2C2682500%2C1245500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "ce161ff39ae186219d4528d6431ff6c151f12dee9f61a556d9ac32d37fd1651b",
+      "bytes": 235594,
+      "fetchedAt": "2026-09-30T18:50:28.270642+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2682000%2C1245500%2C2682500%2C1246000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "485fe1c977b176e7256a901c4544dbc88e74ee21f6be020cf00ad7b2a1fe6412",
+      "bytes": 235467,
+      "fetchedAt": "2026-09-30T18:50:28.424203+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2682500%2C1245000%2C2683000%2C1245500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "aa30424d8c111e833ea530894fdf279c2e6ff90e5fe6ddb94af5e3598febd8d4",
+      "bytes": 217570,
+      "fetchedAt": "2026-09-30T18:50:31.401013+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2682500%2C1245500%2C2683000%2C1246000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "6f5b0202236d38d06629bfcfbd0dc0a88ff8abadc04f4aa83dfa9a979777ea82",
+      "bytes": 221030,
+      "fetchedAt": "2026-09-30T18:50:31.637427+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2682000%2C1246000%2C2682500%2C1246500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "68bb1e78ff10f6cfc9d5cf1db23055707e97b2a526ac6d5113f8162b651ef4dc",
+      "bytes": 231590,
+      "fetchedAt": "2026-09-30T18:50:28.678980+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2682000%2C1246500%2C2682500%2C1247000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "f5551d191bb584ed6de23f0a11e97e47dcb02ffe797f2d0f5e8fe7ee6f2bafd3",
+      "bytes": 219711,
+      "fetchedAt": "2026-09-30T18:50:28.858557+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2682500%2C1246000%2C2683000%2C1246500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "2e8cff916c2db1abaedc8a19769f106ba0ecfaa82841343c2e4dd0d3df5bee8e",
+      "bytes": 212110,
+      "fetchedAt": "2026-09-30T18:50:31.677243+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2682500%2C1246500%2C2683000%2C1247000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "c69867aa91a788cb6f6274469b31b627080406ff4f81022a4ccd58809ea19b0c",
+      "bytes": 205844,
+      "fetchedAt": "2026-09-30T18:50:32.023903+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2682000%2C1247000%2C2682500%2C1247500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "1c19e350e84fd5738d2f54a6b4fbb47734e6f6aa693b5122ab862291586394c9",
+      "bytes": 199351,
+      "fetchedAt": "2026-09-30T18:50:28.885538+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2682000%2C1247500%2C2682500%2C1248000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "64903e6e559c03c7794de2f57789510c9f4e996f5064d44cd775322c137cb4cf",
+      "bytes": 188995,
+      "fetchedAt": "2026-09-30T18:50:28.936789+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2682500%2C1247000%2C2683000%2C1247500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "9c1eac2b14fbac69fff636cd5c2a01d151ee07811d8245eb0eff43f08c9eba78",
+      "bytes": 210470,
+      "fetchedAt": "2026-09-30T18:50:32.151813+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2682500%2C1247500%2C2683000%2C1248000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "1d4b4feed218c4c90b37352a79d0fe97e44cc80e09054d1403e564a87fcb1983",
+      "bytes": 200192,
+      "fetchedAt": "2026-09-30T18:50:32.311404+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2682000%2C1248000%2C2682500%2C1248500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "62f2292545541244018ef2488e3701ce4586e6c2cdf5a9c6e53d2e88a9d45456",
+      "bytes": 192392,
+      "fetchedAt": "2026-09-30T18:50:29.198521+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2682000%2C1248500%2C2682500%2C1249000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "3f65199d4bb1b7f944a17f45d129caa1fee9b6bce792d5a2524ec71a5ebb1550",
+      "bytes": 185897,
+      "fetchedAt": "2026-09-30T18:50:29.337599+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2682500%2C1248000%2C2683000%2C1248500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "83419d52723e2c7adfbc384ba1433eb220b925584c8657fb3ac590a9f02a42a5",
+      "bytes": 190373,
+      "fetchedAt": "2026-09-30T18:50:32.226537+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2682500%2C1248500%2C2683000%2C1249000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "389dbed14ca03afbc1522c06ad22997379b2add536e2f166e7cba78e2f7cd9bd",
+      "bytes": 206224,
+      "fetchedAt": "2026-09-30T18:50:32.560574+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2682000%2C1249000%2C2682500%2C1249500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "b39a23c764006eaac4a5564fb37253222494ea4652b2cd44ae2adfeb33af779d",
+      "bytes": 208405,
+      "fetchedAt": "2026-09-30T18:50:29.466467+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2682000%2C1249500%2C2682500%2C1250000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "3e69a41d5e2661c3b0e7d9a4fe03dbe41b2ae9ddc553fd992a88ae65bddd101c",
+      "bytes": 229912,
+      "fetchedAt": "2026-09-30T18:50:29.463552+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2682500%2C1249000%2C2683000%2C1249500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "82395059f1e3a20d9df7c79c22701dc919bbaa10cfa8ab908b4392604f5f9ba4",
+      "bytes": 232157,
+      "fetchedAt": "2026-09-30T18:50:32.723744+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2682500%2C1249500%2C2683000%2C1250000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "1c96b1e56c7d39cd4f0b4d0b5d68f4e3de4caae86136a72f2c972f0581d4c223",
+      "bytes": 239446,
+      "fetchedAt": "2026-09-30T18:50:32.816755+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2682000%2C1250000%2C2682500%2C1250500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "66e9c31fd59b249379350dc37753b9132c32aa1128590cc4e7af0e3e5bf65080",
+      "bytes": 229629,
+      "fetchedAt": "2026-09-30T18:50:29.743170+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2682000%2C1250500%2C2682500%2C1251000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "2f8eaff040532757f997e0958b729628a8edae253b83bece1eaf1a677e2aad23",
+      "bytes": 247708,
+      "fetchedAt": "2026-09-30T18:50:31.539016+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2682500%2C1250000%2C2683000%2C1250500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "c3eae76b44b905389848950376d9bb667cad79c019a66ad2e3aabffc0152ac37",
+      "bytes": 218770,
+      "fetchedAt": "2026-09-30T18:50:32.821537+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2682500%2C1250500%2C2683000%2C1251000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "e212c1ebd6eb2e6f7d9c2278e218987f79049fd2a5529daa09dff67e7d3fa91f",
+      "bytes": 228736,
+      "fetchedAt": "2026-09-30T18:50:34.520280+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2682000%2C1251000%2C2682500%2C1251500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "ca549d9846b04d239e84a86e086eee68dc18d8f02bfe8e42ca4d08554dce4304",
+      "bytes": 242470,
+      "fetchedAt": "2026-09-30T18:50:30.063745+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2682000%2C1251500%2C2682500%2C1252000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "a0f8f8b069496801d28a94751baeb0634fdd1ba95417a86df0b355c8361b7ab9",
+      "bytes": 219310,
+      "fetchedAt": "2026-09-30T18:50:31.093099+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2682500%2C1251000%2C2683000%2C1251500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "ce1a10d397172a32b4b36506c6f4bea224478f2ddf281969c957299884946387",
+      "bytes": 219485,
+      "fetchedAt": "2026-09-30T18:50:33.471906+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2682500%2C1251500%2C2683000%2C1252000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "131db8345a2d5f0111dbd9f39e907a859286aab2ceaa25af92e36b17720dbd9c",
+      "bytes": 202762,
+      "fetchedAt": "2026-09-30T18:50:34.471379+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2682000%2C1252000%2C2682500%2C1252500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "1030ae8e3c1dc9cca9e21b7de432a1e625fb9f3d6531186a68f47456568d45e8",
+      "bytes": 210262,
+      "fetchedAt": "2026-09-30T18:50:30.266222+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2682000%2C1252500%2C2682500%2C1253000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "2d897b65d046d14f8423a2c0e155c292b6ea2a9942fd656bf61ad42b296d670a",
+      "bytes": 219862,
+      "fetchedAt": "2026-09-30T18:50:30.527371+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2682500%2C1252000%2C2683000%2C1252500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "b25ab0aeed4a65a4e224b48a483024fba13821530e62c2e573ad2125df4d6672",
+      "bytes": 202203,
+      "fetchedAt": "2026-09-30T18:50:33.672346+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2682500%2C1252500%2C2683000%2C1253000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "6159bb997c85d34997962fbf2c3b3ed87cdc479a7885d4d46e355d4b6b5046e6",
+      "bytes": 222233,
+      "fetchedAt": "2026-09-30T18:50:34.035676+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2682000%2C1253000%2C2682500%2C1253500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "9a9253061540baee8f26792c87bccb5fd10d569ca4fc32dde04b52b3970782ca",
+      "bytes": 206294,
+      "fetchedAt": "2026-09-30T18:50:30.884768+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2682000%2C1253500%2C2682500%2C1254000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "9136b29674209ade5cf05d640a302fcb0edff00a28741ccce8eab0951aac7ae8",
+      "bytes": 203197,
+      "fetchedAt": "2026-09-30T18:50:31.125596+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2682500%2C1253000%2C2683000%2C1253500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "3bd0dda29d08cb01b0d9d8c0d830435f399aca66b6ba123d393301a82555128e",
+      "bytes": 210000,
+      "fetchedAt": "2026-09-30T18:50:34.246523+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2682500%2C1253500%2C2683000%2C1254000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "59e475f703257fb169c31ae324dafe6ae7e6c4679cdbbea2338ac6f727b057c7",
+      "bytes": 206003,
+      "fetchedAt": "2026-09-30T18:50:34.569973+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2683000%2C1245000%2C2683500%2C1245500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "690a32eb075e17bf5523ee44bf7a18097ab368057b48243d398be10774e7fc2c",
+      "bytes": 137862,
+      "fetchedAt": "2026-09-30T18:50:34.711252+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2683000%2C1245500%2C2683500%2C1246000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "ad9b30f53bab789cb29fd4bb1398a89d5c588dc6bb3daaf35e6cf7660e6210fe",
+      "bytes": 144313,
+      "fetchedAt": "2026-09-30T18:50:34.899439+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2683500%2C1245000%2C2684000%2C1245500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "6bb9b5fdab663af86a44c853971ada9d13be46a1952d55ee920ca4be654fa541",
+      "bytes": 147028,
+      "fetchedAt": "2026-09-30T18:50:38.213437+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2683500%2C1245500%2C2684000%2C1246000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "055a56e97947e33c3f7dd85e804b7cdd761d9dd2407ae7c7214ce20fa4670512",
+      "bytes": 164517,
+      "fetchedAt": "2026-09-30T18:50:38.328042+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2683000%2C1246000%2C2683500%2C1246500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "357f1b1efac886ed8c54c9ba73461e3101b50fa6cb2f1d35715e0d4d35224913",
+      "bytes": 147219,
+      "fetchedAt": "2026-09-30T18:50:34.980655+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2683000%2C1246500%2C2683500%2C1247000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "bdcb8de2afbdd99f8a3c62487917084c8b1287eb9e9bb8da32a94d6889a5fe78",
+      "bytes": 183220,
+      "fetchedAt": "2026-09-30T18:50:35.635810+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2683500%2C1246000%2C2684000%2C1246500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "e8bfbf6d2ff0c132f0c84367faad86b44efcc1b9a0df210af08dba53ad0aa99f",
+      "bytes": 181535,
+      "fetchedAt": "2026-09-30T18:50:38.635269+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2683500%2C1246500%2C2684000%2C1247000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "a132b4fff342c64e4298104dabce4fdfe3bab015e01faea00919692349c5e1e7",
+      "bytes": 218675,
+      "fetchedAt": "2026-09-30T18:50:38.835310+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2683000%2C1247000%2C2683500%2C1247500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "c7fe21e0b0efa97e742bbf182db5979b6678652050079faede431060d89c03a6",
+      "bytes": 209760,
+      "fetchedAt": "2026-09-30T18:50:36.917633+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2683000%2C1247500%2C2683500%2C1248000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "23ec30d50a538545c089f697935639c0dcc475e762c2053aa1610a4d7a4942d9",
+      "bytes": 205237,
+      "fetchedAt": "2026-09-30T18:50:35.654075+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2683500%2C1247000%2C2684000%2C1247500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "8178a7edc04b42d56caabb161adb4206900f202d4f453bd18ada100a6f8f5e8d",
+      "bytes": 229506,
+      "fetchedAt": "2026-09-30T18:50:39.118875+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2683500%2C1247500%2C2684000%2C1248000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "be655d89e081fc5ebb8d65fe1aa84b274e016300f882cd1d28f7990cbb1256e1",
+      "bytes": 235685,
+      "fetchedAt": "2026-09-30T18:50:39.149914+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2683000%2C1248000%2C2683500%2C1248500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "bf2b948c956f426698cdda39df144a7c161dbe61b8ea5eaa56098181dbdfbb8a",
+      "bytes": 218631,
+      "fetchedAt": "2026-09-30T18:50:35.483191+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2683000%2C1248500%2C2683500%2C1249000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "001633fa3fec8120f48a2dd5c2070a4ced511f13b483f87aeff6b81b95d2d4e1",
+      "bytes": 237307,
+      "fetchedAt": "2026-09-30T18:50:36.092495+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2683500%2C1248000%2C2684000%2C1248500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "b765e4770ec6610c6ef8cbc6975e8c1e44b1d00d6f4fa4145ec1e59ce102c553",
+      "bytes": 242243,
+      "fetchedAt": "2026-09-30T18:50:39.448112+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2683500%2C1248500%2C2684000%2C1249000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "d1a9161f4fa263bfee68470ff6333d026296c6c433b6f7b20efe0ac3ed588cab",
+      "bytes": 245155,
+      "fetchedAt": "2026-09-30T18:50:39.703284+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2683000%2C1249000%2C2683500%2C1249500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "bb3315f14c1b1e651c686688e55db25e2ec37d0a797efe84d59e32f1b3dc2fb3",
+      "bytes": 240300,
+      "fetchedAt": "2026-09-30T18:50:36.310130+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2683000%2C1249500%2C2683500%2C1250000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "e4b7fe53838a52ce4d03f889524f28c374fc0c3e93e83c226cf96921779f7346",
+      "bytes": 230148,
+      "fetchedAt": "2026-09-30T18:50:36.220984+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2683500%2C1249000%2C2684000%2C1249500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "bc1277f0c86aada64719cea86546faf3ba71d568f3948cd086f2054f991adec1",
+      "bytes": 247137,
+      "fetchedAt": "2026-09-30T18:50:39.736568+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2683500%2C1249500%2C2684000%2C1250000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "b7ee9f1dc98271732a96f23e447abc9381c57528777a62fdc9807cad1aa301ae",
+      "bytes": 240050,
+      "fetchedAt": "2026-09-30T18:50:39.819882+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2683000%2C1250000%2C2683500%2C1250500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "98847c2106ea629fc2b66a25321aab72309969b7ef0a88a5fab7492604babe7b",
+      "bytes": 217403,
+      "fetchedAt": "2026-09-30T18:50:36.705662+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2683000%2C1250500%2C2683500%2C1251000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "056106d668a9c0fd595c18ed3a375c9675bd56bdda7f8c421bfb8429d0220840",
+      "bytes": 217225,
+      "fetchedAt": "2026-09-30T18:50:36.846328+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2683500%2C1250000%2C2684000%2C1250500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "d464c18eb66683e91626fa80a8cc2c468574c46bcd971f59a3727b1c213e2495",
+      "bytes": 224796,
+      "fetchedAt": "2026-09-30T18:50:40.092006+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2683500%2C1250500%2C2684000%2C1251000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "2afc49931ea828b0e78bdc98213a7a1ba3d8e45919230e5a2e2fbd5e19fd58f0",
+      "bytes": 218446,
+      "fetchedAt": "2026-09-30T18:50:40.258069+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2683000%2C1251000%2C2683500%2C1251500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "77bc451c5f19d165ff4be5f50d6fdb344fbae7c57921cd93290c8e4d1493c57e",
+      "bytes": 216436,
+      "fetchedAt": "2026-09-30T18:50:36.908184+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2683000%2C1251500%2C2683500%2C1252000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "4af94a8443e86bd2b99339f3bf91912c6fd7c46880d130a98cdbfcb7ccceb6da",
+      "bytes": 195563,
+      "fetchedAt": "2026-09-30T18:50:37.218874+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2683500%2C1251000%2C2684000%2C1251500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "e1e6d75a81ef9ce71a2ef3504663563c2a0dac14d83c3cb395257d11d57a71fd",
+      "bytes": 228483,
+      "fetchedAt": "2026-09-30T18:50:40.268299+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2683500%2C1251500%2C2684000%2C1252000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "86a69d252a6004629fb346e49555532cd8cfe8260e258066383dcf30337b9e69",
+      "bytes": 222678,
+      "fetchedAt": "2026-09-30T18:50:41.450057+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2683000%2C1252000%2C2683500%2C1252500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "f2da9fe29c61813dd0f486d854da8b3a1cd8eaade4140dff26c3a3068863f178",
+      "bytes": 196527,
+      "fetchedAt": "2026-09-30T18:50:38.549420+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2683000%2C1252500%2C2683500%2C1253000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "a495bcd58d4fa9a4b9b56bdcf032690b2089ba587fe82b2632f1791fadd3bc9e",
+      "bytes": 223343,
+      "fetchedAt": "2026-09-30T18:50:37.842923+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2683500%2C1252000%2C2684000%2C1252500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "6fbd50f0d072863fd6e811e3c652c276092b6e2a73e69a1dbb86454c3343a755",
+      "bytes": 225440,
+      "fetchedAt": "2026-09-30T18:50:40.638689+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2683500%2C1252500%2C2684000%2C1253000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "c61fa62b5fd3a1315a4f4119f62a601fce2d66faa0c193dd008d57e8b7176469",
+      "bytes": 225026,
+      "fetchedAt": "2026-09-30T18:50:41.475378+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2683000%2C1253000%2C2683500%2C1253500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "0c52aecec526f463eb81939a2be7c7fb8e53928015a1de6de02a597599293ebd",
+      "bytes": 220139,
+      "fetchedAt": "2026-09-30T18:50:39.090976+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2683000%2C1253500%2C2683500%2C1254000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "fb0ac1b4c4d682916eae523d4ec7a3a02bc3465b2073640868f5b57c48bd563b",
+      "bytes": 216207,
+      "fetchedAt": "2026-09-30T18:50:37.772179+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2683500%2C1253000%2C2684000%2C1253500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "8208f0f68ad8d040ca96fc6107d2bf9936fbb551ce3cacc37fe2883f5b24b38c",
+      "bytes": 211524,
+      "fetchedAt": "2026-09-30T18:50:41.451241+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2683500%2C1253500%2C2684000%2C1254000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "c27d8d21bdda14e186c0bf40cf1defde9c93d21d83a62e55ab7bf90f0a46ea5f",
+      "bytes": 212866,
+      "fetchedAt": "2026-09-30T18:50:41.181670+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2684000%2C1245000%2C2684500%2C1245500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "e56b4da3cb920c61f8b22652d3b12c06f9604a0e6cc26934466caeb7a4604033",
+      "bytes": 175433,
+      "fetchedAt": "2026-09-30T18:50:41.751320+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2684000%2C1245500%2C2684500%2C1246000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "79b2215d9bd9b417e9a5f16511d34c70daf3b2c064b1260f123f1cc02f17dee2",
+      "bytes": 212698,
+      "fetchedAt": "2026-09-30T18:50:41.914127+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2684500%2C1245000%2C2685000%2C1245500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "0179c2bd99f7654932e975ba4d316c1dc369ace00e69773575c7f0feb59b3863",
+      "bytes": 226191,
+      "fetchedAt": "2026-09-30T18:50:44.915438+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2684500%2C1245500%2C2685000%2C1246000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "593d7aa310ab3de286ea90b4009df193efda6ee383fa5803ec2b2039cf6f7e9c",
+      "bytes": 237993,
+      "fetchedAt": "2026-09-30T18:50:46.592885+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2684000%2C1246000%2C2684500%2C1246500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "f3ded58a287a7081115e90214472b85132092a73227296b015608c1364897dce",
+      "bytes": 229474,
+      "fetchedAt": "2026-09-30T18:50:41.980764+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2684000%2C1246500%2C2684500%2C1247000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "d98c88299e4a166be947df3f68b0bd087993391ed377efe0c907987def560df6",
+      "bytes": 221530,
+      "fetchedAt": "2026-09-30T18:50:42.024884+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2684500%2C1246000%2C2685000%2C1246500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "8b0c56488016bd64bfa4f753950ed8c8bfea58dd3a605512d719828416990230",
+      "bytes": 229555,
+      "fetchedAt": "2026-09-30T18:50:44.935773+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2684500%2C1246500%2C2685000%2C1247000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "ae44055faad9050da7b5e2c9593681a03a8f8e2be1ddff976dd63204ed7e6dab",
+      "bytes": 239734,
+      "fetchedAt": "2026-09-30T18:50:45.236301+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2684000%2C1247000%2C2684500%2C1247500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "b2662d8e14288a2eb9db5fb9b84fc35696c1185781ad51bc492bfaf772a174f9",
+      "bytes": 228442,
+      "fetchedAt": "2026-09-30T18:50:42.322004+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2684000%2C1247500%2C2684500%2C1248000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "6481e6a95fb3613a57720007e35da427ff664582ee51fdef555cce7065304e3c",
+      "bytes": 237632,
+      "fetchedAt": "2026-09-30T18:50:42.585557+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2684500%2C1247000%2C2685000%2C1247500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "66bd581a57ede0c671d3eac84690da3abcd55b3564312e3af601bdaefe5d2847",
+      "bytes": 242085,
+      "fetchedAt": "2026-09-30T18:50:46.914198+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2684500%2C1247500%2C2685000%2C1248000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "408854778bbaa6e25d008e1fbdae8f361e00d51a26f51434e82d004f4fa86a7a",
+      "bytes": 237144,
+      "fetchedAt": "2026-09-30T18:50:45.452736+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2684000%2C1248000%2C2684500%2C1248500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "596800ebd5a57a32d8737772d20d83360f9263e4355e2641a21d5fdb29ed2bbe",
+      "bytes": 236878,
+      "fetchedAt": "2026-09-30T18:50:42.679782+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2684000%2C1248500%2C2684500%2C1249000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "60738352e291b34bc31cc08a2a435b2d58c870d92708004c11ba33db6b7fea88",
+      "bytes": 241613,
+      "fetchedAt": "2026-09-30T18:50:42.692358+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2684500%2C1248000%2C2685000%2C1248500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "d1ed5968217c037e9ed77f0a71ee57891e57990c9db481f9515f75c09e0d9ce5",
+      "bytes": 235190,
+      "fetchedAt": "2026-09-30T18:50:45.758192+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2684500%2C1248500%2C2685000%2C1249000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "6343f8a068982b2eacf503d5935ab352c0dd2b113cf86d08565caa3fc61bfc70",
+      "bytes": 238222,
+      "fetchedAt": "2026-09-30T18:50:46.104690+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2684000%2C1249000%2C2684500%2C1249500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "d5c7432a5255a087587286657a1acb4e5c48b430d3b7df8b72ed6ff4234a9e05",
+      "bytes": 247182,
+      "fetchedAt": "2026-09-30T18:50:42.937846+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2684000%2C1249500%2C2684500%2C1250000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "fb0b3add43d275cbfe49521eb5b293f2b132cbc8f68fe2d0d404b4cc9cb9ce96",
+      "bytes": 246699,
+      "fetchedAt": "2026-09-30T18:50:43.405986+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2684500%2C1249000%2C2685000%2C1249500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "da2a1041dd20604b7b41af06451c16ed2aca55107b83d62da80a0d995b52feb1",
+      "bytes": 218076,
+      "fetchedAt": "2026-09-30T18:50:46.353710+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2684500%2C1249500%2C2685000%2C1250000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "3ca4cf78bcf244daf64e0f593a73454ca87ecd4645f270f075fb18b23885a39b",
+      "bytes": 214828,
+      "fetchedAt": "2026-09-30T18:50:46.740627+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2684000%2C1250000%2C2684500%2C1250500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "dd0d771d14e6102de6765307bbcf0176ef78ea18013f127146dd9f3d36db83b9",
+      "bytes": 248642,
+      "fetchedAt": "2026-09-30T18:50:43.790101+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2684000%2C1250500%2C2684500%2C1251000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "e0cc43fba92a2b738e18ab75825634e3eeed10d4cad0896b163b4d27fb6f3a2f",
+      "bytes": 222353,
+      "fetchedAt": "2026-09-30T18:50:43.677476+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2684500%2C1250000%2C2685000%2C1250500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "650c780dfc96775da4c43ee4920801ec7b0aede5a6236c30a478c56d3527198d",
+      "bytes": 221482,
+      "fetchedAt": "2026-09-30T18:50:47.096277+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2684500%2C1250500%2C2685000%2C1251000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "7831f1a99339c0e7d8e36b2803192a51b133c287d280d209e67067694eb3610c",
+      "bytes": 229909,
+      "fetchedAt": "2026-09-30T18:50:47.194835+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2684000%2C1251000%2C2684500%2C1251500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "7419f5d989c2e6b3f94e2f8cf46b70cfaf7a2c8babf82566c794c008f278f788",
+      "bytes": 216849,
+      "fetchedAt": "2026-09-30T18:50:43.464418+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2684000%2C1251500%2C2684500%2C1252000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "f09a95e509ae0d9d90dc25f557575bdf054bf87763011e4a78e918d3c483de8c",
+      "bytes": 204341,
+      "fetchedAt": "2026-09-30T18:50:44.025522+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2684500%2C1251000%2C2685000%2C1251500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "603d6af12a247b5344cde30d9ff8671daad1d5fda05eb77855e037a3132dc253",
+      "bytes": 212762,
+      "fetchedAt": "2026-09-30T18:50:47.340433+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2684500%2C1251500%2C2685000%2C1252000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "e137dc6d32365da3ad8cd17c061357ee3c5fbf40e6b5fdaa53ae6f87ad846576",
+      "bytes": 210280,
+      "fetchedAt": "2026-09-30T18:50:47.436434+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2684000%2C1252000%2C2684500%2C1252500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "287b181daf3fc8f8a7e1f488c66c7f8019c3730b8ad7a003fe2399925f7999be",
+      "bytes": 201647,
+      "fetchedAt": "2026-09-30T18:50:43.994731+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2684000%2C1252500%2C2684500%2C1253000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "45c9df3e1b81e08d843f2b194b14b2b04206fea39fa993569cd4b880c6d73d3d",
+      "bytes": 208306,
+      "fetchedAt": "2026-09-30T18:50:44.223079+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2684500%2C1252000%2C2685000%2C1252500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "e43b438ec24fc3ac6e2c9bd46007635a013dceadddfe490f9ff593203d94b4e2",
+      "bytes": 192965,
+      "fetchedAt": "2026-09-30T18:50:47.559693+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2684500%2C1252500%2C2685000%2C1253000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "ba5b917db1fc498a9b835d3b34aebadf7bd3c39b09884419f2057b6c4272d814",
+      "bytes": 201294,
+      "fetchedAt": "2026-09-30T18:50:47.717279+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2684000%2C1253000%2C2684500%2C1253500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "1a61cd9a599b9db78eaa27f0d650e5536a0f2b224c62d7ebb2afc29e5793389d",
+      "bytes": 204741,
+      "fetchedAt": "2026-09-30T18:50:44.378368+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2684000%2C1253500%2C2684500%2C1254000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "21f3e664df54db213b62ff49861132932c7ac795141022932627a947bf1b4c2b",
+      "bytes": 220128,
+      "fetchedAt": "2026-09-30T18:50:44.608683+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2684500%2C1253000%2C2685000%2C1253500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "51131f9c3f146ca61d88f452c7b8316324b76b55c23934630e7e6ec567fcfcf5",
+      "bytes": 208906,
+      "fetchedAt": "2026-09-30T18:50:47.887596+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2684500%2C1253500%2C2685000%2C1254000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "5600f83921c45e862db13e77892acc2e86492728084203f3eea7070662313e57",
+      "bytes": 209129,
+      "fetchedAt": "2026-09-30T18:50:49.158161+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2685000%2C1245000%2C2685500%2C1245500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "c850dcd52e5e5cd0250f96463adb11f47b1d6f65e5dd240db4b8d7d389294f8f",
+      "bytes": 238461,
+      "fetchedAt": "2026-09-30T18:50:48.665430+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2685000%2C1245500%2C2685500%2C1246000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "4eafd6d3c41cbb9492cf771fb8ce3d8832e8e9ce71a0ab2cf9caa8b42c319932",
+      "bytes": 223855,
+      "fetchedAt": "2026-09-30T18:50:48.447107+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2685500%2C1245000%2C2686000%2C1245500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "198418cff7a0fb228d3ce53db2eaa5b54e156a1da8a215dec3c5fc469b80eddc",
+      "bytes": 225981,
+      "fetchedAt": "2026-09-30T18:50:52.219986+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2685500%2C1245500%2C2686000%2C1246000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "8b321ac2715820043d840bca4029a0ee856116f7dbed2cbc8cba690861756314",
+      "bytes": 236646,
+      "fetchedAt": "2026-09-30T18:50:52.285084+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2685000%2C1246000%2C2685500%2C1246500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "40b7ca2a9b22d7143c80bc1db633ae5c785127fff70a0a0dc2372754bb884107",
+      "bytes": 237782,
+      "fetchedAt": "2026-09-30T18:50:48.439842+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2685000%2C1246500%2C2685500%2C1247000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "128eee5f99d15da83d38ec6f3799f49c8c861707e7293625d26c26d2bc6408e1",
+      "bytes": 247169,
+      "fetchedAt": "2026-09-30T18:50:48.984215+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2685500%2C1246000%2C2686000%2C1246500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "bee4ea07cb80ad27bda1b9fcbfea4d18056a6626adaf383fcbc81c6d1d83db6f",
+      "bytes": 246109,
+      "fetchedAt": "2026-09-30T18:50:52.421726+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2685500%2C1246500%2C2686000%2C1247000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "3753dae703872ae28c2e0b51a8377e075aa9039424d31471044eae51426b4cf4",
+      "bytes": 236419,
+      "fetchedAt": "2026-09-30T18:50:52.573753+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2685000%2C1247000%2C2685500%2C1247500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "f4c5f7271e788e8ccaf18c5c3c2ec44537f0840960d3a07224b858d845a8b6ef",
+      "bytes": 244423,
+      "fetchedAt": "2026-09-30T18:50:48.984158+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2685000%2C1247500%2C2685500%2C1248000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "4c2bc5af24efd12020a29e2efdb19fe03f41bdeb77889f6ca8e1255718fbec07",
+      "bytes": 236967,
+      "fetchedAt": "2026-09-30T18:50:49.244034+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2685500%2C1247000%2C2686000%2C1247500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "8d6dbc0b8d6383e152393847069fd4637abd03a9b2715c345f97341adcc29044",
+      "bytes": 232240,
+      "fetchedAt": "2026-09-30T18:50:52.744504+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2685500%2C1247500%2C2686000%2C1248000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "540ef013d286bbd22285c783ecda1ff22d6a2092df1eee1ad0f4ba351d28e1d8",
+      "bytes": 234958,
+      "fetchedAt": "2026-09-30T18:50:52.901625+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2685000%2C1248000%2C2685500%2C1248500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "c873e68566d1130b83685389fdecc1744bd6d0df30bd7532ee1c4fb194a6709e",
+      "bytes": 222162,
+      "fetchedAt": "2026-09-30T18:50:49.563366+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2685000%2C1248500%2C2685500%2C1249000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "ae0e2c7a177f2ed58cf9e857876d3c26923139a061a7de349ec4e9fb1e074e9b",
+      "bytes": 217950,
+      "fetchedAt": "2026-09-30T18:50:49.557867+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2685500%2C1248000%2C2686000%2C1248500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "68452692f2f6541fe8ec8257cdc3086b1efaecdc1c9650ae84c54b69f87c53bf",
+      "bytes": 210314,
+      "fetchedAt": "2026-09-30T18:50:52.931961+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2685500%2C1248500%2C2686000%2C1249000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "5a997913f4b2396370386596da43a1530c1dff145bd3de76e9b314660bc5b590",
+      "bytes": 226498,
+      "fetchedAt": "2026-09-30T18:50:53.081479+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2685000%2C1249000%2C2685500%2C1249500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "dedd163069b1a94de064aa54748a4c9a638d3e27ff2b070dc4c9119aa6da8d74",
+      "bytes": 222454,
+      "fetchedAt": "2026-09-30T18:50:49.719418+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2685000%2C1249500%2C2685500%2C1250000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "f1d4c1efb787f2f4947bb68f2576d92e2868f498bd51e4b3b3457164f29eb180",
+      "bytes": 240908,
+      "fetchedAt": "2026-09-30T18:50:51.736317+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2685500%2C1249000%2C2686000%2C1249500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "88e0ef818dc79ef5f37f00010d3cf0684d51adaed01e213504b4973625ea35ee",
+      "bytes": 241327,
+      "fetchedAt": "2026-09-30T18:50:53.293265+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2685500%2C1249500%2C2686000%2C1250000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "113c246a2feb69957b94fcdbcb0467a7c916a3e1888ab19932c7ed7b501e14b9",
+      "bytes": 236485,
+      "fetchedAt": "2026-09-30T18:50:54.609772+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2685000%2C1250000%2C2685500%2C1250500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "ea0e15c4203e44d15257a0a5ad4375ffe4aeafbf587f36a23d6b0eea86333602",
+      "bytes": 244101,
+      "fetchedAt": "2026-09-30T18:50:51.800904+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2685000%2C1250500%2C2685500%2C1251000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "f849d7f8c5112569c732a21558553bd57aff556d9b27fa069f35361d6f5a9e59",
+      "bytes": 238634,
+      "fetchedAt": "2026-09-30T18:50:50.563093+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2685500%2C1250000%2C2686000%2C1250500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "f3e38d107d0c672d1655388154e13eaa9eaa64ead050f0c7f2a44fb3a2ad7d23",
+      "bytes": 243504,
+      "fetchedAt": "2026-09-30T18:50:54.079333+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2685500%2C1250500%2C2686000%2C1251000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "39ba775c30d1e07255dda99851c859178373d6849f14da1ea4e390587f87b4eb",
+      "bytes": 223301,
+      "fetchedAt": "2026-09-30T18:50:54.000209+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2685000%2C1251000%2C2685500%2C1251500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "89cce13622be2b4259aea8bcb31f9a2c74c1387b8170f858659087fe8f8c086b",
+      "bytes": 199472,
+      "fetchedAt": "2026-09-30T18:50:50.337800+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2685000%2C1251500%2C2685500%2C1252000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "906aa0048568e9101e608e336802b1ede43569137389e319f1a952a67dc6c787",
+      "bytes": 209056,
+      "fetchedAt": "2026-09-30T18:50:50.826695+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2685500%2C1251000%2C2686000%2C1251500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "7d2ad682dee29ab0dedf14c0ca5d1e3725b4da11dad59d78b788671eb2474cb2",
+      "bytes": 206897,
+      "fetchedAt": "2026-09-30T18:50:53.798903+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2685500%2C1251500%2C2686000%2C1252000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "a300148c0b8f089df45a57163c1c65f44fa6323e5b2fa5bc16320b59d3e63cf0",
+      "bytes": 208959,
+      "fetchedAt": "2026-09-30T18:50:54.358877+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2685000%2C1252000%2C2685500%2C1252500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "b2a776aa223ab57b49d5f228b72822d03624ab53d5a983868c8e4fe668bb78ca",
+      "bytes": 206279,
+      "fetchedAt": "2026-09-30T18:50:51.053067+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2685000%2C1252500%2C2685500%2C1253000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "dc79cc5140b36e7a2580d4b019d79964b8a711369148fa508c62b986ecfee700",
+      "bytes": 201634,
+      "fetchedAt": "2026-09-30T18:50:51.497842+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2685500%2C1252000%2C2686000%2C1252500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "4f9e45a0a147c6abf01499d993c27120d8cf302e2df969036c440a2065da60d8",
+      "bytes": 211669,
+      "fetchedAt": "2026-09-30T18:50:54.609805+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2685500%2C1252500%2C2686000%2C1253000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "d4bcd39dd25558096d30a68d301968dce4e474ab58b2a870435272638e675942",
+      "bytes": 207832,
+      "fetchedAt": "2026-09-30T18:50:54.709227+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2685000%2C1253000%2C2685500%2C1253500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "76ca905e05e395a664d82a16ca829401798d27d6ca708e9f423f6ea6ef0e2cac",
+      "bytes": 206890,
+      "fetchedAt": "2026-09-30T18:50:51.665459+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2685000%2C1253500%2C2685500%2C1254000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "72e064ad7200270c57688f324cbe547410006efc8377161d350c846778dfe343",
+      "bytes": 215298,
+      "fetchedAt": "2026-09-30T18:50:51.979270+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2685500%2C1253000%2C2686000%2C1253500",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "4b434ecc2b2c3dd329f42af732614d9c9bec719bfb53a3bde3cfc75ad5205503",
+      "bytes": 230435,
+      "fetchedAt": "2026-09-30T18:50:55.072199+00:00",
+      "observation": "2021\u20132022"
+    },
+    {
+      "url": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2685500%2C1253500%2C2686000%2C1254000",
+      "service": "WCS DTM 2022, bilinear request at 2 m",
+      "resolutionMeters": 2,
+      "sha256": "a5c1f163323b4e69071d9fc0c9f7e38bc9bd35af9ce744d630c57dd008b01b59",
+      "bytes": 231875,
+      "fetchedAt": "2026-09-30T18:50:55.144785+00:00",
+      "observation": "2021\u20132022"
+    }
+  ],
+  "manifestSha256": "681fe96e53409d97b6961c88c58f81d04c781c492a726db39aa869ca56eb2d66",
+  "validation": "Experimental. Source age discrepancies and field-validation hold remain unresolved."
+}

@@ -143,11 +143,11 @@ def xyz(boundary):
 
 
 class SourceFaces:
-    def __init__(self, bounds, source_audit):
+    def __init__(self, bounds, source_audit, query_region=None):
         self.faces, boxes, seen = [], [], set()
         self.max_z = -math.inf
         supported = {'Gebaeude Einzelhaus', 'Hochhaus', 'Sakrales Gebaeude', 'Sakraler Turm', 'Lagertank'}
-        region = box(*bounds)
+        region = box(*bounds) if query_region is None else query_region
         for source in source_audit['roofsAndFacades']:
             archive = ROOT / f"data/raw/buildings-{source['tile']}.zip"
             assert sha(archive) == source['sha256'], 'Raw building archive changed'
@@ -185,7 +185,9 @@ class SourceFaces:
                                     self.faces.append((origin, normal, axes, polygon, bid, kind))
                                     boxes.append(box(lo[0], lo[1], hi[0], hi[1]))
                             element.clear()
-        assert len(seen) == source_audit['buildings'], 'Reference/source building selection disagrees'
+        if query_region is None:
+            assert len(seen) == source_audit['buildings'], 'Reference/source building selection disagrees'
+        self.building_count = len(seen)
         self.tree = STRtree(boxes)
         self.normals = np.array([f[1] for f in self.faces])
         self.origins = np.array([f[0] for f in self.faces])

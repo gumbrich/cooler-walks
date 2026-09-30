@@ -1,0 +1,129 @@
+{
+  "checkedAt": "2026-09-30T18:54:08.332216+00:00",
+  "toleranceMeters": 0.001,
+  "cellsCompared": 625000,
+  "tiles": [
+    {
+      "tile": "2677000_1245000.tif",
+      "cellsCompared": 62500,
+      "maxDifferenceMeters": 6.580352783203125e-5,
+      "p95DifferenceMeters": 3.337860107421875e-5,
+      "validityMasksEqual": true,
+      "nativeUrl": "https://maps.zh.ch/download/hoehen/2022/dtm/tif/2677000_1245000.tif",
+      "nativeSha256": "a023e5b305cd2e924382c4f9180ee48d19ca781108a1d0b979b7bf521eda1f1f",
+      "wcsUrl": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2677000%2C1245000%2C2677500%2C1245500",
+      "wcsSha256": "2af65ed08a0ed1700bf6ea272d3dd08aa5d84982ac015675fa6868053e213827",
+      "passed": true
+    },
+    {
+      "tile": "2677000_1253000.tif",
+      "cellsCompared": 62500,
+      "maxDifferenceMeters": 6.866455078125e-5,
+      "p95DifferenceMeters": 3.62396240234375e-5,
+      "validityMasksEqual": true,
+      "nativeUrl": "https://maps.zh.ch/download/hoehen/2022/dtm/tif/2677000_1253000.tif",
+      "nativeSha256": "de3461c76c1de878f02ac282d39d0cacdf13c1d4a259628a7a81c2286e29792e",
+      "wcsUrl": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2677000%2C1253000%2C2677500%2C1253500",
+      "wcsSha256": "81677c7d8a73b6e91207c4f69313dd6de089378579dd8c9e935ce78865f227d7",
+      "passed": true
+    },
+    {
+      "tile": "2677500_1248000.tif",
+      "cellsCompared": 62500,
+      "maxDifferenceMeters": 6.389617919921875e-5,
+      "p95DifferenceMeters": 3.528594970703125e-5,
+      "validityMasksEqual": true,
+      "nativeUrl": "https://maps.zh.ch/download/hoehen/2022/dtm/tif/2677500_1248000.tif",
+      "nativeSha256": "a4be30ef50b5e9e04776d3afa9a5a1d570491e3449b0ca1e17aca3ebcafe3234",
+      "wcsUrl": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2677500%2C1248000%2C2678000%2C1248500",
+      "wcsSha256": "3241b16004439a531029df80798d76878ffeea69859d588e09cffc4889ee969f",
+      "passed": true
+    },
+    {
+      "tile": "2678000_1250000.tif",
+      "cellsCompared": 62500,
+      "maxDifferenceMeters": 3.24249267578125e-5,
+      "p95DifferenceMeters": 2.002716064453125e-5,
+      "validityMasksEqual": true,
+      "nativeUrl": "https://maps.zh.ch/download/hoehen/2022/dtm/tif/2678000_1250000.tif",
+      "nativeSha256": "35a555c23defb112c58b1634d0c1a04a0cef04c0c694e5d1bed1c5bf6437b63c",
+      "wcsUrl": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2678000%2C1250000%2C2678500%2C1250500",
+      "wcsSha256": "b585a5932ce150867aa0f164523a9596006f0dacd33f6f8348e3ee418fc5a758",
+      "passed": true
+    },
+    {
+      "tile": "2682000_1246000.tif",
+      "cellsCompared": 62500,
+      "maxDifferenceMeters": 3.4332275390625e-5,
+      "p95DifferenceMeters": 2.002716064453125e-5,
+      "validityMasksEqual": true,
+      "nativeUrl": "https://maps.zh.ch/download/hoehen/2022/dtm/tif/2682000_1246000.tif",
+      "nativeSha256": "280c8e5238d3008dab06af049953d02d08b105d7a8ab879932292a391ec810ef",
+      "wcsUrl": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2682000%2C1246000%2C2682500%2C1246500",
+      "wcsSha256": "68bb1e78ff10f6cfc9d5cf1db23055707e97b2a526ac6d5113f8162b651ef4dc",
+      "passed": true
+    },
+    {
+      "tile": "2682000_1248000.tif",
+      "cellsCompared": 62500,
+      "maxDifferenceMeters": 3.3855438232421875e-5,
+      "p95DifferenceMeters": 2.002716064453125e-5,
+      "validityMasksEqual": true,
+      "nativeUrl": "https://maps.zh.ch/download/hoehen/2022/dtm/tif/2682000_1248000.tif",
+      "nativeSha256": "e5d720bea7a36a628d4c6df73ca410bb0d9b1be9b78baed06f245c5eb11b18d6",
+      "wcsUrl": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2682000%2C1248000%2C2682500%2C1248500",
+      "wcsSha256": "62f2292545541244018ef2488e3701ce4586e6c2cdf5a9c6e53d2e88a9d45456",
+      "passed": true
+    },
+    {
+      "tile": "2683000_1247500.tif",
+      "cellsCompared": 62500,
+      "maxDifferenceMeters": 3.62396240234375e-5,
+      "p95DifferenceMeters": 2.002716064453125e-5,
+      "validityMasksEqual": true,
+      "nativeUrl": "https://maps.zh.ch/download/hoehen/2022/dtm/tif/2683000_1247500.tif",
+      "nativeSha256": "a8412bff8ea72cc0168a22570020741e208be08270111ee68d45344f515fdf1c",
+      "wcsUrl": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2683000%2C1247500%2C2683500%2C1248000",
+      "wcsSha256": "23ec30d50a538545c089f697935639c0dcc475e762c2053aa1610a4d7a4942d9",
+      "passed": true
+    },
+    {
+      "tile": "2682000_1252000.tif",
+      "cellsCompared": 62500,
+      "maxDifferenceMeters": 3.8623809814453125e-5,
+      "p95DifferenceMeters": 2.002716064453125e-5,
+      "validityMasksEqual": true,
+      "nativeUrl": "https://maps.zh.ch/download/hoehen/2022/dtm/tif/2682000_1252000.tif",
+      "nativeSha256": "f4a9598efc4deaec8716ea9791763ef96eadbbe5dd9cad5d6cd1831ec930c645",
+      "wcsUrl": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2682000%2C1252000%2C2682500%2C1252500",
+      "wcsSha256": "1030ae8e3c1dc9cca9e21b7de432a1e625fb9f3d6531186a68f47456568d45e8",
+      "passed": true
+    },
+    {
+      "tile": "2685000_1252500.tif",
+      "cellsCompared": 62500,
+      "maxDifferenceMeters": 3.528594970703125e-5,
+      "p95DifferenceMeters": 2.002716064453125e-5,
+      "validityMasksEqual": true,
+      "nativeUrl": "https://maps.zh.ch/download/hoehen/2022/dtm/tif/2685000_1252500.tif",
+      "nativeSha256": "f2437bf36656a71d92aa974f5dc6e8a88972d9830de4e021b7b3e91837d6048c",
+      "wcsUrl": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2685000%2C1252500%2C2685500%2C1253000",
+      "wcsSha256": "dc79cc5140b36e7a2580d4b019d79964b8a711369148fa508c62b986ecfee700",
+      "passed": true
+    },
+    {
+      "tile": "2684500_1245500.tif",
+      "cellsCompared": 62500,
+      "maxDifferenceMeters": 3.5762786865234375e-5,
+      "p95DifferenceMeters": 2.002716064453125e-5,
+      "validityMasksEqual": true,
+      "nativeUrl": "https://maps.zh.ch/download/hoehen/2022/dtm/tif/2684500_1245500.tif",
+      "nativeSha256": "71dc0758c63cb93f0537b687e0874232ac68f8964d9906ea91aa10fad61b5d91",
+      "wcsUrl": "https://wms.zh.ch/DEMWCS?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm&CRS=EPSG%3A2056&RESPONSE_CRS=EPSG%3A2056&RESX=2&RESY=2&FORMAT=GeoTIFF&INTERPOLATION=bilinear&BBOX=2684500%2C1245500%2C2685000%2C1246000",
+      "wcsSha256": "593d7aa310ab3de286ea90b4009df193efda6ee383fa5803ec2b2039cf6f7e9c",
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "scope": "Source-delivery and resampling equivalence, not field accuracy. WCS requests name DTM 2022; provider changes must be reviewed."
+}
