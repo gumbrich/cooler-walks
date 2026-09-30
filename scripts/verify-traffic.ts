@@ -1,5 +1,6 @@
 /** Recomputable route examples and invariants, not field validation. */
 import fs from 'node:fs';
+import { format, resolveConfig } from 'prettier';
 import assert from 'node:assert/strict';
 import crypto from 'node:crypto';
 import { getCity } from '../src/lib/cities';
@@ -88,7 +89,11 @@ const report = {
     'Nine real graph-route computations; budget, coverage, breakdown and passing-time invariants. No observed traffic reduction, field accuracy, noise or safety validation is claimed.',
   cases,
 };
-fs.writeFileSync('docs/traffic-route-validation.json', JSON.stringify(report, null, 2) + '\n');
+const reportPath = 'docs/traffic-route-validation.json';
+fs.writeFileSync(
+  reportPath,
+  await format(JSON.stringify(report), { ...(await resolveConfig(reportPath)), parser: 'json' }),
+);
 console.log(
   `Verified ${cases.length} traffic route/budget cases. Field validation remains pending.`,
 );

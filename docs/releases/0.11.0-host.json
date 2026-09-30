@@ -1,0 +1,13 @@
+{
+  "site": "https://coolerwalks.ch",
+  "checkedAt": "2026-09-30T16:26:19.115Z",
+  "testedSourceRevision": "4697889c64928ed5fe54fede40eced23c6b12db2",
+  "main": "/assets/main-DPD-yx0E.js",
+  "worker": "/assets/route-worker-CKYZz0Qo.js",
+  "workerSha256": "282b3ec03c8f39d4441f6a38289c74d9e9aea49b0d00c7b5e3a42df89fed3ed1",
+  "workerMatchesLocalBuild": true,
+  "zurichVersion": "zurich-2026-09-30-v9",
+  "zurichPayloadSha256": "bb6e4dee3604b00b7319b558198df8945115c4bfef1deb3e748ddc5e75094e26",
+  "zurichPayloadMatchesLocalBuild": true,
+  "newTrafficInterfacePresent": true
+}

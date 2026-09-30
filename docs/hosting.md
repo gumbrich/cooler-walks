@@ -151,3 +151,9 @@ All six public pages, true missing-file 404s, security/cache headers and both ma
 All four release-browser scenarios pass on the live domain, covering English/German no-JavaScript pages, accessibility, enlarged text, CSP and offline privacy navigation. [Platform scope](platform.md) records actual browser/native checks and the remaining device limitations.
 
 Final acceptance on `0df33ef` includes all 79 unit/model checks, eight Python source checks, real-data verification, formatting, the production build and **all 20 Linux browser scenarios**, plus successful Android/iOS packaging. [CI evidence](releases/0.10.0-ci.json) retains the exact run links and validation scope.
+
+## 0.11.0 traffic update
+
+Published application source `4697889c64928ed5fe54fede40eced23c6b12db2` updates Zurich street context to v2 and the dataset to `zurich-2026-09-30-v9`. The deployed routing worker matches the tested local build byte-for-byte; the changed Zurich pack decompresses to the exact tested payload. [Provenance](releases/0.11.0-host.json). All six public pages, true 404s, security/cache headers, both manifests and all five hosted pack hashes/native CORS checks pass against the [actual deployed catalogue](releases/0.11.0-hosted-catalog.json).
+
+A returning Chrome session initially received an older cached Zurich dataset during the service-worker handover. The app rejected it with its version-mismatch state; the visible **Retry / Erneut laden** action then loaded the current data and restored real routes. This recovery was verified, but seamless upgrades across old caches remain an improvement item. A fresh PWA installation was not repeated for this traffic update; the latest installation report remains 0.10.0. Hosting, DNS, account settings and store-submission status are unchanged.

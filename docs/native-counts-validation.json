@@ -1,12 +1,14 @@
 {
-  "checkedAt": "2026-09-30T13:55:14.208Z",
-  "appVersion": "0.10.0",
+  "checkedAt": "2026-09-30T16:23:19.317Z",
+  "appVersion": "0.11.0",
   "device": "CoolerWalks_Test Android emulator",
   "passed": [
     "Ground-referenced 3D roofs compute offline in the central Zurich pilot",
     "Whole Zurich coverage view renders on the 2 GB emulator",
     "Bundled vehicle-count profiles after offline reload",
     "Real Monday 14:00 reference, three counters and map markers",
+    "Each nearby counter selects its own passing hour across the 15:00 boundary while offline",
+    "Traffic v2 alternatives and German street-distance breakdown while offline",
     "German labels preserve the observations",
     "Official Oerlikon address search, real routes and settled map while offline",
     "Arrival-time shadow explanation and city-local arrival times in English/German while offline",

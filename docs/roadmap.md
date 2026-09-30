@@ -30,3 +30,5 @@ Current delivery adds expanded Zurich coverage, official addresses, direct map a
 5. **Release hardening.** Physical iPhone/Android install and outdoor usability checks, further languages and RTL layouts, broader browser support, explicit source-update workflow and error telemetry that does not collect precise journeys.
 
 App-store publication, accounts, social features, live turn-by-turn navigation, weather forecasting and unverified accessibility claims remain outside this milestone.
+
+Release follow-up: make service-worker/data-version handovers seamless. The 0.11.0 returning-browser check safely rejected an older cached dataset and recovered through Retry; eliminate that manual retry while preserving strict data-version checks and offline behaviour.

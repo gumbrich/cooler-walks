@@ -21,10 +21,7 @@
           "other": 326.25999999999993,
           "unknown": 35.4
         },
-        "conservativeDistances": {
-          "main": 623.2466666666663,
-          "motor": 1288.8200000000006
-        },
+        "conservativeDistances": { "main": 623.2466666666663, "motor": 1288.8200000000006 },
         "streets": [
           "Bahnhofquai",
           "Walking path",
@@ -84,10 +81,7 @@
           "other": 326.25999999999993,
           "unknown": 35.4
         },
-        "conservativeDistances": {
-          "main": 623.2466666666663,
-          "motor": 1288.8200000000006
-        },
+        "conservativeDistances": { "main": 623.2466666666663, "motor": 1288.8200000000006 },
         "streets": [
           "Bahnhofquai",
           "Walking path",
@@ -141,10 +135,7 @@
           "other": 694.7033333333333,
           "unknown": 11.43
         },
-        "conservativeDistances": {
-          "main": 314.34666666666675,
-          "motor": 1284.4299999999987
-        },
+        "conservativeDistances": { "main": 314.34666666666675, "motor": 1284.4299999999987 },
         "streets": [
           "Bahnhofquai",
           "Bahnhofplatz",
@@ -188,10 +179,7 @@
           "other": 326.25999999999993,
           "unknown": 35.4
         },
-        "conservativeDistances": {
-          "main": 623.2466666666663,
-          "motor": 1288.8200000000006
-        },
+        "conservativeDistances": { "main": 623.2466666666663, "motor": 1288.8200000000006 },
         "streets": [
           "Bahnhofquai",
           "Walking path",
@@ -245,10 +233,7 @@
           "other": 694.7033333333333,
           "unknown": 11.43
         },
-        "conservativeDistances": {
-          "main": 314.34666666666675,
-          "motor": 1284.4299999999987
-        },
+        "conservativeDistances": { "main": 314.34666666666675, "motor": 1284.4299999999987 },
         "streets": [
           "Bahnhofquai",
           "Bahnhofplatz",
@@ -292,10 +277,7 @@
           "other": 87.21,
           "unknown": 36.82
         },
-        "conservativeDistances": {
-          "main": 640.5239999999999,
-          "motor": 1758.2699999999998
-        },
+        "conservativeDistances": { "main": 640.5239999999999, "motor": 1758.2699999999998 },
         "streets": [
           "Walking path",
           "Nansenstrasse",
@@ -329,10 +311,7 @@
           "other": 87.21,
           "unknown": 36.82
         },
-        "conservativeDistances": {
-          "main": 640.5239999999999,
-          "motor": 1758.2699999999998
-        },
+        "conservativeDistances": { "main": 640.5239999999999, "motor": 1758.2699999999998 },
         "streets": [
           "Walking path",
           "Nansenstrasse",
@@ -360,10 +339,7 @@
           "other": 100.205,
           "unknown": 36.82
         },
-        "conservativeDistances": {
-          "main": 255.27769841269833,
-          "motor": 1555.1799999999994
-        },
+        "conservativeDistances": { "main": 255.27769841269833, "motor": 1555.1799999999994 },
         "streets": [
           "Walking path",
           "Nansenstrasse",
@@ -402,10 +378,7 @@
           "other": 87.21,
           "unknown": 36.82
         },
-        "conservativeDistances": {
-          "main": 640.5239999999999,
-          "motor": 1758.2699999999998
-        },
+        "conservativeDistances": { "main": 640.5239999999999, "motor": 1758.2699999999998 },
         "streets": [
           "Walking path",
           "Nansenstrasse",
@@ -433,10 +406,7 @@
           "other": 100.205,
           "unknown": 36.82
         },
-        "conservativeDistances": {
-          "main": 255.27769841269833,
-          "motor": 1555.1799999999994
-        },
+        "conservativeDistances": { "main": 255.27769841269833, "motor": 1555.1799999999994 },
         "streets": [
           "Walking path",
           "Nansenstrasse",
@@ -475,10 +445,7 @@
           "other": 357.33500000000004,
           "unknown": 0
         },
-        "conservativeDistances": {
-          "main": 1313.1883333333335,
-          "motor": 2224.2799999999997
-        },
+        "conservativeDistances": { "main": 1313.1883333333335, "motor": 2224.2799999999997 },
         "streets": ["Walking path", "Rennweg", "Fortunagasse", "Steps", "Lindenhof"],
         "nearbyCounters": [
           {
@@ -530,10 +497,7 @@
           "other": 357.33500000000004,
           "unknown": 0
         },
-        "conservativeDistances": {
-          "main": 1313.1883333333335,
-          "motor": 2224.2799999999997
-        },
+        "conservativeDistances": { "main": 1313.1883333333335, "motor": 2224.2799999999997 },
         "streets": ["Walking path", "Rennweg", "Fortunagasse", "Steps", "Lindenhof"],
         "nearbyCounters": [
           {
@@ -579,10 +543,7 @@
           "other": 909.2499999999999,
           "unknown": 0
         },
-        "conservativeDistances": {
-          "main": 432.5782539682537,
-          "motor": 2503.900000000001
-        },
+        "conservativeDistances": { "main": 432.5782539682537, "motor": 2503.900000000001 },
         "streets": [
           "Walking path",
           "Münzplatz",
@@ -613,10 +574,7 @@
           "other": 357.33500000000004,
           "unknown": 0
         },
-        "conservativeDistances": {
-          "main": 1313.1883333333335,
-          "motor": 2224.2799999999997
-        },
+        "conservativeDistances": { "main": 1313.1883333333335, "motor": 2224.2799999999997 },
         "streets": ["Walking path", "Rennweg", "Fortunagasse", "Steps", "Lindenhof"],
         "nearbyCounters": [
           {
@@ -662,10 +620,7 @@
           "other": 597.1512500000002,
           "unknown": 11.43
         },
-        "conservativeDistances": {
-          "main": 299.8396071428572,
-          "motor": 2861.4900000000002
-        },
+        "conservativeDistances": { "main": 299.8396071428572, "motor": 2861.4900000000002 },
         "streets": [
           "Walking path",
           "Kernstrasse",
