@@ -1,0 +1,10 @@
+{
+  "checkedAt": "2026-09-30T11:07:24.627Z",
+  "origin": "https://coolerwalks.ch",
+  "sourceCommit": "eb9d9456e088b91d7cbcdaae696752594927b9b8",
+  "serviceWorkerSha256": "503ba6ec4ea6890128377e60bb063d673e43a23b1c7528e09dc9033beb75bc96",
+  "interfaceAssets": 46,
+  "cityDataPrecachedDuringInstallation": false,
+  "hostedCatalogueUnchanged": true,
+  "productionBrowserScenariosPassed": 4
+}

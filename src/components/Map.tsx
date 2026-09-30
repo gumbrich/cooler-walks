@@ -132,13 +132,61 @@ export function WalkingMap({
             {
               id: 'building',
               type: 'fill',
+              minzoom: 14,
               source: 'base',
               filter: ['==', ['get', 'kind'], 'building'],
               paint: { 'fill-color': '#dcdacf', 'fill-outline-color': '#d1cfc2' },
             },
+            // At city scale, show the street structure without constructing
+            // building/path buckets for every block in the full coverage area.
+            ...(['overview-road-case', 'overview-roads'] as const).map((id) => ({
+              id,
+              type: 'line' as const,
+              source: 'base',
+              maxzoom: 14,
+              filter: [
+                'all',
+                ['==', ['get', 'kind'], 'road'],
+                [
+                  'in',
+                  ['get', 'highway'],
+                  [
+                    'literal',
+                    [
+                      'motorway',
+                      'motorway_link',
+                      'trunk',
+                      'trunk_link',
+                      'primary',
+                      'primary_link',
+                      'secondary',
+                      'secondary_link',
+                      'tertiary',
+                      'tertiary_link',
+                      'residential',
+                      'unclassified',
+                      'living_street',
+                    ],
+                  ],
+                ],
+              ] as maplibregl.FilterSpecification,
+              paint: {
+                'line-color': id === 'overview-road-case' ? '#dddccf' : '#fffdf7',
+                'line-width': [
+                  'interpolate',
+                  ['linear'],
+                  ['zoom'],
+                  11,
+                  id === 'overview-road-case' ? 1.5 : 0.6,
+                  14,
+                  id === 'overview-road-case' ? 4 : 2.5,
+                ] as maplibregl.ExpressionSpecification,
+              },
+            })),
             {
               id: 'road-case',
               type: 'line',
+              minzoom: 14,
               source: 'base',
               filter: ['==', ['get', 'kind'], 'road'],
               layout: { 'line-cap': 'round', 'line-join': 'round' },
@@ -150,6 +198,7 @@ export function WalkingMap({
             {
               id: 'roads',
               type: 'line',
+              minzoom: 14,
               source: 'base',
               filter: ['==', ['get', 'kind'], 'road'],
               layout: { 'line-cap': 'round', 'line-join': 'round' },
@@ -161,6 +210,7 @@ export function WalkingMap({
             {
               id: 'paths',
               type: 'line',
+              minzoom: 14,
               source: 'base',
               filter: [
                 'in',

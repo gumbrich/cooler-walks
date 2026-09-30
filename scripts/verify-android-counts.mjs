@@ -34,6 +34,11 @@ try {
   await page.clock.setFixedTime(new Date('2026-06-22T12:00:00Z'));
   await page.reload();
   await expect(page.locator('.route-card').first()).toBeVisible({ timeout: 60000 });
+  await page.getByRole('button', { name: 'Show whole coverage', exact: true }).click();
+  await expect(page.locator('.map-shell')).toHaveAttribute('data-map-settled', 'true', {
+    timeout: 60000,
+  });
+  await page.getByRole('button', { name: 'Fit route to map', exact: true }).click();
   await shell('svc wifi disable');
   await shell('svc data disable');
   await expect.poll(() => page.evaluate(() => navigator.onLine)).toBe(false);
@@ -80,6 +85,7 @@ try {
         appVersion: JSON.parse(fs.readFileSync('package.json', 'utf8')).version,
         device: 'CoolerWalks_Test Android emulator',
         passed: [
+          'Whole Zurich coverage view renders on the 2 GB emulator',
           'Bundled vehicle-count profiles after offline reload',
           'Real Monday 14:00 reference, three counters and map markers',
           'German labels preserve the observations',

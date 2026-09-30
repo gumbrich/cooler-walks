@@ -1,8 +1,9 @@
 {
-  "checkedAt": "2026-09-30T10:42:00.340Z",
+  "checkedAt": "2026-09-30T11:15:40.675Z",
   "appVersion": "0.8.0",
   "device": "CoolerWalks_Test Android emulator",
   "passed": [
+    "Whole Zurich coverage view renders on the 2 GB emulator",
     "Bundled vehicle-count profiles after offline reload",
     "Real Monday 14:00 reference, three counters and map markers",
     "German labels preserve the observations",

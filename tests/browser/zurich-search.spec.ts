@@ -8,8 +8,10 @@ test('Zurich addresses, beta labels, direct map selection and honest outside cov
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto('/?view=planner');
   await expect(page.getByRole('button', { name: /Fastest walk/ })).toBeVisible();
+  const overviewStarted = Date.now();
   await page.getByRole('button', { name: 'Show whole coverage', exact: true }).click();
   await expect(page.locator('.map-shell')).toHaveAttribute('data-map-settled', 'true');
+  console.log(`Zurich whole-area map settled in ${Date.now() - overviewStarted} ms`);
   await page.screenshot({ path: 'docs/screenshots/desktop-zurich-coverage.png' });
   const from = page.getByRole('combobox', { name: 'From', exact: true });
   const to = page.getByRole('combobox', { name: 'To', exact: true });

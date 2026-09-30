@@ -94,7 +94,12 @@ await expect(page.locator('.route-card').first()).toBeVisible({ timeout: 60000 }
 await expect(page.locator('.map-shell')).toHaveAttribute('data-map-ready', 'true', {
   timeout: 60000,
 });
-await page.screenshot({ path: 'docs/screenshots/desktop-offline.png', fullPage: true });
+// Wait for actual offline map tiles before capture. Full-page software-WebGL
+// captures can stall while a large GeoJSON view is still settling.
+await expect(page.locator('.map-shell')).toHaveAttribute('data-map-settled', 'true', {
+  timeout: 60000,
+});
+await page.screenshot({ path: 'docs/screenshots/desktop-offline.png' });
 await page.getByRole('checkbox', { name: /Prefer waterside/ }).check();
 await expect(page.getByRole('button', { name: /More time near water/ })).toBeVisible({
   timeout: 60000,
