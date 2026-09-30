@@ -449,6 +449,7 @@ small {
   align-items: center;
 }
 .planner {
+  container: planner / inline-size;
   height: calc(100dvh - 84px);
   min-height: 650px;
   display: grid;
@@ -994,7 +995,7 @@ small {
 }
 .timeline-wrap {
   position: absolute;
-  bottom: 64px;
+  bottom: calc(44px + 2rem);
   left: calc(390px + 5%);
   right: 5%;
   max-width: 720px;
@@ -2274,6 +2275,11 @@ small {
 }
 .maplibregl-ctrl-attrib {
   font-size: 11px !important;
+}
+@container planner (max-width: 70em) {
+  .map-top-pill {
+    display: none;
+  }
 }
 @media (min-width: 1101px) {
   .planner {

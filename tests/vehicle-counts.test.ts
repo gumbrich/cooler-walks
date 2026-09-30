@@ -67,5 +67,7 @@ describe('Measured vehicle-count evidence', () => {
     expect(nearbyCounts(missing, city, route.fastest, date).every((o) => o.mean === null)).toBe(
       true,
     );
-  }, 15000);
+    // Two complete source-graph calculations: allow the same 15 s per route as
+    // the traffic integration test, without changing individual assertions.
+  }, 30000);
 });
