@@ -45,6 +45,10 @@ try {
   await page.reload();
   await expect(page.locator('.route-card').first()).toBeVisible({ timeout: 60000 });
   await expect(page.locator('.route-model-note').first()).toContainText('3D roofs');
+  await page.getByRole('button', { name: 'Fit route to map', exact: true }).click();
+  await expect(page.locator('.map-shell')).toHaveAttribute('data-map-settled', 'true', {
+    timeout: 60000,
+  });
   await device.screenshot({ path: 'docs/screenshots/android-3d-shade.png' });
   await page.getByLabel('Departure date', { exact: true }).fill('2026-06-22');
   await page.getByRole('slider', { name: 'Departure time', exact: true }).fill('840');
@@ -66,9 +70,15 @@ try {
   await device.screenshot({ path: 'docs/screenshots/android-vehicle-counts.png' });
   await page.getByRole('button', { name: 'Weg bearbeiten', exact: true }).click();
   await page.getByRole('combobox', { name: 'Von', exact: true }).fill('Hofwiesenstrasse 350');
-  await page.getByRole('combobox', { name: 'Von', exact: true }).press('Enter');
+  await page.getByRole('option', { name: /^Hofwiesenstrasse 350 Amtliche Adresse/ }).click();
+  await expect(page.getByRole('combobox', { name: 'Von', exact: true })).toHaveValue(
+    'Hofwiesenstrasse 350',
+  );
   await page.getByRole('combobox', { name: 'Nach', exact: true }).fill('Wallisellenstrasse 45');
-  await page.getByRole('combobox', { name: 'Nach', exact: true }).press('Enter');
+  await page.getByRole('option', { name: /^Wallisellenstrasse 45 Amtliche Adresse/ }).click();
+  await expect(page.getByRole('combobox', { name: 'Nach', exact: true })).toHaveValue(
+    'Wallisellenstrasse 45',
+  );
   await expect(page.locator('.spinner')).toHaveCount(0, { timeout: 60000 });
   await expect(page.getByRole('button', { name: /Schnellster Weg/ })).toBeVisible();
   await expect(page.locator('.route-arrival').first()).toContainText('Ankunft gegen 14:10');

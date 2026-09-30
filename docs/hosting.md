@@ -141,3 +141,13 @@ The public route scenario passes arrival times for both alternatives, English/Ge
 All four live release-browser scenarios pass, including production CSP, accessibility/200% text, English/German pages without JavaScript and offline privacy navigation. Chrome installed and launched the public PWA and passed offline arrival-time shade and address planning, with no manifest, installability or page errors. Android and iOS CI packaging passed. [Platform scope](platform.md) and [PWA report](pwa-validation.json).
 
 Final acceptance includes the complete [Linux workflow with all 18 browser scenarios](https://github.com/gumbrich/cooler-walks/actions/runs/36716054350) and both native CI builds. [CI evidence](releases/0.9.0-ci.json) records the published revision. No physical-phone or field-shadow accuracy validation is implied.
+
+## Version 0.10.0 release — 30 September 2026
+
+Published source `0df33ef6204bfd349ad1be027e8d4b40fd45e82e` adds the bounded central Zurich 3D-roof/LiDAR-ground model. The public routing worker and detailed geometry match the locally tested production bytes exactly. [Deployment provenance](releases/0.10.0-host.json). Zurich data advances to `zurich-2026-09-30-v8`; the five downloadable packs pass their deployed compressed checksums and native CORS checks using the [actual Node 22 hosted catalogue](releases/0.10.0-hosted-catalog.json).
+
+All six public pages, true missing-file 404s, security/cache headers and both manifests pass the hosted smoke checks. Chrome installed and launched the public PWA, cached the detailed geometry and verified offline routing, German addresses, saved-area reopening and reconnection without page errors. The first PWA attempt timed out during concurrent large transfers; the sequential rerun passed with unchanged time limits. [PWA results](pwa-validation.json). Android and iOS CI builds pass; physical-phone and field-shadow validation remain outstanding. DNS, hosting plan and account settings are unchanged.
+
+All four release-browser scenarios pass on the live domain, covering English/German no-JavaScript pages, accessibility, enlarged text, CSP and offline privacy navigation. [Platform scope](platform.md) records actual browser/native checks and the remaining device limitations.
+
+Final acceptance on `0df33ef` includes all 79 unit/model checks, eight Python source checks, real-data verification, formatting, the production build and **all 20 Linux browser scenarios**, plus successful Android/iOS packaging. [CI evidence](releases/0.10.0-ci.json) retains the exact run links and validation scope.

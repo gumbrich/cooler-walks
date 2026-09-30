@@ -1,0 +1,11 @@
+{
+  "site": "https://coolerwalks.ch",
+  "checkedAt": "2026-09-30T13:46:11.810Z",
+  "sourceRevision": "0df33ef6204bfd349ad1be027e8d4b40fd45e82e",
+  "main": "/assets/main-ByZAcWY3.js",
+  "worker": "/assets/route-worker-B2y0j4OY.js",
+  "workerSha256": "edc1a82ee11de2d3f3b0a5e480387d22e7df5b17b8a9534c1193a6c2aefb036f",
+  "detailedDataSha256": "0d7efed8059cae99431ea2a32c75905667dbc7c0aca376477cac473cc7a5e51c",
+  "workerMatchesLocalBuild": true,
+  "geometryMatchesLocalBuild": true
+}

@@ -13,7 +13,7 @@
 
 **Calmer-street routing:** Zurich only, within its existing pilot boundary. Official current pedestrian/Begegnungszone/Tempo-30 polygons plus buffered OSM main-road classes; experimental street context, not measured traffic. Munich, Cambridge, Basel and candidate cities do not yet enable it. [Traffic data and limitations](traffic.md). English and German work across all city interfaces.
 
-**Tree shade, terrain effects and fountains are disabled in every city.** Water is a separate proximity preference, not evidence of cooling, views, shoreline access or drinking water. Greenery is distance within 15 m of source tree points, not canopy shade.
+**Tree shade, terrain shadows and fountains are disabled in every city.** Water is a separate proximity preference, not evidence of cooling, views, shoreline access or drinking water. Greenery is distance within 15 m of source tree points, not canopy shade.
 
 Building-enabled pilots offer explicit **Prefer shade / Prefer sun**. Direct-sun estimates require solar elevation of at least 10° and at least 95% model coverage for both comparison routes. Building geometry extends beyond route endpoints, and sample coverage checks account for surrounding shadow sources. Unknown coverage is never treated as sunshine. Munich now uses four adjacent 2 km LoD2 tiles. Unsupported elevated structures and conflicting source heights remain unknown; low winter sun or edge routes can still exceed available surroundings. The app explains the limitation and withholds a sun recommendation.
 

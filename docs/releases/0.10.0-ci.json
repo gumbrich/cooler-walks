@@ -1,0 +1,41 @@
+{
+  "appVersion": "0.10.0",
+  "sourceRevision": "0df33ef6204bfd349ad1be027e8d4b40fd45e82e",
+  "checkedAt": "2026-09-30T13:58:02.044835+00:00",
+  "runs": [
+    {
+      "conclusion": "success",
+      "databaseId": 36723677499,
+      "headSha": "0df33ef6204bfd349ad1be027e8d4b40fd45e82e",
+      "name": "Checks",
+      "status": "completed",
+      "url": "https://github.com/gumbrich/cooler-walks/actions/runs/36723677499"
+    },
+    {
+      "conclusion": "success",
+      "databaseId": 36723677477,
+      "headSha": "0df33ef6204bfd349ad1be027e8d4b40fd45e82e",
+      "name": "Native iOS build",
+      "status": "completed",
+      "url": "https://github.com/gumbrich/cooler-walks/actions/runs/36723677477"
+    },
+    {
+      "conclusion": "success",
+      "databaseId": 36723677370,
+      "headSha": "0df33ef6204bfd349ad1be027e8d4b40fd45e82e",
+      "name": "Native Android build",
+      "status": "completed",
+      "url": "https://github.com/gumbrich/cooler-walks/actions/runs/36723677370"
+    }
+  ],
+  "scope": {
+    "typescriptModelTests": 79,
+    "pythonSourceTests": 8,
+    "browserScenarios": 20,
+    "liveReleaseBrowserScenarios": 4,
+    "pwa": "Installed, standalone and offline on Chrome 154/macOS from coolerwalks.ch",
+    "android": "Offline flow on 2 GB Android 16 emulator",
+    "ios": "Build and unsigned archive only for this update"
+  },
+  "limitations": ["No physical-phone validation", "No field-shadow accuracy validation"]
+}
