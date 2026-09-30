@@ -1,0 +1,672 @@
+{
+  "checkedAt": "2026-09-30T15:02:20.918006+00:00",
+  "inputAuditSha256": "6c8f173497134abd70432f95c2000f0fc8910802dd4bb3fd17025255c2152bc0",
+  "modelSha256": "0d7efed8059cae99431ea2a32c75905667dbc7c0aca376477cac473cc7a5e51c",
+  "method": "All previously flagged samples; class 6, non-withheld returns within 1 m; local least-squares plane and unfiltered height range reported.",
+  "scope": "Independent raw-return check of raster and historical roof consistency. Same LiDAR survey as the raster; not an independent field-shadow measurement. No source is automatically declared correct.",
+  "sources": [
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/lidar/2682000_1247500.laz",
+      "sha256": "1291a58ce035010c239a34c357d07b59f51fa5bc128064f14767ed19c35afa07",
+      "bytes": 39220718,
+      "points": 7162123,
+      "crs": "EPSG:2056 + EPSG:5728",
+      "lasCreationDate": "2022-08-12",
+      "gpsTimeType": "0",
+      "observationEpoch": "Provider product 2021\u20132022; LAS creation date is not capture time."
+    },
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/lidar/2682000_1248000.laz",
+      "sha256": "0d26d6f108716b4906ade2ee17848e49f6a20df10abbdbad0b3ff9c8119d7c25",
+      "bytes": 35766671,
+      "points": 6664726,
+      "crs": "EPSG:2056 + EPSG:5728",
+      "lasCreationDate": "2022-08-11",
+      "gpsTimeType": "0",
+      "observationEpoch": "Provider product 2021\u20132022; LAS creation date is not capture time."
+    },
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/lidar/2682500_1246500.laz",
+      "sha256": "6f86d21a94fee17c572c4d1b6dfffa44b89526e06725ef95467717e509358b85",
+      "bytes": 47341167,
+      "points": 8419559,
+      "crs": "EPSG:2056 + EPSG:5728",
+      "lasCreationDate": "2022-08-11",
+      "gpsTimeType": "0",
+      "observationEpoch": "Provider product 2021\u20132022; LAS creation date is not capture time."
+    },
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/lidar/2682500_1247000.laz",
+      "sha256": "1b872e5835ab68be5fb2748ab5fbb319fa101cdd8a175ed816f6eda25f3dd072",
+      "bytes": 34356900,
+      "points": 6249425,
+      "crs": "EPSG:2056 + EPSG:5728",
+      "lasCreationDate": "2022-08-11",
+      "gpsTimeType": "0",
+      "observationEpoch": "Provider product 2021\u20132022; LAS creation date is not capture time."
+    },
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/lidar/2682500_1247500.laz",
+      "sha256": "05fdad6e830c6c3889d3fb12b7ba055c283c597e67d548d157977da8cee3be7c",
+      "bytes": 40142962,
+      "points": 7466332,
+      "crs": "EPSG:2056 + EPSG:5728",
+      "lasCreationDate": "2022-08-11",
+      "gpsTimeType": "0",
+      "observationEpoch": "Provider product 2021\u20132022; LAS creation date is not capture time."
+    },
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/lidar/2682500_1248000.laz",
+      "sha256": "1df232dc64a7b04eff89a20ca3767fd972b25e00fd8159a5c33a1b80c5397cfb",
+      "bytes": 38805076,
+      "points": 7374575,
+      "crs": "EPSG:2056 + EPSG:5728",
+      "lasCreationDate": "2022-08-11",
+      "gpsTimeType": "0",
+      "observationEpoch": "Provider product 2021\u20132022; LAS creation date is not capture time."
+    },
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/lidar/2683000_1246500.laz",
+      "sha256": "0a82ac1dd1314f6c9635384eeb5b0846a8e4aa90a75cc352bab0d0fa6007054a",
+      "bytes": 22048323,
+      "points": 4114974,
+      "crs": "EPSG:2056 + EPSG:5728",
+      "lasCreationDate": "2022-08-12",
+      "gpsTimeType": "0",
+      "observationEpoch": "Provider product 2021\u20132022; LAS creation date is not capture time."
+    },
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/lidar/2683000_1247000.laz",
+      "sha256": "38b523a5dd6b078a44a3dfb483e11cde065a5403efc2448f3a7e0b46d4dcd3d6",
+      "bytes": 40520980,
+      "points": 7278124,
+      "crs": "EPSG:2056 + EPSG:5728",
+      "lasCreationDate": "2022-08-11",
+      "gpsTimeType": "0",
+      "observationEpoch": "Provider product 2021\u20132022; LAS creation date is not capture time."
+    },
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/lidar/2683000_1247500.laz",
+      "sha256": "7e4d2ff0dbdf00078b7b3ddef48fbd84f15c7514f0b392eb2b266371b79631a4",
+      "bytes": 32623016,
+      "points": 5997329,
+      "crs": "EPSG:2056 + EPSG:5728",
+      "lasCreationDate": "2022-08-11",
+      "gpsTimeType": "0",
+      "observationEpoch": "Provider product 2021\u20132022; LAS creation date is not capture time."
+    },
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/lidar/2683000_1248000.laz",
+      "sha256": "f74807d9b31e12ca1885492a9f6f4b3e2f8cf7218035cf7e7171a540ddf095ea",
+      "bytes": 40921095,
+      "points": 7211554,
+      "crs": "EPSG:2056 + EPSG:5728",
+      "lasCreationDate": "2022-08-11",
+      "gpsTimeType": "0",
+      "observationEpoch": "Provider product 2021\u20132022; LAS creation date is not capture time."
+    },
+    {
+      "url": "https://maps.zh.ch/download/hoehen/2022/lidar/2683500_1248000.laz",
+      "sha256": "4eebf563d7b09978f265cb7d5bdc666fbcfae9f487d5253a849fb431b6776bf7",
+      "bytes": 39639430,
+      "points": 7100162,
+      "crs": "EPSG:2056 + EPSG:5728",
+      "lasCreationDate": "2022-08-11",
+      "gpsTimeType": "0",
+      "observationEpoch": "Provider product 2021\u20132022; LAS creation date is not capture time."
+    }
+  ],
+  "samples": [
+    {
+      "pointLV95": [2682250, 1247950],
+      "buildingId": "ID_33ED82E3-5448-40A1-8440-3406E1246FAE",
+      "citygmlRoofLN02": 425.9799000000057,
+      "lidarDTMPlusBuildingLN02": 428.17099952697754,
+      "differenceMeters": -2.1910995269718114,
+      "tile": "2682000_1247500.laz",
+      "radiusMeters": 1,
+      "classCounts": {
+        "6": 68
+      },
+      "buildingReturns": 68,
+      "nearestBuildingReturn": [2682250.042, 1247949.926, 426.19100000000003],
+      "medianBuildingHeight": 426.192,
+      "minimumBuildingHeight": 425.898,
+      "maximumBuildingHeight": 428.329,
+      "fittedHeightAtSample": 426.48189234290436,
+      "planeResidualRMSE": 0.7920564512307497,
+      "citygmlMinusLocalFitMeters": -0.5019923428986317,
+      "rasterMinusLocalFitMeters": 1.6891071840731797
+    },
+    {
+      "pointLV95": [2682330, 1247650],
+      "buildingId": "ID_0A5FFE57-0575-4E63-B28F-B193E8A00C46",
+      "citygmlRoofLN02": 417.04502447822523,
+      "lidarDTMPlusBuildingLN02": 419.10001277923584,
+      "differenceMeters": -2.05498830101061,
+      "tile": "2682000_1247500.laz",
+      "radiusMeters": 1,
+      "classCounts": {
+        "6": 64
+      },
+      "buildingReturns": 64,
+      "nearestBuildingReturn": [2682330.039, 1247649.838, 419.211],
+      "medianBuildingHeight": 419.2085,
+      "minimumBuildingHeight": 416.987,
+      "maximumBuildingHeight": 419.26,
+      "fittedHeightAtSample": 419.1179017107747,
+      "planeResidualRMSE": 0.4259515749432949,
+      "citygmlMinusLocalFitMeters": -2.0728772325494447,
+      "rasterMinusLocalFitMeters": -0.01788893153883464
+    },
+    {
+      "pointLV95": [2682210, 1248010],
+      "buildingId": "ID_6C45BACB-1771-4ABB-BF2E-76D24EF15D9E",
+      "citygmlRoofLN02": 416.11692947247667,
+      "lidarDTMPlusBuildingLN02": 422.29999828338623,
+      "differenceMeters": -6.18306881090956,
+      "tile": "2682000_1248000.laz",
+      "radiusMeters": 1,
+      "classCounts": {
+        "6": 57
+      },
+      "buildingReturns": 57,
+      "nearestBuildingReturn": [2682209.916, 1248010.006, 422.217],
+      "medianBuildingHeight": 422.242,
+      "minimumBuildingHeight": 421.409,
+      "maximumBuildingHeight": 423.20300000000003,
+      "fittedHeightAtSample": 422.2701542157826,
+      "planeResidualRMSE": 0.024353972329444716,
+      "citygmlMinusLocalFitMeters": -6.153224743305941,
+      "rasterMinusLocalFitMeters": 0.02984406760361935
+    },
+    {
+      "pointLV95": [2682410, 1248250],
+      "buildingId": "ID_EFF23457-CA24-4B73-8303-B3488BF335B6",
+      "citygmlRoofLN02": 439.5353923880194,
+      "lidarDTMPlusBuildingLN02": 443.5969924926758,
+      "differenceMeters": -4.0616001046564065,
+      "tile": "2682000_1248000.laz",
+      "radiusMeters": 1,
+      "classCounts": {
+        "6": 137
+      },
+      "buildingReturns": 137,
+      "nearestBuildingReturn": [2682410.0439999998, 1248249.891, 443.709],
+      "medianBuildingHeight": 441.53000000000003,
+      "minimumBuildingHeight": 439.515,
+      "maximumBuildingHeight": 443.76800000000003,
+      "fittedHeightAtSample": 441.5709579488383,
+      "planeResidualRMSE": 1.8535929857379134,
+      "citygmlMinusLocalFitMeters": -2.0355655608189522,
+      "rasterMinusLocalFitMeters": 2.0260345438374543
+    },
+    {
+      "pointLV95": [2682350, 1248290],
+      "buildingId": "ID_62237E63-822C-4E37-B927-0BB7BA1C7C4E",
+      "citygmlRoofLN02": 447.00470000000496,
+      "lidarDTMPlusBuildingLN02": 450.6639938354492,
+      "differenceMeters": -3.6592938354442595,
+      "tile": "2682000_1248000.laz",
+      "radiusMeters": 1,
+      "classCounts": {
+        "6": 74
+      },
+      "buildingReturns": 74,
+      "nearestBuildingReturn": [2682349.951, 1248290.131, 447.079],
+      "medianBuildingHeight": 447.1965,
+      "minimumBuildingHeight": 447.039,
+      "maximumBuildingHeight": 450.898,
+      "fittedHeightAtSample": 448.78700890184973,
+      "planeResidualRMSE": 1.3398233094145524,
+      "citygmlMinusLocalFitMeters": -1.7823089018447718,
+      "rasterMinusLocalFitMeters": 1.8769849335994877
+    },
+    {
+      "pointLV95": [2682370, 1248250],
+      "buildingId": "ID_32E919F7-EE91-466F-AD29-765EA79EB99C",
+      "citygmlRoofLN02": 419.22729999999865,
+      "lidarDTMPlusBuildingLN02": 422.4320077896118,
+      "differenceMeters": -3.204707789613167,
+      "tile": "2682000_1248000.laz",
+      "radiusMeters": 1,
+      "classCounts": {
+        "6": 101
+      },
+      "buildingReturns": 101,
+      "nearestBuildingReturn": [2682370.026, 1248249.931, 422.503],
+      "medianBuildingHeight": 422.546,
+      "minimumBuildingHeight": 419.629,
+      "maximumBuildingHeight": 422.622,
+      "fittedHeightAtSample": 422.3344824668155,
+      "planeResidualRMSE": 0.676813418486197,
+      "citygmlMinusLocalFitMeters": -3.1071824668168233,
+      "rasterMinusLocalFitMeters": 0.09752532279634352
+    },
+    {
+      "pointLV95": [2682410, 1248030],
+      "buildingId": "ID_5E5E6E55-C5A9-4F2B-AB92-D6CF1ADDCB35",
+      "citygmlRoofLN02": 426.6428685124939,
+      "lidarDTMPlusBuildingLN02": 424.35100269317627,
+      "differenceMeters": 2.2918658193176498,
+      "tile": "2682000_1248000.laz",
+      "radiusMeters": 1,
+      "classCounts": {
+        "6": 74
+      },
+      "buildingReturns": 74,
+      "nearestBuildingReturn": [2682409.967, 1248030.09, 424.351],
+      "medianBuildingHeight": 424.34450000000004,
+      "minimumBuildingHeight": 424.285,
+      "maximumBuildingHeight": 427.019,
+      "fittedHeightAtSample": 424.770632717651,
+      "planeResidualRMSE": 0.7550446685285422,
+      "citygmlMinusLocalFitMeters": 1.8722357948429362,
+      "rasterMinusLocalFitMeters": -0.41963002447471354
+    },
+    {
+      "pointLV95": [2682870, 1246510],
+      "buildingId": "ID_DA28A8AB-7454-4533-871F-496D6BC3135E",
+      "citygmlRoofLN02": 427.60799023277036,
+      "lidarDTMPlusBuildingLN02": 433.46299171447754,
+      "differenceMeters": -5.855001481707177,
+      "tile": "2682500_1246500.laz",
+      "radiusMeters": 1,
+      "classCounts": {
+        "6": 130
+      },
+      "buildingReturns": 130,
+      "nearestBuildingReturn": [2682869.942, 1246509.96, 433.502],
+      "medianBuildingHeight": 433.6835,
+      "minimumBuildingHeight": 433.112,
+      "maximumBuildingHeight": 434.96000000000004,
+      "fittedHeightAtSample": 433.7961707803348,
+      "planeResidualRMSE": 0.3810629217747046,
+      "citygmlMinusLocalFitMeters": -6.188180547564457,
+      "rasterMinusLocalFitMeters": -0.33317906585727997
+    },
+    {
+      "pointLV95": [2682570, 1246930],
+      "buildingId": "ID_BDD3F657-1CB8-45CC-B827-27063C50BADE",
+      "citygmlRoofLN02": 436.53607905750886,
+      "lidarDTMPlusBuildingLN02": 439.45701026916504,
+      "differenceMeters": -2.920931211656182,
+      "tile": "2682500_1246500.laz",
+      "radiusMeters": 1,
+      "classCounts": {
+        "6": 183
+      },
+      "buildingReturns": 183,
+      "nearestBuildingReturn": [2682569.969, 1246930.025, 436.33],
+      "medianBuildingHeight": 438.73900000000003,
+      "minimumBuildingHeight": 435.776,
+      "maximumBuildingHeight": 440.446,
+      "fittedHeightAtSample": 438.42638585540146,
+      "planeResidualRMSE": 1.215831480893702,
+      "citygmlMinusLocalFitMeters": -1.890306797892606,
+      "rasterMinusLocalFitMeters": 1.0306244137635758
+    },
+    {
+      "pointLV95": [2682810, 1246810],
+      "buildingId": "ID_E3895BD9-CABF-4DB1-8098-5AE13694A495",
+      "citygmlRoofLN02": 424.49223062948226,
+      "lidarDTMPlusBuildingLN02": 427.04601097106934,
+      "differenceMeters": -2.5537803415870712,
+      "tile": "2682500_1246500.laz",
+      "radiusMeters": 1,
+      "classCounts": {
+        "6": 151
+      },
+      "buildingReturns": 151,
+      "nearestBuildingReturn": [2682809.997, 1246810.046, 427.14],
+      "medianBuildingHeight": 427.072,
+      "minimumBuildingHeight": 412.213,
+      "maximumBuildingHeight": 427.226,
+      "fittedHeightAtSample": 425.497506955763,
+      "planeResidualRMSE": 3.693150533109848,
+      "citygmlMinusLocalFitMeters": -1.0052763262807503,
+      "rasterMinusLocalFitMeters": 1.548504015306321
+    },
+    {
+      "pointLV95": [2682610, 1247310],
+      "buildingId": "ID_FDD99075-7EA6-4961-966F-93882CCD697D",
+      "citygmlRoofLN02": 422.94444456445143,
+      "lidarDTMPlusBuildingLN02": 425.852014541626,
+      "differenceMeters": -2.9075699771745462,
+      "tile": "2682500_1247000.laz",
+      "radiusMeters": 1,
+      "classCounts": {
+        "5": 13,
+        "6": 71
+      },
+      "buildingReturns": 71,
+      "nearestBuildingReturn": [2682610.025, 1247309.974, 423.543],
+      "medianBuildingHeight": 423.59700000000004,
+      "minimumBuildingHeight": 423.276,
+      "maximumBuildingHeight": 426.083,
+      "fittedHeightAtSample": 424.255766352967,
+      "planeResidualRMSE": 1.010067939796455,
+      "citygmlMinusLocalFitMeters": -1.3113217885155564,
+      "rasterMinusLocalFitMeters": 1.5962481886589899
+    },
+    {
+      "pointLV95": [2682930, 1247630],
+      "buildingId": "ID_3349C842-B436-4099-9CC4-C66B9CCA1699",
+      "citygmlRoofLN02": 430.3896650924221,
+      "lidarDTMPlusBuildingLN02": 433.56899642944336,
+      "differenceMeters": -3.1793313370212672,
+      "tile": "2682500_1247500.laz",
+      "radiusMeters": 1,
+      "classCounts": {
+        "6": 125
+      },
+      "buildingReturns": 125,
+      "nearestBuildingReturn": [2682930.134, 1247629.9610000001, 433.598],
+      "medianBuildingHeight": 433.498,
+      "minimumBuildingHeight": 414.523,
+      "maximumBuildingHeight": 434.09700000000004,
+      "fittedHeightAtSample": 431.8678652757571,
+      "planeResidualRMSE": 2.612361798138544,
+      "citygmlMinusLocalFitMeters": -1.478200183334991,
+      "rasterMinusLocalFitMeters": 1.7011311536862763
+    },
+    {
+      "pointLV95": [2682950, 1247650],
+      "buildingId": "ID_3349C842-B436-4099-9CC4-C66B9CCA1699",
+      "citygmlRoofLN02": 430.4084918238447,
+      "lidarDTMPlusBuildingLN02": 433.46199798583984,
+      "differenceMeters": -3.0535061619951307,
+      "tile": "2682500_1247500.laz",
+      "radiusMeters": 1,
+      "classCounts": {
+        "6": 129
+      },
+      "buildingReturns": 129,
+      "nearestBuildingReturn": [2682950.056, 1247649.975, 430.535],
+      "medianBuildingHeight": 430.571,
+      "minimumBuildingHeight": 430.493,
+      "maximumBuildingHeight": 434.075,
+      "fittedHeightAtSample": 431.8402836441111,
+      "planeResidualRMSE": 0.9702857039199574,
+      "citygmlMinusLocalFitMeters": -1.431791820266369,
+      "rasterMinusLocalFitMeters": 1.6217143417287616
+    },
+    {
+      "pointLV95": [2682590, 1247970],
+      "buildingId": "ID_95C5D318-9505-4FAB-B4A1-923C39EDC1C2",
+      "citygmlRoofLN02": 424.5421999999962,
+      "lidarDTMPlusBuildingLN02": 426.9389953613281,
+      "differenceMeters": -2.396795361331897,
+      "tile": "2682500_1247500.laz",
+      "radiusMeters": 1,
+      "classCounts": {
+        "6": 128
+      },
+      "buildingReturns": 128,
+      "nearestBuildingReturn": [2682590.015, 1247970.09, 424.92],
+      "medianBuildingHeight": 424.9075,
+      "minimumBuildingHeight": 424.649,
+      "maximumBuildingHeight": 427.091,
+      "fittedHeightAtSample": 425.51468522125674,
+      "planeResidualRMSE": 0.7759601926359374,
+      "citygmlMinusLocalFitMeters": -0.9724852212605128,
+      "rasterMinusLocalFitMeters": 1.424310140071384
+    },
+    {
+      "pointLV95": [2682650, 1248110],
+      "buildingId": "ID_A3796BCC-3AF0-4694-BE33-0BC8C6299C76",
+      "citygmlRoofLN02": 427.18730000000505,
+      "lidarDTMPlusBuildingLN02": 430.7090072631836,
+      "differenceMeters": -3.5217072631785413,
+      "tile": "2682500_1248000.laz",
+      "radiusMeters": 1,
+      "classCounts": {
+        "2": 15,
+        "3": 1,
+        "6": 97
+      },
+      "buildingReturns": 97,
+      "nearestBuildingReturn": [2682649.9790000003, 1248109.987, 430.815],
+      "medianBuildingHeight": 430.82,
+      "minimumBuildingHeight": 430.678,
+      "maximumBuildingHeight": 430.868,
+      "fittedHeightAtSample": 430.8158063602108,
+      "planeResidualRMSE": 0.02400840636881719,
+      "citygmlMinusLocalFitMeters": -3.6285063602057335,
+      "rasterMinusLocalFitMeters": -0.10679909702719215
+    },
+    {
+      "pointLV95": [2682590, 1248110],
+      "buildingId": "ID_1FA53769-71E5-4607-8402-A183252C3D39",
+      "citygmlRoofLN02": 446.0084999999963,
+      "lidarDTMPlusBuildingLN02": 448.1780014038086,
+      "differenceMeters": -2.169501403812319,
+      "tile": "2682500_1248000.laz",
+      "radiusMeters": 1,
+      "classCounts": {
+        "6": 151
+      },
+      "buildingReturns": 151,
+      "nearestBuildingReturn": [2682590.034, 1248110.006, 448.176],
+      "medianBuildingHeight": 446.407,
+      "minimumBuildingHeight": 446.13100000000003,
+      "maximumBuildingHeight": 449.76,
+      "fittedHeightAtSample": 447.264495753405,
+      "planeResidualRMSE": 1.1588831648326292,
+      "citygmlMinusLocalFitMeters": -1.2559957534087403,
+      "rasterMinusLocalFitMeters": 0.9135056504035788
+    },
+    {
+      "pointLV95": [2683150, 1246950],
+      "buildingId": "ID_6766EB34-2846-40A8-9C4D-D7C574A3A68D",
+      "citygmlRoofLN02": 418.37390000000596,
+      "lidarDTMPlusBuildingLN02": 420.7100067138672,
+      "differenceMeters": -2.336106713861227,
+      "tile": "2683000_1246500.laz",
+      "radiusMeters": 1,
+      "classCounts": {
+        "6": 72,
+        "7": 3
+      },
+      "buildingReturns": 72,
+      "nearestBuildingReturn": [2683149.965, 1246949.946, 420.873],
+      "medianBuildingHeight": 420.951,
+      "minimumBuildingHeight": 420.651,
+      "maximumBuildingHeight": 434.85,
+      "fittedHeightAtSample": 421.97267776810946,
+      "planeResidualRMSE": 3.4297257350191317,
+      "citygmlMinusLocalFitMeters": -3.5987777681035027,
+      "rasterMinusLocalFitMeters": -1.2626710542422757
+    },
+    {
+      "pointLV95": [2683070, 1247190],
+      "buildingId": "ID_AEAE79C4-E970-47D5-8A83-BD6FBCE5E7BE",
+      "citygmlRoofLN02": 416.5445999999938,
+      "lidarDTMPlusBuildingLN02": 424.7730026245117,
+      "differenceMeters": -8.228402624517912,
+      "tile": "2683000_1247000.laz",
+      "radiusMeters": 1,
+      "classCounts": {
+        "6": 114
+      },
+      "buildingReturns": 114,
+      "nearestBuildingReturn": [2683069.986, 1247189.908, 431.23900000000003],
+      "medianBuildingHeight": 419.919,
+      "minimumBuildingHeight": 414.95300000000003,
+      "maximumBuildingHeight": 431.906,
+      "fittedHeightAtSample": 421.2697938645123,
+      "planeResidualRMSE": 5.609716429729871,
+      "citygmlMinusLocalFitMeters": -4.725193864518474,
+      "rasterMinusLocalFitMeters": 3.5032087599994384
+    },
+    {
+      "pointLV95": [2683290, 1247070],
+      "buildingId": "ID_B2215943-A046-453C-984D-D19C05D3C321",
+      "citygmlRoofLN02": 432.0546999999933,
+      "lidarDTMPlusBuildingLN02": 434.4950141906738,
+      "differenceMeters": -2.4403141906805104,
+      "tile": "2683000_1247000.laz",
+      "radiusMeters": 1,
+      "classCounts": {
+        "6": 102
+      },
+      "buildingReturns": 102,
+      "nearestBuildingReturn": [2683290.034, 1247070.054, 433.029],
+      "medianBuildingHeight": 434.5245,
+      "minimumBuildingHeight": 432.587,
+      "maximumBuildingHeight": 434.646,
+      "fittedHeightAtSample": 433.80216209516357,
+      "planeResidualRMSE": 0.5567409493751977,
+      "citygmlMinusLocalFitMeters": -1.747462095170249,
+      "rasterMinusLocalFitMeters": 0.6928520955102613
+    },
+    {
+      "pointLV95": [2683210, 1247990],
+      "buildingId": "ID_2B72335B-84F1-4A56-B970-BE46D7EE410D",
+      "citygmlRoofLN02": 416.4603000000061,
+      "lidarDTMPlusBuildingLN02": 434.31000900268555,
+      "differenceMeters": -17.849709002679447,
+      "tile": "2683000_1247500.laz",
+      "radiusMeters": 1,
+      "classCounts": {
+        "6": 60
+      },
+      "buildingReturns": 60,
+      "nearestBuildingReturn": [2683209.908, 1247989.914, 434.432],
+      "medianBuildingHeight": 434.4105,
+      "minimumBuildingHeight": 434.254,
+      "maximumBuildingHeight": 434.623,
+      "fittedHeightAtSample": 434.42940188010306,
+      "planeResidualRMSE": 0.01818513203040594,
+      "citygmlMinusLocalFitMeters": -17.969101880096957,
+      "rasterMinusLocalFitMeters": -0.11939287741751059
+    },
+    {
+      "pointLV95": [2683230, 1247990],
+      "buildingId": "ID_2B72335B-84F1-4A56-B970-BE46D7EE410D",
+      "citygmlRoofLN02": 417.49730099157614,
+      "lidarDTMPlusBuildingLN02": 433.0090141296387,
+      "differenceMeters": -15.511713138062532,
+      "tile": "2683000_1247500.laz",
+      "radiusMeters": 1,
+      "classCounts": {
+        "6": 54
+      },
+      "buildingReturns": 54,
+      "nearestBuildingReturn": [2683230.079, 1247990.11, 433.112],
+      "medianBuildingHeight": 433.104,
+      "minimumBuildingHeight": 432.904,
+      "maximumBuildingHeight": 433.308,
+      "fittedHeightAtSample": 433.10609392730106,
+      "planeResidualRMSE": 0.028471096634717735,
+      "citygmlMinusLocalFitMeters": -15.60879293572492,
+      "rasterMinusLocalFitMeters": -0.0970797976623885
+    },
+    {
+      "pointLV95": [2683170, 1247990],
+      "buildingId": "ID_2B72335B-84F1-4A56-B970-BE46D7EE410D",
+      "citygmlRoofLN02": 421.29731860647036,
+      "lidarDTMPlusBuildingLN02": 434.2110118865967,
+      "differenceMeters": -12.913693280126324,
+      "tile": "2683000_1247500.laz",
+      "radiusMeters": 1,
+      "classCounts": {
+        "6": 59
+      },
+      "buildingReturns": 59,
+      "nearestBuildingReturn": [2683169.973, 1247990.0219999999, 434.361],
+      "medianBuildingHeight": 434.319,
+      "minimumBuildingHeight": 434.135,
+      "maximumBuildingHeight": 434.546,
+      "fittedHeightAtSample": 434.3230027224708,
+      "planeResidualRMSE": 0.021502199072216337,
+      "citygmlMinusLocalFitMeters": -13.025684116000434,
+      "rasterMinusLocalFitMeters": -0.11199083587410996
+    },
+    {
+      "pointLV95": [2683090, 1247530],
+      "buildingId": "ID_B17F2813-AB12-4099-BA0E-349583A5A3A9",
+      "citygmlRoofLN02": 421.39112567256893,
+      "lidarDTMPlusBuildingLN02": 417.8960027694702,
+      "differenceMeters": 3.495122903098718,
+      "tile": "2683000_1247500.laz",
+      "radiusMeters": 1,
+      "classCounts": {
+        "6": 106
+      },
+      "buildingReturns": 106,
+      "nearestBuildingReturn": [2683089.941, 1247529.918, 417.673],
+      "medianBuildingHeight": 418.30899999999997,
+      "minimumBuildingHeight": 417.547,
+      "maximumBuildingHeight": 421.531,
+      "fittedHeightAtSample": 419.2433535071946,
+      "planeResidualRMSE": 1.1938207671423395,
+      "citygmlMinusLocalFitMeters": 2.147772165374306,
+      "rasterMinusLocalFitMeters": -1.3473507377244118
+    },
+    {
+      "pointLV95": [2683270, 1248010],
+      "buildingId": "ID_2B72335B-84F1-4A56-B970-BE46D7EE410D",
+      "citygmlRoofLN02": 416.33924726440307,
+      "lidarDTMPlusBuildingLN02": 423.4369993209839,
+      "differenceMeters": -7.097752056580816,
+      "tile": "2683000_1248000.laz",
+      "radiusMeters": 1,
+      "classCounts": {
+        "6": 56
+      },
+      "buildingReturns": 56,
+      "nearestBuildingReturn": [2683269.928, 1248009.9, 423.545],
+      "medianBuildingHeight": 423.556,
+      "minimumBuildingHeight": 423.508,
+      "maximumBuildingHeight": 423.588,
+      "fittedHeightAtSample": 423.55358920364466,
+      "planeResidualRMSE": 0.01534098543415924,
+      "citygmlMinusLocalFitMeters": -7.214341939241592,
+      "rasterMinusLocalFitMeters": -0.11658988266077586
+    },
+    {
+      "pointLV95": [2683210, 1248050],
+      "buildingId": "ID_2B72335B-84F1-4A56-B970-BE46D7EE410D",
+      "citygmlRoofLN02": 426.4165291186001,
+      "lidarDTMPlusBuildingLN02": 430.27800369262695,
+      "differenceMeters": -3.861474574026829,
+      "tile": "2683000_1248000.laz",
+      "radiusMeters": 1,
+      "classCounts": {
+        "6": 102
+      },
+      "buildingReturns": 102,
+      "nearestBuildingReturn": [2683209.966, 1248049.94, 430.309],
+      "medianBuildingHeight": 426.706,
+      "minimumBuildingHeight": 418.359,
+      "maximumBuildingHeight": 430.825,
+      "fittedHeightAtSample": 426.30749293381365,
+      "planeResidualRMSE": 4.056090373572089,
+      "citygmlMinusLocalFitMeters": 0.10903618478647559,
+      "rasterMinusLocalFitMeters": 3.9705107588133046
+    },
+    {
+      "pointLV95": [2683630, 1248090],
+      "buildingId": "ID_36FA4853-E8C1-49FA-9847-F557CF12675E",
+      "citygmlRoofLN02": 454.6253358060664,
+      "lidarDTMPlusBuildingLN02": 457.2910146713257,
+      "differenceMeters": -2.665678865259281,
+      "tile": "2683500_1248000.laz",
+      "radiusMeters": 1,
+      "classCounts": {
+        "6": 145
+      },
+      "buildingReturns": 145,
+      "nearestBuildingReturn": [2683630.0300000003, 1248089.977, 457.356],
+      "medianBuildingHeight": 457.374,
+      "minimumBuildingHeight": 454.196,
+      "maximumBuildingHeight": 457.615,
+      "fittedHeightAtSample": 456.79965978372223,
+      "planeResidualRMSE": 1.0513623827226313,
+      "citygmlMinusLocalFitMeters": -2.174323977655831,
+      "rasterMinusLocalFitMeters": 0.4913548876034497
+    }
+  ],
+  "expansionGate": "hold"
+}

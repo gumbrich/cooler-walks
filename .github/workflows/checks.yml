@@ -23,6 +23,7 @@ jobs:
           /tmp/cooler-shade-venv/bin/pip install -r scripts/requirements-validation.txt
           /tmp/cooler-shade-venv/bin/python scripts/test-detailed-shade.py
           /tmp/cooler-shade-venv/bin/python scripts/test-shadow-audit.py
+          /tmp/cooler-shade-venv/bin/python scripts/test-shadow-lidar-review.py
       - run: npm run check
       - run: npm run data:verify
       - run: npm run format:check
@@ -42,6 +43,7 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npx playwright install --with-deps chromium
+        timeout-minutes: 10
       # Every scenario still runs, with the same assertion and flow limits.
       # Isolated runners avoid competing over WebGL and screenshot artifacts.
       - run: npm run test:e2e -- --shard=${{ matrix.shard }}/4
