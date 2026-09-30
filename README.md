@@ -56,7 +56,7 @@ The upload files are in ignored `release-artifacts/`. `release/site.json` now co
 - Optional **Prefer waterside** routing and a separate measure of distance within 50 m of mapped surface water. Proximity does not establish views, bank access, drinking water or cooling.
 - **Prefer shade / Prefer sun** in Zurich and Munich, including winter dates. Uses actual Swiss or Bavarian building geometry and solar position, sampled every 8 m at the selected departure instant. Unknown coverage cannot count as sunshine. Greenery remains a separate 15 m tree-proximity measure.
 - Four city configurations with local sources, metric coordinate systems, coverage and IANA time zones. Cambridge uses America/New_York, independently of the device’s zone. Local date/time rejects ambiguous or skipped DST times. Metric/imperial display, a responsive phone sheet and source/coverage views are shared.
-- PWA icons, manifest and installation guidance. The default Zurich bundle is cached first; other cities are cached when visited. A city’s map and routing downloads must finish online before offline use. Source data stays dated; no live updates are implied.
+- PWA icons, manifest and installation guidance. The interface installs separately; city bundles are cached when visited. A city’s map and routing downloads must finish online before offline use. Source data stays dated; no live updates are implied.
 
 Use Bahnhofquai → Bürkliplatz on **21 June 2026**, compare **10:00, 14:00 and 18:00 Europe/Zurich**. The exact computed validation results are stored in [docs/route-validation.json](docs/route-validation.json). At 10:00 and 18:00, the current uncertainty checks withhold the shade comparison and show greenery; the 14:00 shade/sun comparison is supported. No examples use synthetic production routes.
 
@@ -78,7 +78,7 @@ npm run native:open:ios      # open Xcode
 
 Detailed setup, signing boundaries and offline behaviour are in [docs/mobile.md](docs/mobile.md). Actual platform test results are in [docs/platform.md](docs/platform.md). Signing credentials and generated native build outputs are ignored.
 
-Android **0.8.0/build 6** compiled and passed offline address-search/routing, vehicle-count, German and beta city-switch checks in an Android 16 emulator. Its debug APK is available locally as `native-artifacts/cooler-walks-0.8.0-debug.apk`. The earlier 0.5.0 build passed twelve broader checks covering native permissions, Back/resume, all four cities offline and cold launch. iOS 0.7.0 compiles in GitHub Actions; the previous 0.5.0 build launched in English and German on the local iPhone 16e simulator. iOS count interactions and physical phones remain untested; neither app has been submitted to a store.
+Android **0.8.0/build 6** compiled and passed offline address-search/routing, vehicle-count, German and beta city-switch checks in an Android 16 emulator. Its debug APK is available locally as `native-artifacts/cooler-walks-0.8.0-debug.apk`. The earlier 0.5.0 build passed twelve broader checks covering native permissions, Back/resume, all four cities offline and cold launch. iOS 0.8.0 compiles in GitHub Actions; the previous 0.5.0 build launched in English and German on the local iPhone 16e simulator. iOS count interactions and physical phones remain untested; neither app has been submitted to a store.
 
 ## Develop and verify
 

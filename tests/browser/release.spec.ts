@@ -69,6 +69,19 @@ test('planner runs under production CSP and offline privacy navigation stays on 
     await navigator.serviceWorker.ready;
   });
   await expect.poll(() => page.evaluate(() => !!navigator.serviceWorker.controller)).toBe(true);
+  // Shell installation is independent of the large visited-city cache. Wait
+  // for both actual files before deliberately disconnecting the browser.
+  await expect
+    .poll(
+      () =>
+        page.evaluate(
+          async () =>
+            Boolean(await caches.match('/data/zurich.json')) &&
+            Boolean(await caches.match('/data/zurich-map.geojson')),
+        ),
+      { timeout: 60000 },
+    )
+    .toBe(true);
   expect(
     await page.evaluate(() => (window as unknown as { cspErrors: string[] }).cspErrors),
   ).toEqual([]);
@@ -107,6 +120,19 @@ test('German public pages work without JavaScript and offline navigation stays G
     await navigator.serviceWorker.ready;
   });
   await expect.poll(() => page.evaluate(() => !!navigator.serviceWorker.controller)).toBe(true);
+  // Shell installation is independent of the large visited-city cache. Wait
+  // for both actual files before deliberately disconnecting the browser.
+  await expect
+    .poll(
+      () =>
+        page.evaluate(
+          async () =>
+            Boolean(await caches.match('/data/zurich.json')) &&
+            Boolean(await caches.match('/data/zurich-map.geojson')),
+        ),
+      { timeout: 60000 },
+    )
+    .toBe(true);
   await context.setOffline(true);
   await page.reload();
   await expect(page.locator('.route-card').first()).toBeVisible();

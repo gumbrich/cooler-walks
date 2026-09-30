@@ -11,11 +11,11 @@ const files = walk('dist').filter(
 const hash = crypto.createHash('sha256');
 for (const f of files) hash.update(fs.readFileSync(f));
 const version = hash.digest('hex').slice(0, 14);
-// Precache the default pilot; other cities are saved only when visited. A city
-// is usable offline after both its map and routing downloads have completed.
-const urls = files
-  .filter((f) => !f.startsWith('dist/data/') || /\/zurich(?:-map\.geojson|\.json)$/.test(f))
-  .map((f) => '/' + f.slice(5));
+// Install the small interface independently of city downloads. Precaching the
+// 100 MB expanded Zurich bundle duplicated the first planner requests, causing
+// contention and making installation fail with any interrupted data transfer.
+// CACHE_CITY and fetch caching save visited cities after their first load.
+const urls = files.filter((f) => !f.startsWith('dist/data/')).map((f) => '/' + f.slice(5));
 fs.writeFileSync(
   'dist/sw.js',
   `const CACHE='cooler-walks-${version}';

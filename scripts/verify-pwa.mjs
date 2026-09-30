@@ -28,6 +28,11 @@ await page.evaluate(async () => {
   await navigator.serviceWorker.ready;
 });
 await page.waitForFunction(() => navigator.serviceWorker.controller !== null);
+await page.waitForFunction(
+  async () =>
+    Boolean(await caches.match('/data/zurich.json')) &&
+    Boolean(await caches.match('/data/zurich-map.geojson')),
+);
 const cdp = await context.newCDPSession(page);
 const manifest = await cdp.send('Page.getAppManifest');
 const installability = await cdp.send('Page.getInstallabilityErrors');

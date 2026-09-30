@@ -50,7 +50,7 @@ Generated provenance and counts are in [data-manifest.json](data-manifest.json),
 
 ## Prepared data and checked examples
 
-The final bundle contains **155,277 nodes, 170,105 walking edges, 112,794 unaltered tree positions and 42,719 building/uncertainty polygons**. Of 56,704 searchable existing addresses, **45,795** lie inside the walking area. Historical count coverage is **144 directional points at 80 sites**. A displaced historical counter remains excluded; missing counts never imply quiet streets. The offline bundle is **16.8 MB compressed / 100.1 MB expanded**; ordinary-phone memory testing is still needed.
+The final bundle contains **155,277 nodes, 170,105 walking edges, 112,794 unaltered tree positions and 42,719 building/uncertainty polygons**. Of 56,704 searchable existing addresses, **45,795** lie inside the walking area. Historical count coverage is **144 directional points at 80 sites**. A displaced historical counter remains excluded; missing counts never imply quiet streets. The offline bundle is **16.6 MB compressed on the public host / 100.1 MB expanded** (16.8 MB with local Node 26 compression; the payloads are identical). The 2 GB Android emulator passes offline Oerlikon route and map checks; physical-phone memory testing is still needed.
 
 At 14:00 Zurich time on 21 June 2026, the Oerlikon reference is **800 m / 10.0 min**, with a distinct alternative **833 m / 10.4 min**. The Altstetten reference is **498 m / 6.2 min** with no better distinct shade alternative. The northern connection is **2,722 m / 34.0 min**, with an alternative **2,847 m / 35.6 min**. All satisfy the 95% model-coverage rule and five-minute budget; zero-extra-time checks return only the fastest route. These are calculated examples, not field observations.
 
