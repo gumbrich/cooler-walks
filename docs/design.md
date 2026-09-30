@@ -18,7 +18,7 @@ Entry: an editorial headline beside a genuine Zurich map and live computed examp
 
 Desktop: the trip editor and compact comparison occupy a side panel, with most space reserved for the map. A floating time card makes local time and date visible. The route card shows rounded duration, distance, the environmental metric and its coverage.
 
-Phone: the map stays above an intentionally compact sheet. Route endpoints collapse to a readable trip summary, with an explicit editor control. Time controls sit immediately after the route sheet; the page can scroll rather than hide content behind a fixed-height sheet. There is no sheet-drag gesture to conflict with map gestures. Safe-area padding protects the bottom controls.
+Phone: the map stays above an intentionally compact sheet. Route endpoints collapse to a readable trip summary, with an explicit editor control. Departure controls sit between the compact trip summary and route results; the page can scroll rather than hide content behind a fixed-height sheet. There is no sheet-drag gesture to conflict with map gestures. Safe-area padding protects the bottom controls.
 
 Search supports keyboard arrows, Enter and Escape. Route results remain available as text without WebGL. Geolocation is opt-in, errors preserve input, and the unsupported city has a designed state. Method and coverage use a native modal dialog with focus handling.
 
@@ -38,7 +38,7 @@ Native apps open directly to the planner, share the same icon and launch artwork
 
 ## Offline atlas
 
-The download manager extends the same paper/forest palette and serif headline, with city-labelled cards, readable pack sizes and explicit saved/included states. Coverage and source details expand in place. Native and browser downloads share progress, cancellation, recovery and removal controls with 44 px targets. The compact Munich area uses the ordinary map and route comparison; its smaller boundary is visible and labelled. Actual desktop, phone, tablet error-state and native Android screenshots were inspected. Checks include the dialog's automated accessibility scan, a downloaded-area map render and preservation of the open walk after removal.
+The download manager uses the same paper/forest palette and practical sans-serif headings, with city-labelled cards, readable pack sizes and explicit saved/included states. Coverage and source details expand in place. Native and browser downloads share progress, cancellation, recovery and removal controls with 44 px targets. The compact Munich area uses the ordinary map and route comparison; its smaller boundary is visible and labelled. Actual desktop, phone, tablet error-state and native Android screenshots were inspected. Checks include the dialog's automated accessibility scan, a downloaded-area map render and preservation of the open walk after removal.
 
 ## German and calmer-street mode
 
@@ -50,7 +50,7 @@ Desktop/phone German entry and route screenshots, tablet unsupported/error state
 
 ## Historical count evidence
 
-A pale blue-green disclosure below the selected route separates measured traffic evidence from green route scores. Numbered blue squares connect source measuring positions with direction-specific values; short leader lines keep labels clear of route endpoint markers on phones without relocating the source point. Values use historical-year and weekday/hour labels, measured-day denominators and a 24-hour profile with an explicitly independent vertical scale. Missing values use dashed outlines; no-counter routes state that traffic is unknown. The existing route/time controls remain the primary interaction. English desktop, German phone and tablet missing-data screenshots document the actual implementation.
+A compact disclosure below the selected route separates measured traffic evidence from green route scores. Numbered blue squares connect source measuring positions with direction-specific values; short leader lines keep labels clear of route endpoint markers on phones without relocating the source point. Values use historical-year and weekday/hour labels, measured-day denominators and a 24-hour profile with an explicitly independent vertical scale. Missing values use dashed outlines; no-counter routes state that traffic is unknown. The existing route/time controls remain the primary interaction. English desktop, German phone and tablet missing-data screenshots document the actual implementation.
 
 ## Zurich focus · 0.7
 
@@ -75,3 +75,13 @@ A dotted plum line (`#776075`) marks the central Zurich 3D pilot separately from
 ## Street breakdown · 0.11.0
 
 A compact disclosure under the selected calmer route shows six street-context distances, from paths/restricted streets to unknown segments. A proportional bar supplements the text; labels and hatching make colour unnecessary. Tempo-30 and Begegnungszone streets stay separate from pedestrian paths. The visible field-validation note and expanded explanation distinguish mapped access regimes from observed vehicle volume. Keyboard users open the native disclosure with Enter. Nearby counter cards now show their own estimated passing time and corresponding historical weekday/hour. Actual 1440 px desktop, 390 px phone and 768 px tablet views were inspected in English/German; automated contrast and overflow checks pass.
+
+## Plain language and simpler layouts · 0.12.0
+
+Use short, concrete language in both English and German. Name the action or the information: “Plan a route” / “Route planen”, “Departure” / “Startzeit”, “Offline maps” / “Offline-Karten”. Avoid conversational invitations, slogans above headings and poetic introductions to ordinary controls. The public headline explains the purpose; the planner begins with the trip. Help and Privacy follow the same approach.
+
+The public entry now has one headline, one paragraph, one main action and a computed map example. The redundant promotional section is removed. Serif type remains on the public headline and city name; utility headings use DM Sans.
+
+Each route card leads with duration, distance, arrival and the metric for the chosen preference. Coverage and model limitations remain visible; extra street/water figures and the number of evaluated candidates sit in the route details. Traffic evidence uses flat disclosures rather than another stack of filled cards.
+
+On phones, the departure control sits immediately above the comparison. A single “Edit” / “Ändern” button opens the trip editor. There is no decorative drag handle. The shorter map has compact city labels and revised route framing; endpoint markers must stay clear of the header and legend. Resizing preserves the departure and renders exactly one time control. The warm palette, labelled controls, large touch targets and visible keyboard focus remain.

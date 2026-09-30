@@ -10,7 +10,6 @@ import {
   ChevronDown,
   Clock3,
   Download,
-  Footprints,
   Globe2,
   Info,
   Leaf,
@@ -80,6 +79,20 @@ export default function App() {
     [end, setEnd] = useState<Endpoint | null>(null);
   const [stops, setStops] = useState<{ id: number; value: Endpoint | null }[]>([]);
   const stopId = useRef(0);
+  const [compactScreen, setCompactScreen] = useState(
+    () => matchMedia('(max-width: 620px)').matches,
+  );
+  useEffect(() => {
+    const query = matchMedia('(max-width: 620px)');
+    const update = () => setCompactScreen(matchMedia('(max-width: 620px)').matches);
+    query.addEventListener('change', update);
+    window.addEventListener('resize', update);
+    update();
+    return () => {
+      query.removeEventListener('change', update);
+      window.removeEventListener('resize', update);
+    };
+  }, []);
   const [preferCalm, setPreferCalm] = useState(false);
   const [countsExpanded, setCountsExpanded] = useState(false);
   const [preferWater, setPreferWater] = useState(false);
@@ -362,15 +375,20 @@ export default function App() {
       nearbyCounts(data?.vehicleCounts, city, chosen, result?.departure ?? '2000-01-01T00:00:00Z'),
     [data, city, chosen, result?.departure],
   );
-  const showSun = isShade && sunlight === 'sun';
+  const showWater = result?.preference === 'water';
+  const showCalm = result?.preference === 'calm';
+  const showShade = isShade && !showWater && !showCalm;
+  const showSun = showShade && sunlight === 'sun';
   const percentage = (r: Route) =>
     Math.round(
       result?.preference === 'calm'
         ? ((r.distance - r.majorRoadMeters - r.trafficUnknownMeters) / r.distance) * 100
-        : isShade
-          ? ((showSun ? r.sunMeters : r.shadeMeters) / Math.max(1, r.shadeMeters + r.sunMeters)) *
-            100
-          : (r.greenMeters / r.distance) * 100,
+        : showWater
+          ? (r.waterMeters / r.distance) * 100
+          : isShade
+            ? ((showSun ? r.sunMeters : r.shadeMeters) / Math.max(1, r.shadeMeters + r.sunMeters)) *
+              100
+            : (r.greenMeters / r.distance) * 100,
     );
   const timeMinutes =
     Number(timeLabel(departure).split(':')[0]) * 60 + Number(timeLabel(departure).split(':')[1]);
@@ -379,12 +397,12 @@ export default function App() {
       <div className="time-heading">
         <span>
           <Sun size={18} />
-          {t(' Time of your walk')}
+          {t(' Departure')}
         </span>
         <strong>
           {timeLabel(departure)}{' '}
           <small>
-            {t('{zone} time', { zone: city.timeZone.split('/')[1].replaceAll('_', ' ') })}
+            {t('{zone} time', { zone: t(city.timeZone.split('/')[1].replaceAll('_', ' ')) })}
           </small>
         </strong>
       </div>
@@ -412,22 +430,20 @@ export default function App() {
       <div className="time-foot">
         <span>
           {busy
-            ? t('Updating your walk…')
+            ? t('Updating…')
             : preferCalm
-              ? t('Street ranking stays fixed; historical counts follow weekday and hour.')
-              : result?.mode === 'night'
-                ? t('After dark · direct sun is not relevant')
-                : result?.mode === 'low-sun'
-                  ? t('Low sun · building estimate unavailable')
-                  : result?.mode === 'transition'
-                    ? t('Light changes during this walk · comparison unavailable')
-                    : isShade
-                      ? t(
-                          showSun
-                            ? 'Move time. See the estimated sun change.'
-                            : 'Move time. See the estimated shade change.',
-                        )
-                      : t('Tree proximity stays the same throughout the day.')}
+              ? t('Street context is fixed. Counter profiles change with time.')
+              : preferWater
+                ? t('Water proximity does not depend on the time.')
+                : result?.mode === 'night'
+                  ? t('After dark · direct sun is not relevant')
+                  : result?.mode === 'low-sun'
+                    ? t('Low sun · building estimate unavailable')
+                    : result?.mode === 'transition'
+                      ? t('Light changes during this walk · comparison unavailable')
+                      : isShade
+                        ? t('Estimates change with departure time.')
+                        : t('Tree proximity does not depend on the time.')}
         </span>
         <label className="date-label">
           {t('Date')}
@@ -446,26 +462,11 @@ export default function App() {
   const routeCard = (route: Route, index: number) => (
     <button
       key={route.id}
-      className={`route-card ${selected === route.id ? 'selected' : ''} ${showSun ? 'sun-route' : ''}`}
+      className={`route-card ${selected === route.id ? 'selected' : ''} ${showSun ? 'sun-route' : ''} ${showWater ? 'water-route' : ''}`}
       onClick={() => setSelected(route.id)}
       aria-pressed={selected === route.id}
     >
       <div className="route-card-top">
-        <span className="route-icon">
-          {index ? (
-            result?.preference === 'calm' ? (
-              <TrafficCone size={20} />
-            ) : result?.preference === 'water' ? (
-              <Waves size={20} />
-            ) : result?.preference === 'sun' ? (
-              <Sun size={20} />
-            ) : (
-              <Leaf size={20} />
-            )
-          ) : (
-            <Footprints size={20} />
-          )}
-        </span>
         <span className="route-name">
           {index
             ? result?.preference === 'calm'
@@ -478,16 +479,11 @@ export default function App() {
                     ? t('More estimated shade')
                     : t('Greener route')
             : t('Fastest walk')}
-          <small>
-            {index
-              ? t('+{extra} min · best of {count} evaluated', {
-                  extra: number(route.minutes - result!.fastest.minutes, 1),
-                  count: result!.candidateCount,
-                })
-              : stops.length
-                ? t('The shortest walk through all stops')
-                : t('The shortest walk on this network')}
-          </small>
+          {index > 0 && (
+            <small>
+              {t('+{extra} min', { extra: number(route.minutes - result!.fastest.minutes, 1) })}
+            </small>
+          )}
         </span>
         <span className="route-radio">{selected === route.id && <Check size={12} />}</span>
       </div>
@@ -496,21 +492,31 @@ export default function App() {
           {Math.ceil(route.minutes)}
           <small> min</small>
         </strong>
-        <span>{formatDistance(route.distance, units, locale)}</span>
+        <span className="route-distance">
+          {formatDistance(route.distance, units, locale)}{' '}
+          <span className="route-arrival">
+            <Clock3 size={14} />
+            {t('Arrive around {time}', {
+              time: arrivalLabel(route.arrival, result!.departure, city.timeZone, locale),
+            })}
+          </span>
+        </span>
         <span className="exposure-number">
           {result?.preference === 'calm'
             ? formatDistance(route.majorRoadMeters, units, locale)
-            : isShade && route.shadeMeters + route.sunMeters < 1
+            : showShade && route.shadeMeters + route.sunMeters < 1
               ? '—'
               : `${percentage(route)}%`}
           <small>
             {result?.preference === 'calm'
               ? t('near main roads')
-              : isShade
-                ? showSun
-                  ? t('estimated sun')
-                  : t('estimated shade')
-                : t('near trees')}
+              : showWater
+                ? t('near water')
+                : isShade
+                  ? showSun
+                    ? t('estimated sun')
+                    : t('estimated shade')
+                  : t('near trees')}
           </small>
         </span>
       </div>
@@ -520,49 +526,22 @@ export default function App() {
       <div className="route-card-caption">
         {result?.preference === 'calm'
           ? t('{share}% away from main roads · street context', { share: percentage(route) })
-          : isShade
-            ? t('{coverage}% model coverage · buildings only', {
-                coverage: Math.round(
-                  ((route.shadeMeters + route.sunMeters) / route.distance) * 100,
-                ),
-              })
-            : t('Within 15 m of a recorded tree · not canopy shade')}
+          : showWater
+            ? t('Within 50 m of mapped water')
+            : isShade
+              ? t('{coverage}% model coverage · buildings only', {
+                  coverage: Math.round(
+                    ((route.shadeMeters + route.sunMeters) / route.distance) * 100,
+                  ),
+                })
+              : t('Within 15 m of a recorded tree · not canopy shade')}
       </div>
-      {isShade && !!route.detailedMeters && (
+      {showShade && !!route.detailedMeters && (
         <div className="route-model-note">
           <span className="model-swatch" aria-hidden="true" />
           {t('3D roofs + ground elevation · {share}% of walk', {
             share: Math.round((route.detailedMeters / route.distance) * 100),
           })}
-        </div>
-      )}
-      <div className="route-arrival">
-        <Clock3 size={14} />
-        {t('Arrive around {time}', {
-          time: arrivalLabel(route.arrival, result!.departure, city.timeZone, locale),
-        })}
-      </div>
-      {city.capabilities.trafficCalming && (
-        <div className="route-traffic">
-          <TrafficCone size={14} />
-          <span>
-            <strong>{formatDistance(route.majorRoadMeters, units, locale)}</strong>
-            {t(' near main roads ·')}{' '}
-            <strong>
-              {Math.round(((route.distance - trafficCost(route).motor) / route.distance) * 100)}%
-            </strong>
-            {t(' paths & restricted streets')}
-          </span>
-        </div>
-      )}
-      {city.capabilities.water && (
-        <div className="route-water">
-          <Waves size={14} />
-          <span>
-            <strong>{Math.round((route.waterMeters / route.distance) * 100)}%</strong>
-            {t(' near mapped water · ')}
-            {formatDistance(route.waterMeters, units, locale)}
-          </span>
         </div>
       )}
     </button>
@@ -657,6 +636,10 @@ export default function App() {
                 </option>
               ))}
             </select>
+            <span className="city-current" aria-hidden="true">
+              {city.localName}
+              {city.beta ? ' · Beta' : ''}
+            </span>
             <ChevronDown size={14} />
           </div>
           <button
@@ -682,32 +665,27 @@ export default function App() {
         <main id="main" className="home">
           <section className="hero">
             <div className="hero-copy">
-              <div className="eyebrow">
-                <span className="tiny-sun">✳</span>
-                {t(' A city is better on foot')}
-              </div>
               <h1>
-                {sunlight === 'sun' ? t('A little more sun.') : t('A little less sun.')}
+                {t('Walks with')}
                 <br />
-                {t('A better ')}
-                <em>{t('walk.')}</em>
+                <em>{city.capabilities.buildingShade ? t('more shade.') : t('more greenery.')}</em>
               </h1>
               <p>
                 {t(
-                  'Take a different path through the city. Find more greenery, choose sun or shade where estimates are available, and see what a few extra minutes can change.',
+                  'Compare shade, greener paths and calmer streets. You choose how much longer to walk.',
                 )}
               </p>
               <button className="primary hero-cta" onClick={() => navigate('planner')}>
-                {t('Find a cooler walk ')}
+                {t('Plan a route ')}
                 <ArrowRight size={21} />
               </button>
               <div className="pilot-note">
                 <span className="pilot-dot" />
                 {city.beta
-                  ? t('Beta · Walking {city}.', { city: t(city.name) })
-                  : t('Made for Zurich. Growing across Switzerland.')}
+                  ? t('Beta · {city}', { city: t(city.name) })
+                  : t('Zurich pilot · experimental estimates')}
                 <button onClick={() => setModal('coverage')}>
-                  {t('Explore the pilot ')}
+                  {t('Check coverage ')}
                   <ArrowRight size={14} />
                 </button>
               </div>
@@ -723,88 +701,31 @@ export default function App() {
                 </div>
               )}
               <div className="atlas-title">
-                <span>{t('THE WALKING ATLAS')}</span>
-                <strong>
-                  {city.localName}
-                  <sup>{String(cities.indexOf(city) + 1).padStart(2, '0')}</sup>
-                </strong>
-              </div>
-              <div className="atlas-coordinate">
-                {Math.abs(city.center[1]).toFixed(3)}° {city.center[1] < 0 ? 'S' : 'N'} &nbsp;{' '}
-                {Math.abs(city.center[0]).toFixed(3)}° {city.center[0] < 0 ? 'W' : 'E'}
+                <span>{t(city.country ?? '')}</span>
+                <strong>{city.localName}</strong>
               </div>
               {result && (
                 <div className="hero-route-note">
-                  <span className="route-note-icon">
-                    <Leaf size={23} />
-                  </span>
                   <div>
                     <strong>
-                      {result.alternative
-                        ? result.preference === 'calm'
-                          ? t('Less main-road proximity along the way.')
-                          : result.preference === 'water'
-                            ? t('A little closer to the water.')
-                            : result.preference === 'sun'
-                              ? t('A little more sunshine along the way.')
-                              : isShade
-                                ? t('A little more shade along the way.')
-                                : t('A little more green along the way.')
-                        : t('Your city. A walk worth taking.')}
+                      {Math.ceil(chosen!.minutes)} min ·{' '}
+                      {formatDistance(chosen!.distance, units, locale)}
                     </strong>
                     <span>
                       {t(start?.name ?? '')} → {t(end?.name ?? '')}
                     </span>
                     <small>
-                      {t('Computed pilot route · ')}
+                      {t('Example route · ')}
                       {timeLabel(departure)}
                       {t(' local time')}
                     </small>
                   </div>
-                  <ArrowRight size={20} />
                 </div>
               )}
             </div>
           </section>
-          <section className="home-bottom" aria-label={t('How Cooler Walks works')}>
-            <div className="home-intro">
-              <span className="eyebrow">{t('Good walks. Open data.')}</span>
-              <h2>
-                {t('A fresh way to')}
-                <br />
-                {t('read the city.')}
-              </h2>
-            </div>
-            <article>
-              <span className="number">01 /</span>
-              <h3>{t('Find your way')}</h3>
-              <p>
-                {t(
-                  'Real pedestrian paths, with a little room to wander. You decide how much longer to walk.',
-                )}
-              </p>
-            </article>
-            <article>
-              <span className="number">02 /</span>
-              <h3>{t('Follow the light')}</h3>
-              <p>
-                {t(
-                  'Explore how buildings change direct sunlight through the day. An estimate, with its limits in view.',
-                )}
-              </p>
-            </article>
-            <article>
-              <span className="number">03 /</span>
-              <h3>{t('Know the ground')}</h3>
-              <p>
-                {t(
-                  'See the coverage and sources behind your walk. Each city starts with a carefully bounded pilot.',
-                )}
-              </p>
-            </article>
-          </section>
           <footer className="home-footer">
-            <span>{t('Made for the everyday walk.')}</span>
+            <span>{t('No account needed.')}</span>
             <button onClick={() => setModal('method')}>
               {t('Method, sources & privacy ')}
               <ArrowRight size={14} />
@@ -822,7 +743,6 @@ export default function App() {
               <div className="unsupported-icon">
                 <Globe2 size={46} />
               </div>
-              <span className="eyebrow">{t('The next chapter')}</span>
               <h1>
                 {city.localName},<br />
                 <em>{t('under review.')}</em>
@@ -834,7 +754,7 @@ export default function App() {
                 <span>{t('Routing unavailable')}</span>
               </div>
               <button className="primary" onClick={() => changeCity('ch-zurich')}>
-                {t('Explore the Zurich pilot ')}
+                {t('Plan in Zurich ')}
                 <ArrowRight size={18} />
               </button>
               <button className="text-button" onClick={() => setModal('coverage')}>
@@ -846,10 +766,7 @@ export default function App() {
               <aside className="planner-panel" aria-label={t('Plan and compare walks')}>
                 <div className="sheet-handle" />
                 <div className="panel-title">
-                  <div>
-                    <span className="eyebrow">{t('A different way there')}</span>
-                    <h1>{t('Let’s take a walk.')}</h1>
-                  </div>
+                  <h1>{t('Plan a route')}</h1>
                   <button
                     className="mobile-edit icon-button"
                     aria-label={editing ? t('Close trip editor') : t('Edit trip')}
@@ -866,7 +783,9 @@ export default function App() {
                     <b>B</b>
                     {end ? t(end.name) : t('Choose destination')}
                   </span>
-                  <button onClick={() => setEditing(true)}>{t('Edit')}</button>
+                  <button aria-label={t('Edit trip')} onClick={() => setEditing(true)}>
+                    {t('Edit')}
+                  </button>
                 </div>
                 {!!stops.length && (
                   <p className="trip-stop-summary">
@@ -891,8 +810,8 @@ export default function App() {
                   <p className="search-guidance">
                     {t(
                       city.capabilities.addresses
-                        ? 'Enter a Zurich address or place. You can also tap the map to choose where to walk.'
-                        : 'Search a street or place, or tap the map to choose where to walk.',
+                        ? 'Enter an address or choose a point on the map.'
+                        : 'Enter a street or place, or choose a point on the map.',
                     )}
                   </p>
                   <div className="endpoint-fields">
@@ -1018,12 +937,7 @@ export default function App() {
                     )}
                   </div>
                   <fieldset className="detour">
-                    <legend>
-                      {t('Room for a detour')}{' '}
-                      <span>
-                        {stops.length ? t('For the whole trip') : t('Extra walking time')}
-                      </span>
-                    </legend>
+                    <legend>{t('Extra walking time')}</legend>
                     <div className="segmented">
                       {[0, 5, 10].map((n) => (
                         <button
@@ -1040,7 +954,7 @@ export default function App() {
                   </fieldset>
                   {city.capabilities.buildingShade && (
                     <fieldset className="sunlight-preference">
-                      <legend>{t('Find your light')}</legend>
+                      <legend>{t('Sun or shade')}</legend>
                       <div className="sunlight-options">
                         {(['shade', 'sun'] as const).map((value) => (
                           <label
@@ -1066,7 +980,6 @@ export default function App() {
                       <Waves size={21} />
                       <span>
                         <strong>{t('Prefer waterside')}</strong>
-                        <small>{t('More of your walk near mapped water')}</small>
                       </span>
                       <input
                         type="checkbox"
@@ -1085,9 +998,6 @@ export default function App() {
                       <TrafficCone size={21} />
                       <span>
                         <strong>{t('Prefer calmer streets')}</strong>
-                        <small>
-                          {t('Less walking beside main roads and on motor-access streets')}
-                        </small>
                       </span>
                       <input
                         type="checkbox"
@@ -1116,13 +1026,14 @@ export default function App() {
                     </p>
                   )}
                   <button className="primary mobile-save" type="submit">
-                    {t('Show my walk ')}
+                    {t('Show routes ')}
                     <ArrowRight size={17} />
                   </button>
                 </form>
+                {compactScreen && <div className="mobile-time">{timeControl}</div>}
                 <div className="results" aria-busy={busy}>
                   <div className="results-heading">
-                    <span className="eyebrow">{t('Your ways there')}</span>
+                    <span className="eyebrow">{t('Routes')}</span>
                     <button className="icon-text" onClick={() => setModal('method')}>
                       <Info size={14} />
                       {t(' How we estimate')}
@@ -1136,13 +1047,13 @@ export default function App() {
                     {busy ? (
                       <>
                         <span className="spinner" />
-                        {t('Finding your way through the city…')}
+                        {t('Calculating routes…')}
                       </>
                     ) : error ? (
                       <>
                         <Info size={20} />
                         <div>
-                          <strong>{t('Let’s adjust this walk.')}</strong>
+                          <strong>{t('Route unavailable')}</strong>
                           <p>{t(error)}</p>
                           {dataState === 'error' && (
                             <>
@@ -1161,7 +1072,7 @@ export default function App() {
                   {!busy && !error && dataState === 'loading' && (
                     <div className="status loading">
                       <span className="spinner" />
-                      {t('Unfolding the {city} map…', { city: t(city.name) })}
+                      {t('Loading the {city} map…', { city: t(city.name) })}
                     </div>
                   )}
                   {!start || !end || stops.some((stop) => !stop.value) ? (
@@ -1266,6 +1177,40 @@ export default function App() {
                         {t('About this walk ')}
                         <ChevronDown size={15} />
                       </summary>
+                      {city.capabilities.trafficCalming && (
+                        <div className="route-traffic">
+                          <TrafficCone size={14} />
+                          <span>
+                            <strong>{formatDistance(chosen.majorRoadMeters, units, locale)}</strong>
+                            {t(' near main roads ·')}{' '}
+                            <strong>
+                              {Math.round(
+                                ((chosen.distance - trafficCost(chosen).motor) / chosen.distance) *
+                                  100,
+                              )}
+                              %
+                            </strong>
+                            {t(' paths & restricted streets')}
+                          </span>
+                        </div>
+                      )}
+                      {city.capabilities.water && (
+                        <div className="route-water">
+                          <Waves size={14} />
+                          <span>
+                            <strong>
+                              {Math.round((chosen.waterMeters / chosen.distance) * 100)}%
+                            </strong>
+                            {t(' near mapped water · ')}
+                            {formatDistance(chosen.waterMeters, units, locale)}
+                          </span>
+                        </div>
+                      )}
+                      <p>
+                        {t('Compared {count} routes within your time limit.', {
+                          count: result!.candidateCount,
+                        })}
+                      </p>
                       <p>
                         {t('Departure: ')}
                         {departure.replace('T', ' ')} · {city.timeZone}.
@@ -1392,12 +1337,8 @@ export default function App() {
               </aside>
               <section className="planner-map" aria-label={t('Walking route map')}>
                 <WalkingMap key={`${city.id}:${retry}`} {...mapProps} />
-                <div className="map-top-pill">
-                  <Leaf size={15} />
-                  {t(' A little more green. A little less rush.')}
-                </div>
               </section>
-              <div className="timeline-wrap">{timeControl}</div>
+              {!compactScreen && <div className="timeline-wrap">{timeControl}</div>}
             </>
           )}
         </main>
@@ -1436,12 +1377,7 @@ export default function App() {
             />
           ) : modal === 'method' ? (
             <>
-              <span className="eyebrow">{t('A little transparency')}</span>
-              <h2 id="dialog-title">
-                {t('A model of sunlight.')}
-                <br />
-                <em>{t('A clearer choice.')}</em>
-              </h2>
+              <h2 id="dialog-title">{t('How estimates work')}</h2>
               <p>
                 {t(
                   'Cooler Walks compares the fastest mapped walking route with the best of a small set of alternatives within your extra-time limit.',
@@ -1546,12 +1482,7 @@ export default function App() {
             </>
           ) : modal === 'coverage' ? (
             <>
-              <span className="eyebrow">{t('The walking atlas')}</span>
-              <h2 id="dialog-title">
-                {t('Small beginnings.')}
-                <br />
-                <em>{t('Room to grow.')}</em>
-              </h2>
+              <h2 id="dialog-title">{t('Coverage')}</h2>
               {cityOptions.map((coveredCity) => (
                 <div className="coverage-city" key={coveredCity.id}>
                   <div>
@@ -1629,37 +1560,24 @@ export default function App() {
                   )}
                 </div>
               ))}
-              <p className="small-copy">
-                {t(
-                  'A city appears here when we investigate it. Each capability launches only after its local data and routes are checked.',
-                )}
-              </p>
+              <p className="small-copy">{t('Coverage and available features vary by city.')}</p>
             </>
           ) : isNativeApp ? (
             <>
-              <span className="eyebrow">{t('Your pocket walking atlas')}</span>
-              <h2 id="dialog-title">
-                {t('Ready for')}
-                <br />
-                <em>{t('a little exploring.')}</em>
-              </h2>
-              <p>
-                {t(
-                  'Keep a walking atlas in your pocket with included and downloaded areas. Planning works offline.',
-                )}
-              </p>
+              <h2 id="dialog-title">{t('About Cooler Walks')}</h2>
+              <p>{t('Included and downloaded maps work offline.')}</p>
               <button className="primary" onClick={() => setModal('areas')}>
                 {t('Manage offline maps ')}
                 <Download size={18} />
               </button>
               <div className="install-instructions">
-                <h3>{t('Keep your data in view')}</h3>
+                <h3>{t('Map data')}</h3>
                 <p>
                   {t(
                     'Source dates and coverage are shown in “How estimates work”. Data updates arrive with app updates; live closures and turn-by-turn navigation are not included.',
                   )}
                 </p>
-                <h3>{t('Location stays your choice')}</h3>
+                <h3>{t('Location')}</h3>
                 <p>
                   {t(
                     'Location is requested only when you tap “Use my location”. Journeys are calculated on your device and are not saved as a history. This app does not track you in the background.',
@@ -1675,17 +1593,8 @@ export default function App() {
             </>
           ) : (
             <>
-              <span className="eyebrow">{t('Ready when you are')}</span>
-              <h2 id="dialog-title">
-                {t('A place on your')}
-                <br />
-                <em>{t('home screen.')}</em>
-              </h2>
-              <p>
-                {t(
-                  'Keep Cooler Walks close for your next walk. Installation is optional; the same planner works in your browser.',
-                )}
-              </p>
+              <h2 id="dialog-title">{t('Install Cooler Walks')}</h2>
+              <p>{t('Add Cooler Walks to your home screen, or keep using it in your browser.')}</p>
               {installEvent ? (
                 <button
                   className="primary"

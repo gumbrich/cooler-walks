@@ -1,6 +1,8 @@
 # Cooler Walks
 
-Ein Atlas für bessere Fusswege: echte Routen, mehr Grün, Wassernähe, geschätzte Sonne oder Schatten und verkehrsberuhigte Wege in Zürich.
+Fusswege nach geschätztem Schatten, Grün, Wassernähe und Verkehrsberuhigung vergleichen.
+
+**Version 0.12.0:** kürzere, direkte Texte auf Deutsch und Englisch. Kompakte Routenkarten; auf dem Handy steht die Startzeit direkt über den Ergebnissen. Website und native App nutzen dieselbe Oberfläche.
 
 **Öffnen:** [Deutsche Website](https://coolerwalks.ch/de/) · [Direkt zum Planer](https://coolerwalks.ch/de/?view=planner) · [English / technische Dokumentation](README.md)
 

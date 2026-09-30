@@ -1,5 +1,11 @@
 # Progress
 
+## Simpler interface · 0.12.0
+
+Replaced promotional English/German wording across entry, planner, dialogs, Help and Privacy. Route cards now emphasize the selected preference; supporting figures remain in expandable details. Phone departure controls precede results, the trip has one edit action, and compact map labels leave endpoints visible. Public metadata, store drafts and Android/iOS version numbers are updated together.
+
+TypeScript, 85 application/model tests and targeted browser flows pass. Rendered desktop, phone and tablet views were inspected, including German, error recovery and enlarged text. Final native and deployment checks are recorded in `platform.md`. Next: paired field walks for shadow and traffic, plus feedback on the simplified phone flow.
+
 ## Traffic model · 0.11.0
 
 Implemented street-context v2: separate paths/pedestrian/restricted streets from T20/T30 motor-access streets, conservative crossing/conditional-access handling, normalized levels, and absolute-distance comparison that rejects percentage-only detours. Zurich data is v9; the traffic report now hashes the actual north/west OSM input. EN/DE route breakdowns and estimated passing-time 2025 counter profiles share the website/native code.

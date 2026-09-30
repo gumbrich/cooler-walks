@@ -3345,3 +3345,470 @@ html[lang='de'] .icon-text {
     margin-top: 4px;
   }
 }
+
+/* A quieter interface: one heading, one route measure, details on demand. */
+.city-current {
+  display: none;
+}
+.map-pilot-label {
+  display: none;
+}
+.header {
+  height: 72px;
+}
+.hero {
+  min-height: 620px;
+  grid-template-columns: 46% 54%;
+}
+.hero-copy {
+  justify-content: center;
+  padding: 64px 9%;
+}
+.hero h1 {
+  font-size: clamp(2.75rem, 4.6vw, 5rem);
+  line-height: 1.08;
+  white-space: normal;
+}
+.hero-copy > p {
+  font-size: 1rem;
+  line-height: 1.65;
+  max-width: 360px;
+}
+.hero-atlas {
+  min-height: 620px;
+}
+.hero-cta {
+  min-width: 200px;
+  margin-top: 28px;
+}
+.pilot-note {
+  margin-top: 24px;
+  line-height: 1.5;
+}
+.pilot-note > button {
+  width: auto;
+  margin-inline-start: 0;
+}
+.atlas-title > span {
+  letter-spacing: 0;
+  font-weight: 400;
+}
+.hero-route-note {
+  max-width: 380px;
+  padding: 14px 18px;
+  box-shadow: 0 3px 14px #193d3212;
+}
+.hero-route-note strong {
+  font-size: 1.1rem;
+}
+.home-footer {
+  font-size: 0.875rem;
+}
+.planner {
+  height: calc(100dvh - 72px);
+}
+.planner-panel {
+  padding-top: 22px;
+}
+.panel-title h1 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  margin: 0 0 16px;
+}
+.search-guidance {
+  margin-bottom: 12px;
+}
+.form-utilities {
+  margin-bottom: 16px;
+}
+.detour {
+  margin-bottom: 16px;
+}
+.detour legend,
+.sunlight-preference legend {
+  font-size: 0.875rem;
+}
+.water-preference {
+  min-height: 46px;
+  padding: 9px 12px;
+  margin-bottom: 8px;
+  border-radius: 7px;
+}
+.water-preference strong {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+.preference-help {
+  margin: 8px 0 12px;
+}
+.results-heading {
+  margin-bottom: 12px;
+}
+.results-heading .eyebrow {
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+}
+.route-card {
+  padding: 13px 14px;
+  border-radius: 8px;
+}
+.route-card.selected {
+  background: #edf1e4;
+  box-shadow: none;
+  border-color: #58784d;
+}
+.route-name {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  font-size: 0.875rem;
+}
+.route-name small {
+  margin: 0;
+  font-size: 0.8125rem;
+  white-space: nowrap;
+}
+.route-numbers {
+  margin: 12px 0 8px;
+  gap: 10px;
+  align-items: center;
+}
+.route-numbers > strong {
+  font-size: 1.6rem;
+  white-space: nowrap;
+}
+.route-distance {
+  line-height: 1.5;
+}
+.route-arrival {
+  margin-top: 1px;
+  font-size: 0.75rem;
+  gap: 4px;
+}
+.route-arrival svg {
+  display: none;
+}
+.exposure-number {
+  line-height: 1.1;
+}
+.exposure-number small {
+  max-width: 9em;
+  line-height: 1.25;
+}
+.exposure-bar {
+  height: 3px;
+}
+.route-card-caption {
+  margin-top: 6px;
+}
+.route-model-note {
+  margin-top: 3px;
+}
+.water-route .exposure-bar {
+  background: #e1e9e6;
+}
+.water-route .exposure-bar span {
+  background: #4c7b79;
+}
+.traffic-profile,
+.traffic-counts {
+  border: 0;
+  border-top: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
+  margin-top: 0;
+}
+.traffic-profile > summary,
+.traffic-counts > summary {
+  padding: 13px 0;
+}
+.traffic-profile summary small,
+.traffic-counts summary small {
+  font-weight: 400;
+}
+.traffic-profile-body,
+.traffic-counts .counts-body {
+  padding-inline: 0;
+}
+.walk-details {
+  border-top: 1px solid var(--line);
+  margin-top: 0;
+}
+.walk-details summary {
+  min-height: 44px;
+  align-items: center;
+}
+.downloads-link {
+  border-bottom: 0;
+  margin-top: 0;
+}
+.time-control {
+  box-shadow: 0 4px 18px #183b2814;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  padding: 14px 20px;
+}
+.time-heading {
+  margin-bottom: 8px;
+}
+.time-heading > strong {
+  font-size: 1.2rem;
+}
+.time-foot {
+  padding-top: 8px;
+  margin-top: 6px;
+}
+.info-dialog h2 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.65rem;
+  font-weight: 600;
+  margin: 0 36px 18px 0;
+  line-height: 1.25;
+}
+.map-location strong {
+  font-size: 2rem;
+}
+.map-location .eyebrow {
+  display: none;
+}
+
+@media (max-width: 800px) and (min-width: 621px) {
+  .hero-copy {
+    padding: 40px 8%;
+  }
+  .hero h1 {
+    font-size: 2.75rem;
+  }
+  .hero-atlas {
+    min-height: 550px;
+  }
+  .hero {
+    min-height: 550px;
+  }
+}
+@media (max-width: 620px) {
+  .city-select {
+    position: relative;
+  }
+  .city-current {
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 18px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    pointer-events: none;
+    font-size: 0.8125rem;
+  }
+  .city-select select {
+    color: transparent;
+  }
+  .city-select option {
+    color: var(--ink);
+  }
+  .header {
+    height: auto;
+    min-height: 60px;
+  }
+  .hero {
+    min-height: 0;
+  }
+  .hero-copy {
+    padding: 32px 24px 26px;
+  }
+  .hero h1 {
+    font-size: clamp(2.3rem, 10vw, 3.3rem);
+    margin-bottom: 16px;
+    letter-spacing: -0.035em;
+  }
+  html[lang='de'] .hero h1 {
+    font-size: clamp(2.3rem, 10vw, 3.3rem);
+  }
+  .hero-copy > p {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+  }
+  .hero-cta {
+    margin-top: 22px;
+    min-height: 48px;
+  }
+  .pilot-note {
+    margin-top: 18px;
+    font-size: 0.75rem;
+  }
+  .hero-atlas {
+    min-height: 310px;
+    height: 310px;
+    margin: 0 16px;
+    border-radius: 9px;
+  }
+  .atlas-title {
+    top: 12px;
+    left: 12px;
+    padding: 6px 10px;
+  }
+  .atlas-title strong {
+    font-size: 1.5rem;
+  }
+  .hero-route-note {
+    bottom: 38px;
+    left: 12px;
+    right: 12px;
+    padding: 10px 12px;
+  }
+  .hero-route-note strong {
+    font-size: 0.9375rem;
+  }
+  .home-footer {
+    margin: 16px 24px 0;
+    gap: 12px;
+    font-size: 0.8125rem;
+  }
+  .home-footer > span:first-child {
+    width: auto;
+  }
+  .planner {
+    height: auto;
+    background: var(--paper);
+  }
+  .planner-map {
+    height: 33svh;
+    min-height: 280px;
+    max-height: 330px;
+  }
+  .planner-panel {
+    padding: 0 18px;
+    border-radius: 14px 14px 0 0;
+    box-shadow: none;
+  }
+  .sheet-handle {
+    display: none;
+  }
+  .panel-title {
+    padding-top: 15px;
+  }
+  .panel-title h1 {
+    font-size: 1.2rem;
+    margin: 0;
+  }
+  .planner:not(.editing) .panel-title h1 {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    clip-path: inset(50%);
+    overflow: hidden;
+  }
+  .planner:not(.editing) .panel-title {
+    padding: 0;
+    height: 0;
+  }
+  .planner:not(.editing) .mobile-edit {
+    display: none;
+  }
+  .trip-compact {
+    padding: 13px 0 8px;
+    min-height: 54px;
+    gap: 8px;
+  }
+  .trip-compact > span {
+    font-size: 0.875rem;
+  }
+  .trip-compact > button {
+    min-height: 44px;
+    padding: 8px 0 8px 8px;
+  }
+  .mobile-time {
+    margin: 2px 0 0;
+  }
+  .mobile-time .time-control {
+    background: transparent;
+    padding: 10px 0;
+    border: 0;
+    border-bottom: 1px solid var(--line);
+    border-radius: 0;
+    box-shadow: none;
+    backdrop-filter: none;
+  }
+  .mobile-time .time-heading {
+    margin-bottom: 0;
+  }
+  .mobile-time .time-heading small {
+    display: inline;
+  }
+  .mobile-time .time-foot {
+    flex-direction: row;
+    align-items: center;
+    border: 0;
+    margin-top: 4px;
+    padding-top: 0;
+    gap: 8px;
+  }
+  .mobile-time .time-foot > span {
+    max-width: 48%;
+  }
+  .mobile-time .date-label {
+    gap: 3px;
+  }
+  .mobile-time .time-ticks {
+    font-size: 0.75rem;
+  }
+  .results {
+    padding-top: 0;
+    border-top: 0;
+  }
+  .results-heading {
+    border-top: 0;
+    padding-block: 8px;
+    margin-bottom: 8px;
+  }
+  .route-card {
+    padding: 12px 14px;
+  }
+  .route-numbers {
+    margin-top: 9px;
+  }
+  .trip-form {
+    margin: 12px 0 0;
+  }
+  .editing .mobile-time {
+    margin-top: 8px;
+  }
+  .map-location {
+    top: 12px;
+    left: 12px;
+    padding: 7px 10px;
+  }
+  .map-location strong {
+    font-size: 1.35rem;
+  }
+  .map-location .map-coverage-label {
+    display: none;
+  }
+  .map-pilot-label {
+    display: inline;
+    margin-inline-start: 8px;
+    font:
+      400 0.75rem 'DM Sans',
+      sans-serif;
+    letter-spacing: 0;
+  }
+  .map-tools {
+    top: 12px;
+    right: 12px;
+  }
+  .map-tools button {
+    height: 36px;
+  }
+  .map-location .map-model-key {
+    margin-top: 2px;
+  }
+  .info-dialog h2 {
+    font-size: 1.5rem;
+  }
+}

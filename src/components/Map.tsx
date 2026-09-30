@@ -636,16 +636,10 @@ export function WalkingMap({
       result.alternative?.coordinates.forEach((p) => box.extend(p));
       m.fitBounds(box, {
         padding: {
-          top: hero
-            ? 100
-            : matchMedia('(max-width:620px)').matches
-              ? city.detailedShade
-                ? 140
-                : 125
-              : 145,
-          bottom: hero ? 170 : matchMedia('(max-width:620px)').matches ? 105 : 280,
-          left: 45,
-          right: hero ? 45 : 95,
+          top: matchMedia('(max-width:620px)').matches ? (hero ? 95 : 110) : hero ? 100 : 145,
+          bottom: matchMedia('(max-width:620px)').matches ? (hero ? 140 : 95) : hero ? 170 : 240,
+          left: matchMedia('(max-width:620px)').matches ? 28 : 45,
+          right: hero ? 35 : matchMedia('(max-width:620px)').matches ? 65 : 95,
         },
         maxZoom: 16,
         duration: instant || matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 600,
@@ -691,8 +685,11 @@ export function WalkingMap({
         <>
           <div className="map-location">
             <span className="eyebrow">{t(city.country)}</span>
-            <strong>{city.localName}</strong>
-            <span>
+            <strong>
+              {city.localName}
+              <small className="map-pilot-label">{city.beta ? 'Beta' : t('Pilot')}</small>
+            </strong>
+            <span className="map-coverage-label">
               {t(city.coverageLabel)}
               {city.beta ? ' · Beta' : t(' · pilot')}
             </span>
@@ -720,8 +717,8 @@ export function WalkingMap({
                 if (!showCoverage) onCoverage();
                 map.current?.fitBounds(city.bounds, {
                   padding: {
-                    top: 130,
-                    bottom: matchMedia('(max-width:620px)').matches ? 100 : 280,
+                    top: matchMedia('(max-width:620px)').matches ? 84 : 130,
+                    bottom: matchMedia('(max-width:620px)').matches ? 62 : 240,
                     left: 40,
                     right: 85,
                   },

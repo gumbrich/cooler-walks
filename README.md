@@ -1,6 +1,6 @@
 # Cooler Walks
 
-A warmer kind of walking atlas: compare real pedestrian routes, greenery, waterside walks, calmer Zurich streets and experimental sun/shade estimates.
+Compare walking routes by estimated shade, greenery, nearby water and calmer streets.
 
 [Deutsch](README.de.md) · English / German website and app interface
 
@@ -9,6 +9,8 @@ A warmer kind of walking atlas: compare real pedestrian routes, greenery, waters
 The [latest evidence review](docs/shadow-validation-followup.md) checks all 26 flagged roof samples against raw LiDAR and screens 14 photo originals and their timestamps. Three photos remain promising; an exploratory Münsterhof mismatch is retained for investigation. This does not establish field accuracy.
 
 **Status:** **Zurich is the primary focus**, with an expanded 57.77 km² walking area and official address search. **Basel, Munich and Cambridge (Massachusetts) are beta**. Cambridge follows its municipal boundary; the other cities cover central areas. These remain experimental services, not field-validated citywide routing. Zurich and Munich estimate building sun/shade; Cambridge and Basel offer greenery and water proximity only. Paris remains under review. Tree shade, hill shadows, weather, live closures and navigation are not included.
+
+**Interface 0.12.0:** simpler English/German copy, compact route cards, and departure controls above phone results. The website and native apps share the same interface. [Design notes](docs/design.md#plain-language-and-simpler-layouts--0120).
 
 **Traffic 0.11.0:** clearer street categories, absolute-distance comparisons, and historical counters selected for estimated passing time. [Method and field plan](docs/traffic.md).
 

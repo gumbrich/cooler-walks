@@ -68,7 +68,7 @@ test('German phone address search and map controls stay usable', async ({ page }
   await page.getByRole('combobox', { name: 'Nach', exact: true }).fill('Wallisellenstrasse 45');
   await page.getByRole('combobox', { name: 'Nach', exact: true }).press('Enter');
   await expect(page.getByRole('button', { name: /Schnellster Weg/ })).toBeVisible();
-  await page.getByRole('button', { name: 'Meinen Weg anzeigen', exact: true }).click();
+  await page.getByRole('button', { name: 'Routen anzeigen', exact: true }).click();
   await expect(page.locator('.map-shell')).toHaveAttribute('data-map-settled', 'true');
   await page.screenshot({ path: 'docs/screenshots/phone-zurich-expanded.png', fullPage: true });
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);

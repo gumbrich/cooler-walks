@@ -17,9 +17,7 @@ describe('German interface', () => {
   });
   it('preserves local place names and handles parameters and generated error labels', () => {
     expect(translate('Bürkliplatz', 'de')).toBe('Bürkliplatz');
-    expect(
-      translate(' +{extra} min · best of {count} evaluated', 'de', { extra: '3,0', count: 7 }),
-    ).toBe(' +3,0 Min. · beste von 7 geprüften Varianten');
+    expect(translate(' +{extra} min', 'de', { extra: '3,0' })).toBe(' +3,0 Min.');
     expect(
       translate(
         'Destination: No mapped public walking path within 45 metres. Choose a point on a nearby street or path.',

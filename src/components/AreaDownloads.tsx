@@ -1,6 +1,6 @@
 import { useI18n } from '../i18n';
 import { useEffect, useRef, useState } from 'react';
-import { ArrowRight, Check, Download, Map, Trash2, WifiOff } from 'lucide-react';
+import { ArrowRight, Check, Download, Trash2, WifiOff } from 'lucide-react';
 import { areas, areaDownloadURL, bundledAreas, installedStatus, installArea } from '../lib/areas';
 import { areaStore } from '../lib/area-store';
 import { getCity } from '../lib/cities';
@@ -88,20 +88,8 @@ export function AreaDownloads({
   };
   return (
     <div className="area-manager">
-      <span className="eyebrow">
-        <Map size={15} />
-        {t(' Your pocket atlas')}
-      </span>
-      <h2 id="dialog-title">
-        {t('A little preparation.')}
-        <br />
-        <em>{t('A lot of exploring.')}</em>
-      </h2>
-      <p>
-        {t(
-          'Save a walking area before you go. Its map, paths and environmental data stay together, ready without a connection.',
-        )}
-      </p>
+      <h2 id="dialog-title">{t('Offline maps')}</h2>
+      <p>{t('Download an area to use its map and plan routes offline.')}</p>
       <div className="storage-strip">
         <WifiOff size={19} />
         <span>
@@ -110,7 +98,7 @@ export function AreaDownloads({
               ? t('{size} saved', {
                   size: `${number(saved.reduce((n, a) => n + a.bytes, 0) / 1e6, 1)} MB`,
                 })
-              : t('Ready when you are')}
+              : t('No downloaded maps')}
           </strong>
           <small>
             {loading

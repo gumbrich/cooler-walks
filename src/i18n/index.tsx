@@ -94,8 +94,8 @@ export function I18nProvider({ children }: { children: ReactNode }) {
     document.documentElement.lang = language;
     document.title =
       language === 'de'
-        ? 'Cooler Walks — Dein Weg durch die Stadt.'
-        : 'Cooler Walks — A little less sun. A better walk.';
+        ? 'Cooler Walks — Fusswege mit mehr Schatten'
+        : 'Cooler Walks — Walking routes with more shade';
     document
       .querySelector('link[rel="manifest"]')
       ?.setAttribute(

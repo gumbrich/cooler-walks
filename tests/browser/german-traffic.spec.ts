@@ -56,7 +56,7 @@ test('German phone and tablet layouts, controls, downloads and error recovery', 
   await page.getByRole('checkbox', { name: /Verkehrsberuhigt bevorzugen/ }).check();
   await expect(page.getByRole('button', { name: /Verkehrsberuhigter Weg/ })).toBeVisible();
   await page.screenshot({ path: 'docs/screenshots/phone-german-editor.png', fullPage: true });
-  await page.getByRole('button', { name: 'Meinen Weg anzeigen' }).click();
+  await page.getByRole('button', { name: 'Routen anzeigen' }).click();
   await page.locator('.traffic-profile > summary').click();
   await expect(page.locator('.traffic-profile')).toContainText(
     'Wege & verkehrsbeschränkte Strassen',

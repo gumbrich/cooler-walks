@@ -32,6 +32,8 @@ try {
   // Finish first launch before setting the reference trip. Reloading during
   // the initial 3D-data transfer can overlap two large loads on a 2 GB AVD.
   await expect(page.locator('.route-card').first()).toBeVisible({ timeout: 60000 });
+  await expect(page.locator('.mobile-time .time-control')).toBeVisible();
+  await expect(page.getByRole('slider', { name: 'Departure time', exact: true })).toHaveCount(1);
   await page.clock.setFixedTime(new Date('2026-06-22T12:00:00Z'));
   await page.getByLabel('Departure date', { exact: true }).fill('2026-06-22');
   await page.getByRole('slider', { name: 'Departure time', exact: true }).fill('840');
@@ -55,6 +57,12 @@ try {
     timeout: 60000,
   });
   await device.screenshot({ path: 'docs/screenshots/android-3d-shade.png' });
+  await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
+  await expect(page.locator('.mobile-time .time-control')).toBeInViewport();
+  await page.evaluate(
+    () => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))),
+  );
+  await device.screenshot({ path: 'docs/screenshots/android-lean-planner.png' });
   await page.getByLabel('Departure date', { exact: true }).fill('2026-06-22');
   await page.getByRole('slider', { name: 'Departure time', exact: true }).fill('840');
   await expect(page.locator('.spinner')).toHaveCount(0, { timeout: 60000 });
@@ -91,7 +99,7 @@ try {
   await expect(page.getByRole('button', { name: /Verkehrsberuhigter Weg/ })).toBeVisible({
     timeout: 60000,
   });
-  await page.getByRole('button', { name: 'Meinen Weg anzeigen', exact: true }).click();
+  await page.getByRole('button', { name: 'Routen anzeigen', exact: true }).click();
   await page.locator('.traffic-profile > summary').click();
   await expect(page.locator('.traffic-profile')).toContainText('Tempo-30-Strassen');
   await expect(page.locator('.traffic-profile')).toContainText('Vor-Ort-Prüfung steht aus');
@@ -114,7 +122,7 @@ try {
   await expect(page.getByRole('button', { name: /Schnellster Weg/ })).toBeVisible();
   await expect(page.locator('.route-arrival').first()).toContainText('Ankunft gegen 14:10');
   await expect(page.locator('.map-marker')).toHaveCount(2);
-  await page.getByRole('button', { name: 'Meinen Weg anzeigen', exact: true }).click();
+  await page.getByRole('button', { name: 'Routen anzeigen', exact: true }).click();
   await expect(page.locator('.map-shell')).toHaveAttribute('data-map-settled', 'true', {
     timeout: 60000,
   });

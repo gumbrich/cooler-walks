@@ -55,7 +55,7 @@ test('Historical counters follow route, local departure time and language withou
   await page.getByRole('button', { name: 'Weg bearbeiten', exact: true }).click();
   await page.getByRole('checkbox', { name: /Verkehrsberuhigt bevorzugen/ }).check();
   await expect(page.getByRole('button', { name: /Verkehrsberuhigter Weg/ })).toBeVisible();
-  await page.getByRole('button', { name: 'Meinen Weg anzeigen' }).click();
+  await page.getByRole('button', { name: 'Routen anzeigen' }).click();
   await expect(evidence).toContainText('das bedeutet nicht null Verkehr');
   await expect(page.locator('.counter-map-marker')).toHaveCount(0);
   await page.setViewportSize({ width: 820, height: 1180 });

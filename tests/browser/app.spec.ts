@@ -30,11 +30,13 @@ test('water preference and ordered stops work on desktop and phone', async ({ pa
   await expect(page.locator('.route-card')).toHaveCount(1);
   await expect(page.locator('.map-marker')).toHaveCount(3);
   await page.setViewportSize({ width: 390, height: 844 });
+  await expect(page.locator('.mobile-time .time-control')).toBeVisible();
+  await expect(page.getByRole('slider', { name: 'Departure time' })).toHaveCount(1);
   await page.getByRole('button', { name: 'Edit trip', exact: true }).click();
   await expect(page.getByRole('combobox', { name: 'Stop 1', exact: true })).toBeVisible();
   await page.getByRole('button', { name: /\+5 min/ }).click();
   await expect(page.getByRole('button', { name: /More time near water/ })).toBeVisible();
-  await page.getByRole('button', { name: 'Show my walk' }).click();
+  await page.getByRole('button', { name: 'Show routes' }).click();
   await expect(page.locator('.trip-stop-summary')).toContainText('Rennweg');
   await expect(page.locator('.map-shell')).toHaveAttribute('data-map-settled', 'true');
   await page.locator('.header').click({ position: { x: 1, y: 1 } });
@@ -64,7 +66,7 @@ test('desktop planner, search, time, units, coverage and city switching', async 
   page.on('pageerror', (e) => errors.push(e.message));
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto('/');
-  await expect(page.getByRole('heading', { name: /A little less sun/ })).toBeVisible();
+  await expect(page.getByRole('heading', { name: /Walks with/ })).toBeVisible();
   await expect(page.locator('.hero-route-note')).toBeVisible();
   await expect(page.locator('.map-failure')).toHaveCount(0);
   if (await page.locator('.map-shell').count()) {
@@ -74,7 +76,7 @@ test('desktop planner, search, time, units, coverage and city switching', async 
   }
   await page.locator('.header').click({ position: { x: 1, y: 1 } });
   await page.screenshot({ path: 'docs/screenshots/desktop-entry.png', fullPage: true });
-  await page.getByRole('button', { name: 'Find a cooler walk', exact: true }).click();
+  await page.getByRole('button', { name: 'Plan a route', exact: true }).click();
   await expect(page.getByRole('button', { name: /Fastest walk/ })).toBeVisible();
   await page.getByLabel('Departure date', { exact: true }).fill('2026-06-21');
   await page.getByRole('slider', { name: 'Departure time' }).fill('840');
@@ -110,7 +112,7 @@ test('desktop planner, search, time, units, coverage and city switching', async 
   }
   await page.locator('.header').click({ position: { x: 1, y: 1 } });
   await page.screenshot({ path: 'docs/screenshots/desktop-unsupported.png', fullPage: true });
-  await page.getByRole('button', { name: 'Explore the Zurich pilot' }).click();
+  await page.getByRole('button', { name: 'Plan in Zurich' }).click();
   await expect(page.getByRole('button', { name: /Fastest walk/ })).toBeVisible();
   expect(errors).toEqual([]);
 });
@@ -129,7 +131,7 @@ test('phone and tablet layouts, keyboard search, night and location denial', asy
   }
   await page.locator('.header').click({ position: { x: 1, y: 1 } });
   await page.screenshot({ path: 'docs/screenshots/phone-entry.png', fullPage: true });
-  await page.getByRole('button', { name: 'Find a cooler walk', exact: true }).click();
+  await page.getByRole('button', { name: 'Plan a route', exact: true }).click();
   await expect(page.getByRole('button', { name: /Fastest walk/ })).toBeVisible();
   await page.getByLabel('Departure date', { exact: true }).fill('2026-06-21');
   await page.getByRole('slider', { name: 'Departure time' }).fill('840');
@@ -142,6 +144,14 @@ test('phone and tablet layouts, keyboard search, night and location denial', asy
   }
   await page.locator('.header').click({ position: { x: 1, y: 1 } });
   await page.screenshot({ path: 'docs/screenshots/phone-planner.png', fullPage: true });
+  // Keep route endpoints clear of the shorter phone map's labels and legend.
+  const cityLabel = (await page.locator('.map-location').boundingBox())!;
+  const legend = (await page.locator('.map-legend').boundingBox())!;
+  for (const marker of await page.locator('.map-marker').all()) {
+    const box = (await marker.boundingBox())!;
+    expect(box.y).toBeGreaterThanOrEqual(cityLabel.y + cityLabel.height);
+    expect(box.y + box.height).toBeLessThanOrEqual(legend.y);
+  }
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   await page.getByRole('button', { name: 'Edit trip', exact: true }).click();
   await expect(page.getByRole('combobox', { name: 'From', exact: true })).toBeVisible();
@@ -160,13 +170,16 @@ test('phone and tablet layouts, keyboard search, night and location denial', asy
   await input.fill('Rennweg');
   await input.press('ArrowDown');
   await input.press('Enter');
-  await page.getByRole('button', { name: 'Show my walk' }).click();
+  await page.getByRole('button', { name: 'Show routes' }).click();
   await expect(page.getByRole('button', { name: /Fastest walk/ })).toBeVisible();
   await page.getByRole('slider', { name: 'Departure time' }).fill('0');
   await expect(
     page.getByText('Direct sun is not relevant after dark. Greenery is shown separately.'),
   ).toBeVisible();
   await page.setViewportSize({ width: 820, height: 1180 });
+  await expect(page.locator('.timeline-wrap .time-control')).toBeVisible();
+  await expect(page.getByRole('slider', { name: 'Departure time' })).toHaveValue('0');
+  await expect(page.getByRole('slider', { name: 'Departure time' })).toHaveCount(1);
   await expect(page.locator('.map-failure')).toHaveCount(0);
   if (await page.locator('.map-shell').count()) {
     await expect(page.locator('.map-shell')).toHaveAttribute('data-map-ready', 'true');
