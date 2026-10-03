@@ -703,15 +703,9 @@ export default function App() {
         <main id="main" className="home">
           <section className="hero">
             <div className="hero-copy">
-              <h1>
-                {t('Walks with')}
-                <br />
-                <em>{city.capabilities.buildingShade ? t('more shade.') : t('more greenery.')}</em>
-              </h1>
+              <h1>{t('Walking routes')}</h1>
               <p>
-                {t(
-                  'Compare shade, greener paths and calmer streets. You choose how much longer to walk.',
-                )}
+                {t('Choose a start and destination, compare routes and set your maximum detour.')}
               </p>
               <button className="primary hero-cta" onClick={() => navigate('planner')}>
                 {t('Plan a route ')}

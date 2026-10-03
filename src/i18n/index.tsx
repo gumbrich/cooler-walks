@@ -93,9 +93,7 @@ export function I18nProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     document.documentElement.lang = language;
     document.title =
-      language === 'de'
-        ? 'Cooler Walks — Fusswege mit mehr Schatten'
-        : 'Cooler Walks — Walking routes with more shade';
+      language === 'de' ? 'Cooler Walks — Fusswege planen' : 'Cooler Walks — Walking routes';
     document
       .querySelector('link[rel="manifest"]')
       ?.setAttribute(

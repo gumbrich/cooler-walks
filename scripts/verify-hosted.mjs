@@ -32,7 +32,7 @@ const get = async (url, options = {}) => {
 };
 for (const [route, phrase] of [
   ['/', 'Cooler Walks'],
-  ['/de/', 'Fusswege mit mehr Schatten'],
+  ['/de/', 'Fusswege planen'],
   ['/de/privacy/', 'Der Standort bleibt deine Entscheidung'],
   ['/de/support/', 'verkehrsberuhigte Wege'],
   ['/privacy/', 'Location is your choice'],

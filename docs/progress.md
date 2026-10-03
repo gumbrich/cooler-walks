@@ -1,5 +1,9 @@
 # Progress
 
+## Factual entry copy · 3 October 2026
+
+Replaced the shade-only home slogan and browser titles with “Walking routes” / “Fusswege planen” and a short instruction about endpoints, route comparison and the detour limit. Website, PWA and native clients share this copy. Production build and three translation checks pass; English/German desktop and phone screenshots and entry-to-planner navigation were checked. Android/iOS web assets are synchronized; existing installed native binaries need a rebuilt app to receive the wording.
+
 ## Zurich 3D library · 0.13.0
 
 Expanded detailed roofs/facades and LiDAR receiver elevations from 3.36 km² to all 57.77 km² of the current walking area. The 81-tile library contains 41,042 buildings including surrounding casters. Online routing verifies and loads only needed tiles; offline packs embed compressed tiles. Missing downloads have an input-preserving retry. EN/DE coverage, Help and Privacy explain the scope and tile requests.

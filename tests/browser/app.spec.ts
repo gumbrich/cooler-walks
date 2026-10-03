@@ -66,7 +66,7 @@ test('desktop planner, search, time, units, coverage and city switching', async 
   page.on('pageerror', (e) => errors.push(e.message));
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto('/');
-  await expect(page.getByRole('heading', { name: /Walks with/ })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Walking routes' })).toBeVisible();
   await expect(page.locator('.hero-route-note')).toBeVisible();
   await expect(page.locator('.map-failure')).toHaveCount(0);
   if (await page.locator('.map-shell').count()) {
