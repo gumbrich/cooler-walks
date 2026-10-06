@@ -2,8 +2,17 @@ name: Checks
 on:
   push:
   pull_request:
+  workflow_dispatch:
+    inputs:
+      upload_artifacts:
+        description: 'Upload files (requires available GitHub artifact storage)'
+        type: boolean
+        default: false
 permissions:
   contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -47,14 +56,15 @@ jobs:
       # Every scenario still runs, with the same assertion and flow limits.
       # Isolated runners avoid competing over WebGL and screenshot artifacts.
       - run: npm run test:e2e -- --shard=${{ matrix.shard }}/4
-      - uses: actions/upload-artifact@v7
-        if: always()
-        with:
-          name: browser-screenshots-${{ matrix.shard }}
-          path: docs/screenshots/
-      - uses: actions/upload-artifact@v7
+      - name: Verify production cache upgrades
+        if: matrix.shard == 1
+        run: npm run build && npm run test:pwa:upgrade
+      - name: Print failure context without artifact storage
         if: failure()
+        run: node scripts/ci-failure-context.mjs
+      - uses: actions/upload-artifact@v7
+        if: always() && inputs.upload_artifacts
         with:
-          name: browser-failure-traces-${{ matrix.shard }}
+          name: browser-diagnostics-${{ matrix.shard }}
           path: test-results/
-          retention-days: 7
+          retention-days: 3

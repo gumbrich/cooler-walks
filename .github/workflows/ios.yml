@@ -3,8 +3,16 @@ on:
   push:
   pull_request:
   workflow_dispatch:
+    inputs:
+      upload_artifacts:
+        description: 'Upload files (requires available GitHub artifact storage)'
+        type: boolean
+        default: false
 permissions:
   contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   ios:
     runs-on: macos-26
@@ -22,12 +30,14 @@ jobs:
       - run: ditto -c -k --keepParent native-artifacts/CoolerWalks-unsigned.xcarchive cooler-walks-ios-unsigned-archive.zip
       - run: ditto -c -k --keepParent ios/DerivedData/Build/Products/Debug-iphonesimulator/App.app cooler-walks-ios-simulator.zip
       - uses: actions/upload-artifact@v7
+        if: inputs.upload_artifacts
         with:
           name: cooler-walks-ios-simulator
           path: cooler-walks-ios-simulator.zip
-          retention-days: 14
+          retention-days: 3
       - uses: actions/upload-artifact@v7
+        if: inputs.upload_artifacts
         with:
           name: cooler-walks-ios-unsigned-archive
           path: cooler-walks-ios-unsigned-archive.zip
-          retention-days: 14
+          retention-days: 3
