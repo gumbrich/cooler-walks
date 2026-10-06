@@ -89,6 +89,14 @@ for (let first = 0; first < tiles.length; first += 3) {
   );
 }
 checks.push(`Zurich 3D library: manifest and all ${tiles.length} hosted tile hashes verified`);
+const pavementResponse = await get(new URL('/data/zurich-pavements.json', site));
+assert.equal(pavementResponse.status, 200);
+assert.deepEqual(
+  Buffer.from(await pavementResponse.arrayBuffer()),
+  fs.readFileSync('public/data/zurich-pavements.json'),
+  'Hosted municipal pavement graph matches the audited pilot',
+);
+checks.push('Zurich pavement pilot: published graph matches the reviewed source extract');
 for (const entry of JSON.parse(fs.readFileSync(catalogPath, 'utf8'))) {
   const url = new URL(entry.file, packOrigin);
   const response = await get(url, { headers: { Origin: 'capacitor://localhost' } });

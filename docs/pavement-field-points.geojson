@@ -1,0 +1,149 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.538192320973074,
+          47.37261307804787
+        ]
+      },
+      "properties": {
+        "id": "B1-West",
+        "street": "Bahnhofstrasse",
+        "pavement": "West",
+        "networkVersion": "zurich-pavements-2026-10-06-v1",
+        "source": "Stadt Zürich, Fuss- und Velowegnetz, CC0",
+        "observation": null,
+        "observedAt": null,
+        "timeZone": "Europe/Zurich",
+        "photo": null,
+        "obstacle": null,
+        "clouds": null,
+        "accessNotes": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.538395145429366,
+          47.372618358501995
+        ]
+      },
+      "properties": {
+        "id": "B1-Ost",
+        "street": "Bahnhofstrasse",
+        "pavement": "Ost",
+        "networkVersion": "zurich-pavements-2026-10-06-v1",
+        "source": "Stadt Zürich, Fuss- und Velowegnetz, CC0",
+        "observation": null,
+        "observedAt": null,
+        "timeZone": "Europe/Zurich",
+        "photo": null,
+        "obstacle": null,
+        "clouds": null,
+        "accessNotes": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.53817078224484,
+          47.37320769115825
+        ]
+      },
+      "properties": {
+        "id": "B2-West",
+        "street": "Bahnhofstrasse",
+        "pavement": "West",
+        "networkVersion": "zurich-pavements-2026-10-06-v1",
+        "source": "Stadt Zürich, Fuss- und Velowegnetz, CC0",
+        "observation": null,
+        "observedAt": null,
+        "timeZone": "Europe/Zurich",
+        "photo": null,
+        "obstacle": null,
+        "clouds": null,
+        "accessNotes": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.538373004126488,
+          47.37319714749899
+        ]
+      },
+      "properties": {
+        "id": "B2-Ost",
+        "street": "Bahnhofstrasse",
+        "pavement": "Ost",
+        "networkVersion": "zurich-pavements-2026-10-06-v1",
+        "source": "Stadt Zürich, Fuss- und Velowegnetz, CC0",
+        "observation": null,
+        "observedAt": null,
+        "timeZone": "Europe/Zurich",
+        "photo": null,
+        "obstacle": null,
+        "clouds": null,
+        "accessNotes": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.538164817972188,
+          47.37371976616257
+        ]
+      },
+      "properties": {
+        "id": "B3-West",
+        "street": "Bahnhofstrasse",
+        "pavement": "West",
+        "networkVersion": "zurich-pavements-2026-10-06-v1",
+        "source": "Stadt Zürich, Fuss- und Velowegnetz, CC0",
+        "observation": null,
+        "observedAt": null,
+        "timeZone": "Europe/Zurich",
+        "photo": null,
+        "obstacle": null,
+        "clouds": null,
+        "accessNotes": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.53837046136343,
+          47.373722235226026
+        ]
+      },
+      "properties": {
+        "id": "B3-Ost",
+        "street": "Bahnhofstrasse",
+        "pavement": "Ost",
+        "networkVersion": "zurich-pavements-2026-10-06-v1",
+        "source": "Stadt Zürich, Fuss- und Velowegnetz, CC0",
+        "observation": null,
+        "observedAt": null,
+        "timeZone": "Europe/Zurich",
+        "photo": null,
+        "obstacle": null,
+        "clouds": null,
+        "accessNotes": null
+      }
+    }
+  ]
+}

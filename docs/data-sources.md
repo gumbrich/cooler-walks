@@ -163,3 +163,9 @@ npm run data:packs
 ```
 
 For a complete source rebuild, `npm run data:prepare:traffic` (also invoked by `data:prepare`) now runs the zone overlay preparation after street classification. It requires both raw source snapshots. Refreshing city data still requires reviewing the city fetch/version/cutoff metadata in the traffic adapter; a hash guard prevents displaying city data different from the data used for routing. Raw downloads remain ignored by Git. Fresh checkouts use the checked-in derived data without downloading raw sources.
+
+## Zurich municipal pavement network · 6 October 2026
+
+Source: [Fuss- und Velowegnetz, Stadt Zürich](https://data.stadt-zuerich.ch/dataset/geo_fuss__und_velowegnetz), CC0, WFS `tbl_routennetz`, EPSG:2056. Catalogue date 2022-10-19; fetch date 2026-10-06; feature observation dates unavailable. The bounded 2,053-feature extract yields a pinned 115-feature surface-street component around Talacker–Bahnhofstrasse: 36 named crossing sections, 4.009 km, 733 nodes / 753 edges. `fuss=1` establishes source pedestrian inclusion; exact original endpoints define connectivity, with no geometric-intersection or gap joining. Shape-preserving subdivision is at most 6 m; explicit LV95-to-WGS84 transformation supplies the map. Current access, levels, steps and signal waits require separate evidence.
+
+The small derived graph is committed as `public/data/zurich-pavements.json`; raw WFS data stays ignored. [Feature IDs/hash/provenance](pavement-source-audit.json), [fetch and preparation](pavement-pilot.md#reproduce), [field protocol](pavement-field-validation.md). Vampire’s pinned public raster is used only in an offline comparison, not distributed or used for production scores. Its ambiguous timestamp and radiation threshold remain explicit in the [comparison report](pavement-tool-comparison.json).

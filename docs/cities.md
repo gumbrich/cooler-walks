@@ -65,3 +65,7 @@ The walking boundary remains 57.77 km². The detailed **3D roof/facade and LiDAR
 ## Zurich traffic-zone display · 6 October 2026
 
 The optional 30/20 layer combines 347 implemented city zones with 42 cantonal legal orders around the supported map area. Canton data explicitly excludes Zurich and Winterthur; implementation of cantonal orders is unknown. The surrounding polygons are context, not additional walking or traffic-model coverage. Basel and the international pilots do not inherit this layer. [Source and scope audit](traffic-zone-validation.json).
+
+## Zurich pavement sub-pilot · 0.14.0
+
+Within the existing Zurich walking area, an optional **Talacker–Bahnhofstrasse** pilot uses 115 municipal path/crossing features (4.009 km of lines). It is a selected connected street network, not complete pavement coverage inside its rectangular envelope. Actual paths are highlighted; off-network points are rejected with a 6 m graph-node snap limit. Building shade and greenery remain separate; tree shade and terrain-horizon shadows remain unavailable. Calmer/waterside preferences use the normal Zurich network and are not enabled in this sub-pilot. Other cities retain their existing beta capabilities. [Source, routing and limitations](pavement-pilot.md).

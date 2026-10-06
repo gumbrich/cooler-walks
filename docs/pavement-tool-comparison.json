@@ -1,0 +1,5593 @@
+{
+  "networkVersion": "zurich-pavements-2026-10-06-v1",
+  "model": "roof-mesh-tiled-ground-arrival-v8",
+  "raster": {
+    "repositoryCommit": "6b45390967718a4b785af11222fd0dc2688eeeac",
+    "url": "https://raw.githubusercontent.com/sosm/cbf-routing-profiles/6b45390967718a4b785af11222fd0dc2688eeeac/vampire/shadows_zurich_city.asc",
+    "sha256": "cfc33982cb2177c5d6304ea5a4f26c390ccda789463d0e74e89478e8414e188b",
+    "header": {
+      "ncols": 5962.0,
+      "nrows": 4049.0,
+      "xllcorner": 8.47079282121,
+      "yllcorner": 47.340983157973,
+      "cellsize": 2.2522909e-05,
+      "nodata_value": -9999.0
+    },
+    "minimum": 42.0,
+    "maximum": 1002.0,
+    "threshold": 100
+  },
+  "methodSource": "https://geobeer.ch/slides/46/lightning-talks.pdf#page=17",
+  "timeSource": "https://geobeer.ch/slides/46/lightning-talks.pdf#page=20",
+  "timeConventionReference": "https://grass.osgeo.org/grass-stable/manuals/r.sun.html",
+  "sampling": "Every third prepared edge, at its midpoint; predetermined before comparison. Departure snapshot for matching the static external raster, not route-arrival estimates.",
+  "results": [
+    {
+      "timeInterpretation": "16:00 Europe/Zurich (CEST)",
+      "instant": "2024-08-01T14:00:00+00:00",
+      "samples": 251,
+      "comparable": 251,
+      "agreement": 168,
+      "disagreement": 83,
+      "matrixCoolerWalksThenVampire": {
+        "shade/shade": 118,
+        "sun/shade": 63,
+        "sun/sun": 50,
+        "shade/sun": 20
+      },
+      "pointComparisons": [
+        {
+          "id": 0,
+          "sourceId": 165,
+          "point": [
+            8.537207781404822,
+            47.37214387039547
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 43.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 3,
+          "sourceId": 165,
+          "point": [
+            8.5373551188297,
+            47.372244951007936
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 6,
+          "sourceId": 165,
+          "point": [
+            8.537516040463585,
+            47.37232498268976
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 51.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 9,
+          "sourceId": 806,
+          "point": [
+            8.53594565687894,
+            47.37113999854956
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 12,
+          "sourceId": 806,
+          "point": [
+            8.53578791416731,
+            47.371035427643555
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 474.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 15,
+          "sourceId": 1306,
+          "point": [
+            8.537207247474738,
+            47.372112727180344
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 18,
+          "sourceId": 1456,
+          "point": [
+            8.536364250062348,
+            47.37320454411227
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 48.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 21,
+          "sourceId": 1456,
+          "point": [
+            8.536279649540408,
+            47.37334870516485
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 45.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 24,
+          "sourceId": 1456,
+          "point": [
+            8.536195048560538,
+            47.37349286614907
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 43.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 27,
+          "sourceId": 1471,
+          "point": [
+            8.535454235015132,
+            47.3727079306164
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 516.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 30,
+          "sourceId": 1860,
+          "point": [
+            8.535800502383534,
+            47.37159075843116
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 761.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 33,
+          "sourceId": 1860,
+          "point": [
+            8.535640555827797,
+            47.37169901772227
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 780.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 36,
+          "sourceId": 1860,
+          "point": [
+            8.535480608621882,
+            47.37180727678818
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 557.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 39,
+          "sourceId": 1860,
+          "point": [
+            8.535328754489214,
+            47.37192490994402
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 62.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 42,
+          "sourceId": 1860,
+          "point": [
+            8.535178518429076,
+            47.37204441776089
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 46.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 45,
+          "sourceId": 1860,
+          "point": [
+            8.53503450311454,
+            47.372162888101904
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 513.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 48,
+          "sourceId": 1860,
+          "point": [
+            8.534921594337757,
+            47.3722761719131
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 51,
+          "sourceId": 1860,
+          "point": [
+            8.534830653882103,
+            47.37239924949025
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 515.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 54,
+          "sourceId": 2609,
+          "point": [
+            8.538194263058202,
+            47.37382733723719
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 57,
+          "sourceId": 2609,
+          "point": [
+            8.538378040572663,
+            47.373858220466005
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 545.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 60,
+          "sourceId": 2959,
+          "point": [
+            8.538204056815237,
+            47.37243851730546
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 51.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 63,
+          "sourceId": 2959,
+          "point": [
+            8.538194004717747,
+            47.372588148384935
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 66,
+          "sourceId": 3565,
+          "point": [
+            8.538983954988064,
+            47.370257944789614
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 69,
+          "sourceId": 3565,
+          "point": [
+            8.538924451848814,
+            47.37041438472206
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 90.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 72,
+          "sourceId": 3565,
+          "point": [
+            8.538864948360114,
+            47.37057082461648
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 73.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 75,
+          "sourceId": 3751,
+          "point": [
+            8.537757502258824,
+            47.37228572488717
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 922.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 78,
+          "sourceId": 3751,
+          "point": [
+            8.537618091554283,
+            47.37218626890495
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 357.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 81,
+          "sourceId": 3751,
+          "point": [
+            8.537461107355696,
+            47.37210546900663
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 622.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 84,
+          "sourceId": 3822,
+          "point": [
+            8.537267718825369,
+            47.371306825250166
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 87,
+          "sourceId": 5013,
+          "point": [
+            8.538668950452896,
+            47.37105917017917
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 535.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 90,
+          "sourceId": 5987,
+          "point": [
+            8.538167562951646,
+            47.37384170398696
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 93,
+          "sourceId": 6147,
+          "point": [
+            8.539448045477894,
+            47.36969259396937
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 559.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 96,
+          "sourceId": 6147,
+          "point": [
+            8.539407590968018,
+            47.36982844699077
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 513.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 99,
+          "sourceId": 7409,
+          "point": [
+            8.537197810313986,
+            47.3725964598162
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 102,
+          "sourceId": 7409,
+          "point": [
+            8.53704785428944,
+            47.37270015336279
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 105,
+          "sourceId": 7409,
+          "point": [
+            8.536897897681031,
+            47.372803846711314
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 46.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 108,
+          "sourceId": 7409,
+          "point": [
+            8.536761132194279,
+            47.372909311031805
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 111,
+          "sourceId": 7474,
+          "point": [
+            8.536312666278684,
+            47.37155357746819
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 114,
+          "sourceId": 7474,
+          "point": [
+            8.536152914432751,
+            47.3714592465216
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 479.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 117,
+          "sourceId": 7660,
+          "point": [
+            8.536840317301401,
+            47.371709756061136
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 540.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 120,
+          "sourceId": 7857,
+          "point": [
+            8.536980958695654,
+            47.37362020572572
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 123,
+          "sourceId": 7857,
+          "point": [
+            8.536971663846264,
+            47.373470978392966
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 126,
+          "sourceId": 7857,
+          "point": [
+            8.536899001207473,
+            47.37333153143147
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 45.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 129,
+          "sourceId": 7957,
+          "point": [
+            8.535387372732956,
+            47.37267322779671
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 544.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 132,
+          "sourceId": 7957,
+          "point": [
+            8.535208543386231,
+            47.372638252707524
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 44.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 135,
+          "sourceId": 7957,
+          "point": [
+            8.535011065038162,
+            47.372597542978184
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 138,
+          "sourceId": 7957,
+          "point": [
+            8.53482778221857,
+            47.372557146827035
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 545.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 141,
+          "sourceId": 9213,
+          "point": [
+            8.537160526710062,
+            47.37211249614632
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 144,
+          "sourceId": 9225,
+          "point": [
+            8.536832589489071,
+            47.37324796005501
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 147,
+          "sourceId": 9225,
+          "point": [
+            8.536690127183281,
+            47.373159004488585
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 150,
+          "sourceId": 9413,
+          "point": [
+            8.538171088844882,
+            47.373182096255704
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 153,
+          "sourceId": 9413,
+          "point": [
+            8.538169299576731,
+            47.37333571876674
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 50.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 156,
+          "sourceId": 9413,
+          "point": [
+            8.538167510298312,
+            47.37348934127047
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 159,
+          "sourceId": 9413,
+          "point": [
+            8.538165721009623,
+            47.37364296376702
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 162,
+          "sourceId": 9413,
+          "point": [
+            8.538163931710663,
+            47.37379658625638
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 67.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 165,
+          "sourceId": 9726,
+          "point": [
+            8.539049166564764,
+            47.37006712183085
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 168,
+          "sourceId": 9726,
+          "point": [
+            8.539001771367868,
+            47.37020833580409
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 47.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 171,
+          "sourceId": 10085,
+          "point": [
+            8.538032560125206,
+            47.372309023318856
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 174,
+          "sourceId": 10085,
+          "point": [
+            8.53781671209417,
+            47.37230326125138
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 618.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 177,
+          "sourceId": 10461,
+          "point": [
+            8.536292631421954,
+            47.37135453725397
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 545.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 180,
+          "sourceId": 10696,
+          "point": [
+            8.536561892725032,
+            47.37171668194363
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 183,
+          "sourceId": 10696,
+          "point": [
+            8.53641698498986,
+            47.37161896561869
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 186,
+          "sourceId": 11260,
+          "point": [
+            8.537342511065335,
+            47.372620468228156
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 189,
+          "sourceId": 11260,
+          "point": [
+            8.537193075552123,
+            47.372723211078004
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 44.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 192,
+          "sourceId": 11260,
+          "point": [
+            8.537043639462405,
+            47.37282595373116
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 195,
+          "sourceId": 11260,
+          "point": [
+            8.536929283254542,
+            47.37291654867702
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 49.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 198,
+          "sourceId": 11432,
+          "point": [
+            8.538133986652467,
+            47.373104758814755
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 51.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 201,
+          "sourceId": 11432,
+          "point": [
+            8.537906005720062,
+            47.37310160086183
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 59.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 204,
+          "sourceId": 11432,
+          "point": [
+            8.537678024814644,
+            47.37309844245858
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 953.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 207,
+          "sourceId": 11432,
+          "point": [
+            8.537450043936207,
+            47.37309528360502
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 210,
+          "sourceId": 11432,
+          "point": [
+            8.537222063084762,
+            47.37309212430113
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 60.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 213,
+          "sourceId": 11432,
+          "point": [
+            8.53699793428681,
+            47.373095116952896
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 843.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 216,
+          "sourceId": 13433,
+          "point": [
+            8.537770129115541,
+            47.37107877100809
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 219,
+          "sourceId": 13433,
+          "point": [
+            8.53761351992369,
+            47.37118915898262
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 44.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 222,
+          "sourceId": 13433,
+          "point": [
+            8.537458349914875,
+            47.37130071663589
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 47.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 225,
+          "sourceId": 13433,
+          "point": [
+            8.537303179256087,
+            47.37141227407689
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 766.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 228,
+          "sourceId": 13566,
+          "point": [
+            8.536623357696241,
+            47.37156550052332
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 694.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 231,
+          "sourceId": 13600,
+          "point": [
+            8.536588205184144,
+            47.37310950719418
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 234,
+          "sourceId": 14181,
+          "point": [
+            8.538710980695583,
+            47.37105056360752
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 237,
+          "sourceId": 14584,
+          "point": [
+            8.537698312200762,
+            47.37236099045438
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 240,
+          "sourceId": 14584,
+          "point": [
+            8.537544994148488,
+            47.37247450305452
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 46.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 243,
+          "sourceId": 15212,
+          "point": [
+            8.539030700357236,
+            47.37023247378863
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 246,
+          "sourceId": 15468,
+          "point": [
+            8.5377665193646,
+            47.37231224357018
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 249,
+          "sourceId": 15622,
+          "point": [
+            8.536153053879575,
+            47.373621083856285
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 54.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 252,
+          "sourceId": 15796,
+          "point": [
+            8.536633110715645,
+            47.37177684091719
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 255,
+          "sourceId": 15953,
+          "point": [
+            8.538234773944735,
+            47.37400812148201
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 90.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 258,
+          "sourceId": 16531,
+          "point": [
+            8.538570207681534,
+            47.37454768121292
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 261,
+          "sourceId": 16779,
+          "point": [
+            8.538680675795801,
+            47.371616920899385
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 264,
+          "sourceId": 16779,
+          "point": [
+            8.538621803956136,
+            47.37177230302195
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 82.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 267,
+          "sourceId": 16779,
+          "point": [
+            8.538562931773049,
+            47.37192768510713
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 270,
+          "sourceId": 16779,
+          "point": [
+            8.538504059246533,
+            47.37208306715496
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 79.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 273,
+          "sourceId": 16779,
+          "point": [
+            8.538445186376578,
+            47.37223844916547
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 53.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 276,
+          "sourceId": 16826,
+          "point": [
+            8.539159895202037,
+            47.369996616217776
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 279,
+          "sourceId": 16826,
+          "point": [
+            8.539302361244129,
+            47.37009096151847
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 282,
+          "sourceId": 16943,
+          "point": [
+            8.535541809891106,
+            47.371061498784634
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 52.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 285,
+          "sourceId": 16943,
+          "point": [
+            8.535399027016897,
+            47.37096486741999
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 54.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 288,
+          "sourceId": 16943,
+          "point": [
+            8.535270787333808,
+            47.370875543157965
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 538.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 291,
+          "sourceId": 17376,
+          "point": [
+            8.537843975560238,
+            47.37390110401897
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 260.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 294,
+          "sourceId": 17376,
+          "point": [
+            8.537618991077519,
+            47.373880873207476
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 539.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 297,
+          "sourceId": 17376,
+          "point": [
+            8.537397447824935,
+            47.37386052759398
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 531.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 300,
+          "sourceId": 17376,
+          "point": [
+            8.537193110033575,
+            47.3738396097701
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 532.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 303,
+          "sourceId": 18431,
+          "point": [
+            8.535734004992939,
+            47.37099958913064
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 641.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 306,
+          "sourceId": 18431,
+          "point": [
+            8.535568292697963,
+            47.37088912894599
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 624.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 309,
+          "sourceId": 18431,
+          "point": [
+            8.535414490793574,
+            47.370778874981845
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 544.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 312,
+          "sourceId": 18556,
+          "point": [
+            8.537547666683933,
+            47.37107576648396
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 61.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 315,
+          "sourceId": 18556,
+          "point": [
+            8.537393921006489,
+            47.371188266801624
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 318,
+          "sourceId": 18635,
+          "point": [
+            8.537151045297483,
+            47.37373563948654
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 321,
+          "sourceId": 18881,
+          "point": [
+            8.537311698879371,
+            47.37203175674775
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 870.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 324,
+          "sourceId": 18881,
+          "point": [
+            8.537190312115168,
+            47.37195174806396
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 706.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 327,
+          "sourceId": 18881,
+          "point": [
+            8.537041496954359,
+            47.371848659884094
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 607.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 330,
+          "sourceId": 18881,
+          "point": [
+            8.536892682369581,
+            47.37174557150909
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 610.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 333,
+          "sourceId": 19192,
+          "point": [
+            8.536479226401164,
+            47.371851686554315
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 63.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 336,
+          "sourceId": 19192,
+          "point": [
+            8.536324519577523,
+            47.37195991080199
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 44.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 339,
+          "sourceId": 19192,
+          "point": [
+            8.536169812125195,
+            47.37206813483875
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 44.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 342,
+          "sourceId": 19192,
+          "point": [
+            8.536015104044196,
+            47.372176358664674
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 67.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 345,
+          "sourceId": 19192,
+          "point": [
+            8.535864221714718,
+            47.372285563600705
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 85.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 348,
+          "sourceId": 19192,
+          "point": [
+            8.535714104043619,
+            47.37239496460112
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 44.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 351,
+          "sourceId": 19192,
+          "point": [
+            8.535576851287047,
+            47.37250630357015
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 44.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 354,
+          "sourceId": 19192,
+          "point": [
+            8.53550392573615,
+            47.37262733326437
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 45.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 357,
+          "sourceId": 19451,
+          "point": [
+            8.536665364068243,
+            47.37306044195135
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 541.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 360,
+          "sourceId": 19755,
+          "point": [
+            8.539327190879735,
+            47.36932807100953
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 86.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 363,
+          "sourceId": 19755,
+          "point": [
+            8.539286250948972,
+            47.36946441738721
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 366,
+          "sourceId": 19789,
+          "point": [
+            8.53668816092535,
+            47.3718408126225
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 63.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 369,
+          "sourceId": 19789,
+          "point": [
+            8.536563362213975,
+            47.37194855517578
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 46.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 372,
+          "sourceId": 19789,
+          "point": [
+            8.53640968683346,
+            47.37205658427918
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 50.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 375,
+          "sourceId": 19789,
+          "point": [
+            8.536256010829597,
+            47.3721646131745
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 378,
+          "sourceId": 19789,
+          "point": [
+            8.536105696630354,
+            47.372271435398254
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 57.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 381,
+          "sourceId": 19789,
+          "point": [
+            8.535972194016635,
+            47.37237222512659
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 384,
+          "sourceId": 19840,
+          "point": [
+            8.535617756577256,
+            47.372746754232296
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 541.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 387,
+          "sourceId": 19917,
+          "point": [
+            8.538387439781024,
+            47.37274566788942
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 390,
+          "sourceId": 19917,
+          "point": [
+            8.538382347833029,
+            47.3729050167647
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 50.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 393,
+          "sourceId": 19917,
+          "point": [
+            8.538377255854636,
+            47.373064365632004
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 396,
+          "sourceId": 19917,
+          "point": [
+            8.538372163845839,
+            47.3732237144914
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 399,
+          "sourceId": 19917,
+          "point": [
+            8.53836707180663,
+            47.37338306334277
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 402,
+          "sourceId": 19917,
+          "point": [
+            8.538361979737013,
+            47.37354241218626
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 64.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 405,
+          "sourceId": 19917,
+          "point": [
+            8.538364103034843,
+            47.373698723479784
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 408,
+          "sourceId": 19917,
+          "point": [
+            8.538402303427356,
+            47.37383984704928
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 411,
+          "sourceId": 19938,
+          "point": [
+            8.538839565176932,
+            47.371220955816725
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 79.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 414,
+          "sourceId": 19938,
+          "point": [
+            8.538779934448977,
+            47.37136898306823
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 51.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 417,
+          "sourceId": 19938,
+          "point": [
+            8.538720303389633,
+            47.37151701028234
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 368.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 420,
+          "sourceId": 20074,
+          "point": [
+            8.53458075741826,
+            47.37229827684288
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 423,
+          "sourceId": 20074,
+          "point": [
+            8.534481951166352,
+            47.372417443337476
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 821.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 426,
+          "sourceId": 20355,
+          "point": [
+            8.535209330331297,
+            47.37179991279092
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 429,
+          "sourceId": 20548,
+          "point": [
+            8.539263930656377,
+            47.36967225267254
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 530.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 432,
+          "sourceId": 20726,
+          "point": [
+            8.53559343104198,
+            47.37289058305317
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 435,
+          "sourceId": 20726,
+          "point": [
+            8.535522136727012,
+            47.373013968936746
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 438,
+          "sourceId": 20726,
+          "point": [
+            8.53551060741548,
+            47.3731278017059
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 52.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 441,
+          "sourceId": 20874,
+          "point": [
+            8.536262025408591,
+            47.37303970423574
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 444,
+          "sourceId": 20874,
+          "point": [
+            8.536054756104592,
+            47.37298605715697
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 447,
+          "sourceId": 20874,
+          "point": [
+            8.535847487218067,
+            47.372932409705115
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 55.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 450,
+          "sourceId": 20874,
+          "point": [
+            8.53564021874904,
+            47.37287876188017
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 453,
+          "sourceId": 21278,
+          "point": [
+            8.53653043673999,
+            47.37298104429486
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 456,
+          "sourceId": 21278,
+          "point": [
+            8.536311972653898,
+            47.372918908153515
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 514.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 459,
+          "sourceId": 21278,
+          "point": [
+            8.536093509077483,
+            47.37285677159746
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 627.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 462,
+          "sourceId": 21278,
+          "point": [
+            8.535875046010746,
+            47.372794634626736
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 603.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 465,
+          "sourceId": 21278,
+          "point": [
+            8.535656583453681,
+            47.37273249724132
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 883.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 468,
+          "sourceId": 22500,
+          "point": [
+            8.534625790101815,
+            47.37245987467253
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 471,
+          "sourceId": 22604,
+          "point": [
+            8.536841233056203,
+            47.37174413594002
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 474,
+          "sourceId": 22811,
+          "point": [
+            8.535966380060447,
+            47.37133250157032
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 477,
+          "sourceId": 22874,
+          "point": [
+            8.535062729405352,
+            47.3719055805593
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 43.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 480,
+          "sourceId": 22874,
+          "point": [
+            8.53491005860189,
+            47.37202315004339
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 86.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 483,
+          "sourceId": 22874,
+          "point": [
+            8.534757387124465,
+            47.37214071932142
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 55.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 486,
+          "sourceId": 22910,
+          "point": [
+            8.538305707453194,
+            47.37412154350963
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 64.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 489,
+          "sourceId": 22910,
+          "point": [
+            8.538385138122925,
+            47.37427305132026
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 65.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 492,
+          "sourceId": 22910,
+          "point": [
+            8.53846456924461,
+            47.37442455906927
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 495,
+          "sourceId": 23313,
+          "point": [
+            8.538627875133947,
+            47.37117447221691
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 62.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 498,
+          "sourceId": 23313,
+          "point": [
+            8.538572672830266,
+            47.371325869493816
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 501,
+          "sourceId": 23313,
+          "point": [
+            8.538517470212813,
+            47.37147726673738
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 46.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 504,
+          "sourceId": 23320,
+          "point": [
+            8.539355963846536,
+            47.370003543289286
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 936.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 507,
+          "sourceId": 23379,
+          "point": [
+            8.538148273393652,
+            47.37393394611704
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 546.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 510,
+          "sourceId": 23463,
+          "point": [
+            8.538183069607346,
+            47.372786424208776
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 57.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 513,
+          "sourceId": 23463,
+          "point": [
+            8.538177952947398,
+            47.37293359073067
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 516,
+          "sourceId": 23463,
+          "point": [
+            8.538172836259223,
+            47.373080757245674
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 519,
+          "sourceId": 24510,
+          "point": [
+            8.535814701664641,
+            47.37122005495846
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 59.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 522,
+          "sourceId": 25127,
+          "point": [
+            8.538246319567609,
+            47.3723142106622
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 553.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 525,
+          "sourceId": 25199,
+          "point": [
+            8.536988523318369,
+            47.37322566768533
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 528,
+          "sourceId": 25600,
+          "point": [
+            8.537937558364037,
+            47.37415685697197
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 531,
+          "sourceId": 25600,
+          "point": [
+            8.537883290389567,
+            47.37430403889494
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 84.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 534,
+          "sourceId": 25600,
+          "point": [
+            8.537829022115226,
+            47.37445122078587
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 537,
+          "sourceId": 25600,
+          "point": [
+            8.537774753541006,
+            47.37459840264461
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 540,
+          "sourceId": 26254,
+          "point": [
+            8.535759559012977,
+            47.372529600084405
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 50.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 543,
+          "sourceId": 26254,
+          "point": [
+            8.535664839200688,
+            47.3726554419222
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 885.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 546,
+          "sourceId": 26430,
+          "point": [
+            8.536074103158048,
+            47.373658601161544
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 727.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 549,
+          "sourceId": 26764,
+          "point": [
+            8.536200367962875,
+            47.371298139908475
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 581.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 552,
+          "sourceId": 26970,
+          "point": [
+            8.53559472135663,
+            47.372716425504585
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 810.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 555,
+          "sourceId": 27566,
+          "point": [
+            8.5369057689141,
+            47.37194944485311
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 52.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 558,
+          "sourceId": 27566,
+          "point": [
+            8.536736251039002,
+            47.37184094792193
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 44.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 561,
+          "sourceId": 27613,
+          "point": [
+            8.536149737219612,
+            47.371177674549536
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 405.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 564,
+          "sourceId": 27741,
+          "point": [
+            8.53876613185024,
+            47.371032290294124
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 567,
+          "sourceId": 27769,
+          "point": [
+            8.53821940467499,
+            47.37271388576952
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 58.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 570,
+          "sourceId": 28207,
+          "point": [
+            8.535930337884697,
+            47.37133892139799
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 573,
+          "sourceId": 28207,
+          "point": [
+            8.535806232622033,
+            47.37143231974869
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 89.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 576,
+          "sourceId": 28295,
+          "point": [
+            8.537164833481087,
+            47.37151065109207
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 579,
+          "sourceId": 28295,
+          "point": [
+            8.537029290609274,
+            47.37160767949902
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 582,
+          "sourceId": 28295,
+          "point": [
+            8.536890938698791,
+            47.37171114573761
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 791.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 585,
+          "sourceId": 28848,
+          "point": [
+            8.535950099586168,
+            47.37149239814572
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 739.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 588,
+          "sourceId": 28856,
+          "point": [
+            8.53596705860475,
+            47.371301678210926
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 522.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 591,
+          "sourceId": 28863,
+          "point": [
+            8.538480621071892,
+            47.37157832733979
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 83.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 594,
+          "sourceId": 28863,
+          "point": [
+            8.53842513459976,
+            47.37173049927892
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 597,
+          "sourceId": 28863,
+          "point": [
+            8.53836964781065,
+            47.371882671184345
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 52.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 600,
+          "sourceId": 28863,
+          "point": [
+            8.538314160704537,
+            47.3720348430561
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 48.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 603,
+          "sourceId": 28863,
+          "point": [
+            8.53825867328144,
+            47.37218701489414
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 54.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 606,
+          "sourceId": 29033,
+          "point": [
+            8.539235563806434,
+            47.369905574061406
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 553.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 609,
+          "sourceId": 29728,
+          "point": [
+            8.538910421165985,
+            47.3710375349727
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 912.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 612,
+          "sourceId": 30793,
+          "point": [
+            8.536149029268401,
+            47.37136221036424
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 554.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 615,
+          "sourceId": 30856,
+          "point": [
+            8.539185105266473,
+            47.37031368809381
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 60.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 618,
+          "sourceId": 30856,
+          "point": [
+            8.539125632665417,
+            47.37047009377972
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 52.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 621,
+          "sourceId": 30856,
+          "point": [
+            8.539066159715155,
+            47.370626499427644
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 50.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 624,
+          "sourceId": 30856,
+          "point": [
+            8.539006686415675,
+            47.37078290503746
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 557.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 627,
+          "sourceId": 30856,
+          "point": [
+            8.538947212766985,
+            47.37093931060919
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 44.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 630,
+          "sourceId": 31824,
+          "point": [
+            8.538057386296444,
+            47.373812192391554
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 633,
+          "sourceId": 31824,
+          "point": [
+            8.537844892022605,
+            47.3737921968733
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 440.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 636,
+          "sourceId": 31824,
+          "point": [
+            8.53763354025109,
+            47.37377333697539
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 77.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 639,
+          "sourceId": 31824,
+          "point": [
+            8.537423330967144,
+            47.37375561270408
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 52.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 642,
+          "sourceId": 31824,
+          "point": [
+            8.537242888268219,
+            47.373741415510665
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 870.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 645,
+          "sourceId": 32156,
+          "point": [
+            8.539368454152259,
+            47.36956879519471
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 528.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 648,
+          "sourceId": 32208,
+          "point": [
+            8.537189574098488,
+            47.37133779260441
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 56.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 651,
+          "sourceId": 32208,
+          "point": [
+            8.537037123591519,
+            47.3714493438455
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 62.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 654,
+          "sourceId": 32208,
+          "point": [
+            8.536884672446002,
+            47.37156089488151
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 52.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 657,
+          "sourceId": 33329,
+          "point": [
+            8.536995051044096,
+            47.37320053570796
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 537.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 660,
+          "sourceId": 33400,
+          "point": [
+            8.539307561637994,
+            47.370128152312134
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 663,
+          "sourceId": 33488,
+          "point": [
+            8.534395570926597,
+            47.372275403359005
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 43.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 666,
+          "sourceId": 33488,
+          "point": [
+            8.534596647619406,
+            47.372243937848175
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 442.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 669,
+          "sourceId": 34286,
+          "point": [
+            8.537574914789536,
+            47.37233602292834
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 672,
+          "sourceId": 35024,
+          "point": [
+            8.535643813141796,
+            47.371476957304395
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 51.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 675,
+          "sourceId": 35024,
+          "point": [
+            8.535499200867568,
+            47.371586287807375
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 86.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 678,
+          "sourceId": 35024,
+          "point": [
+            8.535354587999677,
+            47.371695618125564
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 47.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 681,
+          "sourceId": 35070,
+          "point": [
+            8.536513682674709,
+            47.37317262902347
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 684,
+          "sourceId": 35070,
+          "point": [
+            8.536430429237267,
+            47.373317432223004
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 687,
+          "sourceId": 35070,
+          "point": [
+            8.536347175347194,
+            47.37346223535609
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 55.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 690,
+          "sourceId": 35070,
+          "point": [
+            8.536274095804117,
+            47.37358572260663
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 57.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 693,
+          "sourceId": 35150,
+          "point": [
+            8.538590178225226,
+            47.37157199465465
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 696,
+          "sourceId": 35473,
+          "point": [
+            8.53800702008406,
+            47.37397636240358
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 699,
+          "sourceId": 35473,
+          "point": [
+            8.53795559659903,
+            47.374107935514466
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 702,
+          "sourceId": 35649,
+          "point": [
+            8.536267964481763,
+            47.37125656260534
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 582.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 705,
+          "sourceId": 36101,
+          "point": [
+            8.535496884839153,
+            47.3728390819269
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 708,
+          "sourceId": 36103,
+          "point": [
+            8.538198502516085,
+            47.37310565239469
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 711,
+          "sourceId": 36333,
+          "point": [
+            8.537140405168268,
+            47.37365083630665
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 714,
+          "sourceId": 36333,
+          "point": [
+            8.537131589077264,
+            47.37352660207384
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 888.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 717,
+          "sourceId": 36333,
+          "point": [
+            8.537107068154343,
+            47.373399329760545
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 67.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 720,
+          "sourceId": 36333,
+          "point": [
+            8.537046445906391,
+            47.37329444873339
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 53.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 723,
+          "sourceId": 36791,
+          "point": [
+            8.538414033488923,
+            47.37234132575747
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 561.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 726,
+          "sourceId": 36791,
+          "point": [
+            8.538403735511562,
+            47.37249243935747
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 69.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 729,
+          "sourceId": 36791,
+          "point": [
+            8.53839343747582,
+            47.372643552949654
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 46.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 732,
+          "sourceId": 37367,
+          "point": [
+            8.53532434047242,
+            47.37081078537291
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 529.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 735,
+          "sourceId": 38641,
+          "point": [
+            8.537509118700589,
+            47.37237362748759
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 63.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 738,
+          "sourceId": 38641,
+          "point": [
+            8.537359960052823,
+            47.37248287165
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 57.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 741,
+          "sourceId": 39201,
+          "point": [
+            8.536076913182415,
+            47.3736920037681
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 236.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 744,
+          "sourceId": 39720,
+          "point": [
+            8.538785354198838,
+            47.3707740408649
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 747,
+          "sourceId": 39720,
+          "point": [
+            8.538725338645204,
+            47.37091974023436
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 47.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 750,
+          "sourceId": 39936,
+          "point": [
+            8.539479776391481,
+            47.36957795106616
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        }
+      ]
+    },
+    {
+      "timeInterpretation": "16:00 local solar time at pilot centre",
+      "instant": "2024-08-01T15:32:09.700378+00:00",
+      "samples": 251,
+      "comparable": 251,
+      "agreement": 206,
+      "disagreement": 45,
+      "matrixCoolerWalksThenVampire": {
+        "shade/shade": 151,
+        "sun/shade": 30,
+        "sun/sun": 55,
+        "shade/sun": 15
+      },
+      "pointComparisons": [
+        {
+          "id": 0,
+          "sourceId": 165,
+          "point": [
+            8.537207781404822,
+            47.37214387039547
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 43.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 3,
+          "sourceId": 165,
+          "point": [
+            8.5373551188297,
+            47.372244951007936
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 6,
+          "sourceId": 165,
+          "point": [
+            8.537516040463585,
+            47.37232498268976
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 51.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 9,
+          "sourceId": 806,
+          "point": [
+            8.53594565687894,
+            47.37113999854956
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 12,
+          "sourceId": 806,
+          "point": [
+            8.53578791416731,
+            47.371035427643555
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 474.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 15,
+          "sourceId": 1306,
+          "point": [
+            8.537207247474738,
+            47.372112727180344
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 18,
+          "sourceId": 1456,
+          "point": [
+            8.536364250062348,
+            47.37320454411227
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 48.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 21,
+          "sourceId": 1456,
+          "point": [
+            8.536279649540408,
+            47.37334870516485
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 45.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 24,
+          "sourceId": 1456,
+          "point": [
+            8.536195048560538,
+            47.37349286614907
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 43.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 27,
+          "sourceId": 1471,
+          "point": [
+            8.535454235015132,
+            47.3727079306164
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 516.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 30,
+          "sourceId": 1860,
+          "point": [
+            8.535800502383534,
+            47.37159075843116
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 761.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 33,
+          "sourceId": 1860,
+          "point": [
+            8.535640555827797,
+            47.37169901772227
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 780.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 36,
+          "sourceId": 1860,
+          "point": [
+            8.535480608621882,
+            47.37180727678818
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 557.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 39,
+          "sourceId": 1860,
+          "point": [
+            8.535328754489214,
+            47.37192490994402
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 62.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 42,
+          "sourceId": 1860,
+          "point": [
+            8.535178518429076,
+            47.37204441776089
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 46.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 45,
+          "sourceId": 1860,
+          "point": [
+            8.53503450311454,
+            47.372162888101904
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 513.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 48,
+          "sourceId": 1860,
+          "point": [
+            8.534921594337757,
+            47.3722761719131
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 51,
+          "sourceId": 1860,
+          "point": [
+            8.534830653882103,
+            47.37239924949025
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 515.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 54,
+          "sourceId": 2609,
+          "point": [
+            8.538194263058202,
+            47.37382733723719
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 57,
+          "sourceId": 2609,
+          "point": [
+            8.538378040572663,
+            47.373858220466005
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 545.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 60,
+          "sourceId": 2959,
+          "point": [
+            8.538204056815237,
+            47.37243851730546
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 51.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 63,
+          "sourceId": 2959,
+          "point": [
+            8.538194004717747,
+            47.372588148384935
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 66,
+          "sourceId": 3565,
+          "point": [
+            8.538983954988064,
+            47.370257944789614
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 69,
+          "sourceId": 3565,
+          "point": [
+            8.538924451848814,
+            47.37041438472206
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 90.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 72,
+          "sourceId": 3565,
+          "point": [
+            8.538864948360114,
+            47.37057082461648
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 73.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 75,
+          "sourceId": 3751,
+          "point": [
+            8.537757502258824,
+            47.37228572488717
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 922.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 78,
+          "sourceId": 3751,
+          "point": [
+            8.537618091554283,
+            47.37218626890495
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 357.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 81,
+          "sourceId": 3751,
+          "point": [
+            8.537461107355696,
+            47.37210546900663
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 622.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 84,
+          "sourceId": 3822,
+          "point": [
+            8.537267718825369,
+            47.371306825250166
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 87,
+          "sourceId": 5013,
+          "point": [
+            8.538668950452896,
+            47.37105917017917
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 535.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 90,
+          "sourceId": 5987,
+          "point": [
+            8.538167562951646,
+            47.37384170398696
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 93,
+          "sourceId": 6147,
+          "point": [
+            8.539448045477894,
+            47.36969259396937
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 559.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 96,
+          "sourceId": 6147,
+          "point": [
+            8.539407590968018,
+            47.36982844699077
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 513.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 99,
+          "sourceId": 7409,
+          "point": [
+            8.537197810313986,
+            47.3725964598162
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 102,
+          "sourceId": 7409,
+          "point": [
+            8.53704785428944,
+            47.37270015336279
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 105,
+          "sourceId": 7409,
+          "point": [
+            8.536897897681031,
+            47.372803846711314
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 46.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 108,
+          "sourceId": 7409,
+          "point": [
+            8.536761132194279,
+            47.372909311031805
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 111,
+          "sourceId": 7474,
+          "point": [
+            8.536312666278684,
+            47.37155357746819
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 114,
+          "sourceId": 7474,
+          "point": [
+            8.536152914432751,
+            47.3714592465216
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 479.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 117,
+          "sourceId": 7660,
+          "point": [
+            8.536840317301401,
+            47.371709756061136
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 540.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 120,
+          "sourceId": 7857,
+          "point": [
+            8.536980958695654,
+            47.37362020572572
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 123,
+          "sourceId": 7857,
+          "point": [
+            8.536971663846264,
+            47.373470978392966
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 126,
+          "sourceId": 7857,
+          "point": [
+            8.536899001207473,
+            47.37333153143147
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 45.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 129,
+          "sourceId": 7957,
+          "point": [
+            8.535387372732956,
+            47.37267322779671
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 544.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 132,
+          "sourceId": 7957,
+          "point": [
+            8.535208543386231,
+            47.372638252707524
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 44.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 135,
+          "sourceId": 7957,
+          "point": [
+            8.535011065038162,
+            47.372597542978184
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 138,
+          "sourceId": 7957,
+          "point": [
+            8.53482778221857,
+            47.372557146827035
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 545.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 141,
+          "sourceId": 9213,
+          "point": [
+            8.537160526710062,
+            47.37211249614632
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 144,
+          "sourceId": 9225,
+          "point": [
+            8.536832589489071,
+            47.37324796005501
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 147,
+          "sourceId": 9225,
+          "point": [
+            8.536690127183281,
+            47.373159004488585
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 150,
+          "sourceId": 9413,
+          "point": [
+            8.538171088844882,
+            47.373182096255704
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 153,
+          "sourceId": 9413,
+          "point": [
+            8.538169299576731,
+            47.37333571876674
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 50.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 156,
+          "sourceId": 9413,
+          "point": [
+            8.538167510298312,
+            47.37348934127047
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 159,
+          "sourceId": 9413,
+          "point": [
+            8.538165721009623,
+            47.37364296376702
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 162,
+          "sourceId": 9413,
+          "point": [
+            8.538163931710663,
+            47.37379658625638
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 67.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 165,
+          "sourceId": 9726,
+          "point": [
+            8.539049166564764,
+            47.37006712183085
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 168,
+          "sourceId": 9726,
+          "point": [
+            8.539001771367868,
+            47.37020833580409
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 47.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 171,
+          "sourceId": 10085,
+          "point": [
+            8.538032560125206,
+            47.372309023318856
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 174,
+          "sourceId": 10085,
+          "point": [
+            8.53781671209417,
+            47.37230326125138
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 618.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 177,
+          "sourceId": 10461,
+          "point": [
+            8.536292631421954,
+            47.37135453725397
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 545.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 180,
+          "sourceId": 10696,
+          "point": [
+            8.536561892725032,
+            47.37171668194363
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 183,
+          "sourceId": 10696,
+          "point": [
+            8.53641698498986,
+            47.37161896561869
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 186,
+          "sourceId": 11260,
+          "point": [
+            8.537342511065335,
+            47.372620468228156
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 189,
+          "sourceId": 11260,
+          "point": [
+            8.537193075552123,
+            47.372723211078004
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 44.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 192,
+          "sourceId": 11260,
+          "point": [
+            8.537043639462405,
+            47.37282595373116
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 195,
+          "sourceId": 11260,
+          "point": [
+            8.536929283254542,
+            47.37291654867702
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 49.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 198,
+          "sourceId": 11432,
+          "point": [
+            8.538133986652467,
+            47.373104758814755
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 51.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 201,
+          "sourceId": 11432,
+          "point": [
+            8.537906005720062,
+            47.37310160086183
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 59.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 204,
+          "sourceId": 11432,
+          "point": [
+            8.537678024814644,
+            47.37309844245858
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 953.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 207,
+          "sourceId": 11432,
+          "point": [
+            8.537450043936207,
+            47.37309528360502
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 210,
+          "sourceId": 11432,
+          "point": [
+            8.537222063084762,
+            47.37309212430113
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 60.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 213,
+          "sourceId": 11432,
+          "point": [
+            8.53699793428681,
+            47.373095116952896
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 843.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 216,
+          "sourceId": 13433,
+          "point": [
+            8.537770129115541,
+            47.37107877100809
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 219,
+          "sourceId": 13433,
+          "point": [
+            8.53761351992369,
+            47.37118915898262
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 44.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 222,
+          "sourceId": 13433,
+          "point": [
+            8.537458349914875,
+            47.37130071663589
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 47.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 225,
+          "sourceId": 13433,
+          "point": [
+            8.537303179256087,
+            47.37141227407689
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 766.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 228,
+          "sourceId": 13566,
+          "point": [
+            8.536623357696241,
+            47.37156550052332
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 694.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 231,
+          "sourceId": 13600,
+          "point": [
+            8.536588205184144,
+            47.37310950719418
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 234,
+          "sourceId": 14181,
+          "point": [
+            8.538710980695583,
+            47.37105056360752
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 237,
+          "sourceId": 14584,
+          "point": [
+            8.537698312200762,
+            47.37236099045438
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 240,
+          "sourceId": 14584,
+          "point": [
+            8.537544994148488,
+            47.37247450305452
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 46.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 243,
+          "sourceId": 15212,
+          "point": [
+            8.539030700357236,
+            47.37023247378863
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 246,
+          "sourceId": 15468,
+          "point": [
+            8.5377665193646,
+            47.37231224357018
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 249,
+          "sourceId": 15622,
+          "point": [
+            8.536153053879575,
+            47.373621083856285
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 54.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 252,
+          "sourceId": 15796,
+          "point": [
+            8.536633110715645,
+            47.37177684091719
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 255,
+          "sourceId": 15953,
+          "point": [
+            8.538234773944735,
+            47.37400812148201
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 90.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 258,
+          "sourceId": 16531,
+          "point": [
+            8.538570207681534,
+            47.37454768121292
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 261,
+          "sourceId": 16779,
+          "point": [
+            8.538680675795801,
+            47.371616920899385
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 264,
+          "sourceId": 16779,
+          "point": [
+            8.538621803956136,
+            47.37177230302195
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 82.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 267,
+          "sourceId": 16779,
+          "point": [
+            8.538562931773049,
+            47.37192768510713
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 270,
+          "sourceId": 16779,
+          "point": [
+            8.538504059246533,
+            47.37208306715496
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 79.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 273,
+          "sourceId": 16779,
+          "point": [
+            8.538445186376578,
+            47.37223844916547
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 53.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 276,
+          "sourceId": 16826,
+          "point": [
+            8.539159895202037,
+            47.369996616217776
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 279,
+          "sourceId": 16826,
+          "point": [
+            8.539302361244129,
+            47.37009096151847
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 282,
+          "sourceId": 16943,
+          "point": [
+            8.535541809891106,
+            47.371061498784634
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 52.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 285,
+          "sourceId": 16943,
+          "point": [
+            8.535399027016897,
+            47.37096486741999
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 54.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 288,
+          "sourceId": 16943,
+          "point": [
+            8.535270787333808,
+            47.370875543157965
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 538.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 291,
+          "sourceId": 17376,
+          "point": [
+            8.537843975560238,
+            47.37390110401897
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 260.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 294,
+          "sourceId": 17376,
+          "point": [
+            8.537618991077519,
+            47.373880873207476
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 539.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 297,
+          "sourceId": 17376,
+          "point": [
+            8.537397447824935,
+            47.37386052759398
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 531.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 300,
+          "sourceId": 17376,
+          "point": [
+            8.537193110033575,
+            47.3738396097701
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 532.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 303,
+          "sourceId": 18431,
+          "point": [
+            8.535734004992939,
+            47.37099958913064
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 641.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 306,
+          "sourceId": 18431,
+          "point": [
+            8.535568292697963,
+            47.37088912894599
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 624.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 309,
+          "sourceId": 18431,
+          "point": [
+            8.535414490793574,
+            47.370778874981845
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 544.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 312,
+          "sourceId": 18556,
+          "point": [
+            8.537547666683933,
+            47.37107576648396
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 61.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 315,
+          "sourceId": 18556,
+          "point": [
+            8.537393921006489,
+            47.371188266801624
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 318,
+          "sourceId": 18635,
+          "point": [
+            8.537151045297483,
+            47.37373563948654
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 321,
+          "sourceId": 18881,
+          "point": [
+            8.537311698879371,
+            47.37203175674775
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 870.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 324,
+          "sourceId": 18881,
+          "point": [
+            8.537190312115168,
+            47.37195174806396
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 706.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 327,
+          "sourceId": 18881,
+          "point": [
+            8.537041496954359,
+            47.371848659884094
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 607.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 330,
+          "sourceId": 18881,
+          "point": [
+            8.536892682369581,
+            47.37174557150909
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 610.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 333,
+          "sourceId": 19192,
+          "point": [
+            8.536479226401164,
+            47.371851686554315
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 63.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 336,
+          "sourceId": 19192,
+          "point": [
+            8.536324519577523,
+            47.37195991080199
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 44.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 339,
+          "sourceId": 19192,
+          "point": [
+            8.536169812125195,
+            47.37206813483875
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 44.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 342,
+          "sourceId": 19192,
+          "point": [
+            8.536015104044196,
+            47.372176358664674
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 67.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 345,
+          "sourceId": 19192,
+          "point": [
+            8.535864221714718,
+            47.372285563600705
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 85.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 348,
+          "sourceId": 19192,
+          "point": [
+            8.535714104043619,
+            47.37239496460112
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 44.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 351,
+          "sourceId": 19192,
+          "point": [
+            8.535576851287047,
+            47.37250630357015
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 44.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 354,
+          "sourceId": 19192,
+          "point": [
+            8.53550392573615,
+            47.37262733326437
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 45.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 357,
+          "sourceId": 19451,
+          "point": [
+            8.536665364068243,
+            47.37306044195135
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 541.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 360,
+          "sourceId": 19755,
+          "point": [
+            8.539327190879735,
+            47.36932807100953
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 86.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 363,
+          "sourceId": 19755,
+          "point": [
+            8.539286250948972,
+            47.36946441738721
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 366,
+          "sourceId": 19789,
+          "point": [
+            8.53668816092535,
+            47.3718408126225
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 63.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 369,
+          "sourceId": 19789,
+          "point": [
+            8.536563362213975,
+            47.37194855517578
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 46.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 372,
+          "sourceId": 19789,
+          "point": [
+            8.53640968683346,
+            47.37205658427918
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 50.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 375,
+          "sourceId": 19789,
+          "point": [
+            8.536256010829597,
+            47.3721646131745
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 378,
+          "sourceId": 19789,
+          "point": [
+            8.536105696630354,
+            47.372271435398254
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 57.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 381,
+          "sourceId": 19789,
+          "point": [
+            8.535972194016635,
+            47.37237222512659
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 384,
+          "sourceId": 19840,
+          "point": [
+            8.535617756577256,
+            47.372746754232296
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 541.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 387,
+          "sourceId": 19917,
+          "point": [
+            8.538387439781024,
+            47.37274566788942
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 390,
+          "sourceId": 19917,
+          "point": [
+            8.538382347833029,
+            47.3729050167647
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 50.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 393,
+          "sourceId": 19917,
+          "point": [
+            8.538377255854636,
+            47.373064365632004
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 396,
+          "sourceId": 19917,
+          "point": [
+            8.538372163845839,
+            47.3732237144914
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 399,
+          "sourceId": 19917,
+          "point": [
+            8.53836707180663,
+            47.37338306334277
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 402,
+          "sourceId": 19917,
+          "point": [
+            8.538361979737013,
+            47.37354241218626
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 64.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 405,
+          "sourceId": 19917,
+          "point": [
+            8.538364103034843,
+            47.373698723479784
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 408,
+          "sourceId": 19917,
+          "point": [
+            8.538402303427356,
+            47.37383984704928
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 411,
+          "sourceId": 19938,
+          "point": [
+            8.538839565176932,
+            47.371220955816725
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 79.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 414,
+          "sourceId": 19938,
+          "point": [
+            8.538779934448977,
+            47.37136898306823
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 51.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 417,
+          "sourceId": 19938,
+          "point": [
+            8.538720303389633,
+            47.37151701028234
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 368.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 420,
+          "sourceId": 20074,
+          "point": [
+            8.53458075741826,
+            47.37229827684288
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 423,
+          "sourceId": 20074,
+          "point": [
+            8.534481951166352,
+            47.372417443337476
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 821.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 426,
+          "sourceId": 20355,
+          "point": [
+            8.535209330331297,
+            47.37179991279092
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 429,
+          "sourceId": 20548,
+          "point": [
+            8.539263930656377,
+            47.36967225267254
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 530.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 432,
+          "sourceId": 20726,
+          "point": [
+            8.53559343104198,
+            47.37289058305317
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 435,
+          "sourceId": 20726,
+          "point": [
+            8.535522136727012,
+            47.373013968936746
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 438,
+          "sourceId": 20726,
+          "point": [
+            8.53551060741548,
+            47.3731278017059
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 52.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 441,
+          "sourceId": 20874,
+          "point": [
+            8.536262025408591,
+            47.37303970423574
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 444,
+          "sourceId": 20874,
+          "point": [
+            8.536054756104592,
+            47.37298605715697
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 447,
+          "sourceId": 20874,
+          "point": [
+            8.535847487218067,
+            47.372932409705115
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 55.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 450,
+          "sourceId": 20874,
+          "point": [
+            8.53564021874904,
+            47.37287876188017
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 453,
+          "sourceId": 21278,
+          "point": [
+            8.53653043673999,
+            47.37298104429486
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 456,
+          "sourceId": 21278,
+          "point": [
+            8.536311972653898,
+            47.372918908153515
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 514.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 459,
+          "sourceId": 21278,
+          "point": [
+            8.536093509077483,
+            47.37285677159746
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 627.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 462,
+          "sourceId": 21278,
+          "point": [
+            8.535875046010746,
+            47.372794634626736
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 603.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 465,
+          "sourceId": 21278,
+          "point": [
+            8.535656583453681,
+            47.37273249724132
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 883.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 468,
+          "sourceId": 22500,
+          "point": [
+            8.534625790101815,
+            47.37245987467253
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 471,
+          "sourceId": 22604,
+          "point": [
+            8.536841233056203,
+            47.37174413594002
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 474,
+          "sourceId": 22811,
+          "point": [
+            8.535966380060447,
+            47.37133250157032
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 477,
+          "sourceId": 22874,
+          "point": [
+            8.535062729405352,
+            47.3719055805593
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 43.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 480,
+          "sourceId": 22874,
+          "point": [
+            8.53491005860189,
+            47.37202315004339
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 86.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 483,
+          "sourceId": 22874,
+          "point": [
+            8.534757387124465,
+            47.37214071932142
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 55.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 486,
+          "sourceId": 22910,
+          "point": [
+            8.538305707453194,
+            47.37412154350963
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 64.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 489,
+          "sourceId": 22910,
+          "point": [
+            8.538385138122925,
+            47.37427305132026
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 65.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 492,
+          "sourceId": 22910,
+          "point": [
+            8.53846456924461,
+            47.37442455906927
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 495,
+          "sourceId": 23313,
+          "point": [
+            8.538627875133947,
+            47.37117447221691
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 62.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 498,
+          "sourceId": 23313,
+          "point": [
+            8.538572672830266,
+            47.371325869493816
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 501,
+          "sourceId": 23313,
+          "point": [
+            8.538517470212813,
+            47.37147726673738
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 46.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 504,
+          "sourceId": 23320,
+          "point": [
+            8.539355963846536,
+            47.370003543289286
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 936.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 507,
+          "sourceId": 23379,
+          "point": [
+            8.538148273393652,
+            47.37393394611704
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 546.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 510,
+          "sourceId": 23463,
+          "point": [
+            8.538183069607346,
+            47.372786424208776
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 57.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 513,
+          "sourceId": 23463,
+          "point": [
+            8.538177952947398,
+            47.37293359073067
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 516,
+          "sourceId": 23463,
+          "point": [
+            8.538172836259223,
+            47.373080757245674
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 519,
+          "sourceId": 24510,
+          "point": [
+            8.535814701664641,
+            47.37122005495846
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 59.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 522,
+          "sourceId": 25127,
+          "point": [
+            8.538246319567609,
+            47.3723142106622
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 553.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 525,
+          "sourceId": 25199,
+          "point": [
+            8.536988523318369,
+            47.37322566768533
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 528,
+          "sourceId": 25600,
+          "point": [
+            8.537937558364037,
+            47.37415685697197
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 531,
+          "sourceId": 25600,
+          "point": [
+            8.537883290389567,
+            47.37430403889494
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 84.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 534,
+          "sourceId": 25600,
+          "point": [
+            8.537829022115226,
+            47.37445122078587
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 537,
+          "sourceId": 25600,
+          "point": [
+            8.537774753541006,
+            47.37459840264461
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 540,
+          "sourceId": 26254,
+          "point": [
+            8.535759559012977,
+            47.372529600084405
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 50.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 543,
+          "sourceId": 26254,
+          "point": [
+            8.535664839200688,
+            47.3726554419222
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 885.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 546,
+          "sourceId": 26430,
+          "point": [
+            8.536074103158048,
+            47.373658601161544
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 727.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 549,
+          "sourceId": 26764,
+          "point": [
+            8.536200367962875,
+            47.371298139908475
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 581.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 552,
+          "sourceId": 26970,
+          "point": [
+            8.53559472135663,
+            47.372716425504585
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 810.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 555,
+          "sourceId": 27566,
+          "point": [
+            8.5369057689141,
+            47.37194944485311
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 52.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 558,
+          "sourceId": 27566,
+          "point": [
+            8.536736251039002,
+            47.37184094792193
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 44.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 561,
+          "sourceId": 27613,
+          "point": [
+            8.536149737219612,
+            47.371177674549536
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 405.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 564,
+          "sourceId": 27741,
+          "point": [
+            8.53876613185024,
+            47.371032290294124
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 567,
+          "sourceId": 27769,
+          "point": [
+            8.53821940467499,
+            47.37271388576952
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 58.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 570,
+          "sourceId": 28207,
+          "point": [
+            8.535930337884697,
+            47.37133892139799
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 573,
+          "sourceId": 28207,
+          "point": [
+            8.535806232622033,
+            47.37143231974869
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 89.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 576,
+          "sourceId": 28295,
+          "point": [
+            8.537164833481087,
+            47.37151065109207
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 579,
+          "sourceId": 28295,
+          "point": [
+            8.537029290609274,
+            47.37160767949902
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 582,
+          "sourceId": 28295,
+          "point": [
+            8.536890938698791,
+            47.37171114573761
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 791.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 585,
+          "sourceId": 28848,
+          "point": [
+            8.535950099586168,
+            47.37149239814572
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 739.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 588,
+          "sourceId": 28856,
+          "point": [
+            8.53596705860475,
+            47.371301678210926
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 522.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 591,
+          "sourceId": 28863,
+          "point": [
+            8.538480621071892,
+            47.37157832733979
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 83.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 594,
+          "sourceId": 28863,
+          "point": [
+            8.53842513459976,
+            47.37173049927892
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 597,
+          "sourceId": 28863,
+          "point": [
+            8.53836964781065,
+            47.371882671184345
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 52.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 600,
+          "sourceId": 28863,
+          "point": [
+            8.538314160704537,
+            47.3720348430561
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 48.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 603,
+          "sourceId": 28863,
+          "point": [
+            8.53825867328144,
+            47.37218701489414
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 54.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 606,
+          "sourceId": 29033,
+          "point": [
+            8.539235563806434,
+            47.369905574061406
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 553.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 609,
+          "sourceId": 29728,
+          "point": [
+            8.538910421165985,
+            47.3710375349727
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 912.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 612,
+          "sourceId": 30793,
+          "point": [
+            8.536149029268401,
+            47.37136221036424
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 554.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 615,
+          "sourceId": 30856,
+          "point": [
+            8.539185105266473,
+            47.37031368809381
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 60.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 618,
+          "sourceId": 30856,
+          "point": [
+            8.539125632665417,
+            47.37047009377972
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 52.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 621,
+          "sourceId": 30856,
+          "point": [
+            8.539066159715155,
+            47.370626499427644
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 50.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 624,
+          "sourceId": 30856,
+          "point": [
+            8.539006686415675,
+            47.37078290503746
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 557.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 627,
+          "sourceId": 30856,
+          "point": [
+            8.538947212766985,
+            47.37093931060919
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 44.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 630,
+          "sourceId": 31824,
+          "point": [
+            8.538057386296444,
+            47.373812192391554
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 633,
+          "sourceId": 31824,
+          "point": [
+            8.537844892022605,
+            47.3737921968733
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 440.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 636,
+          "sourceId": 31824,
+          "point": [
+            8.53763354025109,
+            47.37377333697539
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 77.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 639,
+          "sourceId": 31824,
+          "point": [
+            8.537423330967144,
+            47.37375561270408
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 52.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 642,
+          "sourceId": 31824,
+          "point": [
+            8.537242888268219,
+            47.373741415510665
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 870.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 645,
+          "sourceId": 32156,
+          "point": [
+            8.539368454152259,
+            47.36956879519471
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 528.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 648,
+          "sourceId": 32208,
+          "point": [
+            8.537189574098488,
+            47.37133779260441
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 56.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 651,
+          "sourceId": 32208,
+          "point": [
+            8.537037123591519,
+            47.3714493438455
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 62.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 654,
+          "sourceId": 32208,
+          "point": [
+            8.536884672446002,
+            47.37156089488151
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 52.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 657,
+          "sourceId": 33329,
+          "point": [
+            8.536995051044096,
+            47.37320053570796
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 537.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 660,
+          "sourceId": 33400,
+          "point": [
+            8.539307561637994,
+            47.370128152312134
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 663,
+          "sourceId": 33488,
+          "point": [
+            8.534395570926597,
+            47.372275403359005
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 43.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 666,
+          "sourceId": 33488,
+          "point": [
+            8.534596647619406,
+            47.372243937848175
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 442.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 669,
+          "sourceId": 34286,
+          "point": [
+            8.537574914789536,
+            47.37233602292834
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 672,
+          "sourceId": 35024,
+          "point": [
+            8.535643813141796,
+            47.371476957304395
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 51.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 675,
+          "sourceId": 35024,
+          "point": [
+            8.535499200867568,
+            47.371586287807375
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 86.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 678,
+          "sourceId": 35024,
+          "point": [
+            8.535354587999677,
+            47.371695618125564
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 47.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 681,
+          "sourceId": 35070,
+          "point": [
+            8.536513682674709,
+            47.37317262902347
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 684,
+          "sourceId": 35070,
+          "point": [
+            8.536430429237267,
+            47.373317432223004
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 687,
+          "sourceId": 35070,
+          "point": [
+            8.536347175347194,
+            47.37346223535609
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 55.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 690,
+          "sourceId": 35070,
+          "point": [
+            8.536274095804117,
+            47.37358572260663
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 57.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 693,
+          "sourceId": 35150,
+          "point": [
+            8.538590178225226,
+            47.37157199465465
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 696,
+          "sourceId": 35473,
+          "point": [
+            8.53800702008406,
+            47.37397636240358
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 699,
+          "sourceId": 35473,
+          "point": [
+            8.53795559659903,
+            47.374107935514466
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 702,
+          "sourceId": 35649,
+          "point": [
+            8.536267964481763,
+            47.37125656260534
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 582.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 705,
+          "sourceId": 36101,
+          "point": [
+            8.535496884839153,
+            47.3728390819269
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 708,
+          "sourceId": 36103,
+          "point": [
+            8.538198502516085,
+            47.37310565239469
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 711,
+          "sourceId": 36333,
+          "point": [
+            8.537140405168268,
+            47.37365083630665
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 714,
+          "sourceId": 36333,
+          "point": [
+            8.537131589077264,
+            47.37352660207384
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 888.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 717,
+          "sourceId": 36333,
+          "point": [
+            8.537107068154343,
+            47.373399329760545
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 67.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 720,
+          "sourceId": 36333,
+          "point": [
+            8.537046445906391,
+            47.37329444873339
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 53.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 723,
+          "sourceId": 36791,
+          "point": [
+            8.538414033488923,
+            47.37234132575747
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 561.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 726,
+          "sourceId": 36791,
+          "point": [
+            8.538403735511562,
+            47.37249243935747
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 69.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 729,
+          "sourceId": 36791,
+          "point": [
+            8.53839343747582,
+            47.372643552949654
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 46.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 732,
+          "sourceId": 37367,
+          "point": [
+            8.53532434047242,
+            47.37081078537291
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 529.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 735,
+          "sourceId": 38641,
+          "point": [
+            8.537509118700589,
+            47.37237362748759
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 63.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 738,
+          "sourceId": 38641,
+          "point": [
+            8.537359960052823,
+            47.37248287165
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 57.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 741,
+          "sourceId": 39201,
+          "point": [
+            8.536076913182415,
+            47.3736920037681
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 236.0,
+          "externalThresholdClass": "sun"
+        },
+        {
+          "id": 744,
+          "sourceId": 39720,
+          "point": [
+            8.538785354198838,
+            47.3707740408649
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 747,
+          "sourceId": 39720,
+          "point": [
+            8.538725338645204,
+            47.37091974023436
+          ],
+          "exposure": "shade",
+          "externalRasterValue": 47.0,
+          "externalThresholdClass": "shade"
+        },
+        {
+          "id": 750,
+          "sourceId": 39936,
+          "point": [
+            8.539479776391481,
+            47.36957795106616
+          ],
+          "exposure": "sun",
+          "externalRasterValue": 91.0,
+          "externalThresholdClass": "shade"
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Exploratory model comparison, not accuracy.",
+    "The public ASC has no embedded timestamp, radiation-channel or civil_time setting; both time interpretations are retained.",
+    "The talk describes a radiation threshold, not direct geometric visibility. Its units are ambiguous relative to r.sun mode-1 irradiance.",
+    "External DSM includes vegetation and surface shape; Cooler Walks currently estimates buildings only at ground.",
+    "Nearest raster cell includes resampling and georeferencing differences; disagreements do not establish which model is correct.",
+    "The public profile contains a different hardcoded extent from the ASC header. This comparison uses the ASC header, not that profile."
+  ],
+  "shadowmap": {
+    "status": "not compared: API partner access required",
+    "source": "https://shadowmap.org/api",
+    "next": "Request documented point/time API access, Zurich data version, receiver height, batch limits and caching rights; run the same frozen points and retain unknowns."
+  }
+}

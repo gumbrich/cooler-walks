@@ -1,0 +1,319 @@
+{
+  "model": "roof-mesh-tiled-ground-arrival-v8",
+  "networkVersion": "zurich-pavements-2026-10-06-v1",
+  "records": [
+    {
+      "journey": "Talacker–Bahnhofstrasse",
+      "departure": "2026-06-21T08:00:00Z",
+      "mode": "shade",
+      "candidates": 5,
+      "fastest": {
+        "distance": 399.4862453577219,
+        "minutes": 4.993578066971524,
+        "shadeMeters": 202.330028142908,
+        "sunMeters": 197.1562172148144,
+        "unknownMeters": 0,
+        "nightMeters": 0,
+        "crossingSections": 4,
+        "streets": [
+          "Talacker Überquerung",
+          "Pelikanstrasse",
+          "Nüschelerstrasse Überquerung",
+          "Pelikanstrasse",
+          "St. Annagasse Überquerung",
+          "Pelikanstrasse",
+          "Bahnhofstrasse",
+          "Sihlstrasse Überquerung"
+        ]
+      },
+      "alternative": {
+        "distance": 515.467952502159,
+        "minutes": 6.4433494062769885,
+        "shadeMeters": 434.5111041482056,
+        "sunMeters": 80.95684835395326,
+        "unknownMeters": 0,
+        "nightMeters": 0,
+        "crossingSections": 4,
+        "streets": [
+          "Talacker Überquerung",
+          "Talacker",
+          "Sihlstrasse",
+          "Nüschelerstrasse Überquerung",
+          "Sihlstrasse",
+          "St. Annagasse Überquerung",
+          "St. Annagasse",
+          "Sihlstrasse",
+          "Sihlstrasse Überquerung"
+        ]
+      }
+    },
+    {
+      "journey": "Talacker–Bahnhofstrasse",
+      "departure": "2026-06-21T12:00:00Z",
+      "mode": "shade",
+      "candidates": 4,
+      "fastest": {
+        "distance": 399.4862453577219,
+        "minutes": 4.993578066971524,
+        "shadeMeters": 0,
+        "sunMeters": 399.4862453577219,
+        "unknownMeters": 0,
+        "nightMeters": 0,
+        "crossingSections": 4,
+        "streets": [
+          "Talacker Überquerung",
+          "Pelikanstrasse",
+          "Nüschelerstrasse Überquerung",
+          "Pelikanstrasse",
+          "St. Annagasse Überquerung",
+          "Pelikanstrasse",
+          "Bahnhofstrasse",
+          "Sihlstrasse Überquerung"
+        ]
+      },
+      "alternative": {
+        "distance": 490.36685963065673,
+        "minutes": 6.129585745383209,
+        "shadeMeters": 304.43902226385853,
+        "sunMeters": 185.92783736679763,
+        "unknownMeters": 0,
+        "nightMeters": 0,
+        "crossingSections": 4,
+        "streets": [
+          "Talacker Überquerung",
+          "Pelikanstrasse",
+          "Nüschelerstrasse",
+          "Nüschelerstrasse Überquerung",
+          "Sihlstrasse",
+          "St. Annagasse Überquerung",
+          "St. Annagasse",
+          "Sihlstrasse",
+          "Sihlstrasse Überquerung"
+        ]
+      }
+    },
+    {
+      "journey": "Talacker–Bahnhofstrasse",
+      "departure": "2026-06-21T16:00:00Z",
+      "mode": "shade",
+      "candidates": 3,
+      "fastest": {
+        "distance": 399.4862453577219,
+        "minutes": 4.993578066971524,
+        "shadeMeters": 304.9232254952487,
+        "sunMeters": 94.56301986247345,
+        "unknownMeters": 0,
+        "nightMeters": 0,
+        "crossingSections": 4,
+        "streets": [
+          "Talacker Überquerung",
+          "Pelikanstrasse",
+          "Nüschelerstrasse Überquerung",
+          "Pelikanstrasse",
+          "St. Annagasse Überquerung",
+          "Pelikanstrasse",
+          "Bahnhofstrasse",
+          "Sihlstrasse Überquerung"
+        ]
+      },
+      "alternative": null
+    },
+    {
+      "journey": "Talacker–Bahnhofstrasse",
+      "departure": "2026-12-21T11:00:00Z",
+      "mode": "shade",
+      "candidates": 5,
+      "fastest": {
+        "distance": 399.4862453577219,
+        "minutes": 4.993578066971524,
+        "shadeMeters": 209.71555136803164,
+        "sunMeters": 184.9843550323011,
+        "unknownMeters": 4.786338957389636,
+        "nightMeters": 0,
+        "crossingSections": 4,
+        "streets": [
+          "Talacker Überquerung",
+          "Pelikanstrasse",
+          "Nüschelerstrasse Überquerung",
+          "Pelikanstrasse",
+          "St. Annagasse Überquerung",
+          "Pelikanstrasse",
+          "Bahnhofstrasse",
+          "Sihlstrasse Überquerung"
+        ]
+      },
+      "alternative": {
+        "distance": 458.7224292811844,
+        "minutes": 5.734030366014805,
+        "shadeMeters": 406.2686552225097,
+        "sunMeters": 47.66743510128495,
+        "unknownMeters": 4.786338957389636,
+        "nightMeters": 0,
+        "crossingSections": 4,
+        "streets": [
+          "Talacker Überquerung",
+          "Pelikanstrasse",
+          "Nüschelerstrasse Überquerung",
+          "Pelikanstrasse",
+          "St. Annagasse",
+          "St. Annagasse Überquerung",
+          "St. Annagasse",
+          "Sihlstrasse",
+          "Sihlstrasse Überquerung",
+          "Sihlstrasse"
+        ]
+      }
+    },
+    {
+      "journey": "Talacker–Bahnhofstrasse",
+      "departure": "2026-06-21T23:00:00Z",
+      "mode": "night",
+      "candidates": 3,
+      "fastest": {
+        "distance": 399.4862453577219,
+        "minutes": 4.993578066971524,
+        "shadeMeters": 0,
+        "sunMeters": 0,
+        "unknownMeters": 0,
+        "nightMeters": 399.4862453577219,
+        "crossingSections": 4,
+        "streets": [
+          "Talacker Überquerung",
+          "Pelikanstrasse",
+          "Nüschelerstrasse Überquerung",
+          "Pelikanstrasse",
+          "St. Annagasse Überquerung",
+          "Pelikanstrasse",
+          "Bahnhofstrasse",
+          "Sihlstrasse Überquerung"
+        ]
+      },
+      "alternative": null
+    },
+    {
+      "journey": "Bahnhofstrasse pavements",
+      "departure": "2026-06-21T08:00:00Z",
+      "mode": "shade",
+      "candidates": 3,
+      "fastest": {
+        "distance": 180.90279516886486,
+        "minutes": 2.261284939610811,
+        "shadeMeters": 143.40715679183572,
+        "sunMeters": 37.49563837702914,
+        "unknownMeters": 0,
+        "nightMeters": 0,
+        "crossingSections": 1,
+        "streets": [
+          "Bahnhofstrasse",
+          "Sihlstrasse Überquerung"
+        ]
+      },
+      "alternative": null
+    },
+    {
+      "journey": "Bahnhofstrasse pavements",
+      "departure": "2026-06-21T12:00:00Z",
+      "mode": "shade",
+      "candidates": 3,
+      "fastest": {
+        "distance": 180.90279516886486,
+        "minutes": 2.261284939610811,
+        "shadeMeters": 0,
+        "sunMeters": 180.90279516886486,
+        "unknownMeters": 0,
+        "nightMeters": 0,
+        "crossingSections": 1,
+        "streets": [
+          "Bahnhofstrasse",
+          "Sihlstrasse Überquerung"
+        ]
+      },
+      "alternative": null
+    },
+    {
+      "journey": "Bahnhofstrasse pavements",
+      "departure": "2026-06-21T16:00:00Z",
+      "mode": "shade",
+      "candidates": 3,
+      "fastest": {
+        "distance": 180.90279516886486,
+        "minutes": 2.261284939610811,
+        "shadeMeters": 149.7496845224418,
+        "sunMeters": 31.153110646423052,
+        "unknownMeters": 0,
+        "nightMeters": 0,
+        "crossingSections": 1,
+        "streets": [
+          "Bahnhofstrasse",
+          "Sihlstrasse Überquerung"
+        ]
+      },
+      "alternative": null
+    },
+    {
+      "journey": "Bahnhofstrasse pavements",
+      "departure": "2026-12-21T11:00:00Z",
+      "mode": "shade",
+      "candidates": 3,
+      "fastest": {
+        "distance": 180.90279516886486,
+        "minutes": 2.261284939610811,
+        "shadeMeters": 27.75599793355032,
+        "sunMeters": 153.14679723531452,
+        "unknownMeters": 0,
+        "nightMeters": 0,
+        "crossingSections": 1,
+        "streets": [
+          "Bahnhofstrasse",
+          "Sihlstrasse Überquerung"
+        ]
+      },
+      "alternative": {
+        "distance": 321.80020401745605,
+        "minutes": 4.022502550218201,
+        "shadeMeters": 315.80054653376015,
+        "sunMeters": 5.999657483695918,
+        "unknownMeters": 0,
+        "nightMeters": 0,
+        "crossingSections": 1,
+        "streets": [
+          "Pelikanstrasse",
+          "St. Annagasse",
+          "Sihlstrasse",
+          "Sihlstrasse Überquerung",
+          "Sihlstrasse"
+        ]
+      }
+    },
+    {
+      "journey": "Bahnhofstrasse pavements",
+      "departure": "2026-06-21T23:00:00Z",
+      "mode": "night",
+      "candidates": 3,
+      "fastest": {
+        "distance": 180.90279516886486,
+        "minutes": 2.261284939610811,
+        "shadeMeters": 0,
+        "sunMeters": 0,
+        "unknownMeters": 0,
+        "nightMeters": 180.90279516886486,
+        "crossingSections": 1,
+        "streets": [
+          "Bahnhofstrasse",
+          "Sihlstrasse Überquerung"
+        ]
+      },
+      "alternative": null
+    }
+  ],
+  "checks": [
+    "every graph edge follows its original source line",
+    "arrival-time sampling",
+    "0/5/10 minute limits",
+    "ordered stop and sun preference",
+    "outside pilot rejected",
+    "unsupported traffic comparison rejected",
+    "return to full Zurich network"
+  ],
+  "scope": "Computed routes and source consistency; not field accuracy or current crossing safety."
+}

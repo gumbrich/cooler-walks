@@ -10,6 +10,8 @@ The [latest evidence review](docs/shadow-validation-followup.md) checks all 26 f
 
 **Status:** **Zurich is the primary focus**, with an expanded 57.77 km² walking area and official address search. **Basel, Munich and Cambridge (Massachusetts) are beta**. Cambridge follows its municipal boundary; the other cities cover central areas. These remain experimental services, not field-validated citywide routing. Zurich and Munich estimate building sun/shade; Cambridge and Basel offer greenery and water proximity only. Paris remains under review. Tree shade, hill shadows, weather, live closures and navigation are not included.
 
+**Pavement pilot 0.14.0:** compare actual municipal pavement paths and mapped crossing sections around Talacker–Bahnhofstrasse. Building shade is calculated at those paths, within the existing detour limit. [Open the pilot](https://coolerwalks.ch/?view=planner&network=pavements) · [source, checks and remaining limits](docs/pavement-pilot.md). Field validation is pending.
+
 **3D library 0.13.0:** the whole supported Zurich walking area now uses detailed roofs and ground elevations. [Expansion and checks](docs/shade-library.md).
 
 **Interface 0.12.0:** simpler English/German copy, compact route cards, and departure controls above phone results. The website and native apps share the same interface. [Design notes](docs/design.md#plain-language-and-simpler-layouts--0120).

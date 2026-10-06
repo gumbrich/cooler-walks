@@ -1,5 +1,13 @@
 # Progress
 
+## Zurich pavement pilot · 0.14.0
+
+Implemented the first two milestones on a bounded Talacker–Bahnhofstrasse network: 115 municipal walking/crossing features, exact endpoint connectivity, shade/sun comparison on actual pavement lines and crossing distance inside the existing detour budget. EN/DE controls, a phone map enlargement, offline maps and shared native assets are included. [Implementation and reproduction](pavement-pilot.md).
+
+The computational part of milestone 3 passes 267 independent source-polygon checks. A 251-point Vampire-raster comparison retains two timestamp interpretations and all disagreements; it is not an accuracy score. Shadowmap comparison needs partner API access. Six paired locations are ready for field checks; no observations have been invented and the previous shadow-validation hold remains. [Field protocol](pavement-field-validation.md).
+
+TypeScript and 101 model/unit/language checks, complete real-data verification, formatting, production build and five release pack checks pass. Chrome installation, standalone launch, German and English offline pavement routes pass. Android compiles and both native projects have current shared assets. All 26 local browser scenarios pass. The Android full-city afternoon first launch exceeded 60 seconds and remains under investigation; compilation alone is not a passing native interaction test. Browser/emulator and deployment evidence is recorded in [platform.md](platform.md). Next: paired street observations and source corrections before wider pavement claims.
+
 ## Official Tempo 30 / 20 layer · 6 October 2026
 
 Integrated the canton's WFS zones with the existing city implemented-status snapshot. The optional 30/20 map layer contains 347 city zones and 42 nearby cantonal orders, with EN/DE legends, source/status details on click and explicit unknown cantonal implementation. Cantonal orders do not affect route ranking or extend walking coverage. Raw source hashes, completeness checks, CRS transformations, omitted geometry and the ambiguous source-date marker are documented in [the source register](data-sources.md#tempo-30--20-map-layer--6-october-2026) and [import audit](traffic-zone-validation.json).

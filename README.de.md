@@ -1,5 +1,7 @@
 # Cooler Walks
 
+**Trottoir-Pilot 0.14.0:** Rund um Talacker–Bahnhofstrasse vergleichen wir kartierte Trottoirs mit den Querungen aus dem städtischen Fusswegnetz. Der Gebäudeschatten wird auf diesen Wegen geschätzt; das Limit für zusätzliche Gehzeit gilt weiterhin. [Pilot öffnen](https://coolerwalks.ch/de/?view=planner&network=pavements) · [Daten, Prüfungen und Grenzen](docs/pavement-pilot.md). Die Prüfung vor Ort steht aus.
+
 Fusswege nach geschätztem Schatten, Grün, Wassernähe und Verkehrsberuhigung vergleichen.
 
 **Oberfläche seit 0.12.0:** kürzere, direkte Texte auf Deutsch und Englisch. Kompakte Routenkarten; auf dem Handy steht die Startzeit direkt über den Ergebnissen. Website und native App nutzen dieselbe Oberfläche.

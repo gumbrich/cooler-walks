@@ -1,0 +1,22 @@
+{
+  "checkedAt": "2026-10-06T14:27:06.399762+00:00",
+  "networkVersion": "zurich-pavements-2026-10-06-v1",
+  "libraryVersion": "zurich-roofs-dtm-library-2026-09-30-v2",
+  "sourceManifestSha256": "681fe96e53409d97b6961c88c58f81d04c781c492a726db39aa869ca56eb2d66",
+  "queries": 267,
+  "stableComparisons": 267,
+  "sourceBuildingsCompared": 680,
+  "excludedWithin2cmOfFaceEdge": [],
+  "geometryMismatches": [],
+  "solarReference": "pvlib NREL SPA, geometric elevation, pressure=0, delta_t=69.184 s",
+  "maximumSolarDirectionDifferenceDegrees": 0.04202268475391448,
+  "solarClassificationChanges": [
+    {
+      "id": "Talacker\u2013Bahnhofstrasse/2026-06-21T08:00:00Z/fastest/60",
+      "suncalc": "shade",
+      "spa": "boundary"
+    }
+  ],
+  "passed": true,
+  "scope": "Original source polygons versus tiled triangles at actual pavement samples. Same historical buildings and receiver ground; not independent field observations. SPA classifications may differ near moving shadow edges."
+}

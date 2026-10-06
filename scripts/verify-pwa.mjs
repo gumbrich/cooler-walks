@@ -36,7 +36,8 @@ await page.waitForFunction(
   async () =>
     Boolean(await caches.match('/data/zurich.json')) &&
     Boolean(await caches.match('/data/zurich-map.geojson')) &&
-    Boolean(await caches.match('/data/zurich-shade-library.json')),
+    Boolean(await caches.match('/data/zurich-shade-library.json')) &&
+    Boolean(await caches.match('/data/zurich-pavements.json')),
 );
 const cdp = await context.newCDPSession(page);
 const manifest = await cdp.send('Page.getAppManifest');
@@ -44,6 +45,11 @@ const installability = await cdp.send('Page.getInstallabilityErrors');
 if (manifest.errors.length) throw new Error('Manifest errors: ' + JSON.stringify(manifest.errors));
 if (installability.installabilityErrors.length)
   throw new Error('Installability errors: ' + JSON.stringify(installability));
+// Cache the pavement pilot working set before exercising its offline reload.
+await page.getByRole('button', { name: 'Try pavement pilot', exact: true }).click();
+await expect(page.locator('.route-card')).toHaveCount(2, { timeout: 60000 });
+await page.getByRole('button', { name: 'Zurich map', exact: true }).click();
+await expect(page.locator('.route-card').first()).toBeVisible({ timeout: 60000 });
 // Download one additional city while controlled by the production worker.
 await page.getByLabel('City', { exact: true }).selectOption('ch-basel');
 await expect(page.locator('.route-card').first()).toBeVisible({ timeout: 60000 });
@@ -105,6 +111,11 @@ await expect(page.locator('.map-shell')).toHaveAttribute('data-map-settled', 'tr
   timeout: 60000,
 });
 await page.screenshot({ path: 'docs/screenshots/desktop-offline.png' });
+await page.getByRole('button', { name: 'Try pavement pilot', exact: true }).click();
+await expect(page.locator('.route-card')).toHaveCount(2, { timeout: 60000 });
+await expect(page.locator('.route-pavement-note').first()).toContainText('4 crossing sections');
+await page.getByRole('button', { name: 'Zurich map', exact: true }).click();
+await expect(page.locator('.route-card').first()).toBeVisible({ timeout: 60000 });
 await page.getByRole('checkbox', { name: /Prefer waterside/ }).check();
 await expect(page.getByRole('button', { name: /More time near water/ })).toBeVisible({
   timeout: 60000,
@@ -165,6 +176,7 @@ let installation = {
   germanOffline: false,
   vehicleCountsOffline: false,
   addressSearchOffline: false,
+  pavementsOffline: false,
   error: null,
 };
 const root = await browser.newBrowserCDPSession();
@@ -244,6 +256,19 @@ try {
   await expect(app.getByRole('group', { name: 'Diesen Kartenpunkt verwenden' })).toBeVisible();
   await app.screenshot({ path: 'docs/screenshots/installed-map-selection.png' });
   await app.getByRole('button', { name: 'Kartenpunkt schliessen' }).click();
+  await app.getByRole('button', { name: 'Trottoir-Pilot testen', exact: true }).click();
+  await expect(app.locator('.route-pavement-note').first()).toContainText('Querungsabschnitte', {
+    timeout: 60000,
+  });
+  await app.reload();
+  await expect(app.locator('.route-pavement-note').first()).toContainText('Querungsabschnitte', {
+    timeout: 60000,
+  });
+  await expect(app.locator('.map-shell')).toHaveAttribute('data-map-settled', 'true', {
+    timeout: 60000,
+  });
+  await app.screenshot({ path: 'docs/screenshots/installed-pavement-pilot-de.png' });
+  installation.pavementsOffline = true;
   await context.setOffline(false);
 } catch (e) {
   installation.error = e.message;
@@ -259,6 +284,7 @@ const report = {
   installabilityErrors: installability.installabilityErrors,
   offlineReload: true,
   offlineRoutes: true,
+  pavementsOffline: true,
   offlineMap: true,
   verifiedAreaDownload: true,
   verifiedCompleteZurichDownload: true,
@@ -282,6 +308,7 @@ if (
   !installation.germanOffline ||
   !installation.vehicleCountsOffline ||
   !installation.addressSearchOffline ||
+  !installation.pavementsOffline ||
   installation.error
 )
   process.exitCode = 1;

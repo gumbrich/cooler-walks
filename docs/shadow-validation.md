@@ -4,6 +4,12 @@ The initial audit requested on 30 September 2026 is retained below. The user has
 
 **Latest review:** [original LiDAR and timestamped photographs](shadow-validation-followup.md). All 26 roof flags have been inspected against raw returns; 14 photographic originals have been screened. Two exploratory photo points include one unresolved disagreement. No field observations yet meet the acceptance requirements, so the gate remains **HOLD**. The audit below is the earlier computational baseline, retained unchanged with its source hashes.
 
+## Pavement pilot audit · 6 October 2026
+
+The authorized Talacker–Bahnhofstrasse pilot now uses actual municipal pavement lines. All **267** stable original-CityGML polygon comparisons agree with production mesh intersections. Independent NREL SPA directions differ by at most **0.042°**; one shaded classification becomes boundary-uncertain within the 2 cm tolerance. These are computational checks on historical sources, not field observations. [Audit](pavement-shadow-audit.json).
+
+A separate **251-point** comparison with the public Vampire raster agrees at 168 points assuming 16:00 CEST and 206 assuming 16:00 local solar time. The raster’s clock convention and radiation channel are unresolved, and its vegetation/terrain content differs. Neither result is an accuracy score. Shadowmap numerical comparison requires partner API access. [Protocol, reproduction and limitations](pavement-pilot.md). Six paired street locations are prepared for [field validation](pavement-field-validation.md), with all observations empty. The roof discrepancies, photo disagreement and field-validation **HOLD remain**.
+
 ## Protocol, defined before running the audit
 
 1. **Solar reference:** compare the production SunCalc output with pvlib 0.16.1's independent NREL SPA implementation, using geometric elevation (no atmospheric refraction). Cover both hemispheres, equinoxes/solstices, UTC instants, night and high latitudes. The engineering tolerance is 0.25° of angular separation between solar direction vectors; azimuth alone is unstable near zenith. This tolerance is not a statement of field accuracy.
