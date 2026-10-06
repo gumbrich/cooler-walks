@@ -143,10 +143,11 @@ describe('municipal pavement topology', () => {
     expect(validatePavements(pilot, city.id, city.pavementPilot!.version).edges).toHaveLength(
       268742,
     );
-    const legacy = JSON.parse(fs.readFileSync('tests/fixtures/pavement-network-v1.json', 'utf8'));
-    const lines = new Map(pilot.lines.features.map((f) => [f.properties.sourceId, f.geometry]));
-    for (const f of legacy.lines.features)
-      expect(lines.get(f.properties.sourceId)).toEqual(f.geometry);
+    const legacy = JSON.parse(fs.readFileSync('tests/fixtures/pavement-source-v1.json', 'utf8'));
+    const lines = new Map(municipalPaths(packed).map((f) => [f.properties.objectid, f.geometry]));
+    // Endpoint identity is established in source LV95, not after WGS84 conversion.
+    // Math trig implementations can differ in their last floating-point bit.
+    for (const f of legacy.features) expect(lines.get(f.properties.objectid)).toEqual(f.geometry);
     expect(pilot.edges.some((e) => e.nonGround)).toBe(true);
     expect(pilot.edges.some((e) => e.steps)).toBe(true);
     pilot.edges[0].pavement!.sourceId = -1;

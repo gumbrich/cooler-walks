@@ -56,22 +56,16 @@ for (const feature of all) {
 features.sort((a, b) => a.properties.objectid - b.properties.objectid);
 // Keep the original audited central geometry and field locations unchanged.
 const legacy = JSON.parse(fs.readFileSync('tests/fixtures/pavement-network-v1.json', 'utf8'));
-const oldFeatures = new Map<number, { coordinates: number[][] }>(
-  legacy.lines.features.map(
-    (f: { properties: { sourceId: number }; geometry: { coordinates: number[][] } }) => [
-      f.properties.sourceId,
-      f.geometry,
-    ],
-  ),
+const oldSource = JSON.parse(fs.readFileSync('tests/fixtures/pavement-source-v1.json', 'utf8'));
+assert.equal(oldSource.sourceSha256, previous.sourceSha256);
+const oldFeatures = new Map<number, MunicipalPath>(
+  oldSource.features.map((f: MunicipalPath) => [f.properties.objectid, f]),
 );
 const byId = new Map(features.map((f) => [f.properties.objectid, f]));
 for (const id of previous.reviewedFeatureIds) {
   assert(byId.has(id), `Previously reviewed feature ${id} is missing`);
-  assert.deepEqual(
-    byId.get(id)!.geometry.coordinates.map((p) => geographic(city, p as Point)),
-    oldFeatures.get(id)!.coordinates,
-    `Changed geometry ${id}`,
-  );
+  // Compare original LV95 coordinates exactly, before cross-platform trigonometric rounding.
+  assert.deepEqual(byId.get(id)!.geometry, oldFeatures.get(id)!.geometry, `Changed geometry ${id}`);
 }
 
 // The municipal schema has no walking elevation. Do not assume the bare-earth

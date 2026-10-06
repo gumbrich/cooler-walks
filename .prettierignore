@@ -28,3 +28,4 @@ docs/pavement-*.json
 docs/pavement-field-points.geojson
 tests/fixtures/pavement-shade-reference*.json
 tests/fixtures/pavement-network*.json
+tests/fixtures/pavement-source*.json

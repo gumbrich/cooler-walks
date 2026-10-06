@@ -1,0 +1,34 @@
+{
+  "version": "0.15.0",
+  "sourceCommit": "5e542788a3276159015e2ec2d512994c77dd801f",
+  "pavementVersion": "zurich-pavements-2026-10-06-v2",
+  "pavementSha256": "e1e43d4dcc8d367575d90e2cf05685175da5e64d0670b2afd744b3a48759b4c7",
+  "local": {
+    "typeScript": "passed",
+    "unitModelLanguageTests": 107,
+    "browserScenarios": 28,
+    "focusedAfterVisualRefinement": 3,
+    "sourceAndRoutingVerification": "passed",
+    "format": "passed",
+    "productionBuild": "passed",
+    "mapPackChecksums": 5,
+    "oldV1PavementCacheUpgradeAndOffline": "passed",
+    "androidBuild": "passed",
+    "androidPavementOffline": "docs/native-pavement-validation.json",
+    "screenshotsInspected": [
+      "desktop 1440x1000",
+      "tablet 820x1180",
+      "phone 390x844",
+      "Android 16 emulator, 2 GB"
+    ],
+    "androidGeneralOfflineAndColdStartup": "docs/native-counts-validation.json"
+  },
+  "apk": {
+    "path": "native-artifacts/cooler-walks-0.15.0-debug.apk",
+    "sha256": "0da08e510c3374a7cda0c3007370b30e0beaf468bd098f68ea40718395204be7"
+  },
+  "limitations": [
+    "No physical-phone or iOS interaction test",
+    "No field validation of pavement access, crossings or model accuracy"
+  ]
+}
