@@ -1,6 +1,7 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { getCity } from '../src/lib/cities';
 import { geographic, gridAzimuth, metric } from '../src/lib/geo';
+import { runCalculation } from '../src/lib/calculation';
 import { Router } from '../src/lib/routing';
 import * as sun from '../src/lib/solar';
 import { arrivalLabel } from '../src/lib/time';
@@ -56,6 +57,19 @@ function movingSun(changeMinutes: number, before = Math.PI, after = 0) {
 afterEach(() => vi.restoreAllMocks());
 
 describe('arrival-time building shade', () => {
+  it('keeps every arrival-time sample identical when route work yields to input', async () => {
+    movingSun(5);
+    const data = fixture(),
+      router = new Router(data, city);
+    const args = [data.nodes[0].point, data.nodes[2].point, departure, 5] as const;
+    const expected = router.calculate(...args);
+    let elapsed = 0;
+    vi.spyOn(performance, 'now').mockImplementation(() => (elapsed += 17));
+    const actual = await runCalculation(router.calculateSteps(...args), () => false);
+    expect(actual).toEqual(expected);
+    expect(actual.fastest.shadeMeters).toBeCloseTo(400);
+    expect(actual.fastest.sunMeters).toBeCloseTo(400);
+  });
   it('advances across ordered stops and re-evaluates a repeated path in the reverse direction', () => {
     movingSun(10);
     const d = fixture();

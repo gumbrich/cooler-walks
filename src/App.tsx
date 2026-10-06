@@ -281,6 +281,9 @@ export default function App() {
   useEffect(() => {
     requestId.current++;
     setResult(null);
+    // Stop obsolete CPU work immediately, including while an address is incomplete.
+    // Initialization is separate and must finish before we send cancellation.
+    if (data) worker.current?.postMessage({ type: 'cancel' });
     if (!data || !start || !end || stops.some((stop) => !stop.value) || !worker.current) {
       setBusy(false);
       if (data) setError('');

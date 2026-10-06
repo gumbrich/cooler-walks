@@ -1,3 +1,4 @@
+import { runCalculation } from './lib/calculation';
 import { dataUrl } from './lib/data-url';
 import { Router } from './lib/routing';
 import type { City, PilotData, Point } from './lib/types';
@@ -12,7 +13,7 @@ let loading: AbortController | undefined;
 self.onmessage = async (
   event: MessageEvent<{
     id: number;
-    type?: 'initialize';
+    type?: 'initialize' | 'cancel';
     url?: string;
     bytes?: Uint8Array;
     area?: AreaDescriptor;
@@ -31,6 +32,7 @@ self.onmessage = async (
   const m = event.data;
   const request = ++sequence;
   loading?.abort();
+  if (m.type === 'cancel') return;
   const controller = new AbortController();
   loading = controller;
   try {
@@ -106,22 +108,26 @@ self.onmessage = async (
     const current = router;
     const calculate = () => {
       if (request !== sequence) throw new DOMException('Superseded route', 'AbortError');
-      return current.calculate(
-        m.start,
-        m.end,
-        m.departure,
-        m.extra,
-        m.waypoints,
-        m.preferWater,
-        m.sunlight,
-        m.preferCalm,
-        m.pavements,
+      return runCalculation(
+        current.calculateSteps(
+          m.start,
+          m.end,
+          m.departure,
+          m.extra,
+          m.waypoints,
+          m.preferWater,
+          m.sunlight,
+          m.preferCalm,
+          m.pavements,
+        ),
+        () => request !== sequence,
       );
     };
     const result =
       current.detailed instanceof ShadeLibrary
         ? await withShadeTiles(current.detailed, calculate, async (tile) => {
             try {
+              controller.signal.throwIfAborted();
               const packed =
                 current.detailed instanceof ShadeLibrary
                   ? current.detailed.data.packedTiles?.[tile.id]
@@ -140,13 +146,16 @@ self.onmessage = async (
                   );
                 bytes = await boundedBytes(response.body, tile.bytes, controller.signal);
               }
-              return await decodeShadeTile(bytes, tile);
+              controller.signal.throwIfAborted();
+              const decoded = await decodeShadeTile(bytes, tile);
+              controller.signal.throwIfAborted();
+              return decoded;
             } catch (error) {
               if ((error as Error)?.name === 'AbortError') throw error;
               throw new Error('The 3D model could not load. Reconnect or download the Zurich map.');
             }
           })
-        : calculate();
+        : await calculate();
     if (request !== sequence) return;
     self.postMessage({
       id: m.id,

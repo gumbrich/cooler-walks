@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import assert from 'node:assert/strict';
 import { cities } from '../src/lib/cities';
+import { runCalculation } from '../src/lib/calculation';
 import { Router } from '../src/lib/routing';
 import { ShadeLibrary, decodeShadeTile, withShadeTiles } from '../src/lib/shade-library';
 import type { PilotData } from '../src/lib/types';
@@ -23,7 +24,7 @@ for (const [departure, fastestShade, alternativeShade] of [
     router.detailed,
     () => {
       passes++;
-      return router.calculate(from.point, to.point, departure, 5);
+      return runCalculation(router.calculateSteps(from.point, to.point, departure, 5), () => false);
     },
     (tile) => decodeShadeTile(fs.readFileSync(`public${tile.url}`), tile),
   );

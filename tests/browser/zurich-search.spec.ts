@@ -30,10 +30,15 @@ test('Zurich addresses, beta labels, direct map selection and honest outside cov
   ).toBeVisible();
   await from.press('Enter');
   await expect(from).toHaveValue('Altstetterstrasse 145');
+  // Simulate the pause between editing two addresses: the intermediate long
+  // Altstetten-to-lake trip must start, then yield to the final nearby trip.
+  await page.waitForTimeout(500);
+  const changedAt = Date.now();
   await to.fill('Hohlstrasse 554');
   await to.press('Enter');
   await expect(to).toHaveValue('Hohlstrasse 554');
   await expect(page.getByRole('button', { name: /Fastest walk/ })).toBeVisible();
+  console.log(`Updated Altstetten trip appeared in ${Date.now() - changedAt} ms`);
   await expect(page.locator('.map-shell')).toHaveAttribute('data-map-settled', 'true');
   // The desktop planner fits the viewport. Full-page capture resizes the WebGL
   // surface unnecessarily and can stall Chrome's software compositor.

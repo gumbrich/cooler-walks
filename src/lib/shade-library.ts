@@ -211,13 +211,13 @@ export class ShadeLibrary {
 /** Provisional passes are discarded. Every published result uses all requested tiles. */
 export async function withShadeTiles<T>(
   library: ShadeLibrary,
-  calculate: () => T,
+  calculate: () => T | Promise<T>,
   load: (tile: ShadeTile) => Promise<DetailedShadeData>,
 ) {
   // At least one new tile is added on each incomplete pass, so this terminates.
   for (let pass = 0; pass <= library.data.tiles.length; pass++) {
     library.beginCalculation();
-    const result = calculate();
+    const result = await calculate();
     if (!library.missing.size) {
       library.trim();
       return result;

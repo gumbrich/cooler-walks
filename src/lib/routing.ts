@@ -414,12 +414,24 @@ export class Router {
     return { index: best, meters: d };
   }
   shortest(start: number, end: number, weight: (e: Edge, i: number) => number) {
+    const steps = this.shortestSteps(start, end, weight);
+    let step = steps.next();
+    while (!step.done) step = steps.next();
+    return step.value;
+  }
+  private *shortestSteps(
+    start: number,
+    end: number,
+    weight: (e: Edge, i: number) => number,
+  ): Generator<void, number[], void> {
     const scores = new Float64Array(this.points.length).fill(Infinity),
       prev = new Int32Array(this.points.length).fill(-1);
     const heap = new MinHeap();
     scores[start] = 0;
     heap.push([0, start]);
+    let visited = 0;
     while (heap.values.length) {
+      if (visited++ % 32 === 0) yield;
       const [score, node] = heap.pop();
       if (score > scores[node]) continue;
       if (node === end) break;
@@ -487,7 +499,15 @@ export class Router {
       ),
     );
   }
-  calculate(
+  /** Synchronous entry point for reproducible data checks and scripts. */
+  calculate(...args: Parameters<Router['calculateSteps']>): RouteResult {
+    const steps = this.calculateSteps(...args);
+    let step = steps.next();
+    while (!step.done) step = steps.next();
+    return step.value;
+  }
+  /** The worker yields between bounded portions so a new trip can cancel this one. */
+  *calculateSteps(
     start: Point,
     end: Point,
     departure: string,
@@ -497,7 +517,9 @@ export class Router {
     sunlight: 'shade' | 'sun' = 'shade',
     preferCalm = false,
     pavements = false,
-  ): RouteResult {
+  ): Generator<void, RouteResult, void> {
+    const router = this;
+    yield;
     this.selectNetwork(pavements);
     if (pavements && preferCalm)
       throw new Error('Calmer-street comparison is unavailable in the pavement pilot.');
@@ -526,14 +548,16 @@ export class Router {
     if (stops.every((stop) => stop.index === a.index))
       throw new Error('Your trip points are on the same path point. Choose a point farther away.');
     let feasible: Uint8Array | null = null;
-    const throughStops = (weight: (e: Edge, i: number) => number) => {
+    const throughStops = function* (
+      weight: (e: Edge, i: number) => number,
+    ): Generator<void, number[], void> {
       const nodes = [a.index];
       for (let i = 1; i < stops.length; i++) {
         try {
           nodes.push(
-            ...this.shortest(stops[i - 1].index, stops[i].index, (edge, index) =>
+            ...(yield* router.shortestSteps(stops[i - 1].index, stops[i].index, (edge, index) =>
               feasible && !feasible[index] ? Infinity : weight(edge, index),
-            ).slice(1),
+            )).slice(1),
           );
         } catch (e) {
           throw new Error(`Leg ${i}: ${(e as Error).message}`);
@@ -561,8 +585,10 @@ export class Router {
     type Candidate = { building: MetricBuilding; vector: Point; bounds: Bounds };
     const shadows = new Grid<Candidate>();
     if (departureMode === 'shade') {
+      let indexed = 0;
       for (const cell of this.buildingGrid.cells.values())
         for (const building of cell) {
+          if (indexed++ % 128 === 0) yield;
           const vector = shadowVector(building.height, sun.altitude, projectedAzimuth);
           const [w, s, e, n] = building.bounds;
           const bounds: Bounds = [
@@ -613,7 +639,7 @@ export class Router {
       edgeSamples.set(index, samples);
       return samples;
     };
-    const buildRoute = (nodes: number[], id: string): Route => {
+    const buildRoute = function* (nodes: number[], id: string): Generator<void, Route, void> {
       let distance = 0,
         lowSunMeters = 0,
         steps = false;
@@ -622,8 +648,9 @@ export class Router {
       const samples: Sample[] = [],
         streets: string[] = [];
       for (let n = 1; n < nodes.length; n++) {
-        const index = this.adjacency[nodes[n - 1]].find((e) => e.to === nodes[n])!.edge,
-          e = this.data.edges[index];
+        if (n % 8 === 1) yield;
+        const index = router.adjacency[nodes[n - 1]].find((e) => e.to === nodes[n])!.edge,
+          e = router.data.edges[index];
         steps ||= e.steps;
         const crossing = e.pavement?.crossing ? e.pavement.sourceId : undefined;
         if (crossing !== undefined && crossing !== previousCrossing) crossingCount++;
@@ -634,7 +661,7 @@ export class Router {
         for (const sample of e.a === nodes[n - 1] ? part : [...part].reverse()) {
           const elapsedMinutes = (walked + sample.meters / 2) / WALK_METERS_PER_MINUTE;
           const arrival = new Date(date.getTime() + elapsedMinutes * 60000);
-          const { exposure, lowSun, detailed } = this.exposureAt(
+          const { exposure, lowSun, detailed } = router.exposureAt(
             sample.point,
             arrival,
             e.modelClearance,
@@ -651,7 +678,7 @@ export class Router {
       return {
         id,
         nodes,
-        coordinates: nodes.map((n) => this.data.nodes[n].point),
+        coordinates: nodes.map((n) => router.data.nodes[n].point),
         distance,
         minutes: distance / WALK_METERS_PER_MINUTE,
         samples,
@@ -675,10 +702,7 @@ export class Router {
         trafficBreakdown: summarizeTraffic(samples),
       };
     };
-    const fastest = buildRoute(
-      throughStops((e) => e.length),
-      'fastest',
-    );
+    const fastest = yield* buildRoute(yield* throughStops((e) => e.length), 'fastest');
     if (extra > 0)
       feasible = this.edgesWithinBudget(
         stops.map((stop) => stop.index),
@@ -694,8 +718,8 @@ export class Router {
       !candidates.some((c) => c.nodes.join(',') === r.nodes.join(','));
     if (extra > 0) {
       for (const penalty of [1.6, 3, 6]) {
-        const r = buildRoute(
-          throughStops(
+        const r = yield* buildRoute(
+          yield* throughStops(
             (e) =>
               e.length * (fastNodes.has(e.a) && fastNodes.has(e.b) ? penalty : 1) +
               crossingChoice(e),
@@ -705,8 +729,8 @@ export class Router {
         if (distinct(r)) candidates.push(r);
       }
       for (const emphasis of [0.2, 0.6, 1.5]) {
-        const r = buildRoute(
-          throughStops((e, i) => {
+        const r = yield* buildRoute(
+          yield* throughStops((e, i) => {
             const favorable = sample(i).reduce(
               (v, s) =>
                 v +
@@ -732,8 +756,8 @@ export class Router {
     }
     if (extra > 0 && preferCalm) {
       for (const emphasis of [0.2, 0.6, 1.5]) {
-        const candidate = buildRoute(
-          throughStops((edge, index) => {
+        const candidate = yield* buildRoute(
+          yield* throughStops((edge, index) => {
             const good = sample(index).reduce(
               (sum, item) => sum + (isPedestrianPriority(item.traffic) ? item.meters : 0),
               0,
@@ -743,6 +767,13 @@ export class Router {
           `option-${candidates.length}`,
         );
         if (distinct(candidate)) candidates.push(candidate);
+      }
+    }
+    for (const route of [fastest, ...candidates]) {
+      for (let n = 1; n < route.nodes.length; n++) {
+        if (n % 16 === 1) yield;
+        const index = this.adjacency[route.nodes[n - 1]].find((e) => e.to === route.nodes[n])!.edge;
+        this.edgeInCoverage(index);
       }
     }
     // Every segment remains inside configured coverage; missing data cannot improve a score.
