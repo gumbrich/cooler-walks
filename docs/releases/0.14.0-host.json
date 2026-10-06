@@ -1,0 +1,26 @@
+{
+  "origin": "https://coolerwalks.ch",
+  "publishedApplicationCommit": "aa742ef",
+  "pavementVersion": "zurich-pavements-2026-10-06-v1",
+  "verifiedChecks": [
+    "Six EN/DE HTML pages and security headers",
+    "True missing-file 404s",
+    "Both PWA manifests",
+    "All 81 online 3D tile hashes",
+    "Published municipal pavement graph equals reviewed local bytes",
+    "All five hosted pack hashes and native CORS using actual deployed catalogue"
+  ],
+  "stylesheet": {
+    "checkedAt": "2026-10-06T15:14:06.400Z",
+    "origin": "https://coolerwalks.ch",
+    "css": "/assets/main-D8-f4E5V.css",
+    "matches": true,
+    "sha256": "7b7c97fbe08643fa535f71859816636c0d36fac106dcd87923d07766d6c9a8f5"
+  },
+  "returningBrowser": "Existing Chrome session first rejected an older cached dataset. The visible Reload action recovered and computed the pavement trip for 6 October 2026 at 17:12 Europe/Zurich. Seamless cache handover remains open.",
+  "limitations": [
+    "PWA installation/offline tests were local production-preview checks, not repeated against this public deployment",
+    "Full Linux browser suite and full-Zurich Android startup have documented timeout failures",
+    "No field-validation claim"
+  ]
+}
