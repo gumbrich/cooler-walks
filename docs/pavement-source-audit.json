@@ -1,181 +1,7351 @@
 {
-  "version": "zurich-pavements-2026-10-06-v1",
+  "checkedAt": "2026-10-06T20:13:16.229Z",
+  "version": "zurich-pavements-2026-10-06-v2",
   "source": {
     "url": "https://data.stadt-zuerich.ch/dataset/geo_fuss__und_velowegnetz",
-    "fetchedAt": "2026-10-06",
-    "sourceSha256": "67f15fa921fffd66f9b54159bc18eafd245a0ea6d913dcb97745ecb8af2d5eaa",
+    "fetchedAt": "2026-10-06T19:48:55.416Z",
+    "sourceSha256": "e9823e5eb919808e2812b8ad795d59de477b28045fbeacfe0f8f52a8d5575787",
     "sourceCrs": "EPSG:2056",
     "catalogueDate": "2022-10-19",
     "licence": "CC0",
-    "note": "Bounded Talacker–Bahnhofstrasse surface-street component. Only municipal FUSS=1 features on reviewed named streets and their named Überquerung connectors. Join identical original endpoints only; do not connect geometric intersections or close gaps. Geometry review is not field validation. Source attributes do not establish signal waits, accessibility, current closures or observation dates."
+    "previousNetworkVersion": "zurich-pavements-2026-10-06-v1",
+    "note": "All FUSS=1 lines wholly inside the supported Zurich polygon. Preserve exact original endpoints and disconnected components; never join 2D intersections or close gaps. Known structures, nearby tagged non-ground walking paths and water are conservative unknown-height masks. Field validation remains pending. Source lines contain no measured walking heights, signal waits, closure status or complete step inventory."
   },
-  "fetchedFeatures": 2053,
-  "selectedFeatures": 115,
-  "sourceIds": [
-    165,
-    806,
-    1306,
-    1456,
-    1471,
-    1860,
-    2609,
-    2959,
-    3565,
-    3751,
-    3822,
-    5013,
-    5987,
-    6147,
-    7409,
-    7474,
-    7660,
-    7857,
-    7957,
-    8110,
-    9213,
-    9225,
-    9413,
-    9726,
-    10085,
-    10461,
-    10696,
-    11260,
-    11432,
-    13433,
-    13566,
-    13600,
-    14181,
-    14584,
-    15212,
-    15468,
-    15622,
-    15796,
-    15953,
-    15962,
-    16531,
-    16779,
-    16826,
-    16943,
-    17376,
-    18431,
-    18556,
-    18635,
-    18881,
-    19192,
-    19451,
-    19755,
-    19789,
-    19840,
-    19917,
-    19938,
-    20074,
-    20355,
-    20548,
-    20726,
-    20874,
-    21278,
-    22500,
-    22604,
-    22811,
-    22874,
-    22910,
-    23313,
-    23320,
-    23379,
-    23463,
-    24510,
-    25013,
-    25127,
-    25199,
-    25600,
-    26254,
-    26430,
-    26764,
-    26970,
-    27566,
-    27613,
-    27741,
-    27769,
-    28207,
-    28295,
-    28848,
-    28856,
-    28863,
-    29033,
-    29728,
-    30793,
-    30856,
-    31824,
-    32156,
-    32208,
-    33329,
-    33400,
-    33488,
-    33793,
-    34286,
-    35024,
-    35070,
-    35150,
-    35473,
-    35649,
-    36101,
-    36103,
-    36333,
-    36791,
-    37367,
-    38641,
-    39201,
-    39720,
-    39936
-  ],
-  "nodes": 733,
-  "edges": 753,
-  "crossingFeatures": 36,
-  "metres": 4008.8756475192654,
-  "components": 1,
-  "bounds": [
-    8.534262049735375,
-    47.36915988896533,
-    8.539584765692384,
-    47.37472292410082
-  ],
-  "endpointJoin": "Exact original LV95 coordinate equality. Interior shape vertices and geometric intersections are never joined.",
-  "places": [
+  "query": "https://www.ogd.stadt-zuerich.ch/wfs/geoportal/Fuss__und_Velowegnetz?SERVICE=WFS&VERSION=1.1.0&REQUEST=GetFeature&TYPENAME=tbl_routennetz&SRSNAME=EPSG%3A2056&MAXFEATURES=100000&OUTPUTFORMAT=application%2Fvnd.geo%2Bjson",
+  "advertisedFeatures": 40467,
+  "fetchedFeatures": 40467,
+  "selectedFeatures": 25740,
+  "excluded": {
+    "notPedestrian": 9204,
+    "outsideCoverage": 5523,
+    "zeroLength": 0
+  },
+  "metres": 1360330.0034771746,
+  "derivedEdges": 268742,
+  "components": [
     {
-      "id": "pavement-Talacker-Pelikanstrasse",
-      "name": "Talacker / Pelikanstrasse",
-      "point": [
-        8.535945039978563,
-        47.371316576829855
-      ],
-      "kind": "pavement"
+      "features": 25662,
+      "metres": 1356086.428817775
     },
     {
-      "id": "pavement-Bahnhofstrasse-Sihlstrasse",
-      "name": "Bahnhofstrasse / Sihlstrasse",
-      "point": [
-        8.53818720189802,
-        47.37393926504852
-      ],
-      "kind": "pavement"
+      "features": 21,
+      "metres": 1089.4275114168279
     },
     {
-      "id": "pavement-Nüschelerstrasse-Sihlstrasse",
-      "name": "Nüschelerstrasse / Sihlstrasse",
-      "point": [
-        8.535388087372253,
-        47.3728083343608
-      ],
-      "kind": "pavement"
+      "features": 5,
+      "metres": 134.1205381031373
     },
     {
-      "id": "pavement-Bahnhofstrasse-Pelikanstrasse",
-      "name": "Bahnhofstrasse / Pelikanstrasse",
-      "point": [
-        8.538212425130316,
-        47.372313815884056
-      ],
-      "kind": "pavement"
+      "features": 5,
+      "metres": 405.75018698564986
+    },
+    {
+      "features": 4,
+      "metres": 130.67068332120044
+    },
+    {
+      "features": 3,
+      "metres": 169.8963433699297
+    },
+    {
+      "features": 3,
+      "metres": 98.31538119935514
+    },
+    {
+      "features": 2,
+      "metres": 23.367666846636695
+    },
+    {
+      "features": 2,
+      "metres": 56.501831668614585
+    },
+    {
+      "features": 2,
+      "metres": 159.44821540557973
+    },
+    {
+      "features": 2,
+      "metres": 89.05642900051465
+    },
+    {
+      "features": 1,
+      "metres": 119.7282789184625
+    },
+    {
+      "features": 1,
+      "metres": 41.50225880733207
+    },
+    {
+      "features": 1,
+      "metres": 154.00400555680523
+    },
+    {
+      "features": 1,
+      "metres": 21.605719220843056
+    },
+    {
+      "features": 1,
+      "metres": 31.208694541246683
+    },
+    {
+      "features": 1,
+      "metres": 16.40639072949201
+    },
+    {
+      "features": 1,
+      "metres": 14.343243957177547
+    },
+    {
+      "features": 1,
+      "metres": 19.966427885036317
+    },
+    {
+      "features": 1,
+      "metres": 106.87872835210658
+    },
+    {
+      "features": 1,
+      "metres": 108.36484512523248
+    },
+    {
+      "features": 1,
+      "metres": 24.094974013596225
+    },
+    {
+      "features": 1,
+      "metres": 148.6080298227535
+    },
+    {
+      "features": 1,
+      "metres": 46.37350966921432
+    },
+    {
+      "features": 1,
+      "metres": 24.830566552203194
+    },
+    {
+      "features": 1,
+      "metres": 97.19431220359074
+    },
+    {
+      "features": 1,
+      "metres": 115.4531038393342
+    },
+    {
+      "features": 1,
+      "metres": 70.60529822799975
+    },
+    {
+      "features": 1,
+      "metres": 146.17137315058994
+    },
+    {
+      "features": 1,
+      "metres": 96.10255020400581
+    },
+    {
+      "features": 1,
+      "metres": 51.247077915939144
+    },
+    {
+      "features": 1,
+      "metres": 12.899731173194136
+    },
+    {
+      "features": 1,
+      "metres": 110.67648971749827
+    },
+    {
+      "features": 1,
+      "metres": 8.956346894039086
+    },
+    {
+      "features": 1,
+      "metres": 22.36956767102378
+    },
+    {
+      "features": 1,
+      "metres": 151.19602442085338
+    },
+    {
+      "features": 1,
+      "metres": 70.35150379720434
+    },
+    {
+      "features": 1,
+      "metres": 17.81405130215709
+    },
+    {
+      "features": 1,
+      "metres": 20.798572481547385
+    },
+    {
+      "features": 1,
+      "metres": 17.26819593062056
     }
-  ]
+  ],
+  "places": 5844,
+  "crossingFeatures": 5118,
+  "namedStepFeatures": 121,
+  "nonGround": {
+    "bufferMeters": 4,
+    "minimumLengthOverlap": 0.8,
+    "sampledEveryMetres": 3,
+    "flaggedFeatures": 1128,
+    "regularGraphSha256": "da779dbab32adde0988aa008b3ea58177a50ff4de6215908f6762e69fcdbd6ac",
+    "masks": [
+      {
+        "sourceId": 1,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 19,
+        "reasons": [
+          "source structure name",
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 21,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 42,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 68,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 170,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 198,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 244,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 254,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 279,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 302,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 322,
+        "reasons": [
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 344,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 372,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 416,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 419,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 462,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 471,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 539,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 574,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 724,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 734,
+        "reasons": [
+          "source structure name",
+          "mapped surface water"
+        ]
+      },
+      {
+        "sourceId": 760,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 769,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 787,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 795,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 813,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 870,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 908,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 976,
+        "reasons": [
+          "source structure name",
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 986,
+        "reasons": [
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 1008,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 1037,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 1202,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 1204,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 1252,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 1255,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 1282,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 1323,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 1330,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 1563,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 1631,
+        "reasons": [
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 1639,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 1687,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 1694,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 1747,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 1792,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 1815,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 1831,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 1884,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 1917,
+        "reasons": [
+          "mapped surface water"
+        ]
+      },
+      {
+        "sourceId": 1927,
+        "reasons": [
+          "source structure name",
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 1929,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 1956,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 1976,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 1992,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 2051,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 2085,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 2108,
+        "reasons": [
+          "mapped surface water"
+        ]
+      },
+      {
+        "sourceId": 2179,
+        "reasons": [
+          "source structure name",
+          "mapped surface water"
+        ]
+      },
+      {
+        "sourceId": 2368,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 2427,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 2433,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 2439,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 2460,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 2469,
+        "reasons": [
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 2481,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 2482,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 2534,
+        "reasons": [
+          "mapped surface water"
+        ]
+      },
+      {
+        "sourceId": 2536,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 2659,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 2671,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 2682,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 2692,
+        "reasons": [
+          "source structure name",
+          "mapped surface water"
+        ]
+      },
+      {
+        "sourceId": 2754,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 2770,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 2782,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 2796,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 2830,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 2849,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 2921,
+        "reasons": [
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 2927,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 2934,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 2990,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 3015,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 3067,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 3077,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 3123,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 3139,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 3176,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 3200,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 3293,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 3311,
+        "reasons": [
+          "source structure name",
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 3368,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 3374,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 3430,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 3442,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 3461,
+        "reasons": [
+          "source structure name",
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 3491,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 3504,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 3558,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 3605,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 3651,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 3670,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 3688,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 3777,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 3874,
+        "reasons": [
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 3902,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 3919,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 3924,
+        "reasons": [
+          "mapped surface water"
+        ]
+      },
+      {
+        "sourceId": 3934,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 4016,
+        "reasons": [
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 4103,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 4107,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 4152,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 4196,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 4204,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 4265,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 4267,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 4285,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 4323,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 4355,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 4365,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 4446,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 4481,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 4496,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 4502,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 4507,
+        "reasons": [
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 4678,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 4739,
+        "reasons": [
+          "source structure name",
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 4753,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 4839,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 4892,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 4939,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 4966,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 4980,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 4999,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 5050,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 5059,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 5147,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 5249,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 5306,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 5358,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 5388,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 5397,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 5641,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 5650,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 5654,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 5671,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 5674,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 5702,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 5705,
+        "reasons": [
+          "mapped surface water"
+        ]
+      },
+      {
+        "sourceId": 5741,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 5798,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 5830,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 5832,
+        "reasons": [
+          "source structure name",
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 5842,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 5873,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 5917,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 5922,
+        "reasons": [
+          "source structure name",
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 5931,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 5942,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 6008,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 6101,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 6114,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 6133,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 6143,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 6170,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 6174,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 6194,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 6227,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 6236,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 6256,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 6306,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 6330,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 6339,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 6385,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 6400,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 6414,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 6508,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 6530,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 6616,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 6631,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 6650,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 6747,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 6751,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 6801,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 6852,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 6935,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 6939,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 6954,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 6977,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 6985,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 7048,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 7183,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 7231,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 7234,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 7265,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 7316,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 7317,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 7358,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 7462,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 7523,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 7528,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 7529,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 7537,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 7538,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 7659,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 7746,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 7773,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 7790,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 7795,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 7796,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 7802,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 7831,
+        "reasons": [
+          "source structure name",
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 7832,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 7896,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 7908,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 8034,
+        "reasons": [
+          "source structure name",
+          "mapped surface water"
+        ]
+      },
+      {
+        "sourceId": 8042,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 8059,
+        "reasons": [
+          "source structure name",
+          "mapped surface water"
+        ]
+      },
+      {
+        "sourceId": 8096,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 8100,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 8170,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 8179,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 8202,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 8203,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 8258,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 8288,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 8299,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 8342,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 8367,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 8370,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 8378,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 8455,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 8463,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 8542,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 8546,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 8554,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 8563,
+        "reasons": [
+          "source structure name",
+          "mapped surface water"
+        ]
+      },
+      {
+        "sourceId": 8595,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 8640,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 8729,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 8771,
+        "reasons": [
+          "source structure name",
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 8787,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 8902,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 8920,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 8938,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 8983,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 9010,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 9027,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 9035,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 9045,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 9053,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 9062,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 9080,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 9104,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 9105,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 9156,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 9163,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 9262,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 9299,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 9338,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 9339,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 9359,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 9429,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 9445,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 9459,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 9472,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 9496,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 9534,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 9633,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 9650,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 9805,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 9842,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 9879,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 9894,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 9942,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 9990,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 9994,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 10014,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 10116,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 10130,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 10161,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 10171,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 10251,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 10305,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 10365,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 10378,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 10415,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 10522,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 10561,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 10568,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 10572,
+        "reasons": [
+          "source structure name",
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 10575,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 10635,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 10642,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 10676,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 10733,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 10747,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 10767,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 10798,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 10817,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 10824,
+        "reasons": [
+          "source structure name",
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 10908,
+        "reasons": [
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 10959,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 11002,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 11040,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 11118,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 11252,
+        "reasons": [
+          "mapped surface water"
+        ]
+      },
+      {
+        "sourceId": 11309,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 11313,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 11325,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 11344,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 11384,
+        "reasons": [
+          "source structure name",
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 11388,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 11389,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 11453,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 11462,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 11477,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 11493,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 11523,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 11581,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 11615,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 11708,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 11754,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 11831,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 11841,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 11868,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 11873,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 11932,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 11946,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 11966,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 12058,
+        "reasons": [
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 12078,
+        "reasons": [
+          "source structure name",
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 12141,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 12169,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 12178,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 12230,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 12233,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 12259,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 12275,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 12347,
+        "reasons": [
+          "mapped surface water"
+        ]
+      },
+      {
+        "sourceId": 12397,
+        "reasons": [
+          "source structure name",
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 12398,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 12417,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 12464,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 12480,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 12515,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 12516,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 12537,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 12627,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 12633,
+        "reasons": [
+          "source structure name",
+          "mapped surface water"
+        ]
+      },
+      {
+        "sourceId": 12665,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 12716,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 12736,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 12770,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 12800,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 12848,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 12879,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 12949,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 12971,
+        "reasons": [
+          "source structure name",
+          "mapped surface water"
+        ]
+      },
+      {
+        "sourceId": 12981,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 12985,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 13006,
+        "reasons": [
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 13021,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 13107,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 13116,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 13197,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 13207,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 13219,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 13220,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 13224,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 13232,
+        "reasons": [
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 13286,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 13314,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 13332,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 13353,
+        "reasons": [
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 13468,
+        "reasons": [
+          "source structure name",
+          "mapped surface water"
+        ]
+      },
+      {
+        "sourceId": 13554,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 13566,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 13625,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 13628,
+        "reasons": [
+          "source structure name",
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 13652,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 13659,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 13663,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 13694,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 13723,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 13751,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 13764,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 13772,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 13809,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 13828,
+        "reasons": [
+          "mapped surface water"
+        ]
+      },
+      {
+        "sourceId": 13866,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 13951,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 13956,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 13961,
+        "reasons": [
+          "mapped surface water"
+        ]
+      },
+      {
+        "sourceId": 13963,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 14040,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 14065,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 14096,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 14176,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 14209,
+        "reasons": [
+          "source structure name",
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 14275,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 14320,
+        "reasons": [
+          "source structure name",
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 14355,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 14398,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 14446,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 14530,
+        "reasons": [
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 14564,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 14572,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 14668,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 14671,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 14767,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 14787,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 14817,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 14967,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 14982,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 15064,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 15077,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 15093,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 15097,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 15163,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 15166,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 15185,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 15190,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 15191,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 15222,
+        "reasons": [
+          "source structure name",
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 15258,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 15329,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 15416,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 15425,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 15459,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 15482,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 15520,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 15531,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 15592,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 15716,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 15727,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 15754,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 15762,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 15804,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 15851,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 15907,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 15978,
+        "reasons": [
+          "mapped surface water"
+        ]
+      },
+      {
+        "sourceId": 15993,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 16031,
+        "reasons": [
+          "source structure name",
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 16034,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 16039,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 16074,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 16081,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 16105,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 16160,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 16188,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 16195,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 16217,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 16218,
+        "reasons": [
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 16222,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 16249,
+        "reasons": [
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 16252,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 16280,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 16284,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 16347,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 16371,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 16493,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 16504,
+        "reasons": [
+          "source structure name",
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 16581,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 16649,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 16653,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 16677,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 16689,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 16718,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 16733,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 16736,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 16770,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 16793,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 16876,
+        "reasons": [
+          "source structure name",
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 16933,
+        "reasons": [
+          "mapped surface water"
+        ]
+      },
+      {
+        "sourceId": 17008,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 17072,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 17094,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 17106,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 17139,
+        "reasons": [
+          "mapped surface water"
+        ]
+      },
+      {
+        "sourceId": 17145,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 17151,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 17293,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 17317,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 17336,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 17342,
+        "reasons": [
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 17344,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 17403,
+        "reasons": [
+          "source structure name",
+          "mapped surface water"
+        ]
+      },
+      {
+        "sourceId": 17408,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 17418,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 17440,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 17482,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 17488,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 17501,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 17515,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 17563,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 17591,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 17608,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 17639,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 17669,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 17721,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 17736,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 17769,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 17801,
+        "reasons": [
+          "source structure name",
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 17853,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 17982,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 18130,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 18203,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 18205,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 18231,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 18233,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 18270,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 18277,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 18307,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 18328,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 18387,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 18521,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 18582,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 18700,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 18772,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 18789,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 18814,
+        "reasons": [
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 18819,
+        "reasons": [
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 18866,
+        "reasons": [
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 18872,
+        "reasons": [
+          "mapped surface water"
+        ]
+      },
+      {
+        "sourceId": 18912,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 18929,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 19001,
+        "reasons": [
+          "source structure name",
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 19078,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 19184,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 19202,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 19210,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 19218,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 19255,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 19268,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 19277,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 19310,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 19430,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 19437,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 19491,
+        "reasons": [
+          "source structure name",
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 19553,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 19561,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 19629,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 19644,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 19696,
+        "reasons": [
+          "source structure name",
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 19699,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 19720,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 19736,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 19745,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 19812,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 19813,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 19820,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 19824,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 19830,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 19863,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 19875,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 19888,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 19983,
+        "reasons": [
+          "source structure name",
+          "mapped surface water"
+        ]
+      },
+      {
+        "sourceId": 19997,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 20007,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 20020,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 20041,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 20101,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 20103,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 20147,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 20169,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 20301,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 20310,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 20314,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 20319,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 20347,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 20369,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 20386,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 20406,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 20457,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 20475,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 20536,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 20563,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 20607,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 20644,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 20654,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 20707,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 20708,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 20729,
+        "reasons": [
+          "source structure name",
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 20760,
+        "reasons": [
+          "source structure name",
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 20763,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 20783,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 20843,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 20861,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 20925,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 20929,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 20960,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 21035,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 21082,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 21236,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 21317,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 21346,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 21376,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 21386,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 21406,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 21409,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 21414,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 21417,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 21439,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 21440,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 21467,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 21475,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 21490,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 21519,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 21532,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 21678,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 21714,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 21718,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 21751,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 21795,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 21857,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 21917,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 21919,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 21960,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 21993,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 22010,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 22022,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 22030,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 22032,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 22040,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 22061,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 22090,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 22123,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 22131,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 22132,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 22162,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 22187,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 22226,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 22238,
+        "reasons": [
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 22270,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 22278,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 22284,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 22332,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 22345,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 22362,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 22365,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 22400,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 22445,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 22512,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 22513,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 22514,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 22554,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 22561,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 22609,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 22683,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 22699,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 22729,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 22732,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 22756,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 22789,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 22878,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 22905,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 22911,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 22938,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 22960,
+        "reasons": [
+          "mapped surface water"
+        ]
+      },
+      {
+        "sourceId": 22988,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 23059,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 23080,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 23145,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 23163,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 23274,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 23284,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 23299,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 23301,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 23306,
+        "reasons": [
+          "source structure name",
+          "mapped surface water"
+        ]
+      },
+      {
+        "sourceId": 23329,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 23336,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 23393,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 23462,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 23548,
+        "reasons": [
+          "mapped surface water"
+        ]
+      },
+      {
+        "sourceId": 23554,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 23615,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 23619,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 23660,
+        "reasons": [
+          "source structure name",
+          "mapped surface water"
+        ]
+      },
+      {
+        "sourceId": 23744,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 23756,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 23771,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 23782,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 23911,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 23956,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 24076,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 24154,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 24165,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 24168,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 24234,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 24246,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 24251,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 24276,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 24326,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 24330,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 24347,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 24350,
+        "reasons": [
+          "mapped surface water"
+        ]
+      },
+      {
+        "sourceId": 24475,
+        "reasons": [
+          "mapped surface water"
+        ]
+      },
+      {
+        "sourceId": 24501,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 24595,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 24666,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 24737,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 24910,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 24911,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 24927,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 24931,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 25036,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 25039,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 25052,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 25066,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 25117,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 25119,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 25159,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 25181,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 25194,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 25252,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 25269,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 25282,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 25291,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 25380,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 25400,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 25405,
+        "reasons": [
+          "source structure name",
+          "mapped surface water"
+        ]
+      },
+      {
+        "sourceId": 25425,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 25502,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 25530,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 25545,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 25602,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 25648,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 25677,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 25688,
+        "reasons": [
+          "mapped surface water"
+        ]
+      },
+      {
+        "sourceId": 25690,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 25704,
+        "reasons": [
+          "source structure name",
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 25709,
+        "reasons": [
+          "source structure name",
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 25731,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 25792,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 25796,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 25814,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 25836,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 25844,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 25849,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 25880,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 25895,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 25899,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 25940,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 25969,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 25992,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 26010,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 26030,
+        "reasons": [
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 26047,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 26055,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 26082,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 26177,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 26272,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 26288,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 26340,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 26411,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 26440,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 26469,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 26504,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 26555,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 26591,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 26597,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 26607,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 26620,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 26663,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 26678,
+        "reasons": [
+          "mapped surface water"
+        ]
+      },
+      {
+        "sourceId": 26705,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 26777,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 26794,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 26803,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 26901,
+        "reasons": [
+          "source structure name",
+          "mapped surface water"
+        ]
+      },
+      {
+        "sourceId": 26987,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 26998,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 27046,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 27055,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 27097,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 27132,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 27147,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 27203,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 27244,
+        "reasons": [
+          "source structure name",
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 27260,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 27272,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 27283,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 27295,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 27299,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 27314,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 27321,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 27412,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 27463,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 27525,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 27532,
+        "reasons": [
+          "source structure name",
+          "mapped surface water"
+        ]
+      },
+      {
+        "sourceId": 27547,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 27556,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 27589,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 27593,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 27598,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 27616,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 27675,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 27689,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 27716,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 27748,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 27753,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 27758,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 27832,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 28017,
+        "reasons": [
+          "source structure name",
+          "mapped surface water"
+        ]
+      },
+      {
+        "sourceId": 28181,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 28237,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 28294,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 28375,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 28386,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 28391,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 28420,
+        "reasons": [
+          "source structure name",
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 28521,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 28564,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 28618,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 28684,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 28714,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 28729,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 28823,
+        "reasons": [
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 28850,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 28878,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 28918,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 28929,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 28938,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 28963,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 29021,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 29082,
+        "reasons": [
+          "source structure name",
+          "mapped surface water"
+        ]
+      },
+      {
+        "sourceId": 29084,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 29111,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 29210,
+        "reasons": [
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 29214,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 29244,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 29248,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 29288,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 29296,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 29398,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 29483,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 29515,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 29549,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 29589,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 29597,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 29602,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 29609,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 29626,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 29641,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 29643,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 29658,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 29687,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 29721,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 29722,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 29738,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 29819,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 29865,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 29918,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 29930,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 29953,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 29992,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 30044,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 30104,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 30116,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 30191,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 30270,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 30377,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 30381,
+        "reasons": [
+          "source structure name",
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 30412,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 30445,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 30464,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 30469,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 30570,
+        "reasons": [
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 30646,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 30648,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 30654,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 30676,
+        "reasons": [
+          "source structure name",
+          "mapped surface water"
+        ]
+      },
+      {
+        "sourceId": 30691,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 30811,
+        "reasons": [
+          "source structure name",
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 30878,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 30910,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 30936,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 30941,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 30979,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 31032,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 31051,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 31075,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 31077,
+        "reasons": [
+          "mapped surface water"
+        ]
+      },
+      {
+        "sourceId": 31116,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 31161,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 31165,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 31240,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 31242,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 31272,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 31314,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 31342,
+        "reasons": [
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 31357,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 31359,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 31367,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 31386,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 31415,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 31427,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 31436,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 31449,
+        "reasons": [
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 31460,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 31546,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 31550,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 31568,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 31570,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 31704,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 31715,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 31767,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 31823,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 31837,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 31846,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 31893,
+        "reasons": [
+          "mapped surface water"
+        ]
+      },
+      {
+        "sourceId": 32007,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 32020,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 32076,
+        "reasons": [
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 32151,
+        "reasons": [
+          "mapped surface water"
+        ]
+      },
+      {
+        "sourceId": 32251,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 32277,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 32281,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 32293,
+        "reasons": [
+          "mapped surface water"
+        ]
+      },
+      {
+        "sourceId": 32343,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 32360,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 32361,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 32411,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 32452,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 32563,
+        "reasons": [
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 32583,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 32584,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 32662,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 32667,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 32683,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 32687,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 32745,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 32772,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 32777,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 32784,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 32856,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 32900,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 32927,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 32949,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 32967,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 33020,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 33028,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 33075,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 33089,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 33090,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 33121,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 33127,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 33134,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 33143,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 33176,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 33179,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 33198,
+        "reasons": [
+          "source structure name",
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 33208,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 33236,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 33379,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 33399,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 33453,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 33539,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 33550,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 33612,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 33630,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 33642,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 33676,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 33683,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 33747,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 33802,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 33816,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 33826,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 33845,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 33949,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 34053,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 34090,
+        "reasons": [
+          "source structure name",
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 34214,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 34231,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 34236,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 34385,
+        "reasons": [
+          "mapped surface water"
+        ]
+      },
+      {
+        "sourceId": 34445,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 34505,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 34526,
+        "reasons": [
+          "source structure name",
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 34560,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 34576,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 34601,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 34606,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 34618,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 34626,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 34633,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 34651,
+        "reasons": [
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 34701,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 34761,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 34821,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 34835,
+        "reasons": [
+          "source structure name",
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 34856,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 34977,
+        "reasons": [
+          "source structure name",
+          "mapped surface water"
+        ]
+      },
+      {
+        "sourceId": 35081,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 35085,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 35086,
+        "reasons": [
+          "source structure name",
+          "mapped surface water"
+        ]
+      },
+      {
+        "sourceId": 35118,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 35151,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 35160,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 35208,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 35229,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 35234,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 35235,
+        "reasons": [
+          "source structure name",
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 35314,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 35350,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 35353,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 35394,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 35416,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 35424,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 35518,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 35530,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 35536,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 35564,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 35574,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 35639,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 35695,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 35714,
+        "reasons": [
+          "source structure name",
+          "mapped surface water"
+        ]
+      },
+      {
+        "sourceId": 35718,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 35852,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 35876,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 35886,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 35897,
+        "reasons": [
+          "source structure name",
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 35956,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 35965,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 35971,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 35981,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 36027,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 36043,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 36081,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 36097,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 36105,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 36160,
+        "reasons": [
+          "source structure name",
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 36167,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 36227,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 36230,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 36287,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 36320,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 36324,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 36328,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 36341,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 36376,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 36379,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 36382,
+        "reasons": [
+          "mapped surface water"
+        ]
+      },
+      {
+        "sourceId": 36502,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 36515,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 36572,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 36596,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 36598,
+        "reasons": [
+          "source structure name",
+          "mapped surface water"
+        ]
+      },
+      {
+        "sourceId": 36630,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 36665,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 36673,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 36677,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 36685,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 36691,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 36727,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 36737,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 36739,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 36771,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 36824,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 36866,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 36963,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 36994,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 37019,
+        "reasons": [
+          "source structure name",
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 37042,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 37089,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 37131,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 37166,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 37219,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 37233,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 37342,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 37369,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 37418,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 37623,
+        "reasons": [
+          "mapped surface water"
+        ]
+      },
+      {
+        "sourceId": 37686,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 38154,
+        "reasons": [
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 38279,
+        "reasons": [
+          "mapped surface water"
+        ]
+      },
+      {
+        "sourceId": 38314,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 38315,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 38611,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 38626,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 38688,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 38699,
+        "reasons": [
+          "source structure name",
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 38725,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 38791,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 38879,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 38899,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 38946,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 39003,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 39047,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 39067,
+        "reasons": [
+          "source structure name",
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 39123,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 39135,
+        "reasons": [
+          "source structure name",
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 39147,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 39191,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 39215,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 39234,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 39240,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 39310,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 39337,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 39344,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 39402,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 39437,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 39467,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 39630,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 39640,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 39663,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 39673,
+        "reasons": [
+          "source structure name",
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 39722,
+        "reasons": [
+          "mapped surface water"
+        ]
+      },
+      {
+        "sourceId": 39771,
+        "reasons": [
+          "source structure name",
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 39799,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 39845,
+        "reasons": [
+          "source structure name",
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 39880,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 39881,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 39989,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 40073,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 40165,
+        "reasons": [
+          "mapped surface water",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 40185,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 40189,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 40201,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 40205,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 40297,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 40391,
+        "reasons": [
+          "source structure name",
+          "overlaps tagged non-ground walking geometry"
+        ]
+      },
+      {
+        "sourceId": 40395,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 40423,
+        "reasons": [
+          "overlaps tagged non-ground walking geometry"
+        ]
+      }
+    ]
+  },
+  "preservedPilot": {
+    "version": "zurich-pavements-2026-10-06-v1",
+    "features": 115,
+    "exactSourceGeometry": true
+  },
+  "bounds": [
+    8.472,
+    47.353,
+    8.57,
+    47.427
+  ],
+  "encoding": "Exact original LV95 1 micrometre integer deltas, verified coordinate-for-coordinate; not a claim of survey accuracy.",
+  "endpointJoin": "Only identical original source endpoints. No intersections or proximity joins; disconnected components are retained.",
+  "coverage": "All complete FUSS=1 features inside the existing Zurich coverage polygon and rectangle. Boundary-crossing features omitted, no invented clipped connections."
 }

@@ -638,7 +638,9 @@ export default function App() {
       )}
       {result?.pavementVersion && (
         <div className="route-pavement-note">
-          {t('Mapped pavements · {count} crossing sections', { count: route.crossingCount ?? 0 })}
+          {route.crossingCount === 1
+            ? t('Mapped paths · 1 crossing section')
+            : t('Mapped paths · {count} crossing sections', { count: route.crossingCount ?? 0 })}
         </div>
       )}
     </button>
@@ -874,7 +876,7 @@ export default function App() {
                       {pavements ? t('Zurich map') : t('Try pavement pilot')}
                       <ArrowRight size={14} aria-hidden="true" />
                     </button>
-                    {pavements && <span>{t('Talacker–Bahnhofstrasse · pilot')}</span>}
+                    {pavements && <span>{t('Pavements & paths · pilot')}</span>}
                   </div>
                 )}
                 <div className="trip-compact">
@@ -912,7 +914,7 @@ export default function App() {
                   <p className="search-guidance">
                     {pavements
                       ? t(
-                          'Choose a junction or tap a highlighted pavement. Selected streets only; field checks pending.',
+                          'Choose a junction or tap a highlighted path. Available across the Zurich map; field checks pending.',
                         )
                       : t(
                           city.capabilities.addresses
@@ -1347,7 +1349,7 @@ export default function App() {
                       {result?.pavementVersion && (
                         <p>
                           {t(
-                            'The line follows municipal pavement geometry. Side changes use mapped crossing sections. Their walked distance is included; signal waits are unknown. Check crossings and access on site.',
+                            'Routes follow municipal pavements and footpaths. Crossing distances count; signal waits are unknown. Shade is withheld where walking height is uncertain, including identified bridges and underpasses. Check access on site.',
                           )}
                         </p>
                       )}
@@ -1437,7 +1439,7 @@ export default function App() {
                   <button onClick={() => setModal('coverage')}>
                     <span className="pilot-dot" />{' '}
                     {pavements
-                      ? t('Talacker–Bahnhofstrasse · pilot')
+                      ? t('Pavements & paths · pilot')
                       : t('{area} pilot', { area: t(city.coverageLabel) })}
                     <Info size={13} />
                   </button>

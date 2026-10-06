@@ -3,6 +3,7 @@ import { getCity } from '../src/lib/cities';
 import { Router, MODEL_VERSION } from '../src/lib/routing';
 import { ShadeLibrary, withShadeTiles, decodeShadeTile } from '../src/lib/shade-library';
 import type { PilotData, Point } from '../src/lib/types';
+import type { PavementNetwork } from '../src/lib/pavements';
 import { metric, geographic } from '../src/lib/geo';
 
 const protocol = JSON.parse(
@@ -12,7 +13,10 @@ const city = getCity('ch-zurich');
 const data: PilotData = JSON.parse(fs.readFileSync(`public${city.dataUrl}`, 'utf8'));
 data.pavementNetwork = JSON.parse(fs.readFileSync(`public${city.pavementPilot!.dataUrl}`, 'utf8'));
 data.shadeLibrary = JSON.parse(fs.readFileSync(`public${city.detailedShade!.dataUrl}`, 'utf8'));
-const network = data.pavementNetwork!;
+// Preserve the originally frozen 251-point external-model comparison.
+const network: PavementNetwork = JSON.parse(
+  fs.readFileSync('tests/fixtures/pavement-network-v1.json', 'utf8'),
+);
 const router = new Router(data, city, true),
   library = router.detailed as ShadeLibrary;
 const points = network.edges.flatMap((edge, i) => {

@@ -28,7 +28,7 @@ try {
   await shell(`am start -n ${pkg}/.MainActivity`);
   const page = await (await device.webView({ pkg })).page();
   page.on('pageerror', (e) => errors.push(e.message));
-  // Test the bounded pilot independently of the expensive full-city default trip.
+  // Test the municipal-path mode after the regular full-city initial load.
   // The public deep link is the same one used by the website, not a test data override.
   await expect(page.locator('.mobile-time')).toBeVisible({ timeout: 60000 });
   await page.getByRole('combobox', { name: /^(Language|Sprache)$/ }).selectOption('en');
@@ -74,6 +74,24 @@ try {
   await page.getByRole('slider', { name: 'Startzeit', exact: true }).fill('840');
   await expect(page.locator('.route-card')).toHaveCount(2, { timeout: 60000 });
   console.log('PASS offline pilot, German, enlarged map, time changes and zero detour');
+  await page.getByRole('button', { name: 'Weg bearbeiten', exact: true }).click();
+  const from = page.getByRole('combobox', { name: 'Von', exact: true });
+  const to = page.getByRole('combobox', { name: 'Nach', exact: true });
+  await from.fill('');
+  await to.fill('Franklinstrasse / Schaffhauserstrasse');
+  await to.press('Enter');
+  await from.fill('Franklinstrasse / Hofwiesenstrasse');
+  await from.press('Enter');
+  await expect(page.locator('.route-card')).toHaveCount(2, { timeout: 60000 });
+  await expect(page.locator('.route-card').first()).toContainText('380 m');
+  await page.getByRole('button', { name: 'Routen anzeigen', exact: true }).click();
+  await page.getByRole('button', { name: 'Karte vergrössern', exact: true }).click();
+  await expect(page.locator('.map-shell')).toHaveAttribute('data-map-settled', 'true', {
+    timeout: 60000,
+  });
+  await device.screenshot({ path: 'docs/screenshots/android-pavements-oerlikon-de.png' });
+  await page.getByRole('button', { name: 'Karte verkleinern', exact: true }).click();
+  console.log('PASS expanded Oerlikon source junctions and offline shade comparison');
   await page.getByRole('button', { name: 'Zürich-Karte', exact: true }).click();
   await expect(page.locator('.route-card').first()).toBeVisible({ timeout: 60000 });
   await expect(page.locator('.route-pavement-note')).toHaveCount(0);
@@ -90,6 +108,7 @@ try {
       'Expanded map',
       'Zero and five-minute budgets',
       'Moving shadows with departure time',
+      'Expanded Oerlikon junction search and shade routes offline',
       'Return to regular Zurich at reference time',
     ],
     generalRegression: 'docs/native-counts-validation.json',

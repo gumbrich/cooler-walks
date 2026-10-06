@@ -21,7 +21,7 @@ if not path.exists():
 source_hash = hashlib.sha256(path.read_bytes()).hexdigest()
 if source_hash != 'cfc33982cb2177c5d6304ea5a4f26c390ccda789463d0e74e89478e8414e188b':
     raise SystemExit('The pinned comparison raster changed; review its provenance first.')
-network = json.loads((ROOT / 'public/data/zurich-pavements.json').read_text())
+network = json.loads((ROOT / 'tests/fixtures/pavement-network-v1.json').read_text())
 lon = (network['bounds'][0]+network['bounds'][2])/2
 lat = (network['bounds'][1]+network['bounds'][3])/2
 day = datetime(2024, 8, 1, tzinfo=timezone.utc)

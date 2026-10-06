@@ -34,7 +34,7 @@ export const cities: City[] = [
     mapUrl: '/data/zurich-map.geojson',
     pavementPilot: {
       dataUrl: '/data/zurich-pavements.json',
-      version: 'zurich-pavements-2026-10-06-v1',
+      version: 'zurich-pavements-2026-10-06-v2',
     },
     detailedShade: {
       format: 'library',

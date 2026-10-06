@@ -1,5 +1,15 @@
 # Progress
 
+## Zurich pavement expansion · 0.15.0
+
+Expanded the optional municipal-path mode from 115 central features to **25,740 complete footpath/pavement/crossing features across the current 57.77 km² Zurich map**. Includes 5,844 searchable junctions, exact source endpoints, 1,360.33 km of combined linework and all 40 genuine connected components. The full graph stays in the worker and is built on demand from compact lossless source lines. Both website and native clients share the implementation. [Source and reproduction](pavement-pilot.md).
+
+Known/uncertain walking heights are masked on 1,128 features; missing heights are not evaluated at river-bed or tunnel-surface ground. Eight source-network journeys include six districts, Bahnhofbrücke and a 5.77 km Altstetten–Oerlikon trip. All edges stay inside coverage; gaps remain disconnected. Historical independent shadow points and competitor-comparison populations are preserved. Field accuracy, crossings and current access still need the planned observations.
+
+Local checks pass: TypeScript, 107 unit/model/language tests, complete source/routing verification, 28 browser scenarios, three focused layout/recovery regressions after screenshot refinement, formatting, production build and all five pack hashes. The Zurich package is 81.5 MB compressed / 188.7 MB expanded, within unchanged limits. The production-worker upgrade regression also passes with the original v1 pavement cache and subsequent offline use. Android/iOS assets are synchronized and Android compiles. Device and hosted checks are recorded separately in the platform report when complete.
+
+Next: field-check district pavements, crossings, steps and bridge/underpass heights; then match traffic evidence to municipal paths with verified alignment. Neither computational agreement nor wider source coverage establishes field accuracy.
+
 ## Startup and update repairs · 0.14.1
 
 Reduced unnecessary shade calculations with exact walking-network budget bounds and reusable static geometry. The original cold autumn-afternoon Android case now passes in 20.0 seconds on the unchanged 2 GB emulator; the offline June restart passes in 19.6 seconds. Trip edits cancel obsolete calculations, so an intermediate long journey cannot hold up the final address pair. Added a reproducible cold-start check preserving the previous shade totals, plus a small exhaustive route-budget test.

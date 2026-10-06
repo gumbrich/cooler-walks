@@ -1,6 +1,6 @@
 import type { DetailedShadeData } from './detailed-shade';
 import type { ShadeLibraryData } from './shade-library';
-import type { PavementNetwork } from './pavements';
+import type { PavementData, PavementNetwork } from './pavements';
 export type Point = [number, number];
 export type Bounds = [number, number, number, number];
 export interface City {
@@ -128,7 +128,7 @@ export interface PilotData {
   shadeLibrary?: ShadeLibraryData;
   /** Used by synchronous source-validation tools, never shipped to the UI. */
   shadeTiles?: Record<string, DetailedShadeData>;
-  pavementNetwork?: PavementNetwork;
+  pavementNetwork?: PavementData;
 }
 /** The UI retains only search, map points and counter evidence. Heavy graph/model geometry belongs to the routing worker. */
 export type PlannerData = Pick<PilotData, 'places' | 'trees' | 'vehicleCounts'> & {

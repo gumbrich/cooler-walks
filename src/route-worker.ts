@@ -6,7 +6,7 @@ import type { AreaDescriptor } from './lib/area-types';
 import { decodeArea } from './lib/area-codec';
 import { boundedBytes } from './lib/area-codec';
 import { ShadeLibrary, decodeShadeTile, withShadeTiles } from './lib/shade-library';
-import { validatePavements } from './lib/pavements';
+import { validatePavementData, pavementLines } from './lib/pavements';
 let router: Router;
 let sequence = 0;
 let loading: AbortController | undefined;
@@ -79,7 +79,7 @@ self.onmessage = async (
         }
         if (!data.pavementNetwork)
           throw new Error('The pavement pilot data is missing. Update the saved Zurich map.');
-        validatePavements(data.pavementNetwork, m.city.id, m.city.pavementPilot.version);
+        validatePavementData(data.pavementNetwork, m.city.id, m.city.pavementPilot.version);
       }
       // Only UI data crosses to the main thread. All routing geometry is parsed
       // and indexed here, without cloning the whole city into a second heap.
@@ -93,7 +93,7 @@ self.onmessage = async (
             version: data.pavementNetwork.version,
             bounds: data.pavementNetwork.bounds,
             places: data.pavementNetwork.places,
-            lines: data.pavementNetwork.lines,
+            lines: pavementLines(data.pavementNetwork, m.city),
           },
         },
         map: saved?.map,

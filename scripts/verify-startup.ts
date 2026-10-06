@@ -15,6 +15,9 @@ for (const [departure, fastestShade, alternativeShade] of [
   const started = performance.now();
   const data = JSON.parse(fs.readFileSync(`public${city.dataUrl}`, 'utf8')) as PilotData;
   data.shadeLibrary = JSON.parse(fs.readFileSync(`public${city.detailedShade!.dataUrl}`, 'utf8'));
+  data.pavementNetwork = JSON.parse(
+    fs.readFileSync(`public${city.pavementPilot!.dataUrl}`, 'utf8'),
+  );
   const from = data.places.find((p) => p.name === 'Bahnhofquai')!;
   const to = data.places.find((p) => p.name === 'Bürkliplatz')!;
   const router = new Router(data, city, true);
@@ -51,6 +54,7 @@ const report = {
   city: city.id,
   dataVersion: city.dataVersion,
   shadeVersion: city.detailedShade!.version,
+  pavementVersion: city.pavementPilot!.version,
   results,
   note: 'Cold worker-equivalent loading from local files, including parse/index/decode. Timings depend on hardware; these are computational regressions, not field validation.',
 };

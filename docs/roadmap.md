@@ -4,7 +4,7 @@
 
 ## Pavement pilot follow-up
 
-Version 0.14.0 implements a bounded municipal-pavement graph, arrival-time building shade on those paths, and independent source/model comparisons. Next: [paired field validation](pavement-field-validation.md), clarification of Vampire Routing’s raster timestamp, and documented Shadowmap point/time API access before a numerical comparison. Review additional pavement connections before expanding beyond Talacker–Bahnhofstrasse. Do not infer ground truth from cross-tool agreement.
+Version 0.15.0 expands the municipal-path graph across the current Zurich map, retaining arrival-time shade and the original independent comparison points. Next: [paired field validation](pavement-field-validation.md), clarification of Vampire Routing’s raster timestamp, and documented Shadowmap point/time API access before a numerical comparison. Next check the expanded district paths, crossings, steps and uncertain walking heights in the field; only then extend side-of-street traffic matching. Do not infer ground truth from cross-tool agreement.
 
 ## Zurich first
 

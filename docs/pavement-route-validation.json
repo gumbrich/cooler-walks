@@ -1,6 +1,6 @@
 {
   "model": "roof-mesh-tiled-ground-arrival-v8",
-  "networkVersion": "zurich-pavements-2026-10-06-v1",
+  "networkVersion": "zurich-pavements-2026-10-06-v2",
   "records": [
     {
       "journey": "Talacker–Bahnhofstrasse",
@@ -96,7 +96,7 @@
       "journey": "Talacker–Bahnhofstrasse",
       "departure": "2026-06-21T16:00:00Z",
       "mode": "shade",
-      "candidates": 3,
+      "candidates": 4,
       "fastest": {
         "distance": 399.4862453577219,
         "minutes": 4.993578066971524,

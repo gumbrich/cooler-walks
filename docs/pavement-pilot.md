@@ -1,33 +1,40 @@
-# Zurich pavement pilot · 0.14.0
+# Zurich pavements and footpaths · 0.15.0
 
-The planner can now compare mapped pavements around **Talacker–Bahnhofstrasse**. Open `/?view=planner&network=pavements` (German: `/de/?view=planner&network=pavements`) or select **Try pavement pilot / Trottoir-Pilot testen** in Zurich. Return with **Zurich map / Zürich-Karte**. This is an experimental, selected-street network, not pavement-level coverage of Zurich.
+The optional pavement mode now covers **all complete municipal walking lines inside the current Zurich map**, not just Talacker–Bahnhofstrasse. Open [the planner](https://coolerwalks.ch/de/?view=planner&network=pavements) or choose **Try pavement pilot / Trottoir-Pilot testen**. The supported area remains **57.77 km²**, bounded by the city polygon and `[8.472, 47.353, 8.570, 47.427]`: centre, north and west, including Oerlikon and Altstetten. This is experimental coverage of that area, not every street in the municipality or field-validated access.
 
 ## Source and topology
 
-The [City of Zurich Fuss- und Velowegnetz](https://data.stadt-zuerich.ch/dataset/geo_fuss__und_velowegnetz) provides pavement lines and crossing connections under CC0. Its WFS `tbl_routennetz` supplies LV95 coordinates (EPSG:2056), `objectid`, `fuss`, street names and bicycle attributes. We retain only `fuss=1`; bicycle direction restrictions are not interpreted as pedestrian restrictions. Catalogue date: **19 October 2022**; extract fetched: **6 October 2026**. Neither establishes a recent survey date for each line.
+The [City of Zurich Fuss- und Velowegnetz](https://data.stadt-zuerich.ch/dataset/geo_fuss__und_velowegnetz) is CC0. The documented WFS `tbl_routennetz` supplies LV95 (EPSG:2056) lines, `objectid`, `fuss`, street names and bicycle attributes. Source/catalogue date: **19 October 2022**; metadata revision: **12 January 2026**; fetched **6 October 2026**. The latter dates do not establish a new street survey. No per-feature observation date, walking height or complete steps inventory exists.
 
-The bounded WFS request returned 2,053 features. A pinned whitelist selects **115 features**, including **36 named crossing sections**, with 4.009 km of source linework. There are **733 nodes and 753 edges**, in one connected component. The [source audit](pavement-source-audit.json) retains feature IDs, bounds, source hash and four reference junctions. Selected streets and the pilot envelope are drawn on the map; a point inside the envelope can still be off the supported network.
+The full WFS request and independent `resultType=hits` both return **40,467 unique features**. Of these, 31,263 have `FUSS=1`; **25,740** lie completely inside the existing walking area. All vertices and segments are checked. Boundary-crossing features are omitted whole, without clipping and inventing new connections. `MAP_FUSS=0` is retained: that field describes printed-route categories, not pedestrian access. Bicycle one-way attributes are not pedestrian restrictions.
 
-We join only identical **original LV95 endpoints**. Interior shape vertices, lines crossing in plan view and even very small gaps are not joined. Each source line is subdivided into at most 6 m pieces while retaining its shape. The first broader extract had disconnected pieces; these have not been bridged with guessed connectors. The schema lacks explicit elevation/level and step attributes. The pilot avoids introducing grade-separated connections, but its source topology, public access, steps, construction and crossings still need field inspection. It is not an accessibility or safety assessment.
+The result contains **1,360.33 km of combined path linework**, **5,118 named crossing sections**, **268,742 derived edges** and **5,844 searchable junctions**. Linework counts both pavements where present; it is not unique street length. There are **40 connected components**. The largest has 25,662 features and 1,356.09 km; smaller pieces remain disconnected. Only identical original endpoints connect. Interior vertices, apparent 2D intersections and even small coordinate gaps do not create connections. Curved source lines are subdivided into at most 6 m pieces without straightening their shape.
 
-Start, destination and stop selection use the four source junctions or map points within 6 m of a graph node. This stricter limit reduces wrong-pavement snapping; it cannot establish a safe entrance connection or determine a phone user's pavement. General address search remains available on the regular Zurich network. No turn-by-turn left/right guidance is claimed.
+Four unnamed lines retain an empty name. Source names are not corrected by guesswork; occasional inconsistent names (including a “Gessnerbrücke” label far from the central bridge) need municipal/field review. The original 115 features and their independent validation points are preserved unchanged. [Full source audit](pavement-source-audit.json) · [original audit](pavement-source-audit-v1.json) · [historical release](pavement-pilot-v1.md).
 
-## Routing and shade
+## Choosing a route
 
-The fastest route uses the source path lengths at the existing 80 m/min walking speed. Shade/sun alternatives remain within the chosen 0/5/10-minute extra-walking budget. Crossing distances count normally; signal waits are unknown and excluded. The displayed crossing count is the number of traversed **source crossing sections**, not the number of traffic lights or necessarily complete crossings.
+Search for a junction, such as **Franklinstrasse / Hofwiesenstrasse**, or tap a highlighted path. Search uses a stable source endpoint for each street pair; choose other corners or pavements directly on the enlarged map. Starts, destinations and stops must be within 6 m of a graph node. This reduces wrong-pavement snapping but does not establish safe entrance access or identify which side of a road a phone is on. General address search remains available in the regular Zurich mode.
 
-Alternative search adds a 24 m-equivalent crossing preference cost, split across each source crossing section. This affects candidate choice only; it does not inflate reported distance or duration. A shade alternative must save at least 40 m of estimated direct-sun exposure per extra crossing section (minimum 40 m), alongside the existing coverage and detour rules. This discourages frequent switching for small model differences. These are explicit routing-policy choices, not measured crossing delays.
+The fastest route uses actual source lengths and the existing 80 m/min assumption. Alternatives obey the 0/5/10-minute extra-walking limit. Crossing distance counts; signal waits are unknown. The crossing count refers to traversed named source sections, not necessarily complete road crossings or traffic lights. A 24 m-equivalent crossing preference affects candidate choice only. A shade alternative must save at least 40 m of estimated direct sun per additional crossing section (minimum 40 m), alongside the existing coverage rules. These are routing policies, not measured delays.
 
-The existing roof/facade ray intersections, LiDAR-derived ground elevations, arrival-time sampling and uncertainty checks now operate on the pavement geometry. Ground correction is not terrain-horizon shadowing. Building shade is included; tree shade, clouds and thermal comfort are not. Greenery stays separate. Calmer-street and waterside preference controls are omitted in this bounded pilot; their normal Zurich implementation is unchanged.
+The full network is compactly encoded as original LV95 integer coordinate deltas. All original coordinates, including six-decimal coordinates and endpoint identities, are verified through a lossless round trip. Encoded precision is not survey accuracy. The 3.24 MB asset expands to the detailed routing graph only when pavement mode is selected, inside the worker. The main map draws original source lines with zoom-dependent styling. The complete Zurich offline download is approximately **81.5 MB compressed / 188.7 MB expanded**, within the unchanged 80 MiB / 200 MiB limits. Existing saved maps need updating; checksums detect old packs.
 
-Computed example, **Talacker / Pelikanstrasse → Bahnhofstrasse / Sihlstrasse, 21 June 2026, 14:00 Europe/Zurich**, +5-minute limit:
+## Shade and uncertain walking heights
 
-| Route                | Distance | Walking time | Estimated direct sun | Unknown | Crossing sections |
-| -------------------- | -------: | -----------: | -------------------: | ------: | ----------------: |
-| Fastest              |    399 m |     4.99 min |                399 m |     0 m |                 4 |
-| More estimated shade |    490 m |     6.13 min |                186 m |     0 m |                 4 |
+Existing roof/facade ray intersections and LiDAR-derived ground heights operate at arrival time along each path. Buildings are modelled; tree proximity remains greenery. Tree shade, distant terrain-horizon shadows, clouds and thermal comfort are not included. Calmer-street and waterside preferences remain available on the normal network, not this municipal-path mode.
 
-That is **1.14 additional minutes** and about **214 m less modelled direct sun** among the candidates evaluated. It is not a field measurement. At 18:00 the same trip has no qualifying better alternative. Zero extra minutes retains only the fastest route. Full results, winter/night cases, stops and normal-network recovery are in the [routing report](pavement-route-validation.json).
+Municipal lines contain no height/level information. **1,128 features** are therefore explicitly marked unknown for geometric shade: named bridges, underpasses, passages, platforms and stairs; lines crossing mapped surface water; and lines substantially overlapping an OSM walking feature already tagged as non-ground/covered. The latter requires at least **80% of the line length within 4 m**, sampled at at most 3 m intervals. This is a conservative association rule, not a measured confidence. Simply passing near or across an underground line is insufficient. An initial 12 m proximity rule incorrectly withheld ordinary surface streets and was rejected before release.
+
+These masks do not guarantee that every bridge, underpass or elevated pavement is identified. Some neighbouring or covered paths may still be withheld unnecessarily. **121 named stair features** are marked as known steps; absence of that flag is not evidence of a step-free route. No turn-by-turn pavement guidance, current closure, crossing-safety or accessibility claim is made.
+
+At least 95% known model coverage is required for shade/sun comparison. Otherwise the app shows the available greenery comparison and retains shade as unknown. For example, the checked Bahnhofbrücke trip has unknown shade throughout because river-bed elevation would be an invalid receiver. No shade benefit is claimed there.
+
+## Expansion checks
+
+[Eight real journeys](pavement-expansion-validation.json) cover Altstetten, Oerlikon, Höngg, Wiedikon, Seefeld, Wipkingen and Bahnhofbrücke, including a 5.77 km Altstetten–Oerlikon walk. Oerlikon, Wiedikon and Seefeld have qualifying shade alternatives in the checked summer scenario; other cases either have no better evaluated route or insufficient shade coverage. Checks cover full-edge coverage, exposure/distance accounting, the detour limit, unknown bridge height and genuinely disconnected paths. The [central regression](pavement-route-validation.json) retains summer/winter/night, zero detour, sun preference, ordered stops and return to the regular network.
+
+The original Talacker → Bahnhofstrasse summer-noon comparison remains 399 m fastest versus 490 m with more estimated shade, +1.14 min and about 214 m less modelled direct sun. These are computations, not field observations.
 
 ## Independent checks and other tools
 
@@ -50,7 +57,7 @@ Reusable work: evaluate GRASS/GDAL surface-and-horizon preprocessing in a separa
 
 ## Reproduce
 
-The small derived graph and independent regression fixtures are committed. A fresh checkout can run the pilot without raw downloads:
+A fresh checkout includes the compact source lines and independent regression fixtures; raw downloads are not needed to run the app:
 
 ```sh
 npm ci
@@ -59,7 +66,7 @@ npm run check
 npm run data:verify:pavements
 ```
 
-For source reproduction:
+To reproduce the municipal extract:
 
 ```sh
 npm run data:fetch:pavements
@@ -67,20 +74,10 @@ npm run data:prepare:pavements
 npm run data:packs
 ```
 
-The preparer requires the pinned raw SHA-256 in `scripts/pavement-pilot.json`. If the source changes, review the geometry, topology and whitelist before updating the hash/version. Raw extracts stay in ignored `data/raw/`; the WFS query and limits are in `scripts/fetch-pavements.ts`. Re-preparation also writes the **blank** field template, so save completed observations separately.
+The fetcher verifies the source count before accepting a full response. Preparation requires the pinned source SHA-256 in `scripts/pavement-pilot.json`, then checks geographic coverage and the preserved original geometry. If the source changes, review it and version the data deliberately. Raw data stays in ignored `data/raw/zurich-pavements-expansion/`. The original field template is preserved and never overwritten by expansion preparation.
 
-The full independent audit needs the original roof/terrain archives from [shade-library preparation](shade-library.md) and the validation Python environment:
-
-```sh
-.venv-geo/bin/pip install -r scripts/requirements-validation.txt
-npm run data:verify:pavements
-npm run data:audit:pavements
-curl --fail --location 'https://raw.githubusercontent.com/sosm/cbf-routing-profiles/6b45390967718a4b785af11222fd0dc2688eeeac/vampire/shadows_zurich_city.asc' --output data/raw/zurich-pavements/vampire-shadows.asc
-npm run data:compare:pavements
-```
-
-The 88 MB comparison raster stays ignored; its pinned hash is checked before comparison. The live application has no competitor-service dependency. The pavement asset is also included in Zurich downloads and shared native assets.
+For independent source-shape/solar checks, use the original roof/terrain archives from [shade-library preparation](shade-library.md) and the validation environment. `npm run data:audit:pavements` reads the current central predictions and writes separate `*-expansion` outputs for v2, preserving the original 267-point fixture. The optional Vampire comparison deliberately keeps the original 251 points in `tests/fixtures/pavement-network-v1.json`; it does not silently change its sample population to the expanded city network. Its 88 MB raster stays ignored and is not a runtime dependency.
 
 ## Next acceptance step
 
-Use the [paired field locations and protocol](pavement-field-validation.md) to check both sides of Bahnhofstrasse and each reference route's crossings. The computational implementation and browser pilot are delivered; field accuracy and the Shadowmap comparison remain unresolved. Extend the pavement network only after reviewing additional source connections and field evidence.
+Use the [paired field protocol](pavement-field-validation.md), adding district walks from the expansion report. Check which pavements are open, source junctions and crossings, named/unnamed steps, bridge/underpass receivers and dated shadows. Wider source availability is authorized; model accuracy remains on hold pending field evidence. Extend traffic matching to municipal paths only after checking side-of-street alignment. Shadowmap access and the external-raster timestamp ambiguity remain unresolved.

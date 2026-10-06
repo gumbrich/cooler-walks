@@ -14,7 +14,13 @@ import {
 } from './traffic';
 import { WaterIndex } from './water';
 import { inCoverage, segmentInCoverage } from './coverage';
-import { CROSSING_CHOICE_METERS, PAVEMENT_SNAP_METERS, validatePavements } from './pavements';
+import {
+  CROSSING_CHOICE_METERS,
+  PAVEMENT_SNAP_METERS,
+  validatePavementData,
+  expandPavements,
+  type PavementNetwork,
+} from './pavements';
 
 export const WALK_METERS_PER_MINUTE = 80;
 export const SAMPLE_METERS = 8;
@@ -150,6 +156,7 @@ export class Router {
   private detailedOnly = false;
   private baseGraph: Pick<PilotData, 'nodes' | 'edges'>;
   private pavementMode = false;
+  private pavementGraph?: PavementNetwork;
   private spatial = new Map<
     number,
     (Pick<Sample, 'point' | 'meters' | 'green' | 'water' | 'traffic'> & { metric: Point })[]
@@ -163,7 +170,7 @@ export class Router {
     this.baseGraph = { nodes: data.nodes, edges: data.edges };
     if (data.pavementNetwork) {
       if (!city.pavementPilot) throw new Error('Unexpected pavement network');
-      validatePavements(data.pavementNetwork, city.id, city.pavementPilot.version);
+      validatePavementData(data.pavementNetwork, city.id, city.pavementPilot.version);
     }
     this.gridRotation = gridAzimuth(city, 0);
     if (data.cityId !== city.id || data.version !== city.dataVersion)
@@ -262,7 +269,9 @@ export class Router {
     if (pavements === this.pavementMode) return;
     if (pavements && !this.data.pavementNetwork)
       throw new Error('The pavement pilot is unavailable for this area.');
-    const graph = pavements ? this.data.pavementNetwork! : this.baseGraph;
+    if (pavements && !this.pavementGraph)
+      this.pavementGraph = expandPavements(this.data.pavementNetwork!, this.city);
+    const graph = pavements ? this.pavementGraph! : this.baseGraph;
     this.data.nodes = graph.nodes;
     this.data.edges = graph.edges;
     this.points = graph.nodes.map((node) => metric(this.city, node.point));
@@ -388,9 +397,7 @@ export class Router {
       }
     });
     if (this.pavementMode && (d > PAVEMENT_SNAP_METERS || best < 0))
-      throw new Error(
-        'Choose a point on a highlighted pavement, within 6 metres of the mapped path.',
-      );
+      throw new Error('Choose a point on a highlighted path, within 6 metres of the mapped line.');
     if (d > 45 || best < 0)
       throw new Error(
         'No mapped public walking path within 45 metres. Choose a point on a nearby street or path.',

@@ -19,6 +19,8 @@ spec = importlib.util.spec_from_file_location('audit', ROOT / 'scripts/audit-sha
 audit = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(audit)
 predictions = json.loads((ROOT / 'data/raw/zurich-pavements/predictions.json').read_text())
+# Preserve the frozen original comparison when auditing a later network.
+suffix = '' if predictions['networkVersion'].endswith('-v1') else '-expansion'
 sources = json.loads((ROOT / 'docs/shade-library-data.json').read_text())
 rows = [r for r in predictions['rays'] if r['ground'] is not None and r['altitude'] >= math.radians(10)]
 lines = []
@@ -58,8 +60,8 @@ report = {'checkedAt': datetime.now(timezone.utc).isoformat(), 'networkVersion':
     'maximumSolarDirectionDifferenceDegrees': max(solar_errors), 'solarClassificationChanges': solar_changes,
     'passed': bool(records) and not mismatches and max(solar_errors) <= .25,
     'scope': 'Original source polygons versus tiled triangles at actual pavement samples. Same historical buildings and receiver ground; not independent field observations. SPA classifications may differ near moving shadow edges.'}
-(ROOT / 'docs/pavement-shadow-audit.json').write_text(json.dumps(report, indent=2) + '\n')
-(ROOT / 'tests/fixtures/pavement-shade-reference.json').write_text(json.dumps({
+(ROOT / f'docs/pavement-shadow-audit{suffix}.json').write_text(json.dumps(report, indent=2) + '\n')
+(ROOT / f'tests/fixtures/pavement-shade-reference{suffix}.json').write_text(json.dumps({
     'networkVersion': predictions['networkVersion'], 'libraryVersion': predictions['libraryVersion'],
     'sourceManifestSha256': sources['manifestSha256'], 'cases': records}, separators=(',', ':')) + '\n')
 print({k: v for k, v in report.items() if k not in ['geometryMismatches', 'solarClassificationChanges', 'excludedWithin2cmOfFaceEdge']}, flush=True)

@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { getCity } from '../src/lib/cities';
 import { Router, MODEL_VERSION, WALK_METERS_PER_MINUTE } from '../src/lib/routing';
 import { ShadeLibrary, decodeShadeTile, withShadeTiles } from '../src/lib/shade-library';
-import { validatePavements } from '../src/lib/pavements';
+import { validatePavements, expandPavements } from '../src/lib/pavements';
 import { gridAzimuth, metric, distance } from '../src/lib/geo';
 import { solar } from '../src/lib/solar';
 import type { PilotData, Route, Point } from '../src/lib/types';
@@ -12,7 +12,11 @@ const city = getCity('ch-zurich');
 const data: PilotData = JSON.parse(fs.readFileSync(`public${city.dataUrl}`, 'utf8'));
 data.pavementNetwork = JSON.parse(fs.readFileSync(`public${city.pavementPilot!.dataUrl}`, 'utf8'));
 data.shadeLibrary = JSON.parse(fs.readFileSync(`public${city.detailedShade!.dataUrl}`, 'utf8'));
-const network = validatePavements(data.pavementNetwork!, city.id, city.pavementPilot!.version);
+const network = validatePavements(
+  expandPavements(data.pavementNetwork!, city),
+  city.id,
+  city.pavementPilot!.version,
+);
 const mainPlaces = data.places;
 const router = new Router(data, city, true),
   library = router.detailed as ShadeLibrary;
@@ -167,7 +171,7 @@ if (sunny.alternative) assert(sunny.alternative.minutes <= sunny.fastest.minutes
 assert.throws(
   () =>
     router.calculate(
-      [8.55, 47.38],
+      [8.6, 47.38],
       p[1].point,
       '2026-06-21T12:00:00Z',
       5,

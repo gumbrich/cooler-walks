@@ -26,4 +26,5 @@ docs/traffic-validation.json
 docs/traffic-zone-validation.json
 docs/pavement-*.json
 docs/pavement-field-points.geojson
-tests/fixtures/pavement-shade-reference.json
+tests/fixtures/pavement-shade-reference*.json
+tests/fixtures/pavement-network*.json

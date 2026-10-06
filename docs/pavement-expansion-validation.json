@@ -1,0 +1,514 @@
+{
+  "checkedAt": "2026-10-06T20:09:29.106Z",
+  "networkVersion": "zurich-pavements-2026-10-06-v2",
+  "departure": "2026-06-21T12:00:00Z",
+  "records": [
+    {
+      "district": "Altstetten",
+      "from": "Altstetterstrasse / Badenerstrasse",
+      "to": "Altstetterstrasse / Hohlstrasse",
+      "points": [
+        [
+          8.486494863697924,
+          47.387598405689424
+        ],
+        [
+          8.487325509492386,
+          47.39116872990209
+        ]
+      ],
+      "mode": "shade",
+      "fastest": {
+        "distance": 417.73359083308895,
+        "minutes": 5.221669885413612,
+        "shadeMeters": 19.061408807536615,
+        "sunMeters": 398.6721820255523,
+        "unknownMeters": 0,
+        "crossingSections": 2,
+        "streets": [
+          "Badenerstrasse",
+          "Badenerstrasse Überquerung",
+          "Badenerstrasse",
+          "Altstetterstrasse",
+          "Meier-Bosshard-Strasse Überquerung",
+          "Altstetterstrasse"
+        ]
+      },
+      "alternative": null,
+      "computeMs": 1251
+    },
+    {
+      "district": "Oerlikon",
+      "from": "Franklinstrasse / Hofwiesenstrasse",
+      "to": "Franklinstrasse / Schaffhauserstrasse",
+      "points": [
+        [
+          8.542074543101426,
+          47.41026670256105
+        ],
+        [
+          8.54633603558621,
+          47.408787715334675
+        ]
+      ],
+      "mode": "shade",
+      "fastest": {
+        "distance": 376.0026907690595,
+        "minutes": 4.700033634613243,
+        "shadeMeters": 99.72425580007246,
+        "sunMeters": 276.27843496898754,
+        "unknownMeters": 0,
+        "crossingSections": 1,
+        "streets": [
+          "Franklinstrasse",
+          "Franklinstrasse Überquerung",
+          "Franklinstrasse"
+        ]
+      },
+      "alternative": {
+        "distance": 408.60621055257883,
+        "minutes": 5.107577631907235,
+        "shadeMeters": 263.08981872471287,
+        "sunMeters": 139.9791154922991,
+        "unknownMeters": 5.537276335566709,
+        "crossingSections": 2,
+        "streets": [
+          "Franklinstrasse",
+          "Franklinstrasse Überquerung"
+        ]
+      },
+      "computeMs": 550
+    },
+    {
+      "district": "Höngg",
+      "from": "Limmattalstrasse / Regensdorferstrasse",
+      "to": "Limmattalstrasse / Schwertstrasse",
+      "points": [
+        [
+          8.499231583741699,
+          47.402156366992315
+        ],
+        [
+          8.504592206384332,
+          47.399930266823446
+        ]
+      ],
+      "mode": "shade",
+      "fastest": {
+        "distance": 478.89188238998827,
+        "minutes": 5.986148529874853,
+        "shadeMeters": 37.97997686383406,
+        "sunMeters": 440.91190552615427,
+        "unknownMeters": 0,
+        "crossingSections": 2,
+        "streets": [
+          "Regensdorferstrasse Überquerung",
+          "Limmattalstrasse",
+          "Bläsistrasse Überquerung",
+          "Limmattalstrasse"
+        ]
+      },
+      "alternative": null,
+      "computeMs": 579
+    },
+    {
+      "district": "Wiedikon",
+      "from": "Birmensdorferstrasse / Zweierstrasse",
+      "to": "Birmensdorferstrasse / Seebahnstrasse",
+      "points": [
+        [
+          8.518313849707333,
+          47.370245616553035
+        ],
+        [
+          8.523092888454142,
+          47.37104400671513
+        ]
+      ],
+      "mode": "shade",
+      "fastest": {
+        "distance": 562.7114446453554,
+        "minutes": 7.033893058066942,
+        "shadeMeters": 123.54501814915066,
+        "sunMeters": 439.1664264962049,
+        "unknownMeters": 0,
+        "crossingSections": 10,
+        "streets": [
+          "Zweierstrasse",
+          "Zweierstrasse Überquerung",
+          "Kehlhofstrasse",
+          "Brinerstrasse Überquerung",
+          "Kehlhofstrasse",
+          "Kehlhofstrasse Überquerung",
+          "Kehlhofstrasse",
+          "Schlossgasse",
+          "Schlossgasse Überquerung",
+          "Birmensdorferstrasse Überquerung",
+          "Birmensdorferstrasse",
+          "Zentralstrasse Überquerung",
+          "Birmensdorferstrasse",
+          "Weststrasse Überquerung",
+          "Birmensdorferstrasse"
+        ]
+      },
+      "alternative": {
+        "distance": 658.8132736332659,
+        "minutes": 8.235165920415824,
+        "shadeMeters": 471.8973847159634,
+        "sunMeters": 160.4627992143868,
+        "unknownMeters": 26.45308970291667,
+        "crossingSections": 4,
+        "streets": [
+          "Birmensdorferstrasse",
+          "Bremgartnerstrasse",
+          "Zurlindenstrasse",
+          "Zurlindenstrasse Überquerung",
+          "Zweierstrasse Überquerung",
+          "Zweierstrasse",
+          "Weststrasse Überquerung",
+          "Zweierstrasse",
+          "Seebahnstrasse"
+        ]
+      },
+      "computeMs": 680
+    },
+    {
+      "district": "Seefeld",
+      "from": "Alderstrasse / Seefeldstrasse",
+      "to": "Brotgasse / Seefeldstrasse",
+      "points": [
+        [
+          8.555072698495518,
+          47.35696575635225
+        ],
+        [
+          8.549989627459956,
+          47.362978163585446
+        ]
+      ],
+      "mode": "shade",
+      "fastest": {
+        "distance": 782.5376404541396,
+        "minutes": 9.781720505676745,
+        "shadeMeters": 240.92643591000066,
+        "sunMeters": 541.6112045441389,
+        "unknownMeters": 0,
+        "crossingSections": 3,
+        "streets": [
+          "Seefeldstrasse",
+          "Dahliastrasse Überquerung",
+          "Seefeldstrasse",
+          "Höschgasse Überquerung",
+          "Seefeldstrasse",
+          "Seefeldstrasse Überquerung",
+          "Seefeldstrasse"
+        ]
+      },
+      "alternative": {
+        "distance": 838.0225859446599,
+        "minutes": 10.47528232430825,
+        "shadeMeters": 608.5239404378385,
+        "sunMeters": 229.49864550682017,
+        "unknownMeters": 0,
+        "crossingSections": 3,
+        "streets": [
+          "Seefeldstrasse",
+          "Dahliastrasse Überquerung",
+          "Seefeldstrasse",
+          "Höschgasse Überquerung",
+          "Seefeldstrasse",
+          "Florastrasse",
+          "Seefeldstrasse",
+          "Seefeldstrasse Überquerung",
+          "Seefeldstrasse"
+        ]
+      },
+      "computeMs": 1022
+    },
+    {
+      "district": "Wipkingen",
+      "from": "Nordstrasse / Rosengartenstrasse",
+      "to": "Nordstrasse / Rotbuchstrasse",
+      "points": [
+        [
+          8.525217322361527,
+          47.394857681596086
+        ],
+        [
+          8.530491715649573,
+          47.393085881654876
+        ]
+      ],
+      "mode": "greenery",
+      "fastest": {
+        "distance": 465.0962790482565,
+        "minutes": 5.813703488103206,
+        "shadeMeters": 171.59645116020647,
+        "sunMeters": 142.87565345807874,
+        "unknownMeters": 150.62417442997125,
+        "crossingSections": 4,
+        "streets": [
+          "Rosengartenstrasse",
+          "Nordstrasse",
+          "Rosengartenbrücke Überquerung",
+          "Nordstrasse",
+          "Nordbrücke",
+          "Rousseaustrasse Überquerung",
+          "Nordstrasse Überquerung"
+        ]
+      },
+      "alternative": null,
+      "computeMs": 744
+    },
+    {
+      "district": "Limmat crossing",
+      "from": "Bahnhofbrücke / Bahnhofquai",
+      "to": "Bahnhofbrücke / Central",
+      "points": [
+        [
+          8.54193631563546,
+          47.37682274165587
+        ],
+        [
+          8.543151609604903,
+          47.376735339283506
+        ]
+      ],
+      "mode": "greenery",
+      "fastest": {
+        "distance": 92.93192924356104,
+        "minutes": 1.161649115544513,
+        "shadeMeters": 0,
+        "sunMeters": 0,
+        "unknownMeters": 92.93192924356104,
+        "crossingSections": 0,
+        "streets": [
+          "Bahnhofbrücke"
+        ]
+      },
+      "alternative": {
+        "distance": 158.08143200776925,
+        "minutes": 1.9760179000971156,
+        "shadeMeters": 0,
+        "sunMeters": 0,
+        "unknownMeters": 158.08143200776925,
+        "crossingSections": 2,
+        "streets": [
+          "Bahnhofbrücke",
+          "Bahnhofbrücke Überquerung",
+          "Bahnhofbrücke",
+          "Bahnhofbrücke Überquerung"
+        ]
+      },
+      "computeMs": 496
+    },
+    {
+      "district": "Altstetten–Oerlikon",
+      "from": "Altstetterstrasse / Hohlstrasse",
+      "to": "Franklinstrasse / Hofwiesenstrasse",
+      "points": [
+        [
+          8.487325509492386,
+          47.39116872990209
+        ],
+        [
+          8.542074543101426,
+          47.41026670256105
+        ]
+      ],
+      "mode": "greenery",
+      "fastest": {
+        "distance": 5773.803259799379,
+        "minutes": 72.17254074749223,
+        "shadeMeters": 440.70232958686137,
+        "sunMeters": 4780.950668184569,
+        "unknownMeters": 552.1502620279593,
+        "crossingSections": 23,
+        "streets": [
+          "Altstetterstrasse Überquerung",
+          "Hohlstrasse",
+          "Hohlstrasse Überquerung",
+          "Hohlstrasse",
+          "Altstetterplatz",
+          "Bahnhof",
+          "Max-Högger-Strasse",
+          "Aargauerstrasse Überquerung",
+          "Aargauerstrasse",
+          "Max-Högger-Strasse",
+          "Unterführung",
+          "Meierwiesenstrasse",
+          "Bändlistrasse Überquerung",
+          "Meierwiesenstrasse Überquerung",
+          "Bändlistrasse Überquerung",
+          "Meierwiesenstrasse",
+          "Tüffenwies Überquerung",
+          "Meierwiesenstrasse",
+          "Europabrücke",
+          "Europabrücke Überquerung",
+          "Am Wasser",
+          "Am Wasser Überquerung",
+          "Chillesteig",
+          "Bauherrenstrasse Überquerung",
+          "Chillesteig",
+          "Ackersteinstrasse",
+          "Ackersteinstrasse Überquerung",
+          "Limmattalstrasse",
+          "Limmattalstrasse Überquerung",
+          "Limmattalstrasse",
+          "Bläsistrasse",
+          "Giacomettistrasse",
+          "Obere Bläsistrasse",
+          "Am Hönggerberg",
+          "Emil-Klöti-Strasse",
+          "Wässerlingweg",
+          "Fussweg",
+          "Wannenweg",
+          "Fussweg",
+          "Waldstrasse",
+          "Waldstrasse Überquerung",
+          "Waldstrasse",
+          "Käferholzstrasse Überquerung",
+          "Käferholzstrasse",
+          "Althoossteig Überquerung",
+          "Althoossteig",
+          "Althoossteig Überquerung",
+          "Althoossteig",
+          "Wehntalerstrasse",
+          "Wehntalerstrasse Überquerung",
+          "Fussweg",
+          "Regensbergstrasse",
+          "Maienstrasse Überquerung",
+          "Regensbergstrasse",
+          "Oberwiesenstrasse Überquerung",
+          "Regensbergstrasse",
+          "Goldregenweg Überquerung",
+          "Regensbergstrasse",
+          "Holunderweg Überquerung",
+          "Regensbergstrasse",
+          "Birchstrasse",
+          "Birchstrasse Überquerung",
+          "Birchstrasse",
+          "Regensbergstrasse",
+          "Hofwiesenstrasse Überquerung",
+          "Hofwiesenstrasse"
+        ]
+      },
+      "alternative": {
+        "distance": 5941.938510823582,
+        "minutes": 74.27423138529477,
+        "shadeMeters": 189.83377526149295,
+        "sunMeters": 5334.3211697305,
+        "unknownMeters": 417.78356583159405,
+        "crossingSections": 18,
+        "streets": [
+          "Altstetterstrasse Überquerung",
+          "Hohlstrasse",
+          "Hohlstrasse Überquerung",
+          "Hohlstrasse",
+          "Altstetterplatz",
+          "Bahnhof",
+          "Max-Högger-Strasse",
+          "Vulkanstrasse Überquerung",
+          "Max-Högger-Strasse",
+          "Max-Högger-Strasse Überquerung",
+          "Max-Högger-Strasse",
+          "Unterführung",
+          "Bernerstrasse Nord",
+          "Hönggerrampe Überquerung",
+          "Bernerstrasse Nord",
+          "Hönggerrampe Überquerung",
+          "Bernerstrasse Nord",
+          "Bernerstrasse",
+          "Fussweg",
+          "Tram Hardhof Überquerung",
+          "Fussweg",
+          "Hardeggsteg",
+          "Kloster-Fahr-Weg",
+          "Am Wasser",
+          "Am Wasser Überquerung",
+          "Eschergutweg",
+          "Ackersteinstrasse Überquerung",
+          "Eschergutweg",
+          "Limmattalstrasse",
+          "Limmattalstrasse Überquerung",
+          "Bellikersteig",
+          "Ottenbergstrasse Überquerung",
+          "Bellikersteig",
+          "Rebbergstrasse",
+          "Rebbergstrasse Überquerung",
+          "Rebbergstrasse",
+          "Waidfussweg",
+          "Emil-Klöti-Strasse Überquerung",
+          "Fussweg",
+          "Obere Waidstrasse",
+          "Bucheggplatz",
+          "Hofwiesenstrasse",
+          "Wehntalerstrasse Überquerung",
+          "Hofwiesenstrasse",
+          "Regensbergstrasse Überquerung",
+          "Regensbergstrasse",
+          "Hofwiesenstrasse",
+          "Bahnhof Oerlikon, Parkplatz Überquerung",
+          "Hofwiesenstrasse",
+          "Hofwiesenstrasse Überquerung",
+          "Hofwiesenstrasse",
+          "Franklinstrasse Überquerung"
+        ]
+      },
+      "computeMs": 7709
+    }
+  ],
+  "nodes": 260385,
+  "edges": 268742,
+  "components": [
+    259460,
+    213,
+    92,
+    78,
+    34,
+    30,
+    29,
+    27,
+    27,
+    26,
+    26,
+    24,
+    23,
+    23,
+    23,
+    22,
+    21,
+    20,
+    20,
+    19,
+    19,
+    14,
+    14,
+    12,
+    10,
+    9,
+    7,
+    6,
+    6,
+    6,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    4,
+    4,
+    4,
+    3
+  ],
+  "checks": [
+    "eight district/river/cross-city journeys",
+    "whole-edge coverage",
+    "distance and exposure accounting",
+    "five-minute alternative limit",
+    "bridge receiver withheld",
+    "disconnected components not joined"
+  ],
+  "limitations": "Computational checks of source consistency. No field observations, live closures, complete steps inventory, or guarantee of current pavement access."
+}

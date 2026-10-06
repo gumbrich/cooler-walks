@@ -74,12 +74,13 @@ try {
   await page.waitForFunction(() => !!navigator.serviceWorker.controller);
   const basel = versioned('/data/basel.json');
   await page.evaluate(
-    async ({ basel }) => {
+    async ({ basel, pavements }) => {
       const cache = await caches.open('cooler-walks-upgrade-test-old');
       await cache.put(
         '/data/zurich.json',
         new Response(JSON.stringify({ version: 'stale-test-fixture' })),
       );
+      await cache.put('/data/zurich-pavements.json', new Response(JSON.stringify(pavements)));
       await cache.add(basel);
       // User-managed downloads use a different store and must survive app upgrades.
       const request = indexedDB.open('cw-upgrade-test-download', 1);
@@ -97,7 +98,10 @@ try {
         };
       });
     },
-    { basel },
+    {
+      basel,
+      pavements: JSON.parse(fs.readFileSync('tests/fixtures/pavement-network-v1.json', 'utf8')),
+    },
   );
   // Open the new code under the OLD controller first. Hashes must bypass the
   // stale unversioned response even before a service-worker update can finish.
@@ -109,7 +113,15 @@ try {
   await expect(page.locator('.route-card').first()).toBeVisible({ timeout: 45000 });
   assert(requests.some((url) => url.includes(versioned('/data/zurich.json'))));
   await expect(page.locator('.route-model-note').first()).toContainText('3D roofs');
-  console.log('PASS new app loads under old controller without a manual reload');
+  assert(requests.some((url) => url.includes(versioned('/data/zurich-pavements.json'))));
+  await page.getByRole('button', { name: 'Try pavement pilot', exact: true }).click();
+  await expect(page.locator('.route-card')).toHaveCount(2);
+  await expect(page.locator('.route-pavement-note').first()).toContainText('4 crossing sections');
+  console.log(
+    'PASS new app and expanded pavements load under old controller without a manual reload',
+  );
+  await page.getByRole('button', { name: 'Zurich map', exact: true }).click();
+  await expect(page.locator('.route-card').first()).toBeVisible();
   current = true;
   await page.evaluate(async () => {
     window.upgradeClaimed = false;

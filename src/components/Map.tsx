@@ -353,14 +353,23 @@ export function WalkingMap({
         type: 'line',
         source: 'pavements',
         filter: ['==', ['get', 'crossing'], false],
-        paint: { 'line-color': '#43898c', 'line-width': 2, 'line-opacity': 0.75 },
+        paint: {
+          'line-color': '#43898c',
+          'line-width': ['interpolate', ['linear'], ['zoom'], 11, 0.35, 14, 0.8, 17, 2],
+          'line-opacity': ['interpolate', ['linear'], ['zoom'], 11, 0.25, 14, 0.5, 16, 0.75],
+        },
       });
       m.addLayer({
         id: 'pavement-crossings',
         type: 'line',
         source: 'pavements',
         filter: ['==', ['get', 'crossing'], true],
-        paint: { 'line-color': '#28696d', 'line-width': 2, 'line-dasharray': [1.5, 1.5] },
+        minzoom: 15,
+        paint: {
+          'line-color': '#28696d',
+          'line-width': ['interpolate', ['linear'], ['zoom'], 15, 1, 17, 2],
+          'line-dasharray': [1.5, 1.5],
+        },
       });
       m.addSource('routes', { type: 'geojson', data: collection([]) });
       m.addLayer({
@@ -632,9 +641,7 @@ export function WalkingMap({
       pavements && data?.pavementNetwork ? data.pavementNetwork.lines : collection([]),
     );
     const coverageCity =
-      pavements && data?.pavementNetwork
-        ? { ...city, bounds: data.pavementNetwork.bounds, coverage: undefined }
-        : city;
+      pavements && data?.pavementNetwork ? { ...city, bounds: data.pavementNetwork.bounds } : city;
     (m.getSource('coverage') as GeoJSONSource).setData(
       collection([{ type: 'Feature', properties: {}, geometry: coverageGeometry(coverageCity) }]),
     );
@@ -745,7 +752,15 @@ export function WalkingMap({
       result.alternative?.coordinates.forEach((p) => box.extend(p));
       m.fitBounds(box, {
         padding: {
-          top: matchMedia('(max-width:620px)').matches ? (hero ? 95 : 110) : hero ? 100 : 145,
+          top: matchMedia('(max-width:620px)').matches
+            ? hero
+              ? 95
+              : pavements
+                ? 140
+                : 110
+            : hero
+              ? 100
+              : 145,
           bottom: matchMedia('(max-width:620px)').matches
             ? hero
               ? 140
@@ -779,6 +794,9 @@ export function WalkingMap({
     }
   }, [expanded, ready, pavements]);
   useEffect(() => {
+    // An error/cleared trip resets framing, so recovering the same endpoints
+    // zooms back from the coverage overview to the walking route.
+    if (!tripKey) lastTrip.current = '';
     if (ready && tripKey && lastTrip.current !== tripKey) {
       fit();
       lastTrip.current = tripKey;
@@ -825,7 +843,7 @@ export function WalkingMap({
               <small className="map-pilot-label">{city.beta ? 'Beta' : t('Pilot')}</small>
             </strong>
             <span className="map-coverage-label">
-              {pavements ? t('Talacker–Bahnhofstrasse · pilot') : t(city.coverageLabel)}
+              {pavements ? t('Pavements & paths · pilot') : t(city.coverageLabel)}
               {!pavements && (city.beta ? ' · Beta' : t(' · pilot'))}
             </span>
             {pavements && (
