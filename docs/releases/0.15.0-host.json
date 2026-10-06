@@ -1,0 +1,17 @@
+{
+  "checkedAt": "2026-10-06T20:30:06.552362+00:00",
+  "version": "0.15.0",
+  "sourceCommit": "78f98d516d9b3662ba5dd423102ab6bf8d8b24ba",
+  "site": "https://coolerwalks.ch",
+  "netlifyPublishedRevision": "78f98d5",
+  "pavementVersion": "zurich-pavements-2026-10-06-v2",
+  "selectedFeatures": 25740,
+  "pavementSha256": "e1e43d4dcc8d367575d90e2cf05685175da5e64d0670b2afd744b3a48759b4c7",
+  "sourceMatchesExactly": true,
+  "shadeTileHashes": 81,
+  "packHashesVerified": 5,
+  "catalog": "0.15.0-hosted-catalog.json",
+  "publicPagesAndSecurityHeaders": true,
+  "nativeCors": true,
+  "pwaReport": "0.15.0-pwa-validation.json"
+}

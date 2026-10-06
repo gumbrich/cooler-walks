@@ -21,8 +21,5 @@
     "City change clears counter data and markers"
   ],
   "pageErrors": [],
-  "limitations": [
-    "No physical-phone test",
-    "iOS interactions not tested for this update"
-  ]
+  "limitations": ["No physical-phone test", "iOS interactions not tested for this update"]
 }

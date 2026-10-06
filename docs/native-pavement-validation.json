@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-06T20:16:34.885Z",
+  "checkedAt": "2026-10-06T20:28:15.790Z",
   "appVersion": "0.15.0",
   "device": "CoolerWalks_Test Android 16 emulator, 2 GB",
   "passed": [
@@ -14,9 +14,6 @@
     "Return to regular Zurich at reference time"
   ],
   "generalRegression": "docs/native-counts-validation.json",
-  "limitations": [
-    "No physical-phone test",
-    "No iOS interaction test"
-  ],
+  "limitations": ["No physical-phone test", "No iOS interaction test"],
   "pageErrors": []
 }
