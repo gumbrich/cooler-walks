@@ -24,16 +24,27 @@ const shell = async (cmd) => (await device.shell(cmd)).toString().trim();
 const wifi = await shell('settings get global wifi_on'),
   mobile = await shell('settings get global mobile_data');
 const errors = [];
+const timings = {};
 try {
   assert.equal(await shell(`pm clear ${pkg}`), 'Success');
+  const launched = performance.now();
   await shell(`am start -n ${pkg}/.MainActivity`);
   const page = await (await device.webView({ pkg })).page();
   page.on('pageerror', (e) => errors.push(e.message));
   // Finish first launch before setting the reference trip. Reloading during
   // the initial 3D-data transfer can overlap two large loads on a 2 GB AVD.
   await expect(page.locator('.route-card').first()).toBeVisible({ timeout: 60000 });
+  timings.firstRouteMs = Math.round(performance.now() - launched);
   await expect(page.locator('.mobile-time .time-control')).toBeVisible();
   await expect(page.getByRole('slider', { name: 'Departure time', exact: true })).toHaveCount(1);
+  // Reproduce the afternoon that originally timed out, even when this test
+  // is run after sunset. Reload creates a cold worker with no indexed tiles.
+  await page.clock.setFixedTime(new Date('2026-10-06T14:45:00Z'));
+  const afternoonStarted = performance.now();
+  await page.reload();
+  await expect(page.locator('.route-card').first()).toBeVisible({ timeout: 60000 });
+  timings.afternoonColdRouteMs = Math.round(performance.now() - afternoonStarted);
+  console.log('PASS Android cold autumn-afternoon route', timings);
   await page.clock.setFixedTime(new Date('2026-06-22T12:00:00Z'));
   await page.getByLabel('Departure date', { exact: true }).fill('2026-06-22');
   await page.getByRole('slider', { name: 'Departure time', exact: true }).fill('840');
@@ -48,10 +59,12 @@ try {
   await shell('svc wifi disable');
   await shell('svc data disable');
   await expect.poll(() => page.evaluate(() => navigator.onLine)).toBe(false);
+  const offlineStarted = performance.now();
   await page.reload();
   await expect(page.locator('.route-card').first()).toBeVisible({ timeout: 60000 });
   await expect(page.locator('.route-model-note').first()).toContainText('3D roofs');
-  console.log('PASS Android offline reload and bundled 3D data');
+  timings.offlineRouteMs = Math.round(performance.now() - offlineStarted);
+  console.log('PASS Android offline reload and bundled 3D data', timings);
   await page.getByRole('button', { name: 'Fit route to map', exact: true }).click();
   await expect(page.locator('.map-shell')).toHaveAttribute('data-map-settled', 'true', {
     timeout: 60000,
@@ -143,6 +156,7 @@ try {
         checkedAt: new Date().toISOString(),
         appVersion: JSON.parse(fs.readFileSync('package.json', 'utf8')).version,
         device: 'CoolerWalks_Test Android emulator',
+        timings,
         passed: [
           'Ground-referenced 3D roofs compute after an offline reload in central Zurich',
           'Whole Zurich coverage view renders on the 2 GB emulator',

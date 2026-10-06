@@ -1,8 +1,13 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+// @ts-expect-error Shared Node build helper.
+import { dataRevisions } from './scripts/lib/data-revisions.mjs';
 // @ts-expect-error Node build helper is shared with release checks.
 import { publicPageHtml } from './scripts/lib/release-config.mjs';
-export default defineConfig({
+export default defineConfig(({ command }) => ({
+  define: {
+    __DATA_REVISIONS__: JSON.stringify(command === 'build' ? dataRevisions('public') : {}),
+  },
   // The route worker imports this CommonJS dependency outside Vite's entry scan.
   // Prebundle it before the first page so discovery does not reload an active trip.
   optimizeDeps: { include: ['suncalc'] },
@@ -27,4 +32,4 @@ export default defineConfig({
     },
   },
   server: { port: 5173, strictPort: true },
-});
+}));

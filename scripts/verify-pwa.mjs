@@ -34,10 +34,10 @@ await page.evaluate(async () => {
 await page.waitForFunction(() => navigator.serviceWorker.controller !== null);
 await page.waitForFunction(
   async () =>
-    Boolean(await caches.match('/data/zurich.json')) &&
-    Boolean(await caches.match('/data/zurich-map.geojson')) &&
-    Boolean(await caches.match('/data/zurich-shade-library.json')) &&
-    Boolean(await caches.match('/data/zurich-pavements.json')),
+    Boolean(await caches.match('/data/zurich.json', { ignoreSearch: true })) &&
+    Boolean(await caches.match('/data/zurich-map.geojson', { ignoreSearch: true })) &&
+    Boolean(await caches.match('/data/zurich-shade-library.json', { ignoreSearch: true })) &&
+    Boolean(await caches.match('/data/zurich-pavements.json', { ignoreSearch: true })),
 );
 const cdp = await context.newCDPSession(page);
 const manifest = await cdp.send('Page.getAppManifest');
@@ -58,11 +58,11 @@ await expect(page.locator('.map-shell')).toHaveAttribute('data-map-ready', 'true
 });
 await page.waitForFunction(
   async () =>
-    Boolean(await caches.match('/data/basel.json')) &&
-    Boolean(await caches.match('/data/basel-map.geojson')),
+    Boolean(await caches.match('/data/basel.json', { ignoreSearch: true })) &&
+    Boolean(await caches.match('/data/basel-map.geojson', { ignoreSearch: true })),
 );
 const unvisitedCityPrecached = await page.evaluate(async () =>
-  Boolean(await caches.match('/data/cambridge.json')),
+  Boolean(await caches.match('/data/cambridge.json', { ignoreSearch: true })),
 );
 if (unvisitedCityPrecached)
   throw new Error('Unvisited cities should not be downloaded during installation');

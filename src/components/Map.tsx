@@ -1,3 +1,4 @@
+import { dataUrl } from '../lib/data-url';
 import { useI18n } from '../i18n';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import * as maplibregl from 'maplibre-gl';
@@ -100,7 +101,7 @@ export function WalkingMap({
     setFailure('');
     let m: LibreMap;
     try {
-      baseSource.current = mapData ?? city.mapUrl ?? collection([]);
+      baseSource.current = mapData ?? (city.mapUrl ? dataUrl(city.mapUrl) : collection([]));
       m = new maplibregl.Map({
         container: container.current,
         center: city.center,
@@ -573,7 +574,7 @@ export function WalkingMap({
   }, [ready, showZones, hero]);
   useEffect(() => {
     const source = map.current?.getSource('base') as GeoJSONSource | undefined;
-    const next = mapData ?? city.mapUrl;
+    const next = mapData ?? (city.mapUrl ? dataUrl(city.mapUrl) : undefined);
     // Avoid rebuilding the full GeoJSON index after the initial source load.
     if (source && next && baseSource.current !== next) {
       baseSource.current = next;

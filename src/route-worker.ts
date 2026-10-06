@@ -1,3 +1,4 @@
+import { dataUrl } from './lib/data-url';
 import { Router } from './lib/routing';
 import type { City, PilotData, Point } from './lib/types';
 import type { AreaDescriptor } from './lib/area-types';
@@ -38,7 +39,7 @@ self.onmessage = async (
       let data: PilotData;
       if (saved) data = saved.data;
       else {
-        const response = await fetch(m.url!, { signal: AbortSignal.timeout(30000) });
+        const response = await fetch(dataUrl(m.url!), { signal: AbortSignal.timeout(30000) });
         if (!response.ok)
           throw new Error('The pilot data could not load. Check your connection and try again.');
         data = await response.json();
@@ -54,7 +55,7 @@ self.onmessage = async (
         throw new Error('Pilot data version mismatch');
       if (m.city.detailedShade) {
         if (!saved) {
-          const response = await fetch(m.city.detailedShade.dataUrl, {
+          const response = await fetch(dataUrl(m.city.detailedShade.dataUrl), {
             signal: AbortSignal.timeout(30000),
           });
           if (!response.ok)
@@ -67,7 +68,7 @@ self.onmessage = async (
       }
       if (m.city.pavementPilot) {
         if (!saved) {
-          const response = await fetch(m.city.pavementPilot.dataUrl, {
+          const response = await fetch(dataUrl(m.city.pavementPilot.dataUrl), {
             signal: AbortSignal.timeout(30000),
           });
           if (!response.ok)
@@ -130,7 +131,7 @@ self.onmessage = async (
                 const raw = atob(packed);
                 bytes = Uint8Array.from(raw, (c) => c.charCodeAt(0));
               } else {
-                const response = await fetch(tile.url, {
+                const response = await fetch(dataUrl(tile.url), {
                   signal: AbortSignal.any([controller.signal, AbortSignal.timeout(30000)]),
                 });
                 if (!response.ok || !response.body)
@@ -156,7 +157,7 @@ self.onmessage = async (
               .filter(
                 (t) => current.detailed instanceof ShadeLibrary && current.detailed.used.has(t.id),
               )
-              .map((t) => t.url)
+              .map((t) => dataUrl(t.url))
           : [],
     });
   } catch (e) {

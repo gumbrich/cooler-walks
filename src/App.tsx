@@ -1,3 +1,4 @@
+import { dataUrl } from './lib/data-url';
 import { version as appVersion } from '../package.json';
 import { useI18n } from './i18n';
 import { useEffect, useMemo, useRef, useState } from 'react';
@@ -195,7 +196,9 @@ export default function App() {
                   city.mapUrl,
                   city.detailedShade?.dataUrl,
                   city.pavementPilot?.dataUrl,
-                ].filter(Boolean),
+                ]
+                  .filter((url): url is string => !!url)
+                  .map(dataUrl),
               });
           };
           navigator.serviceWorker.addEventListener(
