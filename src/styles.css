@@ -3992,6 +3992,12 @@ html[lang='de'] .icon-text {
     min-height: 450px;
     max-height: none;
   }
+  .native-app .pavement-map {
+    scroll-margin-top: calc(var(--safe-top) + 8px);
+  }
+  .native-app .planner-map:has(.pavement-map.map-expanded) {
+    height: calc(100svh - var(--safe-top) - var(--safe-bottom) - 16px);
+  }
   .network-choice {
     margin-bottom: 0;
   }

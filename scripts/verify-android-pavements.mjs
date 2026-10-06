@@ -31,6 +31,7 @@ try {
   // Test the bounded pilot independently of the expensive full-city default trip.
   // The public deep link is the same one used by the website, not a test data override.
   await expect(page.locator('.mobile-time')).toBeVisible({ timeout: 60000 });
+  await page.getByRole('combobox', { name: /^(Language|Sprache)$/ }).selectOption('en');
   await page.clock.setFixedTime(new Date('2026-06-21T12:00:00Z'));
   const pilot = new URL(page.url());
   pilot.searchParams.set('view', 'planner');
@@ -51,6 +52,14 @@ try {
   await expect(
     page.getByRole('button', { name: 'Karte verkleinern', exact: true }),
   ).toBeInViewport();
+  const attribution = await page.locator('.maplibregl-ctrl-attrib').boundingBox();
+  const safeHeight = await page.evaluate(
+    () => innerHeight - parseFloat(getComputedStyle(document.body, '::after').height),
+  );
+  assert(
+    attribution && attribution.y + attribution.height <= safeHeight + 1,
+    'Map attribution must remain above the native bottom safe area',
+  );
   await device.screenshot({ path: 'docs/screenshots/android-pavement-pilot-de.png' });
   await page.getByRole('button', { name: 'Karte verkleinern', exact: true }).click();
   await page.getByRole('button', { name: 'Weg bearbeiten', exact: true }).click();

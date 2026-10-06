@@ -91,7 +91,9 @@ npm run native:open:ios      # open Xcode
 
 Detailed setup, signing boundaries and offline behaviour are in [docs/mobile.md](docs/mobile.md). Actual platform test results are in [docs/platform.md](docs/platform.md). Signing credentials and generated native build outputs are ignored.
 
-Android **0.13.0/build 11** compiled and passed offline traffic-v2 comparison, passing-time counts, 3D-roof shade, address-search/routing, German and beta city-switch checks in the 2 GB Android 16 emulator. Its debug APK is available locally as `native-artifacts/cooler-walks-0.13.0-debug.apk`. The earlier 0.5.0 build passed twelve broader checks covering native permissions, Back/resume, all four cities offline and cold launch. iOS 0.13.0 also compiles and archives in GitHub Actions; the previous 0.5.0 build launched in English and German on the local iPhone 16e simulator. iOS count interactions and physical phones remain untested; neither app has been submitted to a store.
+Android **0.14.0/build 12** compiles and passes the focused offline pavement-pilot test on the 2 GB Android 16 emulator. Its APK is `native-artifacts/cooler-walks-0.14.0-debug.apk`. Full-Zurich afternoon startup exceeded the separate 60-second assertion; that performance issue remains open. [Current platform evidence](docs/platform.md#municipal-pavement-pilot--0140).
+
+The previous Android **0.13.0/build 11** compiled and passed offline traffic-v2 comparison, passing-time counts, 3D-roof shade, address-search/routing, German and beta city-switch checks in the 2 GB Android 16 emulator. Its debug APK is available locally as `native-artifacts/cooler-walks-0.13.0-debug.apk`. The earlier 0.5.0 build passed twelve broader checks covering native permissions, Back/resume, all four cities offline and cold launch. iOS 0.13.0 also compiles and archives in GitHub Actions; the previous 0.5.0 build launched in English and German on the local iPhone 16e simulator. iOS count interactions and physical phones remain untested; neither app has been submitted to a store.
 
 ## Develop and verify
 
