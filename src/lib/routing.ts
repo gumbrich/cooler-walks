@@ -150,6 +150,11 @@ export class Router {
   private detailedOnly = false;
   private baseGraph: Pick<PilotData, 'nodes' | 'edges'>;
   private pavementMode = false;
+  private spatial = new Map<
+    number,
+    (Pick<Sample, 'point' | 'meters' | 'green' | 'water' | 'traffic'> & { metric: Point })[]
+  >();
+  private coverage = new Map<number, boolean>();
   constructor(
     public data: PilotData,
     public city: City,
@@ -267,6 +272,45 @@ export class Router {
       this.adjacency[edge.b].push({ to: edge.a, edge: index });
     });
     this.pavementMode = pavements;
+    this.spatial.clear();
+    this.coverage.clear();
+  }
+  /** Static geometry only: never cache time-dependent sunlight or missing tiles. */
+  private spatialSamples(index: number) {
+    const cached = this.spatial.get(index);
+    if (cached) return cached;
+    const e = this.data.edges[index],
+      p = this.points[e.a],
+      q = this.points[e.b];
+    const count = Math.max(1, Math.ceil(e.length / SAMPLE_METERS));
+    const samples = Array.from({ length: count }, (_, i) => {
+      const f = (i + 0.5) / count;
+      const pt: Point = [p[0] + (q[0] - p[0]) * f, p[1] + (q[1] - p[1]) * f];
+      return {
+        metric: pt,
+        point: geographic(this.city, pt),
+        meters: e.length / count,
+        green: this.treeGrid
+          .around(pt, TREE_PROXIMITY_METERS)
+          .some((t) => distance(t, pt) <= TREE_PROXIMITY_METERS),
+        water: this.water.near(pt),
+        traffic: e.traffic?.[i] ?? 'unknown',
+      };
+    });
+    // Bounded across repeated trips on phones; switching networks clears it.
+    if (this.spatial.size >= 8192) this.spatial.delete(this.spatial.keys().next().value!);
+    this.spatial.set(index, samples);
+    return samples;
+  }
+  private edgeInCoverage(index: number) {
+    const cached = this.coverage.get(index);
+    if (cached !== undefined) return cached;
+    const edge = this.data.edges[index];
+    const valid =
+      this.spatialSamples(index).every((s) => inCoverage(this.city, s.point)) &&
+      segmentInCoverage(this.city, this.data.nodes[edge.a].point, this.data.nodes[edge.b].point);
+    this.coverage.set(index, valid);
+    return valid;
   }
   /** Exact solar instant at a sample's expected arrival; no time buckets. */
   exposureAt(point: Point, date: Date, clearance?: number, nonGround = false) {
@@ -396,6 +440,53 @@ export class Router {
     for (let n = end; n !== -1; n = prev[n]) path.push(n);
     return path.reverse();
   }
+  /** Exact distances in the same rounded network units as the route budget. */
+  distancesFrom(start: number) {
+    const distances = new Float64Array(this.points.length).fill(Infinity);
+    const heap = new MinHeap();
+    distances[start] = 0;
+    heap.push([0, start]);
+    while (heap.values.length) {
+      const [score, node] = heap.pop();
+      if (score > distances[node]) continue;
+      for (const next of this.adjacency[node]) {
+        const candidate = score + this.data.edges[next.edge].length;
+        if (candidate < distances[next.to]) {
+          distances[next.to] = candidate;
+          heap.push([candidate, next.to]);
+        }
+      }
+    }
+    return distances;
+  }
+  edgesWithinBudget(stops: number[], baseline: number, extra: number) {
+    // An edge can matter only if some ordered leg can traverse it within
+    // the whole-trip budget. Exact network distances account for rivers,
+    // disconnected paths and rounded source lengths, without a city-sized
+    // rounding allowance. Both directions are legal in this undirected graph.
+    // This discards no budget-feasible route and avoids modelling distant
+    // streets that cannot possibly be part of the walk.
+    const stopDistances = stops.map((stop) => this.distancesFrom(stop));
+    const limit = baseline + extra * WALK_METERS_PER_MINUTE + 1e-7;
+    const legs = stops.slice(1);
+    return Uint8Array.from(this.data.edges, (edge) =>
+      Number(
+        legs.some((stop, leg) => {
+          const from = stopDistances[leg],
+            to = stopDistances[leg + 1];
+          const otherLegs = baseline - from[stop];
+          return (
+            otherLegs +
+              Math.min(
+                from[edge.a] + edge.length + to[edge.b],
+                from[edge.b] + edge.length + to[edge.a],
+              ) <=
+            limit
+          );
+        }),
+      ),
+    );
+  }
   calculate(
     start: Point,
     end: Point,
@@ -486,18 +577,10 @@ export class Router {
     const sample = (index: number) => {
       const cached = edgeSamples.get(index);
       if (cached) return cached;
-      const e = this.data.edges[index],
-        p = this.points[e.a],
-        q = this.points[e.b],
-        count = Math.max(1, Math.ceil(e.length / SAMPLE_METERS));
+      const e = this.data.edges[index];
       const samples: SpatialSample[] = [];
-      for (let i = 0; i < count; i++) {
-        const f = (i + 0.5) / count,
-          pt: Point = [p[0] + (q[0] - p[0]) * f, p[1] + (q[1] - p[1]) * f],
-          geo = geographic(this.city, pt);
-        const green = this.treeGrid
-          .around(pt, TREE_PROXIMITY_METERS)
-          .some((t) => distance(t, pt) <= TREE_PROXIMITY_METERS);
+      for (const { metric: pt, ...spatial } of this.spatialSamples(index)) {
+        const geo = spatial.point;
         let exposure: Sample['exposure'] = departureMode === 'night' ? 'night' : 'unknown';
         if (departureMode === 'shade' && !this.detailed?.contains(pt)) {
           // Model boundary includes surrounding objects; low sun is withheld.
@@ -525,14 +608,7 @@ export class Router {
         }
         if (this.detailed?.contains(pt))
           exposure = this.exposureAt(geo, date, e.modelClearance, e.nonGround).exposure;
-        samples.push({
-          point: geo,
-          meters: e.length / count,
-          exposure,
-          green,
-          water: this.water.near(pt),
-          traffic: e.traffic?.[i] ?? 'unknown',
-        });
+        samples.push({ ...spatial, exposure });
       }
       edgeSamples.set(index, samples);
       return samples;
@@ -603,26 +679,12 @@ export class Router {
       throughStops((e) => e.length),
       'fastest',
     );
-    // A Euclidean lower bound keeps short trips local even in a city-sized
-    // graph. It cannot discard a route inside the distance budget, including
-    // trips with stops. Use both edge directions and a rounding tolerance.
-    // Source edge lengths are rounded to the nearest centimetre. A positive-
-    // weight shortest leg is simple, so this bounds accumulated rounding even
-    // for a long trip with repeated nodes across different ordered legs.
-    const roundingAllowance = 0.005 * (this.points.length + 1) * (stops.length - 1);
-    const limit = fastest.distance + extra * WALK_METERS_PER_MINUTE + roundingAllowance;
-    const origin = this.points[a.index],
-      destination = this.points[b.index];
-    feasible = Uint8Array.from(this.data.edges, (edge) => {
-      const p = this.points[edge.a],
-        q = this.points[edge.b];
-      return Number(
-        Math.min(
-          distance(origin, p) + edge.length + distance(q, destination),
-          distance(origin, q) + edge.length + distance(p, destination),
-        ) <= limit,
+    if (extra > 0)
+      feasible = this.edgesWithinBudget(
+        stops.map((stop) => stop.index),
+        fastest.distance,
+        extra,
       );
-    });
     const fastNodes = new Set(fastest.nodes),
       candidates: Route[] = [];
     const crossingChoice = (edge: Edge) =>
@@ -685,8 +747,11 @@ export class Router {
     }
     // Every segment remains inside configured coverage; missing data cannot improve a score.
     const valid = (r: Route) =>
-      r.samples.every((s) => inCoverage(this.city, s.point)) &&
-      r.coordinates.slice(1).every((p, i) => segmentInCoverage(this.city, r.coordinates[i], p));
+      r.nodes
+        .slice(1)
+        .every((node, i) =>
+          this.edgeInCoverage(this.adjacency[r.nodes[i]].find((e) => e.to === node)!.edge),
+        );
     if (!valid(fastest))
       throw new Error(
         'This route leaves the pilot’s data coverage. Try closer points inside the boundary.',

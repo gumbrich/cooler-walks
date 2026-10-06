@@ -184,6 +184,50 @@ function fixture(): PilotData {
   };
 }
 describe('route constraints', () => {
+  it('keeps every budget-feasible ordered walk, including rounded edges and repeated waypoints', () => {
+    const d = fixture();
+    // Two connected alternatives plus a disconnected component. Deliberately
+    // rounded weights need not equal Euclidean distances.
+    d.edges[2].length = 141.42;
+    d.edges[3].length = 141.42;
+    const router = new Router(d, cities[0]);
+    for (const stops of [
+      [0, 2],
+      [0, 3, 0, 2],
+    ]) {
+      const distances = stops.map((stop) => router.distancesFrom(stop));
+      const baseline = stops.slice(1).reduce((sum, stop, leg) => sum + distances[leg][stop], 0);
+      for (const extra of [0, 5]) {
+        const feasible = router.edgesWithinBudget(stops, baseline, extra);
+        // Exhaust all simple paths per ordered leg, then all trip combinations.
+        const paths = (
+          from: number,
+          to: number,
+          visited = [from],
+          edges: number[] = [],
+        ): number[][] =>
+          from === to
+            ? [edges]
+            : router.adjacency[from].flatMap((next) =>
+                visited.includes(next.to)
+                  ? []
+                  : paths(next.to, to, [...visited, next.to], [...edges, next.edge]),
+              );
+        let trips: number[][] = [[]];
+        stops.slice(1).forEach((stop, leg) => {
+          trips = trips.flatMap((prefix) =>
+            paths(stops[leg], stop).map((part) => [...prefix, ...part]),
+          );
+        });
+        for (const trip of trips) {
+          const length = trip.reduce((sum, edge) => sum + d.edges[edge].length, 0);
+          if (length <= baseline + extra * 80 + 1e-7)
+            for (const edge of trip) expect(feasible[edge]).toBe(1);
+        }
+        expect(feasible[4]).toBe(0); // Disconnected paths cannot help a route.
+      }
+    }
+  });
   it('retains routes and water scoring after worker source geometry is released', () => {
     const d = fixture();
     d.water = [
