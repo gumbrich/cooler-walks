@@ -19,6 +19,10 @@ The selected route has an EN/DE street breakdown. Nearby **2025 measured counter
 
 [traffic-validation.json](traffic-validation.json) records source hashes, zone IDs, excluded geometry and graph lengths. The OSM hash now correctly identifies `data/raw/zurich-north-west/osm.json`, the extract actually consumed by preparation; the older report mistakenly referenced the earlier expansion file. This fixes provenance, not routing geometry. Raw inputs remain ignored.
 
+## Official zone overlay · 6 October 2026
+
+The planner’s **30/20** map button displays implemented city zones with solid outlines and cantonal legal orders with dashed outlines. Click a zone to see its name, source and status alongside the start/destination actions. The layer is available in English and German and in updated offline maps. It adds 347 city polygons and 42 nearby cantonal polygons to the current map context; it does not expand walking coverage. The cantonal dataset excludes Zurich and Winterthur, and does not confirm implementation. Cantonal polygons are **display-only**; they never feed route scoring. Speed restrictions are separate from measured traffic. [Sources and reproducible preparation](data-sources.md#tempo-30--20-map-layer--6-october-2026), [import audit](traffic-zone-validation.json).
+
 ## Classification
 
 Sample each walking edge at no more than **8 m** spacing. Assign exactly one class in this order:
@@ -70,7 +74,8 @@ The [provider's usage note](https://www.zh.ch/content/dam/zhweb/bilder-dokumente
 ## Reproduction and field work
 
 ```sh
-npm run data:prepare:traffic # retained zone + buffered OSM snapshots required
+npm run data:fetch:traffic:zones # cantonal orders, with completeness check
+npm run data:prepare:traffic # retained city zones + buffered OSM + canton snapshot required
 npm run data:packs
 npm run check
 node --import tsx scripts/verify-traffic.ts

@@ -1,0 +1,38 @@
+{
+  "version": "zurich-2026-10-06-v11",
+  "contextBounds": [8.456999999999999, 47.338, 8.585, 47.442],
+  "city": {
+    "fetchedAt": "2026-09-29",
+    "sha256": "bfbfd367c2bf92941a4bf8f1c1820a5c1af44c2784b1735fb16abdb908cb009c",
+    "sourceCrs": "EPSG:4326",
+    "missingGeometryIds": [65],
+    "imported": 347
+  },
+  "canton": {
+    "url": "https://maps.zh.ch/wfs/OGDZHWFS?SERVICE=WFS&VERSION=1.1.0&REQUEST=GetFeature&TYPENAME=ogd-0065_giszhpub_ogd_tempo_30_20_f&OUTPUTFORMAT=application%2Fjson&SRSNAME=EPSG%3A2056",
+    "hitsUrl": "https://maps.zh.ch/wfs/OGDZHWFS?SERVICE=WFS&VERSION=1.1.0&REQUEST=GetFeature&TYPENAME=ogd-0065_giszhpub_ogd_tempo_30_20_f&SRSNAME=EPSG%3A2056&RESULTTYPE=hits",
+    "fetchedAt": "2026-10-06T13:43:10.869Z",
+    "features": 679,
+    "sha256": "d5a7fe048550eb6d3f3d07d83d1879dc917f5ee962a6fda02210e03522c1f178",
+    "sourceMarkers": ["260921"],
+    "sourceCrs": "EPSG:2056",
+    "imported": 42
+  },
+  "counts": {
+    "implemented": {
+      "20": 165,
+      "30": 182
+    },
+    "ordered": {
+      "20": 3,
+      "30": 39
+    }
+  },
+  "notes": [
+    "Whole source polygons intersecting the current map context; holes preserved. WGS84 rounded to 6 decimals.",
+    "City implemented-status zones already inform street context; this overlay does not change routing.",
+    "Cantonal legal orders exclude Zurich and Winterthur; implementation unknown. Display only.",
+    "Raw datenstand marker is retained without interpreting an undocumented date format.",
+    "Zone boundaries do not establish segment-level speed limits, traffic volume or live conditions."
+  ]
+}

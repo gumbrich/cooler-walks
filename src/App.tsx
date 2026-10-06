@@ -1497,6 +1497,13 @@ export default function App() {
                   )}
                 </p>
               )}
+              {city.capabilities.trafficZones && (
+                <p>
+                  {t(
+                    'The 30/20 map button shows official zone boundaries. Solid outlines: implemented city zones. Dashed outlines: cantonal legal orders, with implementation unconfirmed. The canton source excludes Zurich and Winterthur; Zurich uses the city’s implemented-zone dataset. Cantonal orders are shown for context only and do not affect route ranking. Boundaries do not establish every street’s speed limit or traffic volume. Signs on the street take precedence.',
+                  )}
+                </p>
+              )}
               <h3>{t('Sources & privacy')}</h3>
               <p>
                 <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">

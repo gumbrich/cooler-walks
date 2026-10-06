@@ -61,3 +61,7 @@ The current 57.77 km² area includes Oerlikon and Altstetten and is clipped to t
 ## Zurich building detail · 0.10.0
 
 The walking boundary remains 57.77 km². The detailed **3D roof/facade and LiDAR-ground library now covers that entire walking area**; the former central-only boundary has been removed. This is not the entire municipality. [Tiled library and checks](shade-library.md). Terrain supplies receiver elevation only: terrain shadows, tree shade and fountains remain unsupported. Route cards disclose the detailed-model share; missing elevations and non-ground paths remain unknown. [Extent, data and limitations](detailed-shade.md). Other cities remain beta with their existing capabilities.
+
+## Zurich traffic-zone display · 6 October 2026
+
+The optional 30/20 layer combines 347 implemented city zones with 42 cantonal legal orders around the supported map area. Canton data explicitly excludes Zurich and Winterthur; implementation of cantonal orders is unknown. The surrounding polygons are context, not additional walking or traffic-model coverage. Basel and the international pilots do not inherit this layer. [Source and scope audit](traffic-zone-validation.json).

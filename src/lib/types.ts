@@ -27,6 +27,7 @@ export interface City {
     fountains: boolean;
     water: boolean;
     trafficCalming?: boolean;
+    trafficZones?: boolean;
     vehicleCounts?: boolean;
     addresses?: boolean;
   };

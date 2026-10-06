@@ -23,3 +23,4 @@ src/generated/
 docs/area-pack-validation.json
 release-artifacts/
 docs/traffic-validation.json
+docs/traffic-zone-validation.json

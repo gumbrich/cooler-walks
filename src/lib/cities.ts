@@ -25,6 +25,7 @@ export const cities: City[] = [
       fountains: false,
       water: true,
       trafficCalming: true,
+      trafficZones: true,
       vehicleCounts: true,
       addresses: true,
     },
@@ -50,7 +51,7 @@ export const cities: City[] = [
     buildingNotes:
       '3D roofs and facades with LiDAR ground elevations cover the supported Zurich walking area. Buildings date from 2019; ground elevations from 2021–2022. Missing ground and bridge heights stay unknown. These estimates still need field validation.',
     sourceSummary:
-      'Walking network, tree extract and official addresses fetched 30 September 2026. Building tiles: 2019; tree locations: 2021, prepared 2022. Traffic zones fetched 29 September 2026. Fetch dates are not observation dates.',
+      'Walking network, tree extract and official addresses fetched 30 September 2026. Building tiles: 2019; tree locations: 2021, prepared 2022. City traffic zones fetched 29 September 2026; cantonal zone orders 6 October 2026. Fetch dates are not observation dates.',
     sources: [
       {
         label: 'Zurich municipal boundary · CC0',
@@ -67,6 +68,10 @@ export const cities: City[] = [
       {
         label: 'City of Zurich traffic zones',
         url: 'https://data.stadt-zuerich.ch/dataset/geo_verkehrszonen',
+      },
+      {
+        label: 'Canton Zurich Tempo 30 / 20 zones · legal orders',
+        url: 'https://geo.zh.ch/data/maps/845c3961-b036-49b3-a2b6-e23273917a25',
       },
       {
         label: 'City of Zurich tree inventory',

@@ -1,5 +1,5 @@
 {
-  "version": "zurich-2026-09-30-v10",
+  "version": "zurich-2026-10-06-v11",
   "rawDirectory": "data/raw/zurich-north-west",
   "addressDirectory": "data/raw/zurich-expansion",
   "routeBounds": [

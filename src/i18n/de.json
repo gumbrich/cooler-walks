@@ -487,5 +487,17 @@
   "3D roofs and LiDAR ground elevations cover {share}% of this walk. Bridges, tunnels and missing ground elevations stay unknown. The model has not been field-validated.": "3D-Dächer und LiDAR-Bodenhöhen decken {share}% dieses Wegs ab. Brücken, Tunnel und fehlende Bodenhöhen bleiben unbekannt. Das Modell wurde noch nicht vor Ort überprüft.",
   "Download a map for complete offline planning. Without a download, the app may only have the map and 3D tiles used on previous trips. Saved data keeps its source dates; closures and live navigation are not provided.": "Lade eine Karte herunter, um im ganzen Gehgebiet offline zu planen. Ohne Download sind möglicherweise nur die Karte und 3D-Kacheln früherer Wege gespeichert. Gespeicherte Daten behalten ihren ursprünglichen Stand; Sperrungen und Live-Navigation sind nicht enthalten.",
   "The 3D model could not load. Reconnect or download the Zurich map.": "Das 3D-Modell konnte nicht geladen werden. Stelle die Verbindung wieder her oder lade die Zürich-Karte herunter.",
-  "Try again": "Erneut versuchen"
+  "Try again": "Erneut versuchen",
+  "Tempo 30 / 20 zones": "Tempo-30-/20-Zonen",
+  "Encounter zone · 20": "Begegnungszone · 20",
+  "Tempo 30": "Tempo 30",
+  "City data · implemented": "Stadtdaten · umgesetzt",
+  "Canton data · ordered; implementation unknown": "Kantonsdaten · verfügt; Umsetzung unbekannt",
+  "Zone legend": "Zonenlegende",
+  "Implemented": "Umgesetzt",
+  "Ordered · implementation unknown": "Verfügt · Umsetzung unbekannt",
+  "Canton Zurich Tempo 30 / 20 zones · legal orders": "Kanton Zürich: Tempo-30-/20-Zonen · Verfügungen",
+  "The 30/20 map button shows official zone boundaries. Solid outlines: implemented city zones. Dashed outlines: cantonal legal orders, with implementation unconfirmed. The canton source excludes Zurich and Winterthur; Zurich uses the city’s implemented-zone dataset. Cantonal orders are shown for context only and do not affect route ranking. Boundaries do not establish every street’s speed limit or traffic volume. Signs on the street take precedence.": "Mit der Kartentaste 30/20 werden die offiziellen Zonengrenzen sichtbar. Durchgezogen: umgesetzte städtische Zonen. Gestrichelt: kantonale Verfügungen, deren Umsetzung nicht bestätigt ist. Die Kantonsdaten enthalten Zürich und Winterthur nicht; für Zürich verwenden wir die umgesetzten Zonen der Stadt. Kantonale Verfügungen dienen nur der Orientierung und beeinflussen die Routenwahl nicht. Aus einer Zonengrenze lässt sich weder das Tempolimit jeder Strasse noch die Verkehrsmenge ableiten. Es gilt die Signalisation vor Ort.",
+  "Update the downloaded map to show zones.": "Aktualisiere die heruntergeladene Karte, um die Zonen anzuzeigen.",
+  "Walking network, tree extract and official addresses fetched 30 September 2026. Building tiles: 2019; tree locations: 2021, prepared 2022. City traffic zones fetched 29 September 2026; cantonal zone orders 6 October 2026. Fetch dates are not observation dates.": "Fusswegnetz, Baumauszug und amtliche Adressen am 30. September 2026 abgerufen. Gebäudekacheln: 2019; Baumstandorte: 2021, aufbereitet 2022. Städtische Verkehrszonen am 29. September 2026 abgerufen; kantonale Zonenverfügungen am 6. Oktober 2026. Abrufdaten sind keine Beobachtungsdaten."
 }

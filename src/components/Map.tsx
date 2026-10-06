@@ -1,5 +1,5 @@
 import { useI18n } from '../i18n';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import * as maplibregl from 'maplibre-gl';
 import { type GeoJSONSource, type Map as LibreMap } from 'maplibre-gl';
 import { Layers, LocateFixed, Minus, Plus, Scan, X, MapPin } from 'lucide-react';
@@ -7,6 +7,7 @@ import { coverageGeometry, inCoverage } from '../lib/coverage';
 import type { FeatureCollection, Feature } from 'geojson';
 import type { City, PlannerData, Point, RouteResult } from '../lib/types';
 import type { CounterObservation } from '../lib/vehicle-counts';
+import type { ZoneProperties } from '../lib/traffic-zones';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import mapWorkerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url';
 
@@ -61,6 +62,13 @@ export function WalkingMap({
     [failure, setFailure] = useState('');
   const [settled, setSettled] = useState(false);
   const [pointChoice, setPointChoice] = useState<Point | null>(null);
+  const [showZones, setShowZones] = useState(false);
+  const [pointZones, setPointZones] = useState<ZoneProperties[]>([]);
+  const zoneDataAvailable = useMemo(
+    () =>
+      !mapData || mapData.features.some((feature) => feature.properties?.kind === 'traffic-zone'),
+    [mapData],
+  );
   useEffect(() => {
     if (!pointChoice || !map.current) return;
     const marker = new maplibregl.Marker({ color: '#185a65' })
@@ -251,6 +259,42 @@ export function WalkingMap({
     });
     if (attribution) attributionObserver.observe(attribution);
     m.on('load', () => {
+      // Below streets and route strokes: zone colour must not hide paths or exposure.
+      m.addLayer(
+        {
+          id: 'traffic-zone-fill',
+          type: 'fill',
+          source: 'base',
+          filter: ['==', ['get', 'kind'], 'traffic-zone'],
+          layout: { visibility: 'none' },
+          paint: {
+            'fill-color': ['case', ['==', ['get', 'speed'], 20], '#aa657d', '#8272ae'],
+            'fill-opacity': 0.17,
+          },
+        },
+        'building',
+      );
+      for (const status of ['implemented', 'ordered']) {
+        m.addLayer(
+          {
+            id: `traffic-zone-${status}`,
+            type: 'line',
+            source: 'base',
+            filter: [
+              'all',
+              ['==', ['get', 'kind'], 'traffic-zone'],
+              ['==', ['get', 'status'], status],
+            ],
+            layout: { visibility: 'none' },
+            paint: {
+              'line-color': ['case', ['==', ['get', 'speed'], 20], '#8e4562', '#6a5797'],
+              'line-width': 1.5,
+              ...(status === 'ordered' ? { 'line-dasharray': [3, 3] } : {}),
+            },
+          },
+          'building',
+        );
+      }
       m.addSource('coverage', {
         type: 'geojson',
         data: collection([
@@ -464,7 +508,17 @@ export function WalkingMap({
           return;
         }
       }
-      if (!hero) setPointChoice([event.lngLat.lng, event.lngLat.lat]);
+      if (!hero) {
+        const zones = m.getLayer('traffic-zone-fill')
+          ? m.queryRenderedFeatures(event.point, { layers: ['traffic-zone-fill'] })
+          : [];
+        setPointZones([
+          ...new Map(
+            zones.map((zone) => [zone.properties.id, zone.properties as ZoneProperties]),
+          ).values(),
+        ]);
+        setPointChoice([event.lngLat.lng, event.lngLat.lat]);
+      }
     });
     m.on('error', (e) => {
       console.error('Map rendering error', e.error);
@@ -493,11 +547,21 @@ export function WalkingMap({
     };
   }, [city]);
   useEffect(() => {
+    if (!ready || !map.current) return;
+    setSettled(false);
+    for (const layer of ['traffic-zone-fill', 'traffic-zone-implemented', 'traffic-zone-ordered'])
+      map.current.setLayoutProperty(layer, 'visibility', showZones && !hero ? 'visible' : 'none');
+    setPointZones([]);
+  }, [ready, showZones, hero]);
+  useEffect(() => {
     const source = map.current?.getSource('base') as GeoJSONSource | undefined;
     const next = mapData ?? city.mapUrl;
     // Avoid rebuilding the full GeoJSON index after the initial source load.
-    if (ready && source && next && baseSource.current !== next) {
+    if (source && next && baseSource.current !== next) {
       baseSource.current = next;
+      // A saved map can arrive after the initial URL request fails offline.
+      // Loading it must not wait for the failed source to fire the map's load event.
+      setFailure('');
       source.setData(next);
     }
   }, [ready, city, mapData]);
@@ -637,7 +701,17 @@ export function WalkingMap({
       m.fitBounds(box, {
         padding: {
           top: matchMedia('(max-width:620px)').matches ? (hero ? 95 : 110) : hero ? 100 : 145,
-          bottom: matchMedia('(max-width:620px)').matches ? (hero ? 140 : 95) : hero ? 170 : 240,
+          bottom: matchMedia('(max-width:620px)').matches
+            ? hero
+              ? 140
+              : showZones
+                ? 140
+                : 95
+            : hero
+              ? 170
+              : showZones && matchMedia('(max-width:1100px)').matches
+                ? 390
+                : 240,
           left: matchMedia('(max-width:620px)').matches ? 28 : 45,
           right: hero ? 35 : 95,
         },
@@ -660,7 +734,10 @@ export function WalkingMap({
     return () => {
       m.off('resize', resize);
     };
-  }, [ready, result]);
+  }, [ready, result, showZones]);
+  useEffect(() => {
+    if (ready && result) fit(true);
+  }, [showZones]);
   return (
     <div
       className={`map-shell ${hero ? 'hero-map' : ''}`}
@@ -741,6 +818,24 @@ export function WalkingMap({
             >
               <Layers size={19} />
             </button>
+            {city.capabilities.trafficZones && (
+              <button
+                className="zone-toggle"
+                aria-label={t('Tempo 30 / 20 zones')}
+                title={
+                  zoneDataAvailable
+                    ? t('Tempo 30 / 20 zones')
+                    : t('Update the downloaded map to show zones.')
+                }
+                aria-pressed={showZones}
+                disabled={!ready || !!failure || !zoneDataAvailable}
+                onClick={() => setShowZones((value) => !value)}
+              >
+                <span aria-hidden="true">
+                  30<small>/20</small>
+                </span>
+              </button>
+            )}
           </div>
         </>
       )}
@@ -767,6 +862,21 @@ export function WalkingMap({
               <X size={19} />
             </button>
           </div>
+          {showZones &&
+            pointZones.map((zone) => (
+              <p className="map-zone-detail" key={zone.id}>
+                <strong>{zone.speed === 20 ? t('Encounter zone · 20') : t('Tempo 30')}</strong>
+                <span>
+                  {zone.name}
+                  {zone.municipality !== 'Zürich' ? ` · ${zone.municipality}` : ''}
+                </span>
+                <span>
+                  {zone.status === 'implemented'
+                    ? t('City data · implemented')
+                    : t('Canton data · ordered; implementation unknown')}
+                </span>
+              </p>
+            ))}
           {inCoverage(city, pointChoice) ? (
             <>
               <p>{t('Choose a nearby public street or path.')}</p>
@@ -804,7 +914,7 @@ export function WalkingMap({
         <i />
       </div>
       {!hero && (
-        <div className="map-legend">
+        <div className={`map-legend${showZones ? ' with-zones' : ''}`}>
           <span>
             <i className="legend-line" />
             {t('Selected walk')}
@@ -825,6 +935,24 @@ export function WalkingMap({
               <i className="legend-tree" />
               {t('Recorded tree')}
             </span>
+          )}
+          {showZones && (
+            <div className="zone-legend" role="note" aria-label={t('Zone legend')}>
+              <span>
+                <i className="zone-swatch zone-30" />
+                {t('Tempo 30')}
+              </span>
+              <span>
+                <i className="zone-swatch zone-20" />
+                {t('Encounter zone · 20')}
+              </span>
+              <span className="zone-status-key">
+                <i className="zone-solid" />
+                {t('Implemented')}
+                <i className="zone-dashed" />
+                {t('Ordered · implementation unknown')}
+              </span>
+            </div>
           )}
         </div>
       )}

@@ -45,14 +45,16 @@
     "native:archive:unsigned": "node scripts/native-build.mjs ios-archive-unsigned",
     "native:archive": "npm run native:sync && npm run release:check -- --native && node scripts/native-build.mjs ios-archive",
     "data:fetch:traffic": "node scripts/fetch-traffic.mjs",
-    "data:prepare:traffic": "tsx scripts/prepare-traffic.ts",
+    "data:prepare:traffic": "tsx scripts/prepare-traffic.ts && npm run data:prepare:traffic:zones",
     "data:attach:counts": "node --import tsx scripts/attach-vehicle-counts.ts",
     "test:native:counts": "node scripts/verify-android-counts.mjs",
     "data:prepare:addresses": "tsx scripts/prepare-zurich-addresses.ts",
     "data:fetch:zurich": "python3 scripts/fetch-zurich-expansion.py",
     "data:prepare:shade": ".venv-geo/bin/python scripts/prepare-shade-library.py && node --import tsx scripts/attach-detailed-shade.ts",
     "data:fetch:shade": ".venv-geo/bin/python scripts/fetch-zurich-shade-library.py",
-    "data:verify:shade-library": "node --import tsx scripts/verify-shade-library.ts"
+    "data:verify:shade-library": "node --import tsx scripts/verify-shade-library.ts",
+    "data:fetch:traffic:zones": "node --import tsx scripts/fetch-cantonal-traffic.ts",
+    "data:prepare:traffic:zones": "node --import tsx scripts/prepare-traffic-zones.ts"
   },
   "dependencies": {
     "@capacitor/android": "^8.5.2",

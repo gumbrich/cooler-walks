@@ -1,5 +1,13 @@
 # Progress
 
+## Official Tempo 30 / 20 layer · 6 October 2026
+
+Integrated the canton's WFS zones with the existing city implemented-status snapshot. The optional 30/20 map layer contains 347 city zones and 42 nearby cantonal orders, with EN/DE legends, source/status details on click and explicit unknown cantonal implementation. Cantonal orders do not affect route ranking or extend walking coverage. Raw source hashes, completeness checks, CRS transformations, omitted geometry and the ambiguous source-date marker are documented in [the source register](data-sources.md#tempo-30--20-map-layer--6-october-2026) and [import audit](traffic-zone-validation.json).
+
+TypeScript, 96 unit/model/language checks, nine real traffic route/budget cases, production build and all five release pack hashes pass. Focused Chrome flows cover keyboard operation, EN/DE, desktop/tablet/phone spacing, city switching, zone inspection, unchanged route scores and offline reload with network data blocked. Screenshot inspection corrected legend/time-control overlap and endpoint clearance. The offline test also exposed and fixed recovery when a saved map arrives after the initial network map request fails. The complete pack contains all 389 polygons and grows by about 157 kB compressed. Android/iOS web assets are synchronized; no new native binary or physical-phone test is claimed for this update.
+
+Next: check street signs and actual traffic during the planned field walks; investigate segment-level speed regimes before claiming comprehensive speed-limit coverage. Zone boundaries and legal orders do not measure traffic volume.
+
 ## Factual entry copy · 3 October 2026
 
 Replaced the shade-only home slogan and browser titles with “Walking routes” / “Fusswege planen” and a short instruction about endpoints, route comparison and the detour limit. Website, PWA and native clients share this copy. Production build and three translation checks pass; English/German desktop and phone screenshots and entry-to-planner navigation were checked. Android/iOS web assets are synchronized; existing installed native binaries need a rebuilt app to receive the wording.

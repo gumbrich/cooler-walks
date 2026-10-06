@@ -56,6 +56,7 @@ The upload files are in ignored `release-artifacts/`. `release/site.json` now co
 
 - **Zurich vehicle-count evidence:** 144 directional counters at 80 pilot sites. View 2025 weekday/hour averages near the selected route, measured-day completeness and numbered map markers. Counts are historical and sparse; they do not replace street-context ranking or imply zero traffic elsewhere. [Sources and preparation](docs/vehicle-counts.md).
 
+- **Tempo 30 / 20 layer:** use the **30/20** map button in Zurich. Solid outlines show implemented city zones; dashed outlines show nearby cantonal orders with unknown implementation. Tap a zone for its name and status. Included in updated offline maps. [Sources and preparation](docs/data-sources.md#tempo-30--20-map-layer--6-october-2026).
 - **Prefer calmer streets / Verkehrsberuhigt bevorzugen** in Zurich: current official pedestrian, Begegnungszone and Tempo-30 zones plus mapped main-road proximity. Reduces distance near main roads first, within the same detour limit. No live traffic counts, noise or safety rating. See [sources, model and real route result](docs/traffic.md).
 - Full **English / German** interface, including source explanations, errors, downloads, static privacy/help and PWA metadata. Language changes preserve the current trip. [Localization guide](docs/localization.md).
 

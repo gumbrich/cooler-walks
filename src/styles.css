@@ -2558,6 +2558,11 @@ small {
     display: none;
   }
 }
+@media (min-width: 621px) and (max-width: 1100px) {
+  .planner:has(.with-zones) .timeline-wrap {
+    bottom: 140px;
+  }
+}
 @media (max-width: 620px) {
   .editing .trip-stop-summary {
     display: none;
@@ -3823,4 +3828,105 @@ html[lang='de'] .icon-text {
 
 .model-swatch-full {
   border-color: #62816c;
+}
+
+.zone-toggle span {
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1;
+}
+.zone-toggle small {
+  font-size: 0.65rem;
+}
+.map-tools .zone-toggle[aria-pressed='true'] {
+  background: #e5deee;
+  color: #4e3b76;
+}
+.map-legend.with-zones {
+  flex-wrap: wrap;
+  max-width: calc(100% - 100px);
+  gap: 7px 13px;
+}
+.zone-legend {
+  flex: 0 1 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  border-inline-start: 1px solid #d7d2cd;
+  padding-inline-start: 10px;
+  color: #4e4851;
+}
+.zone-legend span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.zone-swatch {
+  display: inline-block;
+  width: 14px;
+  height: 10px;
+  border: 1.5px solid;
+}
+.zone-30 {
+  background: #8272ae2b;
+  border-color: #6a5797;
+}
+.zone-20 {
+  background: #aa657d2b;
+  border-color: #8e4562;
+}
+.zone-status-key {
+  flex-wrap: wrap;
+}
+.zone-solid,
+.zone-dashed {
+  width: 14px;
+  border-top: 1.5px solid #695b73;
+}
+.zone-dashed {
+  border-top-style: dashed;
+  margin-inline-start: 6px;
+}
+.map-zone-detail {
+  display: grid;
+  gap: 3px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 10px;
+}
+.map-zone-detail span {
+  font-size: 0.75rem;
+}
+@media (max-width: 620px) {
+  .planner-map:has(.with-zones) {
+    height: 43svh;
+    max-height: 420px;
+  }
+  .map-tools .zone-toggle {
+    height: 44px;
+  }
+  .map-legend.with-zones {
+    max-width: calc(100% - 60px);
+    font-size: 0.65rem;
+  }
+  .zone-legend {
+    flex-basis: 100%;
+    gap: 5px 10px;
+    border-inline-start: 0;
+    border-top: 1px solid #d7d2cd;
+    padding-inline-start: 0;
+    padding-top: 5px;
+  }
+  .zone-status-key {
+    flex-basis: 100%;
+  }
+  .map-point-card {
+    max-height: calc(100% - 120px);
+    overflow-y: auto;
+  }
+}
+@media (min-width: 621px) {
+  .map-legend.with-zones {
+    bottom: calc(var(--map-attribution-height, 22px) + 8px);
+    font-size: 0.6875rem;
+  }
 }

@@ -89,3 +89,9 @@ On phones, the departure control sits immediately above the comparison. A single
 ## Expanded Zurich 3D coverage · 0.13.0
 
 The detailed model now shares the existing walking boundary. Removed the smaller plum boundary and retained a compact “3D buildings · experimental” key. Route details keep geographic model share separate from classified sun/shade coverage. A failed tile download offers a plain-language retry that preserves the trip; Help and Privacy explain the on-demand tiles in EN/DE.
+
+## Official zone layer · 6 October 2026
+
+The Zurich map's 30/20 button controls a separate optional layer. Muted violet (`#8272ae`) identifies Tempo 30 and rose (`#aa657d`) Begegnungszonen; fills stay at 17% below buildings, streets and route strokes. Solid outlines mean implemented city zones; dashed outlines mean cantonal legal orders with unknown implementation. Text labels and clicked-zone details carry the distinction independently of colour. The layer never recolours a route's exposure or changes its scores.
+
+Desktop keeps a compact horizontal key beneath the departure control; tablet reserves more space beneath that control. On phones, enabling the layer expands the map slightly and adjusts route fitting so both endpoints remain above the legend. The button has a visible 30/20 label, an EN/DE accessible name, keyboard operation and pressed state. Older downloaded maps without polygons disable it with an update hint.
