@@ -24,6 +24,10 @@ for (const spec of areaSpecs) {
   const base = getCity(spec.cityId),
     city = cityForArea(spec);
   let data: PilotData = JSON.parse(fs.readFileSync(`public${base.dataUrl}`, 'utf8'));
+  if (base.pavementPilot)
+    data.pavementNetwork = JSON.parse(
+      fs.readFileSync(`public${base.pavementPilot.dataUrl}`, 'utf8'),
+    );
   if (base.detailedShade) {
     const model = JSON.parse(fs.readFileSync(`public${base.detailedShade.dataUrl}`, 'utf8'));
     if (model.version !== base.detailedShade.version)

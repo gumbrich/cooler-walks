@@ -3930,3 +3930,69 @@ html[lang='de'] .icon-text {
     font-size: 0.6875rem;
   }
 }
+.network-choice {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 12px;
+  margin: 0 0 12px;
+  color: var(--ink, #214e3a);
+  font-size: 12px;
+}
+.network-choice button {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 44px;
+  padding: 5px 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  cursor: pointer;
+}
+.network-choice.is-active {
+  padding: 0 10px;
+  border: 1px solid #b7c9be;
+  border-radius: 9px;
+  background: #edf2e8;
+}
+.network-choice span {
+  padding-bottom: 5px;
+}
+.route-pavement-note {
+  margin-top: 6px;
+  color: #426c67;
+  font-size: 11px;
+}
+.legend-pavement {
+  width: 17px;
+  height: 0;
+  border-top: 2px solid #43898c;
+}
+.pavement-expand {
+  display: none;
+  pointer-events: auto;
+}
+.pavement-map {
+  scroll-margin-top: 60px;
+}
+@media (max-width: 620px) {
+  .pavement-expand {
+    display: block;
+    min-height: 44px;
+    padding: 8px 0 0;
+    font-size: 12px;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .planner-map:has(.pavement-map.map-expanded) {
+    height: calc(100svh - 60px);
+    min-height: 450px;
+    max-height: none;
+  }
+  .network-choice {
+    margin-bottom: 0;
+  }
+}

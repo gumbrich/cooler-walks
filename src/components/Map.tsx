@@ -34,6 +34,7 @@ interface Props {
   onCoverage: () => void;
   hero?: boolean;
   counterObservations?: CounterObservation[];
+  pavements?: boolean;
 }
 export function WalkingMap({
   city,
@@ -51,6 +52,7 @@ export function WalkingMap({
   onCoverage,
   hero = false,
   counterObservations,
+  pavements = false,
 }: Props) {
   const { t } = useI18n();
   const container = useRef<HTMLDivElement>(null),
@@ -62,6 +64,7 @@ export function WalkingMap({
     [failure, setFailure] = useState('');
   const [settled, setSettled] = useState(false);
   const [pointChoice, setPointChoice] = useState<Point | null>(null);
+  const [expanded, setExpanded] = useState(false);
   const [showZones, setShowZones] = useState(false);
   const [pointZones, setPointZones] = useState<ZoneProperties[]>([]);
   const zoneDataAvailable = useMemo(
@@ -343,6 +346,21 @@ export function WalkingMap({
           'circle-opacity': ['interpolate', ['linear'], ['zoom'], 11, 0.3, 14, 0.72],
         },
       });
+      m.addSource('pavements', { type: 'geojson', data: collection([]) });
+      m.addLayer({
+        id: 'pavement-lines',
+        type: 'line',
+        source: 'pavements',
+        filter: ['==', ['get', 'crossing'], false],
+        paint: { 'line-color': '#43898c', 'line-width': 2, 'line-opacity': 0.75 },
+      });
+      m.addLayer({
+        id: 'pavement-crossings',
+        type: 'line',
+        source: 'pavements',
+        filter: ['==', ['get', 'crossing'], true],
+        paint: { 'line-color': '#28696d', 'line-width': 2, 'line-dasharray': [1.5, 1.5] },
+      });
       m.addSource('routes', { type: 'geojson', data: collection([]) });
       m.addLayer({
         id: 'route-case',
@@ -607,6 +625,32 @@ export function WalkingMap({
         map.current.setLayoutProperty(layer, 'visibility', showCoverage ? 'visible' : 'none');
   }, [ready, showCoverage]);
   useEffect(() => {
+    const m = map.current;
+    if (!m || !ready) return;
+    (m.getSource('pavements') as GeoJSONSource).setData(
+      pavements && data?.pavementNetwork ? data.pavementNetwork.lines : collection([]),
+    );
+    const coverageCity =
+      pavements && data?.pavementNetwork
+        ? { ...city, bounds: data.pavementNetwork.bounds, coverage: undefined }
+        : city;
+    (m.getSource('coverage') as GeoJSONSource).setData(
+      collection([{ type: 'Feature', properties: {}, geometry: coverageGeometry(coverageCity) }]),
+    );
+    m.setPaintProperty('route-case', 'line-width', [
+      'case',
+      ['get', 'selected'],
+      pavements ? 7 : 10,
+      pavements ? 5 : 7,
+    ]);
+    m.setPaintProperty('route-lines', 'line-width', [
+      'case',
+      ['get', 'selected'],
+      pavements ? 3.5 : 5,
+      pavements ? 2.5 : 3,
+    ]);
+  }, [ready, pavements, data, city]);
+  useEffect(() => {
     if (map.current) map.current.getCanvas().style.cursor = pick ? 'crosshair' : '';
   }, [pick]);
   const markers = useRef<maplibregl.Marker[]>([]);
@@ -715,11 +759,24 @@ export function WalkingMap({
           left: matchMedia('(max-width:620px)').matches ? 28 : 45,
           right: hero ? 35 : 95,
         },
-        maxZoom: 16,
+        maxZoom: pavements ? 17.5 : 16,
         duration: instant || matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 600,
+      });
+    } else if (pavements && data?.pavementNetwork) {
+      m.fitBounds(data.pavementNetwork.bounds, {
+        padding: { top: 130, bottom: 240, left: 35, right: 75 },
+        duration: 0,
       });
     } else m.flyTo({ center: city.center, zoom: 14.4 });
   };
+  useEffect(() => {
+    if (ready && map.current) {
+      map.current.resize();
+      fit(true);
+      if (expanded && pavements)
+        container.current?.parentElement?.scrollIntoView({ block: 'start', behavior: 'instant' });
+    }
+  }, [expanded, ready, pavements]);
   useEffect(() => {
     if (ready && tripKey && lastTrip.current !== tripKey) {
       fit();
@@ -740,7 +797,7 @@ export function WalkingMap({
   }, [showZones]);
   return (
     <div
-      className={`map-shell ${hero ? 'hero-map' : ''}`}
+      className={`map-shell ${hero ? 'hero-map' : ''} ${pavements ? 'pavement-map' : ''} ${expanded ? 'map-expanded' : ''}`}
       data-map-ready={ready}
       data-map-settled={settled}
     >
@@ -767,9 +824,19 @@ export function WalkingMap({
               <small className="map-pilot-label">{city.beta ? 'Beta' : t('Pilot')}</small>
             </strong>
             <span className="map-coverage-label">
-              {t(city.coverageLabel)}
-              {city.beta ? ' · Beta' : t(' · pilot')}
+              {pavements ? t('Talacker–Bahnhofstrasse · pilot') : t(city.coverageLabel)}
+              {!pavements && (city.beta ? ' · Beta' : t(' · pilot'))}
             </span>
+            {pavements && (
+              <button
+                type="button"
+                className="pavement-expand"
+                onClick={() => setExpanded((value) => !value)}
+                aria-expanded={expanded}
+              >
+                {expanded ? t('Smaller map') : t('Enlarge map')}
+              </button>
+            )}
             {showCoverage && city.detailedShade && (
               <span className="map-model-key">
                 <i
@@ -798,15 +865,18 @@ export function WalkingMap({
               title={t('Show whole coverage')}
               onClick={() => {
                 if (!showCoverage) onCoverage();
-                map.current?.fitBounds(city.bounds, {
-                  padding: {
-                    top: matchMedia('(max-width:620px)').matches ? 84 : 130,
-                    bottom: matchMedia('(max-width:620px)').matches ? 62 : 240,
-                    left: 40,
-                    right: 85,
+                map.current?.fitBounds(
+                  pavements && data?.pavementNetwork ? data.pavementNetwork.bounds : city.bounds,
+                  {
+                    padding: {
+                      top: matchMedia('(max-width:620px)').matches ? 84 : 130,
+                      bottom: matchMedia('(max-width:620px)').matches ? 62 : 240,
+                      left: 40,
+                      right: 85,
+                    },
+                    duration: matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 650,
                   },
-                  duration: matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 650,
-                });
+                );
               }}
             >
               <Scan size={19} />
@@ -919,6 +989,12 @@ export function WalkingMap({
             <i className="legend-line" />
             {t('Selected walk')}
           </span>
+          {pavements && (
+            <span>
+              <i className="legend-pavement" />
+              {t('Pilot paths')}
+            </span>
+          )}
           {result?.mode === 'shade' || result?.preference === 'calm' ? (
             <>
               <span>

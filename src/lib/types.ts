@@ -1,5 +1,6 @@
 import type { DetailedShadeData } from './detailed-shade';
 import type { ShadeLibraryData } from './shade-library';
+import type { PavementNetwork } from './pavements';
 export type Point = [number, number];
 export type Bounds = [number, number, number, number];
 export interface City {
@@ -42,6 +43,7 @@ export interface City {
     crs: string;
     verticalDatum: string;
   };
+  pavementPilot?: { dataUrl: string; version: string };
   providers: string[];
   translatedNames: Record<string, string>;
   defaultJourney: [string, string] | null;
@@ -71,6 +73,8 @@ export interface Edge {
   modelClearance?: number;
   /** Bridge, tunnel, covered or nonzero OSM level: bare-earth height is not a deck height. */
   nonGround?: boolean;
+  /** An original municipal surface feature; subdivisions never invent crossings. */
+  pavement?: { sourceId: number; crossing: boolean; crossingShare: number };
 }
 export type TrafficClass =
   'major' | 'pedestrian' | 'restricted' | 'encounter' | 'tempo30' | 'path' | 'other' | 'unknown';
@@ -124,9 +128,12 @@ export interface PilotData {
   shadeLibrary?: ShadeLibraryData;
   /** Used by synchronous source-validation tools, never shipped to the UI. */
   shadeTiles?: Record<string, DetailedShadeData>;
+  pavementNetwork?: PavementNetwork;
 }
 /** The UI retains only search, map points and counter evidence. Heavy graph/model geometry belongs to the routing worker. */
-export type PlannerData = Pick<PilotData, 'places' | 'trees' | 'vehicleCounts'>;
+export type PlannerData = Pick<PilotData, 'places' | 'trees' | 'vehicleCounts'> & {
+  pavementNetwork?: Pick<PavementNetwork, 'version' | 'bounds' | 'places' | 'lines'>;
+};
 export interface TrafficCounter {
   id: string;
   siteId: string;
@@ -181,6 +188,8 @@ export interface Route {
   samples: Sample[];
   streets: string[];
   steps: boolean;
+  /** Traversals of source crossing features, not signal counts or observed wait times. */
+  crossingCount?: number;
 }
 export interface RouteResult {
   fastest: Route;
@@ -194,4 +203,5 @@ export interface RouteResult {
   waypoints: { point: Point; snap: number }[];
   preference: 'environment' | 'water' | 'sun' | 'calm';
   departure: string;
+  pavementVersion?: string;
 }

@@ -14,6 +14,7 @@ import {
 } from './traffic';
 import { WaterIndex } from './water';
 import { inCoverage, segmentInCoverage } from './coverage';
+import { CROSSING_CHOICE_METERS, PAVEMENT_SNAP_METERS, validatePavements } from './pavements';
 
 export const WALK_METERS_PER_MINUTE = 80;
 export const SAMPLE_METERS = 8;
@@ -147,11 +148,18 @@ export class Router {
   gridRotation: number;
   detailed: DetailedShade | ShadeLibrary | null = null;
   private detailedOnly = false;
+  private baseGraph: Pick<PilotData, 'nodes' | 'edges'>;
+  private pavementMode = false;
   constructor(
     public data: PilotData,
     public city: City,
     consumeSource = false,
   ) {
+    this.baseGraph = { nodes: data.nodes, edges: data.edges };
+    if (data.pavementNetwork) {
+      if (!city.pavementPilot) throw new Error('Unexpected pavement network');
+      validatePavements(data.pavementNetwork, city.id, city.pavementPilot.version);
+    }
     this.gridRotation = gridAzimuth(city, 0);
     if (data.cityId !== city.id || data.version !== city.dataVersion)
       throw new Error('The city data version does not match. Reload the app.');
@@ -245,6 +253,21 @@ export class Router {
     });
     if (consumeSource) data.buildings = [];
   }
+  private selectNetwork(pavements: boolean) {
+    if (pavements === this.pavementMode) return;
+    if (pavements && !this.data.pavementNetwork)
+      throw new Error('The pavement pilot is unavailable for this area.');
+    const graph = pavements ? this.data.pavementNetwork! : this.baseGraph;
+    this.data.nodes = graph.nodes;
+    this.data.edges = graph.edges;
+    this.points = graph.nodes.map((node) => metric(this.city, node.point));
+    this.adjacency = graph.nodes.map(() => []);
+    graph.edges.forEach((edge, index) => {
+      this.adjacency[edge.a].push({ to: edge.b, edge: index });
+      this.adjacency[edge.b].push({ to: edge.a, edge: index });
+    });
+    this.pavementMode = pavements;
+  }
   /** Exact solar instant at a sample's expected arrival; no time buckets. */
   exposureAt(point: Point, date: Date, clearance?: number, nonGround = false) {
     const sun = solar(date, point);
@@ -302,6 +325,10 @@ export class Router {
     return { exposure, lowSun, detailed };
   }
   snap(point: Point) {
+    if (this.pavementMode && !inBounds(point, this.data.pavementNetwork!.bounds))
+      throw new Error(
+        'This point is outside the pavement pilot. Choose a highlighted path or switch back to the Zurich map.',
+      );
     if (!inCoverage(this.city, point))
       throw new Error(
         `This point is outside the ${this.city.name} pilot. Choose a point inside the dashed coverage boundary.`,
@@ -316,6 +343,10 @@ export class Router {
         d = next;
       }
     });
+    if (this.pavementMode && (d > PAVEMENT_SNAP_METERS || best < 0))
+      throw new Error(
+        'Choose a point on a highlighted pavement, within 6 metres of the mapped path.',
+      );
     if (d > 45 || best < 0)
       throw new Error(
         'No mapped public walking path within 45 metres. Choose a point on a nearby street or path.',
@@ -374,7 +405,11 @@ export class Router {
     preferWater = false,
     sunlight: 'shade' | 'sun' = 'shade',
     preferCalm = false,
+    pavements = false,
   ): RouteResult {
+    this.selectNetwork(pavements);
+    if (pavements && preferCalm)
+      throw new Error('Calmer-street comparison is unavailable in the pavement pilot.');
     if (
       preferCalm &&
       (!this.city.capabilities.trafficCalming || this.data.trafficModel !== TRAFFIC_MODEL)
@@ -506,12 +541,17 @@ export class Router {
       let distance = 0,
         lowSunMeters = 0,
         steps = false;
+      let crossingCount = 0,
+        previousCrossing: number | undefined;
       const samples: Sample[] = [],
         streets: string[] = [];
       for (let n = 1; n < nodes.length; n++) {
         const index = this.adjacency[nodes[n - 1]].find((e) => e.to === nodes[n])!.edge,
           e = this.data.edges[index];
         steps ||= e.steps;
+        const crossing = e.pavement?.crossing ? e.pavement.sourceId : undefined;
+        if (crossing !== undefined && crossing !== previousCrossing) crossingCount++;
+        previousCrossing = crossing;
         if (e.name && streets.at(-1) !== e.name) streets.push(e.name);
         const part = sample(index);
         let walked = distance;
@@ -540,6 +580,7 @@ export class Router {
         minutes: distance / WALK_METERS_PER_MINUTE,
         samples,
         steps,
+        ...(pavements ? { crossingCount } : {}),
         streets,
         greenMeters: sum((s) => s.green),
         waterMeters: sum((s) => s.water),
@@ -584,13 +625,19 @@ export class Router {
     });
     const fastNodes = new Set(fastest.nodes),
       candidates: Route[] = [];
+    const crossingChoice = (edge: Edge) =>
+      CROSSING_CHOICE_METERS * (edge.pavement?.crossingShare ?? 0);
     const distinct = (r: Route) =>
       r.nodes.join(',') !== fastest.nodes.join(',') &&
       !candidates.some((c) => c.nodes.join(',') === r.nodes.join(','));
     if (extra > 0) {
       for (const penalty of [1.6, 3, 6]) {
         const r = buildRoute(
-          throughStops((e) => e.length * (fastNodes.has(e.a) && fastNodes.has(e.b) ? penalty : 1)),
+          throughStops(
+            (e) =>
+              e.length * (fastNodes.has(e.a) && fastNodes.has(e.b) ? penalty : 1) +
+              crossingChoice(e),
+          ),
           `option-${candidates.length}`,
         );
         if (distinct(r)) candidates.push(r);
@@ -614,7 +661,7 @@ export class Router {
                   : 0),
               0,
             );
-            return e.length * emphasis + e.length - favorable;
+            return e.length * emphasis + e.length - favorable + crossingChoice(e);
           }),
           `option-${candidates.length}`,
         );
@@ -704,7 +751,8 @@ export class Router {
                   (fastest.sunMeters + fastest.unknownMeters) / fastest.distance >=
                   0.03
               : shade
-                ? fastest.sunMeters - (r.sunMeters + r.unknownMeters) >= 40
+                ? fastest.sunMeters - (r.sunMeters + r.unknownMeters) >=
+                  40 * Math.max(1, (r.crossingCount ?? 0) - (fastest.crossingCount ?? 0))
                 : r.greenMeters / r.distance - fastest.greenMeters / fastest.distance >= 0.03)
       );
     });
@@ -740,6 +788,7 @@ export class Router {
             ? 'sun'
             : 'environment',
       departure,
+      ...(pavements ? { pavementVersion: this.data.pavementNetwork!.version } : {}),
     };
   }
 }

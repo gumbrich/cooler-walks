@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "id": "zurich-talacker-pavements",
+  "version": "zurich-pavements-2026-10-06-v1",
+  "sourceSha256": "67f15fa921fffd66f9b54159bc18eafd245a0ea6d913dcb97745ecb8af2d5eaa",
+  "fetchBounds": [8.532, 47.367, 8.545, 47.376],
+  "reviewedFeatureIds": [
+    165, 806, 1306, 1456, 1471, 1860, 2609, 2959, 3565, 3751, 3822, 5013, 5987, 6147, 7409, 7474,
+    7660, 7857, 7957, 8110, 9213, 9225, 9413, 9726, 10085, 10461, 10696, 11260, 11432, 13433, 13566,
+    13600, 14181, 14584, 15212, 15468, 15622, 15796, 15953, 15962, 16531, 16779, 16826, 16943,
+    17376, 18431, 18556, 18635, 18881, 19192, 19451, 19755, 19789, 19840, 19917, 19938, 20074,
+    20355, 20548, 20726, 20874, 21278, 22500, 22604, 22811, 22874, 22910, 23313, 23320, 23379,
+    23463, 24510, 25013, 25127, 25199, 25600, 26254, 26430, 26764, 26970, 27566, 27613, 27741,
+    27769, 28207, 28295, 28848, 28856, 28863, 29033, 29728, 30793, 30856, 31824, 32156, 32208,
+    33329, 33400, 33488, 33793, 34286, 35024, 35070, 35150, 35473, 35649, 36101, 36103, 36333,
+    36791, 37367, 38641, 39201, 39720, 39936
+  ],
+  "reviewNote": "Bounded Talacker–Bahnhofstrasse surface-street component. Only municipal FUSS=1 features on reviewed named streets and their named Überquerung connectors. Join identical original endpoints only; do not connect geometric intersections or close gaps. Geometry review is not field validation."
+}

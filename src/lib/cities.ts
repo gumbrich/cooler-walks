@@ -32,6 +32,10 @@ export const cities: City[] = [
     dataVersion: zurichExtract.version,
     dataUrl: '/data/zurich.json',
     mapUrl: '/data/zurich-map.geojson',
+    pavementPilot: {
+      dataUrl: '/data/zurich-pavements.json',
+      version: 'zurich-pavements-2026-10-06-v1',
+    },
     detailedShade: {
       format: 'library',
       dataUrl: '/data/zurich-shade-library.json',
@@ -53,6 +57,10 @@ export const cities: City[] = [
     sourceSummary:
       'Walking network, tree extract and official addresses fetched 30 September 2026. Building tiles: 2019; tree locations: 2021, prepared 2022. City traffic zones fetched 29 September 2026; cantonal zone orders 6 October 2026. Fetch dates are not observation dates.',
     sources: [
+      {
+        label: 'Zurich pavement and crossing network · CC0',
+        url: 'https://data.stadt-zuerich.ch/dataset/geo_fuss__und_velowegnetz',
+      },
       {
         label: 'Zurich municipal boundary · CC0',
         url: 'https://data.stadt-zuerich.ch/dataset/ktzh_gemeindegrenzen__ogd_',

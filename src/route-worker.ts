@@ -4,6 +4,7 @@ import type { AreaDescriptor } from './lib/area-types';
 import { decodeArea } from './lib/area-codec';
 import { boundedBytes } from './lib/area-codec';
 import { ShadeLibrary, decodeShadeTile, withShadeTiles } from './lib/shade-library';
+import { validatePavements } from './lib/pavements';
 let router: Router;
 let sequence = 0;
 let loading: AbortController | undefined;
@@ -23,6 +24,7 @@ self.onmessage = async (
     preferWater: boolean;
     preferCalm: boolean;
     sunlight: 'shade' | 'sun';
+    pavements?: boolean;
   }>,
 ) => {
   const m = event.data;
@@ -63,6 +65,19 @@ self.onmessage = async (
         if ((data.shadeLibrary ?? data.detailedShade)?.version !== m.city.detailedShade.version)
           throw new Error('Pilot data version mismatch');
       }
+      if (m.city.pavementPilot) {
+        if (!saved) {
+          const response = await fetch(m.city.pavementPilot.dataUrl, {
+            signal: AbortSignal.timeout(30000),
+          });
+          if (!response.ok)
+            throw new Error('The pavement pilot could not load. Reconnect and try again.');
+          data.pavementNetwork = await response.json();
+        }
+        if (!data.pavementNetwork)
+          throw new Error('The pavement pilot data is missing. Update the saved Zurich map.');
+        validatePavements(data.pavementNetwork, m.city.id, m.city.pavementPilot.version);
+      }
       // Only UI data crosses to the main thread. All routing geometry is parsed
       // and indexed here, without cloning the whole city into a second heap.
       self.postMessage({
@@ -71,6 +86,12 @@ self.onmessage = async (
           places: data.places,
           trees: data.trees,
           vehicleCounts: data.vehicleCounts,
+          pavementNetwork: data.pavementNetwork && {
+            version: data.pavementNetwork.version,
+            bounds: data.pavementNetwork.bounds,
+            places: data.pavementNetwork.places,
+            lines: data.pavementNetwork.lines,
+          },
         },
         map: saved?.map,
       });
@@ -93,6 +114,7 @@ self.onmessage = async (
         m.preferWater,
         m.sunlight,
         m.preferCalm,
+        m.pavements,
       );
     };
     const result =

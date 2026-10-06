@@ -26,9 +26,13 @@ const areaIds = catalog
 if (lite)
   for (const file of fs.readdirSync('native-web/data')) {
     if (
-      !['zurich.json', 'zurich-map.geojson', 'zurich-shade-library.json', 'zurich-shade'].includes(
-        file,
-      )
+      ![
+        'zurich.json',
+        'zurich-map.geojson',
+        'zurich-shade-library.json',
+        'zurich-shade',
+        'zurich-pavements.json',
+      ].includes(file)
     )
       fs.rmSync(`native-web/data/${file}`, { recursive: true });
   }

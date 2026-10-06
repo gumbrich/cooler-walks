@@ -1,6 +1,6 @@
 {
   "name": "cooler-walks",
-  "version": "0.13.0",
+  "version": "0.14.0",
   "private": true,
   "type": "module",
   "engines": {
@@ -13,7 +13,7 @@
     "test": "vitest run",
     "check": "tsc -b && vitest run",
     "data:prepare": "tsx scripts/prepare-data.ts && npm run data:prepare:traffic && npm run data:attach:counts && npm run data:prepare:addresses && node --import tsx scripts/attach-detailed-shade.ts",
-    "data:verify": "tsx scripts/verify-data.ts && tsx scripts/verify-cities.ts && tsx scripts/verify-coverage.ts && tsx scripts/verify-arrival-shade.ts && node --import tsx scripts/verify-detailed-shade.ts && node --import tsx scripts/verify-traffic.ts && npm run data:verify:shade-library",
+    "data:verify": "tsx scripts/verify-data.ts && tsx scripts/verify-cities.ts && tsx scripts/verify-coverage.ts && tsx scripts/verify-arrival-shade.ts && node --import tsx scripts/verify-detailed-shade.ts && node --import tsx scripts/verify-traffic.ts && npm run data:verify:shade-library && npm run data:verify:pavements",
     "data:audit-trees": "tsx scripts/audit-trees.ts",
     "test:e2e": "playwright test",
     "test:pwa": "node scripts/verify-pwa.mjs",
@@ -54,7 +54,13 @@
     "data:fetch:shade": ".venv-geo/bin/python scripts/fetch-zurich-shade-library.py",
     "data:verify:shade-library": "node --import tsx scripts/verify-shade-library.ts",
     "data:fetch:traffic:zones": "node --import tsx scripts/fetch-cantonal-traffic.ts",
-    "data:prepare:traffic:zones": "node --import tsx scripts/prepare-traffic-zones.ts"
+    "data:prepare:traffic:zones": "node --import tsx scripts/prepare-traffic-zones.ts",
+    "data:fetch:pavements": "node --import tsx scripts/fetch-pavements.ts",
+    "data:prepare:pavements": "node --import tsx scripts/prepare-pavements.ts",
+    "data:verify:pavements": "node --import tsx scripts/verify-pavements.ts",
+    "data:audit:pavements": ".venv-geo/bin/python scripts/audit-pavement-shadows.py",
+    "data:compare:pavements": ".venv-geo/bin/python scripts/compare-pavement-tools.py",
+    "test:native:pavements": "node scripts/verify-android-pavements.mjs"
   },
   "dependencies": {
     "@capacitor/android": "^8.5.2",

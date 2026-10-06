@@ -60,7 +60,11 @@ const preference = (key: string, value: string) => {
 };
 export default function App() {
   const { t, language, setLanguage, locale, number, localPath } = useI18n();
-  const [cityId, setCityId] = useState(() => readPreference('cw-city', 'ch-zurich'));
+  const [cityId, setCityId] = useState(() =>
+    new URLSearchParams(location.search).get('network') === 'pavements'
+      ? (cityOptions.find((city) => city.pavementPilot)?.id ?? 'ch-zurich')
+      : readPreference('cw-city', 'ch-zurich'),
+  );
   const [areaId, setAreaId] = useState(() => readPreference('cw-area', cityId));
   const area = getArea(areaId, cityId);
   const city = useMemo(() => (area ? cityForArea(area) : getCity(cityId)), [area, cityId]);
@@ -99,6 +103,10 @@ export default function App() {
     };
   }, []);
   const [preferCalm, setPreferCalm] = useState(false);
+  const [pavements, setPavements] = useState(false);
+  const initialPavements = useRef(
+    new URLSearchParams(location.search).get('network') === 'pavements',
+  );
   const [countsExpanded, setCountsExpanded] = useState(false);
   const [preferWater, setPreferWater] = useState(false);
   const [sunlight, setSunlight] = useState<'shade' | 'sun'>('shade');
@@ -133,6 +141,7 @@ export default function App() {
     setStops([]);
     setPreferWater(false);
     setPreferCalm(false);
+    setPavements(false);
     setCountsExpanded(false);
     setSunlight('shade');
     setError('');
@@ -161,12 +170,19 @@ export default function App() {
         planner = e.data.data;
         if (e.data.map) setMapData(e.data.map);
       } else if (e.data.type === 'ready' && planner) {
-        const from = planner.places.find((p) => p.name === city.defaultJourney?.[0]),
-          to = planner.places.find((p) => p.name === city.defaultJourney?.[1]);
+        const pilot = initialPavements.current && planner.pavementNetwork;
+        initialPavements.current = false;
+        const from = pilot
+            ? pilot.places[0]
+            : planner.places.find((p) => p.name === city.defaultJourney?.[0]),
+          to = pilot
+            ? pilot.places[1]
+            : planner.places.find((p) => p.name === city.defaultJourney?.[1]);
         if (!from || !to) return loadError('Reference places are missing from the city bundle');
         setData(planner);
         planner = null;
         setDataState('ready');
+        setPavements(!!pilot);
         setStart({ name: from.name, point: from.point });
         setEnd({ name: to.name, point: to.point });
         if (!isNativeApp && city.dataUrl && import.meta.env.PROD && 'serviceWorker' in navigator) {
@@ -174,7 +190,12 @@ export default function App() {
             if (!controller.signal.aborted)
               target?.postMessage({
                 type: 'CACHE_CITY',
-                urls: [city.dataUrl, city.mapUrl, city.detailedShade?.dataUrl].filter(Boolean),
+                urls: [
+                  city.dataUrl,
+                  city.mapUrl,
+                  city.detailedShade?.dataUrl,
+                  city.pavementPilot?.dataUrl,
+                ].filter(Boolean),
               });
           };
           navigator.serviceWorker.addEventListener(
@@ -285,6 +306,7 @@ export default function App() {
         preferWater,
         preferCalm,
         sunlight,
+        pavements,
       });
     }, 180);
     return () => clearTimeout(timer);
@@ -296,6 +318,7 @@ export default function App() {
     preferWater,
     preferCalm,
     sunlight,
+    pavements,
     departure,
     extra,
     city,
@@ -334,6 +357,10 @@ export default function App() {
     return () => window.removeEventListener('popstate', pop);
   }, []);
   const changeCity = (id: string) => {
+    initialPavements.current = false;
+    const url = new URL(location.href);
+    url.searchParams.delete('network');
+    history.replaceState({}, '', url);
     setCityId(id);
     setAreaId(id);
     preference('cw-city', id);
@@ -341,6 +368,26 @@ export default function App() {
     setDeparture(localNow(getCity(id).timeZone));
     setEditing(false);
   };
+  const changeNetwork = () => {
+    if (!data?.pavementNetwork) return;
+    const next = !pavements;
+    const places = next
+      ? data.pavementNetwork.places
+      : city.defaultJourney!.map((name) => data.places.find((p) => p.name === name)!);
+    setPavements(next);
+    setStart({ name: places[0].name, point: places[0].point });
+    setEnd({ name: places[1].name, point: places[1].point });
+    setStops([]);
+    setPick(null);
+    setPreferCalm(false);
+    setPreferWater(false);
+    setError('');
+    const url = new URL(location.href);
+    if (next) url.searchParams.set('network', 'pavements');
+    else url.searchParams.delete('network');
+    history.replaceState({}, '', url);
+  };
+  const searchPlaces = pavements ? (data?.pavementNetwork?.places ?? []) : (data?.places ?? []);
   useEffect(() => {
     if (!isNativeApp) return;
     const listener = import('@capacitor/app').then(({ App: NativeApp }) =>
@@ -582,12 +629,18 @@ export default function App() {
           })}
         </div>
       )}
+      {result?.pavementVersion && (
+        <div className="route-pavement-note">
+          {t('Mapped pavements · {count} crossing sections', { count: route.crossingCount ?? 0 })}
+        </div>
+      )}
     </button>
   );
   const mapProps = {
     city,
     data,
     mapData,
+    pavements,
     result,
     selected,
     onSelect: setSelected,
@@ -807,6 +860,16 @@ export default function App() {
                     {editing ? <PanelTopClose size={21} /> : <MapPin size={21} />}
                   </button>
                 </div>
+                {data?.pavementNetwork && (
+                  <div className={`network-choice ${pavements ? 'is-active' : ''}`}>
+                    <button type="button" onClick={changeNetwork}>
+                      <MapPin size={15} aria-hidden="true" />
+                      {pavements ? t('Zurich map') : t('Try pavement pilot')}
+                      <ArrowRight size={14} aria-hidden="true" />
+                    </button>
+                    {pavements && <span>{t('Talacker–Bahnhofstrasse · pilot')}</span>}
+                  </div>
+                )}
                 <div className="trip-compact">
                   <span>
                     <b>A</b>
@@ -840,11 +903,15 @@ export default function App() {
                     </p>
                   )}
                   <p className="search-guidance">
-                    {t(
-                      city.capabilities.addresses
-                        ? 'Enter an address or choose a point on the map.'
-                        : 'Enter a street or place, or choose a point on the map.',
-                    )}
+                    {pavements
+                      ? t(
+                          'Choose a junction or tap a highlighted pavement. Selected streets only; field checks pending.',
+                        )
+                      : t(
+                          city.capabilities.addresses
+                            ? 'Enter an address or choose a point on the map.'
+                            : 'Enter a street or place, or choose a point on the map.',
+                        )}
                   </p>
                   <div className="endpoint-fields">
                     <span className="endpoint-track">
@@ -858,8 +925,8 @@ export default function App() {
                         city={city}
                         label={t('From')}
                         value={start}
-                        places={data?.places ?? []}
-                        addresses={city.capabilities.addresses}
+                        places={searchPlaces}
+                        addresses={city.capabilities.addresses && !pavements}
                         onChange={setStart}
                         onPick={() => chooseMap('start')}
                       />
@@ -873,8 +940,8 @@ export default function App() {
                               city={city}
                               label={t('Stop {n}', { n: index + 1 })}
                               value={stop.value}
-                              places={data?.places ?? []}
-                              addresses={city.capabilities.addresses}
+                              places={searchPlaces}
+                              addresses={city.capabilities.addresses && !pavements}
                               onChange={(value) =>
                                 setStops((current) =>
                                   current.map((item) =>
@@ -929,8 +996,8 @@ export default function App() {
                         city={city}
                         label={t('To')}
                         value={end}
-                        places={data?.places ?? []}
-                        addresses={city.capabilities.addresses}
+                        places={searchPlaces}
+                        addresses={city.capabilities.addresses && !pavements}
                         onChange={setEnd}
                         onPick={() => chooseMap('end')}
                       />
@@ -1007,7 +1074,7 @@ export default function App() {
                       </div>
                     </fieldset>
                   )}
-                  {city.capabilities.water && (
+                  {city.capabilities.water && !pavements && (
                     <label className={`water-preference ${preferWater ? 'active' : ''}`}>
                       <Waves size={21} />
                       <span>
@@ -1023,7 +1090,7 @@ export default function App() {
                       />
                     </label>
                   )}
-                  {city.capabilities.trafficCalming && (
+                  {city.capabilities.trafficCalming && !pavements && (
                     <label
                       className={`water-preference calm-preference ${preferCalm ? 'active' : ''}`}
                     >
@@ -1214,7 +1281,7 @@ export default function App() {
                         {t('About this walk ')}
                         <ChevronDown size={15} />
                       </summary>
-                      {city.capabilities.trafficCalming && (
+                      {city.capabilities.trafficCalming && !pavements && (
                         <div className="route-traffic">
                           <TrafficCone size={14} />
                           <span>
@@ -1270,6 +1337,13 @@ export default function App() {
                           .slice(0, 12)
                           .join(' → ')}
                       </p>
+                      {result?.pavementVersion && (
+                        <p>
+                          {t(
+                            'The line follows municipal pavement geometry. Side changes use mapped crossing sections. Their walked distance is included; signal waits are unknown. Check crossings and access on site.',
+                          )}
+                        </p>
+                      )}
                       <p>
                         {(start?.address ||
                           end?.address ||
@@ -1307,7 +1381,7 @@ export default function App() {
                           )}
                         </p>
                       )}
-                      {city.capabilities.trafficCalming && (
+                      {city.capabilities.trafficCalming && !pavements && (
                         <p>
                           {t(
                             'Paths & restricted streets: mapped pedestrian areas, motor-restricted streets and separate paths away from main roads. Begegnungszone and Tempo-30 streets remain separate because they allow motor traffic. Unknown street context:',
@@ -1355,7 +1429,9 @@ export default function App() {
                 <div className="panel-footer">
                   <button onClick={() => setModal('coverage')}>
                     <span className="pilot-dot" />{' '}
-                    {t('{area} pilot', { area: t(city.coverageLabel) })}
+                    {pavements
+                      ? t('Talacker–Bahnhofstrasse · pilot')
+                      : t('{area} pilot', { area: t(city.coverageLabel) })}
                     <Info size={13} />
                   </button>
                   <button
@@ -1474,7 +1550,7 @@ export default function App() {
                   <h3>{t('Know the limits')}</h3>
                   <p>
                     {t(
-                      'At least 95% model coverage is required to compare shade or sun. “Prefer sun” ranks the known sunny share of the whole walk; unknown data cannot improve that score. It stays your choice in every season. Low sun below 10° is withheld. Streets may follow centrelines; we cannot identify the shadier pavement. Access restrictions, closures and walking speed may differ on the ground. No wheelchair-suitability claim is made.',
+                      'At least 95% model coverage is required to compare shade or sun. “Prefer sun” ranks the known sunny share of the whole walk; unknown data cannot improve that score. It stays your choice in every season. Low sun below 10° is withheld. Outside the pavement pilot, streets may follow centrelines and cannot distinguish pavements. The pilot uses municipal walking lines; field validation is still pending. Access restrictions, closures and walking speed may differ on the ground. No wheelchair-suitability claim is made.',
                     )}
                   </p>
                 </div>

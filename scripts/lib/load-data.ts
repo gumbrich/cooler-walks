@@ -6,6 +6,10 @@ import type { City, PilotData } from '../../src/lib/types';
 /** Mirror worker/pack loading in every real-data check. Synthetic tests remain explicit. */
 export function loadData(city: City, historicalDetailed = false): PilotData {
   const data = JSON.parse(fs.readFileSync(`public${city.dataUrl}`, 'utf8')) as PilotData;
+  if (city.pavementPilot)
+    data.pavementNetwork = JSON.parse(
+      fs.readFileSync(`public${city.pavementPilot.dataUrl}`, 'utf8'),
+    );
   if (historicalDetailed) {
     data.detailedShade = JSON.parse(
       fs.readFileSync('public/data/zurich-detailed-shade.json', 'utf8'),
