@@ -18,13 +18,13 @@
     ],
     "kind": "Mapped path 5 m from place"
   },
-  "version": "zurich-2026-09-30-v10",
-  "verifiedAt": "2026-09-30T19:28:51.876Z",
+  "version": "zurich-2026-10-06-v11",
+  "verifiedAt": "2026-10-06T18:21:07.076Z",
   "results": [
     {
       "date": "2026-06-21T08:00:00Z",
       "extra": 5,
-      "calculationMs": 2197,
+      "calculationMs": 1053,
       "mode": "greenery",
       "candidates": 4,
       "fastest": {
@@ -68,7 +68,7 @@
     {
       "date": "2026-06-21T12:00:00Z",
       "extra": 5,
-      "calculationMs": 2069,
+      "calculationMs": 354,
       "mode": "shade",
       "candidates": 4,
       "fastest": {
@@ -113,7 +113,7 @@
     {
       "date": "2026-06-21T16:00:00Z",
       "extra": 5,
-      "calculationMs": 2094,
+      "calculationMs": 438,
       "mode": "greenery",
       "candidates": 5,
       "fastest": {
@@ -157,7 +157,7 @@
     {
       "date": "2026-06-21T12:00:00Z",
       "extra": 0,
-      "calculationMs": 104,
+      "calculationMs": 38,
       "mode": "shade",
       "candidates": 1,
       "fastest": {
@@ -189,7 +189,7 @@
     {
       "date": "2026-06-21T12:00:00Z",
       "extra": 10,
-      "calculationMs": 2350,
+      "calculationMs": 1004,
       "mode": "shade",
       "candidates": 4,
       "fastest": {
@@ -234,7 +234,7 @@
     {
       "date": "2026-06-21T00:00:00Z",
       "extra": 5,
-      "calculationMs": 910,
+      "calculationMs": 643,
       "mode": "night",
       "candidates": 4,
       "fastest": {

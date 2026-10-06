@@ -1,0 +1,86 @@
+{
+  "appVersion": "0.14.1",
+  "sourceRevision": "909afbc3bdfe6ca165046589b7494b40fa2cfebb",
+  "checkedAt": "2026-10-06T19:29:38.262528+00:00",
+  "runs": [
+    {
+      "conclusion": "success",
+      "databaseId": 37517063671,
+      "headSha": "909afbc3bdfe6ca165046589b7494b40fa2cfebb",
+      "name": "Native iOS build",
+      "status": "completed",
+      "url": "https://github.com/gumbrich/cooler-walks/actions/runs/37517063671"
+    },
+    {
+      "conclusion": "success",
+      "databaseId": 37517063739,
+      "headSha": "909afbc3bdfe6ca165046589b7494b40fa2cfebb",
+      "name": "Native Android build",
+      "status": "completed",
+      "url": "https://github.com/gumbrich/cooler-walks/actions/runs/37517063739"
+    },
+    {
+      "conclusion": "success",
+      "databaseId": 37517063668,
+      "headSha": "909afbc3bdfe6ca165046589b7494b40fa2cfebb",
+      "name": "Checks",
+      "status": "completed",
+      "url": "https://github.com/gumbrich/cooler-walks/actions/runs/37517063668"
+    }
+  ],
+  "checkJobs": [
+    {
+      "databaseId": 112452616316,
+      "name": "test",
+      "conclusion": "success",
+      "startedAt": "2026-10-06T19:11:24Z",
+      "completedAt": "2026-10-06T19:16:35Z"
+    },
+    {
+      "databaseId": 112454899053,
+      "name": "browser (1)",
+      "conclusion": "success",
+      "startedAt": "2026-10-06T19:16:39Z",
+      "completedAt": "2026-10-06T19:27:37Z"
+    },
+    {
+      "databaseId": 112454899167,
+      "name": "browser (3)",
+      "conclusion": "success",
+      "startedAt": "2026-10-06T19:16:41Z",
+      "completedAt": "2026-10-06T19:23:52Z"
+    },
+    {
+      "databaseId": 112454899196,
+      "name": "browser (2)",
+      "conclusion": "success",
+      "startedAt": "2026-10-06T19:16:40Z",
+      "completedAt": "2026-10-06T19:19:50Z"
+    },
+    {
+      "databaseId": 112454899228,
+      "name": "browser (4)",
+      "conclusion": "success",
+      "startedAt": "2026-10-06T19:16:40Z",
+      "completedAt": "2026-10-06T19:26:47Z"
+    }
+  ],
+  "scope": {
+    "applicationModelTests": 105,
+    "localBrowserScenarios": 27,
+    "ciBrowserScenarios": 27,
+    "data": "Complete real-route/source verification, all active cities, independent geometry checks and two frozen cold-start shade comparisons",
+    "cacheUpgrade": "Production legacy-worker upgrade, compatible-cache retention and offline routing pass in Linux browser shard 1",
+    "addressEdit": "Intermediate long route starts before endpoint replacement; final Altstetten route appears in 6222 ms on Linux, within the unchanged 45-second assertion",
+    "android": "0.14.1/build 13; unchanged 2 GB Android 16 emulator passes cold afternoon, offline restart, addresses, historical counts, German, city switching and pavement flows; CI APK/AAB compilation passes",
+    "ios": "CI simulator build and unsigned archive pass; no interaction test for this release",
+    "hosting": "Byte-identical routing worker, all 81 model tiles, pavement graph, five map packs, EN/DE pages, security headers, native CORS and true 404s",
+    "pwa": "Current live website installs and launches standalone in Chrome 154; English/German offline routing, saved areas and both Zurich networks pass without page errors"
+  },
+  "artifacts": "Routine CI uploads are opt-in; no historical artifacts or billing settings were changed. Optional uploads still require available storage.",
+  "limitations": [
+    "Shadow and traffic estimates remain experimental and await field validation.",
+    "Historical-roof and dated-observation uncertainties remain; Shadowmap point/time comparison needs partner API access.",
+    "No physical-phone testing or current iOS interaction validation."
+  ]
+}

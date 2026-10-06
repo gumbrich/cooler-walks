@@ -1,0 +1,26 @@
+{
+  "checkedAt": "2026-10-06T19:10:03.983Z",
+  "node": "v26.4.0",
+  "city": "ch-zurich",
+  "dataVersion": "zurich-2026-10-06-v11",
+  "shadeVersion": "zurich-roofs-dtm-library-2026-09-30-v2",
+  "results": [
+    {
+      "departure": "2026-06-21T12:00:00Z",
+      "coldStartMs": 2134,
+      "passes": 3,
+      "loadedTiles": 6,
+      "fastestShadeMeters": 224.36114285714285,
+      "alternativeShadeMeters": 792.0574166666672
+    },
+    {
+      "departure": "2026-10-06T14:45:00Z",
+      "coldStartMs": 2296,
+      "passes": 3,
+      "loadedTiles": 6,
+      "fastestShadeMeters": 893.3910833333332,
+      "alternativeShadeMeters": 1143.7147499999987
+    }
+  ],
+  "note": "Cold worker-equivalent loading from local files, including parse/index/decode. Timings depend on hardware; these are computational regressions, not field validation."
+}

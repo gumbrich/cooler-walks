@@ -1,6 +1,16 @@
 # Progress
 
+## Startup and update repairs · 0.14.1
+
+Reduced unnecessary shade calculations with exact walking-network budget bounds and reusable static geometry. The original cold autumn-afternoon Android case now passes in 20.0 seconds on the unchanged 2 GB emulator; the offline June restart passes in 19.6 seconds. Trip edits cancel obsolete calculations, so an intermediate long journey cannot hold up the final address pair. Added a reproducible cold-start check preserving the previous shade totals, plus a small exhaustive route-budget test.
+
+Data URLs now include source-content revisions. An actual production-worker upgrade test verifies automatic recovery from stale cached data, compatible cache migration and subsequent offline routing. GitHub's routine checks retain strict build/test failures while making package and trace uploads opt-in with three-day retention. Failure context is available directly in job logs. No stored artifacts or billing settings were changed.
+
+Local validation: TypeScript, 105 unit/model/language tests, 27 browser scenarios, all city/source route checks, production build, five pack checksums and the production cache-upgrade regression pass. [Maintenance details](maintenance.md) · [cold-start results](startup-validation.json). The published `909afbc` also passes all 27 Linux browser scenarios, the production cache-upgrade test and Android/iOS CI builds. [CI evidence](releases/0.14.1-ci.json). Field validation remains the next model-accuracy milestone.
+
 ## Zurich pavement pilot · 0.14.0
+
+Historical release findings below: the startup and cache issues are superseded by the 0.14.1 repairs above; field-validation limits remain.
 
 Implemented the first two milestones on a bounded Talacker–Bahnhofstrasse network: 115 municipal walking/crossing features, exact endpoint connectivity, shade/sun comparison on actual pavement lines and crossing distance inside the existing detour budget. EN/DE controls, a phone map enlargement, offline maps and shared native assets are included. [Implementation and reproduction](pavement-pilot.md).
 

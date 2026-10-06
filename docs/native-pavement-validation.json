@@ -1,6 +1,6 @@
 {
-  "checkedAt": "2026-10-06T15:10:26.254Z",
-  "appVersion": "0.14.0",
+  "checkedAt": "2026-10-06T19:14:20.495Z",
+  "appVersion": "0.14.1",
   "device": "CoolerWalks_Test Android 16 emulator, 2 GB",
   "passed": [
     "Public pavement deep link",
@@ -12,10 +12,7 @@
     "Moving shadows with departure time",
     "Return to regular Zurich at reference time"
   ],
-  "limitations": [
-    "No physical-phone test",
-    "No iOS interaction test",
-    "Full-city first launch at 6 October afternoon exceeded 60 seconds in the separate general regression, before and after an emulator reboot"
-  ],
+  "generalRegression": "docs/native-counts-validation.json",
+  "limitations": ["No physical-phone test", "No iOS interaction test"],
   "pageErrors": []
 }

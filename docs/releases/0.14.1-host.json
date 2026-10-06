@@ -1,0 +1,20 @@
+{
+  "checkedAt": "2026-10-06T19:18:33.893279+00:00",
+  "origin": "https://coolerwalks.ch",
+  "applicationCommit": "909afbc3bdfe6ca165046589b7494b40fa2cfebb",
+  "routeWorker": "/assets/route-worker-BpSpDJ6O.js",
+  "routeWorkerSha256": "6fc6a518637a98e0ee3cf23ecfaa5f9d005b6ef4bc6fcc337922e020100f4cf9",
+  "verified": [
+    "Network-budget bounds and static-sample reuse present in served worker",
+    "Production data revision URLs and compatible-cache handover present in service worker",
+    "EN/DE pages, security headers, true 404s and manifests",
+    "All 81 model tile hashes",
+    "Pavement graph matches reviewed bytes",
+    "All five map-pack hashes and native CORS using deployed catalogue",
+    "Final browser startup repair published and checked in existing Chrome session",
+    "Published route worker is byte-identical to the tested production build, including cancellable graph search and scoring"
+  ],
+  "netlify": "Published main@909afbc confirmed in project Deploys view",
+  "applicationAsset": "/assets/main-DVH1kvGt.js",
+  "returningChromeSession": "Current public German pavement planner opened under the existing cached Chrome session without manual Reload; real night route (400 m, 5 minutes, four crossing sections) displayed. The separate public PWA report covers fresh installation and offline checks."
+}

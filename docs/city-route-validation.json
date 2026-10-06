@@ -1,10 +1,10 @@
 {
   "modelVersion": "roof-mesh-tiled-ground-arrival-v8",
-  "verifiedAt": "2026-09-30T19:29:03.315Z",
+  "verifiedAt": "2026-10-06T18:21:14.597Z",
   "cities": [
     {
       "city": "ch-zurich",
-      "version": "zurich-2026-09-30-v10",
+      "version": "zurich-2026-10-06-v11",
       "from": {
         "id": "way-120613500",
         "name": "Bahnhofquai",
@@ -32,6 +32,7 @@
         "fountains": false,
         "water": true,
         "trafficCalming": true,
+        "trafficZones": true,
         "vehicleCounts": true,
         "addresses": true
       },
@@ -611,7 +612,7 @@
           "mode": "greenery",
           "preference": "water",
           "departure": "2026-06-21T18:00:00Z",
-          "candidates": 4,
+          "candidates": 3,
           "routes": [
             {
               "meters": 3994.629999999999,

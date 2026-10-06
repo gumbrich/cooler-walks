@@ -92,11 +92,8 @@ try {
       'Moving shadows with departure time',
       'Return to regular Zurich at reference time',
     ],
-    limitations: [
-      'No physical-phone test',
-      'No iOS interaction test',
-      'Full-city first launch at 6 October afternoon exceeded 60 seconds in the separate general regression, before and after an emulator reboot',
-    ],
+    generalRegression: 'docs/native-counts-validation.json',
+    limitations: ['No physical-phone test', 'No iOS interaction test'],
     pageErrors: errors,
   };
   fs.writeFileSync('docs/native-pavement-validation.json', JSON.stringify(report, null, 2) + '\n');
