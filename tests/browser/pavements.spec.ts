@@ -13,6 +13,7 @@ test('expanded pavement search reaches Oerlikon and shows the whole supported ma
   // Clearing both points also checks cancellation of the intermediate cross-city trip.
   await from.fill('');
   await to.fill('Franklinstrasse / Schaffhauserstrasse');
+  await expect(page.getByRole('listbox').last()).toContainText('Wegkreuzung');
   await to.press('Enter');
   await from.fill('Franklinstrasse / Hofwiesenstrasse');
   await from.press('Enter');

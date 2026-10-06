@@ -518,5 +518,6 @@
   "Mapped paths · {count} crossing sections": "Kartierte Wege · {count} Querungsabschnitte",
   "Routes follow municipal pavements and footpaths. Crossing distances count; signal waits are unknown. Shade is withheld where walking height is uncertain, including identified bridges and underpasses. Check access on site.": "Routen folgen städtischen Trottoirs und Fusswegen. Querungswege zählen mit, Ampelwartezeiten sind unbekannt. Bei unklarer Weghöhe, etwa auf erkannten Brücken und in Unterführungen, bleibt der Schatten unbekannt. Prüfe Zugänge vor Ort.",
   "Choose a point on a highlighted path, within 6 metres of the mapped line.": "Wähle einen Punkt auf einem markierten Weg, höchstens 6 Meter von der kartierten Linie entfernt.",
-  "Mapped paths · 1 crossing section": "Kartierte Wege · 1 Querungsabschnitt"
+  "Mapped paths · 1 crossing section": "Kartierte Wege · 1 Querungsabschnitt",
+  "Path junction": "Wegkreuzung"
 }

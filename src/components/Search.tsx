@@ -115,7 +115,8 @@ export function PlaceSearch({
                 <span>
                   {p.name}
                   <small>
-                    {t(p.kind)} · {p.postcode ? `${p.postcode} ` : ''}
+                    {p.kind === 'pavement' ? t('Path junction') : t(p.kind)} ·{' '}
+                    {p.postcode ? `${p.postcode} ` : ''}
                     {cityName}
                     {p.address && !inCoverage(city, p.point)
                       ? ` · ${t('Outside walking coverage')}`
