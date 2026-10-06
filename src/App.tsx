@@ -70,10 +70,11 @@ export default function App() {
   const area = getArea(areaId, cityId);
   const city = useMemo(() => (area ? cityForArea(area) : getCity(cityId)), [area, cityId]);
   const [mapData, setMapData] = useState<FeatureCollection | null>(null);
-  // On small native devices, indexing the city basemap and loading the 3D
-  // model together can exhaust memory. Finish the first route before starting
-  // the renderer; subsequent edits retain the map as usual.
-  const [mapReady, setMapReady] = useState(!isNativeApp);
+  // Indexing the full basemap while loading 3D routing geometry competes for
+  // CPU and memory on phones and smaller desktop machines. Finish the first
+  // route before starting the planner renderer. Explicit map picking and
+  // errors still reveal the map immediately; subsequent edits keep it mounted.
+  const [mapReady, setMapReady] = useState(false);
   const [view, setView] = useState(() =>
     isNativeApp ||
     new URLSearchParams(location.search).get('view') === 'planner' ||
@@ -135,7 +136,7 @@ export default function App() {
     const controller = new AbortController();
     setData(null);
     setMapData(null);
-    setMapReady(!isNativeApp);
+    setMapReady(false);
     setResult(null);
     setStart(null);
     setEnd(null);
