@@ -1,5 +1,7 @@
 # Five Zurich walks compared with Vampire Routing and Shadowmap
 
+The results below freeze the building-only model before the optional [lakeshore canopy scenario](tree-shade-pilot.md). They have not been replaced or presented as validation of that new scenario.
+
 Checked **7 October 2026**, using Cooler Walks **0.15.0**. This is a diagnostic comparison between models, **not a field-accuracy validation**. No production model, recommendation threshold or source geometry was changed to improve agreement. The existing field-validation hold remains.
 
 Five A/B pairs were fixed before collecting the results: ETH hill/river crossing, dense old town, Bahnhofstrasse, treed lakeshore, and Oerlikon. These are deliberately varied examples, not a random or representative city sample. Exact WGS84 endpoints are in the [protocol](../scripts/shade-service-cases.json).

@@ -1,0 +1,41 @@
+{
+  "checkedAt": "2026-10-07T19:42:31.837Z",
+  "origin": "https://coolerwalks.ch",
+  "results": [
+    {
+      "id": "ch-zurich",
+      "hostedBytes": 82980713,
+      "expandedBytes": 194160467,
+      "payloadSha256": "a5e845642bc39b0ffc01d54758405a0e386d7fa275735fbd4f2f59cb17739d84",
+      "localPayloadMatches": true
+    },
+    {
+      "id": "ch-basel",
+      "hostedBytes": 1957430,
+      "expandedBytes": 11628977,
+      "payloadSha256": "cb6252c059c70642dd39ed394f09d06bc91f982799575c33512987e4e142d6b7",
+      "localPayloadMatches": true
+    },
+    {
+      "id": "de-munich",
+      "hostedBytes": 4391043,
+      "expandedBytes": 27589260,
+      "payloadSha256": "f6c3918feb4d54682048a1cca6da075d0e38fb7e68953ad5ce668e485261bbd3",
+      "localPayloadMatches": true
+    },
+    {
+      "id": "us-cambridge-ma",
+      "hostedBytes": 6669893,
+      "expandedBytes": 42491983,
+      "payloadSha256": "696c6a7de507d6da4e266337535973c889e8311f3f6b65524756fa10c7ab3a49",
+      "localPayloadMatches": true
+    },
+    {
+      "id": "de-munich-old-town",
+      "hostedBytes": 2306028,
+      "expandedBytes": 14025046,
+      "payloadSha256": "f88792ae110f46602ebb76a8652231522feca7fe0827da67b21cf8def5d6c17b",
+      "localPayloadMatches": true
+    }
+  ]
+}

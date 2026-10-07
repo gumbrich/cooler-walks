@@ -97,6 +97,14 @@ assert.deepEqual(
   'Hosted municipal pavement graph matches the audited pilot',
 );
 checks.push('Zurich pavement pilot: published graph matches the reviewed source extract');
+const canopyResponse = await get(new URL('/data/zurich-canopy.json', site));
+assert.equal(canopyResponse.status, 200);
+assert.deepEqual(
+  Buffer.from(await canopyResponse.arrayBuffer()),
+  fs.readFileSync('public/data/zurich-canopy.json'),
+  'Hosted canopy scenario matches the audited source derivative',
+);
+checks.push('Zurich canopy scenario: published bytes match the reviewed source derivative');
 for (const entry of JSON.parse(fs.readFileSync(catalogPath, 'utf8'))) {
   const url = new URL(entry.file, packOrigin);
   const response = await get(url, { headers: { Origin: 'capacitor://localhost' } });

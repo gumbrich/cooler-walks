@@ -4024,3 +4024,14 @@ html[lang='de'] .icon-text {
   color: var(--forest);
   font-size: 12px;
 }
+
+@media (max-width: 620px) {
+  .planner-map:has(.canopy-map) {
+    min-height: 320px;
+  }
+  .canopy-map .map-legend {
+    right: 64px;
+    flex-wrap: wrap;
+    gap: 7px 12px;
+  }
+}

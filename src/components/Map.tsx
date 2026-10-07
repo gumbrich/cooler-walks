@@ -800,7 +800,9 @@ export function WalkingMap({
               ? 140
               : showZones
                 ? 140
-                : 95
+                : canopyScenario
+                  ? 115
+                  : 95
             : hero
               ? 170
               : showZones && matchMedia('(max-width:1100px)').matches
@@ -847,10 +849,10 @@ export function WalkingMap({
   }, [ready, result, pending, showZones]);
   useEffect(() => {
     if (ready && result) fit(true);
-  }, [showZones]);
+  }, [showZones, canopyScenario]);
   return (
     <div
-      className={`map-shell ${hero ? 'hero-map' : ''} ${pavements ? 'pavement-map' : ''} ${expanded ? 'map-expanded' : ''}`}
+      className={`map-shell ${hero ? 'hero-map' : ''} ${pavements ? 'pavement-map' : ''} ${canopyScenario ? 'canopy-map' : ''} ${expanded ? 'map-expanded' : ''}`}
       data-map-ready={ready}
       data-map-settled={settled}
     >

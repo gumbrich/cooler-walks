@@ -10,6 +10,7 @@ test('tree scenario shows coverage, separate contributions, translated mobile co
   await page.goto('/en/?view=planner');
   const toggle = page.getByRole('checkbox', { name: 'Tree shade pilot', exact: true });
   await expect(toggle).not.toBeChecked();
+  await expect(page.locator('.route-card').first()).toBeVisible();
   await page.getByRole('combobox', { name: 'From', exact: true }).fill('Bellevue');
   await page
     .getByRole('option', { name: /^Bellevue/ })
@@ -20,6 +21,10 @@ test('tree scenario shows coverage, separate contributions, translated mobile co
     .getByRole('option', { name: /^Zürichhorn/ })
     .first()
     .click();
+  // Wait for this journey, not a retained result while its route/map is still updating.
+  await expect(page.locator('.route-card').first()).toContainText('1.59 km');
+  await expect(page.locator('.spinner')).toHaveCount(0);
+  await expect(page.locator('.map-shell')).toHaveAttribute('data-map-settled', 'true');
   await expect(page.locator('.route-card').first()).toContainText('estimated shade');
   await toggle.check();
   await expect(page.locator('.route-card').first()).toContainText('potential shade');
@@ -48,6 +53,11 @@ test('tree scenario shows coverage, separate contributions, translated mobile co
   await page.getByRole('button', { name: 'Weg auf der Karte einpassen', exact: true }).click();
   await expect(page.locator('.map-shell')).toHaveAttribute('data-map-settled', 'true');
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  const legend = await page.locator('.map-legend').boundingBox();
+  const tools = await page.locator('.map-tools').boundingBox();
+  expect(legend && tools && legend.x + legend.width <= tools.x).toBe(true);
+  const destination = await page.locator('.map-marker.destination').boundingBox();
+  expect(destination && legend && destination.y + destination.height < legend.y).toBe(true);
   await page.screenshot({ path: 'docs/screenshots/phone-tree-pilot-de.png', fullPage: true });
   await page.getByRole('button', { name: 'So schätzen wir', exact: true }).first().click();
   await expect(page.getByRole('dialog')).toContainText('volle Belaubung');
