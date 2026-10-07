@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-10-06T20:30:06.552362+00:00",
+  "checkedAt": "2026-10-07T06:32:19.322941+00:00",
   "version": "0.15.0",
-  "sourceCommit": "78f98d516d9b3662ba5dd423102ab6bf8d8b24ba",
+  "sourceCommit": "138c79addbe3c772b2ab625f320aa986f5ddb15a",
   "site": "https://coolerwalks.ch",
-  "netlifyPublishedRevision": "78f98d5",
+  "netlifyPublishedRevision": "138c79a",
   "pavementVersion": "zurich-pavements-2026-10-06-v2",
   "selectedFeatures": 25740,
   "pavementSha256": "e1e43d4dcc8d367575d90e2cf05685175da5e64d0670b2afd744b3a48759b4c7",
@@ -13,5 +13,14 @@
   "catalog": "0.15.0-hosted-catalog.json",
   "publicPagesAndSecurityHeaders": true,
   "nativeCors": true,
-  "pwaReport": "0.15.0-pwa-validation.json"
+  "pwaReport": "0.15.0-pwa-validation.json",
+  "mainApplication": {
+    "checkedAt": "2026-10-07T06:30:34.228482+00:00",
+    "sourceRevision": "138c79addbe3c772b2ab625f320aa986f5ddb15a",
+    "publishedMain": "/assets/main-D0mWJK4E.js",
+    "mainCodeMatchesAfterNormalization": true,
+    "normalization": "Replace only the five verified hosted pack checksum/filename/byte fields and generated JS chunk hashes; all remaining main-bundle text matches exactly. Node/zlib platform compression changes pack metadata.",
+    "rawByteIdentity": false,
+    "publishedMainSha256": "8d470bbe6d0fa583671f9886dfdd12b32361c84e48e995e038484e52d350e5e8"
+  }
 }

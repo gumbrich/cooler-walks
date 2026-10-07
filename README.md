@@ -91,9 +91,9 @@ npm run native:open:ios      # open Xcode
 
 Detailed setup, signing boundaries and offline behaviour are in [docs/mobile.md](docs/mobile.md). Actual platform test results are in [docs/platform.md](docs/platform.md). Signing credentials and generated native build outputs are ignored.
 
-Android **0.14.1/build 13** includes faster Zurich calculations and cancellation when trip inputs change. Its test APK is available locally as `native-artifacts/cooler-walks-0.14.1-debug.apk`. The website/PWA also handles cached-data updates automatically. The previously failing cold autumn-afternoon route now loads in about 20 seconds on the 2 GB Android 16 emulator, with the original 60-second check unchanged. [Current platform evidence](docs/platform.md#maintenance-release--0141) · [CI and cache maintenance](docs/maintenance.md).
+Android **0.15.0/build 14** includes the expanded Zurich pavement network. Its test APK is available locally as `native-artifacts/cooler-walks-0.15.0-debug.apk`. The 2 GB Android 16 emulator passes offline Oerlikon pavement routes, time/detour controls, official addresses, historical counts, German and beta city switching. The website/PWA also handles cached-data upgrades; update saved Zurich areas to include the expanded paths. [Current platform evidence](docs/platform.md#zurich-municipal-path-expansion--0150).
 
-The previous Android **0.13.0/build 11** compiled and passed offline traffic-v2 comparison, passing-time counts, 3D-roof shade, address-search/routing, German and beta city-switch checks in the 2 GB Android 16 emulator. Its debug APK is available locally as `native-artifacts/cooler-walks-0.13.0-debug.apk`. The earlier 0.5.0 build passed twelve broader checks covering native permissions, Back/resume, all four cities offline and cold launch. iOS 0.13.0 also compiles and archives in GitHub Actions; the previous 0.5.0 build launched in English and German on the local iPhone 16e simulator. iOS count interactions and physical phones remain untested; neither app has been submitted to a store.
+Android APK/AAB and iOS simulator/unsigned-archive builds pass CI. Physical phones and current iOS interactions remain untested; neither app has been submitted to a store. Historical platform checks and source/model limitations remain documented in [platform.md](docs/platform.md).
 
 ## Develop and verify
 

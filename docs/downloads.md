@@ -65,7 +65,7 @@ Physical-device performance, interruption by OS termination during a write, very
 
 ## Zurich 0.8 expansion
 
-The current Zurich pack covers the municipality-clipped 57.77 km² area. It is approximately **16.8 MB compressed / 100.1 MB expanded**, including official addresses and conservative shade-coverage data. The running app validates the complete pack against its compiled catalogue and does not mix old and new graph versions. Ordinary-device memory/performance testing remains necessary; a successful desktop/emulator result is not a physical-phone benchmark.
+The 0.8 Zurich pack covered the municipality-clipped 57.77 km² area. It was approximately **16.8 MB compressed / 100.1 MB expanded**, including official addresses and conservative shade-coverage data. The running app validates the complete pack against its compiled catalogue and does not mix old and new graph versions. Ordinary-device memory/performance testing remains necessary; a successful desktop/emulator result is not a physical-phone benchmark.
 
 In 0.8.0, opening a saved area transfers its compressed bytes to the routing worker for checksum verification and decoding. This avoids keeping the complete routing model in both the interface and worker. Download installation still verifies the same bounded, checksummed format and retains the existing atomic storage rules.
 
@@ -74,3 +74,9 @@ In 0.9.0, arrival-time shadow calculations are part of the shared application co
 ## Zurich 3D tiles · 0.13.0
 
 The complete Zurich pack embeds all 81 compressed 3D tiles and expands to 184.9 MB. Its 80.2 MB compressed size remains below the 80 MiB decoder limit. Online planning loads only required tiles, while the complete pack supports the full walking area offline. Merely visiting the website caches used tiles and does not establish complete offline coverage. Content-hashed `.shade` files are gzip containers decoded by the app: serve them as ordinary binary files without a `Content-Encoding: gzip` header, like `.cwp` packs. Do not strip the `data/zurich-shade/` directory from native bundles. [Library implementation](shade-library.md).
+
+## Zurich municipal paths · 0.15.0
+
+The complete pack now includes all 25,740 available municipal walking features inside the same 57.77 km² area, alongside the 81 model tiles and existing data. The hosted download is **80.7 MB compressed / 188.7 MB expanded**; the local Node 26 build compresses to **81.5 MB**. Both stay within the unchanged 80 MiB / 200 MiB limits. Node/zlib compression differences require each client to use its exact matching catalogue and hashed pack files. [Deployed catalogue](releases/0.15.0-hosted-catalog.json) · [hosting requirements](hosting.md).
+
+Update an existing saved Zurich area to get the expanded paths. The source graph expands only when pavement routing is selected. The legacy-worker regression checks old unversioned pavement data, new source-content URLs, compatible-cache migration and subsequent offline routing. Public PWA installation/download/reopening and bundled Android offline junction routing pass. Physical-device performance and field accuracy remain unverified. [Platform evidence](platform.md#zurich-municipal-path-expansion--0150).

@@ -27,10 +27,30 @@
   },
   "apk": {
     "path": "native-artifacts/cooler-walks-0.15.0-debug.apk",
-    "sha256": "65bb116e63639aa99c61dd3fb2dc8612dfeb2b03733d402a44927bab89c0f40a"
+    "sha256": "24a940e508acae0424afb5a3a7152a3ae5b60f4909176d464dd7499a7e108ed4"
   },
   "limitations": [
     "No physical-phone or iOS interaction test",
     "No field validation of pavement access, crossings or model accuracy"
-  ]
+  ],
+  "interactionFollowup": {
+    "sourceCommit": "138c79addbe3c772b2ab625f320aa986f5ddb15a",
+    "unitModelLanguageTests": 107,
+    "focusedBrowserScenarios": 6,
+    "additionalMapViewRegression": "passed",
+    "focusRegression": "Rapidly returning to the first junction field reproduced the old delayed-blur failure and passes after removing the timer.",
+    "mapRegression": "Initial map frames the available route before tile rendering; departure-time edits preserve a manually zoomed view. Error recovery still refits.",
+    "androidPavementOffline": "passed on unchanged 2 GB Android 16 emulator",
+    "productionBuild": "passed",
+    "releasePackChecks": "passed",
+    "publicPwa": "Installation, standalone launch, full-area downloads and EN/DE offline routes passed on 138c79a. A first attempt stopped on a Chrome ERR_NETWORK_CHANGED download; a clean subsequent run passed with unchanged limits.",
+    "androidGeneralOfflineAndColdStartup": "passed on the same 2 GB Android 16 emulator",
+    "androidTimings": {
+      "firstRouteMs": 35067,
+      "afternoonColdRouteMs": 35972,
+      "offlineRouteMs": 46705
+    },
+    "cacheUpgrade": "Passed after explicitly configuring the standalone assertion timeout to the existing 45-second project route budget; browser-context action timeouts do not configure expect.",
+    "cacheUpgradeTestRevision": "5735c3301221dcac0096f984e398492f463fb623"
+  }
 }

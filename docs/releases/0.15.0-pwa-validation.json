@@ -1,7 +1,7 @@
 {
   "appVersion": "0.15.0",
   "browser": "154.0.8037.98",
-  "verifiedAt": "2026-10-06T20:28:41.740Z",
+  "verifiedAt": "2026-10-07T06:34:12.754Z",
   "origin": "https://coolerwalks.ch",
   "manifestErrors": [],
   "installabilityErrors": [],
@@ -29,5 +29,6 @@
     "error": null,
     "arrivalShadeOffline": true
   },
-  "pageErrors": []
+  "pageErrors": [],
+  "sourceCommit": "138c79addbe3c772b2ab625f320aa986f5ddb15a"
 }

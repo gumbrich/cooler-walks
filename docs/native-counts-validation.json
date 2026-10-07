@@ -1,11 +1,11 @@
 {
-  "checkedAt": "2026-10-06T20:19:09.096Z",
+  "checkedAt": "2026-10-07T06:38:17.190Z",
   "appVersion": "0.15.0",
   "device": "CoolerWalks_Test Android emulator",
   "timings": {
-    "firstRouteMs": 25716,
-    "afternoonColdRouteMs": 28774,
-    "offlineRouteMs": 29430
+    "firstRouteMs": 35067,
+    "afternoonColdRouteMs": 35972,
+    "offlineRouteMs": 46705
   },
   "passed": [
     "Ground-referenced 3D roofs compute after an offline reload in central Zurich",
