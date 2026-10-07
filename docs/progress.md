@@ -1,5 +1,13 @@
 # Progress
 
+## Five-pair shade-service comparison · 7 October 2026
+
+Compared five fixed Zurich A/B pairs with the actual SOSM ordinary-foot and Vampire services. Saved ten response snapshots, exact coordinates/snapping, both route alternatives, source hashes and actual screenshots. The production Cooler model was evaluated at the published August scenario, with its existing five-minute limit and unknown-coverage rules. No runtime model or route threshold was changed.
+
+A separate identical-path comparison samples 1,346 points across 4.575 km against the author's pinned public raster. Metre-weighted class agreement is 70.3% assuming 16:00 CEST (95.3% comparable coverage), or 75.6% under the unresolved local-solar-time interpretation (92.6% comparable). Lakeshore shade and the nearly identical old-town routes expose useful disagreements. The live service does not disclose its raster build, so offline raster scores are not attributed to its API. Shadowmap renders Zurich, but its date control requires Home and its numerical API requires partner access; all five matched Shadowmap results remain unmeasured. [Report, maps, checks and reproduction](shade-service-comparison.md).
+
+Next: resolve clock/source identity and obtain matched Shadowmap access if desired; prioritise supported canopy/surface shade and field observations along the lakeshore and old-town disagreements. These comparisons leave the field-accuracy hold unchanged.
+
 ## Zurich pavement expansion · 0.15.0
 
 Expanded the optional municipal-path mode from 115 central features to **25,740 complete footpath/pavement/crossing features across the current 57.77 km² Zurich map**. Includes 5,844 searchable junctions, exact source endpoints, 1,360.33 km of combined linework and all 40 genuine connected components. The full graph stays in the worker and is built on demand from compact lossless source lines. Both website and native clients share the implementation. [Source and reproduction](pavement-pilot.md).

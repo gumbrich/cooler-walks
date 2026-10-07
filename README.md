@@ -8,6 +8,8 @@ Compare walking routes by estimated shade, greenery, nearby water and calmer str
 
 The [latest evidence review](docs/shadow-validation-followup.md) checks all 26 flagged roof samples against raw LiDAR and screens 14 photo originals and their timestamps. Three photos remain promising; an exploratory Münsterhof mismatch is retained for investigation. This does not establish field accuracy.
 
+The [five-walk service comparison](docs/shade-service-comparison.md) records actual Zurich routes from Cooler Walks and Vampire Routing, compares the published shade models on identical paths, and documents Shadowmap's current access limits. Includes route maps, screenshots and reproducible sample results; model agreement is not field validation.
+
 **Status:** **Zurich is the primary focus**, with an expanded 57.77 km² walking area and official address search. **Basel, Munich and Cambridge (Massachusetts) are beta**. Cambridge follows its municipal boundary; the other cities cover central areas. These remain experimental services, not field-validated citywide routing. Zurich and Munich estimate building sun/shade; Cambridge and Basel offer greenery and water proximity only. Paris remains under review. Tree shade, hill shadows, weather, live closures and navigation are not included.
 
 **Pavement expansion 0.15.0:** 25,740 official pavement, footpath and crossing sections across the current 57.77 km² Zurich map, with junction search and direct map selection. Shade uses the existing 3D model; uncertain bridge/underpass heights stay unknown. [Open the pilot](https://coolerwalks.ch/?view=planner&network=pavements) · [source, checks and limits](docs/pavement-pilot.md). Field validation remains pending.

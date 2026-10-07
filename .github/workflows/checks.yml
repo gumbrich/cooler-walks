@@ -33,6 +33,7 @@ jobs:
           /tmp/cooler-shade-venv/bin/python scripts/test-detailed-shade.py
           /tmp/cooler-shade-venv/bin/python scripts/test-shadow-audit.py
           /tmp/cooler-shade-venv/bin/python scripts/test-shadow-lidar-review.py
+          /tmp/cooler-shade-venv/bin/python scripts/verify-shade-service-comparison.py
       - run: npm run check
       - run: npm run data:verify
       - run: npm run format:check

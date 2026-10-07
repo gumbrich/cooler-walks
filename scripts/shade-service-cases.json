@@ -1,0 +1,54 @@
+{
+  "version": "zurich-five-walks-v1",
+  "selectedAt": "2026-10-07",
+  "selection": "Five fixed pairs selected before fetching results: ETH hill/river crossing, dense old town, commercial corridor, treed lakeshore, northern district. This is a purposive diagnostic set, not a representative accuracy sample.",
+  "coordinateOrder": "WGS84 longitude, latitude",
+  "coordinateSource": "Committed Zurich place data; Oerlikon junction coordinates from pavement-expansion-validation.json. Same requested endpoints are sent to both services; actual snapping is retained.",
+  "departure": "2024-08-01T14:00:00Z",
+  "alternateDeparture": "2024-08-01T15:32:09.700Z",
+  "timeLimitation": "The author's presentation specifies 1 August 2024 at 16:00; the public raster does not encode civil_time. Compare 16:00 CEST and the earlier independent SPA-derived 16:00 local-solar-time interpretation at the central pilot. No interpretation is asserted correct.",
+  "extraMinutes": 5,
+  "sampleSpacingMeters": 4,
+  "cases": [
+    {
+      "id": "eth",
+      "from": "Bahnhofplatz",
+      "to": "Polyterrasse",
+      "a": [8.5399352, 47.3772866],
+      "b": [8.5463921, 47.3760275],
+      "setting": "River crossing and hillside / ETH"
+    },
+    {
+      "id": "old-town",
+      "from": "Lindenhof",
+      "to": "Münsterhof",
+      "a": [8.5405543, 47.3733123],
+      "b": [8.540993, 47.3699066],
+      "setting": "Dense old town"
+    },
+    {
+      "id": "bahnhofstrasse",
+      "from": "Bahnhofplatz",
+      "to": "Bürkliplatz",
+      "a": [8.5399352, 47.3772866],
+      "b": [8.5415362, 47.3661084],
+      "setting": "Commercial corridor and squares"
+    },
+    {
+      "id": "lakeshore",
+      "from": "Bellevue",
+      "to": "Zürichhorn",
+      "a": [8.5443354, 47.3668209],
+      "b": [8.5520945, 47.3543016],
+      "setting": "Treed lakeshore and open water edge"
+    },
+    {
+      "id": "oerlikon",
+      "from": "Franklinstrasse / Hofwiesenstrasse",
+      "to": "Franklinstrasse / Schaffhauserstrasse",
+      "a": [8.542074543101426, 47.41026670256105],
+      "b": [8.54633603558621, 47.408787715334675],
+      "setting": "Northern district, street pavements"
+    }
+  ]
+}

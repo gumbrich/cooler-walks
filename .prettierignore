@@ -29,3 +29,5 @@ docs/pavement-field-points.geojson
 tests/fixtures/pavement-shade-reference*.json
 tests/fixtures/pavement-network*.json
 tests/fixtures/pavement-source*.json
+docs/validation/shade-services/*-routes.json
+docs/validation/shade-services/point-comparisons.json

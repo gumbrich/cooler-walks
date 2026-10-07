@@ -1,0 +1,529 @@
+{
+  "protocol": {
+    "version": "zurich-five-walks-v1",
+    "selectedAt": "2026-10-07",
+    "selection": "Five fixed pairs selected before fetching results: ETH hill/river crossing, dense old town, commercial corridor, treed lakeshore, northern district. This is a purposive diagnostic set, not a representative accuracy sample.",
+    "coordinateOrder": "WGS84 longitude, latitude",
+    "coordinateSource": "Committed Zurich place data; Oerlikon junction coordinates from pavement-expansion-validation.json. Same requested endpoints are sent to both services; actual snapping is retained.",
+    "departure": "2024-08-01T14:00:00Z",
+    "alternateDeparture": "2024-08-01T15:32:09.700Z",
+    "timeLimitation": "The author's presentation specifies 1 August 2024 at 16:00; the public raster does not encode civil_time. Compare 16:00 CEST and the earlier independent SPA-derived 16:00 local-solar-time interpretation at the central pilot. No interpretation is asserted correct.",
+    "extraMinutes": 5,
+    "sampleSpacingMeters": 4,
+    "cases": [
+      {
+        "id": "eth",
+        "from": "Bahnhofplatz",
+        "to": "Polyterrasse",
+        "a": [8.5399352, 47.3772866],
+        "b": [8.5463921, 47.3760275],
+        "setting": "River crossing and hillside / ETH"
+      },
+      {
+        "id": "old-town",
+        "from": "Lindenhof",
+        "to": "M\u00fcnsterhof",
+        "a": [8.5405543, 47.3733123],
+        "b": [8.540993, 47.3699066],
+        "setting": "Dense old town"
+      },
+      {
+        "id": "bahnhofstrasse",
+        "from": "Bahnhofplatz",
+        "to": "B\u00fcrkliplatz",
+        "a": [8.5399352, 47.3772866],
+        "b": [8.5415362, 47.3661084],
+        "setting": "Commercial corridor and squares"
+      },
+      {
+        "id": "lakeshore",
+        "from": "Bellevue",
+        "to": "Z\u00fcrichhorn",
+        "a": [8.5443354, 47.3668209],
+        "b": [8.5520945, 47.3543016],
+        "setting": "Treed lakeshore and open water edge"
+      },
+      {
+        "id": "oerlikon",
+        "from": "Franklinstrasse / Hofwiesenstrasse",
+        "to": "Franklinstrasse / Schaffhauserstrasse",
+        "a": [8.542074543101426, 47.41026670256105],
+        "b": [8.54633603558621, 47.408787715334675],
+        "setting": "Northern district, street pavements"
+      }
+    ]
+  },
+  "model": "roof-mesh-tiled-ground-arrival-v8",
+  "libraryVersion": "zurich-roofs-dtm-library-2026-09-30-v2",
+  "raster": {
+    "sha256": "cfc33982cb2177c5d6304ea5a4f26c390ccda789463d0e74e89478e8414e188b",
+    "header": {
+      "ncols": 5962.0,
+      "nrows": 4049.0,
+      "xllcorner": 8.47079282121,
+      "yllcorner": 47.340983157973,
+      "cellsize": 2.2522909e-5,
+      "nodata_value": -9999.0
+    },
+    "url": "https://raw.githubusercontent.com/sosm/cbf-routing-profiles/6b45390967718a4b785af11222fd0dc2688eeeac/vampire/shadows_zurich_city.asc"
+  },
+  "liveServiceRasterIdentity": "Unknown: service responses do not expose raster/build hash. Offline raster scores must not be attributed to the deployed service.",
+  "aggregation": "Metre-weighted shade class agreement on the SAME Cooler Walks fastest geometry, sampled <=4 m. Denominator excludes unknown in either model; coverage is shown separately. Primary date is CEST, secondary is unresolved solar-time interpretation. Native Cooler estimates use arrival time and their original sample spacing.",
+  "routing": "First returned Vampire route, first SOSM foot route; Cooler qualifying shade alternative or fastest when no shade recommendation is possible. Different network versions, costs and detour policies. All times normalised to 80 m/min only when explicitly labelled.",
+  "rows": [
+    {
+      "id": "eth",
+      "from": "Bahnhofplatz",
+      "to": "Polyterrasse",
+      "a": [8.5399352, 47.3772866],
+      "b": [8.5463921, 47.3760275],
+      "setting": "River crossing and hillside / ETH",
+      "coolerMode": "greenery",
+      "coolerSelectedReason": "fastest; no qualifying shade alternative",
+      "coolerFastestMeters": 776.0500000000003,
+      "coolerSelectedMeters": 776.0500000000003,
+      "coolerExtraMinutes": 0.0,
+      "coolerNativeArrivalShadePercentOfKnown": 7.415369731962561,
+      "coolerNativeCoveragePercent": 83.91405192964369,
+      "coolerSnapMeters": [0, 0],
+      "sosmFootMeters": 781.1,
+      "vampireMeters": 1014,
+      "vampireExtraMinutesAtCoolerSpeed": 2.91125,
+      "vampireSnapMeters": [0, 0],
+      "vampireGeometryToWaypointMeters": [0.0, 0.0],
+      "coolerSelectedWithin8mOfVampirePercent": 40.320823717630404,
+      "vampireWithin8mOfCoolerSelectedPercent": 31.00183940466812,
+      "rasterOnVampireRoute": {
+        "metricLength": 1014.0169070564687,
+        "meters": {
+          "sun": 435.14898767383823,
+          "shade": 578.8679193826288,
+          "unknown": 0.0
+        },
+        "coveragePercent": 99.99999999999984,
+        "shadePercentOfKnown": 57.08661417322834
+      },
+      "rasterOnSosmFootRoute": {
+        "metricLength": 781.1441103929476,
+        "meters": {
+          "sun": 577.8872245253966,
+          "shade": 203.25688586755257,
+          "unknown": 0.0
+        },
+        "coveragePercent": 100.00000000000021,
+        "shadePercentOfKnown": 26.020408163265238
+      },
+      "rasterOnCoolerSelectedRoute": {
+        "metricLength": 776.0309869146201,
+        "meters": {
+          "sun": 604.9062051847304,
+          "shade": 171.1247817298905,
+          "unknown": 0.0
+        },
+        "coveragePercent": 100.0000000000001,
+        "shadePercentOfKnown": 22.051282051282016
+      },
+      "fixedFastestPathComparison": [
+        {
+          "departure": "2024-08-01T14:00:00Z",
+          "samples": 241,
+          "totalMeters": 776.05,
+          "comparableMeters": 654.9925000000001,
+          "comparablePercent": 84.4008118033632,
+          "agreementPercentOfComparable": 78.70390373426667,
+          "coolerShadePercentOfComparable": 7.712683733019843,
+          "rasterShadePercentOfComparable": 25.825028530861044,
+          "matrixMetersCoolerThenRaster": {
+            "unknown/sun": 117.28442307692302,
+            "sun/sun": 475.41383333333334,
+            "sun/shade": 129.0611666666667,
+            "unknown/shade": 3.773076923076923,
+            "shade/sun": 10.426666666666666,
+            "shade/shade": 40.09083333333333
+          }
+        },
+        {
+          "departure": "2024-08-01T15:32:09.700Z",
+          "samples": 241,
+          "totalMeters": 776.0500000000001,
+          "comparableMeters": 605.9599999999999,
+          "comparablePercent": 78.08259777076218,
+          "agreementPercentOfComparable": 79.46723656126917,
+          "coolerShadePercentOfComparable": 12.05030034985808,
+          "rasterShadePercentOfComparable": 27.91471384249786,
+          "matrixMetersCoolerThenRaster": {
+            "unknown/sun": 166.31692307692313,
+            "sun/sun": 422.6638333333333,
+            "sun/shade": 110.27616666666668,
+            "unknown/shade": 3.773076923076923,
+            "shade/shade": 58.87583333333334,
+            "shade/sun": 14.144166666666665
+          }
+        }
+      ],
+      "shadowmap": "Matching 1 August date blocked by Home paywall; numerical point API is early-access. No route or route shade percentage obtained."
+    },
+    {
+      "id": "old-town",
+      "from": "Lindenhof",
+      "to": "M\u00fcnsterhof",
+      "a": [8.5405543, 47.3733123],
+      "b": [8.540993, 47.3699066],
+      "setting": "Dense old town",
+      "coolerMode": "greenery",
+      "coolerSelectedReason": "fastest; no qualifying shade alternative",
+      "coolerFastestMeters": 428.8799999999999,
+      "coolerSelectedMeters": 428.8799999999999,
+      "coolerExtraMinutes": 0.0,
+      "coolerNativeArrivalShadePercentOfKnown": 49.3096170865903,
+      "coolerNativeCoveragePercent": 94.18543648573032,
+      "coolerSnapMeters": [0, 0],
+      "sosmFootMeters": 428.9,
+      "vampireMeters": 428.7,
+      "vampireExtraMinutesAtCoolerSpeed": -0.002499999999999858,
+      "vampireSnapMeters": [0, 0.560997458],
+      "vampireGeometryToWaypointMeters": [0.0, 0.0],
+      "coolerSelectedWithin8mOfVampirePercent": 100.00000000000001,
+      "vampireWithin8mOfCoolerSelectedPercent": 100.0,
+      "rasterOnVampireRoute": {
+        "metricLength": 428.69021036267344,
+        "meters": {
+          "sun": 91.29513739205085,
+          "shade": 337.39507297062215,
+          "unknown": 0.0
+        },
+        "coveragePercent": 99.99999999999989,
+        "shadePercentOfKnown": 78.70370370370368
+      },
+      "rasterOnSosmFootRoute": {
+        "metricLength": 428.9368378136999,
+        "meters": {
+          "sun": 87.37602251760558,
+          "shade": 341.56081529609423,
+          "unknown": 0.0
+        },
+        "coveragePercent": 99.99999999999997,
+        "shadePercentOfKnown": 79.62962962962962
+      },
+      "rasterOnCoolerSelectedRoute": {
+        "metricLength": 428.8830830855759,
+        "meters": {
+          "sun": 87.36507248039507,
+          "shade": 341.5180106051807,
+          "unknown": 0.0
+        },
+        "coveragePercent": 99.99999999999997,
+        "shadePercentOfKnown": 79.62962962962962
+      },
+      "fixedFastestPathComparison": [
+        {
+          "departure": "2024-08-01T14:00:00Z",
+          "samples": 127,
+          "totalMeters": 428.88000000000017,
+          "comparableMeters": 406.86428571428587,
+          "comparablePercent": 94.8666959788952,
+          "agreementPercentOfComparable": 64.61325877939878,
+          "coolerShadePercentOfComparable": 49.355348396271154,
+          "rasterShadePercentOfComparable": 81.23512871379833,
+          "matrixMetersCoolerThenRaster": {
+            "sun/sun": 69.21327380952383,
+            "sun/shade": 136.84172619047618,
+            "unknown/sun": 10.71,
+            "unknown/shade": 11.305714285714286,
+            "shade/shade": 193.67500000000015,
+            "shade/sun": 7.134285714285714
+          }
+        },
+        {
+          "departure": "2024-08-01T15:32:09.700Z",
+          "samples": 127,
+          "totalMeters": 428.8800000000001,
+          "comparableMeters": 406.26857142857153,
+          "comparablePercent": 94.72779598688943,
+          "agreementPercentOfComparable": 69.80614219540442,
+          "coolerShadePercentOfComparable": 57.365113858531316,
+          "rasterShadePercentOfComparable": 80.39534309933377,
+          "matrixMetersCoolerThenRaster": {
+            "sun/sun": 65.09577380952382,
+            "sun/shade": 108.11636904761902,
+            "unknown/sun": 7.41,
+            "unknown/shade": 15.201428571428572,
+            "shade/shade": 218.50464285714298,
+            "shade/sun": 14.551785714285714
+          }
+        }
+      ],
+      "shadowmap": "Matching 1 August date blocked by Home paywall; numerical point API is early-access. No route or route shade percentage obtained."
+    },
+    {
+      "id": "bahnhofstrasse",
+      "from": "Bahnhofplatz",
+      "to": "B\u00fcrkliplatz",
+      "a": [8.5399352, 47.3772866],
+      "b": [8.5415362, 47.3661084],
+      "setting": "Commercial corridor and squares",
+      "coolerMode": "shade",
+      "coolerSelectedReason": "fastest; no qualifying shade alternative",
+      "coolerFastestMeters": 1400.68,
+      "coolerSelectedMeters": 1400.68,
+      "coolerExtraMinutes": 0.0,
+      "coolerNativeArrivalShadePercentOfKnown": 66.76860489669171,
+      "coolerNativeCoveragePercent": 95.73118056943774,
+      "coolerSnapMeters": [0, 0],
+      "sosmFootMeters": 1400.4,
+      "vampireMeters": 1478.6,
+      "vampireExtraMinutesAtCoolerSpeed": 0.9774999999999977,
+      "vampireSnapMeters": [0, 0.341977837],
+      "vampireGeometryToWaypointMeters": [0.0, 0.0],
+      "coolerSelectedWithin8mOfVampirePercent": 1.1397055626213208,
+      "vampireWithin8mOfCoolerSelectedPercent": 1.1771690567709094,
+      "rasterOnVampireRoute": {
+        "metricLength": 1478.6746630571463,
+        "meters": {
+          "sun": 551.5056851402322,
+          "shade": 927.1689779169161,
+          "unknown": 0.0
+        },
+        "coveragePercent": 100.00000000000013,
+        "shadePercentOfKnown": 62.7027027027028
+      },
+      "rasterOnSosmFootRoute": {
+        "metricLength": 1400.4579650300875,
+        "meters": {
+          "sun": 379.04132956654746,
+          "shade": 1021.4166354635382,
+          "unknown": 0.0
+        },
+        "coveragePercent": 99.99999999999987,
+        "shadePercentOfKnown": 72.93447293447294
+      },
+      "rasterOnCoolerSelectedRoute": {
+        "metricLength": 1400.6442269668764,
+        "meters": {
+          "sun": 371.1108635553258,
+          "shade": 1029.5333634115557,
+          "unknown": 0.0
+        },
+        "coveragePercent": 100.00000000000037,
+        "shadePercentOfKnown": 73.50427350427363
+      },
+      "fixedFastestPathComparison": [
+        {
+          "departure": "2024-08-01T14:00:00Z",
+          "samples": 416,
+          "totalMeters": 1400.679999999999,
+          "comparableMeters": 1344.711499999999,
+          "comparablePercent": 96.00419082160094,
+          "agreementPercentOfComparable": 82.41132058435215,
+          "coolerShadePercentOfComparable": 66.10137087767933,
+          "rasterShadePercentOfComparable": 75.20514767292796,
+          "matrixMetersCoolerThenRaster": {
+            "unknown/sun": 36.089999999999996,
+            "unknown/shade": 19.8785,
+            "sun/shade": 179.46826415019456,
+            "shade/shade": 831.8240051996494,
+            "sun/sun": 276.3705000000003,
+            "shade/sun": 57.0487306501548
+          }
+        },
+        {
+          "departure": "2024-08-01T15:32:09.700Z",
+          "samples": 416,
+          "totalMeters": 1400.6799999999987,
+          "comparableMeters": 1253.9359999999988,
+          "comparablePercent": 89.52337436102464,
+          "agreementPercentOfComparable": 90.71220301352099,
+          "coolerShadePercentOfComparable": 72.96012951448458,
+          "rasterShadePercentOfComparable": 78.04282696111909,
+          "matrixMetersCoolerThenRaster": {
+            "unknown/sun": 94.18033333333332,
+            "unknown/shade": 52.563666666666656,
+            "shade/shade": 888.5087011457742,
+            "sun/sun": 248.96426883384936,
+            "sun/shade": 90.09840153740308,
+            "shade/sun": 26.364628482972137
+          }
+        }
+      ],
+      "shadowmap": "Matching 1 August date blocked by Home paywall; numerical point API is early-access. No route or route shade percentage obtained."
+    },
+    {
+      "id": "lakeshore",
+      "from": "Bellevue",
+      "to": "Z\u00fcrichhorn",
+      "a": [8.5443354, 47.3668209],
+      "b": [8.5520945, 47.3543016],
+      "setting": "Treed lakeshore and open water edge",
+      "coolerMode": "shade",
+      "coolerSelectedReason": "qualified shade alternative",
+      "coolerFastestMeters": 1594.0699999999997,
+      "coolerSelectedMeters": 1964.2599999999993,
+      "coolerExtraMinutes": 4.627374999999994,
+      "coolerNativeArrivalShadePercentOfKnown": 56.03445356481667,
+      "coolerNativeCoveragePercent": 97.83531711687868,
+      "coolerSnapMeters": [0, 0],
+      "sosmFootMeters": 1606.5,
+      "vampireMeters": 1572.7,
+      "vampireExtraMinutesAtCoolerSpeed": -0.42249999999999943,
+      "vampireSnapMeters": [0, 0],
+      "vampireGeometryToWaypointMeters": [0.0, 0.0],
+      "coolerSelectedWithin8mOfVampirePercent": 1.205138017712421,
+      "vampireWithin8mOfCoolerSelectedPercent": 1.5020116463284188,
+      "rasterOnVampireRoute": {
+        "metricLength": 1572.8487042314646,
+        "meters": {
+          "sun": 790.4163539031232,
+          "shade": 782.4323503283441,
+          "unknown": 0.0
+        },
+        "coveragePercent": 100.00000000000017,
+        "shadePercentOfKnown": 49.746192893401016
+      },
+      "rasterOnSosmFootRoute": {
+        "metricLength": 1606.6978433516413,
+        "meters": {
+          "sun": 907.2647025891139,
+          "shade": 699.4331407625324,
+          "unknown": 0.0
+        },
+        "coveragePercent": 100.0000000000003,
+        "shadePercentOfKnown": 43.5323383084577
+      },
+      "rasterOnCoolerSelectedRoute": {
+        "metricLength": 1964.3071201207454,
+        "meters": {
+          "sun": 598.8741219880311,
+          "shade": 1365.4329981327187,
+          "unknown": 0.0
+        },
+        "coveragePercent": 100.00000000000024,
+        "shadePercentOfKnown": 69.51219512195134
+      },
+      "fixedFastestPathComparison": [
+        {
+          "departure": "2024-08-01T14:00:00Z",
+          "samples": 457,
+          "totalMeters": 1594.07,
+          "comparableMeters": 1594.07,
+          "comparablePercent": 100.0,
+          "agreementPercentOfComparable": 58.69488753242796,
+          "coolerShadePercentOfComparable": 2.0280277414531245,
+          "rasterShadePercentOfComparable": 42.09814634635498,
+          "matrixMetersCoolerThenRaster": {
+            "sun/shade": 648.5890729784924,
+            "sun/sun": 913.1527452033258,
+            "shade/sun": 9.843333333333334,
+            "shade/shade": 22.484848484848484
+          }
+        },
+        {
+          "departure": "2024-08-01T15:32:09.700Z",
+          "samples": 457,
+          "totalMeters": 1594.0700000000002,
+          "comparableMeters": 1594.0700000000002,
+          "comparablePercent": 100.00000000000001,
+          "agreementPercentOfComparable": 63.588948974821655,
+          "coolerShadePercentOfComparable": 8.73291581980661,
+          "rasterShadePercentOfComparable": 42.09814634635499,
+          "matrixMetersCoolerThenRaster": {
+            "sun/shade": 556.1413856658052,
+            "sun/sun": 898.7198231254038,
+            "shade/sun": 24.276255411255413,
+            "shade/shade": 114.93253579753583
+          }
+        }
+      ],
+      "shadowmap": "Matching 1 August date blocked by Home paywall; numerical point API is early-access. No route or route shade percentage obtained."
+    },
+    {
+      "id": "oerlikon",
+      "from": "Franklinstrasse / Hofwiesenstrasse",
+      "to": "Franklinstrasse / Schaffhauserstrasse",
+      "a": [8.542074543101426, 47.41026670256105],
+      "b": [8.54633603558621, 47.408787715334675],
+      "setting": "Northern district, street pavements",
+      "coolerMode": "shade",
+      "coolerSelectedReason": "qualified shade alternative",
+      "coolerFastestMeters": 375.11000000000007,
+      "coolerSelectedMeters": 406.15999999999997,
+      "coolerExtraMinutes": 0.3881249999999987,
+      "coolerNativeArrivalShadePercentOfKnown": 80.03880382976928,
+      "coolerNativeCoveragePercent": 97.28924561749062,
+      "coolerSnapMeters": [1.999132105757008, 1.529364106666668],
+      "sosmFootMeters": 375.8,
+      "vampireMeters": 375.4,
+      "vampireExtraMinutesAtCoolerSpeed": -0.005000000000000426,
+      "vampireSnapMeters": [1.855616538, 0.134363767],
+      "vampireGeometryToWaypointMeters": [0.7868242300358587, 0.0],
+      "coolerSelectedWithin8mOfVampirePercent": 72.417164283548,
+      "vampireWithin8mOfCoolerSelectedPercent": 79.10059160106368,
+      "rasterOnVampireRoute": {
+        "metricLength": 374.71741127377766,
+        "meters": {
+          "sun": 111.61795229431678,
+          "shade": 263.09945897946056,
+          "unknown": 0.0
+        },
+        "coveragePercent": 99.99999999999991,
+        "shadePercentOfKnown": 70.21276595744679
+      },
+      "rasterOnSosmFootRoute": {
+        "metricLength": 375.88188640354156,
+        "meters": {
+          "sun": 79.97486944756201,
+          "shade": 295.90701695597943,
+          "unknown": 0.0
+        },
+        "coveragePercent": 99.99999999999997,
+        "shadePercentOfKnown": 78.72340425531914
+      },
+      "rasterOnCoolerSelectedRoute": {
+        "metricLength": 406.15027281865207,
+        "meters": {
+          "sun": 87.60103923539556,
+          "shade": 318.5492335832564,
+          "unknown": 0.0
+        },
+        "coveragePercent": 99.99999999999997,
+        "shadePercentOfKnown": 78.4313725490196
+      },
+      "fixedFastestPathComparison": [
+        {
+          "departure": "2024-08-01T14:00:00Z",
+          "samples": 105,
+          "totalMeters": 375.10999999999996,
+          "comparableMeters": 357.43333333333334,
+          "comparablePercent": 95.28760452489493,
+          "agreementPercentOfComparable": 67.92453036747503,
+          "coolerShadePercentOfComparable": 62.47620920491911,
+          "rasterShadePercentOfComparable": 78.69673071698784,
+          "matrixMetersCoolerThenRaster": {
+            "shade/shade": 194.97536231884052,
+            "shade/sun": 28.335434782608694,
+            "sun/shade": 86.31298550724641,
+            "sun/sun": 47.80955072463769,
+            "unknown/sun": 7.013333333333334,
+            "unknown/shade": 10.663333333333334
+          }
+        },
+        {
+          "departure": "2024-08-01T15:32:09.700Z",
+          "samples": 105,
+          "totalMeters": 375.11,
+          "comparableMeters": 375.11,
+          "comparablePercent": 100.0,
+          "agreementPercentOfComparable": 75.79198024618093,
+          "coolerShadePercentOfComparable": 82.25787488810045,
+          "rasterShadePercentOfComparable": 77.83095123015124,
+          "matrixMetersCoolerThenRaster": {
+            "sun/shade": 37.10043478260869,
+            "shade/sun": 53.70626811594204,
+            "shade/shade": 254.85124637681162,
+            "sun/sun": 29.45205072463768
+          }
+        }
+      ],
+      "shadowmap": "Matching 1 August date blocked by Home paywall; numerical point API is early-access. No route or route shade percentage obtained."
+    }
+  ]
+}
