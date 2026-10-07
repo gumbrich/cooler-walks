@@ -2,8 +2,11 @@ import fs from 'node:fs';
 import path from 'node:path';
 import http from 'node:http';
 import assert from 'node:assert/strict';
-import { chromium, expect } from '@playwright/test';
+import { chromium, expect as baseExpect } from '@playwright/test';
 import { dataRevisions } from './lib/data-revisions.mjs';
+// This standalone script does not load playwright.config.ts. Context timeouts
+// apply to browser actions, not assertions; use the same 45 s route budget here.
+const expect = baseExpect.configure({ timeout: 45000 });
 const revisions = dataRevisions('dist');
 const versioned = (url) => `${url}?v=${revisions[url]}`;
 let current = false;
