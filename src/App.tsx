@@ -651,6 +651,7 @@ export default function App() {
     mapData,
     pavements,
     result,
+    pending: busy,
     selected,
     onSelect: setSelected,
     pick:

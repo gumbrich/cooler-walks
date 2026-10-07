@@ -40,7 +40,14 @@ export function PlaceSearch({
     setOpen(false);
   };
   return (
-    <div className="place-field">
+    <div
+      className="place-field"
+      onBlur={(e) => {
+        // Keep options open when focus moves to a result button. Closing a field
+        // must not leave a timer that can close it again after the user returns.
+        if (!e.currentTarget.contains(e.relatedTarget)) setOpen(false);
+      }}
+    >
       <label htmlFor={id}>{label}</label>
       <div className="place-input">
         <SearchIcon size={16} />
@@ -61,7 +68,6 @@ export function PlaceSearch({
             setOpen(true);
             setCursor(0);
           }}
-          onBlur={() => setTimeout(() => setOpen(false), 150)}
           onChange={(e) => {
             setQuery(e.target.value);
             onChange(null);

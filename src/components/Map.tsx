@@ -24,6 +24,7 @@ interface Props {
   data: PlannerData | null;
   mapData?: FeatureCollection | null;
   result: RouteResult | null;
+  pending?: boolean;
   selected: string;
   onSelect: (id: string) => void;
   pick: string | null;
@@ -42,6 +43,7 @@ export function WalkingMap({
   data,
   mapData,
   result,
+  pending = false,
   selected,
   onSelect,
   pick,
@@ -244,6 +246,13 @@ export function WalkingMap({
       return;
     }
     map.current = m;
+    // The first result is already available when the planner mounts the map.
+    // Frame it before the first tiles render, avoiding an unnecessary city-centre
+    // view and a second animated fit while its sources are still being indexed.
+    if (result) {
+      fit(true);
+      lastTrip.current = tripKey;
+    }
     m.on('movestart', () => setSettled(false));
     m.on('idle', () => setSettled(true));
     m.addControl(
@@ -745,7 +754,7 @@ export function WalkingMap({
   const lastTrip = useRef('');
   const fit = (instant = false) => {
     const m = map.current;
-    if (!m) return;
+    if (!m || (pending && !result)) return;
     if (result) {
       const box = new maplibregl.LngLatBounds();
       result.fastest.coordinates.forEach((p) => box.extend(p));
@@ -796,12 +805,12 @@ export function WalkingMap({
   useEffect(() => {
     // An error/cleared trip resets framing, so recovering the same endpoints
     // zooms back from the coverage overview to the walking route.
-    if (!tripKey) lastTrip.current = '';
+    if (!tripKey && !pending) lastTrip.current = '';
     if (ready && tripKey && lastTrip.current !== tripKey) {
       fit();
       lastTrip.current = tripKey;
     }
-  }, [ready, tripKey]); // Keep the map steady when time or route selection changes.
+  }, [ready, tripKey, pending]); // Keep the map steady when time or route selection changes.
   useEffect(() => {
     const m = map.current;
     if (!m || !ready) return;
@@ -810,7 +819,7 @@ export function WalkingMap({
     return () => {
       m.off('resize', resize);
     };
-  }, [ready, result, showZones]);
+  }, [ready, result, pending, showZones]);
   useEffect(() => {
     if (ready && result) fit(true);
   }, [showZones]);

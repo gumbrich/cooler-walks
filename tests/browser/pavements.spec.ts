@@ -15,6 +15,12 @@ test('expanded pavement search reaches Oerlikon and shows the whole supported ma
   await to.fill('Franklinstrasse / Schaffhauserstrasse');
   await expect(page.getByRole('listbox').last()).toContainText('Wegkreuzung');
   await to.press('Enter');
+  // Quickly returning to a field must not let its earlier blur close suggestions.
+  await from.focus();
+  await to.focus();
+  await from.focus();
+  await page.waitForTimeout(200);
+  await expect(from).toHaveAttribute('aria-expanded', 'true');
   await from.fill('Franklinstrasse / Hofwiesenstrasse');
   await from.press('Enter');
   await expect(page.locator('.route-card')).toHaveCount(2);

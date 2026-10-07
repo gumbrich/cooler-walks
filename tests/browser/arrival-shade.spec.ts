@@ -38,4 +38,23 @@ test('arrival-aware shade explains route timing and a walk crossing into low sun
   await expect(page.getByText(/Bei diesem Weg fällt ein Teil in tiefen Sonnenstand/)).toHaveCount(
     0,
   );
+  // Editing the departure time must preserve the user's chosen map view.
+  await expect(page.locator('.map-shell')).toHaveAttribute('data-map-settled', 'true');
+  await page.getByRole('button', { name: 'Verkleinern', exact: true }).click();
+  await expect(page.locator('.map-shell')).toHaveAttribute('data-map-settled', 'true');
+  const markerPosition = () =>
+    page
+      .locator('.map-marker')
+      .first()
+      .evaluate((marker) => {
+        const box = marker.getBoundingClientRect();
+        const map = marker.closest('.map-canvas')!.getBoundingClientRect();
+        return { x: box.x - map.x, y: box.y - map.y };
+      });
+  const before = await markerPosition();
+  await page.getByRole('slider', { name: 'Startzeit', exact: true }).fill('855');
+  await expect(page.locator('.route-arrival').first()).toContainText('Ankunft gegen 14:34');
+  await expect(page.locator('.map-shell')).toHaveAttribute('data-map-settled', 'true');
+  const after = await markerPosition();
+  expect(Math.hypot(after.x - before.x, after.y - before.y)).toBeLessThan(1);
 });
