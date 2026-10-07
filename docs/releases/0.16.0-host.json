@@ -1,0 +1,32 @@
+{
+  "checkedAt": "2026-10-07T19:57:59.685Z",
+  "origin": "https://coolerwalks.ch",
+  "expectedSourceCommit": "53e47a808e1ae766d10f97bc0cfc5f74279b68c2",
+  "css": {
+    "url": "/assets/main-BXCx0Blo.css",
+    "sha256": "7dd25d8b277285335a61f468e83c271047eda837d1c9fb012937db1930c8e4b7",
+    "matchesTestedBuild": true
+  },
+  "routingWorker": {
+    "url": "/assets/route-worker-BWDwoI9J.js",
+    "sha256": "802a62b1e24b39235457bba80b59240f52f7eb5177156d3625b405b2304617f2",
+    "matchesTestedBuild": true
+  },
+  "canopy": {
+    "sha256": "1802b2353e86cd4b5bad55b68444d85c764f5957e13382535cc137001601f272",
+    "bytes": 5417821,
+    "matchesAuditedDerivative": true
+  },
+  "hostedChecks": [
+    "Six EN/DE HTML pages and security headers",
+    "True missing-file 404s",
+    "Both PWA manifests",
+    "All 81 building tile hashes",
+    "Pavement graph",
+    "Canopy derivative",
+    "Five pack hashes and native CORS",
+    "Five decompressed payloads match local source data"
+  ],
+  "publicPwaReport": "0.16.0-pwa-validation.json",
+  "fieldAccuracy": "Not validated; opaque full-foliage scenario, lakeshore pilot only."
+}

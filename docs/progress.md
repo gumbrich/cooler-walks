@@ -6,6 +6,8 @@ Added an opt-in Bellevue–Zürichhorn canopy scenario based on classified 2021�
 
 Verified 69 columns against original returns, analytic ray cases, seven real-route cases, 113 unit/model/language checks and the full existing data suite. Production build, formatting and all five pack hashes pass. Six focused browser scenarios cover the new controls/errors, accessibility, city reset, base shade and startup; actual desktop/phone/tablet views were inspected and refined. The updated Zurich pack stays within 80 MiB compressed / 200 MiB expanded. PWA installation and offline routes pass in Chrome 154; Android build 15 passes an offline emulator canopy/time/German flow. iOS assets are synchronized, but no new iOS device or physical-phone validation is claimed. [Platform evidence](platform.md).
 
+The final runtime `53e47a8` is live on coolerwalks.ch. All three GitHub workflows pass: shared model/source/data/format/build checks, all four browser shards, the production cache-upgrade regression and both native builds. Public HTTPS PWA installation, standalone launch and offline canopy checks pass. [CI evidence](releases/0.16.0-ci.json) · [hosted assets](releases/0.16.0-host.json) · [public PWA](releases/0.16.0-pwa-validation.json).
+
 Next: field-check shaded/sunny lakeshore points with recorded time, foliage and walking side, then decide whether a leaf-on source and transmission model justify larger coverage. All shadow/traffic field-validation holds remain.
 
 ## Five-pair shade-service comparison · 7 October 2026
