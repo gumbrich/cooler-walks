@@ -1,5 +1,13 @@
 # Progress
 
+## Optional lakeshore tree shade · 0.16.0
+
+Added an opt-in Bellevue–Zürichhorn canopy scenario based on classified 2021–2022 LiDAR. Its 1 m vegetation envelopes preserve lower/upper observed heights, source gaps and the existing buildings-only mode. EN/DE controls, a mapped source boundary, separate building/tree contributions and visible full-foliage assumptions are shared by the website/PWA/native app. Below 95% coverage, it shows partial estimates without claiming a shade recommendation. The 16:00 reference walk has 88% coverage; the 10:00 walk has 96%. [Method, exact figures and limitations](tree-shade-pilot.md).
+
+Verified 69 columns against original returns, analytic ray cases, seven real-route cases, 113 unit/model/language checks and the full existing data suite. Production build, formatting and all five pack hashes pass. Six focused browser scenarios cover the new controls/errors, accessibility, city reset, base shade and startup; actual desktop/phone/tablet views were inspected and refined. The updated Zurich pack stays within 80 MiB compressed / 200 MiB expanded. PWA installation and offline routes pass in Chrome 154; Android build 15 passes an offline emulator canopy/time/German flow. iOS assets are synchronized, but no new iOS device or physical-phone validation is claimed. [Platform evidence](platform.md).
+
+Next: field-check shaded/sunny lakeshore points with recorded time, foliage and walking side, then decide whether a leaf-on source and transmission model justify larger coverage. All shadow/traffic field-validation holds remain.
+
 ## Five-pair shade-service comparison · 7 October 2026
 
 Compared five fixed Zurich A/B pairs with the actual SOSM ordinary-foot and Vampire services. Saved ten response snapshots, exact coordinates/snapping, both route alternatives, source hashes and actual screenshots. The production Cooler model was evaluated at the published August scenario, with its existing five-minute limit and unknown-coverage rules. No runtime model or route threshold was changed.

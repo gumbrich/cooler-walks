@@ -36,6 +36,21 @@ export const cities: City[] = [
       dataUrl: '/data/zurich-pavements.json',
       version: 'zurich-pavements-2026-10-06-v2',
     },
+    canopyPilot: {
+      dataUrl: '/data/zurich-canopy.json',
+      version: 'zurich-lakeshore-canopy-2026-10-07-v1',
+      crs: 'EPSG:2056',
+      verticalDatum: 'LN02',
+      bytes: 5417821,
+      sha256: '1802b2353e86cd4b5bad55b68444d85c764f5957e13382535cc137001601f272',
+      coverage: [
+        [8.537134228657443, 47.35062700972112],
+        [8.556984129507672, 47.35043644484657],
+        [8.55745585671084, 47.37291988613176],
+        [8.537597578588501, 47.37311053062643],
+        [8.537134228657443, 47.35062700972112],
+      ],
+    },
     detailedShade: {
       format: 'library',
       dataUrl: '/data/zurich-shade-library.json',
@@ -57,6 +72,10 @@ export const cities: City[] = [
     sourceSummary:
       'Walking network, tree extract and official addresses fetched 30 September 2026. Building tiles: 2019; tree locations: 2021, prepared 2022. City traffic zones fetched 29 September 2026; cantonal zone orders 6 October 2026. Fetch dates are not observation dates.',
     sources: [
+      {
+        label: 'Kanton Zürich classified LiDAR · canopy pilot',
+        url: 'https://geolion.zh.ch/geodatensatz/4289',
+      },
       {
         label: 'Zurich pavement and crossing network · CC0',
         url: 'https://data.stadt-zuerich.ch/dataset/geo_fuss__und_velowegnetz',

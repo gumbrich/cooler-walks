@@ -106,6 +106,7 @@ export default function App() {
   }, []);
   const [preferCalm, setPreferCalm] = useState(false);
   const [pavements, setPavements] = useState(false);
+  const [canopyScenario, setCanopyScenario] = useState(false);
   const initialPavements = useRef(
     new URLSearchParams(location.search).get('network') === 'pavements',
   );
@@ -144,6 +145,7 @@ export default function App() {
     setPreferWater(false);
     setPreferCalm(false);
     setPavements(false);
+    setCanopyScenario(false);
     setCountsExpanded(false);
     setSunlight('shade');
     setError('');
@@ -314,6 +316,7 @@ export default function App() {
         preferCalm,
         sunlight,
         pavements,
+        canopyScenario,
       });
     }, 180);
     return () => clearTimeout(timer);
@@ -326,6 +329,7 @@ export default function App() {
     preferCalm,
     sunlight,
     pavements,
+    canopyScenario,
     departure,
     extra,
     city,
@@ -467,9 +471,11 @@ export default function App() {
       nearbyCounts(data?.vehicleCounts, city, chosen, result?.departure ?? '2000-01-01T00:00:00Z'),
     [data, city, chosen, result?.departure],
   );
+  const canopyResult = !!result?.canopyVersion;
+  const hasExposure = isShade || (canopyResult && result?.mode === 'greenery');
   const showWater = result?.preference === 'water';
   const showCalm = result?.preference === 'calm';
-  const showShade = isShade && !showWater && !showCalm;
+  const showShade = hasExposure && !showWater && !showCalm;
   const showSun = showShade && sunlight === 'sun';
   const percentage = (r: Route) =>
     Math.round(
@@ -477,7 +483,7 @@ export default function App() {
         ? ((r.distance - r.majorRoadMeters - r.trafficUnknownMeters) / r.distance) * 100
         : showWater
           ? (r.waterMeters / r.distance) * 100
-          : isShade
+          : hasExposure
             ? ((showSun ? r.sunMeters : r.shadeMeters) / Math.max(1, r.shadeMeters + r.sunMeters)) *
               100
             : (r.greenMeters / r.distance) * 100,
@@ -533,7 +539,7 @@ export default function App() {
                     ? t('Low sun · building estimate unavailable')
                     : result?.mode === 'transition'
                       ? t('Light changes during this walk · comparison unavailable')
-                      : isShade || (!result && city.capabilities.buildingShade)
+                      : hasExposure || (!result && city.capabilities.buildingShade)
                         ? t('Estimates change with departure time.')
                         : t('Tree proximity does not depend on the time.')}
         </span>
@@ -566,9 +572,13 @@ export default function App() {
               : result?.preference === 'water'
                 ? t('More time near water')
                 : result?.preference === 'sun'
-                  ? t('More estimated sun')
+                  ? canopyResult
+                    ? t('More potential sun')
+                    : t('More estimated sun')
                   : isShade
-                    ? t('More estimated shade')
+                    ? canopyResult
+                      ? t('More potential shade')
+                      : t('More estimated shade')
                     : t('Greener route')
             : t('Fastest walk')}
           {index > 0 && (
@@ -604,10 +614,14 @@ export default function App() {
               ? t('near main roads')
               : showWater
                 ? t('near water')
-                : isShade
+                : hasExposure
                   ? showSun
-                    ? t('estimated sun')
-                    : t('estimated shade')
+                    ? canopyResult
+                      ? t('potential sun')
+                      : t('estimated sun')
+                    : canopyResult
+                      ? t('potential shade')
+                      : t('estimated shade')
                   : t('near trees')}
           </small>
         </span>
@@ -620,12 +634,17 @@ export default function App() {
           ? t('{share}% away from main roads · street context', { share: percentage(route) })
           : showWater
             ? t('Within 50 m of mapped water')
-            : isShade
-              ? t('{coverage}% model coverage · buildings only', {
-                  coverage: Math.round(
-                    ((route.shadeMeters + route.sunMeters) / route.distance) * 100,
-                  ),
-                })
+            : hasExposure
+              ? t(
+                  canopyResult
+                    ? '{coverage}% coverage · buildings + tree scenario'
+                    : '{coverage}% model coverage · buildings only',
+                  {
+                    coverage: Math.round(
+                      ((route.shadeMeters + route.sunMeters) / route.distance) * 100,
+                    ),
+                  },
+                )
               : t('Within 15 m of a recorded tree · not canopy shade')}
       </div>
       {showShade && !!route.detailedMeters && (
@@ -650,6 +669,7 @@ export default function App() {
     data,
     mapData,
     pavements,
+    canopyScenario,
     result,
     pending: busy,
     selected,
@@ -1084,6 +1104,32 @@ export default function App() {
                       </div>
                     </fieldset>
                   )}
+                  {city.canopyPilot && (
+                    <div className="canopy-preference">
+                      <label className={`water-preference ${canopyScenario ? 'active' : ''}`}>
+                        <Leaf size={21} />
+                        <span>
+                          <strong>{t('Tree shade pilot')}</strong>
+                        </span>
+                        <input
+                          type="checkbox"
+                          checked={canopyScenario}
+                          onChange={(e) => setCanopyScenario(e.target.checked)}
+                          aria-describedby="canopy-help"
+                        />
+                      </label>
+                      <p className="preference-help" id="canopy-help">
+                        {t('Full foliage assumption · Bellevue–Zürichhorn')}
+                      </p>
+                      {canopyScenario && (
+                        <p className="preference-help">
+                          {t(
+                            'Potential shade, not observed shade. Outside the marked area, tree shade is unknown.',
+                          )}
+                        </p>
+                      )}
+                    </div>
+                  )}
                   {city.capabilities.water && !pavements && (
                     <label className={`water-preference ${preferWater ? 'active' : ''}`}>
                       <Waves size={21} />
@@ -1205,10 +1251,15 @@ export default function App() {
                   )}
                   {result && (
                     <>
+                      {canopyResult && (
+                        <p className="canopy-result-note">
+                          {t('Tree scenario · full foliage assumed')}
+                        </p>
+                      )}
                       {[result.fastest, ...(result.alternative ? [result.alternative] : [])].map(
                         routeCard,
                       )}
-                      {!result.alternative && (
+                      {!result.alternative && !(canopyResult && !isShade) && (
                         <p className="result-note">
                           {extra === 0
                             ? t(
@@ -1268,7 +1319,9 @@ export default function App() {
                         !preferCalm && (
                           <p className="result-note">
                             {t(
-                              'Building-shade coverage is insufficient for comparison. These are greenery indicators.',
+                              canopyResult
+                                ? 'Tree-scenario coverage is below 95%. No shade comparison; estimates cover only the known part of the walk.'
+                                : 'Building-shade coverage is insufficient for comparison. These are greenery indicators.',
                             )}
                           </p>
                         )}
@@ -1291,6 +1344,21 @@ export default function App() {
                         {t('About this walk ')}
                         <ChevronDown size={15} />
                       </summary>
+                      {canopyResult && (
+                        <p className="canopy-breakdown">
+                          {t(
+                            'Building shade: {buildings}. Additional potential tree shade: {trees}. Full foliage assumed; not field-validated.',
+                            {
+                              buildings: formatDistance(
+                                chosen.shadeMeters - (chosen.canopyShadeMeters ?? 0),
+                                units,
+                                locale,
+                              ),
+                              trees: formatDistance(chosen.canopyShadeMeters ?? 0, units, locale),
+                            },
+                          )}
+                        </p>
+                      )}
                       {city.capabilities.trafficCalming && !pavements && (
                         <div className="route-traffic">
                           <TrafficCone size={14} />
@@ -1399,10 +1467,12 @@ export default function App() {
                           {formatDistance(chosen.trafficUnknownMeters, units, locale)}.
                         </p>
                       )}
-                      {isShade && (
+                      {hasExposure && (
                         <p>
                           {t(
-                            'Direct sun: about {minutes} min. Unknown: {distance}. Shadows follow your expected arrival along the walk at 4.8 km/h. Percentage uses modelled daylight distance only. Buildings obstruct sunlight; tree shade, hill shadows and clouds are not included.',
+                            canopyResult
+                              ? 'Potential direct sun: about {minutes} min. Unknown: {distance}. The percentage covers modelled daylight distance only, using arrival time at 4.8 km/h. Buildings and the opaque tree scenario are included; clouds and hill shadows are not.'
+                              : 'Direct sun: about {minutes} min. Unknown: {distance}. Shadows follow your expected arrival along the walk at 4.8 km/h. Percentage uses modelled daylight distance only. Buildings obstruct sunlight; tree shade, hill shadows and clouds are not included.',
                             {
                               minutes: Math.round(chosen.sunMeters / 80),
                               distance: formatDistance(chosen.unknownMeters, units, locale),
@@ -1530,16 +1600,19 @@ export default function App() {
                   <h3>{t('Greenery is a separate measure')}</h3>
                   <p>
                     {t(
-                      '“Near trees” is the share of a walk within 15 metres of a recorded tree. It is not canopy coverage or shade. Tree crowns, foliage, clouds and terrain shadows are not modelled.',
+                      '“Near trees” is the share of a walk within 15 metres of a recorded tree. It is not canopy coverage or shade. Clouds and terrain shadows are not modelled.',
                     )}
                   </p>
                   <p>{t(city.treeNotes ?? '')}</p>
-                  {city.detailedShade && (
-                    <p>
-                      {t(
-                        'The 2021–2022 LiDAR survey was mainly flown without leaves. Canopy height does not establish summer foliage or light transmission, so it is not yet counted as tree shade.',
-                      )}
-                    </p>
+                  {city.canopyPilot && (
+                    <>
+                      <h3>{t('Tree shade pilot')}</h3>
+                      <p>
+                        {t(
+                          'The optional lakeshore tree pilot traces sunlight through 1 m vegetation columns from the 2021–2022 LiDAR survey, using the lowest and highest observed returns. It assumes opaque foliage between those heights. The survey was mainly leaf-off: summer crowns, gaps and light transmission remain uncertain. This is a full-foliage scenario, not a prediction of seasonal leaf cover. It is off by default and needs field validation.',
+                        )}
+                      </p>
+                    </>
                   )}
                 </div>
               </div>
@@ -1657,6 +1730,12 @@ export default function App() {
                               : t('Not enabled')}
                           </dd>
                         </div>
+                        {coveredCity.canopyPilot && (
+                          <div>
+                            <dt>{t('Tree shade pilot')}</dt>
+                            <dd>{t('Full foliage assumption · Bellevue–Zürichhorn')}</dd>
+                          </div>
+                        )}
                         <div>
                           <dt>{t('Water')}</dt>
                           <dd>
@@ -1675,7 +1754,11 @@ export default function App() {
                         </div>
                         <div>
                           <dt>{t('Not included')}</dt>
-                          <dd>{t('Tree shade, hill shadows, fountains')}</dd>
+                          <dd>
+                            {coveredCity.canopyPilot
+                              ? t('Hill shadows, fountains')
+                              : t('Tree shade, hill shadows, fountains')}
+                          </dd>
                         </div>
                       </dl>
                       <button

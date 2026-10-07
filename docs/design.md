@@ -99,3 +99,7 @@ Desktop keeps a compact horizontal key beneath the departure control; tablet res
 ## Pavement pilot · 0.14.0
 
 A compact **Try pavement pilot / Trottoir-Pilot testen** action opens the bounded street-side network and clearly labels Talacker–Bahnhofstrasse. Thin teal source paths and dashed crossings sit beneath narrower selected/alternative route strokes, retaining separate sun/unknown encoding. Cards name municipal crossing sections without implying signal counts. Phones offer **Enlarge map / Karte vergrössern** so the two pavements can be inspected; the map scrolls into view and refits the route. Normal planning returns through **Zurich map / Zürich-Karte**. Screenshots cover English desktop, German phone, enlarged phone map, tablet and an outside-area error.
+
+## Tree pilot · 0.16.0
+
+An optional leaf control uses the existing form and green palette. The small lakeshore source boundary is dotted and separately labelled. Route summaries say “potential shade” / “möglicher Schatten” and show model coverage beside the percentage; the full-foliage assumption remains visible when the phone editor is collapsed. Detailed building and additional tree lengths live under “About this walk”. Missing source data retains an explicit retry/error state. Desktop, phone, tablet and error screenshots are linked in [platform.md](platform.md).

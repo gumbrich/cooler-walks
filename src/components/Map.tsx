@@ -37,6 +37,7 @@ interface Props {
   hero?: boolean;
   counterObservations?: CounterObservation[];
   pavements?: boolean;
+  canopyScenario?: boolean;
 }
 export function WalkingMap({
   city,
@@ -56,6 +57,7 @@ export function WalkingMap({
   hero = false,
   counterObservations,
   pavements = false,
+  canopyScenario = false,
 }: Props) {
   const { t } = useI18n();
   const container = useRef<HTMLDivElement>(null),
@@ -343,6 +345,13 @@ export function WalkingMap({
         type: 'line',
         source: 'detailed-coverage',
         paint: { 'line-color': '#776075', 'line-width': 2, 'line-dasharray': [1, 2] },
+      });
+      m.addSource('canopy-coverage', { type: 'geojson', data: collection([]) });
+      m.addLayer({
+        id: 'canopy-coverage-line',
+        type: 'line',
+        source: 'canopy-coverage',
+        paint: { 'line-color': '#387d67', 'line-width': 2, 'line-dasharray': [1, 2] },
       });
       m.addSource('trees', { type: 'geojson', data: collection([]) });
       m.addLayer({
@@ -646,6 +655,19 @@ export function WalkingMap({
   useEffect(() => {
     const m = map.current;
     if (!m || !ready) return;
+    (m.getSource('canopy-coverage') as GeoJSONSource).setData(
+      collection(
+        canopyScenario && city.canopyPilot
+          ? [
+              {
+                type: 'Feature',
+                properties: {},
+                geometry: { type: 'Polygon', coordinates: [city.canopyPilot.coverage] },
+              },
+            ]
+          : [],
+      ),
+    );
     (m.getSource('pavements') as GeoJSONSource).setData(
       pavements && data?.pavementNetwork ? data.pavementNetwork.lines : collection([]),
     );
@@ -666,7 +688,7 @@ export function WalkingMap({
       pavements ? 3.5 : 5,
       pavements ? 2.5 : 3,
     ]);
-  }, [ready, pavements, data, city]);
+  }, [ready, pavements, canopyScenario, data, city]);
   useEffect(() => {
     if (map.current) map.current.getCanvas().style.cursor = pick ? 'crosshair' : '';
   }, [pick]);
@@ -706,7 +728,10 @@ export function WalkingMap({
     const chosen = routes.find((r) => r.id === selected);
     (m.getSource('exposure') as GeoJSONSource).setData(
       collection(
-        chosen && (result?.mode === 'shade' || result?.preference === 'calm')
+        chosen &&
+          (result?.mode === 'shade' ||
+            (result?.canopyVersion && result.mode === 'greenery') ||
+            result?.preference === 'calm')
           ? chosen.samples.map((s) => ({
               type: 'Feature',
               properties: {
@@ -855,6 +880,7 @@ export function WalkingMap({
               {pavements ? t('Pavements & paths · pilot') : t(city.coverageLabel)}
               {!pavements && (city.beta ? ' · Beta' : t(' · pilot'))}
             </span>
+
             {pavements && (
               <button
                 type="button"
@@ -1023,11 +1049,25 @@ export function WalkingMap({
               {t('Pilot paths')}
             </span>
           )}
-          {result?.mode === 'shade' || result?.preference === 'calm' ? (
+          {canopyScenario && (
+            <span>
+              <i className="legend-canopy" />
+              {t('Tree pilot boundary')}
+            </span>
+          )}
+          {result?.mode === 'shade' ||
+          (result?.canopyVersion && result.mode === 'greenery') ||
+          result?.preference === 'calm' ? (
             <>
               <span>
                 <i className="legend-sun" />
-                {t(result?.preference === 'calm' ? 'Close to main roads' : 'Direct sun')}
+                {t(
+                  result?.preference === 'calm'
+                    ? 'Close to main roads'
+                    : result?.canopyVersion
+                      ? 'Potential sun'
+                      : 'Direct sun',
+                )}
               </span>
               <span>
                 <i className="legend-unknown" />

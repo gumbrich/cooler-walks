@@ -1,0 +1,267 @@
+{
+  "model": "roof-mesh-tiled-ground-arrival-v8",
+  "canopyVersion": "zurich-lakeshore-canopy-2026-10-07-v1",
+  "sha256": "1802b2353e86cd4b5bad55b68444d85c764f5957e13382535cc137001601f272",
+  "limits": "Computational checks only. Opaque foliage scenario from mainly leaf-off returns. Field accuracy unvalidated.",
+  "cases": [
+    {
+      "id": "lake-afternoon",
+      "a": [
+        8.5443354,
+        47.3668209
+      ],
+      "b": [
+        8.5520945,
+        47.3543016
+      ],
+      "departure": "2024-08-01T14:00:00Z",
+      "extra": 5,
+      "pavements": false,
+      "mode": "greenery",
+      "baseline": {
+        "meters": 1594.0699999999997,
+        "minutes": 19.925874999999998,
+        "shadeMeters": 60.44666666666667,
+        "canopyShadeMeters": 0,
+        "sunMeters": 1533.6233333333334,
+        "unknownMeters": 0,
+        "nightMeters": 0,
+        "coverage": 1.0000000000000002
+      },
+      "fastest": {
+        "meters": 1594.0699999999997,
+        "minutes": 19.925874999999998,
+        "shadeMeters": 826.1967142857147,
+        "canopyShadeMeters": 765.750047619048,
+        "sunMeters": 572.5018253968252,
+        "unknownMeters": 195.37146031746025,
+        "nightMeters": 0,
+        "coverage": 0.877438594090937
+      },
+      "alternative": null,
+      "preferSunMode": "greenery"
+    },
+    {
+      "id": "lake-morning",
+      "a": [
+        8.5443354,
+        47.3668209
+      ],
+      "b": [
+        8.5520945,
+        47.3543016
+      ],
+      "departure": "2024-08-01T08:00:00Z",
+      "extra": 5,
+      "pavements": false,
+      "mode": "shade",
+      "baseline": {
+        "meters": 1594.0699999999997,
+        "minutes": 19.925874999999998,
+        "shadeMeters": 359.08206349206324,
+        "canopyShadeMeters": 0,
+        "sunMeters": 1176.8602698412699,
+        "unknownMeters": 58.12766666666667,
+        "nightMeters": 0,
+        "coverage": 0.9635350601500144
+      },
+      "fastest": {
+        "meters": 1594.0699999999997,
+        "minutes": 19.925874999999998,
+        "shadeMeters": 1220.4159642857153,
+        "canopyShadeMeters": 861.3339007936517,
+        "sunMeters": 302.3034523809523,
+        "unknownMeters": 71.35058333333333,
+        "nightMeters": 0,
+        "coverage": 0.9552399936431073
+      },
+      "alternative": null,
+      "preferSunMode": "shade"
+    },
+    {
+      "id": "lake-direct",
+      "a": [
+        8.5443354,
+        47.3668209
+      ],
+      "b": [
+        8.5520945,
+        47.3543016
+      ],
+      "departure": "2024-08-01T14:00:00Z",
+      "extra": 0,
+      "pavements": false,
+      "mode": "greenery",
+      "baseline": {
+        "meters": 1594.0699999999997,
+        "minutes": 19.925874999999998,
+        "shadeMeters": 60.44666666666667,
+        "canopyShadeMeters": 0,
+        "sunMeters": 1533.6233333333334,
+        "unknownMeters": 0,
+        "nightMeters": 0,
+        "coverage": 1.0000000000000002
+      },
+      "fastest": {
+        "meters": 1594.0699999999997,
+        "minutes": 19.925874999999998,
+        "shadeMeters": 826.1967142857147,
+        "canopyShadeMeters": 765.750047619048,
+        "sunMeters": 572.5018253968252,
+        "unknownMeters": 195.37146031746025,
+        "nightMeters": 0,
+        "coverage": 0.877438594090937
+      },
+      "alternative": null,
+      "preferSunMode": "greenery"
+    },
+    {
+      "id": "lake-pavements",
+      "a": [
+        8.546293219101448,
+        47.364425811065765
+      ],
+      "b": [
+        8.55328419148596,
+        47.35447856575667
+      ],
+      "departure": "2024-08-01T14:00:00Z",
+      "extra": 5,
+      "pavements": true,
+      "mode": "greenery",
+      "baseline": {
+        "meters": 1243.1751120126708,
+        "minutes": 15.539688900158385,
+        "shadeMeters": 44.68791840887316,
+        "canopyShadeMeters": 0,
+        "sunMeters": 1175.7733456797512,
+        "unknownMeters": 22.713847924045954,
+        "nightMeters": 0,
+        "coverage": 0.9817291645363836
+      },
+      "fastest": {
+        "meters": 1243.1751120126708,
+        "minutes": 15.539688900158385,
+        "shadeMeters": 373.6604296925053,
+        "canopyShadeMeters": 328.9725112836323,
+        "sunMeters": 495.9440610882778,
+        "unknownMeters": 373.57062123188547,
+        "nightMeters": 0,
+        "coverage": 0.6995028153136965
+      },
+      "alternative": null,
+      "preferSunMode": "greenery"
+    },
+    {
+      "id": "lake-night",
+      "a": [
+        8.5443354,
+        47.3668209
+      ],
+      "b": [
+        8.5520945,
+        47.3543016
+      ],
+      "departure": "2024-08-01T22:00:00Z",
+      "extra": 5,
+      "pavements": false,
+      "mode": "night",
+      "baseline": {
+        "meters": 1594.0699999999997,
+        "minutes": 19.925874999999998,
+        "shadeMeters": 0,
+        "canopyShadeMeters": 0,
+        "sunMeters": 0,
+        "unknownMeters": 0,
+        "nightMeters": 1594.0700000000004,
+        "coverage": 0
+      },
+      "fastest": {
+        "meters": 1594.0699999999997,
+        "minutes": 19.925874999999998,
+        "shadeMeters": 0,
+        "canopyShadeMeters": 0,
+        "sunMeters": 0,
+        "unknownMeters": 0,
+        "nightMeters": 1594.0700000000004,
+        "coverage": 0
+      },
+      "alternative": null,
+      "preferSunMode": "night"
+    },
+    {
+      "id": "winter-full-foliage-scenario",
+      "a": [
+        8.5443354,
+        47.3668209
+      ],
+      "b": [
+        8.5520945,
+        47.3543016
+      ],
+      "departure": "2026-12-21T11:00:00Z",
+      "extra": 5,
+      "pavements": false,
+      "mode": "greenery",
+      "baseline": {
+        "meters": 1594.0699999999997,
+        "minutes": 19.925874999999998,
+        "shadeMeters": 131.34547619047623,
+        "canopyShadeMeters": 0,
+        "sunMeters": 562.3049999999998,
+        "unknownMeters": 900.4195238095243,
+        "nightMeters": 0,
+        "coverage": 0.4351443011853157
+      },
+      "fastest": {
+        "meters": 1594.0699999999997,
+        "minutes": 19.925874999999998,
+        "shadeMeters": 625.0782261904765,
+        "canopyShadeMeters": 493.7327500000002,
+        "sunMeters": 14.39,
+        "unknownMeters": 954.6017738095247,
+        "nightMeters": 0,
+        "coverage": 0.4011544199379429
+      },
+      "alternative": null,
+      "preferSunMode": "greenery"
+    },
+    {
+      "id": "outside-pilot",
+      "a": [
+        8.53928,
+        47.410818
+      ],
+      "b": [
+        8.544217,
+        47.409998
+      ],
+      "departure": "2024-08-01T14:00:00Z",
+      "extra": 5,
+      "pavements": false,
+      "mode": "greenery",
+      "baseline": {
+        "meters": 578.0200000000001,
+        "minutes": 7.225250000000001,
+        "shadeMeters": 69.6547619047619,
+        "canopyShadeMeters": 0,
+        "sunMeters": 334.15523809523813,
+        "unknownMeters": 174.21000000000004,
+        "nightMeters": 0,
+        "coverage": 0.6986090446697346
+      },
+      "fastest": {
+        "meters": 578.0200000000001,
+        "minutes": 7.225250000000001,
+        "shadeMeters": 69.6547619047619,
+        "canopyShadeMeters": 0,
+        "sunMeters": 0,
+        "unknownMeters": 508.3652380952382,
+        "nightMeters": 0,
+        "coverage": 0.1205057989425312
+      },
+      "alternative": null,
+      "preferSunMode": "greenery"
+    }
+  ]
+}

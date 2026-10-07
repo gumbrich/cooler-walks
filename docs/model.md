@@ -43,7 +43,7 @@ For shade, prefer lower absolute modelled distance in direct sun (equivalent to 
 
 ## Prefer sun and winter
 
-The explicit sunlight preference is available only in building-enabled pilots. It remains the user’s choice throughout the year; there is no universal Northern Hemisphere seasonal switch. Date and local solar position already change building shadows in winter. Tree foliage is not modelled.
+The explicit sunlight preference is available only in building-enabled pilots. It remains the user’s choice throughout the year; there is no universal Northern Hemisphere seasonal switch. Date and local solar position already change building shadows in winter. Default calculations exclude tree foliage. The optional [lakeshore canopy scenario](tree-shade-pilot.md) assumes opaque vegetation envelopes; it does not predict seasonal leaf state.
 
 For **Prefer sun**, maximize known sun-exposed distance divided by **total route distance**, then break ties with shorter duration. A longer all-sun walk is not inherently better. Require at least 3 percentage points of improvement and 10% new path length, within the same 0/5/10-minute budget. Conservatively compare the candidate’s known sun fraction against the fastest route’s **sun + unknown** fraction; unknown candidate segments never improve the score. Both routes require at least 95% coverage. The displayed sun percentage uses the modelled portion, alongside its coverage, just like shade.
 
@@ -66,3 +66,7 @@ Up to **three intermediate stops** are visited in the specified order. Each stop
 Focused tests check LV95 against the official Bern origin, a Paris UTM round-trip, unit conversion, DST, Melbourne local time and solar orientation, polar night, shadow direction and length, an analytic 10 m block at 45°, courtyard openings, graph access, disconnected routes, detours and missing coverage. Arrival-specific checks use an analytic wall with a controlled changing sun, verify repeated/reversed paths through stops, arrival-dependent boundary clearance, sunrise/sunset transitions, and reject a tempting shade detour that enters darkness. Midnight and DST label checks keep route time separate from device time. `docs/route-validation.json` records a real Zurich route at several times; `docs/arrival-shade-validation.json` compares exact sample positions at departure versus arrival in Zurich and Munich.
 
 Analytic geometry checks are independent physical reference cases; they are not validation against real dated Zurich shadows. Before expanding or removing the experimental label: field-check paths, compare timestamped observations, add terrain-aware reference cases, audit tagged pedestrian restrictions and snapping near barriers, and evaluate route-side geometry. Historical geometry and source network freshness remain material limits.
+
+## Optional canopy scenario · 0.16.0
+
+The base model version stays `roof-mesh-tiled-ground-arrival-v8`; an enabled result additionally carries `canopyVersion=zurich-lakeshore-canopy-2026-10-07-v1`. [Data, exact combination rules, known/unknown accounting and limits](tree-shade-pilot.md). It does not alter historical building-only benchmarks.

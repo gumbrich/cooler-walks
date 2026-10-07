@@ -32,6 +32,7 @@ if (lite)
         'zurich-shade-library.json',
         'zurich-shade',
         'zurich-pavements.json',
+        'zurich-canopy.json',
       ].includes(file)
     )
       fs.rmSync(`native-web/data/${file}`, { recursive: true });

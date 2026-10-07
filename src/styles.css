@@ -4002,3 +4002,25 @@ html[lang='de'] .icon-text {
     margin-bottom: 0;
   }
 }
+
+/* The optional canopy scenario shares the planner controls and keeps its scope visible. */
+.canopy-preference .preference-help {
+  margin-top: 5px;
+}
+.legend-canopy {
+  width: 18px;
+  height: 0;
+  border-top: 2px dotted #387d67;
+  display: inline-block;
+}
+
+.canopy-preference .water-preference.active {
+  background: #eaf0e2;
+  border-color: #618360;
+  color: #214c3d;
+}
+.canopy-result-note {
+  margin: 0 0 12px;
+  color: var(--forest);
+  font-size: 12px;
+}

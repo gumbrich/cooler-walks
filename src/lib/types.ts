@@ -1,6 +1,7 @@
 import type { DetailedShadeData } from './detailed-shade';
 import type { ShadeLibraryData } from './shade-library';
 import type { PavementData, PavementNetwork } from './pavements';
+import type { CanopyData } from './canopy';
 export type Point = [number, number];
 export type Bounds = [number, number, number, number];
 export interface City {
@@ -44,6 +45,15 @@ export interface City {
     verticalDatum: string;
   };
   pavementPilot?: { dataUrl: string; version: string };
+  canopyPilot?: {
+    dataUrl: string;
+    version: string;
+    crs: string;
+    verticalDatum: string;
+    coverage: Point[];
+    bytes: number;
+    sha256: string;
+  };
   providers: string[];
   translatedNames: Record<string, string>;
   defaultJourney: [string, string] | null;
@@ -129,6 +139,7 @@ export interface PilotData {
   /** Used by synchronous source-validation tools, never shipped to the UI. */
   shadeTiles?: Record<string, DetailedShadeData>;
   pavementNetwork?: PavementData;
+  canopy?: CanopyData;
 }
 /** The UI retains only search, map points and counter evidence. Heavy graph/model geometry belongs to the routing worker. */
 export type PlannerData = Pick<PilotData, 'places' | 'trees' | 'vehicleCounts'> & {
@@ -162,6 +173,8 @@ export interface Sample {
   elapsedMinutes: number;
   /** This sample lies in the 3D-roof/DTM pilot, including unknown samples. */
   detailed?: boolean;
+  /** Only set by the explicitly enabled, opaque-canopy scenario. */
+  canopyShade?: boolean;
 }
 export interface Route {
   id: string;
@@ -190,6 +203,7 @@ export interface Route {
   steps: boolean;
   /** Traversals of source crossing features, not signal counts or observed wait times. */
   crossingCount?: number;
+  canopyShadeMeters?: number;
 }
 export interface RouteResult {
   fastest: Route;
@@ -204,4 +218,5 @@ export interface RouteResult {
   preference: 'environment' | 'water' | 'sun' | 'calm';
   departure: string;
   pavementVersion?: string;
+  canopyVersion?: string;
 }

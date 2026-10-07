@@ -1,3 +1,4 @@
+import { CanopyShade } from './lib/canopy';
 import { runCalculation } from './lib/calculation';
 import { dataUrl } from './lib/data-url';
 import { Router } from './lib/routing';
@@ -27,6 +28,7 @@ self.onmessage = async (
     preferCalm: boolean;
     sunlight: 'shade' | 'sun';
     pavements?: boolean;
+    canopyScenario?: boolean;
   }>,
 ) => {
   const m = event.data;
@@ -106,6 +108,33 @@ self.onmessage = async (
       return;
     }
     const current = router;
+    if (m.canopyScenario && !current.canopy) {
+      const pilot = current.city.canopyPilot;
+      if (!pilot) throw new Error('Tree shade is not available in this area.');
+      try {
+        const response = await fetch(dataUrl(pilot.dataUrl), {
+          signal: AbortSignal.any([controller.signal, AbortSignal.timeout(30000)]),
+        });
+        if (!response.ok || !response.body) throw new Error('Canopy download failed');
+        const bytes = await boundedBytes(response.body, pilot.bytes, controller.signal);
+        const digest = await crypto.subtle.digest('SHA-256', Uint8Array.from(bytes));
+        const hash = Array.from(new Uint8Array(digest), (b) =>
+          b.toString(16).padStart(2, '0'),
+        ).join('');
+        if (bytes.length !== pilot.bytes || hash !== pilot.sha256)
+          throw new Error('Canopy checksum mismatch');
+        controller.signal.throwIfAborted();
+        current.canopy = new CanopyShade(JSON.parse(new TextDecoder().decode(bytes)), {
+          ...pilot,
+          cityId: current.city.id,
+        });
+      } catch (error) {
+        if ((error as Error)?.name === 'AbortError') throw error;
+        throw new Error(
+          'The tree shade pilot could not load. Reconnect or update the saved Zurich map.',
+        );
+      }
+    }
     const calculate = () => {
       if (request !== sequence) throw new DOMException('Superseded route', 'AbortError');
       return runCalculation(
@@ -119,6 +148,7 @@ self.onmessage = async (
           m.sunlight,
           m.preferCalm,
           m.pavements,
+          m.canopyScenario,
         ),
         () => request !== sequence,
       );
@@ -160,14 +190,18 @@ self.onmessage = async (
     self.postMessage({
       id: m.id,
       result,
-      cacheUrls:
-        current.detailed instanceof ShadeLibrary
+      cacheUrls: [
+        ...(m.canopyScenario && current.city.canopyPilot
+          ? [dataUrl(current.city.canopyPilot.dataUrl)]
+          : []),
+        ...(current.detailed instanceof ShadeLibrary
           ? current.detailed.data.tiles
               .filter(
                 (t) => current.detailed instanceof ShadeLibrary && current.detailed.used.has(t.id),
               )
               .map((t) => dataUrl(t.url))
-          : [],
+          : []),
+      ],
     });
   } catch (e) {
     if (request !== sequence || (e as Error)?.name === 'AbortError') return;

@@ -1,5 +1,7 @@
 # Shadow validation gate
 
+**0.16.0 tree-scenario update:** the user requested tree shade. An opt-in classified-LiDAR envelope is now available near Bellevue–Zürichhorn, with explicit opaque/full-foliage assumptions and unknown coverage. [Computational checks and limitations](tree-shade-pilot.md). This authorizes an experimental capability, not an accuracy claim: all unresolved evidence and the field-validation **HOLD remain**.
+
 **7 October 2026 service comparison:** five fixed Zurich A/B pairs now have actual Cooler/SOSM ordinary-foot/Vampire routes and a separate 1,346-point identical-path shade comparison. Agreement with the published Vampire raster is 70.3% by walking distance at 16:00 CEST or 75.6% under the unresolved solar-time interpretation, with 95.3%/92.6% comparable coverage. Neither is field accuracy; deployed raster identity is also unknown. Shadowmap's required date and API access are blocked. [Full results, screenshots and limits](shade-service-comparison.md). The original evidence and HOLD below remain unchanged.
 
 **0.15.0 coverage update:** the authorized pavement expansion now includes all complete municipal walking lines inside the current Zurich map. It preserves the original independent sample geometry and explicitly withholds shade on known/uncertain non-ground structures. This broadens experimental coverage; it does **not** resolve any field-accuracy hold or dated-photo/source discrepancy below. [Expansion checks and remaining limits](pavement-pilot.md).

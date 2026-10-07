@@ -34,7 +34,9 @@ The register catalogue reports an update of 30 August 2026 and a weekly update i
 
 ## Trees versus building shade
 
-Current shade percentages come from **buildings only**: footprint, actual height and the sun's position. Tree positions contribute to a separate proximity metric. Modelling tree shade would additionally require credible crown shape/size, height and foliage/transmission assumptions. Seasonal leaf cover matters for deciduous trees; a building does not lose its roof in winter, though its shadow changes with solar position. The city's crown widths are incomplete/estimated, and its register uses an 8 m default where a width is missing. They are not adequate evidence for precise tree-shadow percentages without further validation.
+Default shade percentages come from **buildings only**: footprint, actual height and the sun's position. Tree positions contribute to a separate proximity metric. Modelling tree shade would additionally require credible crown shape/size, height and foliage/transmission assumptions. Seasonal leaf cover matters for deciduous trees; a building does not lose its roof in winter, though its shadow changes with solar position. The city's crown widths are incomplete/estimated, and its register uses an 8 m default where a width is missing. They are not adequate evidence for precise tree-shadow percentages without further validation.
+
+The optional [lakeshore tree scenario](tree-shade-pilot.md) now uses a separate classified LiDAR envelope. It does not use inventory marker radii and does not establish current crowns, foliage or field accuracy.
 
 ## Reproduce
 

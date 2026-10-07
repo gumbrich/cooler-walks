@@ -31,3 +31,6 @@ tests/fixtures/pavement-network*.json
 tests/fixtures/pavement-source*.json
 docs/validation/shade-services/*-routes.json
 docs/validation/shade-services/point-comparisons.json
+
+docs/canopy-source-audit.json
+docs/canopy-route-validation.json

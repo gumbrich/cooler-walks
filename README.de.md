@@ -1,5 +1,7 @@
 # Cooler Walks
 
+**Baum-Pilot 0.16.0:** Zwischen Bellevue und Zürichhorn lässt sich «Baumschatten-Pilot» einschalten. Klassifizierte LiDAR-Punkte liefern ein Szenario mit dichter, voller Belaubung. Es zeigt möglichen Schatten, keine gemessene oder vor Ort validierte Sommerbelaubung. Datenlücken bleiben unbekannt. [Methode, Abdeckung und Prüfungen](docs/tree-shade-pilot.md).
+
 **Trottoir-Pilot 0.14.0:** Rund um Talacker–Bahnhofstrasse vergleichen wir kartierte Trottoirs mit den Querungen aus dem städtischen Fusswegnetz. Der Gebäudeschatten wird auf diesen Wegen geschätzt; das Limit für zusätzliche Gehzeit gilt weiterhin. [Pilot öffnen](https://coolerwalks.ch/de/?view=planner&network=pavements) · [Daten, Prüfungen und Grenzen](docs/pavement-pilot.md). Die Prüfung vor Ort steht aus.
 
 Fusswege nach geschätztem Schatten, Grün, Wassernähe und Verkehrsberuhigung vergleichen.
@@ -14,7 +16,7 @@ Die [aktuelle Untersuchung](docs/shadow-validation-followup.md) prüft alle 26 a
 
 **Verkehr 0.11.0:** separate Wege und verkehrsbeschränkte Strassen werden von Tempo-30- und Begegnungszonen unterschieden. Verglichen werden absolute Strecken; historische Zählwerte beziehen sich auf die geschätzte Vorbeigehzeit. [Methode und Vor-Ort-Plan](docs/traffic.md).
 
-**Zürich ist unser Schwerpunkt:** 57,77 km² mit Oerlikon, Altstetten, Höngg, dem Zentrum, Wiedikon und Seefeld. Basel (10,25 km²), München (8,90 km²) und Cambridge, Massachusetts (18,46 km²) bleiben **Beta**. Die Karte zeigt die tatsächliche Grenze. Zürich und München bieten experimentelle Gebäudeschattenschätzungen; Cambridge und Basel Grün- und Wassernähe. Baumschatten, Geländeschatten, Wetter und Live-Navigation sind nicht enthalten.
+**Zürich ist unser Schwerpunkt:** 57,77 km² mit Oerlikon, Altstetten, Höngg, dem Zentrum, Wiedikon und Seefeld. Basel (10,25 km²), München (8,90 km²) und Cambridge, Massachusetts (18,46 km²) bleiben **Beta**. Die Karte zeigt die tatsächliche Grenze. Zürich und München bieten experimentelle Gebäudeschattenschätzungen; Cambridge und Basel Grün- und Wassernähe. Flächendeckender Baumschatten, Geländeschatten, Wetter und Live-Navigation sind nicht enthalten.
 
 In Zürich berücksichtigt **Verkehrsberuhigt bevorzugen** offizielle Fussgänger-, Begegnungs- und Tempo-30-Zonen sowie die Nähe zu kartierten Hauptstrassen. Die Route reduziert zuerst die Strecke nahe Hauptstrassen und hält dein Umweglimit ein. Das ist ein Strassenindikator, keine Messung von Verkehrsaufkommen, Lärm oder Sicherheit. [Daten und Berechnung](docs/traffic.md)
 

@@ -39,6 +39,26 @@ await page.waitForFunction(
     Boolean(await caches.match('/data/zurich-shade-library.json', { ignoreSearch: true })) &&
     Boolean(await caches.match('/data/zurich-pavements.json', { ignoreSearch: true })),
 );
+// Canopy is fetched on demand and its exact version must survive offline reload.
+const canopyToggle = page.getByRole('checkbox', { name: 'Tree shade pilot', exact: true });
+await expect(canopyToggle).not.toBeChecked();
+if (
+  await page.evaluate(async () =>
+    Boolean(await caches.match('/data/zurich-canopy.json', { ignoreSearch: true })),
+  )
+)
+  throw new Error('Canopy should not be fetched before the user enables the scenario');
+await canopyToggle.check();
+await expect(page.locator('.route-card').first()).toContainText('potential shade', {
+  timeout: 60000,
+});
+await page.waitForFunction(async () =>
+  Boolean(await caches.match('/data/zurich-canopy.json', { ignoreSearch: true })),
+);
+await canopyToggle.uncheck();
+await expect(page.locator('.route-card').first()).toContainText('estimated shade', {
+  timeout: 60000,
+});
 const cdp = await context.newCDPSession(page);
 const manifest = await cdp.send('Page.getAppManifest');
 const installability = await cdp.send('Page.getInstallabilityErrors');
@@ -75,6 +95,16 @@ await expect(compactPack.locator('.area-state')).toHaveText('Saved', { timeout: 
 await page.getByRole('button', { name: 'Close information' }).click();
 await context.setOffline(true);
 await page.reload();
+await expect(page.locator('.route-card').first()).toBeVisible({ timeout: 60000 });
+await canopyToggle.check();
+await expect(page.locator('.route-card').first()).toContainText('potential shade', {
+  timeout: 60000,
+});
+await canopyToggle.uncheck();
+await expect(page.locator('.route-card').first()).toContainText('estimated shade', {
+  timeout: 60000,
+});
+console.log('PASS optional canopy asset and routes survive offline reload');
 // Chrome 153 resets navigator.onLine on a cached navigation while retaining
 // request blocking. Reapply its documented UI-state emulation to the new document.
 await cdp.send('Network.overrideNetworkState', {
@@ -284,6 +314,7 @@ const report = {
   installabilityErrors: installability.installabilityErrors,
   offlineReload: true,
   offlineRoutes: true,
+  canopyOffline: true,
   pavementsOffline: true,
   offlineMap: true,
   verifiedAreaDownload: true,

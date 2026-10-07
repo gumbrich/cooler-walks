@@ -173,7 +173,11 @@ export function AreaDownloads({
                       {area.bounds
                         ? t('Routes must stay within this smaller area.')
                         : t('The map shows the supported boundary.')}{' '}
-                      {t('Tree shade and live closures are not included.')}
+                      {city.canopyPilot
+                        ? t(
+                            'Includes the optional lakeshore tree scenario. Live closures are not included.',
+                          )
+                        : t('Tree shade and live closures are not included.')}
                     </p>
                   </details>
                   {downloading && (

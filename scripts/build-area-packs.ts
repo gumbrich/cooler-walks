@@ -24,6 +24,12 @@ for (const spec of areaSpecs) {
   const base = getCity(spec.cityId),
     city = cityForArea(spec);
   let data: PilotData = JSON.parse(fs.readFileSync(`public${base.dataUrl}`, 'utf8'));
+  if (base.canopyPilot) {
+    const raw = fs.readFileSync(`public${base.canopyPilot.dataUrl}`);
+    if (crypto.createHash('sha256').update(raw).digest('hex') !== base.canopyPilot.sha256)
+      throw new Error('Canopy checksum mismatch');
+    data.canopy = JSON.parse(raw.toString());
+  }
   if (base.pavementPilot)
     data.pavementNetwork = JSON.parse(
       fs.readFileSync(`public${base.pavementPilot.dataUrl}`, 'utf8'),

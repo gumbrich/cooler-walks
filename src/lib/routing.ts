@@ -13,6 +13,7 @@ import {
   TRAFFIC_MODEL,
 } from './traffic';
 import { WaterIndex } from './water';
+import { CanopyShade } from './canopy';
 import { inCoverage, segmentInCoverage } from './coverage';
 import {
   CROSSING_CHOICE_METERS,
@@ -142,6 +143,7 @@ interface MetricBuilding {
   bounds: Bounds;
 }
 export class Router {
+  canopy: CanopyShade | null = null;
   points: Point[];
   adjacency: { to: number; edge: number }[][];
   treeGrid = new Grid<Point>();
@@ -168,6 +170,11 @@ export class Router {
     consumeSource = false,
   ) {
     this.baseGraph = { nodes: data.nodes, edges: data.edges };
+    if (data.canopy) {
+      if (!city.canopyPilot) throw new Error('Unexpected canopy data');
+      this.canopy = new CanopyShade(data.canopy, { ...city.canopyPilot, cityId: city.id });
+      if (consumeSource) delete data.canopy;
+    }
     if (data.pavementNetwork) {
       if (!city.pavementPilot) throw new Error('Unexpected pavement network');
       validatePavementData(data.pavementNetwork, city.id, city.pavementPilot.version);
@@ -322,7 +329,27 @@ export class Router {
     return valid;
   }
   /** Exact solar instant at a sample's expected arrival; no time buckets. */
-  exposureAt(point: Point, date: Date, clearance?: number, nonGround = false) {
+  exposureAt(
+    point: Point,
+    date: Date,
+    clearance?: number,
+    nonGround = false,
+    canopyScenario = false,
+  ): { exposure: Sample['exposure']; lowSun: boolean; detailed: boolean; canopyShade?: boolean } {
+    const building = this.buildingExposureAt(point, date, clearance, nonGround);
+    if (!canopyScenario) return building;
+    if (building.exposure !== 'sun') return { ...building, canopyShade: false };
+    if (!this.canopy)
+      throw new Error('The tree shade pilot could not load. Reconnect and try again.');
+    const p = metric(this.city, point),
+      z = this.detailed?.elevation(p);
+    if (nonGround || z == null)
+      return { ...building, exposure: 'unknown' as const, canopyShade: false };
+    const sun = solar(date, point);
+    const exposure = this.canopy.exposure(p, z, sun.altitude, sun.azimuth + this.gridRotation);
+    return { ...building, exposure, canopyShade: exposure === 'shade' };
+  }
+  private buildingExposureAt(point: Point, date: Date, clearance?: number, nonGround = false) {
     const sun = solar(date, point);
     const pt = metric(this.city, point);
     const detailed = this.detailed?.contains(pt) === true;
@@ -524,10 +551,13 @@ export class Router {
     sunlight: 'shade' | 'sun' = 'shade',
     preferCalm = false,
     pavements = false,
+    canopyScenario = false,
   ): Generator<void, RouteResult, void> {
     const router = this;
     yield;
     this.selectNetwork(pavements);
+    if (canopyScenario && (!this.city.canopyPilot || !this.canopy))
+      throw new Error('The tree shade pilot could not load. Reconnect and try again.');
     if (pavements && preferCalm)
       throw new Error('Calmer-street comparison is unavailable in the pavement pilot.');
     if (
@@ -639,8 +669,14 @@ export class Router {
             }
           }
         }
-        if (this.detailed?.contains(pt))
-          exposure = this.exposureAt(geo, date, e.modelClearance, e.nonGround).exposure;
+        if (canopyScenario || this.detailed?.contains(pt))
+          exposure = this.exposureAt(
+            geo,
+            date,
+            e.modelClearance,
+            e.nonGround,
+            canopyScenario,
+          ).exposure;
         samples.push({ ...spatial, exposure });
       }
       edgeSamples.set(index, samples);
@@ -668,13 +704,20 @@ export class Router {
         for (const sample of e.a === nodes[n - 1] ? part : [...part].reverse()) {
           const elapsedMinutes = (walked + sample.meters / 2) / WALK_METERS_PER_MINUTE;
           const arrival = new Date(date.getTime() + elapsedMinutes * 60000);
-          const { exposure, lowSun, detailed } = router.exposureAt(
+          const { exposure, lowSun, detailed, canopyShade } = router.exposureAt(
             sample.point,
             arrival,
             e.modelClearance,
             e.nonGround,
+            canopyScenario,
           );
-          samples.push({ ...sample, exposure, elapsedMinutes, ...(detailed ? { detailed } : {}) });
+          samples.push({
+            ...sample,
+            exposure,
+            elapsedMinutes,
+            ...(detailed ? { detailed } : {}),
+            ...(canopyScenario ? { canopyShade } : {}),
+          });
           if (lowSun) lowSunMeters += sample.meters;
           walked += sample.meters;
         }
@@ -695,6 +738,7 @@ export class Router {
         greenMeters: sum((s) => s.green),
         waterMeters: sum((s) => s.water),
         shadeMeters: sum((s) => s.exposure === 'shade'),
+        ...(canopyScenario ? { canopyShadeMeters: sum((s) => s.canopyShade === true) } : {}),
         sunMeters: sum((s) => s.exposure === 'sun'),
         unknownMeters: sum((s) => s.exposure === 'unknown'),
         nightMeters: sum((s) => s.exposure === 'night'),
@@ -832,6 +876,7 @@ export class Router {
     );
     // Require a material improvement and a genuinely different path (at least 10% new length).
     const better = eligible.filter((r) => {
+      if (canopyScenario && !shade && !preferCalm && !preferWater) return false;
       const novel = r.nodes
         .slice(1)
         .reduce(
@@ -892,6 +937,7 @@ export class Router {
             : 'environment',
       departure,
       ...(pavements ? { pavementVersion: this.data.pavementNetwork!.version } : {}),
+      ...(canopyScenario ? { canopyVersion: this.canopy!.data.version } : {}),
     };
   }
 }

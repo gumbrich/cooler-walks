@@ -1,0 +1,14 @@
+{
+  "version": "zurich-lakeshore-canopy-2026-10-07-v1",
+  "cityId": "ch-zurich",
+  "crs": "EPSG:2056",
+  "verticalDatum": "LN02",
+  "bounds": [2683000, 1245000, 2684500, 1247500],
+  "resolution": 1,
+  "source": "https://maps.zh.ch/download/hoehen/2022/lidar/",
+  "metadata": "https://geolion.zh.ch/geodatensatz/4289",
+  "epoch": "2021–2022; predominantly leaf-off; file creation is not acquisition time",
+  "classification": 5,
+  "verticalPaddingMeters": 0.5,
+  "scope": "Potential canopy shade along the eastern lakeshore, from Bellevue to Zürichhorn. Envelope of non-withheld high-vegetation returns in 1 m columns, padded vertically by 0.5 m. No invented trunk/crown radius, no extension to ground, no gap filling between columns. An opt-in opaque foliage scenario, not observed sunlight or a transmission model. Keep building and potential canopy contributions separately accounted."
+}
