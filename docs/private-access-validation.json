@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-08T22:09:52.538Z",
+  "checkedAt": "2026-10-08T22:32:42.754Z",
   "origin": "https://coolerwalks.ch",
   "version": "0.20.0",
   "unauthenticatedPaths": [
@@ -15,5 +15,14 @@
   "wrongPassword": 401,
   "authorizedPagesAndData": 200,
   "unauthorizedAfterAuthorizedCacheWarm": 401,
-  "limitations": ["Historical deploy permalinks and already saved offline files are not retracted."]
+  "limitations": [
+    "Historical deploy permalinks and already saved offline files are not retracted."
+  ],
+  "realBrowserForms": {
+    "signIn": "passed",
+    "logout": "passed",
+    "directDataAfterLogout": 401,
+    "viewport": "390 \u00d7 844",
+    "sourceRevision": "96ea019d04556293858fa2c5ce926923b3760018"
+  }
 }

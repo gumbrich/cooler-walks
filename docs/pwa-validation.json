@@ -1,7 +1,7 @@
 {
-  "appVersion": "0.19.0",
+  "appVersion": "0.20.0",
   "browser": "154.0.8037.98",
-  "verifiedAt": "2026-10-08T21:01:19.603Z",
+  "verifiedAt": "2026-10-08T22:37:01.582Z",
   "origin": "https://coolerwalks.ch",
   "manifestErrors": [],
   "installabilityErrors": [],
@@ -12,7 +12,7 @@
   "offlineMap": true,
   "verifiedAreaDownload": true,
   "verifiedCompleteZurichDownload": true,
-  "zurichDownloadMs": 116670,
+  "zurichDownloadMs": 155564,
   "downloadedAreaColdOfflineReload": true,
   "offlineWaterPreference": true,
   "offlineVisitedCitySwitch": true,
@@ -32,7 +32,8 @@
     "arrivalShadeOffline": true,
     "expandedCanopyOffline": true,
     "pavementAddressSelectionOffline": true,
-    "elevationOffline": true
+    "elevationOffline": true,
+    "combinedPreferencesOffline": true
   },
   "pageErrors": []
 }

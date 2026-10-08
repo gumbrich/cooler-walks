@@ -18,3 +18,7 @@ Netlify's built-in password protection is unavailable on the existing Free Legac
 ## Verification
 
 `tests/access.test.ts` checks direct assets/HEAD requests, missing configuration, wrong passwords, German/English forms, signed sessions, tampering, expiry, hostname isolation, secret rotation, cross-origin requests, redirects and logout. Verify the actual deployed edge gate with unauthenticated and authenticated requests; Vite does not execute Netlify functions. Keep test cookies and credentials in ignored local files only.
+
+The login page uses `Referrer-Policy: same-origin`: browsers otherwise send a null Origin on the form POST, which the strict CSRF check correctly rejects. A real browser form regression now checks wrong passwords, successful login, retained destination and logout. Both entry pages request the manifest with `crossorigin="use-credentials"`, required for an authenticated same-origin manifest ([MDN](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Manifest#deploying_a_manifest)). The production PWA check covers actual installation rather than inferring it from an HTTP fetch.
+
+Map-pack and supplementary tree-tile downloads use same-origin credentials. Separate map hosts receive no website cookie. The app CSP permits same-origin forms for logout, while keeping external form submissions blocked.

@@ -1,0 +1,47 @@
+{
+  "appVersion": "0.20.0",
+  "sourceRevision": "96ea019d04556293858fa2c5ce926923b3760018",
+  "origin": "https://coolerwalks.ch",
+  "checkedAt": "2026-10-08T22:33:07.928Z",
+  "checks": [
+    "/: real HTML and security headers",
+    "/de/: real HTML and security headers",
+    "/de/privacy/: real HTML and security headers",
+    "/de/support/: real HTML and security headers",
+    "/privacy/: real HTML and security headers",
+    "/support/: real HTML and security headers",
+    "Zurich 3D library: manifest and all 81 hosted tile hashes verified",
+    "Zurich pavement pilot: published graph matches the reviewed source extract",
+    "Zurich canopy library: manifest and all 324 hosted tile hashes verified",
+    "ch-zurich: hosted bytes and SHA-256 verified; authenticated request, CORS header retained (native sign-in not implemented)",
+    "ch-basel: hosted bytes and SHA-256 verified; authenticated request, CORS header retained (native sign-in not implemented)",
+    "de-munich: hosted bytes and SHA-256 verified; authenticated request, CORS header retained (native sign-in not implemented)",
+    "us-cambridge-ma: hosted bytes and SHA-256 verified; authenticated request, CORS header retained (native sign-in not implemented)",
+    "de-munich-old-town: hosted bytes and SHA-256 verified; authenticated request, CORS header retained (native sign-in not implemented)",
+    "Hosted smoke check passed. Browser/PWA/native download verification remains required on this deployment."
+  ],
+  "catalog": "0.20.0-hosted-catalog.json",
+  "entry": "/assets/main-BhRD36VS.js",
+  "interface": {
+    "mainPriority": true,
+    "optionalWishes": true,
+    "authenticatedManifest": true,
+    "sameOriginForms": true
+  },
+  "assets": {
+    "worker": {
+      "url": "/assets/route-worker-CObyK4Vv.js",
+      "sha256": "992098ace13e87c0edd3aa3e546cd901400a0d44a469af36ec2a1107af5d68ef",
+      "matchesTestedBuild": true
+    },
+    "css": {
+      "url": "/assets/main-XYsIHpuy.css",
+      "sha256": "2422ae57ab8741ad26313485796e22812377915621ae639475005c94eed4c7ae",
+      "matchesTestedBuild": true
+    }
+  },
+  "limitations": [
+    "Hosted native requests used an explicit test session; a native sign-in flow is not implemented.",
+    "Previously saved copies and historical public deploy permalinks are not withdrawn."
+  ]
+}

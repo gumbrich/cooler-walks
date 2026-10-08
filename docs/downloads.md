@@ -1,5 +1,7 @@
 # Downloadable walking areas
 
+**Private test phase (0.20.0):** sign in to the website before downloading areas. Website/PWA pack and tree-tile requests carry only same-origin session cookies. Native bundled maps remain available offline; native cross-origin downloads do not inherit website access. [Private-access limits](private-access.md).
+
 Version 0.4 adds an offline-map manager for the website/PWA and the shared native app. Open **Offline maps** below the route comparison. Download an area, then choose **Use this area**. The selected area is remembered; the map shows its actual routing boundary. Switching the city selector returns to that city's larger pilot. Downloads never expand environmental coverage beyond verified source data.
 
 | Area                              | Supported footprint | Compressed download     |

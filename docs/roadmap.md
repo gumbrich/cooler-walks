@@ -2,6 +2,10 @@
 
 **Current agreement:** improve Zurich traffic modelling now; field-validate shadow and traffic later. Preserve the [shadow evidence and unresolved issues](shadow-validation.md), keep both capabilities experimental, and treat the requested 0.13.0 library expansion as experimental. Automated checks alone do not establish field accuracy.
 
+## Combined preferences and private testing · 0.20.0
+
+Street-based zone display and ordered route wishes are implemented. Next, field-check source-to-street assignments and pairs of routes with conflicting priorities; use tester feedback to assess the explicit trade-off bands. Keep the fastest route and detour limit visible. Before returning to public distribution, decide how to retain protected deployments and authenticate native map updates; store privacy/support pages must be publicly accessible at release. [Selection rules](preferences.md) · [Access limits](private-access.md).
+
 ## Elevation follow-up
 
 Version 0.19.0 adds Zurich flatter routing and height profiles using the existing cantonal ground grid. Next, field-check the paired hilly routes, steps and path alignment; obtain walking-surface heights for bridges and underpasses; then evaluate a gradient-aware duration model. Enable another city only after checking a suitable ground source and its route coverage. [Method and computed cases](elevation.md).
