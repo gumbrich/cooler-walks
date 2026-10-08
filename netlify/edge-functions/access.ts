@@ -25,7 +25,9 @@ const privateHeaders = {
   'Netlify-CDN-Cache-Control': 'no-store',
   'X-Robots-Tag': 'noindex, nofollow, noarchive',
   'X-Content-Type-Options': 'nosniff',
-  'Referrer-Policy': 'no-referrer',
+  // Same-origin form POSTs need a non-null Origin for the strict CSRF check.
+  // Cross-origin requests still omit the referrer.
+  'Referrer-Policy': 'same-origin',
 };
 function page(path: string, german: boolean, invalid = false, status = 401) {
   const title = german ? 'Zugang für Testpersonen' : 'Access for testers';

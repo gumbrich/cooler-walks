@@ -361,6 +361,16 @@ try {
   await expect(app.locator('.map-shell')).toHaveAttribute('data-map-settled', 'true');
   await app.screenshot({ path: 'docs/screenshots/installed-elevation-de.png' });
   installation.elevationOffline = true;
+  await app.locator('.additional-preferences summary').click();
+  await app.getByRole('checkbox', { name: 'Schatten', exact: true }).check();
+  await app.getByRole('checkbox', { name: 'Am Wasser', exact: true }).check();
+  await expect(app.locator('#route-priority')).toHaveValue('flat');
+  await expect(app.locator('.preference-comparison')).toContainText('Am Wasser', {
+    timeout: 60000,
+  });
+  await app.locator('.preference-comparison').scrollIntoViewIfNeeded();
+  await app.screenshot({ path: 'docs/screenshots/installed-combined-preferences-de.png' });
+  installation.combinedPreferencesOffline = true;
   await context.setOffline(false);
 } catch (e) {
   installation.error = e.message;
@@ -405,6 +415,7 @@ if (
   !installation.pavementsOffline ||
   !installation.expandedCanopyOffline ||
   !installation.elevationOffline ||
+  !installation.combinedPreferencesOffline ||
   installation.error
 )
   process.exitCode = 1;
