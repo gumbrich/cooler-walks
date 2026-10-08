@@ -2,15 +2,15 @@
 
 Version 0.4 adds an offline-map manager for the website/PWA and the shared native app. Open **Offline maps** below the route comparison. Download an area, then choose **Use this area**. The selected area is remembered; the map shows its actual routing boundary. Switching the city selector returns to that city's larger pilot. Downloads never expand environmental coverage beyond verified source data.
 
-| Area                              | Supported footprint | Compressed download |
-| --------------------------------- | ------------------- | ------------------- |
-| Zurich, centre, north & west      | 57.77 km²           | 80.2 MB             |
-| Munich, Old Town, Lehel & gardens | 8.90 km²            | 4.4 MB              |
-| Munich, Old Town essentials       | 2.00 km²            | 2.3 MB              |
-| Cambridge, MA, municipal boundary | 18.46 km²           | 6.8 MB              |
-| Basel, central pilot & Kleinbasel | 10.25 km²           | 2.0 MB              |
+| Area                              | Supported footprint | Compressed download     |
+| --------------------------------- | ------------------- | ----------------------- |
+| Zurich, centre, north & west      | 57.77 km²           | ~205 MB including trees |
+| Munich, Old Town, Lehel & gardens | 8.90 km²            | 4.4 MB                  |
+| Munich, Old Town essentials       | 2.00 km²            | 2.3 MB                  |
+| Cambridge, MA, municipal boundary | 18.46 km²           | 6.8 MB                  |
+| Basel, central pilot & Kleinbasel | 10.25 km²           | 2.0 MB                  |
 
-Sizes describe compressed packs, not total working memory or all app/browser storage. The smaller Munich rectangle is an optional download area, not an administrative district or a replacement for the larger pilot. Its graph has 5,382 nodes and 6,038 edges. A real Karlsplatz–Odeonsplatz reference walk is 1.236 km; the evaluated alternative at 14:00 local on 21 June takes 2.43 extra minutes. See `area-pack-validation.json`. Zurich/Munich estimate building shade; Cambridge/Basel remain greenery prototypes. Tree shade, terrain, weather and live closures are absent.
+Sizes describe complete compressed downloads, including the Zurich tree supplement, not total working memory or all app/browser storage. Exact sizes vary with the build; the interface uses its matching catalogue. The smaller Munich rectangle is an optional download area, not an administrative district or a replacement for the larger pilot. Its graph has 5,382 nodes and 6,038 edges. A real Karlsplatz–Odeonsplatz reference walk is 1.236 km; the evaluated alternative at 14:00 local on 21 June takes 2.43 extra minutes. See `area-pack-validation.json`. Zurich/Munich estimate building shade; Cambridge/Basel remain greenery prototypes. Zurich also includes the optional experimental tree scenario. Terrain shadows, weather and live closures are absent.
 
 ## Preparation and deployment
 
@@ -18,7 +18,7 @@ Sizes describe compressed packs, not total working memory or all app/browser sto
 
 Publish the exact pack files produced alongside the native app catalogue. Compression can differ between Node/zlib versions and operating systems (including the gzip OS header); do not regenerate server packs in a different environment and assume their content-hashed filenames match an already built app. Use Node 22 consistently for a release pipeline.
 
-The catalogue fixes a schema, source/model version, area, SHA-256 digest, compressed size and expanded size. The client bounds streamed bytes, verifies the digest, decompresses within a limit and checks city/version/geometry metadata before committing. Downloads time out after three minutes, can be cancelled before committing, and expose service/storage errors. Failed verification cannot publish a replacement. Data updates require a reviewed compatible catalogue/app version; an incompatible saved pack is explicitly marked for update. There is no background update service yet.
+The catalogue fixes a schema, source/model version, area, SHA-256 digest, compressed size and expanded size. The client bounds streamed bytes, verifies the digest, decompresses within a limit and checks city/version/geometry metadata before committing. Downloads time out after three minutes (ten minutes for the full Zurich tree supplement), can be cancelled before committing, and expose service/storage errors. Failed verification cannot publish a replacement. Data updates require a reviewed compatible catalogue/app version; an incompatible saved pack is explicitly marked for update. There is no background update service yet.
 
 Browser builds serve packs from `/packs/` by default. Deploy the complete `dist/` directory over HTTPS. Do not set `Content-Encoding: gzip` on `.cwp`: the app decompresses the package itself. Use `application/octet-stream`, correct `Content-Length`, immutable caching for content-hashed filenames, and retain older hashes while older app versions remain supported. The service worker excludes packs to avoid saving them twice.
 
@@ -84,3 +84,13 @@ Update an existing saved Zurich area to get the expanded paths. The source graph
 ## Optional tree scenario · 0.16.0
 
 The Zurich pack now includes the versioned lakeshore canopy envelope. On local Node 26 it is **83.8 MB compressed / 194.2 MB expanded**, within the existing **80 MiB / 200 MiB** limits but close to the compressed limit. Online users load the 5.42 MB canopy asset only after enabling the toggle; visited data can be cached by the PWA. Existing older downloads still support buildings; the tree toggle needs updated data. Native full/lite bundles retain the Zurich canopy asset. [Scope and limitations](tree-shade-pilot.md).
+
+## Zurich tree library · 0.17.0
+
+The former lakeshore envelope is replaced by a small manifest plus 324 compressed `.canopy` files over an 81 km² source rectangle surrounding the 57.77 km² walking area. On local Node 26, the base pack is **81.5 MB compressed / 188.8 MB expanded**, within the unchanged **80 MiB / 200 MiB** limits. The separately stored tree supplement adds **123.4 MB**, for about **205 MB** total. The download manager displays the total and includes it in progress/storage accounting.
+
+Explicit browser downloads save verified tiles to `cooler-canopy-download-{version}` in CacheStorage, separately from the service worker's replaceable cache. The base pack is committed only after every tile is verified. A cancelled download can reuse completed tiles; missing or corrupted entries require an update/repair. Removal clears the supplement as well as the pack. Browser storage can still be evicted. Online route requests load only working tiles; a previously viewed route is not a complete offline download.
+
+Serve `.canopy` as binary data without a `Content-Encoding: gzip` header; the app verifies and decompresses it. Retain the manifest and `data/zurich-canopy/` alongside the matching pack. If serving packs on another host, also serve those tree URLs from that origin with public GET CORS. Native full/lite bundles include all tree tiles, so native area downloads do not duplicate them. The historical lakeshore JSON is omitted from website/native bundles but retained in Git for the frozen assessments.
+
+The installed Chrome PWA passes a complete Zurich download, cold offline reopen and German Oerlikon tree route; the upgrade regression preserves existing saved data. [Method and source coverage](tree-shade-expansion.md) · [platform checks](platform.md). Physical-phone storage/performance testing remains pending.

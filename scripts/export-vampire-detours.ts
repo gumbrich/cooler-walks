@@ -2,7 +2,7 @@
 import fs from 'node:fs';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
-import { getCity } from '../src/lib/cities';
+import { legacyCanopyCity } from './lib/legacy-canopy';
 import { Router, MODEL_VERSION } from '../src/lib/routing';
 import { ShadeLibrary, decodeShadeTile, withShadeTiles } from '../src/lib/shade-library';
 import type { PilotData, Route } from '../src/lib/types';
@@ -11,7 +11,7 @@ const out = 'docs/validation/tree-shade-comparison';
 const previous = JSON.parse(fs.readFileSync(`${out}/cooler-routes.json`, 'utf8'));
 const c = previous.case;
 const departure = '2024-08-01T14:00:00Z';
-const city = getCity('ch-zurich');
+const city = legacyCanopyCity();
 const data: PilotData = JSON.parse(fs.readFileSync(`public${city.dataUrl}`, 'utf8'));
 data.shadeLibrary = JSON.parse(fs.readFileSync(`public${city.detailedShade!.dataUrl}`, 'utf8'));
 data.canopy = JSON.parse(fs.readFileSync(`public${city.canopyPilot!.dataUrl}`, 'utf8'));

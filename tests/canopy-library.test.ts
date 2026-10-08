@@ -103,6 +103,28 @@ describe('tiled tree shade', () => {
     // Independent geometry: 15 m horizontal + 15 m vertical intersects [410,420].
     expect(library.exposure([485.5, 500.5], 400, Math.PI / 4, Math.PI / 2)).toBe('shade');
   });
+  it('retains seam results at large LV95 coordinate offsets', () => {
+    const { library, data, models } = fixture();
+    data.tiles.forEach((t, i) => library.add(t, models[i]));
+    const dx = 2683000,
+      dy = 1245000;
+    const shifted = structuredClone(data);
+    shifted.bounds = [dx, dy, dx + 1000, dy + 1000];
+    shifted.tiles.forEach((t) => {
+      t.bounds = [t.bounds[0] + dx, t.bounds[1] + dy, t.bounds[2] + dx, t.bounds[3] + dy];
+      t.id = `${t.bounds[0]}_${t.bounds[1]}`;
+      t.url = `/data/test/${t.id}.canopy`;
+    });
+    const realCoordinates = new CanopyLibrary(shifted, reference);
+    shifted.tiles.forEach((t, i) => realCoordinates.add(t, { ...models[i], bounds: t.bounds }));
+    for (const x of [485.5, 499.9, 500, 500.1])
+      for (const y of [490.5, 499.9, 500, 500.1])
+        for (let az = 0; az < Math.PI * 2; az += Math.PI / 8) {
+          expect(realCoordinates.exposure([x + dx, y + dy], 400, Math.PI / 4, az)).toBe(
+            library.exposure([x, y], 400, Math.PI / 4, az),
+          );
+        }
+  });
   it('resolves neighbouring tiles before publishing, retains gaps and releases unused tiles', async () => {
     const { library, data, models } = fixture([[495, 500]]);
     const load = async (t: (typeof data.tiles)[number]) => models[data.tiles.indexOf(t)];
@@ -165,4 +187,28 @@ describe('tiled tree shade', () => {
     ).toThrow();
     expect(() => library.add(data.tiles[0], { ...models[0], maxZ: 450 })).toThrow('bounds');
   });
+});
+
+// Pinned original-return measurements from eight districts, independently sampled in Python.
+import fs from 'node:fs';
+import sourceReference from './fixtures/canopy-library-source-reference.json';
+it('preserves the independently checked vegetation and scan gaps across eight districts', async () => {
+  const raw = fs.readFileSync('public/data/zurich-canopy-library.json');
+  expect(createHash('sha256').update(raw).digest('hex')).toBe(sourceReference.manifestSha256);
+  const data = JSON.parse(raw.toString()) as CanopyLibraryData;
+  expect(new Set(sourceReference.columns.map((c) => c.district)).size).toBe(8);
+  expect(sourceReference.columns).toHaveLength(40);
+  for (const id of new Set(sourceReference.columns.map((c) => c.tileId))) {
+    const tile = data.tiles.find((t) => t.id === id)!;
+    const model = new CanopyShade(
+      await decodeCanopyTile(fs.readFileSync(`public${tile.url}`), tile),
+      data,
+    );
+    for (const c of sourceReference.columns.filter((c) => c.tileId === id)) {
+      expect(tile.sha256).toBe(c.tileSha256);
+      expect(model.base[c.index]).toBe(c.baseDm);
+      expect(model.top[c.index]).toBe(c.topDm);
+      expect(!!(model.unknown[c.index >> 3] & (1 << (c.index & 7)))).toBe(c.unknown);
+    }
+  }
 });

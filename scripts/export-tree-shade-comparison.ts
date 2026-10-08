@@ -2,7 +2,7 @@
 import fs from 'node:fs';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
-import { getCity } from '../src/lib/cities';
+import { legacyCanopyCity } from './lib/legacy-canopy';
 import { Router, MODEL_VERSION } from '../src/lib/routing';
 import { ShadeLibrary, decodeShadeTile, withShadeTiles } from '../src/lib/shade-library';
 import type { PilotData, Point, Route, Sample } from '../src/lib/types';
@@ -20,7 +20,7 @@ type FixedSample = {
 const historical = JSON.parse(
   fs.readFileSync('docs/validation/shade-services/cooler-routes.json', 'utf8'),
 ).records.find((item: { id: string }) => item.id === 'lakeshore');
-const city = getCity('ch-zurich');
+const city = legacyCanopyCity();
 const data: PilotData = JSON.parse(fs.readFileSync(`public${city.dataUrl}`, 'utf8'));
 data.shadeLibrary = JSON.parse(fs.readFileSync(`public${city.detailedShade!.dataUrl}`, 'utf8'));
 data.canopy = JSON.parse(fs.readFileSync(`public${city.canopyPilot!.dataUrl}`, 'utf8'));

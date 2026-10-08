@@ -1,5 +1,15 @@
 # Progress
 
+## Expanded Zurich tree scenario · 0.17.0
+
+Following the explicit expansion request, the optional tree-shade scenario now covers the full **57.77 km² supported Zurich walking area**. A surrounding 81 km² LiDAR library supplies 324 streamed tiles, including Oerlikon, Altstetten and Höngg. This changes geographic availability, not the field-accuracy HOLD. Other cities and walking boundaries are unchanged. [Extent, source, delivery and limitations](tree-shade-expansion.md).
+
+All derived tiles and both walking networks pass coverage checks. Forty independently sampled original-LAZ columns match; all 3.75 million original lakeshore cells are preserved. Forty-eight district/time/detour cases, three municipal-path cases, prefer-sun/night checks, 122 unit/model/language tests and the complete existing data suite pass. Partial tree estimates now show shaded distance with a hatched unknown fraction; unknown coverage cannot create a shade recommendation. Build, release-pack checks and focused browser scenarios pass; desktop, phone and tablet captures were inspected.
+
+Explicit browser downloads include the entire verified tree library, with resumable tiles and repair after missing/corrupt cache entries. Normal online routing requests only working tiles. Native full/lite assets include the library. Installation, native and deployment outcomes are recorded in [platform notes](platform.md).
+
+Next: field-check paired sunny/shaded locations in several districts, recording exact time, walking side, foliage and clouds. The 2021–2022 predominantly leaf-off source and opaque-envelope assumption still need calibration before enabling this scenario by default.
+
 ## Tree-shade expansion assessment · 8 October 2026
 
 Judged the pilot useful for experimentation, but insufficiently validated for dependable tree-shade routing or broader coverage. The user’s conditional expansion criterion is not met. Reviewed original source documentation, model assumptions, route utility and service comparisons; added a read-only padding sensitivity audit at the same 457 original points and two clock interpretations. At 16:00 CEST, shade varies from 53.7% to 62.3% on the same 85.0% known path. This is sensitivity, not a measured error interval. TypeScript and all six focused canopy tests pass; original production classifications are reproduced exactly. No runtime, source asset, threshold or coverage change. [Decision and next validation work](tree-shade-assessment.md).

@@ -110,9 +110,9 @@ describe('optional opaque canopy envelope', () => {
 import fs from 'node:fs';
 import { createHash } from 'node:crypto';
 import sourceReference from './fixtures/canopy-source-reference.json';
-import { getCity } from '../src/lib/cities';
+import { legacyCanopyCity } from '../scripts/lib/legacy-canopy';
 it('preserves independently checked real source elevations and scan gaps', () => {
-  const city = getCity('ch-zurich'),
+  const city = legacyCanopyCity(),
     pilot = city.canopyPilot!;
   const raw = fs.readFileSync(`public${pilot.dataUrl}`);
   expect(createHash('sha256').update(raw).digest('hex')).toBe(sourceReference.assetSha256);

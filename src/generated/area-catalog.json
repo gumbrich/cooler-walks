@@ -6,10 +6,15 @@
     "description": "From Altstetten and Oerlikon through Höngg, Wipkingen and the city centre to Wiedikon and Seefeld. The dashed boundary shows the supported walking area, not the entire municipality. Building-model gaps and long shadows at the edge remain unknown.",
     "schema": 1,
     "version": "zurich-2026-10-06-v11",
-    "sha256": "6a311ce1c745bcd61d9eed93aac732520d23374a1610f199671e109a33f3737e",
-    "bytes": 83777175,
-    "expandedBytes": 194160467,
-    "file": "ch-zurich-6a311ce1c745bcd6.cwp",
+    "sha256": "03ebf2ca604c9e3f9db4503cbd94f747061c7a0d5f61dad921941217c3ae582a",
+    "bytes": 81522463,
+    "expandedBytes": 188828655,
+    "canopy": {
+      "version": "zurich-canopy-library-2026-10-08-v2",
+      "bytes": 123389633,
+      "tiles": 324
+    },
+    "file": "ch-zurich-03ebf2ca604c9e3f.cwp",
     "preparedAt": "2026-09-30",
     "areaKm2": 57.77
   },

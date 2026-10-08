@@ -1,8 +1,15 @@
 import { useI18n } from '../i18n';
 import { useEffect, useRef, useState } from 'react';
 import { ArrowRight, Check, Download, Trash2, WifiOff } from 'lucide-react';
-import { areas, areaDownloadURL, bundledAreas, installedStatus, installArea } from '../lib/areas';
-import { areaStore } from '../lib/area-store';
+import {
+  areas,
+  areaDownloadURL,
+  bundledAreas,
+  installedStatus,
+  installArea,
+  listSavedAreas,
+  removeSavedArea,
+} from '../lib/areas';
 import { getCity } from '../lib/cities';
 import { isNativeApp } from '../lib/platform';
 import type { AreaDescriptor, SavedArea } from '../lib/area-types';
@@ -24,7 +31,7 @@ export function AreaDownloads({
   const [failure, setFailure] = useState(false);
   const request = useRef<AbortController | null>(null);
   const refresh = async () => {
-    const [stored, included] = await Promise.all([areaStore().list(), bundledAreas()]);
+    const [stored, included] = await Promise.all([listSavedAreas(), bundledAreas()]);
     setSaved(stored);
     setBundled(included);
   };
@@ -72,7 +79,7 @@ export function AreaDownloads({
     setMessage('');
     setFailure(false);
     try {
-      await areaStore().remove(area.id);
+      await removeSavedArea(area);
       await refresh();
       setMessage(
         t('{area} removed from downloads. Your open walk stays available until you leave it.', {
@@ -96,7 +103,7 @@ export function AreaDownloads({
           <strong>
             {saved.length
               ? t('{size} saved', {
-                  size: `${number(saved.reduce((n, a) => n + a.bytes, 0) / 1e6, 1)} MB`,
+                  size: `${number(saved.reduce((n, a) => n + a.bytes + (a.supplementBytes ?? 0), 0) / 1e6, 1)} MB`,
                 })
               : t('No downloaded maps')}
           </strong>
@@ -157,7 +164,9 @@ export function AreaDownloads({
                   </div>
                   <h3>{t(area.label)}</h3>
                   <p className="area-facts">
-                    {number(area.areaKm2, 2)} km² · {number(area.bytes / 1e6, 1)} MB
+                    {number(area.areaKm2, 2)} km² ·{' '}
+                    {number((area.bytes + (isNativeApp ? 0 : (area.canopy?.bytes ?? 0))) / 1e6, 1)}{' '}
+                    MB
                     {t(' download ·')}{' '}
                     {city.capabilities.buildingShade
                       ? t('Building shade estimates')
@@ -175,7 +184,7 @@ export function AreaDownloads({
                         : t('The map shows the supported boundary.')}{' '}
                       {city.canopyPilot
                         ? t(
-                            'Includes the optional lakeshore tree scenario. Live closures are not included.',
+                            'Includes the optional tree scenario across the supported Zurich map. Live closures are not included.',
                           )
                         : t('Tree shade and live closures are not included.')}
                     </p>

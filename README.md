@@ -10,9 +10,9 @@ The [latest evidence review](docs/shadow-validation-followup.md) checks all 26 f
 
 The [five-walk service comparison](docs/shade-service-comparison.md) records actual Zurich routes from Cooler Walks and Vampire Routing, compares the published shade models on identical paths, and documents Shadowmap's current access limits. Includes route maps, screenshots and reproducible sample results; model agreement is not field validation.
 
-**Status:** **Zurich is the primary focus**, with an expanded 57.77 km² walking area and official address search. **Basel, Munich and Cambridge (Massachusetts) are beta**. Cambridge follows its municipal boundary; the other cities cover central areas. These remain experimental services, not field-validated citywide routing. Zurich and Munich estimate building sun/shade; Cambridge and Basel offer greenery and water proximity only. Paris remains under review. An optional lakeshore tree-shade scenario is available in Zurich; other cities remain unchanged. Hill shadows, weather, live closures and navigation are not included.
+**Status:** **Zurich is the primary focus**, with an expanded 57.77 km² walking area and official address search. **Basel, Munich and Cambridge (Massachusetts) are beta**. Cambridge follows its municipal boundary; the other cities cover central areas. These remain experimental services, not field-validated citywide routing. Zurich and Munich estimate building sun/shade; Cambridge and Basel offer greenery and water proximity only. Paris remains under review. An optional tree-shade scenario covers the supported Zurich map; other cities remain unchanged. Hill shadows, weather, live closures and navigation are not included.
 
-**Tree pilot 0.16.0:** opt-in potential canopy shade around Bellevue–Zürichhorn, derived from classified LiDAR. It assumes opaque foliage and shows source gaps; it is not measured or field-validated summer shade. [Method, coverage, examples and reproduction](docs/tree-shade-pilot.md).
+**Tree pilot 0.17.0:** select Zurich and enable **Tree shade pilot** (German: **Baumschatten-Pilot**) in the trip controls for potential tree shade across the supported Zurich map, with 324 streamed LiDAR-derived tiles and a complete offline-download option. It assumes opaque foliage and shows source gaps; it is not measured or field-validated summer shade. [Method, coverage, examples and reproduction](docs/tree-shade-expansion.md).
 
 **Pavement expansion 0.15.0:** 25,740 official pavement, footpath and crossing sections across the current 57.77 km² Zurich map, with junction search and direct map selection. Shade uses the existing 3D model; uncertain bridge/underpass heights stay unknown. [Open the pilot](https://coolerwalks.ch/?view=planner&network=pavements) · [source, checks and limits](docs/pavement-pilot.md). Field validation remains pending.
 
@@ -35,7 +35,7 @@ npm ci
 npm run dev
 ```
 
-Open **http://127.0.0.1:5173/** for the entry page or **http://127.0.0.1:5173/?view=planner** for the planner. A returning browser opens the planner directly. Processed regional extracts are included, so a fresh checkout does not need to download the raw data. They total about 213 MB before compression; the browser loads one city at a time.
+Open **http://127.0.0.1:5173/** for the entry page or **http://127.0.0.1:5173/?view=planner** for the planner. A returning browser opens the planner directly. Processed regional extracts are included, so a fresh checkout does not need to download the raw data. The browser loads one city at a time and fetches only the building/tree tiles needed for online routing. A complete Zurich offline download is about 205 MB.
 
 For the installable production build:
 

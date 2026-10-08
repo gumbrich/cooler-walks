@@ -103,3 +103,7 @@ A compact **Try pavement pilot / Trottoir-Pilot testen** action opens the bounde
 ## Tree pilot · 0.16.0
 
 An optional leaf control uses the existing form and green palette. The small lakeshore source boundary is dotted and separately labelled. Route summaries say “potential shade” / “möglicher Schatten” and show model coverage beside the percentage; the full-foliage assumption remains visible when the phone editor is collapsed. Detailed building and additional tree lengths live under “About this walk”. Missing source data retains an explicit retry/error state. Desktop, phone, tablet and error screenshots are linked in [platform.md](platform.md).
+
+## Partial tree-shade coverage · 0.17.0
+
+Below 95% known coverage, tree-scenario cards display estimated shaded/sunny distance instead of a percentage of a shrinking known denominator. Exposure bars use the whole walk: shade/sun are solid, unknown is hatched and labelled in metres, and any night portion is neutral. The source/coverage caption and recommendation gate remain visible. The change is shared by English, German, website, PWA and native clients.

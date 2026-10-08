@@ -44,7 +44,7 @@ const canopyToggle = page.getByRole('checkbox', { name: 'Tree shade pilot', exac
 await expect(canopyToggle).not.toBeChecked();
 if (
   await page.evaluate(async () =>
-    Boolean(await caches.match('/data/zurich-canopy.json', { ignoreSearch: true })),
+    Boolean(await caches.match('/data/zurich-canopy-library.json', { ignoreSearch: true })),
   )
 )
   throw new Error('Canopy should not be fetched before the user enables the scenario');
@@ -53,7 +53,7 @@ await expect(page.locator('.route-card').first()).toContainText('potential shade
   timeout: 60000,
 });
 await page.waitForFunction(async () =>
-  Boolean(await caches.match('/data/zurich-canopy.json', { ignoreSearch: true })),
+  Boolean(await caches.match('/data/zurich-canopy-library.json', { ignoreSearch: true })),
 );
 await canopyToggle.uncheck();
 await expect(page.locator('.route-card').first()).toContainText('estimated shade', {
@@ -281,6 +281,14 @@ try {
   });
   await expect(app.locator('.map-failure')).toHaveCount(0);
   installation.addressSearchOffline = true;
+  await app.getByRole('checkbox', { name: 'Baumschatten-Pilot', exact: true }).check();
+  await expect(app.locator('.route-card').first()).toContainText('möglicher Schatten', {
+    timeout: 60000,
+  });
+  await expect(app.locator('.canopy-result-note')).toContainText('volle Belaubung');
+  installation.expandedCanopyOffline = true;
+  await app.screenshot({ path: 'docs/screenshots/installed-oerlikon-tree-shade-de.png' });
+  await app.getByRole('checkbox', { name: 'Baumschatten-Pilot', exact: true }).uncheck();
   await app.screenshot({ path: 'docs/screenshots/installed-zurich-addresses.png' });
   await app.locator('.map-canvas').click({ position: { x: 320, y: 320 } });
   await expect(app.getByRole('group', { name: 'Diesen Kartenpunkt verwenden' })).toBeVisible();
@@ -340,6 +348,7 @@ if (
   !installation.vehicleCountsOffline ||
   !installation.addressSearchOffline ||
   !installation.pavementsOffline ||
+  !installation.expandedCanopyOffline ||
   installation.error
 )
   process.exitCode = 1;

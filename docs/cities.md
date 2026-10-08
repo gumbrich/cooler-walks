@@ -13,7 +13,7 @@
 
 **Calmer-street routing:** Zurich only, within its existing pilot boundary. Official current pedestrian/Begegnungszone/Tempo-30 polygons plus buffered OSM main-road classes; experimental street context, not measured traffic. Munich, Cambridge, Basel and candidate cities do not yet enable it. [Traffic data and limitations](traffic.md). English and German work across all city interfaces.
 
-**Tree shade:** Zurich has an optional [Bellevue–Zürichhorn canopy scenario](tree-shade-pilot.md), with a 3.75 km² source rectangle and route-dependent coverage. It is experimental and off by default; the citywide `treeShade` capability remains false. Other cities have no canopy model. Terrain shadows and fountains remain disabled. Water is a separate proximity preference, not evidence of cooling, views, shoreline access or drinking water. Greenery is distance within 15 m of source tree points, not canopy shade.
+**Tree shade:** Zurich has an optional [tree scenario across its supported 57.77 km² map](tree-shade-expansion.md), with an 81 km² surrounding source rectangle and route-dependent coverage. It is experimental and off by default; the citywide `treeShade` capability remains false. Other cities have no canopy model. Terrain shadows and fountains remain disabled. Water is a separate proximity preference, not evidence of cooling, views, shoreline access or drinking water. Greenery is distance within 15 m of source tree points, not canopy shade.
 
 Building-enabled pilots offer explicit **Prefer shade / Prefer sun**. Direct-sun estimates require solar elevation of at least 10° and at least 95% model coverage for both comparison routes. Building geometry extends beyond route endpoints, and sample coverage checks account for surrounding shadow sources. Unknown coverage is never treated as sunshine. Munich now uses four adjacent 2 km LoD2 tiles. Unsupported elevated structures and conflicting source heights remain unknown; low winter sun or edge routes can still exceed available surroundings. The app explains the limitation and withholds a sun recommendation.
 
@@ -60,7 +60,7 @@ The current 57.77 km² area includes Oerlikon and Altstetten and is clipped to t
 
 ## Zurich building detail · 0.10.0
 
-The walking boundary remains 57.77 km². The detailed **3D roof/facade and LiDAR-ground library now covers that entire walking area**; the former central-only boundary has been removed. This is not the entire municipality. [Tiled library and checks](shade-library.md). Terrain supplies receiver elevation only: terrain shadows, tree shade and fountains remain unsupported. Route cards disclose the detailed-model share; missing elevations and non-ground paths remain unknown. [Extent, data and limitations](detailed-shade.md). Other cities remain beta with their existing capabilities.
+The walking boundary remains 57.77 km². The detailed **3D roof/facade and LiDAR-ground library now covers that entire walking area**; the former central-only boundary has been removed. This is not the entire municipality. [Tiled library and checks](shade-library.md). Terrain supplies receiver elevation only: terrain shadows and fountains remain unsupported. Tree shade is available separately through the optional experimental scenario described above. Route cards disclose the detailed-model share; missing elevations and non-ground paths remain unknown. [Extent, data and limitations](detailed-shade.md). Other cities remain beta with their existing capabilities.
 
 ## Zurich traffic-zone display · 6 October 2026
 

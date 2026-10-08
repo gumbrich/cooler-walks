@@ -8,6 +8,7 @@ const walk = (dir) =>
     .flatMap((f) => (f.isDirectory() ? walk(path.join(dir, f.name)) : [path.join(dir, f.name)]));
 // The original central mesh is retained in Git only to reproduce the frozen source audit.
 fs.rmSync('dist/data/zurich-detailed-shade.json', { force: true });
+fs.rmSync('dist/data/zurich-canopy.json', { force: true });
 const files = walk('dist').filter(
   (f) => !f.endsWith('sw.js') && !f.startsWith('dist/packs/') && !path.basename(f).startsWith('_'),
 );
@@ -48,6 +49,8 @@ self.addEventListener('message',event=>{
  event.waitUntil(caches.open(CACHE).then(cache=>Promise.all(event.data.urls.map(url=>cache.match(url,{ignoreVary:true}).then(saved=>saved||cache.add(url))))).catch(()=>{}));
 });
 self.addEventListener('fetch',event=>{
+ // Explicit, hash-verified area downloads own their separate persistent cache.
+ if(event.request.cache==='no-store'){event.respondWith(fetch(event.request));return;}
  if(event.request.method!=='GET'||new URL(event.request.url).origin!==self.location.origin||new URL(event.request.url).pathname.startsWith('/packs/'))return;
  if(event.request.mode==='navigate')event.respondWith(fetch(event.request).catch(async()=>{
    const pathname=new URL(event.request.url).pathname;

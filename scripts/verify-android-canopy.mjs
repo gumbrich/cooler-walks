@@ -9,6 +9,18 @@ const adb = path.join(
   process.env.ANDROID_HOME ?? path.join(os.homedir(), 'Library/Android/sdk'),
   'platform-tools/adb',
 );
+const routeChecks = JSON.parse(fs.readFileSync('docs/canopy-library-validation.json', 'utf8'));
+const expectedExposure = (hour, locale) => {
+  const route = routeChecks.records.find(
+    (r) =>
+      r.district === 'Lakeshore' && r.extra === 5 && r.departure === `2024-08-01T${hour}:00:00Z`,
+  ).fastest;
+  if ((route.shadeMeters + route.sunMeters) / route.distance >= 0.95)
+    return `${Math.round((100 * route.shadeMeters) / (route.shadeMeters + route.sunMeters))}%`;
+  return route.shadeMeters >= 1000
+    ? `${(route.shadeMeters / 1000).toLocaleString(locale, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} km`
+    : `${Math.round(route.shadeMeters / 10) * 10} m`;
+};
 const serial = 'emulator-5554',
   pkg = 'io.github.gumbrich.coolerwalks';
 const adbText = (...args) => execFileSync(adb, args, { encoding: 'utf8' }).trim();
@@ -53,7 +65,11 @@ try {
     .click();
   await page.getByRole('checkbox', { name: 'Tree shade pilot', exact: true }).check();
   await page.getByRole('button', { name: 'Show routes', exact: true }).click();
-  await expect(page.locator('.route-card').first()).toContainText('59%', { timeout: 60000 });
+  await expect(page.locator('.route-card').first()).toContainText('potential shade', {
+    timeout: 60000,
+  });
+  const afternoonText = await page.locator('.route-card').first().innerText();
+  await expect(page.locator('.route-card').first()).toContainText(expectedExposure('14', 'en-GB'));
   await expect(page.locator('.route-card').first()).toContainText('potential shade');
   await expect(page.locator('.canopy-result-note')).toContainText('full foliage assumed');
   await page.getByRole('combobox', { name: 'Language', exact: true }).selectOption('de');
@@ -66,19 +82,40 @@ try {
   assert(brand && brand.y >= safeTop, 'Native header must clear the status bar');
   await device.screenshot({ path: 'docs/screenshots/android-tree-pilot-de.png' });
   await page.getByRole('slider', { name: 'Startzeit', exact: true }).fill('600');
-  await expect(page.locator('.route-card').first()).toContainText('80%', { timeout: 60000 });
+  await expect(page.locator('.spinner')).toHaveCount(0, { timeout: 60000 });
+  await expect(page.locator('.route-card').first()).toContainText('möglicher Schatten', {
+    timeout: 60000,
+  });
+  const morningText = await page.locator('.route-card').first().innerText();
+  await expect(page.locator('.route-card').first()).toContainText(expectedExposure('08', 'de-DE'));
+  await page.getByRole('button', { name: 'Weg bearbeiten', exact: true }).click();
+  await page.getByRole('combobox', { name: 'Von', exact: true }).fill('Hofwiesenstrasse 350');
+  await page.getByRole('combobox', { name: 'Von', exact: true }).press('Enter');
+  await page.getByRole('combobox', { name: 'Nach', exact: true }).fill('Wallisellenstrasse 45');
+  await page.getByRole('combobox', { name: 'Nach', exact: true }).press('Enter');
+  await page.getByRole('button', { name: 'Routen anzeigen', exact: true }).click();
+  await expect(page.locator('.route-card').first()).toContainText('möglicher Schatten', {
+    timeout: 60000,
+  });
+  await expect(page.locator('.map-shell')).toHaveAttribute('data-map-settled', 'true', {
+    timeout: 60000,
+  });
+  const oerlikonText = await page.locator('.route-card').first().innerText();
+  await device.screenshot({ path: 'docs/screenshots/android-oerlikon-tree-shade-de.png' });
   assert.deepEqual(errors, []);
   fs.writeFileSync(
     'docs/android-canopy-validation.json',
     JSON.stringify(
       {
-        appVersion: '0.16.0',
-        build: 15,
+        appVersion: '0.17.0',
+        build: 16,
         verifiedAt: new Date().toISOString(),
         device: 'CoolerWalks_Test emulator',
         offlineCanopy: true,
-        afternoonPotentialShadePercent: 59,
-        morningPotentialShadePercent: 80,
+        afternoonText,
+        morningText,
+        oerlikonText,
+        expandedCanopyOffline: true,
         german: true,
         pageErrors: errors,
         limits: 'Emulator only; not a physical-phone or field validation.',

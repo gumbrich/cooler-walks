@@ -1,0 +1,1137 @@
+{
+  "checkedAt": "2026-10-08T09:00:33.355Z",
+  "model": "roof-mesh-tiled-ground-arrival-v8",
+  "libraryVersion": "zurich-canopy-library-2026-10-08-v2",
+  "manifestSha256": "eb905bb1b5f2645404dee9997dfe48bdefcf1ac521f78036f24938b25fd09dbe",
+  "tiles": 324,
+  "columns": 24088762,
+  "unknownCells": 921601,
+  "legacyCellsUnchanged": 3750000,
+  "allWalkingNodesCovered": true,
+  "allPavementNodesCovered": true,
+  "records": [
+    {
+      "district": "Centre",
+      "from": "Bahnhofquai",
+      "to": "Bürkliplatz",
+      "departure": "2024-08-01T08:00:00Z",
+      "extra": 0,
+      "mode": "greenery",
+      "fastest": {
+        "distance": 1511.2300000000007,
+        "minutes": 18.89037500000001,
+        "shadeMeters": 783.4885119047618,
+        "treeShadeMeters": 163.94642857142856,
+        "sunMeters": 19.85,
+        "unknownMeters": 707.8914880952377,
+        "coverage": 0.531579251275294
+      },
+      "alternative": null,
+      "workingCanopyTiles": 6,
+      "workingCanopyBytes": 963390,
+      "calculationMs": 109
+    },
+    {
+      "district": "Centre",
+      "from": "Bahnhofquai",
+      "to": "Bürkliplatz",
+      "departure": "2024-08-01T08:00:00Z",
+      "extra": 5,
+      "mode": "greenery",
+      "fastest": {
+        "distance": 1511.2300000000007,
+        "minutes": 18.89037500000001,
+        "shadeMeters": 783.4885119047618,
+        "treeShadeMeters": 163.94642857142856,
+        "sunMeters": 19.85,
+        "unknownMeters": 707.8914880952377,
+        "coverage": 0.531579251275294
+      },
+      "alternative": null,
+      "workingCanopyTiles": 15,
+      "workingCanopyBytes": 2876781,
+      "calculationMs": 1264
+    },
+    {
+      "district": "Centre",
+      "from": "Bahnhofquai",
+      "to": "Bürkliplatz",
+      "departure": "2024-08-01T08:00:00Z",
+      "extra": 10,
+      "mode": "greenery",
+      "fastest": {
+        "distance": 1511.2300000000007,
+        "minutes": 18.89037500000001,
+        "shadeMeters": 783.4885119047618,
+        "treeShadeMeters": 163.94642857142856,
+        "sunMeters": 19.85,
+        "unknownMeters": 707.8914880952377,
+        "coverage": 0.531579251275294
+      },
+      "alternative": null,
+      "workingCanopyTiles": 22,
+      "workingCanopyBytes": 4403700,
+      "calculationMs": 2921
+    },
+    {
+      "district": "Centre",
+      "from": "Bahnhofquai",
+      "to": "Bürkliplatz",
+      "departure": "2024-08-01T14:00:00Z",
+      "extra": 0,
+      "mode": "greenery",
+      "fastest": {
+        "distance": 1511.2300000000007,
+        "minutes": 18.89037500000001,
+        "shadeMeters": 742.6406666666664,
+        "treeShadeMeters": 162.035,
+        "sunMeters": 336.480880952381,
+        "unknownMeters": 432.1084523809522,
+        "coverage": 0.7140683731920674
+      },
+      "alternative": null,
+      "workingCanopyTiles": 8,
+      "workingCanopyBytes": 1182841,
+      "calculationMs": 21
+    },
+    {
+      "district": "Centre",
+      "from": "Bahnhofquai",
+      "to": "Bürkliplatz",
+      "departure": "2024-08-01T14:00:00Z",
+      "extra": 5,
+      "mode": "greenery",
+      "fastest": {
+        "distance": 1511.2300000000007,
+        "minutes": 18.89037500000001,
+        "shadeMeters": 742.6406666666664,
+        "treeShadeMeters": 162.035,
+        "sunMeters": 336.480880952381,
+        "unknownMeters": 432.1084523809522,
+        "coverage": 0.7140683731920674
+      },
+      "alternative": null,
+      "workingCanopyTiles": 15,
+      "workingCanopyBytes": 2479056,
+      "calculationMs": 1340
+    },
+    {
+      "district": "Centre",
+      "from": "Bahnhofquai",
+      "to": "Bürkliplatz",
+      "departure": "2024-08-01T14:00:00Z",
+      "extra": 10,
+      "mode": "greenery",
+      "fastest": {
+        "distance": 1511.2300000000007,
+        "minutes": 18.89037500000001,
+        "shadeMeters": 742.6406666666664,
+        "treeShadeMeters": 162.035,
+        "sunMeters": 336.480880952381,
+        "unknownMeters": 432.1084523809522,
+        "coverage": 0.7140683731920674
+      },
+      "alternative": null,
+      "workingCanopyTiles": 18,
+      "workingCanopyBytes": 3132829,
+      "calculationMs": 2713
+    },
+    {
+      "district": "Oerlikon",
+      "from": "Hofwiesenstrasse 350",
+      "to": "Wallisellenstrasse 45",
+      "departure": "2024-08-01T08:00:00Z",
+      "extra": 0,
+      "mode": "greenery",
+      "fastest": {
+        "distance": 799.67,
+        "minutes": 9.995875,
+        "shadeMeters": 390.3093333333333,
+        "treeShadeMeters": 20.348333333333333,
+        "sunMeters": 343.6106666666664,
+        "unknownMeters": 65.74999999999999,
+        "coverage": 0.9177785836657621
+      },
+      "alternative": null,
+      "workingCanopyTiles": 6,
+      "workingCanopyBytes": 907059,
+      "calculationMs": 87
+    },
+    {
+      "district": "Oerlikon",
+      "from": "Hofwiesenstrasse 350",
+      "to": "Wallisellenstrasse 45",
+      "departure": "2024-08-01T08:00:00Z",
+      "extra": 5,
+      "mode": "greenery",
+      "fastest": {
+        "distance": 799.67,
+        "minutes": 9.995875,
+        "shadeMeters": 390.3093333333333,
+        "treeShadeMeters": 20.348333333333333,
+        "sunMeters": 343.6106666666664,
+        "unknownMeters": 65.74999999999999,
+        "coverage": 0.9177785836657621
+      },
+      "alternative": null,
+      "workingCanopyTiles": 8,
+      "workingCanopyBytes": 1418467,
+      "calculationMs": 365
+    },
+    {
+      "district": "Oerlikon",
+      "from": "Hofwiesenstrasse 350",
+      "to": "Wallisellenstrasse 45",
+      "departure": "2024-08-01T08:00:00Z",
+      "extra": 10,
+      "mode": "greenery",
+      "fastest": {
+        "distance": 799.67,
+        "minutes": 9.995875,
+        "shadeMeters": 390.3093333333333,
+        "treeShadeMeters": 20.348333333333333,
+        "sunMeters": 343.6106666666664,
+        "unknownMeters": 65.74999999999999,
+        "coverage": 0.9177785836657621
+      },
+      "alternative": null,
+      "workingCanopyTiles": 14,
+      "workingCanopyBytes": 2484785,
+      "calculationMs": 1102
+    },
+    {
+      "district": "Oerlikon",
+      "from": "Hofwiesenstrasse 350",
+      "to": "Wallisellenstrasse 45",
+      "departure": "2024-08-01T14:00:00Z",
+      "extra": 0,
+      "mode": "shade",
+      "fastest": {
+        "distance": 799.67,
+        "minutes": 9.995875,
+        "shadeMeters": 129.20995238095236,
+        "treeShadeMeters": 56.42561904761905,
+        "sunMeters": 633.5223809523812,
+        "unknownMeters": 36.937666666666665,
+        "coverage": 0.9538088628225809
+      },
+      "alternative": null,
+      "workingCanopyTiles": 5,
+      "workingCanopyBytes": 925372,
+      "calculationMs": 39
+    },
+    {
+      "district": "Oerlikon",
+      "from": "Hofwiesenstrasse 350",
+      "to": "Wallisellenstrasse 45",
+      "departure": "2024-08-01T14:00:00Z",
+      "extra": 5,
+      "mode": "shade",
+      "fastest": {
+        "distance": 799.67,
+        "minutes": 9.995875,
+        "shadeMeters": 129.20995238095236,
+        "treeShadeMeters": 56.42561904761905,
+        "sunMeters": 633.5223809523812,
+        "unknownMeters": 36.937666666666665,
+        "coverage": 0.9538088628225809
+      },
+      "alternative": {
+        "distance": 946.9199999999998,
+        "minutes": 11.836499999999997,
+        "shadeMeters": 515.1268888888892,
+        "treeShadeMeters": 89.523,
+        "sunMeters": 404.53977777777794,
+        "unknownMeters": 27.253333333333334,
+        "coverage": 0.9712189695715231
+      },
+      "workingCanopyTiles": 7,
+      "workingCanopyBytes": 1186395,
+      "calculationMs": 566
+    },
+    {
+      "district": "Oerlikon",
+      "from": "Hofwiesenstrasse 350",
+      "to": "Wallisellenstrasse 45",
+      "departure": "2024-08-01T14:00:00Z",
+      "extra": 10,
+      "mode": "shade",
+      "fastest": {
+        "distance": 799.67,
+        "minutes": 9.995875,
+        "shadeMeters": 129.20995238095236,
+        "treeShadeMeters": 56.42561904761905,
+        "sunMeters": 633.5223809523812,
+        "unknownMeters": 36.937666666666665,
+        "coverage": 0.9538088628225809
+      },
+      "alternative": {
+        "distance": 946.9199999999998,
+        "minutes": 11.836499999999997,
+        "shadeMeters": 515.1268888888892,
+        "treeShadeMeters": 89.523,
+        "sunMeters": 404.53977777777794,
+        "unknownMeters": 27.253333333333334,
+        "coverage": 0.9712189695715231
+      },
+      "workingCanopyTiles": 13,
+      "workingCanopyBytes": 2281778,
+      "calculationMs": 855
+    },
+    {
+      "district": "Altstetten",
+      "from": "Altstetterstrasse 145",
+      "to": "Hohlstrasse 554",
+      "departure": "2024-08-01T08:00:00Z",
+      "extra": 0,
+      "mode": "shade",
+      "fastest": {
+        "distance": 497.83,
+        "minutes": 6.222875,
+        "shadeMeters": 270.3208333333334,
+        "treeShadeMeters": 42.880833333333335,
+        "sunMeters": 208.29916666666657,
+        "unknownMeters": 19.21,
+        "coverage": 0.9614125303818573
+      },
+      "alternative": null,
+      "workingCanopyTiles": 2,
+      "workingCanopyBytes": 193486,
+      "calculationMs": 32
+    },
+    {
+      "district": "Altstetten",
+      "from": "Altstetterstrasse 145",
+      "to": "Hohlstrasse 554",
+      "departure": "2024-08-01T08:00:00Z",
+      "extra": 5,
+      "mode": "shade",
+      "fastest": {
+        "distance": 497.83,
+        "minutes": 6.222875,
+        "shadeMeters": 270.3208333333334,
+        "treeShadeMeters": 42.880833333333335,
+        "sunMeters": 208.29916666666657,
+        "unknownMeters": 19.21,
+        "coverage": 0.9614125303818573
+      },
+      "alternative": {
+        "distance": 517.7299999999999,
+        "minutes": 6.471624999999999,
+        "shadeMeters": 389.25964285714264,
+        "treeShadeMeters": 70.03416666666666,
+        "sunMeters": 102.9670238095238,
+        "unknownMeters": 25.503333333333334,
+        "coverage": 0.950740089750771
+      },
+      "workingCanopyTiles": 8,
+      "workingCanopyBytes": 891737,
+      "calculationMs": 503
+    },
+    {
+      "district": "Altstetten",
+      "from": "Altstetterstrasse 145",
+      "to": "Hohlstrasse 554",
+      "departure": "2024-08-01T08:00:00Z",
+      "extra": 10,
+      "mode": "shade",
+      "fastest": {
+        "distance": 497.83,
+        "minutes": 6.222875,
+        "shadeMeters": 270.3208333333334,
+        "treeShadeMeters": 42.880833333333335,
+        "sunMeters": 208.29916666666657,
+        "unknownMeters": 19.21,
+        "coverage": 0.9614125303818573
+      },
+      "alternative": {
+        "distance": 517.7299999999999,
+        "minutes": 6.471624999999999,
+        "shadeMeters": 389.25964285714264,
+        "treeShadeMeters": 70.03416666666666,
+        "sunMeters": 102.9670238095238,
+        "unknownMeters": 25.503333333333334,
+        "coverage": 0.950740089750771
+      },
+      "workingCanopyTiles": 9,
+      "workingCanopyBytes": 1054278,
+      "calculationMs": 569
+    },
+    {
+      "district": "Altstetten",
+      "from": "Altstetterstrasse 145",
+      "to": "Hohlstrasse 554",
+      "departure": "2024-08-01T14:00:00Z",
+      "extra": 0,
+      "mode": "shade",
+      "fastest": {
+        "distance": 497.83,
+        "minutes": 6.222875,
+        "shadeMeters": 248.8058333333333,
+        "treeShadeMeters": 140.03083333333336,
+        "sunMeters": 226.7504166666667,
+        "unknownMeters": 22.27375,
+        "coverage": 0.9552583211136332
+      },
+      "alternative": null,
+      "workingCanopyTiles": 3,
+      "workingCanopyBytes": 460576,
+      "calculationMs": 9
+    },
+    {
+      "district": "Altstetten",
+      "from": "Altstetterstrasse 145",
+      "to": "Hohlstrasse 554",
+      "departure": "2024-08-01T14:00:00Z",
+      "extra": 5,
+      "mode": "shade",
+      "fastest": {
+        "distance": 497.83,
+        "minutes": 6.222875,
+        "shadeMeters": 248.8058333333333,
+        "treeShadeMeters": 140.03083333333336,
+        "sunMeters": 226.7504166666667,
+        "unknownMeters": 22.27375,
+        "coverage": 0.9552583211136332
+      },
+      "alternative": {
+        "distance": 632.16,
+        "minutes": 7.901999999999999,
+        "shadeMeters": 514.6725,
+        "treeShadeMeters": 171.37749999999997,
+        "sunMeters": 97.26250000000002,
+        "unknownMeters": 20.225,
+        "coverage": 0.968006517337383
+      },
+      "workingCanopyTiles": 5,
+      "workingCanopyBytes": 746740,
+      "calculationMs": 341
+    },
+    {
+      "district": "Altstetten",
+      "from": "Altstetterstrasse 145",
+      "to": "Hohlstrasse 554",
+      "departure": "2024-08-01T14:00:00Z",
+      "extra": 10,
+      "mode": "shade",
+      "fastest": {
+        "distance": 497.83,
+        "minutes": 6.222875,
+        "shadeMeters": 248.8058333333333,
+        "treeShadeMeters": 140.03083333333336,
+        "sunMeters": 226.7504166666667,
+        "unknownMeters": 22.27375,
+        "coverage": 0.9552583211136332
+      },
+      "alternative": {
+        "distance": 632.16,
+        "minutes": 7.901999999999999,
+        "shadeMeters": 514.6725,
+        "treeShadeMeters": 171.37749999999997,
+        "sunMeters": 97.26250000000002,
+        "unknownMeters": 20.225,
+        "coverage": 0.968006517337383
+      },
+      "workingCanopyTiles": 10,
+      "workingCanopyBytes": 1508873,
+      "calculationMs": 403
+    },
+    {
+      "district": "Höngg",
+      "from": "Limmattalstrasse 180",
+      "to": "Limmattalstrasse 220",
+      "departure": "2024-08-01T08:00:00Z",
+      "extra": 0,
+      "mode": "shade",
+      "fastest": {
+        "distance": 177.30000000000004,
+        "minutes": 2.2162500000000005,
+        "shadeMeters": 38.635,
+        "treeShadeMeters": 14.05,
+        "sunMeters": 138.665,
+        "unknownMeters": 0,
+        "coverage": 1
+      },
+      "alternative": null,
+      "workingCanopyTiles": 3,
+      "workingCanopyBytes": 633204,
+      "calculationMs": 58
+    },
+    {
+      "district": "Höngg",
+      "from": "Limmattalstrasse 180",
+      "to": "Limmattalstrasse 220",
+      "departure": "2024-08-01T08:00:00Z",
+      "extra": 5,
+      "mode": "shade",
+      "fastest": {
+        "distance": 177.30000000000004,
+        "minutes": 2.2162500000000005,
+        "shadeMeters": 38.635,
+        "treeShadeMeters": 14.05,
+        "sunMeters": 138.665,
+        "unknownMeters": 0,
+        "coverage": 1
+      },
+      "alternative": {
+        "distance": 263.4,
+        "minutes": 3.2924999999999995,
+        "shadeMeters": 176.62166666666664,
+        "treeShadeMeters": 38.95333333333334,
+        "sunMeters": 79.37333333333333,
+        "unknownMeters": 7.405,
+        "coverage": 0.9718868640850418
+      },
+      "workingCanopyTiles": 6,
+      "workingCanopyBytes": 1407603,
+      "calculationMs": 329
+    },
+    {
+      "district": "Höngg",
+      "from": "Limmattalstrasse 180",
+      "to": "Limmattalstrasse 220",
+      "departure": "2024-08-01T08:00:00Z",
+      "extra": 10,
+      "mode": "shade",
+      "fastest": {
+        "distance": 177.30000000000004,
+        "minutes": 2.2162500000000005,
+        "shadeMeters": 38.635,
+        "treeShadeMeters": 14.05,
+        "sunMeters": 138.665,
+        "unknownMeters": 0,
+        "coverage": 1
+      },
+      "alternative": {
+        "distance": 263.4,
+        "minutes": 3.2924999999999995,
+        "shadeMeters": 176.62166666666664,
+        "treeShadeMeters": 38.95333333333334,
+        "sunMeters": 79.37333333333333,
+        "unknownMeters": 7.405,
+        "coverage": 0.9718868640850418
+      },
+      "workingCanopyTiles": 6,
+      "workingCanopyBytes": 1407603,
+      "calculationMs": 168
+    },
+    {
+      "district": "Höngg",
+      "from": "Limmattalstrasse 180",
+      "to": "Limmattalstrasse 220",
+      "departure": "2024-08-01T14:00:00Z",
+      "extra": 0,
+      "mode": "greenery",
+      "fastest": {
+        "distance": 177.30000000000004,
+        "minutes": 2.2162500000000005,
+        "shadeMeters": 0,
+        "treeShadeMeters": 0,
+        "sunMeters": 160.985,
+        "unknownMeters": 16.314999999999998,
+        "coverage": 0.907980823463057
+      },
+      "alternative": null,
+      "workingCanopyTiles": 3,
+      "workingCanopyBytes": 712993,
+      "calculationMs": 8
+    },
+    {
+      "district": "Höngg",
+      "from": "Limmattalstrasse 180",
+      "to": "Limmattalstrasse 220",
+      "departure": "2024-08-01T14:00:00Z",
+      "extra": 5,
+      "mode": "greenery",
+      "fastest": {
+        "distance": 177.30000000000004,
+        "minutes": 2.2162500000000005,
+        "shadeMeters": 0,
+        "treeShadeMeters": 0,
+        "sunMeters": 160.985,
+        "unknownMeters": 16.314999999999998,
+        "coverage": 0.907980823463057
+      },
+      "alternative": null,
+      "workingCanopyTiles": 5,
+      "workingCanopyBytes": 1259961,
+      "calculationMs": 292
+    },
+    {
+      "district": "Höngg",
+      "from": "Limmattalstrasse 180",
+      "to": "Limmattalstrasse 220",
+      "departure": "2024-08-01T14:00:00Z",
+      "extra": 10,
+      "mode": "greenery",
+      "fastest": {
+        "distance": 177.30000000000004,
+        "minutes": 2.2162500000000005,
+        "shadeMeters": 0,
+        "treeShadeMeters": 0,
+        "sunMeters": 160.985,
+        "unknownMeters": 16.314999999999998,
+        "coverage": 0.907980823463057
+      },
+      "alternative": null,
+      "workingCanopyTiles": 5,
+      "workingCanopyBytes": 1259961,
+      "calculationMs": 137
+    },
+    {
+      "district": "Wipkingen",
+      "from": "Nordstrasse 275",
+      "to": "Nordstrasse 387",
+      "departure": "2024-08-01T08:00:00Z",
+      "extra": 0,
+      "mode": "greenery",
+      "fastest": {
+        "distance": 771.4599999999999,
+        "minutes": 9.643249999999998,
+        "shadeMeters": 355.6165000000001,
+        "treeShadeMeters": 355.6165000000001,
+        "sunMeters": 376.3034999999998,
+        "unknownMeters": 39.540000000000006,
+        "coverage": 0.9487465325486739
+      },
+      "alternative": null,
+      "workingCanopyTiles": 5,
+      "workingCanopyBytes": 1153997,
+      "calculationMs": 104
+    },
+    {
+      "district": "Wipkingen",
+      "from": "Nordstrasse 275",
+      "to": "Nordstrasse 387",
+      "departure": "2024-08-01T08:00:00Z",
+      "extra": 5,
+      "mode": "greenery",
+      "fastest": {
+        "distance": 771.4599999999999,
+        "minutes": 9.643249999999998,
+        "shadeMeters": 355.6165000000001,
+        "treeShadeMeters": 355.6165000000001,
+        "sunMeters": 376.3034999999998,
+        "unknownMeters": 39.540000000000006,
+        "coverage": 0.9487465325486739
+      },
+      "alternative": null,
+      "workingCanopyTiles": 8,
+      "workingCanopyBytes": 2053811,
+      "calculationMs": 651
+    },
+    {
+      "district": "Wipkingen",
+      "from": "Nordstrasse 275",
+      "to": "Nordstrasse 387",
+      "departure": "2024-08-01T08:00:00Z",
+      "extra": 10,
+      "mode": "greenery",
+      "fastest": {
+        "distance": 771.4599999999999,
+        "minutes": 9.643249999999998,
+        "shadeMeters": 355.6165000000001,
+        "treeShadeMeters": 355.6165000000001,
+        "sunMeters": 376.3034999999998,
+        "unknownMeters": 39.540000000000006,
+        "coverage": 0.9487465325486739
+      },
+      "alternative": null,
+      "workingCanopyTiles": 11,
+      "workingCanopyBytes": 2546033,
+      "calculationMs": 588
+    },
+    {
+      "district": "Wipkingen",
+      "from": "Nordstrasse 275",
+      "to": "Nordstrasse 387",
+      "departure": "2024-08-01T14:00:00Z",
+      "extra": 0,
+      "mode": "shade",
+      "fastest": {
+        "distance": 771.4599999999999,
+        "minutes": 9.643249999999998,
+        "shadeMeters": 563.9633214285714,
+        "treeShadeMeters": 208.7327142857142,
+        "sunMeters": 195.0538214285715,
+        "unknownMeters": 12.442857142857143,
+        "coverage": 0.9838710274766583
+      },
+      "alternative": null,
+      "workingCanopyTiles": 6,
+      "workingCanopyBytes": 1241868,
+      "calculationMs": 42
+    },
+    {
+      "district": "Wipkingen",
+      "from": "Nordstrasse 275",
+      "to": "Nordstrasse 387",
+      "departure": "2024-08-01T14:00:00Z",
+      "extra": 5,
+      "mode": "shade",
+      "fastest": {
+        "distance": 771.4599999999999,
+        "minutes": 9.643249999999998,
+        "shadeMeters": 563.9633214285714,
+        "treeShadeMeters": 208.7327142857142,
+        "sunMeters": 195.0538214285715,
+        "unknownMeters": 12.442857142857143,
+        "coverage": 0.9838710274766583
+      },
+      "alternative": null,
+      "workingCanopyTiles": 9,
+      "workingCanopyBytes": 1866028,
+      "calculationMs": 589
+    },
+    {
+      "district": "Wipkingen",
+      "from": "Nordstrasse 275",
+      "to": "Nordstrasse 387",
+      "departure": "2024-08-01T14:00:00Z",
+      "extra": 10,
+      "mode": "shade",
+      "fastest": {
+        "distance": 771.4599999999999,
+        "minutes": 9.643249999999998,
+        "shadeMeters": 563.9633214285714,
+        "treeShadeMeters": 208.7327142857142,
+        "sunMeters": 195.0538214285715,
+        "unknownMeters": 12.442857142857143,
+        "coverage": 0.9838710274766583
+      },
+      "alternative": null,
+      "workingCanopyTiles": 10,
+      "workingCanopyBytes": 2051668,
+      "calculationMs": 417
+    },
+    {
+      "district": "Wiedikon",
+      "from": "Birmensdorferstrasse 91",
+      "to": "Birmensdorferstrasse 252",
+      "departure": "2024-08-01T08:00:00Z",
+      "extra": 0,
+      "mode": "greenery",
+      "fastest": {
+        "distance": 832.03,
+        "minutes": 10.400375,
+        "shadeMeters": 393.8174761904763,
+        "treeShadeMeters": 150.5424761904762,
+        "sunMeters": 336.731023809524,
+        "unknownMeters": 101.48149999999997,
+        "coverage": 0.8780314411739961
+      },
+      "alternative": null,
+      "workingCanopyTiles": 5,
+      "workingCanopyBytes": 1078451,
+      "calculationMs": 105
+    },
+    {
+      "district": "Wiedikon",
+      "from": "Birmensdorferstrasse 91",
+      "to": "Birmensdorferstrasse 252",
+      "departure": "2024-08-01T08:00:00Z",
+      "extra": 5,
+      "mode": "greenery",
+      "fastest": {
+        "distance": 832.03,
+        "minutes": 10.400375,
+        "shadeMeters": 393.8174761904763,
+        "treeShadeMeters": 150.5424761904762,
+        "sunMeters": 336.731023809524,
+        "unknownMeters": 101.48149999999997,
+        "coverage": 0.8780314411739961
+      },
+      "alternative": null,
+      "workingCanopyTiles": 10,
+      "workingCanopyBytes": 1968084,
+      "calculationMs": 749
+    },
+    {
+      "district": "Wiedikon",
+      "from": "Birmensdorferstrasse 91",
+      "to": "Birmensdorferstrasse 252",
+      "departure": "2024-08-01T08:00:00Z",
+      "extra": 10,
+      "mode": "greenery",
+      "fastest": {
+        "distance": 832.03,
+        "minutes": 10.400375,
+        "shadeMeters": 393.8174761904763,
+        "treeShadeMeters": 150.5424761904762,
+        "sunMeters": 336.731023809524,
+        "unknownMeters": 101.48149999999997,
+        "coverage": 0.8780314411739961
+      },
+      "alternative": null,
+      "workingCanopyTiles": 12,
+      "workingCanopyBytes": 2332066,
+      "calculationMs": 1124
+    },
+    {
+      "district": "Wiedikon",
+      "from": "Birmensdorferstrasse 91",
+      "to": "Birmensdorferstrasse 252",
+      "departure": "2024-08-01T14:00:00Z",
+      "extra": 0,
+      "mode": "greenery",
+      "fastest": {
+        "distance": 832.03,
+        "minutes": 10.400375,
+        "shadeMeters": 243.03411904761907,
+        "treeShadeMeters": 105.01785714285712,
+        "sunMeters": 444.5931190476191,
+        "unknownMeters": 144.40276190476186,
+        "coverage": 0.8264452460791536
+      },
+      "alternative": null,
+      "workingCanopyTiles": 6,
+      "workingCanopyBytes": 1293037,
+      "calculationMs": 49
+    },
+    {
+      "district": "Wiedikon",
+      "from": "Birmensdorferstrasse 91",
+      "to": "Birmensdorferstrasse 252",
+      "departure": "2024-08-01T14:00:00Z",
+      "extra": 5,
+      "mode": "greenery",
+      "fastest": {
+        "distance": 832.03,
+        "minutes": 10.400375,
+        "shadeMeters": 243.03411904761907,
+        "treeShadeMeters": 105.01785714285712,
+        "sunMeters": 444.5931190476191,
+        "unknownMeters": 144.40276190476186,
+        "coverage": 0.8264452460791536
+      },
+      "alternative": null,
+      "workingCanopyTiles": 9,
+      "workingCanopyBytes": 1773697,
+      "calculationMs": 796
+    },
+    {
+      "district": "Wiedikon",
+      "from": "Birmensdorferstrasse 91",
+      "to": "Birmensdorferstrasse 252",
+      "departure": "2024-08-01T14:00:00Z",
+      "extra": 10,
+      "mode": "greenery",
+      "fastest": {
+        "distance": 832.03,
+        "minutes": 10.400375,
+        "shadeMeters": 243.03411904761907,
+        "treeShadeMeters": 105.01785714285712,
+        "sunMeters": 444.5931190476191,
+        "unknownMeters": 144.40276190476186,
+        "coverage": 0.8264452460791536
+      },
+      "alternative": null,
+      "workingCanopyTiles": 12,
+      "workingCanopyBytes": 2466849,
+      "calculationMs": 651
+    },
+    {
+      "district": "University",
+      "from": "Rämistrasse 71",
+      "to": "Universitätstrasse 100",
+      "departure": "2024-08-01T08:00:00Z",
+      "extra": 0,
+      "mode": "shade",
+      "fastest": {
+        "distance": 1051.7299999999998,
+        "minutes": 13.146624999999997,
+        "shadeMeters": 843.2058333333322,
+        "treeShadeMeters": 253.296,
+        "sunMeters": 178.68000000000004,
+        "unknownMeters": 29.844166666666666,
+        "coverage": 0.9716237373977479
+      },
+      "alternative": null,
+      "workingCanopyTiles": 6,
+      "workingCanopyBytes": 1740450,
+      "calculationMs": 140
+    },
+    {
+      "district": "University",
+      "from": "Rämistrasse 71",
+      "to": "Universitätstrasse 100",
+      "departure": "2024-08-01T08:00:00Z",
+      "extra": 5,
+      "mode": "shade",
+      "fastest": {
+        "distance": 1051.7299999999998,
+        "minutes": 13.146624999999997,
+        "shadeMeters": 843.2058333333322,
+        "treeShadeMeters": 253.296,
+        "sunMeters": 178.68000000000004,
+        "unknownMeters": 29.844166666666666,
+        "coverage": 0.9716237373977479
+      },
+      "alternative": null,
+      "workingCanopyTiles": 11,
+      "workingCanopyBytes": 3489826,
+      "calculationMs": 551
+    },
+    {
+      "district": "University",
+      "from": "Rämistrasse 71",
+      "to": "Universitätstrasse 100",
+      "departure": "2024-08-01T08:00:00Z",
+      "extra": 10,
+      "mode": "shade",
+      "fastest": {
+        "distance": 1051.7299999999998,
+        "minutes": 13.146624999999997,
+        "shadeMeters": 843.2058333333322,
+        "treeShadeMeters": 253.296,
+        "sunMeters": 178.68000000000004,
+        "unknownMeters": 29.844166666666666,
+        "coverage": 0.9716237373977479
+      },
+      "alternative": null,
+      "workingCanopyTiles": 14,
+      "workingCanopyBytes": 4049467,
+      "calculationMs": 849
+    },
+    {
+      "district": "University",
+      "from": "Rämistrasse 71",
+      "to": "Universitätstrasse 100",
+      "departure": "2024-08-01T14:00:00Z",
+      "extra": 0,
+      "mode": "greenery",
+      "fastest": {
+        "distance": 1051.7299999999998,
+        "minutes": 13.146624999999997,
+        "shadeMeters": 341.821,
+        "treeShadeMeters": 298.30100000000004,
+        "sunMeters": 528.7245000000001,
+        "unknownMeters": 181.1845,
+        "coverage": 0.827727173323952
+      },
+      "alternative": null,
+      "workingCanopyTiles": 7,
+      "workingCanopyBytes": 1545121,
+      "calculationMs": 17
+    },
+    {
+      "district": "University",
+      "from": "Rämistrasse 71",
+      "to": "Universitätstrasse 100",
+      "departure": "2024-08-01T14:00:00Z",
+      "extra": 5,
+      "mode": "greenery",
+      "fastest": {
+        "distance": 1051.7299999999998,
+        "minutes": 13.146624999999997,
+        "shadeMeters": 341.821,
+        "treeShadeMeters": 298.30100000000004,
+        "sunMeters": 528.7245000000001,
+        "unknownMeters": 181.1845,
+        "coverage": 0.827727173323952
+      },
+      "alternative": null,
+      "workingCanopyTiles": 10,
+      "workingCanopyBytes": 2256660,
+      "calculationMs": 808
+    },
+    {
+      "district": "University",
+      "from": "Rämistrasse 71",
+      "to": "Universitätstrasse 100",
+      "departure": "2024-08-01T14:00:00Z",
+      "extra": 10,
+      "mode": "greenery",
+      "fastest": {
+        "distance": 1051.7299999999998,
+        "minutes": 13.146624999999997,
+        "shadeMeters": 341.821,
+        "treeShadeMeters": 298.30100000000004,
+        "sunMeters": 528.7245000000001,
+        "unknownMeters": 181.1845,
+        "coverage": 0.827727173323952
+      },
+      "alternative": null,
+      "workingCanopyTiles": 12,
+      "workingCanopyBytes": 2721197,
+      "calculationMs": 735
+    },
+    {
+      "district": "Lakeshore",
+      "from": "Bellevue",
+      "to": "Zürichhorn",
+      "departure": "2024-08-01T08:00:00Z",
+      "extra": 0,
+      "mode": "greenery",
+      "fastest": {
+        "distance": 1594.0699999999997,
+        "minutes": 19.925874999999998,
+        "shadeMeters": 1220.4159642857153,
+        "treeShadeMeters": 861.3339007936517,
+        "sunMeters": 202.11995238095236,
+        "unknownMeters": 171.5340833333333,
+        "coverage": 0.8923923771645327
+      },
+      "alternative": null,
+      "workingCanopyTiles": 9,
+      "workingCanopyBytes": 2185704,
+      "calculationMs": 193
+    },
+    {
+      "district": "Lakeshore",
+      "from": "Bellevue",
+      "to": "Zürichhorn",
+      "departure": "2024-08-01T08:00:00Z",
+      "extra": 5,
+      "mode": "greenery",
+      "fastest": {
+        "distance": 1594.0699999999997,
+        "minutes": 19.925874999999998,
+        "shadeMeters": 1220.4159642857153,
+        "treeShadeMeters": 861.3339007936517,
+        "sunMeters": 202.11995238095236,
+        "unknownMeters": 171.5340833333333,
+        "coverage": 0.8923923771645327
+      },
+      "alternative": null,
+      "workingCanopyTiles": 13,
+      "workingCanopyBytes": 3006664,
+      "calculationMs": 776
+    },
+    {
+      "district": "Lakeshore",
+      "from": "Bellevue",
+      "to": "Zürichhorn",
+      "departure": "2024-08-01T08:00:00Z",
+      "extra": 10,
+      "mode": "greenery",
+      "fastest": {
+        "distance": 1594.0699999999997,
+        "minutes": 19.925874999999998,
+        "shadeMeters": 1220.4159642857153,
+        "treeShadeMeters": 861.3339007936517,
+        "sunMeters": 202.11995238095236,
+        "unknownMeters": 171.5340833333333,
+        "coverage": 0.8923923771645327
+      },
+      "alternative": null,
+      "workingCanopyTiles": 18,
+      "workingCanopyBytes": 4588374,
+      "calculationMs": 1601
+    },
+    {
+      "district": "Lakeshore",
+      "from": "Bellevue",
+      "to": "Zürichhorn",
+      "departure": "2024-08-01T14:00:00Z",
+      "extra": 0,
+      "mode": "greenery",
+      "fastest": {
+        "distance": 1594.0699999999997,
+        "minutes": 19.925874999999998,
+        "shadeMeters": 826.1967142857147,
+        "treeShadeMeters": 765.750047619048,
+        "sunMeters": 42.53,
+        "unknownMeters": 725.3432857142857,
+        "coverage": 0.5449740063395674
+      },
+      "alternative": null,
+      "workingCanopyTiles": 9,
+      "workingCanopyBytes": 1056212,
+      "calculationMs": 39
+    },
+    {
+      "district": "Lakeshore",
+      "from": "Bellevue",
+      "to": "Zürichhorn",
+      "departure": "2024-08-01T14:00:00Z",
+      "extra": 5,
+      "mode": "greenery",
+      "fastest": {
+        "distance": 1594.0699999999997,
+        "minutes": 19.925874999999998,
+        "shadeMeters": 826.1967142857147,
+        "treeShadeMeters": 765.750047619048,
+        "sunMeters": 42.53,
+        "unknownMeters": 725.3432857142857,
+        "coverage": 0.5449740063395674
+      },
+      "alternative": null,
+      "workingCanopyTiles": 12,
+      "workingCanopyBytes": 1490924,
+      "calculationMs": 758
+    },
+    {
+      "district": "Lakeshore",
+      "from": "Bellevue",
+      "to": "Zürichhorn",
+      "departure": "2024-08-01T14:00:00Z",
+      "extra": 10,
+      "mode": "greenery",
+      "fastest": {
+        "distance": 1594.0699999999997,
+        "minutes": 19.925874999999998,
+        "shadeMeters": 826.1967142857147,
+        "treeShadeMeters": 765.750047619048,
+        "sunMeters": 42.53,
+        "unknownMeters": 725.3432857142857,
+        "coverage": 0.5449740063395674
+      },
+      "alternative": null,
+      "workingCanopyTiles": 18,
+      "workingCanopyBytes": 3047509,
+      "calculationMs": 1063
+    }
+  ],
+  "pavementCases": [
+    {
+      "district": "Oerlikon",
+      "from": "Franklinstrasse / Hofwiesenstrasse",
+      "to": "Franklinstrasse / Schaffhauserstrasse",
+      "mode": "greenery",
+      "fastest": {
+        "distance": 376.0026907690595,
+        "minutes": 4.700033634613243,
+        "shadeMeters": 204.13753316813637,
+        "treeShadeMeters": 51.39577990804062,
+        "sunMeters": 144.52936665982372,
+        "unknownMeters": 27.335790941099862,
+        "coverage": 0.9272989486187229
+      },
+      "alternative": null
+    },
+    {
+      "district": "Altstetten",
+      "from": "Altstetterstrasse / Badenerstrasse",
+      "to": "Altstetterstrasse / Hohlstrasse",
+      "mode": "shade",
+      "fastest": {
+        "distance": 417.73359083308895,
+        "minutes": 5.221669885413612,
+        "shadeMeters": 331.9223026428944,
+        "treeShadeMeters": 57.57589587661837,
+        "sunMeters": 81.5488010849553,
+        "unknownMeters": 4.262487105239484,
+        "coverage": 0.9897961590861324
+      },
+      "alternative": null
+    },
+    {
+      "district": "Limmat bridge",
+      "from": "Bahnhofbrücke / Bahnhofquai",
+      "to": "Bahnhofbrücke / Central",
+      "mode": "greenery",
+      "fastest": {
+        "distance": 92.93192924356104,
+        "minutes": 1.161649115544513,
+        "shadeMeters": 0,
+        "treeShadeMeters": 0,
+        "sunMeters": 0,
+        "unknownMeters": 92.93192924356104,
+        "coverage": 0
+      },
+      "alternative": null
+    }
+  ],
+  "limits": "Computational/source checks only. Opaque observed-envelope scenario; predominantly leaf-off historical data. No field accuracy, full-foliage reconstruction or globally optimal route claim."
+}

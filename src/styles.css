@@ -758,6 +758,7 @@ small {
   color: var(--muted);
 }
 .exposure-bar {
+  position: relative;
   height: 5px;
   background: #e7d9b4;
   border-radius: 2px;
@@ -768,6 +769,32 @@ small {
   display: block;
   height: 100%;
   transition: width 0.4s;
+}
+.exposure-unknown,
+.exposure-night {
+  position: absolute;
+  inset-block: 0;
+  right: 0;
+}
+.exposure-unknown,
+.unknown-swatch {
+  background: repeating-linear-gradient(135deg, #e9e9e0 0 3px, #777f73 3px 4px);
+}
+.exposure-night {
+  background: #b4bac1;
+}
+.route-unknown-note {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+.unknown-swatch {
+  width: 12px;
+  height: 6px;
+  border-radius: 1px;
 }
 .route-card-caption {
   font-size: 0.75rem;

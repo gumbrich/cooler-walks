@@ -28,7 +28,8 @@ for (const spec of areaSpecs) {
     const raw = fs.readFileSync(`public${base.canopyPilot.dataUrl}`);
     if (crypto.createHash('sha256').update(raw).digest('hex') !== base.canopyPilot.sha256)
       throw new Error('Canopy checksum mismatch');
-    data.canopy = JSON.parse(raw.toString());
+    if (base.canopyPilot.format === 'library') data.canopyLibrary = JSON.parse(raw.toString());
+    else data.canopy = JSON.parse(raw.toString());
   }
   if (base.pavementPilot)
     data.pavementNetwork = JSON.parse(
@@ -156,6 +157,15 @@ for (const spec of areaSpecs) {
     sha256,
     bytes: packed.length,
     expandedBytes: json.length,
+    ...(data.canopyLibrary
+      ? {
+          canopy: {
+            version: data.canopyLibrary.version,
+            bytes: data.canopyLibrary.tiles.reduce((sum, t) => sum + t.bytes, 0),
+            tiles: data.canopyLibrary.tiles.length,
+          },
+        }
+      : {}),
     file,
     preparedAt: data.preparedAt ?? data.fetchedAt,
     areaKm2,

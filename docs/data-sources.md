@@ -1,5 +1,9 @@
 # Data sources and preparation
 
+## Zurich tree library expansion · 8 October 2026
+
+The optional tree scenario now targets the entire supported Zurich walking area. Its 324 adjacent 500 m LiDAR source tiles span 81 km² around the 57.77 km² walking boundary. The [expansion method and preparation](tree-shade-expansion.md), [complete source/hash register](canopy-library-source-audit.json) and [computational checks](canopy-library-validation.json) record exact coverage, transformations and retained unknowns. Source: [Kanton Zürich product 557](https://geolion.zh.ch/geodatensatz/4289), observation epoch 2021–2022, LV95/LN02; free reuse and redistribution, Kanton Zürich attribution. The October 2026 fetch is not a new tree observation. Historical lakeshore references below remain evidence for version 1, not the new coverage boundary. Leaf-off acquisition and opacity/foliage assumptions remain experimental.
+
 Traffic 0.11.0 reuses the inspected zone and north/west OSM snapshots; [v2 classification and provenance](traffic.md) record the changed semantics and corrected OSM hash. Nearby 2025 counters now select the profile at estimated passing time. GVM-ZH19 was investigated but its detailed network redistribution is not established; no model values were imported. Field validation of traffic and shadow remains pending.
 
 Validation-only additions (30 September 2026): original Canton Zurich classified LiDAR, fourteen Commons photo originals with retained EXIF, and official LUBIS acquisition metadata. See the [source/evidence review](shadow-validation-followup.md), [LAZ hashes and coordinate datums](shadow-lidar-review.json), and [photo provenance/licences](validation/photo-register.json). None of these review inputs changes the released model or adds an advertised capability. Large/raw files remain ignored.

@@ -2,13 +2,13 @@
 import fs from 'node:fs';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
-import { getCity } from '../src/lib/cities';
+import { legacyCanopyCity } from './lib/legacy-canopy';
 import { Router, MODEL_VERSION } from '../src/lib/routing';
 import { CanopyShade } from '../src/lib/canopy';
 import { ShadeLibrary, decodeShadeTile, withShadeTiles } from '../src/lib/shade-library';
 import type { PilotData, Point, Sample } from '../src/lib/types';
 
-const city = getCity('ch-zurich');
+const city = legacyCanopyCity();
 const data: PilotData = JSON.parse(fs.readFileSync(`public${city.dataUrl}`, 'utf8'));
 data.shadeLibrary = JSON.parse(fs.readFileSync(`public${city.detailedShade!.dataUrl}`, 'utf8'));
 data.canopy = JSON.parse(fs.readFileSync(`public${city.canopyPilot!.dataUrl}`, 'utf8'));

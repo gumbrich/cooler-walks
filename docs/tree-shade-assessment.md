@@ -1,5 +1,7 @@
 # Tree shade: usefulness and expansion decision
 
+**Subsequent coverage decision:** the user explicitly requested extending the experimental pilot across the supported Zurich map. The [0.17.0 expansion](tree-shade-expansion.md) implements that request without upgrading this accuracy assessment or lifting the field-validation HOLD. The decision below records the earlier conditional-expansion assessment.
+
 Assessed **8 October 2026**, application 0.16.0 / canopy `zurich-lakeshore-canopy-2026-10-07-v1`, from source revision `151fafb`.
 
 **Decision: useful as an experimental scenario and validation tool; not sufficiently validated for dependable tree-shade recommendations. Do not expand the current implementation across Zurich yet.** The user's authorization to expand was conditional on a positive usefulness/accuracy assessment. That condition is not met. This is an evidence-based product decision, not a lack of permission or a claim that tree shade cannot be modelled.

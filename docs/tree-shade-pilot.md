@@ -1,4 +1,6 @@
-# Tree shade pilot · 0.16.0
+# Original tree shade pilot · 0.16.0
+
+**Historical lakeshore model.** The user subsequently authorized experimental coverage across the supported Zurich map. See the [0.17.0 expansion](tree-shade-expansion.md) for the current extent and delivery; the method limitations, original evidence and field-validation HOLD below remain.
 
 An optional **Tree shade pilot / Baumschatten-Pilot** adds a potential canopy-shadow scenario around Bellevue–Zürichhorn. It is off by default. The website, PWA and native app use the same implementation. Ordinary tree markers and the greenery indicator are unchanged.
 

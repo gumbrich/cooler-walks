@@ -29,6 +29,18 @@ test('tree scenario shows coverage, separate contributions, translated mobile co
   await toggle.check();
   await expect(page.locator('.route-card').first()).toContainText('potential shade');
   await expect(page.locator('.route-card')).toHaveCount(1);
+  await expect(page.locator('.exposure-number').first()).toContainText('830 m');
+  await expect(page.locator('.route-unknown-note').first()).toContainText('730 m unknown');
+  // Neither unknown coverage nor a changing denominator can fill the shade bar.
+  const widths = await page
+    .locator('.exposure-bar')
+    .first()
+    .evaluate((bar) => ({
+      shaded: parseFloat((bar.querySelector('span') as HTMLElement).style.width),
+      unknown: parseFloat((bar.querySelector('.exposure-unknown') as HTMLElement).style.width),
+    }));
+  expect(widths.shaded).toBeCloseTo(51.83, 1);
+  expect(widths.unknown).toBeCloseTo(45.5, 1);
   await expect(
     page.getByText(
       'Tree-scenario coverage is below 95%. No shade comparison; estimates cover only the known part of the walk.',
@@ -76,7 +88,7 @@ test('failed canopy download has a recoverable error and cannot silently fall ba
   page,
 }) => {
   await page.clock.setFixedTime(new Date('2024-08-01T14:00:00Z'));
-  await page.route('**/data/zurich-canopy.json*', (route) =>
+  await page.route('**/data/zurich-canopy/*.canopy*', (route) =>
     route.fulfill({ status: 503, body: 'Unavailable' }),
   );
   await page.goto('/en/?view=planner');
@@ -96,4 +108,54 @@ test('failed canopy download has a recoverable error and cannot silently fall ba
   await page.setViewportSize({ width: 1440, height: 1000 });
   await toggle.uncheck();
   await expect(page.locator('.route-card').first()).toBeVisible();
+});
+
+test('tree tiles serve northern Zurich on demand and cancelled time changes cannot publish stale results', async ({
+  page,
+}) => {
+  const errors: string[] = [];
+  page.on('pageerror', (error) => errors.push(error.message));
+  const treeRequests = new Set<string>();
+  page.on('request', (request) => {
+    if (request.url().includes('/zurich-canopy/')) treeRequests.add(request.url());
+  });
+  await page.clock.setFixedTime(new Date('2024-08-01T14:00:00Z'));
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  await page.goto('/en/?view=planner');
+  await expect(page.locator('.route-card').first()).toBeVisible();
+  const from = page.getByRole('combobox', { name: 'From', exact: true }),
+    to = page.getByRole('combobox', { name: 'To', exact: true });
+  await from.fill('Hofwiesenstrasse 350');
+  await from.press('Enter');
+  await to.fill('Wallisellenstrasse 45');
+  await to.press('Enter');
+  await expect(page.locator('.spinner')).toHaveCount(0);
+  await expect(page.locator('.route-card').first()).toBeVisible();
+  expect(treeRequests.size).toBe(0);
+  const toggle = page.getByRole('checkbox', { name: 'Tree shade pilot', exact: true });
+  await toggle.check();
+  await expect(page.locator('.route-card').first()).toContainText('potential shade');
+  await expect(page.locator('#canopy-help')).toContainText('Zurich map');
+  expect(treeRequests.size).toBeGreaterThan(0);
+  expect(treeRequests.size).toBeLessThan(81); // Never preload the 324-tile library for this short trip.
+  await page.getByRole('slider', { name: 'Departure time', exact: true }).fill('600');
+  await page.getByRole('slider', { name: 'Departure time', exact: true }).fill('960');
+  await page.getByRole('slider', { name: 'Departure time', exact: true }).fill('720');
+  await expect(page.locator('.spinner')).toHaveCount(0);
+  await expect(page.locator('.route-card').first()).toContainText('potential shade');
+  await expect(page.locator('.map-shell')).toHaveAttribute('data-map-settled', 'true');
+  await page.locator('.route-card').first().scrollIntoViewIfNeeded();
+  await page.screenshot({
+    path: 'docs/screenshots/desktop-oerlikon-tree-shade.png',
+    fullPage: true,
+  });
+  await page.getByRole('combobox', { name: 'Language', exact: true }).selectOption('de');
+  await page.setViewportSize({ width: 390, height: 844 });
+  await expect(page.locator('.route-card').first()).toContainText('möglicher Schatten');
+  await page.screenshot({
+    path: 'docs/screenshots/phone-oerlikon-tree-shade-de.png',
+    fullPage: true,
+  });
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  expect(errors).toEqual([]);
 });

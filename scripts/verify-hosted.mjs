@@ -97,14 +97,30 @@ assert.deepEqual(
   'Hosted municipal pavement graph matches the audited pilot',
 );
 checks.push('Zurich pavement pilot: published graph matches the reviewed source extract');
-const canopyResponse = await get(new URL('/data/zurich-canopy.json', site));
+const canopyResponse = await get(new URL('/data/zurich-canopy-library.json', site));
 assert.equal(canopyResponse.status, 200);
 assert.deepEqual(
   Buffer.from(await canopyResponse.arrayBuffer()),
-  fs.readFileSync('public/data/zurich-canopy.json'),
+  fs.readFileSync('public/data/zurich-canopy-library.json'),
   'Hosted canopy scenario matches the audited source derivative',
 );
-checks.push('Zurich canopy scenario: published bytes match the reviewed source derivative');
+const canopyTiles = JSON.parse(
+  fs.readFileSync('public/data/zurich-canopy-library.json', 'utf8'),
+).tiles;
+for (let first = 0; first < canopyTiles.length; first += 3)
+  await Promise.all(
+    canopyTiles.slice(first, first + 3).map(async (tile) => {
+      const response = await get(new URL(tile.url, site));
+      assert.equal(response.status, 200, tile.id);
+      assert.ok(!(response.headers.get('content-encoding') ?? '').includes('gzip'));
+      const bytes = Buffer.from(await response.arrayBuffer());
+      assert.equal(bytes.length, tile.bytes, tile.id);
+      assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'), tile.sha256, tile.id);
+    }),
+  );
+checks.push(
+  `Zurich canopy library: manifest and all ${canopyTiles.length} hosted tile hashes verified`,
+);
 for (const entry of JSON.parse(fs.readFileSync(catalogPath, 'utf8'))) {
   const url = new URL(entry.file, packOrigin);
   const response = await get(url, { headers: { Origin: 'capacitor://localhost' } });

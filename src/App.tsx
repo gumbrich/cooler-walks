@@ -608,7 +608,11 @@ export default function App() {
             ? formatDistance(route.majorRoadMeters, units, locale)
             : showShade && route.shadeMeters + route.sunMeters < 1
               ? '—'
-              : `${percentage(route)}%`}
+              : showShade &&
+                  canopyResult &&
+                  (route.shadeMeters + route.sunMeters) / route.distance < 0.95
+                ? formatDistance(showSun ? route.sunMeters : route.shadeMeters, units, locale)
+                : `${percentage(route)}%`}
           <small>
             {result?.preference === 'calm'
               ? t('near main roads')
@@ -627,7 +631,26 @@ export default function App() {
         </span>
       </div>
       <div className="exposure-bar" aria-hidden="true">
-        <span style={{ width: `${percentage(route)}%` }} />
+        <span
+          style={{
+            width: `${showShade ? (100 * (showSun ? route.sunMeters : route.shadeMeters)) / route.distance : percentage(route)}%`,
+          }}
+        />
+        {showShade && route.unknownMeters > 0 && (
+          <i
+            className="exposure-unknown"
+            style={{
+              width: `${(100 * route.unknownMeters) / route.distance}%`,
+              right: `${(100 * route.nightMeters) / route.distance}%`,
+            }}
+          />
+        )}
+        {showShade && route.nightMeters > 0 && (
+          <i
+            className="exposure-night"
+            style={{ width: `${(100 * route.nightMeters) / route.distance}%` }}
+          />
+        )}
       </div>
       <div className="route-card-caption">
         {result?.preference === 'calm'
@@ -647,6 +670,14 @@ export default function App() {
                 )
               : t('Within 15 m of a recorded tree · not canopy shade')}
       </div>
+      {showShade && canopyResult && route.unknownMeters / route.distance > 0.05 && (
+        <div className="route-unknown-note">
+          <i className="unknown-swatch" aria-hidden="true" />
+          {t('{distance} unknown', {
+            distance: formatDistance(route.unknownMeters, units, locale),
+          })}
+        </div>
+      )}
       {showShade && !!route.detailedMeters && (
         <div className="route-model-note">
           <span className="model-swatch" aria-hidden="true" />
@@ -1119,12 +1150,12 @@ export default function App() {
                         />
                       </label>
                       <p className="preference-help" id="canopy-help">
-                        {t('Full foliage assumption · Bellevue–Zürichhorn')}
+                        {t('Full foliage assumption · Zurich map')}
                       </p>
                       {canopyScenario && (
                         <p className="preference-help">
                           {t(
-                            'Potential shade, not observed shade. Outside the marked area, tree shade is unknown.',
+                            'Experimental · not field-validated. Gaps in the source data remain unknown.',
                           )}
                         </p>
                       )}
@@ -1609,7 +1640,7 @@ export default function App() {
                       <h3>{t('Tree shade pilot')}</h3>
                       <p>
                         {t(
-                          'The optional lakeshore tree pilot traces sunlight through 1 m vegetation columns from the 2021–2022 LiDAR survey, using the lowest and highest observed returns. It assumes opaque foliage between those heights. The survey was mainly leaf-off: summer crowns, gaps and light transmission remain uncertain. This is a full-foliage scenario, not a prediction of seasonal leaf cover. It is off by default and needs field validation.',
+                          'The optional tree pilot covers the supported Zurich map. It traces sunlight through 1 m vegetation columns from the 2021–2022 LiDAR survey, using the lowest and highest observed returns. It assumes opaque foliage between those heights. The survey was mainly leaf-off: summer crowns, gaps and light transmission remain uncertain. This is a full-foliage scenario, not a prediction of seasonal leaf cover. It is off by default and needs field validation.',
                         )}
                       </p>
                     </>
@@ -1733,7 +1764,7 @@ export default function App() {
                         {coveredCity.canopyPilot && (
                           <div>
                             <dt>{t('Tree shade pilot')}</dt>
-                            <dd>{t('Full foliage assumption · Bellevue–Zürichhorn')}</dd>
+                            <dd>{t('Full foliage assumption · Zurich map')}</dd>
                           </div>
                         )}
                         <div>
