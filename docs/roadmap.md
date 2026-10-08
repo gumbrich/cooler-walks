@@ -4,6 +4,8 @@
 
 ## Tree shade follow-up
 
+The [8 October assessment](tree-shade-assessment.md) does **not** approve citywide expansion of the current model. Its research value is established, but field accuracy and useful route ranking are not. Validate/calibrate the bounded pilot first; preserve the existing data-coverage threshold and keep sensitivity evidence separate from field-error estimates.
+
 Version 0.16.0 adds an optional [lakeshore canopy scenario](tree-shade-pilot.md), based on classified LiDAR and an explicit opaque/full-foliage assumption. Next: field-check tree-covered and open points at two times, recording foliage, clouds and the walking side. Then assess leaf-on geometry and light transmission. Wider coverage needs tiled canopy data or a separate download: the complete Zurich pack is already close to its 80 MiB limit. Keep the pilot off by default until evidence justifies a stronger claim.
 
 ## Pavement pilot follow-up

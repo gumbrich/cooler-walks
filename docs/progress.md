@@ -1,5 +1,9 @@
 # Progress
 
+## Tree-shade expansion assessment · 8 October 2026
+
+Judged the pilot useful for experimentation, but insufficiently validated for dependable tree-shade routing or broader coverage. The user’s conditional expansion criterion is not met. Reviewed original source documentation, model assumptions, route utility and service comparisons; added a read-only padding sensitivity audit at the same 457 original points and two clock interpretations. At 16:00 CEST, shade varies from 53.7% to 62.3% on the same 85.0% known path. This is sensitivity, not a measured error interval. TypeScript and all six focused canopy tests pass; original production classifications are reproduced exactly. No runtime, source asset, threshold or coverage change. [Decision and next validation work](tree-shade-assessment.md).
+
 ## Tree pilot compared with Vampire · 8 October 2026
 
 Compared Bellevue–Zürichhorn against two fresh SOSM walking/Vampire responses and the same pinned published shadow raster as the earlier benchmark. Live Vampire returns 1,573 m; tree mode shows our 1,594 m fastest route because canopy coverage is below the unchanged 95% recommendation threshold. On the exact 457 original sample points and the same 86.7% known path, our tree scenario gives 58.9% shade versus 45.0% in the raster. Sun/shade agreement rises only from 56.0% without trees to 58.6% with trees. Timing, source and receiver differences remain unresolved; no field-accuracy claim or model tuning follows. [Report, map, evidence and reproduction](tree-shade-service-comparison.md).

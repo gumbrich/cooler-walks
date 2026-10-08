@@ -2,6 +2,8 @@
 
 An optional **Tree shade pilot / Baumschatten-Pilot** adds a potential canopy-shadow scenario around Bellevue–Zürichhorn. It is off by default. The website, PWA and native app use the same implementation. Ordinary tree markers and the greenery indicator are unchanged.
 
+**Expansion assessment, 8 October:** retain the bounded experimental pilot. Current canopy assumptions and field accuracy do not justify citywide expansion; route-choice usefulness remains unproven on the checked journey. A padding sensitivity check moves shade from 53.7% to 62.3% on an identical known portion. [Decision, evidence and acceptance work](tree-shade-assessment.md).
+
 ## Data and coverage
 
 The input is the canton’s [classified 2021–2022 LiDAR point cloud, product 557](https://geolion.zh.ch/geodatensatz/4289), downloaded from the [official tile directory](https://maps.zh.ch/download/hoehen/2022/lidar/). The source permits free reuse and redistribution; retain Kanton Zürich attribution. The [technical report](https://geolion.zh.ch/geodatensatz/4291/pdf) describes the predominantly leaf-off acquisition. File creation and download dates are not flight dates.

@@ -1,0 +1,136 @@
+{
+  "checkedAt": "2026-10-08T07:28:41.546Z",
+  "model": "roof-mesh-tiled-ground-arrival-v8",
+  "canopyVersion": "zurich-lakeshore-canopy-2026-10-07-v1",
+  "protocol": "Same 457 fixed <=4 m lakeshore midpoints, departure snapshots at both retained clock interpretations. In-memory symmetric vertical padding 0, 0.5 (production), 1 m; retain all horizontal cells, unknown mask, opacity, source data, building calculations and decimetre rounding. Update maximum canopy elevation consistently. Not calibration and not a field-error interval.",
+  "inputSha256": {
+    "docs/validation/tree-shade-comparison/cooler-routes.json": "2969cbd3775674792dd3f03c257372f45d1bf197d0ad459798d74ddaa9344406",
+    "public/data/zurich-canopy.json": "1802b2353e86cd4b5bad55b68444d85c764f5957e13382535cc137001601f272",
+    "src/lib/canopy.ts": "a6784ecfe00f1afa3bb9a0fbd04b1845ed3a118d182836f178d08acd0c651edf",
+    "src/lib/routing.ts": "4da8a4be7dfffbce5410a8d41c88a9db156ccb5df2d6115afc45a26c50b35cd4"
+  },
+  "cases": [
+    {
+      "departure": "2024-08-01T14:00:00Z",
+      "sampleCount": 457,
+      "variants": [
+        {
+          "paddingMeters": 0,
+          "totalMeters": 1594.0699999999988,
+          "meters": {
+            "shade": 727.4899004394292,
+            "sun": 636.9104706012943,
+            "unknown": 229.66962895927608,
+            "night": 0
+          },
+          "coveragePercent": 85.59224946462354,
+          "shadePercentOfKnown": 53.319386001377424,
+          "changedMetersFromProduction": 90.29281608587489
+        },
+        {
+          "paddingMeters": 0.5,
+          "totalMeters": 1594.0699999999988,
+          "meters": {
+            "shade": 814.0067165253043,
+            "sun": 568.2540330976215,
+            "unknown": 211.809250377074,
+            "night": 0
+          },
+          "coveragePercent": 86.71267570576742,
+          "shadePercentOfKnown": 58.88951970511798,
+          "changedMetersFromProduction": 0
+        },
+        {
+          "paddingMeters": 1,
+          "totalMeters": 1594.0699999999988,
+          "meters": {
+            "shade": 873.401504789328,
+            "sun": 510.0580909874442,
+            "unknown": 210.61040422322785,
+            "night": 0
+          },
+          "coveragePercent": 86.78788232491505,
+          "shadePercentOfKnown": 63.131695891627295,
+          "changedMetersFromProduction": 65.51478826402355
+        }
+      ],
+      "commonKnownMeters": 1354.504371040728,
+      "commonCoveragePercent": 84.971448621499,
+      "commonShadePercent": [
+        {
+          "paddingMeters": 0,
+          "shadePercent": 53.708937083788456
+        },
+        {
+          "paddingMeters": 0.5,
+          "shadePercent": 58.49891332091364
+        },
+        {
+          "paddingMeters": 1,
+          "shadePercent": 62.343562568532164
+        }
+      ]
+    },
+    {
+      "departure": "2024-08-01T15:32:09.700Z",
+      "sampleCount": 457,
+      "variants": [
+        {
+          "paddingMeters": 0,
+          "totalMeters": 1594.0699999999988,
+          "meters": {
+            "shade": 763.7209853659406,
+            "sun": 472.68683967176617,
+            "unknown": 357.6621749622927,
+            "night": 0
+          },
+          "coveragePercent": 77.56295677339814,
+          "shadePercentOfKnown": 61.76934259880225,
+          "changedMetersFromProduction": 94.70909053364934
+        },
+        {
+          "paddingMeters": 0.5,
+          "totalMeters": 1594.0699999999988,
+          "meters": {
+            "shade": 858.43007589959,
+            "sun": 431.6469610536522,
+            "unknown": 303.9929630467573,
+            "night": 0
+          },
+          "coveragePercent": 80.92976073530292,
+          "shadePercentOfKnown": 66.54099339113367,
+          "changedMetersFromProduction": 0
+        },
+        {
+          "paddingMeters": 1,
+          "totalMeters": 1594.0699999999988,
+          "meters": {
+            "shade": 919.1445779106512,
+            "sun": 404.34337608633194,
+            "unknown": 270.58204600301656,
+            "night": 0
+          },
+          "coveragePercent": 83.02571116682354,
+          "shadePercentOfKnown": 69.44865460503816,
+          "changedMetersFromProduction": 60.71450201106084
+        }
+      ],
+      "commonKnownMeters": 1236.4078250377097,
+      "commonCoveragePercent": 77.56295677339833,
+      "commonShadePercent": [
+        {
+          "paddingMeters": 0,
+          "shadePercent": 61.769342598802105
+        },
+        {
+          "paddingMeters": 0.5,
+          "shadePercent": 65.08862591188387
+        },
+        {
+          "paddingMeters": 1,
+          "shadePercent": 67.29692518130071
+        }
+      ]
+    }
+  ]
+}
