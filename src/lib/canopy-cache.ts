@@ -66,7 +66,7 @@ export async function saveCanopyLibrary(
       const response = await (options.fetcher ?? fetch)(new URL(tile.url, options.url), {
         signal: options.signal,
         cache: 'no-store',
-        credentials: 'omit',
+        credentials: 'same-origin',
         redirect: 'error',
       });
       if (!response.ok || !response.body)

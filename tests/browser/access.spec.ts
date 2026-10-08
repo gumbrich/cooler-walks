@@ -1,9 +1,13 @@
 import { test, expect } from '@playwright/test';
 import { gate } from '../../netlify/edge-functions/access';
+import fs from 'node:fs';
 
 test('private access supports real browser login and logout forms', async ({ page }) => {
   // Deliberately isolated credentials and origin: no production secret enters CI.
   const origin = 'https://access.example.test';
+  const policy = fs
+    .readFileSync('public/_headers', 'utf8')
+    .match(/Content-Security-Policy: (.+)/)![1];
   await page.route(`${origin}/**`, async (route) => {
     const incoming = route.request();
     const request = new Request(incoming.url(), {
@@ -18,7 +22,7 @@ test('private access supports real browser login and logout forms', async ({ pag
           new Response(
             '<h1>Protected planner</h1><form method="post" action="/_access/logout"><button>Lock website</button></form>',
             {
-              headers: { 'Content-Type': 'text/html' },
+              headers: { 'Content-Type': 'text/html', 'Content-Security-Policy': policy },
             },
           ),
       },

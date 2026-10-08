@@ -27,6 +27,9 @@ page.on('console', (m) => {
   if (m.type() === 'error') console.log('Browser error:', m.text());
 });
 page.on('requestfailed', (r) => console.log('Request failed:', r.url(), r.failure()));
+page.on('response', (r) => {
+  if (r.status() === 401) console.log('Unauthorized request:', new URL(r.url()).pathname);
+});
 const origin = (process.env.PWA_ORIGIN ?? 'http://127.0.0.1:4173').replace(/\/$/, '');
 await authorizeBrowser(context, origin);
 await page.goto(origin + '/?view=planner');

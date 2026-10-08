@@ -45,7 +45,8 @@ export async function installArea(
   const response = await (options.fetcher ?? fetch)(url, {
     signal,
     cache: 'no-store',
-    credentials: 'omit',
+    // Private web hosting uses a same-origin session. Never send it to a separate map host.
+    credentials: 'same-origin',
     redirect: 'error',
   });
   if (!response.ok || !response.body)
