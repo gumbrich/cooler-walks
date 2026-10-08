@@ -4,9 +4,15 @@
 
 [build.environment]
   NODE_VERSION = "22"
+  VITE_PRIVATE_SITE = "1"
 
 [build.processing]
   skip_processing = true
+
+# Run before asset caching, on every path. Do not opt this function into caching.
+[[edge_functions]]
+  function = "access"
+  path = "/*"
 
 # Deployment previews remain drafts, with noindex metadata from site configuration.
 # Production requires publisher/contact/hosting details in release/site.json.
