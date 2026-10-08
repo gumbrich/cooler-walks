@@ -1,0 +1,21 @@
+{
+  "checkedAt": "2026-10-08T16:02:08.768Z",
+  "appVersion": "0.18.0",
+  "device": "CoolerWalks_Test Android 16 emulator, 2 GB",
+  "passed": [
+    "Public pavement deep link",
+    "Summer reference routes and four crossing sections",
+    "Offline reload",
+    "German",
+    "Expanded map",
+    "Zero and five-minute budgets",
+    "Moving shadows with departure time",
+    "Expanded Oerlikon junction search and shade routes offline",
+    "Return to regular Zurich with the same trip",
+    "Official addresses and explicit pavement selection offline",
+    "Retained trip across networks and waterside preference"
+  ],
+  "generalRegression": "docs/native-counts-validation.json",
+  "limitations": ["No physical-phone test", "No iOS interaction test"],
+  "pageErrors": []
+}

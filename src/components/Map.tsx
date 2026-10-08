@@ -8,6 +8,7 @@ import { coverageGeometry, inCoverage } from '../lib/coverage';
 import type { FeatureCollection, Feature } from 'geojson';
 import type { City, PlannerData, Point, RouteResult } from '../lib/types';
 import type { CounterObservation } from '../lib/vehicle-counts';
+import type { PavementChoice } from '../lib/pavement-selection';
 import type { ZoneProperties } from '../lib/traffic-zones';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import mapWorkerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url';
@@ -38,6 +39,8 @@ interface Props {
   counterObservations?: CounterObservation[];
   pavements?: boolean;
   canopyScenario?: boolean;
+  pavementSelection?: { point: Point; choices: PavementChoice[] };
+  onChoosePavement?: (choice: PavementChoice) => void;
 }
 export function WalkingMap({
   city,
@@ -58,12 +61,14 @@ export function WalkingMap({
   counterObservations,
   pavements = false,
   canopyScenario = false,
+  pavementSelection,
+  onChoosePavement,
 }: Props) {
   const { t } = useI18n();
   const container = useRef<HTMLDivElement>(null),
     map = useRef<LibreMap | null>(null),
-    callbacks = useRef({ pick, onPick, onSelect });
-  callbacks.current = { pick, onPick, onSelect };
+    callbacks = useRef({ pick, onPick, onSelect, onChoosePavement });
+  callbacks.current = { pick, onPick, onSelect, onChoosePavement };
   const baseSource = useRef<FeatureCollection | string | null>(null);
   const [ready, setReady] = useState(false),
     [failure, setFailure] = useState('');
@@ -111,7 +116,7 @@ export function WalkingMap({
         center: city.center,
         zoom: 14.4,
         minZoom: 11,
-        maxZoom: 18.5,
+        maxZoom: 20,
         maxTileCacheSize: 32,
         attributionControl: false,
         maxBounds: [
@@ -692,6 +697,33 @@ export function WalkingMap({
   useEffect(() => {
     if (map.current) map.current.getCanvas().style.cursor = pick ? 'crosshair' : '';
   }, [pick]);
+  useEffect(() => {
+    const m = map.current;
+    if (!m || !ready || !pavementSelection) return;
+    const anchor = document.createElement('div');
+    anchor.className = 'pavement-address-marker';
+    anchor.setAttribute('role', 'img');
+    anchor.setAttribute('aria-label', t('Selected address or location'));
+    const pins = [
+      new maplibregl.Marker({ element: anchor }).setLngLat(pavementSelection.point).addTo(m),
+    ];
+    pavementSelection.choices.forEach((choice, i) => {
+      const element = document.createElement('button');
+      element.type = 'button';
+      element.className = 'pavement-choice-marker';
+      element.textContent = String(i + 1);
+      element.setAttribute(
+        'aria-label',
+        t('Walking point {n}: {name}', { n: i + 1, name: choice.name || t('Unnamed path') }),
+      );
+      element.addEventListener('click', (event) => {
+        event.stopPropagation();
+        callbacks.current.onChoosePavement?.(choice);
+      });
+      pins.push(new maplibregl.Marker({ element }).setLngLat(choice.point).addTo(m));
+    });
+    return () => pins.forEach((pin) => pin.remove());
+  }, [ready, pavementSelection, t]);
   const markers = useRef<maplibregl.Marker[]>([]);
   useEffect(() => {
     const m = map.current;
@@ -779,7 +811,34 @@ export function WalkingMap({
   const lastTrip = useRef('');
   const fit = (instant = false) => {
     const m = map.current;
-    if (!m || (pending && !result)) return;
+    if (!m) return;
+    if (pavementSelection) {
+      if (!pavementSelection.choices.length) {
+        // An outside address still needs a useful map for recovery, not an
+        // empty close-up beyond the locally supported data.
+        m.fitBounds(city.bounds, {
+          padding: {
+            top: 145,
+            bottom: matchMedia('(max-width:620px)').matches ? 85 : 240,
+            left: 35,
+            right: 60,
+          },
+          duration: 0,
+        });
+        return;
+      }
+      const box = new maplibregl.LngLatBounds();
+      [pavementSelection.point, ...pavementSelection.choices.map((c) => c.point)].forEach((p) =>
+        box.extend(p),
+      );
+      m.fitBounds(box, {
+        padding: { top: 145, bottom: 85, left: 50, right: 75 },
+        maxZoom: 20,
+        duration: 0,
+      });
+      return;
+    }
+    if (pending && !result) return;
     if (result) {
       const box = new maplibregl.LngLatBounds();
       result.fastest.coordinates.forEach((p) => box.extend(p));
@@ -828,7 +887,7 @@ export function WalkingMap({
       if (expanded && pavements)
         container.current?.parentElement?.scrollIntoView({ block: 'start', behavior: 'instant' });
     }
-  }, [expanded, ready, pavements]);
+  }, [expanded, ready, pavements, pavementSelection]);
   useEffect(() => {
     // An error/cleared trip resets framing, so recovering the same endpoints
     // zooms back from the coverage overview to the walking route.
@@ -846,13 +905,13 @@ export function WalkingMap({
     return () => {
       m.off('resize', resize);
     };
-  }, [ready, result, pending, showZones]);
+  }, [ready, result, pending, showZones, pavementSelection]);
   useEffect(() => {
     if (ready && result) fit(true);
   }, [showZones, canopyScenario]);
   return (
     <div
-      className={`map-shell ${hero ? 'hero-map' : ''} ${pavements ? 'pavement-map' : ''} ${canopyScenario ? 'canopy-map' : ''} ${expanded ? 'map-expanded' : ''}`}
+      className={`map-shell ${hero ? 'hero-map' : ''} ${pavements ? 'pavement-map' : ''} ${pavementSelection ? 'pavement-selecting' : ''} ${canopyScenario ? 'canopy-map' : ''} ${expanded ? 'map-expanded' : ''}`}
       data-map-ready={ready}
       data-map-settled={settled}
     >
@@ -879,7 +938,7 @@ export function WalkingMap({
               <small className="map-pilot-label">{city.beta ? 'Beta' : t('Pilot')}</small>
             </strong>
             <span className="map-coverage-label">
-              {pavements ? t('Pavements & paths · pilot') : t(city.coverageLabel)}
+              {pavements ? t('Pavements & crossings') : t(city.coverageLabel)}
               {!pavements && (city.beta ? ' · Beta' : t(' · pilot'))}
             </span>
 
@@ -1048,7 +1107,7 @@ export function WalkingMap({
           {pavements && (
             <span>
               <i className="legend-pavement" />
-              {t('Pilot paths')}
+              {t('Mapped walking paths')}
             </span>
           )}
           {canopyScenario && (

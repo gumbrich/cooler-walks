@@ -1,3 +1,4 @@
+import { confirmGermanAddressSides } from './lib/pavement-browser.mjs';
 import { _android } from 'playwright';
 import { expect } from '@playwright/test';
 import { execFileSync } from 'node:child_process';
@@ -92,9 +93,31 @@ try {
   await device.screenshot({ path: 'docs/screenshots/android-pavements-oerlikon-de.png' });
   await page.getByRole('button', { name: 'Karte verkleinern', exact: true }).click();
   console.log('PASS expanded Oerlikon source junctions and offline shade comparison');
-  await page.getByRole('button', { name: 'Zürich-Karte', exact: true }).click();
+  await page.getByRole('button', { name: 'Standard-Fusswegnetz', exact: true }).click();
   await expect(page.locator('.route-card').first()).toBeVisible({ timeout: 60000 });
   await expect(page.locator('.route-pavement-note')).toHaveCount(0);
+  // The same address-to-pavement workflow must work from bundled data offline.
+  await page.getByRole('button', { name: 'Weg bearbeiten', exact: true }).click();
+  await from.fill('Hofwiesenstrasse 350');
+  await from.press('Enter');
+  await to.fill('Wallisellenstrasse 45');
+  await to.press('Enter');
+  await expect(page.locator('.route-card').first()).toBeVisible({ timeout: 60000 });
+  await page.getByRole('button', { name: 'Trottoirs und Querungen nutzen', exact: true }).click();
+  await expect(page.locator('.pavement-address')).toHaveText('Hofwiesenstrasse 350');
+  await expect(page.locator('.map-shell')).toHaveAttribute('data-map-settled', 'true');
+  await page.locator('.map-shell').scrollIntoViewIfNeeded();
+  await device.screenshot({ path: 'docs/screenshots/android-pavement-address-choice-de.png' });
+  await confirmGermanAddressSides(page);
+  await expect(page.locator('.trip-compact')).toContainText('Hofwiesenstrasse 350');
+  await expect(page.locator('.trip-compact')).toContainText('Wallisellenstrasse 45');
+  await page.getByRole('button', { name: 'Weg bearbeiten', exact: true }).click();
+  await page.getByRole('checkbox', { name: 'Wasser bevorzugen', exact: true }).check();
+  await expect(page.locator('.route-card').first()).toBeVisible({ timeout: 60000 });
+  await page.getByRole('button', { name: 'Routen anzeigen', exact: true }).click();
+  await page.locator('.map-shell').scrollIntoViewIfNeeded();
+  await device.screenshot({ path: 'docs/screenshots/android-pavement-address-route-de.png' });
+  console.log('PASS offline address side selection, retained trip and waterside preference');
   assert.deepEqual(errors, []);
   const report = {
     checkedAt: new Date().toISOString(),
@@ -109,7 +132,9 @@ try {
       'Zero and five-minute budgets',
       'Moving shadows with departure time',
       'Expanded Oerlikon junction search and shade routes offline',
-      'Return to regular Zurich at reference time',
+      'Return to regular Zurich with the same trip',
+      'Official addresses and explicit pavement selection offline',
+      'Retained trip across networks and waterside preference',
     ],
     generalRegression: 'docs/native-counts-validation.json',
     limitations: ['No physical-phone test', 'No iOS interaction test'],

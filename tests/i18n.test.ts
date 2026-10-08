@@ -53,6 +53,7 @@ describe('German interface', () => {
       'src/App.tsx',
       'src/components/Map.tsx',
       'src/components/Search.tsx',
+      'src/components/PavementPicker.tsx',
       'src/components/AreaDownloads.tsx',
       'src/components/TrafficCounts.tsx',
       'src/components/TrafficProfile.tsx',

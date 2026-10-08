@@ -14,7 +14,7 @@ The [five-walk service comparison](docs/shade-service-comparison.md) records act
 
 **Tree pilot 0.17.0:** select Zurich and enable **Tree shade pilot** (German: **Baumschatten-Pilot**) in the trip controls for potential tree shade across the supported Zurich map, with 324 streamed LiDAR-derived tiles and a complete offline-download option. It assumes opaque foliage and shows source gaps; it is not measured or field-validated summer shade. [Method, coverage, examples and reproduction](docs/tree-shade-expansion.md).
 
-**Pavement expansion 0.15.0:** 25,740 official pavement, footpath and crossing sections across the current 57.77 km² Zurich map, with junction search and direct map selection. Shade uses the existing 3D model; uncertain bridge/underpass heights stay unknown. [Open the pilot](https://coolerwalks.ch/?view=planner&network=pavements) · [source, checks and limits](docs/pavement-pilot.md). Field validation remains pending.
+**Pavements and crossings 0.18.0:** choose an address or map point, then select the reachable pavement. Your trip stays in place when switching networks. The 25,740 official path/crossing sections cover our 57.77 km² Zurich map; waterside preference is available on these paths too. [Open pavement routing](https://coolerwalks.ch/?view=planner&network=pavements) · [source, checks and limits](docs/pavement-pilot.md). Shade and current access still need field validation; traffic matching remains in the standard network.
 
 **3D library 0.13.0:** the whole supported Zurich walking area now uses detailed roofs and ground elevations. [Expansion and checks](docs/shade-library.md).
 

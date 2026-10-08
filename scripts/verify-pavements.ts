@@ -181,7 +181,7 @@ assert.throws(
       false,
       true,
     ),
-  /outside the pavement pilot/,
+  /outside the pavement coverage/,
 );
 assert.throws(
   () =>
@@ -196,7 +196,7 @@ assert.throws(
       true,
       true,
     ),
-  /Calmer-street comparison/,
+  /Traffic matching/,
 );
 // Return to the full OSM graph in the same worker/router, without stale pilot nodes.
 const normal = city.defaultJourney!.map((name) => mainPlaces.find((p) => p.name === name)!);

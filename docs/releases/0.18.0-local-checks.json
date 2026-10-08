@@ -1,0 +1,27 @@
+{
+  "version": "0.18.0",
+  "checkedAt": "2026-10-08T16:02:27.519086+00:00",
+  "checks": {
+    "typescript": true,
+    "unitModelLanguage": {
+      "files": 21,
+      "tests": 126,
+      "passed": 126
+    },
+    "browser": {
+      "tests": 32,
+      "passed": 32
+    },
+    "pavementSourceAndRoutes": true,
+    "pavementAddressWaterCases": 9,
+    "formatting": true,
+    "productionBuild": true,
+    "releasePackHashes": true,
+    "pwaUpgrade": true,
+    "androidBuild": true
+  },
+  "limitations": [
+    "Computational checks do not establish field accuracy.",
+    "No new physical-phone or iOS interaction test."
+  ]
+}

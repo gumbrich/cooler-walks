@@ -40,6 +40,8 @@ import { TrafficCounts } from './components/TrafficCounts';
 import { TrafficProfile } from './components/TrafficProfile';
 import { trafficCost } from './lib/traffic';
 import { nearbyCounts } from './lib/vehicle-counts';
+import { pavementChoices, type PavementChoice } from './lib/pavement-selection';
+import { PavementPicker } from './components/PavementPicker';
 
 type InstallEvent = Event & {
   prompt: () => Promise<void>;
@@ -187,8 +189,16 @@ export default function App() {
         planner = null;
         setDataState('ready');
         setPavements(!!pilot);
-        setStart({ name: from.name, point: from.point });
-        setEnd({ name: to.name, point: to.point });
+        setStart({
+          name: from.name,
+          point: from.point,
+          ...(pilot ? { pavement: { point: from.point } } : {}),
+        });
+        setEnd({
+          name: to.name,
+          point: to.point,
+          ...(pilot ? { pavement: { point: to.point } } : {}),
+        });
         if (!isNativeApp && city.dataUrl && import.meta.env.PROD && 'serviceWorker' in navigator) {
           const saveCity = (target: ServiceWorker | null) => {
             if (!controller.signal.aborted)
@@ -286,7 +296,14 @@ export default function App() {
     // Stop obsolete CPU work immediately, including while an address is incomplete.
     // Initialization is separate and must finish before we send cancellation.
     if (data) worker.current?.postMessage({ type: 'cancel' });
-    if (!data || !start || !end || stops.some((stop) => !stop.value) || !worker.current) {
+    if (
+      !data ||
+      !start ||
+      !end ||
+      stops.some((stop) => !stop.value) ||
+      !worker.current ||
+      (pavements && [start, ...stops.map((s) => s.value), end].some((value) => !value?.pavement))
+    ) {
       setBusy(false);
       if (data) setError('');
       return;
@@ -307,16 +324,21 @@ export default function App() {
     const timer = setTimeout(() => {
       worker.current?.postMessage({
         id,
-        start: start.point,
-        end: end.point,
+        start: pavements ? start.pavement!.point : start.point,
+        end: pavements ? end.pavement!.point : end.point,
         departure: instant,
         extra,
-        waypoints: stops.map((stop) => stop.value!.point),
+        waypoints: stops.map((stop) =>
+          pavements ? stop.value!.pavement!.point : stop.value!.point,
+        ),
         preferWater,
         preferCalm,
         sunlight,
         pavements,
         canopyScenario,
+        pavementSources: pavements
+          ? [start, ...stops.map((s) => s.value!), end].map((value) => value.pavement?.sourceId)
+          : undefined,
       });
     }, 180);
     return () => clearTimeout(timer);
@@ -382,23 +404,58 @@ export default function App() {
   const changeNetwork = () => {
     if (!data?.pavementNetwork) return;
     const next = !pavements;
-    const places = next
-      ? data.pavementNetwork.places
-      : city.defaultJourney!.map((name) => data.places.find((p) => p.name === name)!);
     setPavements(next);
-    setStart({ name: places[0].name, point: places[0].point });
-    setEnd({ name: places[1].name, point: places[1].point });
-    setStops([]);
     setPick(null);
     setPreferCalm(false);
-    setPreferWater(false);
     setError('');
     const url = new URL(location.href);
     if (next) url.searchParams.set('network', 'pavements');
     else url.searchParams.delete('network');
     history.replaceState({}, '', url);
   };
-  const searchPlaces = pavements ? (data?.pavementNetwork?.places ?? []) : (data?.places ?? []);
+  const searchPlaces = useMemo(
+    () =>
+      pavements
+        ? [
+            ...(data?.pavementNetwork?.places ?? []),
+            ...(data?.places ?? []).filter((p) => p.address),
+          ]
+        : (data?.places ?? []),
+    [pavements, data],
+  );
+  const pendingPavement = useMemo(() => {
+    if (!pavements || !data?.pavementNetwork) return null;
+    const endpoints: { target: 'start' | 'end' | number; value: Endpoint | null }[] = [
+      { target: 'start', value: start },
+      ...stops.map((s) => ({ target: s.id, value: s.value })),
+      { target: 'end', value: end },
+    ];
+    const next = endpoints.find((e) => e.value && !e.value.pavement);
+    return next?.value
+      ? {
+          ...next,
+          value: next.value,
+          choices: pavementChoices(city, data.pavementNetwork.lines, next.value.point),
+        }
+      : null;
+  }, [pavements, data, city, start, end, stops]);
+  useEffect(() => {
+    if (pendingPavement) {
+      setMapReady(true);
+      setEditing(false);
+    }
+  }, [pendingPavement]);
+  const selectPavement = (choice: PavementChoice) => {
+    if (!pendingPavement) return;
+    const value = { ...pendingPavement.value, pavement: choice };
+    if (pendingPavement.target === 'start') setStart(value);
+    else if (pendingPavement.target === 'end') setEnd(value);
+    else
+      setStops((current) =>
+        current.map((s) => (s.id === pendingPavement.target ? { ...s, value } : s)),
+      );
+    setPick(null);
+  };
   useEffect(() => {
     if (!isNativeApp) return;
     const listener = import('@capacitor/app').then(({ App: NativeApp }) =>
@@ -695,12 +752,21 @@ export default function App() {
       )}
     </button>
   );
+  const pavementSelection = useMemo(
+    () =>
+      pick === null && pendingPavement
+        ? { point: pendingPavement.value.point, choices: pendingPavement.choices }
+        : undefined,
+    [pick, pendingPavement],
+  );
   const mapProps = {
     city,
     data,
     mapData,
     pavements,
     canopyScenario,
+    pavementSelection,
+    onChoosePavement: selectPavement,
     result,
     pending: busy,
     selected,
@@ -925,11 +991,20 @@ export default function App() {
                   <div className={`network-choice ${pavements ? 'is-active' : ''}`}>
                     <button type="button" onClick={changeNetwork}>
                       <MapPin size={15} aria-hidden="true" />
-                      {pavements ? t('Zurich map') : t('Try pavement pilot')}
+                      {pavements ? t('Standard walking network') : t('Use pavements & crossings')}
                       <ArrowRight size={14} aria-hidden="true" />
                     </button>
-                    {pavements && <span>{t('Pavements & paths · pilot')}</span>}
+                    {pavements && <span>{t('Pavements & crossings')}</span>}
                   </div>
+                )}
+                {pendingPavement && pick === null && (
+                  <PavementPicker
+                    name={pendingPavement.value.name}
+                    choices={pendingPavement.choices}
+                    onChoose={selectPavement}
+                    onMap={() => chooseMap(pendingPavement.target)}
+                    units={units}
+                  />
                 )}
                 <div className="trip-compact">
                   <span>
@@ -966,7 +1041,7 @@ export default function App() {
                   <p className="search-guidance">
                     {pavements
                       ? t(
-                          'Choose a junction or tap a highlighted path. Available across the Zurich map; field checks pending.',
+                          'Enter an address or choose a point on the map, then select the side you can reach.',
                         )
                       : t(
                           city.capabilities.addresses
@@ -987,8 +1062,13 @@ export default function App() {
                         label={t('From')}
                         value={start}
                         places={searchPlaces}
-                        addresses={city.capabilities.addresses && !pavements}
+                        addresses={city.capabilities.addresses}
                         onChange={setStart}
+                        onChoosePavement={
+                          pavements && start
+                            ? () => setStart({ ...start, pavement: undefined })
+                            : undefined
+                        }
                         onPick={() => chooseMap('start')}
                       />
                       <div className="waypoint-editor">
@@ -1002,7 +1082,19 @@ export default function App() {
                               label={t('Stop {n}', { n: index + 1 })}
                               value={stop.value}
                               places={searchPlaces}
-                              addresses={city.capabilities.addresses && !pavements}
+                              addresses={city.capabilities.addresses}
+                              onChoosePavement={
+                                pavements && stop.value
+                                  ? () =>
+                                      setStops((current) =>
+                                        current.map((s) =>
+                                          s.id === stop.id
+                                            ? { ...s, value: { ...s.value!, pavement: undefined } }
+                                            : s,
+                                        ),
+                                      )
+                                  : undefined
+                              }
                               onChange={(value) =>
                                 setStops((current) =>
                                   current.map((item) =>
@@ -1058,8 +1150,13 @@ export default function App() {
                         label={t('To')}
                         value={end}
                         places={searchPlaces}
-                        addresses={city.capabilities.addresses && !pavements}
+                        addresses={city.capabilities.addresses}
                         onChange={setEnd}
+                        onChoosePavement={
+                          pavements && end
+                            ? () => setEnd({ ...end, pavement: undefined })
+                            : undefined
+                        }
                         onPick={() => chooseMap('end')}
                       />
                     </div>
@@ -1161,7 +1258,7 @@ export default function App() {
                       )}
                     </div>
                   )}
-                  {city.capabilities.water && !pavements && (
+                  {city.capabilities.water && (
                     <label className={`water-preference ${preferWater ? 'active' : ''}`}>
                       <Waves size={21} />
                       <span>
@@ -1194,6 +1291,13 @@ export default function App() {
                         }}
                       />
                     </label>
+                  )}
+                  {pavements && (
+                    <p className="preference-help">
+                      {t(
+                        'Traffic matching is not yet available for the pavement network. Use the standard walking network to compare calmer streets.',
+                      )}
+                    </p>
                   )}
                   {preferCalm && (
                     <p className="preference-help">
@@ -1541,7 +1645,7 @@ export default function App() {
                   <button onClick={() => setModal('coverage')}>
                     <span className="pilot-dot" />{' '}
                     {pavements
-                      ? t('Pavements & paths · pilot')
+                      ? t('Pavements & crossings')
                       : t('{area} pilot', { area: t(city.coverageLabel) })}
                     <Info size={13} />
                   </button>
@@ -1664,7 +1768,7 @@ export default function App() {
                   <h3>{t('Know the limits')}</h3>
                   <p>
                     {t(
-                      'At least 95% model coverage is required to compare shade or sun. “Prefer sun” ranks the known sunny share of the whole walk; unknown data cannot improve that score. It stays your choice in every season. Low sun below 10° is withheld. Outside the pavement pilot, streets may follow centrelines and cannot distinguish pavements. The pilot uses municipal walking lines; field validation is still pending. Access restrictions, closures and walking speed may differ on the ground. No wheelchair-suitability claim is made.',
+                      'At least 95% model coverage is required to compare shade or sun. “Prefer sun” ranks the known sunny share of the whole walk; unknown data cannot improve that score. It stays your choice in every season. Low sun below 10° is withheld. The standard network may follow street centrelines. Choose pavement routing to use municipal paths and mapped crossings. Shade accuracy and current access still need field checks; uncertain walking heights remain unknown. Access restrictions, closures and walking speed may differ on the ground. No wheelchair-suitability claim is made.',
                     )}
                   </p>
                 </div>

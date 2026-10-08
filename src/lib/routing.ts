@@ -281,7 +281,7 @@ export class Router {
   private selectNetwork(pavements: boolean) {
     if (pavements === this.pavementMode) return;
     if (pavements && !this.data.pavementNetwork)
-      throw new Error('The pavement pilot is unavailable for this area.');
+      throw new Error('Pavement routing is unavailable for this area.');
     if (pavements && !this.pavementGraph)
       this.pavementGraph = expandPavements(this.data.pavementNetwork!, this.city);
     const graph = pavements ? this.pavementGraph! : this.baseGraph;
@@ -410,10 +410,10 @@ export class Router {
     }
     return { exposure, lowSun, detailed };
   }
-  snap(point: Point) {
+  snap(point: Point, pavementSource?: number) {
     if (this.pavementMode && !inBounds(point, this.data.pavementNetwork!.bounds))
       throw new Error(
-        'This point is outside the pavement pilot. Choose a highlighted path or switch back to the Zurich map.',
+        'This point is outside the pavement coverage. Choose a highlighted path or use the standard walking network.',
       );
     if (!inCoverage(this.city, point))
       throw new Error(
@@ -423,6 +423,14 @@ export class Router {
     let best = -1,
       d = Infinity;
     this.points.forEach((n, i) => {
+      if (
+        this.pavementMode &&
+        pavementSource !== undefined &&
+        !this.adjacency[i].some(
+          ({ edge }) => this.data.edges[edge].pavement?.sourceId === pavementSource,
+        )
+      )
+        return;
       const next = distance(n, p);
       if (this.adjacency[i].length && next < d) {
         best = i;
@@ -558,14 +566,23 @@ export class Router {
     preferCalm = false,
     pavements = false,
     canopyScenario = false,
+    pavementSources?: (number | undefined)[],
   ): Generator<void, RouteResult, void> {
     const router = this;
     yield;
     this.selectNetwork(pavements);
+    if (
+      pavementSources &&
+      (pavementSources.length !== waypoints.length + 2 ||
+        pavementSources.some((id) => id !== undefined && !Number.isInteger(id)))
+    )
+      throw new Error('Choose a mapped walking point for each stop.');
     if (canopyScenario && (!this.city.canopyPilot || !this.canopy))
       throw new Error('The tree shade pilot could not load. Reconnect and try again.');
     if (pavements && preferCalm)
-      throw new Error('Calmer-street comparison is unavailable in the pavement pilot.');
+      throw new Error(
+        'Traffic matching is not yet available for the pavement network. Use the standard walking network to compare calmer streets.',
+      );
     if (
       preferCalm &&
       (!this.city.capabilities.trafficCalming || this.data.trafficModel !== TRAFFIC_MODEL)
@@ -579,7 +596,7 @@ export class Router {
     if (!Number.isFinite(date.getTime())) throw new Error('Choose a valid departure time.');
     const stops = [start, ...waypoints, end].map((point, i) => {
       try {
-        return this.snap(point);
+        return this.snap(point, pavements ? pavementSources?.[i] : undefined);
       } catch (e) {
         throw new Error(
           `${i === 0 ? 'Start' : i === waypoints.length + 1 ? 'Destination' : `Stop ${i}`}: ${(e as Error).message}`,

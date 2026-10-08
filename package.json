@@ -1,6 +1,6 @@
 {
   "name": "cooler-walks",
-  "version": "0.17.0",
+  "version": "0.18.0",
   "private": true,
   "type": "module",
   "engines": {
@@ -57,7 +57,7 @@
     "data:prepare:traffic:zones": "node --import tsx scripts/prepare-traffic-zones.ts",
     "data:fetch:pavements": "node --import tsx scripts/fetch-pavements.ts",
     "data:prepare:pavements": "node --import tsx scripts/prepare-pavements.ts",
-    "data:verify:pavements": "node --import tsx scripts/verify-pavements.ts && node --import tsx scripts/verify-pavement-expansion.ts",
+    "data:verify:pavements": "node --import tsx scripts/verify-pavements.ts && node --import tsx scripts/verify-pavement-expansion.ts && node --import tsx scripts/verify-pavement-selection.ts",
     "data:audit:pavements": ".venv-geo/bin/python scripts/audit-pavement-shadows.py",
     "data:compare:pavements": ".venv-geo/bin/python scripts/compare-pavement-tools.py",
     "test:native:pavements": "node scripts/verify-android-pavements.mjs",

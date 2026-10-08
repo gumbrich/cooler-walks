@@ -1,0 +1,405 @@
+{
+  "checkedAt": "2026-10-08T15:53:11.706Z",
+  "network": "zurich-pavements-2026-10-06-v2",
+  "note": "Real source paths and computational checks. Nearest options are selected explicitly by this test, not automatically by the application. No entrance-access or field-accuracy claim.",
+  "records": [
+    {
+      "names": [
+        "Hofwiesenstrasse 350",
+        "Wallisellenstrasse 45"
+      ],
+      "budget": 0,
+      "anchors": [
+        [
+          8.542566,
+          47.410517
+        ],
+        [
+          8.551766,
+          47.4108
+        ]
+      ],
+      "selected": [
+        {
+          "point": [
+            8.542519874295733,
+            47.41052130673649
+          ],
+          "sourceId": 31619,
+          "name": "Hofwiesenstrasse",
+          "distance": 3.5145848143095537
+        },
+        {
+          "point": [
+            8.551761467091621,
+            47.41072021541055
+          ],
+          "sourceId": 10577,
+          "name": "Wallisellenstrasse",
+          "distance": 8.878320001498924
+        }
+      ],
+      "fastest": {
+        "distance": 788.1891214678839,
+        "minutes": 9.852364018348549,
+        "waterMeters": 0
+      },
+      "alternative": null
+    },
+    {
+      "names": [
+        "Hofwiesenstrasse 350",
+        "Wallisellenstrasse 45"
+      ],
+      "budget": 5,
+      "anchors": [
+        [
+          8.542566,
+          47.410517
+        ],
+        [
+          8.551766,
+          47.4108
+        ]
+      ],
+      "selected": [
+        {
+          "point": [
+            8.542519874295733,
+            47.41052130673649
+          ],
+          "sourceId": 31619,
+          "name": "Hofwiesenstrasse",
+          "distance": 3.5145848143095537
+        },
+        {
+          "point": [
+            8.551761467091621,
+            47.41072021541055
+          ],
+          "sourceId": 10577,
+          "name": "Wallisellenstrasse",
+          "distance": 8.878320001498924
+        }
+      ],
+      "fastest": {
+        "distance": 788.1891214678839,
+        "minutes": 9.852364018348549,
+        "waterMeters": 0
+      },
+      "alternative": null
+    },
+    {
+      "names": [
+        "Hofwiesenstrasse 350",
+        "Wallisellenstrasse 45"
+      ],
+      "budget": 10,
+      "anchors": [
+        [
+          8.542566,
+          47.410517
+        ],
+        [
+          8.551766,
+          47.4108
+        ]
+      ],
+      "selected": [
+        {
+          "point": [
+            8.542519874295733,
+            47.41052130673649
+          ],
+          "sourceId": 31619,
+          "name": "Hofwiesenstrasse",
+          "distance": 3.5145848143095537
+        },
+        {
+          "point": [
+            8.551761467091621,
+            47.41072021541055
+          ],
+          "sourceId": 10577,
+          "name": "Wallisellenstrasse",
+          "distance": 8.878320001498924
+        }
+      ],
+      "fastest": {
+        "distance": 788.1891214678839,
+        "minutes": 9.852364018348549,
+        "waterMeters": 0
+      },
+      "alternative": null
+    },
+    {
+      "names": [
+        "Altstetterstrasse 145",
+        "Hohlstrasse 554"
+      ],
+      "budget": 0,
+      "anchors": [
+        [
+          8.486953,
+          47.388454
+        ],
+        [
+          8.489887,
+          47.390704
+        ]
+      ],
+      "selected": [
+        {
+          "point": [
+            8.486868850049815,
+            47.38848323756354
+          ],
+          "sourceId": 18887,
+          "name": "Altstetterstrasse",
+          "distance": 7.137195723993948
+        },
+        {
+          "point": [
+            8.489829797615979,
+            47.390626814205305
+          ],
+          "sourceId": 3589,
+          "name": "Hohlstrasse",
+          "distance": 9.608405222700817,
+          "sharedEndpoint": "8.489829789278987,47.390626805334115"
+        }
+      ],
+      "fastest": {
+        "distance": 507.2014984994302,
+        "minutes": 6.3400187312428775,
+        "waterMeters": 0
+      },
+      "alternative": null
+    },
+    {
+      "names": [
+        "Altstetterstrasse 145",
+        "Hohlstrasse 554"
+      ],
+      "budget": 5,
+      "anchors": [
+        [
+          8.486953,
+          47.388454
+        ],
+        [
+          8.489887,
+          47.390704
+        ]
+      ],
+      "selected": [
+        {
+          "point": [
+            8.486868850049815,
+            47.38848323756354
+          ],
+          "sourceId": 18887,
+          "name": "Altstetterstrasse",
+          "distance": 7.137195723993948
+        },
+        {
+          "point": [
+            8.489829797615979,
+            47.390626814205305
+          ],
+          "sourceId": 3589,
+          "name": "Hohlstrasse",
+          "distance": 9.608405222700817,
+          "sharedEndpoint": "8.489829789278987,47.390626805334115"
+        }
+      ],
+      "fastest": {
+        "distance": 507.2014984994302,
+        "minutes": 6.3400187312428775,
+        "waterMeters": 0
+      },
+      "alternative": null
+    },
+    {
+      "names": [
+        "Altstetterstrasse 145",
+        "Hohlstrasse 554"
+      ],
+      "budget": 10,
+      "anchors": [
+        [
+          8.486953,
+          47.388454
+        ],
+        [
+          8.489887,
+          47.390704
+        ]
+      ],
+      "selected": [
+        {
+          "point": [
+            8.486868850049815,
+            47.38848323756354
+          ],
+          "sourceId": 18887,
+          "name": "Altstetterstrasse",
+          "distance": 7.137195723993948
+        },
+        {
+          "point": [
+            8.489829797615979,
+            47.390626814205305
+          ],
+          "sourceId": 3589,
+          "name": "Hohlstrasse",
+          "distance": 9.608405222700817,
+          "sharedEndpoint": "8.489829789278987,47.390626805334115"
+        }
+      ],
+      "fastest": {
+        "distance": 507.2014984994302,
+        "minutes": 6.3400187312428775,
+        "waterMeters": 0
+      },
+      "alternative": null
+    },
+    {
+      "names": [
+        "Bahnhofquai",
+        "Bürkliplatz"
+      ],
+      "budget": 0,
+      "anchors": [
+        [
+          8.5414987,
+          47.3776445
+        ],
+        [
+          8.5415362,
+          47.3661084
+        ]
+      ],
+      "selected": [
+        {
+          "point": [
+            8.541342717777487,
+            47.37766534224276
+          ],
+          "sourceId": 7481,
+          "name": "Bahnhofquai",
+          "distance": 12.006143834337898
+        },
+        {
+          "point": [
+            8.541511682887975,
+            47.366115409239264
+          ],
+          "sourceId": 10425,
+          "name": "Bürkliplatz",
+          "distance": 2.009449160762848
+        }
+      ],
+      "fastest": {
+        "distance": 1444.5295040818237,
+        "minutes": 18.056618801022797,
+        "waterMeters": 1387.7249038853524
+      },
+      "alternative": null
+    },
+    {
+      "names": [
+        "Bahnhofquai",
+        "Bürkliplatz"
+      ],
+      "budget": 5,
+      "anchors": [
+        [
+          8.5414987,
+          47.3776445
+        ],
+        [
+          8.5415362,
+          47.3661084
+        ]
+      ],
+      "selected": [
+        {
+          "point": [
+            8.541342717777487,
+            47.37766534224276
+          ],
+          "sourceId": 7481,
+          "name": "Bahnhofquai",
+          "distance": 12.006143834337898
+        },
+        {
+          "point": [
+            8.541511682887975,
+            47.366115409239264
+          ],
+          "sourceId": 10425,
+          "name": "Bürkliplatz",
+          "distance": 2.009449160762848
+        }
+      ],
+      "fastest": {
+        "distance": 1444.5295040818237,
+        "minutes": 18.056618801022797,
+        "waterMeters": 1387.7249038853524
+      },
+      "alternative": {
+        "distance": 1818.5163612875351,
+        "minutes": 22.73145451609419,
+        "waterMeters": 1802.0013901582897
+      }
+    },
+    {
+      "names": [
+        "Bahnhofquai",
+        "Bürkliplatz"
+      ],
+      "budget": 10,
+      "anchors": [
+        [
+          8.5414987,
+          47.3776445
+        ],
+        [
+          8.5415362,
+          47.3661084
+        ]
+      ],
+      "selected": [
+        {
+          "point": [
+            8.541342717777487,
+            47.37766534224276
+          ],
+          "sourceId": 7481,
+          "name": "Bahnhofquai",
+          "distance": 12.006143834337898
+        },
+        {
+          "point": [
+            8.541511682887975,
+            47.366115409239264
+          ],
+          "sourceId": 10425,
+          "name": "Bürkliplatz",
+          "distance": 2.009449160762848
+        }
+      ],
+      "fastest": {
+        "distance": 1444.5295040818237,
+        "minutes": 18.056618801022797,
+        "waterMeters": 1387.7249038853524
+      },
+      "alternative": {
+        "distance": 1818.5163612875351,
+        "minutes": 22.73145451609419,
+        "waterMeters": 1802.0013901582897
+      }
+    }
+  ]
+}

@@ -4062,3 +4062,109 @@ html[lang='de'] .icon-text {
     gap: 7px 12px;
   }
 }
+
+/* Address anchors are not entrances: users select a mapped walking point. */
+.pavement-picker {
+  padding: 16px;
+  margin: 8px 0 20px;
+  border: 1px solid #b7c9be;
+  border-radius: 12px;
+  background: #f1f4ec;
+}
+.pavement-picker h2 {
+  margin: 0 0 8px;
+  font-size: 18px;
+}
+.pavement-picker p {
+  margin: 0 0 12px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.pavement-picker .pavement-address {
+  font-size: 14px;
+  font-weight: 600;
+}
+.pavement-options {
+  display: grid;
+  gap: 6px;
+  margin: 12px 0;
+}
+.pavement-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 52px;
+  padding: 8px;
+  border: 1px solid #c5d1c3;
+  border-radius: 8px;
+  background: #fffdf7;
+  text-align: left;
+  color: #214e3a;
+}
+.pavement-option b {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  flex: 0 0 28px;
+  border-radius: 50%;
+  background: #185a65;
+  color: white;
+}
+.pavement-option span {
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+.pavement-option small {
+  display: block;
+  margin-top: 2px;
+  font-size: 11px;
+  color: #48625a;
+}
+.pavement-option:hover {
+  background: #e5efe5;
+  border-color: #185a65;
+}
+.pavement-reselect {
+  display: block;
+  min-height: 44px;
+  padding: 6px 0;
+  color: #285b4e;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-size: 12px;
+}
+.pavement-choice-marker {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 3px solid #fffdf7;
+  background: #185a65;
+  color: white;
+  font:
+    700 16px 'DM Sans',
+    sans-serif;
+  box-shadow: 0 2px 6px #153d3533;
+  cursor: pointer;
+}
+.pavement-choice-marker:hover {
+  background: #143f46;
+}
+.pavement-address-marker {
+  width: 12px;
+  height: 12px;
+  border: 2px solid #fffdf7;
+  border-radius: 50%;
+  background: #9c561b;
+  box-shadow: 0 0 0 2px #9c561b;
+}
+
+@media (max-width: 620px) {
+  .planner-map:has(.pavement-selecting):not(:has(.map-expanded)) {
+    height: min(52svh, 420px);
+    min-height: 340px;
+  }
+}

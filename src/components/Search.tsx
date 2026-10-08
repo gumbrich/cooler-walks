@@ -8,6 +8,7 @@ export interface Endpoint {
   name: string;
   point: Point;
   address?: boolean;
+  pavement?: { point: Point; sourceId?: number; name?: string };
 }
 export function PlaceSearch({
   label,
@@ -17,6 +18,7 @@ export function PlaceSearch({
   addresses = false,
   onChange,
   onPick,
+  onChoosePavement,
 }: {
   label: string;
   city: City;
@@ -25,6 +27,7 @@ export function PlaceSearch({
   addresses?: boolean;
   onChange: (v: Endpoint | null) => void;
   onPick: () => void;
+  onChoosePavement?: () => void;
 }) {
   const { t } = useI18n();
   const cityName = city.localName;
@@ -35,7 +38,12 @@ export function PlaceSearch({
   const index = useMemo(() => indexPlaces(places, cityName), [places, cityName]);
   const options = searchPlaces(index, query);
   const select = (p: Place) => {
-    onChange({ name: p.name, point: p.point, address: p.address });
+    onChange({
+      name: p.name,
+      point: p.point,
+      address: p.address,
+      ...(p.kind === 'pavement' ? { pavement: { point: p.point, name: p.name } } : {}),
+    });
     setQuery(p.name);
     setOpen(false);
   };
@@ -108,6 +116,11 @@ export function PlaceSearch({
           <span>{t('Map')}</span>
         </button>
       </div>
+      {value?.pavement && onChoosePavement && (
+        <button type="button" className="pavement-reselect" onClick={onChoosePavement}>
+          {t('Change walking point')}
+        </button>
+      )}
       {open && (
         <ul id={`${id}-list`} role="listbox" className="search-options">
           {options.map((p, i) => (

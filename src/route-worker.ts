@@ -31,6 +31,7 @@ self.onmessage = async (
     sunlight: 'shade' | 'sun';
     pavements?: boolean;
     canopyScenario?: boolean;
+    pavementSources?: (number | undefined)[];
   }>,
 ) => {
   const m = event.data;
@@ -78,11 +79,11 @@ self.onmessage = async (
             signal: AbortSignal.timeout(30000),
           });
           if (!response.ok)
-            throw new Error('The pavement pilot could not load. Reconnect and try again.');
+            throw new Error('The pavement network could not load. Reconnect and try again.');
           data.pavementNetwork = await response.json();
         }
         if (!data.pavementNetwork)
-          throw new Error('The pavement pilot data is missing. Update the saved Zurich map.');
+          throw new Error('The pavement data is missing. Update the saved Zurich map.');
         validatePavementData(data.pavementNetwork, m.city.id, m.city.pavementPilot.version);
       }
       // Only UI data crosses to the main thread. All routing geometry is parsed
@@ -158,6 +159,7 @@ self.onmessage = async (
           m.preferCalm,
           m.pavements,
           m.canopyScenario,
+          m.pavementSources,
         ),
         () => request !== sequence,
       );

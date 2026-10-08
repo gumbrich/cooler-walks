@@ -2,7 +2,7 @@
 
 **Baum-Pilot 0.17.0:** «Baumschatten-Pilot» gilt jetzt für das gesamte unterstützte Zürcher Kartengebiet (57,77 km²). 324 Kacheln aus klassifizierten LiDAR-Punkten liefern möglichen Baumschatten unter der Annahme dichter, voller Belaubung. Datenlücken bleiben unbekannt; die Genauigkeit ist noch nicht vor Ort bestätigt. Online werden nur benötigte Kacheln geladen, ein vollständiger Zürich-Download umfasst rund 205 MB. [Methode, Abdeckung und Prüfungen](docs/tree-shade-expansion.md).
 
-**Trottoir-Pilot 0.14.0:** Rund um Talacker–Bahnhofstrasse vergleichen wir kartierte Trottoirs mit den Querungen aus dem städtischen Fusswegnetz. Der Gebäudeschatten wird auf diesen Wegen geschätzt; das Limit für zusätzliche Gehzeit gilt weiterhin. [Pilot öffnen](https://coolerwalks.ch/de/?view=planner&network=pavements) · [Daten, Prüfungen und Grenzen](docs/pavement-pilot.md). Die Prüfung vor Ort steht aus.
+**Trottoirs und Querungen 0.18.0:** Adresse oder Kartenpunkt eingeben, dann die erreichbare Gehwegseite wählen. Beim Wechsel des Fusswegnetzes bleibt die geplante Route erhalten. Die 25’740 amtlichen Weg- und Querungsabschnitte decken unser Zürcher Kartengebiet von 57,77 km² ab. «Wasser bevorzugen» ist auch hier verfügbar. [Trottoir-Routen öffnen](https://coolerwalks.ch/de/?view=planner&network=pavements) · [Daten, Prüfungen und Grenzen](docs/pavement-pilot.md). Schatten und aktuelle Zugänge sind noch nicht vor Ort validiert; Verkehrsvergleiche nutzen weiterhin das Standardnetz.
 
 Fusswege nach geschätztem Schatten, Grün, Wassernähe und Verkehrsberuhigung vergleichen.
 

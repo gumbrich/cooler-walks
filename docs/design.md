@@ -107,3 +107,7 @@ An optional leaf control uses the existing form and green palette. The small lak
 ## Partial tree-shade coverage · 0.17.0
 
 Below 95% known coverage, tree-scenario cards display estimated shaded/sunny distance instead of a percentage of a shrinking known denominator. Exposure bars use the whole walk: shade/sun are solid, unknown is hatched and labelled in metres, and any night portion is neutral. The source/coverage caption and recommendation gate remain visible. The change is shared by English, German, website, PWA and native clients.
+
+## Pavement endpoint selection · 0.18.0
+
+The optional municipal network now retains the user's trip instead of opening a demo. Address or map anchors use a compact numbered list paired with 44 px map buttons. Forest/petrol markers distinguish the walking choices from a small amber location anchor. The map zooms to street width while the user chooses, and returns to the calculated route afterwards. Text names the selected address and explains that access from it is outside the route. Source paths remain visible, including mapped crossing sections. The control uses the network's name rather than a generic pilot label; model uncertainty remains in method/coverage notes.

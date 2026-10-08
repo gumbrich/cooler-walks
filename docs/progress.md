@@ -1,5 +1,13 @@
 # Progress
 
+## Pavement planning workflow · 0.18.0
+
+The side-of-street geometry already covered the supported Zurich map. The remaining UI was a separate pilot: address search was disabled and switching networks discarded the journey. The new control is **Use pavements & crossings / Trottoirs und Querungen nutzen**. Address/map anchors now show nearby numbered walking points, selected explicitly with source-constrained snapping. Network changes preserve addresses, ordered stops, date/time and budget. Waterside ranking is available on municipal paths. No guessed entrance connection or crossing is created.
+
+The old feature label was not evidence of a smaller geographic footprint. Geometric shade/current access still need field checks; bridge/underpass height uncertainty, disconnected paths and missing side-specific traffic matching remain explicit. The paired field protocol is unchanged. [Workflow, source, checks and limits](pavement-pilot.md).
+
+TypeScript, **126 unit/model/language tests**, **32 browser scenarios**, the production build, formatting and release-pack hashes pass. Municipal-network checks retain every source edge and the original reference routes; nine new real-trip/budget cases verify address choices and waterside ranking. Actual desktop, phone and tablet captures were inspected, including missing coverage; the phone selection map was enlarged to separate the numbered choices. Production PWA installation, complete download, address-to-pavement selection offline and cache upgrades pass. Android build 17 passes the same offline pavement workflow on the dedicated 2 GB emulator. Deployment acceptance is being recorded. [Platform evidence](platform.md#pavement-address-selection--0180--native-build-17).
+
 ## Expanded Zurich tree scenario · 0.17.0
 
 Following the explicit expansion request, the optional tree-shade scenario now covers the full **57.77 km² supported Zurich walking area**. A surrounding 81 km² LiDAR library supplies 324 streamed tiles, including Oerlikon, Altstetten and Höngg. This changes geographic availability, not the field-accuracy HOLD. Other cities and walking boundaries are unchanged. [Extent, source, delivery and limitations](tree-shade-expansion.md).

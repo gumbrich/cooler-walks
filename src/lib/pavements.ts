@@ -119,7 +119,7 @@ export function validatePavementData(data: PavementData, cityId: string, version
     data.bounds[0] >= data.bounds[2] ||
     data.bounds[1] >= data.bounds[3]
   )
-    throw new Error('The pavement pilot data is incompatible. Reload the app.');
+    throw new Error('The pavement data is incompatible. Reload the app.');
   const ids = new Set<number>();
   for (const [id, name, flags, deltas] of data.paths) {
     if (
@@ -171,7 +171,7 @@ export function validatePavements(data: PavementNetwork, cityId: string, version
     data.lines?.type !== 'FeatureCollection' ||
     !data.lines.features.length
   )
-    throw new Error('The pavement pilot data is incompatible. Reload the app.');
+    throw new Error('The pavement data is incompatible. Reload the app.');
   const ids = new Set(data.lines.features.map((line) => line.properties.sourceId));
   for (const node of data.nodes) {
     const p = node.point;

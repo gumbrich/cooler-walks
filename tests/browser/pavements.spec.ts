@@ -52,7 +52,7 @@ test('expanded pavement search reaches Oerlikon and shows the whole supported ma
   });
 });
 
-test('pavement pilot compares real routes, preserves the time budget and returns to Zurich', async ({
+test('pavements compare real routes and preserve the trip and time budget across networks', async ({
   page,
 }) => {
   await page.clock.setFixedTime(new Date('2026-06-21T12:00:00Z'));
@@ -75,14 +75,14 @@ test('pavement pilot compares real routes, preserves the time budget and returns
   await page.getByRole('slider', { name: 'Departure time', exact: true }).fill('1080');
   await expect(page.locator('.route-card')).toHaveCount(1);
   await expect(page.locator('.route-card')).toContainText('76%');
-  await page.getByRole('button', { name: 'Zurich map', exact: true }).click();
+  await page.getByRole('button', { name: 'Standard walking network', exact: true }).click();
   await expect(page.getByRole('combobox', { name: 'From', exact: true })).toHaveValue(
-    'Bahnhofquai',
+    'Talacker / Pelikanstrasse',
   );
   await expect(page.locator('.route-pavement-note')).toHaveCount(0);
   await expect(page.getByRole('checkbox', { name: 'Prefer calmer streets' })).toBeVisible();
   await expect(page.locator('.route-card').first()).toBeVisible();
-  await page.getByRole('button', { name: 'Try pavement pilot', exact: true }).click();
+  await page.getByRole('button', { name: 'Use pavements & crossings', exact: true }).click();
   await expect(page.locator('.route-pavement-note').first()).toBeVisible();
   await page.getByLabel('City', { exact: true }).selectOption('ch-basel');
   await expect(page.locator('.route-card').first()).toBeVisible();
@@ -90,7 +90,7 @@ test('pavement pilot compares real routes, preserves the time budget and returns
   await expect(page.locator('.route-pavement-note')).toHaveCount(0);
 });
 
-test('German phone and tablet show the pilot, reject an outside location and recover', async ({
+test('German phone and tablet show pavements, reject an outside location and recover', async ({
   page,
   context,
 }) => {
@@ -113,7 +113,12 @@ test('German phone and tablet show the pilot, reject an outside location and rec
   await page.getByRole('button', { name: 'Karte verkleinern', exact: true }).click();
   await page.getByRole('button', { name: 'Weg bearbeiten', exact: true }).click();
   await page.getByRole('button', { name: 'Meinen Standort nutzen', exact: true }).click();
-  await expect(page.getByText(/Dieser Punkt liegt ausserhalb des Trottoir-Piloten/)).toBeVisible();
+  await expect(
+    page.getByText(
+      'Kein kartierter Fussweg in der Nähe. Wähle auf der Karte einen Weg im unterstützten Gebiet.',
+    ),
+  ).toBeVisible();
+  await expect(page.locator('.pavement-address')).toHaveText('Dein Standort');
   await expect(page.locator('.route-card')).toHaveCount(0);
   await page.setViewportSize({ width: 820, height: 1180 });
   await expect(page.locator('.map-shell')).toHaveAttribute('data-map-settled', 'true');
@@ -134,4 +139,62 @@ test('German phone and tablet show the pilot, reject an outside location and rec
     })
     .toBeGreaterThan(50);
   await page.screenshot({ path: 'docs/screenshots/tablet-pavement-pilot-de.png', fullPage: true });
+});
+
+test('addresses keep their names and require an explicit walking point, including after a network change', async ({
+  page,
+}) => {
+  await page.clock.setFixedTime(new Date('2026-06-21T12:00:00Z'));
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  await page.goto('/de/?view=planner');
+  await expect(page.locator('.route-card').first()).toBeVisible();
+  const from = page.getByRole('combobox', { name: 'Von', exact: true });
+  const to = page.getByRole('combobox', { name: 'Nach', exact: true });
+  await from.fill('Hofwiesenstrasse 350');
+  await from.press('Enter');
+  await to.fill('Wallisellenstrasse 45');
+  await to.press('Enter');
+  await expect(page.locator('.route-card').first()).toBeVisible();
+  await page.getByRole('button', { name: 'Trottoirs und Querungen nutzen', exact: true }).click();
+  const picker = page.getByRole('region', { name: 'Fussweg wählen', exact: true });
+  await expect(picker).toContainText('Hofwiesenstrasse 350');
+  await expect(page.locator('.route-card')).toHaveCount(0);
+  await expect(page.locator('.pavement-choice-marker')).toHaveCount(4);
+  await expect(page.locator('.map-shell')).toHaveAttribute('data-map-settled', 'true');
+  await page.screenshot({ path: 'docs/screenshots/desktop-pavement-address-choice-de.png' });
+  const accessibility = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa']).analyze();
+  expect(accessibility.violations).toEqual([]);
+  await page.locator('.pavement-option').first().click();
+  await expect(picker).toContainText('Wallisellenstrasse 45');
+  await page.setViewportSize({ width: 390, height: 844 });
+  await expect(page.locator('.map-shell')).toHaveAttribute('data-map-settled', 'true');
+  await page.screenshot({
+    path: 'docs/screenshots/phone-pavement-address-choice-de.png',
+    fullPage: true,
+  });
+  await page.locator('.pavement-choice-marker').first().click();
+  await expect(picker).toHaveCount(0);
+  await expect(page.locator('.route-pavement-note').first()).toBeVisible();
+  await expect(page.locator('.trip-compact')).toContainText('Hofwiesenstrasse 350');
+  await expect(page.locator('.trip-compact')).toContainText('Wallisellenstrasse 45');
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await page.screenshot({
+    path: 'docs/screenshots/phone-pavement-address-route-de.png',
+    fullPage: true,
+  });
+  await page.getByRole('button', { name: 'Weg bearbeiten', exact: true }).click();
+  await page.getByRole('checkbox', { name: 'Wasser bevorzugen', exact: true }).check();
+  await expect(page.locator('.route-card').first()).toBeVisible();
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  await page.getByRole('button', { name: 'Standard-Fusswegnetz', exact: true }).click();
+  await expect(from).toHaveValue('Hofwiesenstrasse 350');
+  await expect(to).toHaveValue('Wallisellenstrasse 45');
+  await expect(page.locator('.route-card').first()).toBeVisible();
+  await page.getByRole('button', { name: 'Trottoirs und Querungen nutzen', exact: true }).click();
+  await expect(page.locator('.route-pavement-note').first()).toBeVisible();
+  // A newly searched address needs a new choice; the previous side is not reused.
+  await from.fill('Hofwiesenstrasse 340');
+  await from.press('Enter');
+  await expect(picker).toContainText('Hofwiesenstrasse 340');
+  await expect(page.locator('.route-card')).toHaveCount(0);
 });
