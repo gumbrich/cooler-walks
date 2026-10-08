@@ -38,6 +38,8 @@ At 16:00 the card shows **59% potential shade over the known 88% of the walk**. 
 
 ## Validation and remaining issues
 
+The [8 October lakeshore comparison with Vampire Routing](tree-shade-service-comparison.md) reuses the original 457 path samples. At 16:00 CEST, trees narrow the total-shade gap but improve same-point agreement only from 56.0% to 58.6% on the same 86.7% known portion. This does not establish field accuracy; Vampire's clock and deployed raster identity remain unresolved.
+
 - Synthetic tests compare thousands of sun rays against an independent analytic ray-box intersection, including opposite directions, crown-understorey space, zenith, gaps, boundaries, invalid data and low sun.
 - An independent raw-LAS check verifies 69 selected columns across all 15 source tiles, including vegetation envelopes, observed non-vegetation and scan gaps. [Pinned original-return reference](../tests/fixtures/canopy-source-reference.json). This verifies ingestion, not the real crown boundary or tree presence today.
 - Seven real-route checks retain duration bounds, arrival-time changes, separate contributions, unknown accounting and unchanged building-only behaviour. Public download integrity uses a size bound and SHA-256. Offline packs carry the same versioned asset.

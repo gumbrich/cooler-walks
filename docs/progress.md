@@ -1,5 +1,9 @@
 # Progress
 
+## Tree pilot compared with Vampire · 8 October 2026
+
+Compared Bellevue–Zürichhorn against two fresh SOSM walking/Vampire responses and the same pinned published shadow raster as the earlier benchmark. Live Vampire returns 1,573 m; tree mode shows our 1,594 m fastest route because canopy coverage is below the unchanged 95% recommendation threshold. On the exact 457 original sample points and the same 86.7% known path, our tree scenario gives 58.9% shade versus 45.0% in the raster. Sun/shade agreement rises only from 56.0% without trees to 58.6% with trees. Timing, source and receiver differences remain unresolved; no field-accuracy claim or model tuning follows. [Report, map, evidence and reproduction](tree-shade-service-comparison.md).
+
 ## Optional lakeshore tree shade · 0.16.0
 
 Added an opt-in Bellevue–Zürichhorn canopy scenario based on classified 2021–2022 LiDAR. Its 1 m vegetation envelopes preserve lower/upper observed heights, source gaps and the existing buildings-only mode. EN/DE controls, a mapped source boundary, separate building/tree contributions and visible full-foliage assumptions are shared by the website/PWA/native app. Below 95% coverage, it shows partial estimates without claiming a shade recommendation. The 16:00 reference walk has 88% coverage; the 10:00 walk has 96%. [Method, exact figures and limitations](tree-shade-pilot.md).

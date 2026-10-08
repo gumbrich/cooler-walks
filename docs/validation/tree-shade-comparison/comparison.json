@@ -1,0 +1,368 @@
+{
+  "case": {
+    "id": "lakeshore",
+    "from": "Bellevue",
+    "to": "Z\u00fcrichhorn",
+    "a": [8.5443354, 47.3668209],
+    "b": [8.5520945, 47.3543016],
+    "setting": "Treed lakeshore and open water edge"
+  },
+  "model": "roof-mesh-tiled-ground-arrival-v8",
+  "canopyVersion": "zurich-lakeshore-canopy-2026-10-07-v1",
+  "externalFetchedAt": {
+    "foot": "2026-10-08T07:08:11.597337+00:00",
+    "vampire": "2026-10-08T07:08:11.642457+00:00"
+  },
+  "raster": {
+    "sha256": "cfc33982cb2177c5d6304ea5a4f26c390ccda789463d0e74e89478e8414e188b",
+    "header": {
+      "ncols": 5962.0,
+      "nrows": 4049.0,
+      "xllcorner": 8.47079282121,
+      "yllcorner": 47.340983157973,
+      "cellsize": 2.2522909e-5,
+      "nodata_value": -9999.0
+    },
+    "url": "https://raw.githubusercontent.com/sosm/cbf-routing-profiles/6b45390967718a4b785af11222fd0dc2688eeeac/vampire/shadows_zurich_city.asc",
+    "classification": "Published <100 shade proxy. This is our resampling of the pinned artifact, not a percentage returned by the live service."
+  },
+  "timeLimitation": "The author's presentation specifies 1 August 2024 at 16:00; the public raster does not encode civil_time. Compare 16:00 CEST and the earlier independent SPA-derived 16:00 local-solar-time interpretation at the central pilot. No interpretation is asserted correct.",
+  "routeComparison": {
+    "coolerArrivalTime": {
+      "building": {
+        "distance": 1964.2599999999993,
+        "minutes": 24.55324999999999,
+        "shadeMeters": 1076.8365079365083,
+        "canopyShadeMeters": 0,
+        "sunMeters": 844.9034920634925,
+        "unknownMeters": 42.519999999999996,
+        "mode": "shade",
+        "coveragePercent": 97.8353171168787,
+        "shadePercentOfKnown": 56.034453564816666,
+        "extraMinutes": 4.627374999999994
+      },
+      "tree": {
+        "distance": 1594.0699999999997,
+        "minutes": 19.925874999999998,
+        "shadeMeters": 826.1967142857147,
+        "canopyShadeMeters": 765.750047619048,
+        "sunMeters": 572.5018253968252,
+        "unknownMeters": 195.37146031746025,
+        "mode": "greenery",
+        "coveragePercent": 87.7438594090937,
+        "shadePercentOfKnown": 59.068962385077995,
+        "extraMinutes": 0.0
+      }
+    },
+    "sosmFootMeters": 1606.5,
+    "vampireMeters": 1572.7,
+    "coolerWithin8mOfVampirePercent": 71.34215448582788,
+    "vampireWithin8mOfCoolerPercent": 72.86530983481505
+  },
+  "samePointSnapshots": [
+    {
+      "departure": "2024-08-01T14:00:00Z",
+      "sampleCount": 457,
+      "routeMeters": 1594.0699999999988,
+      "wholePathMeters": {
+        "building": {
+          "shade": 32.32818181818182,
+          "sun": 1561.7418181818182,
+          "unknown": 0,
+          "night": 0
+        },
+        "tree": {
+          "shade": 814.0067165253048,
+          "sun": 568.2540330976213,
+          "unknown": 211.8092503770739,
+          "night": 0
+        },
+        "vampire": {
+          "shade": 671.0739214633405,
+          "sun": 922.9960785366594,
+          "unknown": 0,
+          "night": 0
+        }
+      },
+      "threeWayComparableMeters": 1382.2607496229261,
+      "threeWayCoveragePercent": 86.71267570576745,
+      "commonSupport": {
+        "building": {
+          "meters": 1382.260749622926,
+          "coolerShadePercent": 2.338790407453933,
+          "vampireRasterShadePercent": 44.95508988868385,
+          "agreementPercent": 55.95946368993464,
+          "matrixMetersCoolerThenVampire": {
+            "sun/shade": 598.9117140041333,
+            "sun/sun": 751.0208538006108,
+            "shade/sun": 9.843333333333334,
+            "shade/shade": 22.484848484848484
+          }
+        },
+        "tree": {
+          "meters": 1382.2607496229268,
+          "coolerShadePercent": 58.88951970511797,
+          "vampireRasterShadePercent": 44.95508988868382,
+          "agreementPercent": 58.57363182449292,
+          "matrixMetersCoolerThenVampire": {
+            "shade/shade": 431.391425864985,
+            "shade/sun": 382.61529066032034,
+            "sun/sun": 378.2488964736244,
+            "sun/shade": 190.00513662399695
+          }
+        }
+      },
+      "pairwiseSupport": {
+        "building": {
+          "meters": 1594.07,
+          "coolerShadePercent": 2.0280277414531245,
+          "vampireRasterShadePercent": 42.09814634635496,
+          "agreementPercent": 58.69488753242797,
+          "matrixMetersCoolerThenVampire": {
+            "sun/shade": 648.5890729784924,
+            "sun/sun": 913.1527452033258,
+            "shade/sun": 9.843333333333334,
+            "shade/shade": 22.484848484848484
+          }
+        },
+        "tree": {
+          "meters": 1382.2607496229268,
+          "coolerShadePercent": 58.88951970511797,
+          "vampireRasterShadePercent": 44.95508988868382,
+          "agreementPercent": 58.57363182449292,
+          "matrixMetersCoolerThenVampire": {
+            "shade/shade": 431.391425864985,
+            "shade/sun": 382.61529066032034,
+            "sun/sun": 378.2488964736244,
+            "sun/shade": 190.00513662399695
+          }
+        }
+      },
+      "newAgreementMeters": 408.9065773801362,
+      "newDisagreementMeters": 372.77195732698675,
+      "withheldByCanopyMeters": 211.8092503770739,
+      "longestDisagreementRuns": [
+        {
+          "kind": "sun/shade",
+          "fromMeters": 1362.369999999996,
+          "toMeters": 1385.4266666666626,
+          "startSample": [8.551199558408971, 47.356144758839],
+          "endSample": [8.551155591731924, 47.35597389217367],
+          "meters": 23.056666666666615
+        },
+        {
+          "kind": "shade/sun",
+          "fromMeters": 10.08,
+          "toMeters": 32.32,
+          "startSample": [8.54442014178323, 47.36673051996586],
+          "endSample": [8.544530475301734, 47.36658163111054],
+          "meters": 22.240000000000002
+        },
+        {
+          "kind": "shade/sun",
+          "fromMeters": 69.57599999999996,
+          "toMeters": 89.31599999999993,
+          "startSample": [8.544764946423626, 47.36624848392354],
+          "endSample": [8.54484260695241, 47.366116604002514],
+          "meters": 19.739999999999966
+        },
+        {
+          "kind": "shade/sun",
+          "fromMeters": 1081.449999999998,
+          "toMeters": 1101.1749999999977,
+          "startSample": [8.550287446400281, 47.35819420892847],
+          "endSample": [8.550380146123786, 47.358067008878805],
+          "meters": 19.72499999999968
+        },
+        {
+          "kind": "sun/shade",
+          "fromMeters": 951.9954545454539,
+          "toMeters": 967.7128571428565,
+          "startSample": [8.549526422103856, 47.359238767942664],
+          "endSample": [8.549598201387724, 47.359141273148964],
+          "meters": 15.71740259740261
+        },
+        {
+          "kind": "sun/shade",
+          "fromMeters": 874.2638461538459,
+          "toMeters": 886.2199999999998,
+          "startSample": [8.549068220156675, 47.35985531272557],
+          "endSample": [8.549120933407545, 47.35978305884148],
+          "meters": 11.956153846153939
+        },
+        {
+          "kind": "shade/sun",
+          "fromMeters": 432.47153846153833,
+          "toMeters": 444.40461538461517,
+          "startSample": [8.546541166553226, 47.363215958910885],
+          "endSample": [8.546579674101189, 47.36314935888958],
+          "meters": 11.93307692307684
+        },
+        {
+          "kind": "shade/sun",
+          "fromMeters": 124.84799999999987,
+          "toMeters": 136.6919999999999,
+          "startSample": [8.545036756592236, 47.365786903948404],
+          "endSample": [8.54507558623184, 47.365720963894475],
+          "meters": 11.844000000000023
+        }
+      ]
+    },
+    {
+      "departure": "2024-08-01T15:32:09.700Z",
+      "sampleCount": 457,
+      "routeMeters": 1594.0699999999988,
+      "wholePathMeters": {
+        "building": {
+          "shade": 139.2087912087912,
+          "sun": 1454.8612087912088,
+          "unknown": 0,
+          "night": 0
+        },
+        "tree": {
+          "shade": 858.4300758995906,
+          "sun": 431.64696105365226,
+          "unknown": 303.99296304675715,
+          "night": 0
+        },
+        "vampire": {
+          "shade": 671.0739214633405,
+          "sun": 922.9960785366594,
+          "unknown": 0,
+          "night": 0
+        }
+      },
+      "threeWayComparableMeters": 1290.077036953243,
+      "threeWayCoveragePercent": 80.92976073530296,
+      "commonSupport": {
+        "building": {
+          "meters": 1290.0770369532434,
+          "coolerShadePercent": 10.790734756240498,
+          "vampireRasterShadePercent": 46.49372251206671,
+          "agreementPercent": 60.533476468265626,
+          "matrixMetersCoolerThenVampire": {
+            "sun/shade": 484.8723019553981,
+            "sun/sun": 665.995943789054,
+            "shade/sun": 24.276255411255413,
+            "shade/shade": 114.93253579753583
+          }
+        },
+        "tree": {
+          "meters": 1290.0770369532434,
+          "coolerShadePercent": 66.54099339113365,
+          "vampireRasterShadePercent": 46.49372251206671,
+          "agreementPercent": 63.39128853358484,
+          "matrixMetersCoolerThenVampire": {
+            "shade/shade": 492.97716674991705,
+            "shade/sun": 365.45290914967416,
+            "sun/sun": 324.81929005063563,
+            "sun/shade": 106.82767100301663
+          }
+        }
+      },
+      "pairwiseSupport": {
+        "building": {
+          "meters": 1594.0700000000002,
+          "coolerShadePercent": 8.732915819806609,
+          "vampireRasterShadePercent": 42.09814634635496,
+          "agreementPercent": 63.58894897482166,
+          "matrixMetersCoolerThenVampire": {
+            "sun/shade": 556.1413856658052,
+            "sun/sun": 898.7198231254038,
+            "shade/sun": 24.276255411255413,
+            "shade/shade": 114.93253579753583
+          }
+        },
+        "tree": {
+          "meters": 1290.0770369532434,
+          "coolerShadePercent": 66.54099339113365,
+          "vampireRasterShadePercent": 46.49372251206671,
+          "agreementPercent": 63.39128853358484,
+          "matrixMetersCoolerThenVampire": {
+            "shade/shade": 492.97716674991705,
+            "shade/sun": 365.45290914967416,
+            "sun/sun": 324.81929005063563,
+            "sun/shade": 106.82767100301663
+          }
+        }
+      },
+      "newAgreementMeters": 378.04463095238094,
+      "newDisagreementMeters": 341.17665373841845,
+      "withheldByCanopyMeters": 303.99296304675715,
+      "longestDisagreementRuns": [
+        {
+          "kind": "shade/sun",
+          "fromMeters": 177.109,
+          "toMeters": 206.54100000000003,
+          "startSample": [8.54529171853207, 47.365351243864396],
+          "endSample": [8.545418698532258, 47.36513627386424],
+          "meters": 29.432000000000016
+        },
+        {
+          "kind": "shade/sun",
+          "fromMeters": 10.08,
+          "toMeters": 32.32,
+          "startSample": [8.54442014178323, 47.36673051996586],
+          "endSample": [8.544530475301734, 47.36658163111054],
+          "meters": 22.240000000000002
+        },
+        {
+          "kind": "sun/shade",
+          "fromMeters": 981.8499999999993,
+          "toMeters": 999.7035294117641,
+          "startSample": [8.54970242508429, 47.35899984217593],
+          "endSample": [8.549785961654864, 47.358885147130586],
+          "meters": 17.853529411764725
+        },
+        {
+          "kind": "shade/sun",
+          "fromMeters": 1308.297142857138,
+          "toMeters": 1324.251428571424,
+          "startSample": [8.551160215378852, 47.35648200179953],
+          "endSample": [8.551022343995813, 47.356429073200495],
+          "meters": 15.954285714286016
+        },
+        {
+          "kind": "sun/shade",
+          "fromMeters": 1230.3794999999957,
+          "toMeters": 1245.8374999999953,
+          "startSample": [8.551160162214309, 47.356993604075974],
+          "endSample": [8.551228966973678, 47.356900394032294],
+          "meters": 15.457999999999629
+        },
+        {
+          "kind": "shade/sun",
+          "fromMeters": 1105.1199999999976,
+          "toMeters": 1117.1083333333308,
+          "startSample": [8.550426644641275, 47.35800320330644],
+          "endSample": [8.550473589511483, 47.357938781160435],
+          "meters": 11.98833333333323
+        },
+        {
+          "kind": "shade/sun",
+          "fromMeters": 124.84799999999987,
+          "toMeters": 136.6919999999999,
+          "startSample": [8.545036756592236, 47.365786903948404],
+          "endSample": [8.54507558623184, 47.365720963894475],
+          "meters": 11.844000000000023
+        },
+        {
+          "kind": "shade/sun",
+          "fromMeters": 361.1766666666666,
+          "toMeters": 373.01866666666666,
+          "startSample": [8.546188649040237, 47.36381092560804],
+          "endSample": [8.546228409089302, 47.36374525894882],
+          "meters": 11.842000000000041
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Not field validation. Agreement is not accuracy.",
+    "Deployed Vampire raster identity and clock convention remain unknown.",
+    "Live service exposes no shade fraction. Keep API routing separate from published-raster scores.",
+    "Opaque tree scenario from predominantly leaf-off returns; summer crowns and light transmission remain uncertain.",
+    "Snapshot comparison uses 4 m historical samples; app uses arrival times and up-to-8 m samples.",
+    "Neither model was tuned; new tree unknowns remain excluded from percentages and explicit in coverage."
+  ]
+}
