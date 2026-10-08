@@ -28,6 +28,7 @@ self.onmessage = async (
     waypoints: Point[];
     preferWater: boolean;
     preferCalm: boolean;
+    preferFlat?: boolean;
     sunlight: 'shade' | 'sun';
     pavements?: boolean;
     canopyScenario?: boolean;
@@ -160,6 +161,7 @@ self.onmessage = async (
           m.pavements,
           m.canopyScenario,
           m.pavementSources,
+          m.preferFlat,
         ),
         () => request !== sequence,
       );

@@ -4168,3 +4168,80 @@ html[lang='de'] .icon-text {
     min-height: 340px;
   }
 }
+
+.route-elevation {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin: 8px 0 10px;
+  font-size: 13px;
+  font-weight: 600;
+}
+.route-elevation small {
+  font-weight: 400;
+  color: var(--muted);
+}
+.elevation-profile {
+  margin: 14px 0;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.elevation-profile summary {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 14px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+}
+.elevation-profile summary span {
+  flex: 1;
+}
+.elevation-profile[open] summary > svg:last-child {
+  transform: rotate(180deg);
+}
+.elevation-content {
+  padding: 0 14px 12px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.elevation-content p {
+  margin: 8px 0;
+}
+.elevation-chart {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  padding: 4px 0;
+}
+.elevation-chart svg {
+  width: 100%;
+  height: 100px;
+  overflow: visible;
+}
+.elevation-axis {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 12px 0;
+  font-size: 11px;
+}
+.elevation-grid {
+  fill: none;
+  stroke: #d3ddd2;
+  stroke-width: 1;
+}
+.elevation-line {
+  fill: none;
+  stroke: #315d47;
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+.elevation-distance {
+  display: flex;
+  grid-column: 2;
+  justify-content: space-between;
+  font-size: 11px;
+}

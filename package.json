@@ -1,6 +1,6 @@
 {
   "name": "cooler-walks",
-  "version": "0.18.0",
+  "version": "0.19.0",
   "private": true,
   "type": "module",
   "engines": {
@@ -13,7 +13,7 @@
     "test": "vitest run",
     "check": "tsc -b && vitest run",
     "data:prepare": "tsx scripts/prepare-data.ts && npm run data:prepare:traffic && npm run data:attach:counts && npm run data:prepare:addresses && node --import tsx scripts/attach-detailed-shade.ts",
-    "data:verify": "tsx scripts/verify-data.ts && tsx scripts/verify-cities.ts && tsx scripts/verify-coverage.ts && tsx scripts/verify-arrival-shade.ts && node --import tsx scripts/verify-detailed-shade.ts && node --import tsx scripts/verify-traffic.ts && npm run data:verify:shade-library && npm run data:verify:pavements && npm run data:verify:startup && npm run data:verify:canopy && npm run data:verify:canopy-library",
+    "data:verify": "tsx scripts/verify-data.ts && tsx scripts/verify-cities.ts && tsx scripts/verify-coverage.ts && tsx scripts/verify-arrival-shade.ts && node --import tsx scripts/verify-detailed-shade.ts && node --import tsx scripts/verify-traffic.ts && npm run data:verify:shade-library && npm run data:verify:pavements && npm run data:verify:startup && npm run data:verify:canopy && npm run data:verify:canopy-library && npm run data:verify:elevation",
     "data:audit-trees": "tsx scripts/audit-trees.ts",
     "test:e2e": "playwright test",
     "test:pwa": "node scripts/verify-pwa.mjs",
@@ -68,7 +68,9 @@
     "data:verify:canopy": "node --import tsx scripts/verify-canopy.ts",
     "test:native:canopy": "node scripts/verify-android-canopy.mjs",
     "data:prepare:canopy-library": ".venv-geo/bin/python scripts/prepare-canopy-library.py",
-    "data:verify:canopy-library": "node --import tsx scripts/verify-canopy-library.ts"
+    "data:verify:canopy-library": "node --import tsx scripts/verify-canopy-library.ts",
+    "data:verify:elevation": "node --import tsx scripts/verify-elevation.ts",
+    "test:native:elevation": "node scripts/verify-android-elevation.mjs"
   },
   "dependencies": {
     "@capacitor/android": "^8.5.2",

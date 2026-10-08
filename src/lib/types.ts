@@ -3,6 +3,7 @@ import type { ShadeLibraryData } from './shade-library';
 import type { PavementData, PavementNetwork } from './pavements';
 import type { CanopyData } from './canopy';
 import type { CanopyLibraryData } from './canopy-library';
+import type { TerrainProfile } from './elevation';
 export type Point = [number, number];
 export type Bounds = [number, number, number, number];
 export interface City {
@@ -37,6 +38,8 @@ export interface City {
   dataVersion: string | null;
   dataUrl: string | null;
   mapUrl: string | null;
+  /** Ground-grid route elevations, separate from terrain-cast shadows. Uses detailedShade tiles. */
+  elevation?: { resolution: number };
   detailedShade?: {
     format?: 'library';
     dataUrl: string;
@@ -181,6 +184,7 @@ export interface Sample {
   canopyShade?: boolean;
 }
 export interface Route {
+  terrain?: TerrainProfile;
   id: string;
   nodes: number[];
   coordinates: Point[];
@@ -219,7 +223,7 @@ export interface RouteResult {
   startSnap: number;
   endSnap: number;
   waypoints: { point: Point; snap: number }[];
-  preference: 'environment' | 'water' | 'sun' | 'calm';
+  preference: 'environment' | 'water' | 'sun' | 'calm' | 'flat';
   departure: string;
   pavementVersion?: string;
   canopyVersion?: string;

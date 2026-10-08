@@ -17,6 +17,7 @@ import {
   LocateFixed,
   MapPin,
   Moon,
+  Mountain,
   PanelTopClose,
   Plus,
   Sun,
@@ -38,6 +39,8 @@ import { cityForArea } from './lib/area-specs';
 import { AreaDownloads } from './components/AreaDownloads';
 import { TrafficCounts } from './components/TrafficCounts';
 import { TrafficProfile } from './components/TrafficProfile';
+import { ElevationProfile } from './components/ElevationProfile';
+import { formatElevation, terrainComplete } from './lib/elevation';
 import { trafficCost } from './lib/traffic';
 import { nearbyCounts } from './lib/vehicle-counts';
 import { pavementChoices, type PavementChoice } from './lib/pavement-selection';
@@ -107,6 +110,7 @@ export default function App() {
     };
   }, []);
   const [preferCalm, setPreferCalm] = useState(false);
+  const [preferFlat, setPreferFlat] = useState(false);
   const [pavements, setPavements] = useState(false);
   const [canopyScenario, setCanopyScenario] = useState(false);
   const initialPavements = useRef(
@@ -146,6 +150,7 @@ export default function App() {
     setStops([]);
     setPreferWater(false);
     setPreferCalm(false);
+    setPreferFlat(false);
     setPavements(false);
     setCanopyScenario(false);
     setCountsExpanded(false);
@@ -333,6 +338,7 @@ export default function App() {
         ),
         preferWater,
         preferCalm,
+        preferFlat,
         sunlight,
         pavements,
         canopyScenario,
@@ -349,6 +355,7 @@ export default function App() {
     stops,
     preferWater,
     preferCalm,
+    preferFlat,
     sunlight,
     pavements,
     canopyScenario,
@@ -586,19 +593,21 @@ export default function App() {
         <span>
           {busy
             ? t('Updating…')
-            : preferCalm
-              ? t('Street context is fixed. Counter profiles change with time.')
-              : preferWater
-                ? t('Water proximity does not depend on the time.')
-                : result?.mode === 'night'
-                  ? t('After dark · direct sun is not relevant')
-                  : result?.mode === 'low-sun'
-                    ? t('Low sun · building estimate unavailable')
-                    : result?.mode === 'transition'
-                      ? t('Light changes during this walk · comparison unavailable')
-                      : hasExposure || (!result && city.capabilities.buildingShade)
-                        ? t('Estimates change with departure time.')
-                        : t('Tree proximity does not depend on the time.')}
+            : preferFlat
+              ? t('Elevation does not depend on the time.')
+              : preferCalm
+                ? t('Street context is fixed. Counter profiles change with time.')
+                : preferWater
+                  ? t('Water proximity does not depend on the time.')
+                  : result?.mode === 'night'
+                    ? t('After dark · direct sun is not relevant')
+                    : result?.mode === 'low-sun'
+                      ? t('Low sun · building estimate unavailable')
+                      : result?.mode === 'transition'
+                        ? t('Light changes during this walk · comparison unavailable')
+                        : hasExposure || (!result && city.capabilities.buildingShade)
+                          ? t('Estimates change with departure time.')
+                          : t('Tree proximity does not depend on the time.')}
         </span>
         <label className="date-label">
           {t('Date')}
@@ -624,19 +633,21 @@ export default function App() {
       <div className="route-card-top">
         <span className="route-name">
           {index
-            ? result?.preference === 'calm'
-              ? t('Calmer streets')
-              : result?.preference === 'water'
-                ? t('More time near water')
-                : result?.preference === 'sun'
-                  ? canopyResult
-                    ? t('More potential sun')
-                    : t('More estimated sun')
-                  : isShade
+            ? result?.preference === 'flat'
+              ? t('Flatter route')
+              : result?.preference === 'calm'
+                ? t('Calmer streets')
+                : result?.preference === 'water'
+                  ? t('More time near water')
+                  : result?.preference === 'sun'
                     ? canopyResult
-                      ? t('More potential shade')
-                      : t('More estimated shade')
-                    : t('Greener route')
+                      ? t('More potential sun')
+                      : t('More estimated sun')
+                    : isShade
+                      ? canopyResult
+                        ? t('More potential shade')
+                        : t('More estimated shade')
+                      : t('Greener route')
             : t('Fastest walk')}
           {index > 0 && (
             <small>
@@ -687,6 +698,22 @@ export default function App() {
           </small>
         </span>
       </div>
+      {route.terrain && (
+        <div className="route-elevation">
+          <Mountain size={15} aria-hidden="true" />
+          {route.terrain.knownMeters > 0 ? (
+            <span>
+              {t('↑ {up} · ↓ {down}', {
+                up: formatElevation(route.terrain.ascent, units, locale),
+                down: formatElevation(route.terrain.descent, units, locale),
+              })}
+            </span>
+          ) : (
+            <span>{t('Elevation unknown')}</span>
+          )}
+          <small>{t(terrainComplete(route.terrain) ? 'estimated' : 'known sections only')}</small>
+        </div>
+      )}
       <div className="exposure-bar" aria-hidden="true">
         <span
           style={{
@@ -1269,7 +1296,10 @@ export default function App() {
                         checked={preferWater}
                         onChange={(e) => {
                           setPreferWater(e.target.checked);
-                          if (e.target.checked) setPreferCalm(false);
+                          if (e.target.checked) {
+                            setPreferCalm(false);
+                            setPreferFlat(false);
+                          }
                         }}
                       />
                     </label>
@@ -1287,10 +1317,42 @@ export default function App() {
                         checked={preferCalm}
                         onChange={(e) => {
                           setPreferCalm(e.target.checked);
-                          if (e.target.checked) setPreferWater(false);
+                          if (e.target.checked) {
+                            setPreferWater(false);
+                            setPreferFlat(false);
+                          }
                         }}
                       />
                     </label>
+                  )}
+                  {city.elevation && (
+                    <div>
+                      <label className={`water-preference ${preferFlat ? 'active' : ''}`}>
+                        <Mountain size={21} />
+                        <span>
+                          <strong>{t('Prefer flatter routes')}</strong>
+                        </span>
+                        <input
+                          type="checkbox"
+                          checked={preferFlat}
+                          aria-describedby={preferFlat ? 'elevation-help' : undefined}
+                          onChange={(e) => {
+                            setPreferFlat(e.target.checked);
+                            if (e.target.checked) {
+                              setPreferWater(false);
+                              setPreferCalm(false);
+                            }
+                          }}
+                        />
+                      </label>
+                      {preferFlat && (
+                        <p className="preference-help" id="elevation-help">
+                          {t(
+                            'Less uphill and downhill takes priority. Your extra-time limit still applies.',
+                          )}
+                        </p>
+                      )}
+                    </div>
                   )}
                   {pavements && (
                     <p className="preference-help">
@@ -1394,35 +1456,44 @@ export default function App() {
                       {[result.fastest, ...(result.alternative ? [result.alternative] : [])].map(
                         routeCard,
                       )}
-                      {!result.alternative && !(canopyResult && !isShade) && (
+                      {!result.alternative && (!(canopyResult && !isShade) || preferFlat) && (
                         <p className="result-note">
                           {extra === 0
                             ? t(
                                 'With no extra walking time, the fastest walk through your chosen points is your route.',
                               )
-                            : preferCalm
-                              ? result.fastest.trafficUnknownMeters / result.fastest.distance > 0.05
+                            : preferFlat
+                              ? !terrainComplete(result.fastest.terrain)
                                 ? t(
-                                    'Street-context coverage is insufficient for comparison. The fastest walk is shown.',
+                                    'Some walking heights are unknown. A flatter comparison is unavailable; the fastest walk is shown.',
                                   )
                                 : t(
-                                    'No meaningfully calmer alternative was found within your time limit.',
+                                    'No meaningfully flatter route was found within your time limit.',
                                   )
-                              : sunlight === 'sun' && !preferWater && !isShade
-                                ? t(
-                                    'A sun-based recommendation is unavailable for this time or coverage. The fastest walk is shown.',
-                                  )
-                                : preferWater
+                              : preferCalm
+                                ? result.fastest.trafficUnknownMeters / result.fastest.distance >
+                                  0.05
                                   ? t(
-                                      'No route with meaningfully more water proximity was found within your time limit.',
+                                      'Street-context coverage is insufficient for comparison. The fastest walk is shown.',
                                     )
-                                  : sunlight === 'sun'
+                                  : t(
+                                      'No meaningfully calmer alternative was found within your time limit.',
+                                    )
+                                : sunlight === 'sun' && !preferWater && !isShade
+                                  ? t(
+                                      'A sun-based recommendation is unavailable for this time or coverage. The fastest walk is shown.',
+                                    )
+                                  : preferWater
                                     ? t(
-                                        'No meaningfully sunnier alternative was found within your time limit.',
+                                        'No route with meaningfully more water proximity was found within your time limit.',
                                       )
-                                    : t(
-                                        'No meaningfully better alternative was found within your time limit.',
-                                      )}
+                                    : sunlight === 'sun'
+                                      ? t(
+                                          'No meaningfully sunnier alternative was found within your time limit.',
+                                        )
+                                      : t(
+                                          'No meaningfully better alternative was found within your time limit.',
+                                        )}
                         </p>
                       )}
                       {result.mode === 'night' && (
@@ -1462,6 +1533,7 @@ export default function App() {
                         )}
                     </>
                   )}
+                  {chosen?.terrain && <ElevationProfile route={chosen} units={units} />}
                   {chosen && result?.preference === 'calm' && city.capabilities.trafficCalming && (
                     <TrafficProfile route={chosen} units={units} />
                   )}
@@ -1771,6 +1843,18 @@ export default function App() {
                       'At least 95% model coverage is required to compare shade or sun. “Prefer sun” ranks the known sunny share of the whole walk; unknown data cannot improve that score. It stays your choice in every season. Low sun below 10° is withheld. The standard network may follow street centrelines. Choose pavement routing to use municipal paths and mapped crossings. Shade accuracy and current access still need field checks; uncertain walking heights remain unknown. Access restrictions, closures and walking speed may differ on the ground. No wheelchair-suitability claim is made.',
                     )}
                   </p>
+                </div>
+              </div>
+              <div className="method-item">
+                <Mountain size={24} />
+                <div>
+                  <h3>{t('Flatter routes')}</h3>
+                  <p>
+                    {t(
+                      'In Zurich, the cantonal ground model estimates ascent and descent. Flatter routes reduce height changes or offer gentler slopes within your extra-time limit. Comparisons require complete walking-height coverage. This preference takes priority over sun, shade, water and traffic. It does not guarantee a level or step-free path.',
+                    )}
+                  </p>
+                  <p>{t('Walking times do not yet account for slopes.')}</p>
                 </div>
               </div>
               <div className="method-item">

@@ -2,6 +2,15 @@ import type { Bounds, Edge, PilotData, Point, City, Route, RouteResult, Sample }
 import { distance, geographic, gridAzimuth, inBounds, inside, metric, rayHits } from './geo';
 import { DetailedShade } from './detailed-shade';
 import { ShadeLibrary } from './shade-library';
+import {
+  groundHeight,
+  terrainProfile,
+  terrainComplete,
+  terrainImproves,
+  compareTerrain,
+  verticalMeters,
+  type TerrainSegment,
+} from './elevation';
 import { solar, shadowVector } from './solar';
 import {
   isCalmed,
@@ -567,10 +576,15 @@ export class Router {
     pavements = false,
     canopyScenario = false,
     pavementSources?: (number | undefined)[],
+    preferFlat = false,
   ): Generator<void, RouteResult, void> {
     const router = this;
     yield;
     this.selectNetwork(pavements);
+    if (preferFlat && (!this.city.elevation || !this.detailed))
+      throw new Error('Elevation data is unavailable for this area.');
+    if (preferFlat && (preferCalm || preferWater))
+      throw new Error('Choose one route preference: flatter, calmer or waterside.');
     if (
       pavementSources &&
       (pavementSources.length !== waypoints.length + 2 ||
@@ -705,6 +719,21 @@ export class Router {
       edgeSamples.set(index, samples);
       return samples;
     };
+    // Per-pass cache: unloaded tiles must be queried again after the provisional pass.
+    const elevations = new Map<string, number | null>();
+    const height = (point: Point) => {
+      const key = point.join(',');
+      if (elevations.has(key)) return elevations.get(key)!;
+      const bounds = router.detailed!.data.bounds;
+      const z = groundHeight(
+        point,
+        (p) => router.detailed!.elevation(p),
+        [bounds[0], bounds[1]],
+        router.city.elevation!.resolution,
+      );
+      elevations.set(key, z);
+      return z;
+    };
     const buildRoute = function* (nodes: number[], id: string): Generator<void, Route, void> {
       let distance = 0,
         lowSunMeters = 0,
@@ -713,11 +742,19 @@ export class Router {
         previousCrossing: number | undefined;
       const samples: Sample[] = [],
         streets: string[] = [];
+      const terrainSegments: TerrainSegment[] = [];
       for (let n = 1; n < nodes.length; n++) {
         if (n % 8 === 1) yield;
         const index = router.adjacency[nodes[n - 1]].find((e) => e.to === nodes[n])!.edge,
           e = router.data.edges[index];
         steps ||= e.steps;
+        if (preferFlat)
+          terrainSegments.push({
+            from: router.points[nodes[n - 1]],
+            to: router.points[nodes[n]],
+            length: e.length,
+            nonGround: e.nonGround,
+          });
         const crossing = e.pavement?.crossing ? e.pavement.sourceId : undefined;
         if (crossing !== undefined && crossing !== previousCrossing) crossingCount++;
         previousCrossing = crossing;
@@ -755,6 +792,7 @@ export class Router {
         distance,
         minutes: distance / WALK_METERS_PER_MINUTE,
         samples,
+        ...(preferFlat ? { terrain: terrainProfile(terrainSegments, height) } : {}),
         steps,
         ...(pavements ? { crossingCount } : {}),
         streets,
@@ -802,7 +840,7 @@ export class Router {
         );
         if (distinct(r)) candidates.push(r);
       }
-      for (const emphasis of [0.2, 0.6, 1.5]) {
+      for (const emphasis of preferFlat ? [] : [0.2, 0.6, 1.5]) {
         const r = yield* buildRoute(
           yield* throughStops((e, i) => {
             const favorable = sample(i).reduce(
@@ -822,6 +860,39 @@ export class Router {
               0,
             );
             return e.length * emphasis + e.length - favorable + crossingChoice(e);
+          }),
+          `option-${candidates.length}`,
+        );
+        if (distinct(r)) candidates.push(r);
+      }
+    }
+    if (extra > 0 && preferFlat) {
+      const costs = new Map<number, { vertical: number; grade: number }>();
+      for (const strength of [5, 15, 40]) {
+        const r = yield* buildRoute(
+          yield* throughStops((edge, index) => {
+            let cost = costs.get(index);
+            if (!cost) {
+              const t = terrainProfile(
+                [
+                  {
+                    from: this.points[edge.a],
+                    to: this.points[edge.b],
+                    length: edge.length,
+                    nonGround: edge.nonGround,
+                  },
+                ],
+                height,
+              );
+              // Penalize unknown geometry during candidate search; never publish it as flatter.
+              cost = terrainComplete(t)
+                ? { vertical: verticalMeters(t), grade: t.gradeBurden }
+                : { vertical: edge.length, grade: edge.length };
+              costs.set(index, cost);
+            }
+            return (
+              edge.length + strength * (cost.vertical + 10 * cost.grade) + crossingChoice(edge)
+            );
           }),
           `option-${candidates.length}`,
         );
@@ -889,17 +960,19 @@ export class Router {
       (r) =>
         valid(r) &&
         r.minutes <= fastest.minutes + extra + 1e-9 &&
-        (preferCalm
-          ? trafficCovered(fastest) && trafficCovered(r)
-          : preferWater
-            ? true
-            : shade
-              ? covered(r) && comparableModel(r)
-              : true),
+        (preferFlat
+          ? terrainComplete(fastest.terrain) && terrainComplete(r.terrain)
+          : preferCalm
+            ? trafficCovered(fastest) && trafficCovered(r)
+            : preferWater
+              ? true
+              : shade
+                ? covered(r) && comparableModel(r)
+                : true),
     );
     // Require a material improvement and a genuinely different path (at least 10% new length).
     const better = eligible.filter((r) => {
-      if (canopyScenario && !shade && !preferCalm && !preferWater) return false;
+      if (canopyScenario && !shade && !preferCalm && !preferWater && !preferFlat) return false;
       const novel = r.nodes
         .slice(1)
         .reduce(
@@ -912,32 +985,38 @@ export class Router {
         );
       return (
         novel / r.distance >= 0.1 &&
-        (preferCalm
-          ? trafficImproves(r, fastest)
-          : preferWater
-            ? r.waterMeters / r.distance - fastest.waterMeters / fastest.distance >= 0.03
-            : sunlight === 'sun'
-              ? shade &&
-                r.sunMeters / r.distance -
-                  (fastest.sunMeters + fastest.unknownMeters) / fastest.distance >=
-                  0.03
-              : shade
-                ? fastest.sunMeters - (r.sunMeters + r.unknownMeters) >=
-                  40 * Math.max(1, (r.crossingCount ?? 0) - (fastest.crossingCount ?? 0))
-                : r.greenMeters / r.distance - fastest.greenMeters / fastest.distance >= 0.03)
+        (preferFlat
+          ? terrainImproves(r.terrain!, fastest.terrain!)
+          : preferCalm
+            ? trafficImproves(r, fastest)
+            : preferWater
+              ? r.waterMeters / r.distance - fastest.waterMeters / fastest.distance >= 0.03
+              : sunlight === 'sun'
+                ? shade &&
+                  r.sunMeters / r.distance -
+                    (fastest.sunMeters + fastest.unknownMeters) / fastest.distance >=
+                    0.03
+                : shade
+                  ? fastest.sunMeters - (r.sunMeters + r.unknownMeters) >=
+                    40 * Math.max(1, (r.crossingCount ?? 0) - (fastest.crossingCount ?? 0))
+                  : r.greenMeters / r.distance - fastest.greenMeters / fastest.distance >= 0.03)
       );
     });
     better.sort(
       (x, y) =>
-        (preferCalm
-          ? trafficCost(x).main - trafficCost(y).main || trafficCost(x).motor - trafficCost(y).motor
-          : preferWater
-            ? y.waterMeters / y.distance - x.waterMeters / x.distance
-            : sunlight === 'sun'
-              ? y.sunMeters / y.distance - x.sunMeters / x.distance
-              : shade
-                ? x.sunMeters + x.unknownMeters - (y.sunMeters + y.unknownMeters)
-                : y.greenMeters / y.distance - x.greenMeters / x.distance) || x.minutes - y.minutes,
+        (preferFlat
+          ? compareTerrain(x.terrain!, y.terrain!)
+          : preferCalm
+            ? trafficCost(x).main - trafficCost(y).main ||
+              trafficCost(x).motor - trafficCost(y).motor
+            : preferWater
+              ? y.waterMeters / y.distance - x.waterMeters / x.distance
+              : sunlight === 'sun'
+                ? y.sunMeters / y.distance - x.sunMeters / x.distance
+                : shade
+                  ? x.sunMeters + x.unknownMeters - (y.sunMeters + y.unknownMeters)
+                  : y.greenMeters / y.distance - x.greenMeters / x.distance) ||
+        x.minutes - y.minutes,
     );
     return {
       fastest,
@@ -951,13 +1030,15 @@ export class Router {
       waypoints: stops
         .slice(1, -1)
         .map((stop) => ({ point: this.data.nodes[stop.index].point, snap: stop.meters })),
-      preference: preferCalm
-        ? 'calm'
-        : preferWater
-          ? 'water'
-          : sunlight === 'sun'
-            ? 'sun'
-            : 'environment',
+      preference: preferFlat
+        ? 'flat'
+        : preferCalm
+          ? 'calm'
+          : preferWater
+            ? 'water'
+            : sunlight === 'sun'
+              ? 'sun'
+              : 'environment',
       departure,
       ...(pavements ? { pavementVersion: this.data.pavementNetwork!.version } : {}),
       ...(canopyScenario ? { canopyVersion: this.canopy!.data.version } : {}),

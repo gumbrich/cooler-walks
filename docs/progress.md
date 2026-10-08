@@ -1,5 +1,11 @@
 # Progress
 
+## Zurich elevation preference · 0.19.0
+
+Implemented optional flatter-route comparison on both Zurich walking networks, reusing the existing cantonal ground grid. Adds rounded ascent/descent, an expandable profile, EN/DE controls and unknown-height handling. Defaults preserve existing routing. [Method and verification](elevation.md). Local TypeScript and 133 automated checks, 42 real route/budget cases, focused EN/DE responsive/accessibility browser tests, production build and all five pack checks pass. Chrome installation/standalone/offline and Android 2 GB emulator offline elevation tests pass. Both native projects are synchronized. Field accuracy remains unvalidated.
+
+Next: field-check climbing, steps and alignment on the selected hilly routes, then investigate reliable bridge-deck heights and gradient-aware walking times.
+
 ## Pavement planning workflow · 0.18.0
 
 The side-of-street geometry already covered the supported Zurich map. The remaining UI was a separate pilot: address search was disabled and switching networks discarded the journey. The new control is **Use pavements & crossings / Trottoirs und Querungen nutzen**. Address/map anchors now show nearby numbered walking points, selected explicitly with source-constrained snapping. Network changes preserve addresses, ordered stops, date/time and budget. Waterside ranking is available on municipal paths. No guessed entrance connection or crossing is created.

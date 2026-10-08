@@ -111,3 +111,7 @@ Below 95% known coverage, tree-scenario cards display estimated shaded/sunny dis
 ## Pavement endpoint selection · 0.18.0
 
 The optional municipal network now retains the user's trip instead of opening a demo. Address or map anchors use a compact numbered list paired with 44 px map buttons. Forest/petrol markers distinguish the walking choices from a small amber location anchor. The map zooms to street width while the user chooses, and returns to the calculated route afterwards. Text names the selected address and explains that access from it is outside the route. Source paths remain visible, including mapped crossing sections. The control uses the network's name rather than a generic pilot label; model uncertainty remains in method/coverage notes.
+
+## Elevation preference · 0.19.0
+
+A single optional “Prefer flatter routes / Flachere Wege bevorzugen” row follows the existing route preferences. Enabling it clears water/calm ranking and briefly explains the priority. Cards show rounded ascent/descent beside a mountain symbol; an expandable profile below the results keeps phone planning compact. A thin forest-green line shows known terrain only, with gaps instead of invented bridge heights. Both controls and detailed explanations have EN/DE text. Unknown coverage and the fixed-speed walking-time limitation stay explicit. Source-method detail lives in the information view and project documentation.

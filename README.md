@@ -1,6 +1,6 @@
 # Cooler Walks
 
-Compare walking routes by estimated shade, greenery, nearby water and calmer streets.
+Compare walking routes by estimated shade, greenery, nearby water, calmer streets and elevation.
 
 [Deutsch](README.de.md) · English / German website and app interface
 
@@ -11,6 +11,8 @@ The [latest evidence review](docs/shadow-validation-followup.md) checks all 26 f
 The [five-walk service comparison](docs/shade-service-comparison.md) records actual Zurich routes from Cooler Walks and Vampire Routing, compares the published shade models on identical paths, and documents Shadowmap's current access limits. Includes route maps, screenshots and reproducible sample results; model agreement is not field validation.
 
 **Status:** **Zurich is the primary focus**, with an expanded 57.77 km² walking area and official address search. **Basel, Munich and Cambridge (Massachusetts) are beta**. Cambridge follows its municipal boundary; the other cities cover central areas. These remain experimental services, not field-validated citywide routing. Zurich and Munich estimate building sun/shade; Cambridge and Basel offer greenery and water proximity only. Paris remains under review. An optional tree-shade scenario covers the supported Zurich map; other cities remain unchanged. Hill shadows, weather, live closures and navigation are not included.
+
+**Elevation 0.19.0:** enable **Prefer flatter routes** in Zurich to compare less climbing or gentler slopes within your detour budget. Estimated ascent/descent and a height profile are available on both walking networks. Unknown walking heights can prevent comparison; a flatter route can still have steps. [Method and checks](docs/elevation.md).
 
 **Tree pilot 0.17.0:** select Zurich and enable **Tree shade pilot** (German: **Baumschatten-Pilot**) in the trip controls for potential tree shade across the supported Zurich map, with 324 streamed LiDAR-derived tiles and a complete offline-download option. It assumes opaque foliage and shows source gaps; it is not measured or field-validated summer shade. [Method, coverage, examples and reproduction](docs/tree-shade-expansion.md).
 

@@ -333,6 +333,24 @@ try {
   });
   await app.screenshot({ path: 'docs/screenshots/installed-pavement-pilot-de.png' });
   installation.pavementsOffline = true;
+  await app.getByRole('button', { name: 'Standard-Fusswegnetz', exact: true }).click();
+  const elevationFrom = app.getByRole('combobox', { name: 'Von', exact: true });
+  const elevationTo = app.getByRole('combobox', { name: 'Nach', exact: true });
+  await elevationFrom.fill('');
+  await elevationTo.fill('Waidbadstrasse');
+  await elevationTo.press('Enter');
+  await elevationFrom.fill('Bucheggplatz');
+  await elevationFrom.press('Enter');
+  await app.getByRole('checkbox', { name: 'Flachere Wege bevorzugen', exact: true }).check();
+  await expect(app.getByRole('button', { name: /Flacherer Weg/ })).toBeVisible({ timeout: 60000 });
+  await expect(app.locator('.route-elevation').last()).toContainText('90 m');
+  await app.locator('.elevation-profile summary').click();
+  await expect(app.locator('.elevation-chart svg')).toBeVisible();
+  await app.locator('.results').scrollIntoViewIfNeeded();
+  await app.getByRole('button', { name: 'Weg auf der Karte einpassen', exact: true }).click();
+  await expect(app.locator('.map-shell')).toHaveAttribute('data-map-settled', 'true');
+  await app.screenshot({ path: 'docs/screenshots/installed-elevation-de.png' });
+  installation.elevationOffline = true;
   await context.setOffline(false);
 } catch (e) {
   installation.error = e.message;
@@ -376,6 +394,7 @@ if (
   !installation.addressSearchOffline ||
   !installation.pavementsOffline ||
   !installation.expandedCanopyOffline ||
+  !installation.elevationOffline ||
   installation.error
 )
   process.exitCode = 1;

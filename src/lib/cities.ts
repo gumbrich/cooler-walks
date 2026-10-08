@@ -33,6 +33,7 @@ export const cities: City[] = [
     dataVersion: zurichExtract.version,
     dataUrl: '/data/zurich.json',
     mapUrl: '/data/zurich-map.geojson',
+    elevation: { resolution: 2 },
     pavementPilot: {
       dataUrl: '/data/zurich-pavements.json',
       version: 'zurich-pavements-2026-10-06-v2',

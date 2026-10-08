@@ -38,3 +38,5 @@ docs/validation/tree-shade-comparison/*-routes.json
 docs/validation/tree-shade-comparison/point-comparisons.json
 
 docs/canopy-library-*.json
+
+docs/elevation-validation.json

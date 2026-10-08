@@ -1,0 +1,1652 @@
+{
+  "checkedAt": "2026-10-08T20:45:55.000Z",
+  "model": "ground-profile-10m-1m-v1",
+  "source": "zurich-roofs-dtm-library-2026-09-30-v2",
+  "records": [
+    {
+      "names": [
+        "Rämistrasse 71",
+        "Universitätstrasse 100"
+      ],
+      "points": [
+        [
+          8.549076,
+          47.37463
+        ],
+        [
+          8.548376,
+          47.383727
+        ]
+      ],
+      "budget": 0,
+      "calculationMs": 217,
+      "fastest": {
+        "distance": 1051.7299999999998,
+        "minutes": 13.146624999999997,
+        "ascent": 36.85768508391834,
+        "descent": 0,
+        "unknownMeters": 0,
+        "gradeBurden": 1.8716176245320828,
+        "streets": [
+          "Steps",
+          "Walking path"
+        ]
+      },
+      "alternative": null
+    },
+    {
+      "names": [
+        "Rämistrasse 71",
+        "Universitätstrasse 100"
+      ],
+      "points": [
+        [
+          8.549076,
+          47.37463
+        ],
+        [
+          8.548376,
+          47.383727
+        ]
+      ],
+      "budget": 5,
+      "calculationMs": 402,
+      "fastest": {
+        "distance": 1051.7299999999998,
+        "minutes": 13.146624999999997,
+        "ascent": 36.85768508391834,
+        "descent": 0,
+        "unknownMeters": 0,
+        "gradeBurden": 1.8716176245320828,
+        "streets": [
+          "Steps",
+          "Walking path"
+        ]
+      },
+      "alternative": null
+    },
+    {
+      "names": [
+        "Rämistrasse 71",
+        "Universitätstrasse 100"
+      ],
+      "points": [
+        [
+          8.549076,
+          47.37463
+        ],
+        [
+          8.548376,
+          47.383727
+        ]
+      ],
+      "budget": 10,
+      "calculationMs": 148,
+      "fastest": {
+        "distance": 1051.7299999999998,
+        "minutes": 13.146624999999997,
+        "ascent": 36.85768508391834,
+        "descent": 0,
+        "unknownMeters": 0,
+        "gradeBurden": 1.8716176245320828,
+        "streets": [
+          "Steps",
+          "Walking path"
+        ]
+      },
+      "alternative": null
+    },
+    {
+      "names": [
+        "Central",
+        "Polyterrasse"
+      ],
+      "points": [
+        [
+          8.543971,
+          47.3770022
+        ],
+        [
+          8.5463921,
+          47.3760275
+        ]
+      ],
+      "budget": 0,
+      "calculationMs": 12,
+      "fastest": {
+        "distance": 450.52,
+        "minutes": 5.6315,
+        "ascent": 31.70008348039687,
+        "descent": 3.1517414219385387,
+        "unknownMeters": 0,
+        "gradeBurden": 6.755280838773829,
+        "streets": [
+          "Central",
+          "Walking path",
+          "Steps",
+          "Walking path",
+          "Steps",
+          "Walking path",
+          "Schienhutgasse",
+          "Walking path"
+        ]
+      },
+      "alternative": null
+    },
+    {
+      "names": [
+        "Central",
+        "Polyterrasse"
+      ],
+      "points": [
+        [
+          8.543971,
+          47.3770022
+        ],
+        [
+          8.5463921,
+          47.3760275
+        ]
+      ],
+      "budget": 5,
+      "calculationMs": 314,
+      "fastest": {
+        "distance": 450.52,
+        "minutes": 5.6315,
+        "ascent": 31.70008348039687,
+        "descent": 3.1517414219385387,
+        "unknownMeters": 0,
+        "gradeBurden": 6.755280838773829,
+        "streets": [
+          "Central",
+          "Walking path",
+          "Steps",
+          "Walking path",
+          "Steps",
+          "Walking path",
+          "Schienhutgasse",
+          "Walking path"
+        ]
+      },
+      "alternative": null
+    },
+    {
+      "names": [
+        "Central",
+        "Polyterrasse"
+      ],
+      "points": [
+        [
+          8.543971,
+          47.3770022
+        ],
+        [
+          8.5463921,
+          47.3760275
+        ]
+      ],
+      "budget": 10,
+      "calculationMs": 130,
+      "fastest": {
+        "distance": 450.52,
+        "minutes": 5.6315,
+        "ascent": 31.70008348039687,
+        "descent": 3.1517414219385387,
+        "unknownMeters": 0,
+        "gradeBurden": 6.755280838773829,
+        "streets": [
+          "Central",
+          "Walking path",
+          "Steps",
+          "Walking path",
+          "Steps",
+          "Walking path",
+          "Schienhutgasse",
+          "Walking path"
+        ]
+      },
+      "alternative": null
+    },
+    {
+      "names": [
+        "Meierhofplatz 2",
+        "Am Hönggerberg"
+      ],
+      "points": [
+        [
+          8.49999,
+          47.401563
+        ],
+        [
+          8.5099772,
+          47.4015294
+        ]
+      ],
+      "budget": 0,
+      "calculationMs": 59,
+      "fastest": {
+        "distance": 1076.2699999999998,
+        "minutes": 13.453374999999998,
+        "ascent": 86.37103271944471,
+        "descent": 1.796526649679322,
+        "unknownMeters": 0,
+        "gradeBurden": 11.038417572109143,
+        "streets": [
+          "Rebstockweg",
+          "Walking path",
+          "Bläsistrasse",
+          "Walking path",
+          "Giacomettistrasse",
+          "Obere Bläsistrasse",
+          "Am Hönggerberg",
+          "Walking path",
+          "Eichholzweg",
+          "Am Hönggerberg"
+        ]
+      },
+      "alternative": null
+    },
+    {
+      "names": [
+        "Meierhofplatz 2",
+        "Am Hönggerberg"
+      ],
+      "points": [
+        [
+          8.49999,
+          47.401563
+        ],
+        [
+          8.5099772,
+          47.4015294
+        ]
+      ],
+      "budget": 5,
+      "calculationMs": 358,
+      "fastest": {
+        "distance": 1076.2699999999998,
+        "minutes": 13.453374999999998,
+        "ascent": 86.37103271944471,
+        "descent": 1.796526649679322,
+        "unknownMeters": 0,
+        "gradeBurden": 11.038417572109143,
+        "streets": [
+          "Rebstockweg",
+          "Walking path",
+          "Bläsistrasse",
+          "Walking path",
+          "Giacomettistrasse",
+          "Obere Bläsistrasse",
+          "Am Hönggerberg",
+          "Walking path",
+          "Eichholzweg",
+          "Am Hönggerberg"
+        ]
+      },
+      "alternative": {
+        "distance": 1254.3999999999999,
+        "minutes": 15.679999999999998,
+        "ascent": 84.57450606976539,
+        "descent": 0,
+        "unknownMeters": 0,
+        "gradeBurden": 8.14738940570086,
+        "streets": [
+          "Rebstockweg",
+          "Walking path",
+          "Gässli",
+          "Walking path",
+          "Emil-Klöti-Strasse",
+          "Eichholzweg",
+          "Am Hönggerberg"
+        ]
+      }
+    },
+    {
+      "names": [
+        "Meierhofplatz 2",
+        "Am Hönggerberg"
+      ],
+      "points": [
+        [
+          8.49999,
+          47.401563
+        ],
+        [
+          8.5099772,
+          47.4015294
+        ]
+      ],
+      "budget": 10,
+      "calculationMs": 293,
+      "fastest": {
+        "distance": 1076.2699999999998,
+        "minutes": 13.453374999999998,
+        "ascent": 86.37103271944471,
+        "descent": 1.796526649679322,
+        "unknownMeters": 0,
+        "gradeBurden": 11.038417572109143,
+        "streets": [
+          "Rebstockweg",
+          "Walking path",
+          "Bläsistrasse",
+          "Walking path",
+          "Giacomettistrasse",
+          "Obere Bläsistrasse",
+          "Am Hönggerberg",
+          "Walking path",
+          "Eichholzweg",
+          "Am Hönggerberg"
+        ]
+      },
+      "alternative": {
+        "distance": 1254.3999999999999,
+        "minutes": 15.679999999999998,
+        "ascent": 84.57450606976539,
+        "descent": 0,
+        "unknownMeters": 0,
+        "gradeBurden": 8.14738940570086,
+        "streets": [
+          "Rebstockweg",
+          "Walking path",
+          "Gässli",
+          "Walking path",
+          "Emil-Klöti-Strasse",
+          "Eichholzweg",
+          "Am Hönggerberg"
+        ]
+      }
+    },
+    {
+      "names": [
+        "Bucheggplatz",
+        "Waidbadstrasse"
+      ],
+      "points": [
+        [
+          8.5330262,
+          47.3981614
+        ],
+        [
+          8.5179545,
+          47.4018184
+        ]
+      ],
+      "budget": 0,
+      "calculationMs": 63,
+      "fastest": {
+        "distance": 1547.7999999999995,
+        "minutes": 19.347499999999993,
+        "ascent": 94.51651884997239,
+        "descent": 5.954733927180996,
+        "unknownMeters": 0,
+        "gradeBurden": 12.961653966485196,
+        "streets": [
+          "Walking path",
+          "Tièchestrasse",
+          "Walking path",
+          "Steps",
+          "Walking path",
+          "Obere Waidstrasse",
+          "Walking path",
+          "Steigholzweg",
+          "Hasenrain",
+          "Waidbadstrasse"
+        ]
+      },
+      "alternative": null
+    },
+    {
+      "names": [
+        "Bucheggplatz",
+        "Waidbadstrasse"
+      ],
+      "points": [
+        [
+          8.5330262,
+          47.3981614
+        ],
+        [
+          8.5179545,
+          47.4018184
+        ]
+      ],
+      "budget": 5,
+      "calculationMs": 150,
+      "fastest": {
+        "distance": 1547.7999999999995,
+        "minutes": 19.347499999999993,
+        "ascent": 94.51651884997239,
+        "descent": 5.954733927180996,
+        "unknownMeters": 0,
+        "gradeBurden": 12.961653966485196,
+        "streets": [
+          "Walking path",
+          "Tièchestrasse",
+          "Walking path",
+          "Steps",
+          "Walking path",
+          "Obere Waidstrasse",
+          "Walking path",
+          "Steigholzweg",
+          "Hasenrain",
+          "Waidbadstrasse"
+        ]
+      },
+      "alternative": {
+        "distance": 1727.91,
+        "minutes": 21.598875,
+        "ascent": 88.56178492279139,
+        "descent": 0,
+        "unknownMeters": 0,
+        "gradeBurden": 7.694039734332655,
+        "streets": [
+          "Walking path",
+          "Tièchestrasse",
+          "Walking path",
+          "Waidfussweg",
+          "Walking path",
+          "Waidbadstrasse"
+        ]
+      }
+    },
+    {
+      "names": [
+        "Bucheggplatz",
+        "Waidbadstrasse"
+      ],
+      "points": [
+        [
+          8.5330262,
+          47.3981614
+        ],
+        [
+          8.5179545,
+          47.4018184
+        ]
+      ],
+      "budget": 10,
+      "calculationMs": 419,
+      "fastest": {
+        "distance": 1547.7999999999995,
+        "minutes": 19.347499999999993,
+        "ascent": 94.51651884997239,
+        "descent": 5.954733927180996,
+        "unknownMeters": 0,
+        "gradeBurden": 12.961653966485196,
+        "streets": [
+          "Walking path",
+          "Tièchestrasse",
+          "Walking path",
+          "Steps",
+          "Walking path",
+          "Obere Waidstrasse",
+          "Walking path",
+          "Steigholzweg",
+          "Hasenrain",
+          "Waidbadstrasse"
+        ]
+      },
+      "alternative": {
+        "distance": 1965.02,
+        "minutes": 24.56275,
+        "ascent": 88.56178492279139,
+        "descent": 0,
+        "unknownMeters": 0,
+        "gradeBurden": 6.056868132847593,
+        "streets": [
+          "Walking path",
+          "Tièchestrasse",
+          "Emil-Klöti-Strasse",
+          "Walking path",
+          "Waidbadstrasse"
+        ]
+      }
+    },
+    {
+      "names": [
+        "Milchbuck",
+        "Schaffhauserplatz 3"
+      ],
+      "points": [
+        [
+          8.5417068,
+          47.3971185
+        ],
+        [
+          8.538468,
+          47.391566
+        ]
+      ],
+      "budget": 0,
+      "calculationMs": 114,
+      "fastest": {
+        "distance": 733.41,
+        "minutes": 9.167625,
+        "ascent": 0,
+        "descent": 21.425122090724187,
+        "unknownMeters": 0,
+        "gradeBurden": 1.1626655745174777,
+        "streets": [
+          "Walking path"
+        ]
+      },
+      "alternative": null
+    },
+    {
+      "names": [
+        "Milchbuck",
+        "Schaffhauserplatz 3"
+      ],
+      "points": [
+        [
+          8.5417068,
+          47.3971185
+        ],
+        [
+          8.538468,
+          47.391566
+        ]
+      ],
+      "budget": 5,
+      "calculationMs": 347,
+      "fastest": {
+        "distance": 733.41,
+        "minutes": 9.167625,
+        "ascent": 0,
+        "descent": 21.425122090724187,
+        "unknownMeters": 0,
+        "gradeBurden": 1.1626655745174777,
+        "streets": [
+          "Walking path"
+        ]
+      },
+      "alternative": null
+    },
+    {
+      "names": [
+        "Milchbuck",
+        "Schaffhauserplatz 3"
+      ],
+      "points": [
+        [
+          8.5417068,
+          47.3971185
+        ],
+        [
+          8.538468,
+          47.391566
+        ]
+      ],
+      "budget": 10,
+      "calculationMs": 125,
+      "fastest": {
+        "distance": 733.41,
+        "minutes": 9.167625,
+        "ascent": 0,
+        "descent": 21.425122090724187,
+        "unknownMeters": 0,
+        "gradeBurden": 1.1626655745174777,
+        "streets": [
+          "Walking path"
+        ]
+      },
+      "alternative": null
+    },
+    {
+      "names": [
+        "Goldbrunnenplatz",
+        "Albisriederplatz"
+      ],
+      "points": [
+        [
+          8.5138708,
+          47.3703192
+        ],
+        [
+          8.5102958,
+          47.3780189
+        ]
+      ],
+      "budget": 0,
+      "calculationMs": 140,
+      "fastest": {
+        "distance": 1200.6100000000001,
+        "minutes": 15.007625,
+        "ascent": 0,
+        "descent": 8.008480083453435,
+        "unknownMeters": 0,
+        "gradeBurden": 0.12030887165454901,
+        "streets": [
+          "Goldbrunnenplatz",
+          "Walking path",
+          "Zurlindenstrasse",
+          "Hardaustrasse",
+          "Walking path",
+          "Albisriederplatz"
+        ]
+      },
+      "alternative": null
+    },
+    {
+      "names": [
+        "Goldbrunnenplatz",
+        "Albisriederplatz"
+      ],
+      "points": [
+        [
+          8.5138708,
+          47.3703192
+        ],
+        [
+          8.5102958,
+          47.3780189
+        ]
+      ],
+      "budget": 5,
+      "calculationMs": 306,
+      "fastest": {
+        "distance": 1200.6100000000001,
+        "minutes": 15.007625,
+        "ascent": 0,
+        "descent": 8.008480083453435,
+        "unknownMeters": 0,
+        "gradeBurden": 0.12030887165454901,
+        "streets": [
+          "Goldbrunnenplatz",
+          "Walking path",
+          "Zurlindenstrasse",
+          "Hardaustrasse",
+          "Walking path",
+          "Albisriederplatz"
+        ]
+      },
+      "alternative": null
+    },
+    {
+      "names": [
+        "Goldbrunnenplatz",
+        "Albisriederplatz"
+      ],
+      "points": [
+        [
+          8.5138708,
+          47.3703192
+        ],
+        [
+          8.5102958,
+          47.3780189
+        ]
+      ],
+      "budget": 10,
+      "calculationMs": 349,
+      "fastest": {
+        "distance": 1200.6100000000001,
+        "minutes": 15.007625,
+        "ascent": 0,
+        "descent": 8.008480083453435,
+        "unknownMeters": 0,
+        "gradeBurden": 0.12030887165454901,
+        "streets": [
+          "Goldbrunnenplatz",
+          "Walking path",
+          "Zurlindenstrasse",
+          "Hardaustrasse",
+          "Walking path",
+          "Albisriederplatz"
+        ]
+      },
+      "alternative": null
+    },
+    {
+      "names": [
+        "Bahnhofquai",
+        "Bürkliplatz"
+      ],
+      "points": [
+        [
+          8.5414987,
+          47.3776445
+        ],
+        [
+          8.5415362,
+          47.3661084
+        ]
+      ],
+      "budget": 0,
+      "calculationMs": 237,
+      "fastest": {
+        "distance": 1511.2300000000007,
+        "minutes": 18.89037500000001,
+        "ascent": 7.152684897290328,
+        "descent": 7.183972931685446,
+        "unknownMeters": 73.52999999999997,
+        "gradeBurden": 1.168310777479531,
+        "streets": [
+          "Bahnhofquai",
+          "Walking path",
+          "Bahnhofquai",
+          "Walking path",
+          "Steps",
+          "Heiristeg",
+          "Schipfe",
+          "Strehlgasse",
+          "Weinplatz",
+          "Storchengasse",
+          "Münsterhof",
+          "Walking path",
+          "Fraumünsterstrasse",
+          "Walking path"
+        ]
+      },
+      "alternative": null
+    },
+    {
+      "names": [
+        "Bahnhofquai",
+        "Bürkliplatz"
+      ],
+      "points": [
+        [
+          8.5414987,
+          47.3776445
+        ],
+        [
+          8.5415362,
+          47.3661084
+        ]
+      ],
+      "budget": 5,
+      "calculationMs": 475,
+      "fastest": {
+        "distance": 1511.2300000000007,
+        "minutes": 18.89037500000001,
+        "ascent": 7.152684897290328,
+        "descent": 7.183972931685446,
+        "unknownMeters": 73.52999999999997,
+        "gradeBurden": 1.168310777479531,
+        "streets": [
+          "Bahnhofquai",
+          "Walking path",
+          "Bahnhofquai",
+          "Walking path",
+          "Steps",
+          "Heiristeg",
+          "Schipfe",
+          "Strehlgasse",
+          "Weinplatz",
+          "Storchengasse",
+          "Münsterhof",
+          "Walking path",
+          "Fraumünsterstrasse",
+          "Walking path"
+        ]
+      },
+      "alternative": null
+    },
+    {
+      "names": [
+        "Bahnhofquai",
+        "Bürkliplatz"
+      ],
+      "points": [
+        [
+          8.5414987,
+          47.3776445
+        ],
+        [
+          8.5415362,
+          47.3661084
+        ]
+      ],
+      "budget": 10,
+      "calculationMs": 152,
+      "fastest": {
+        "distance": 1511.2300000000007,
+        "minutes": 18.89037500000001,
+        "ascent": 7.152684897290328,
+        "descent": 7.183972931685446,
+        "unknownMeters": 73.52999999999997,
+        "gradeBurden": 1.168310777479531,
+        "streets": [
+          "Bahnhofquai",
+          "Walking path",
+          "Bahnhofquai",
+          "Walking path",
+          "Steps",
+          "Heiristeg",
+          "Schipfe",
+          "Strehlgasse",
+          "Weinplatz",
+          "Storchengasse",
+          "Münsterhof",
+          "Walking path",
+          "Fraumünsterstrasse",
+          "Walking path"
+        ]
+      },
+      "alternative": null
+    },
+    {
+      "names": [
+        "Limmattalstrasse 180",
+        "Limmattalstrasse 220"
+      ],
+      "points": [
+        [
+          8.499101,
+          47.402164
+        ],
+        [
+          8.496677,
+          47.402256
+        ]
+      ],
+      "budget": 0,
+      "calculationMs": 69,
+      "fastest": {
+        "distance": 177.30000000000004,
+        "minutes": 2.2162500000000005,
+        "ascent": 0,
+        "descent": 6.903411652283864,
+        "unknownMeters": 0,
+        "gradeBurden": 0.33961723787346365,
+        "streets": [
+          "Walking path"
+        ]
+      },
+      "alternative": null
+    },
+    {
+      "names": [
+        "Limmattalstrasse 180",
+        "Limmattalstrasse 220"
+      ],
+      "points": [
+        [
+          8.499101,
+          47.402164
+        ],
+        [
+          8.496677,
+          47.402256
+        ]
+      ],
+      "budget": 5,
+      "calculationMs": 106,
+      "fastest": {
+        "distance": 177.30000000000004,
+        "minutes": 2.2162500000000005,
+        "ascent": 0,
+        "descent": 6.903411652283864,
+        "unknownMeters": 0,
+        "gradeBurden": 0.33961723787346365,
+        "streets": [
+          "Walking path"
+        ]
+      },
+      "alternative": null
+    },
+    {
+      "names": [
+        "Limmattalstrasse 180",
+        "Limmattalstrasse 220"
+      ],
+      "points": [
+        [
+          8.499101,
+          47.402164
+        ],
+        [
+          8.496677,
+          47.402256
+        ]
+      ],
+      "budget": 10,
+      "calculationMs": 103,
+      "fastest": {
+        "distance": 177.30000000000004,
+        "minutes": 2.2162500000000005,
+        "ascent": 0,
+        "descent": 6.903411652283864,
+        "unknownMeters": 0,
+        "gradeBurden": 0.33961723787346365,
+        "streets": [
+          "Walking path"
+        ]
+      },
+      "alternative": null
+    },
+    {
+      "names": [
+        "Bahnhofquai",
+        "Rämistrasse 71"
+      ],
+      "points": [
+        [
+          8.5414987,
+          47.3776445
+        ],
+        [
+          8.549076,
+          47.37463
+        ]
+      ],
+      "budget": 0,
+      "calculationMs": 168,
+      "fastest": {
+        "distance": 889.0800000000003,
+        "minutes": 11.113500000000004,
+        "ascent": 41.89605858808693,
+        "descent": 1.154606567351209,
+        "unknownMeters": 62.809999999999945,
+        "gradeBurden": 8.384833480858227,
+        "streets": [
+          "Bahnhofquai",
+          "Walking path",
+          "Central",
+          "Walking path",
+          "Steps",
+          "Walking path",
+          "Steps",
+          "Walking path",
+          "Schienhutgasse",
+          "Walking path",
+          "Steps",
+          "Walking path",
+          "Steps"
+        ]
+      },
+      "alternative": null
+    },
+    {
+      "names": [
+        "Bahnhofquai",
+        "Rämistrasse 71"
+      ],
+      "points": [
+        [
+          8.5414987,
+          47.3776445
+        ],
+        [
+          8.549076,
+          47.37463
+        ]
+      ],
+      "budget": 5,
+      "calculationMs": 147,
+      "fastest": {
+        "distance": 889.0800000000003,
+        "minutes": 11.113500000000004,
+        "ascent": 41.89605858808693,
+        "descent": 1.154606567351209,
+        "unknownMeters": 62.809999999999945,
+        "gradeBurden": 8.384833480858227,
+        "streets": [
+          "Bahnhofquai",
+          "Walking path",
+          "Central",
+          "Walking path",
+          "Steps",
+          "Walking path",
+          "Steps",
+          "Walking path",
+          "Schienhutgasse",
+          "Walking path",
+          "Steps",
+          "Walking path",
+          "Steps"
+        ]
+      },
+      "alternative": null
+    },
+    {
+      "names": [
+        "Bahnhofquai",
+        "Rämistrasse 71"
+      ],
+      "points": [
+        [
+          8.5414987,
+          47.3776445
+        ],
+        [
+          8.549076,
+          47.37463
+        ]
+      ],
+      "budget": 10,
+      "calculationMs": 482,
+      "fastest": {
+        "distance": 889.0800000000003,
+        "minutes": 11.113500000000004,
+        "ascent": 41.89605858808693,
+        "descent": 1.154606567351209,
+        "unknownMeters": 62.809999999999945,
+        "gradeBurden": 8.384833480858227,
+        "streets": [
+          "Bahnhofquai",
+          "Walking path",
+          "Central",
+          "Walking path",
+          "Steps",
+          "Walking path",
+          "Steps",
+          "Walking path",
+          "Schienhutgasse",
+          "Walking path",
+          "Steps",
+          "Walking path",
+          "Steps"
+        ]
+      },
+      "alternative": null
+    },
+    {
+      "names": [
+        "Bürkliplatz",
+        "Universitätstrasse 100"
+      ],
+      "points": [
+        [
+          8.5415362,
+          47.3661084
+        ],
+        [
+          8.548376,
+          47.383727
+        ]
+      ],
+      "budget": 0,
+      "calculationMs": 95,
+      "fastest": {
+        "distance": 2322.95,
+        "minutes": 29.036875,
+        "ascent": 79.82560917552286,
+        "descent": 2.5356024318949153,
+        "unknownMeters": 84.46000000000004,
+        "gradeBurden": 10.961002756129346,
+        "streets": [
+          "Walking path",
+          "Weinbergfussweg",
+          "Walking path",
+          "Weinbergfussweg",
+          "Walking path",
+          "Weinbergfussweg",
+          "Walking path"
+        ]
+      },
+      "alternative": null
+    },
+    {
+      "names": [
+        "Bürkliplatz",
+        "Universitätstrasse 100"
+      ],
+      "points": [
+        [
+          8.5415362,
+          47.3661084
+        ],
+        [
+          8.548376,
+          47.383727
+        ]
+      ],
+      "budget": 5,
+      "calculationMs": 681,
+      "fastest": {
+        "distance": 2322.95,
+        "minutes": 29.036875,
+        "ascent": 79.82560917552286,
+        "descent": 2.5356024318949153,
+        "unknownMeters": 84.46000000000004,
+        "gradeBurden": 10.961002756129346,
+        "streets": [
+          "Walking path",
+          "Weinbergfussweg",
+          "Walking path",
+          "Weinbergfussweg",
+          "Walking path",
+          "Weinbergfussweg",
+          "Walking path"
+        ]
+      },
+      "alternative": null
+    },
+    {
+      "names": [
+        "Bürkliplatz",
+        "Universitätstrasse 100"
+      ],
+      "points": [
+        [
+          8.5415362,
+          47.3661084
+        ],
+        [
+          8.548376,
+          47.383727
+        ]
+      ],
+      "budget": 10,
+      "calculationMs": 697,
+      "fastest": {
+        "distance": 2322.95,
+        "minutes": 29.036875,
+        "ascent": 79.82560917552286,
+        "descent": 2.5356024318949153,
+        "unknownMeters": 84.46000000000004,
+        "gradeBurden": 10.961002756129346,
+        "streets": [
+          "Walking path",
+          "Weinbergfussweg",
+          "Walking path",
+          "Weinbergfussweg",
+          "Walking path",
+          "Weinbergfussweg",
+          "Walking path"
+        ]
+      },
+      "alternative": null
+    },
+    {
+      "names": [
+        "Altstetterstrasse 145",
+        "Hohlstrasse 554"
+      ],
+      "points": [
+        [
+          8.486953,
+          47.388454
+        ],
+        [
+          8.489887,
+          47.390704
+        ]
+      ],
+      "budget": 0,
+      "calculationMs": 42,
+      "fastest": {
+        "distance": 497.83,
+        "minutes": 6.222875,
+        "ascent": 0,
+        "descent": 2.4507506053313364,
+        "unknownMeters": 0,
+        "gradeBurden": 0.030736370540770917,
+        "streets": [
+          "Walking path"
+        ]
+      },
+      "alternative": null
+    },
+    {
+      "names": [
+        "Altstetterstrasse 145",
+        "Hohlstrasse 554"
+      ],
+      "points": [
+        [
+          8.486953,
+          47.388454
+        ],
+        [
+          8.489887,
+          47.390704
+        ]
+      ],
+      "budget": 5,
+      "calculationMs": 268,
+      "fastest": {
+        "distance": 497.83,
+        "minutes": 6.222875,
+        "ascent": 0,
+        "descent": 2.4507506053313364,
+        "unknownMeters": 0,
+        "gradeBurden": 0.030736370540770917,
+        "streets": [
+          "Walking path"
+        ]
+      },
+      "alternative": null
+    },
+    {
+      "names": [
+        "Altstetterstrasse 145",
+        "Hohlstrasse 554"
+      ],
+      "points": [
+        [
+          8.486953,
+          47.388454
+        ],
+        [
+          8.489887,
+          47.390704
+        ]
+      ],
+      "budget": 10,
+      "calculationMs": 242,
+      "fastest": {
+        "distance": 497.83,
+        "minutes": 6.222875,
+        "ascent": 0,
+        "descent": 2.4507506053313364,
+        "unknownMeters": 0,
+        "gradeBurden": 0.030736370540770917,
+        "streets": [
+          "Walking path"
+        ]
+      },
+      "alternative": null
+    },
+    {
+      "names": [
+        "Bucheggplatz",
+        "Waidbadstrasse"
+      ],
+      "points": [
+        [
+          8.533005596707548,
+          47.39817687911937
+        ],
+        [
+          8.51791069506571,
+          47.40187049037707
+        ]
+      ],
+      "budget": 0,
+      "network": "municipal-pavements",
+      "calculationMs": 621,
+      "fastest": {
+        "distance": 1585.9654203429698,
+        "minutes": 19.824567754287123,
+        "ascent": 93.28394155944488,
+        "descent": 3.763134995873429,
+        "unknownMeters": 5.687046931782106,
+        "gradeBurden": 9.08300887356138,
+        "streets": [
+          "Bucheggplatz",
+          "Bucheggplatz Überquerung",
+          "Tièchestrasse Überquerung",
+          "Bucheggplatz",
+          "Fussweg",
+          "Obere Waidstrasse",
+          "Im Rehsprung",
+          "Lindenweg",
+          "Reitweg",
+          "Hasenrain",
+          "Waidbadstrasse"
+        ]
+      },
+      "alternative": null
+    },
+    {
+      "names": [
+        "Bucheggplatz",
+        "Waidbadstrasse"
+      ],
+      "points": [
+        [
+          8.533005596707548,
+          47.39817687911937
+        ],
+        [
+          8.51791069506571,
+          47.40187049037707
+        ]
+      ],
+      "budget": 5,
+      "network": "municipal-pavements",
+      "calculationMs": 595,
+      "fastest": {
+        "distance": 1585.9654203429698,
+        "minutes": 19.824567754287123,
+        "ascent": 93.28394155944488,
+        "descent": 3.763134995873429,
+        "unknownMeters": 5.687046931782106,
+        "gradeBurden": 9.08300887356138,
+        "streets": [
+          "Bucheggplatz",
+          "Bucheggplatz Überquerung",
+          "Tièchestrasse Überquerung",
+          "Bucheggplatz",
+          "Fussweg",
+          "Obere Waidstrasse",
+          "Im Rehsprung",
+          "Lindenweg",
+          "Reitweg",
+          "Hasenrain",
+          "Waidbadstrasse"
+        ]
+      },
+      "alternative": null
+    },
+    {
+      "names": [
+        "Bucheggplatz",
+        "Waidbadstrasse"
+      ],
+      "points": [
+        [
+          8.533005596707548,
+          47.39817687911937
+        ],
+        [
+          8.51791069506571,
+          47.40187049037707
+        ]
+      ],
+      "budget": 10,
+      "network": "municipal-pavements",
+      "calculationMs": 688,
+      "fastest": {
+        "distance": 1585.9654203429698,
+        "minutes": 19.824567754287123,
+        "ascent": 93.28394155944488,
+        "descent": 3.763134995873429,
+        "unknownMeters": 5.687046931782106,
+        "gradeBurden": 9.08300887356138,
+        "streets": [
+          "Bucheggplatz",
+          "Bucheggplatz Überquerung",
+          "Tièchestrasse Überquerung",
+          "Bucheggplatz",
+          "Fussweg",
+          "Obere Waidstrasse",
+          "Im Rehsprung",
+          "Lindenweg",
+          "Reitweg",
+          "Hasenrain",
+          "Waidbadstrasse"
+        ]
+      },
+      "alternative": null
+    },
+    {
+      "names": [
+        "Hofwiesenstrasse 350",
+        "Wallisellenstrasse 45"
+      ],
+      "points": [
+        [
+          8.542519874295733,
+          47.41052130673649
+        ],
+        [
+          8.551761467091621,
+          47.41072021541055
+        ]
+      ],
+      "budget": 0,
+      "network": "municipal-pavements",
+      "calculationMs": 116,
+      "fastest": {
+        "distance": 788.1891214678839,
+        "minutes": 9.852364018348549,
+        "ascent": 1.4549742941868544,
+        "descent": 13.799999999999955,
+        "unknownMeters": 0,
+        "gradeBurden": 0.5829602915102408,
+        "streets": [
+          "Hofwiesenstrasse",
+          "Franklinstrasse",
+          "Querstrasse",
+          "Edisonstrasse Überquerung",
+          "Querstrasse",
+          "Schaffhauserstrasse Überquerung",
+          "Wallisellenstrasse",
+          "Dörflistrasse Überquerung",
+          "Wallisellenstrasse",
+          "Thurgauerstrasse Überquerung",
+          "Thurgauerstrasse",
+          "Wallisellenstrasse Überquerung",
+          "Wallisellenstrasse"
+        ]
+      },
+      "alternative": null
+    },
+    {
+      "names": [
+        "Hofwiesenstrasse 350",
+        "Wallisellenstrasse 45"
+      ],
+      "points": [
+        [
+          8.542519874295733,
+          47.41052130673649
+        ],
+        [
+          8.551761467091621,
+          47.41072021541055
+        ]
+      ],
+      "budget": 5,
+      "network": "municipal-pavements",
+      "calculationMs": 223,
+      "fastest": {
+        "distance": 788.1891214678839,
+        "minutes": 9.852364018348549,
+        "ascent": 1.4549742941868544,
+        "descent": 13.799999999999955,
+        "unknownMeters": 0,
+        "gradeBurden": 0.5829602915102408,
+        "streets": [
+          "Hofwiesenstrasse",
+          "Franklinstrasse",
+          "Querstrasse",
+          "Edisonstrasse Überquerung",
+          "Querstrasse",
+          "Schaffhauserstrasse Überquerung",
+          "Wallisellenstrasse",
+          "Dörflistrasse Überquerung",
+          "Wallisellenstrasse",
+          "Thurgauerstrasse Überquerung",
+          "Thurgauerstrasse",
+          "Wallisellenstrasse Überquerung",
+          "Wallisellenstrasse"
+        ]
+      },
+      "alternative": null
+    },
+    {
+      "names": [
+        "Hofwiesenstrasse 350",
+        "Wallisellenstrasse 45"
+      ],
+      "points": [
+        [
+          8.542519874295733,
+          47.41052130673649
+        ],
+        [
+          8.551761467091621,
+          47.41072021541055
+        ]
+      ],
+      "budget": 10,
+      "network": "municipal-pavements",
+      "calculationMs": 479,
+      "fastest": {
+        "distance": 788.1891214678839,
+        "minutes": 9.852364018348549,
+        "ascent": 1.4549742941868544,
+        "descent": 13.799999999999955,
+        "unknownMeters": 0,
+        "gradeBurden": 0.5829602915102408,
+        "streets": [
+          "Hofwiesenstrasse",
+          "Franklinstrasse",
+          "Querstrasse",
+          "Edisonstrasse Überquerung",
+          "Querstrasse",
+          "Schaffhauserstrasse Überquerung",
+          "Wallisellenstrasse",
+          "Dörflistrasse Überquerung",
+          "Wallisellenstrasse",
+          "Thurgauerstrasse Überquerung",
+          "Thurgauerstrasse",
+          "Wallisellenstrasse Überquerung",
+          "Wallisellenstrasse"
+        ]
+      },
+      "alternative": null
+    },
+    {
+      "names": [
+        "Bahnhofquai",
+        "Bürkliplatz"
+      ],
+      "points": [
+        [
+          8.541342717777487,
+          47.37766534224276
+        ],
+        [
+          8.541511682887975,
+          47.366115409239264
+        ]
+      ],
+      "budget": 0,
+      "network": "municipal-pavements",
+      "calculationMs": 271,
+      "fastest": {
+        "distance": 1444.5295040818237,
+        "minutes": 18.056618801022797,
+        "ascent": 9.41852864820197,
+        "descent": 7.665634646727369,
+        "unknownMeters": 242.3408890704327,
+        "gradeBurden": 1.2614938371348763,
+        "streets": [
+          "Bahnhofquai",
+          "Bahnhofquai Überquerung",
+          "Tram Bahnhofquai",
+          "Tram Bahnhofquai Überquerung",
+          "Tram Bahnhofquai",
+          "Bahnhofquai Überquerung",
+          "Bahnhofbrücke Überquerung",
+          "Bahnhofbrücke",
+          "Bahnhofquai",
+          "Uraniastrasse",
+          "Rudolf-Brun-Brücke Überquerung",
+          "Rudolf-Brun-Brücke",
+          "Heiristeg",
+          "Schipfe",
+          "Rathausbrücke",
+          "Weinplatz",
+          "Wühre",
+          "Münsterbrücke",
+          "Münsterbrücke Überquerung",
+          "Stadthausquai",
+          "Bürkliplatz Überquerung",
+          "Bürkliplatz"
+        ]
+      },
+      "alternative": null
+    },
+    {
+      "names": [
+        "Bahnhofquai",
+        "Bürkliplatz"
+      ],
+      "points": [
+        [
+          8.541342717777487,
+          47.37766534224276
+        ],
+        [
+          8.541511682887975,
+          47.366115409239264
+        ]
+      ],
+      "budget": 5,
+      "network": "municipal-pavements",
+      "calculationMs": 620,
+      "fastest": {
+        "distance": 1444.5295040818237,
+        "minutes": 18.056618801022797,
+        "ascent": 9.41852864820197,
+        "descent": 7.665634646727369,
+        "unknownMeters": 242.3408890704327,
+        "gradeBurden": 1.2614938371348763,
+        "streets": [
+          "Bahnhofquai",
+          "Bahnhofquai Überquerung",
+          "Tram Bahnhofquai",
+          "Tram Bahnhofquai Überquerung",
+          "Tram Bahnhofquai",
+          "Bahnhofquai Überquerung",
+          "Bahnhofbrücke Überquerung",
+          "Bahnhofbrücke",
+          "Bahnhofquai",
+          "Uraniastrasse",
+          "Rudolf-Brun-Brücke Überquerung",
+          "Rudolf-Brun-Brücke",
+          "Heiristeg",
+          "Schipfe",
+          "Rathausbrücke",
+          "Weinplatz",
+          "Wühre",
+          "Münsterbrücke",
+          "Münsterbrücke Überquerung",
+          "Stadthausquai",
+          "Bürkliplatz Überquerung",
+          "Bürkliplatz"
+        ]
+      },
+      "alternative": null
+    },
+    {
+      "names": [
+        "Bahnhofquai",
+        "Bürkliplatz"
+      ],
+      "points": [
+        [
+          8.541342717777487,
+          47.37766534224276
+        ],
+        [
+          8.541511682887975,
+          47.366115409239264
+        ]
+      ],
+      "budget": 10,
+      "network": "municipal-pavements",
+      "calculationMs": 622,
+      "fastest": {
+        "distance": 1444.5295040818237,
+        "minutes": 18.056618801022797,
+        "ascent": 9.41852864820197,
+        "descent": 7.665634646727369,
+        "unknownMeters": 242.3408890704327,
+        "gradeBurden": 1.2614938371348763,
+        "streets": [
+          "Bahnhofquai",
+          "Bahnhofquai Überquerung",
+          "Tram Bahnhofquai",
+          "Tram Bahnhofquai Überquerung",
+          "Tram Bahnhofquai",
+          "Bahnhofquai Überquerung",
+          "Bahnhofbrücke Überquerung",
+          "Bahnhofbrücke",
+          "Bahnhofquai",
+          "Uraniastrasse",
+          "Rudolf-Brun-Brücke Überquerung",
+          "Rudolf-Brun-Brücke",
+          "Heiristeg",
+          "Schipfe",
+          "Rathausbrücke",
+          "Weinplatz",
+          "Wühre",
+          "Münsterbrücke",
+          "Münsterbrücke Überquerung",
+          "Stadthausquai",
+          "Bürkliplatz Überquerung",
+          "Bürkliplatz"
+        ]
+      },
+      "alternative": null
+    }
+  ]
+}
