@@ -1,0 +1,838 @@
+{
+  "sourceRevision": "089b6bf081cb7665a37a2beb6192274c0b9d3b89",
+  "checkedAt": "2026-10-08T16:25:06.396806+00:00",
+  "runs": [
+    {
+      "conclusion": "success",
+      "headSha": "089b6bf081cb7665a37a2beb6192274c0b9d3b89",
+      "jobs": [
+        {
+          "completedAt": "2026-10-08T16:14:59Z",
+          "conclusion": "success",
+          "databaseId": 113410376908,
+          "name": "test",
+          "startedAt": "2026-10-08T16:05:17Z",
+          "status": "completed",
+          "steps": [
+            {
+              "completedAt": "2026-10-08T16:05:19Z",
+              "conclusion": "success",
+              "name": "Set up job",
+              "number": 1,
+              "startedAt": "2026-10-08T16:05:18Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:05:31Z",
+              "conclusion": "success",
+              "name": "Run actions/checkout@v7",
+              "number": 2,
+              "startedAt": "2026-10-08T16:05:19Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:05:32Z",
+              "conclusion": "success",
+              "name": "Run actions/setup-node@v7",
+              "number": 3,
+              "startedAt": "2026-10-08T16:05:31Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:05:40Z",
+              "conclusion": "success",
+              "name": "Run npm ci",
+              "number": 4,
+              "startedAt": "2026-10-08T16:05:32Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:05:46Z",
+              "conclusion": "success",
+              "name": "Run python3 -m venv /tmp/cooler-counts-venv",
+              "number": 5,
+              "startedAt": "2026-10-08T16:05:40Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:06:07Z",
+              "conclusion": "success",
+              "name": "Run python3 -m venv /tmp/cooler-shade-venv",
+              "number": 6,
+              "startedAt": "2026-10-08T16:05:46Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:07:15Z",
+              "conclusion": "success",
+              "name": "Run npm run check",
+              "number": 7,
+              "startedAt": "2026-10-08T16:06:07Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:14:01Z",
+              "conclusion": "success",
+              "name": "Run npm run data:verify",
+              "number": 8,
+              "startedAt": "2026-10-08T16:07:15Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:14:11Z",
+              "conclusion": "success",
+              "name": "Run npm run format:check",
+              "number": 9,
+              "startedAt": "2026-10-08T16:14:01Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:14:57Z",
+              "conclusion": "success",
+              "name": "Run npm run build",
+              "number": 10,
+              "startedAt": "2026-10-08T16:14:11Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:14:57Z",
+              "conclusion": "success",
+              "name": "Post Run actions/setup-node@v7",
+              "number": 19,
+              "startedAt": "2026-10-08T16:14:57Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:14:58Z",
+              "conclusion": "success",
+              "name": "Post Run actions/checkout@v7",
+              "number": 20,
+              "startedAt": "2026-10-08T16:14:57Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:14:58Z",
+              "conclusion": "success",
+              "name": "Complete job",
+              "number": 21,
+              "startedAt": "2026-10-08T16:14:58Z",
+              "status": "completed"
+            }
+          ],
+          "url": "https://github.com/gumbrich/cooler-walks/actions/runs/37806016822/job/113410376908"
+        },
+        {
+          "completedAt": "2026-10-08T16:24:01Z",
+          "conclusion": "success",
+          "databaseId": 113414797396,
+          "name": "browser (1)",
+          "startedAt": "2026-10-08T16:15:02Z",
+          "status": "completed",
+          "steps": [
+            {
+              "completedAt": "2026-10-08T16:15:03Z",
+              "conclusion": "success",
+              "name": "Set up job",
+              "number": 1,
+              "startedAt": "2026-10-08T16:15:02Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:15:15Z",
+              "conclusion": "success",
+              "name": "Run actions/checkout@v7",
+              "number": 2,
+              "startedAt": "2026-10-08T16:15:03Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:15:17Z",
+              "conclusion": "success",
+              "name": "Run actions/setup-node@v7",
+              "number": 3,
+              "startedAt": "2026-10-08T16:15:15Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:15:22Z",
+              "conclusion": "success",
+              "name": "Run npm ci",
+              "number": 4,
+              "startedAt": "2026-10-08T16:15:17Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:15:53Z",
+              "conclusion": "success",
+              "name": "Run npx playwright install --with-deps chromium",
+              "number": 5,
+              "startedAt": "2026-10-08T16:15:22Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:22:41Z",
+              "conclusion": "success",
+              "name": "Run npm run test:e2e -- --shard=1/4",
+              "number": 6,
+              "startedAt": "2026-10-08T16:15:53Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:23:59Z",
+              "conclusion": "success",
+              "name": "Verify production cache upgrades",
+              "number": 7,
+              "startedAt": "2026-10-08T16:22:41Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:23:59Z",
+              "conclusion": "skipped",
+              "name": "Print failure context without artifact storage",
+              "number": 8,
+              "startedAt": "2026-10-08T16:23:59Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:23:59Z",
+              "conclusion": "skipped",
+              "name": "Run actions/upload-artifact@v7",
+              "number": 9,
+              "startedAt": "2026-10-08T16:23:59Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:23:59Z",
+              "conclusion": "success",
+              "name": "Post Run actions/setup-node@v7",
+              "number": 17,
+              "startedAt": "2026-10-08T16:23:59Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:23:59Z",
+              "conclusion": "success",
+              "name": "Post Run actions/checkout@v7",
+              "number": 18,
+              "startedAt": "2026-10-08T16:23:59Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:23:59Z",
+              "conclusion": "success",
+              "name": "Complete job",
+              "number": 19,
+              "startedAt": "2026-10-08T16:23:59Z",
+              "status": "completed"
+            }
+          ],
+          "url": "https://github.com/gumbrich/cooler-walks/actions/runs/37806016822/job/113414797396"
+        },
+        {
+          "completedAt": "2026-10-08T16:20:47Z",
+          "conclusion": "success",
+          "databaseId": 113414797400,
+          "name": "browser (4)",
+          "startedAt": "2026-10-08T16:15:02Z",
+          "status": "completed",
+          "steps": [
+            {
+              "completedAt": "2026-10-08T16:15:04Z",
+              "conclusion": "success",
+              "name": "Set up job",
+              "number": 1,
+              "startedAt": "2026-10-08T16:15:02Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:15:19Z",
+              "conclusion": "success",
+              "name": "Run actions/checkout@v7",
+              "number": 2,
+              "startedAt": "2026-10-08T16:15:04Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:15:21Z",
+              "conclusion": "success",
+              "name": "Run actions/setup-node@v7",
+              "number": 3,
+              "startedAt": "2026-10-08T16:15:19Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:15:25Z",
+              "conclusion": "success",
+              "name": "Run npm ci",
+              "number": 4,
+              "startedAt": "2026-10-08T16:15:21Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:15:49Z",
+              "conclusion": "success",
+              "name": "Run npx playwright install --with-deps chromium",
+              "number": 5,
+              "startedAt": "2026-10-08T16:15:25Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:20:44Z",
+              "conclusion": "success",
+              "name": "Run npm run test:e2e -- --shard=4/4",
+              "number": 6,
+              "startedAt": "2026-10-08T16:15:49Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:20:44Z",
+              "conclusion": "skipped",
+              "name": "Verify production cache upgrades",
+              "number": 7,
+              "startedAt": "2026-10-08T16:20:44Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:20:44Z",
+              "conclusion": "skipped",
+              "name": "Print failure context without artifact storage",
+              "number": 8,
+              "startedAt": "2026-10-08T16:20:44Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:20:44Z",
+              "conclusion": "skipped",
+              "name": "Run actions/upload-artifact@v7",
+              "number": 9,
+              "startedAt": "2026-10-08T16:20:44Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:20:44Z",
+              "conclusion": "success",
+              "name": "Post Run actions/setup-node@v7",
+              "number": 17,
+              "startedAt": "2026-10-08T16:20:44Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:20:44Z",
+              "conclusion": "success",
+              "name": "Post Run actions/checkout@v7",
+              "number": 18,
+              "startedAt": "2026-10-08T16:20:44Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:20:44Z",
+              "conclusion": "success",
+              "name": "Complete job",
+              "number": 19,
+              "startedAt": "2026-10-08T16:20:44Z",
+              "status": "completed"
+            }
+          ],
+          "url": "https://github.com/gumbrich/cooler-walks/actions/runs/37806016822/job/113414797400"
+        },
+        {
+          "completedAt": "2026-10-08T16:22:25Z",
+          "conclusion": "success",
+          "databaseId": 113414797471,
+          "name": "browser (3)",
+          "startedAt": "2026-10-08T16:15:07Z",
+          "status": "completed",
+          "steps": [
+            {
+              "completedAt": "2026-10-08T16:15:13Z",
+              "conclusion": "success",
+              "name": "Set up job",
+              "number": 1,
+              "startedAt": "2026-10-08T16:15:08Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:15:26Z",
+              "conclusion": "success",
+              "name": "Run actions/checkout@v7",
+              "number": 2,
+              "startedAt": "2026-10-08T16:15:13Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:15:30Z",
+              "conclusion": "success",
+              "name": "Run actions/setup-node@v7",
+              "number": 3,
+              "startedAt": "2026-10-08T16:15:26Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:15:35Z",
+              "conclusion": "success",
+              "name": "Run npm ci",
+              "number": 4,
+              "startedAt": "2026-10-08T16:15:30Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:16:04Z",
+              "conclusion": "success",
+              "name": "Run npx playwright install --with-deps chromium",
+              "number": 5,
+              "startedAt": "2026-10-08T16:15:35Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:22:21Z",
+              "conclusion": "success",
+              "name": "Run npm run test:e2e -- --shard=3/4",
+              "number": 6,
+              "startedAt": "2026-10-08T16:16:04Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:22:21Z",
+              "conclusion": "skipped",
+              "name": "Verify production cache upgrades",
+              "number": 7,
+              "startedAt": "2026-10-08T16:22:21Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:22:21Z",
+              "conclusion": "skipped",
+              "name": "Print failure context without artifact storage",
+              "number": 8,
+              "startedAt": "2026-10-08T16:22:21Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:22:21Z",
+              "conclusion": "skipped",
+              "name": "Run actions/upload-artifact@v7",
+              "number": 9,
+              "startedAt": "2026-10-08T16:22:21Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:22:22Z",
+              "conclusion": "success",
+              "name": "Post Run actions/setup-node@v7",
+              "number": 17,
+              "startedAt": "2026-10-08T16:22:21Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:22:22Z",
+              "conclusion": "success",
+              "name": "Post Run actions/checkout@v7",
+              "number": 18,
+              "startedAt": "2026-10-08T16:22:22Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:22:22Z",
+              "conclusion": "success",
+              "name": "Complete job",
+              "number": 19,
+              "startedAt": "2026-10-08T16:22:22Z",
+              "status": "completed"
+            }
+          ],
+          "url": "https://github.com/gumbrich/cooler-walks/actions/runs/37806016822/job/113414797471"
+        },
+        {
+          "completedAt": "2026-10-08T16:19:30Z",
+          "conclusion": "success",
+          "databaseId": 113414797651,
+          "name": "browser (2)",
+          "startedAt": "2026-10-08T16:15:02Z",
+          "status": "completed",
+          "steps": [
+            {
+              "completedAt": "2026-10-08T16:15:04Z",
+              "conclusion": "success",
+              "name": "Set up job",
+              "number": 1,
+              "startedAt": "2026-10-08T16:15:02Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:15:15Z",
+              "conclusion": "success",
+              "name": "Run actions/checkout@v7",
+              "number": 2,
+              "startedAt": "2026-10-08T16:15:04Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:15:20Z",
+              "conclusion": "success",
+              "name": "Run actions/setup-node@v7",
+              "number": 3,
+              "startedAt": "2026-10-08T16:15:15Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:15:25Z",
+              "conclusion": "success",
+              "name": "Run npm ci",
+              "number": 4,
+              "startedAt": "2026-10-08T16:15:20Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:16:06Z",
+              "conclusion": "success",
+              "name": "Run npx playwright install --with-deps chromium",
+              "number": 5,
+              "startedAt": "2026-10-08T16:15:25Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:19:27Z",
+              "conclusion": "success",
+              "name": "Run npm run test:e2e -- --shard=2/4",
+              "number": 6,
+              "startedAt": "2026-10-08T16:16:06Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:19:27Z",
+              "conclusion": "skipped",
+              "name": "Verify production cache upgrades",
+              "number": 7,
+              "startedAt": "2026-10-08T16:19:27Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:19:27Z",
+              "conclusion": "skipped",
+              "name": "Print failure context without artifact storage",
+              "number": 8,
+              "startedAt": "2026-10-08T16:19:27Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:19:27Z",
+              "conclusion": "skipped",
+              "name": "Run actions/upload-artifact@v7",
+              "number": 9,
+              "startedAt": "2026-10-08T16:19:27Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:19:27Z",
+              "conclusion": "success",
+              "name": "Post Run actions/setup-node@v7",
+              "number": 17,
+              "startedAt": "2026-10-08T16:19:27Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:19:28Z",
+              "conclusion": "success",
+              "name": "Post Run actions/checkout@v7",
+              "number": 18,
+              "startedAt": "2026-10-08T16:19:27Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:19:28Z",
+              "conclusion": "success",
+              "name": "Complete job",
+              "number": 19,
+              "startedAt": "2026-10-08T16:19:28Z",
+              "status": "completed"
+            }
+          ],
+          "url": "https://github.com/gumbrich/cooler-walks/actions/runs/37806016822/job/113414797651"
+        }
+      ],
+      "name": "Checks",
+      "status": "completed",
+      "url": "https://github.com/gumbrich/cooler-walks/actions/runs/37806016822"
+    },
+    {
+      "conclusion": "success",
+      "headSha": "089b6bf081cb7665a37a2beb6192274c0b9d3b89",
+      "jobs": [
+        {
+          "completedAt": "2026-10-08T16:12:28Z",
+          "conclusion": "success",
+          "databaseId": 113410377496,
+          "name": "android",
+          "startedAt": "2026-10-08T16:05:18Z",
+          "status": "completed",
+          "steps": [
+            {
+              "completedAt": "2026-10-08T16:05:24Z",
+              "conclusion": "success",
+              "name": "Set up job",
+              "number": 1,
+              "startedAt": "2026-10-08T16:05:19Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:05:37Z",
+              "conclusion": "success",
+              "name": "Run actions/checkout@v7",
+              "number": 2,
+              "startedAt": "2026-10-08T16:05:24Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:05:39Z",
+              "conclusion": "success",
+              "name": "Run actions/setup-node@v7",
+              "number": 3,
+              "startedAt": "2026-10-08T16:05:37Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:05:43Z",
+              "conclusion": "success",
+              "name": "Run actions/setup-java@v6",
+              "number": 4,
+              "startedAt": "2026-10-08T16:05:39Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:05:50Z",
+              "conclusion": "success",
+              "name": "Run npm ci",
+              "number": 5,
+              "startedAt": "2026-10-08T16:05:43Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:06:41Z",
+              "conclusion": "success",
+              "name": "Run npm run native:sync",
+              "number": 6,
+              "startedAt": "2026-10-08T16:05:50Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:07:17Z",
+              "conclusion": "success",
+              "name": "Run android-actions/setup-android@v4",
+              "number": 7,
+              "startedAt": "2026-10-08T16:06:41Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:07:18Z",
+              "conclusion": "success",
+              "name": "Run sdkmanager 'platforms;android-36' 'build-tools;36.0.0'",
+              "number": 8,
+              "startedAt": "2026-10-08T16:07:17Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:10:28Z",
+              "conclusion": "success",
+              "name": "Run npm run native:android",
+              "number": 9,
+              "startedAt": "2026-10-08T16:07:18Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:12:06Z",
+              "conclusion": "success",
+              "name": "Run npm run native:bundle:unsigned",
+              "number": 10,
+              "startedAt": "2026-10-08T16:10:28Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:12:06Z",
+              "conclusion": "skipped",
+              "name": "Run actions/upload-artifact@v7",
+              "number": 11,
+              "startedAt": "2026-10-08T16:12:06Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:12:06Z",
+              "conclusion": "skipped",
+              "name": "Run actions/upload-artifact@v7",
+              "number": 12,
+              "startedAt": "2026-10-08T16:12:06Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:12:23Z",
+              "conclusion": "success",
+              "name": "Post Run actions/setup-java@v6",
+              "number": 22,
+              "startedAt": "2026-10-08T16:12:06Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:12:26Z",
+              "conclusion": "success",
+              "name": "Post Run actions/setup-node@v7",
+              "number": 23,
+              "startedAt": "2026-10-08T16:12:23Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:12:26Z",
+              "conclusion": "success",
+              "name": "Post Run actions/checkout@v7",
+              "number": 24,
+              "startedAt": "2026-10-08T16:12:26Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:12:26Z",
+              "conclusion": "success",
+              "name": "Complete job",
+              "number": 25,
+              "startedAt": "2026-10-08T16:12:26Z",
+              "status": "completed"
+            }
+          ],
+          "url": "https://github.com/gumbrich/cooler-walks/actions/runs/37806017012/job/113410377496"
+        }
+      ],
+      "name": "Native Android build",
+      "status": "completed",
+      "url": "https://github.com/gumbrich/cooler-walks/actions/runs/37806017012"
+    },
+    {
+      "conclusion": "success",
+      "headSha": "089b6bf081cb7665a37a2beb6192274c0b9d3b89",
+      "jobs": [
+        {
+          "completedAt": "2026-10-08T16:14:46Z",
+          "conclusion": "success",
+          "databaseId": 113410377052,
+          "name": "ios",
+          "startedAt": "2026-10-08T16:10:25Z",
+          "status": "completed",
+          "steps": [
+            {
+              "completedAt": "2026-10-08T16:10:28Z",
+              "conclusion": "success",
+              "name": "Set up job",
+              "number": 1,
+              "startedAt": "2026-10-08T16:10:26Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:10:49Z",
+              "conclusion": "success",
+              "name": "Run actions/checkout@v7",
+              "number": 2,
+              "startedAt": "2026-10-08T16:10:28Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:10:51Z",
+              "conclusion": "success",
+              "name": "Run actions/setup-node@v7",
+              "number": 3,
+              "startedAt": "2026-10-08T16:10:49Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:10:59Z",
+              "conclusion": "success",
+              "name": "Run npm ci",
+              "number": 4,
+              "startedAt": "2026-10-08T16:10:51Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:11:45Z",
+              "conclusion": "success",
+              "name": "Run npm run native:sync",
+              "number": 5,
+              "startedAt": "2026-10-08T16:10:59Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:13:12Z",
+              "conclusion": "success",
+              "name": "Run npm run native:ios",
+              "number": 6,
+              "startedAt": "2026-10-08T16:11:45Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:14:00Z",
+              "conclusion": "success",
+              "name": "Run npm run native:archive:unsigned",
+              "number": 7,
+              "startedAt": "2026-10-08T16:13:12Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:14:17Z",
+              "conclusion": "success",
+              "name": "Run ditto -c -k --keepParent native-artifacts/CoolerWalks-unsigned.xcarchive cooler-walks-ios-unsigned-archive.zip",
+              "number": 8,
+              "startedAt": "2026-10-08T16:14:00Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:14:34Z",
+              "conclusion": "success",
+              "name": "Run ditto -c -k --keepParent ios/DerivedData/Build/Products/Debug-iphonesimulator/App.app cooler-walks-ios-simulator.zip",
+              "number": 9,
+              "startedAt": "2026-10-08T16:14:17Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:14:34Z",
+              "conclusion": "skipped",
+              "name": "Run actions/upload-artifact@v7",
+              "number": 10,
+              "startedAt": "2026-10-08T16:14:34Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:14:34Z",
+              "conclusion": "skipped",
+              "name": "Run actions/upload-artifact@v7",
+              "number": 11,
+              "startedAt": "2026-10-08T16:14:34Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:14:38Z",
+              "conclusion": "success",
+              "name": "Post Run actions/setup-node@v7",
+              "number": 21,
+              "startedAt": "2026-10-08T16:14:34Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:14:40Z",
+              "conclusion": "success",
+              "name": "Post Run actions/checkout@v7",
+              "number": 22,
+              "startedAt": "2026-10-08T16:14:38Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-08T16:14:44Z",
+              "conclusion": "success",
+              "name": "Complete job",
+              "number": 23,
+              "startedAt": "2026-10-08T16:14:40Z",
+              "status": "completed"
+            }
+          ],
+          "url": "https://github.com/gumbrich/cooler-walks/actions/runs/37806016864/job/113410377052"
+        }
+      ],
+      "name": "Native iOS build",
+      "status": "completed",
+      "url": "https://github.com/gumbrich/cooler-walks/actions/runs/37806016864"
+    }
+  ]
+}

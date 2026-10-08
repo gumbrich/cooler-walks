@@ -1,0 +1,33 @@
+{
+  "checkedAt": "2026-10-08T16:10:34.154Z",
+  "origin": "https://coolerwalks.ch",
+  "expectedSourceCommit": "089b6bf081cb7665a37a2beb6192274c0b9d3b89",
+  "entry": "/assets/main-CUV7QUf9.js",
+  "interface": {
+    "newPavementControl": true,
+    "explicitAddressSelection": true
+  },
+  "assets": {
+    "css": {
+      "url": "/assets/main-Cy1nkyP0.css",
+      "sha256": "c60809f2d6ec0886eae85adba354216dbea131dc97f83d3a0ca475a15e201895",
+      "matchesTestedBuild": true
+    },
+    "routingWorker": {
+      "url": "/assets/route-worker-Bcb6AYq2.js",
+      "sha256": "970a6dcd0da6bee7aacc8982c0faf4139477e43896ab35bd13a4d96ca2c5f39f",
+      "matchesTestedBuild": true
+    }
+  },
+  "fieldAccuracy": "Not field-validated. Municipal paths and mapped crossings; uncertain heights and current access remain limitations. Traffic matching is limited to the standard network.",
+  "hostedChecks": [
+    "Six EN/DE HTML pages and security headers",
+    "True missing-file 404s",
+    "Both PWA manifests",
+    "All 81 building tile hashes",
+    "Municipal pavement graph",
+    "Canopy manifest and all 324 tile hashes",
+    "Five pack hashes and native CORS"
+  ],
+  "publicPwaReport": "0.18.0-pwa-validation.json"
+}

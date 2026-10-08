@@ -18,7 +18,16 @@
     "productionBuild": true,
     "releasePackHashes": true,
     "pwaUpgrade": true,
-    "androidBuild": true
+    "androidBuild": true,
+    "finalPavementBrowserAfterScreenshotRefinements": {
+      "tests": 4,
+      "passed": 4
+    },
+    "searchableJunctionIdentity": {
+      "checked": 5844,
+      "missingSourceEndpoint": 0,
+      "wrongCoincidentSource": 0
+    }
   },
   "limitations": [
     "Computational checks do not establish field accuracy.",
