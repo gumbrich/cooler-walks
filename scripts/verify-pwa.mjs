@@ -7,6 +7,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { chromium, expect } from '@playwright/test';
+import { authorizeBrowser } from './lib/site-access.mjs';
 const executablePath = process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE;
 const profile = fs.mkdtempSync(path.join(os.tmpdir(), 'cooler-walks-pwa-'));
 const context = await chromium.launchPersistentContext(profile, {
@@ -27,6 +28,7 @@ page.on('console', (m) => {
 });
 page.on('requestfailed', (r) => console.log('Request failed:', r.url(), r.failure()));
 const origin = (process.env.PWA_ORIGIN ?? 'http://127.0.0.1:4173').replace(/\/$/, '');
+await authorizeBrowser(context, origin);
 await page.goto(origin + '/?view=planner');
 await expect(page.locator('.route-card').first()).toBeVisible({ timeout: 60000 });
 await expect(page.locator('.route-model-note').first()).toContainText('3D roofs');
@@ -45,7 +47,11 @@ await page.waitForFunction(
     Boolean(await caches.match('/data/zurich-pavements.json', { ignoreSearch: true })),
 );
 // Canopy is fetched on demand and its exact version must survive offline reload.
-const canopyToggle = page.getByRole('checkbox', { name: 'Tree shade pilot', exact: true });
+const canopyToggle = page.getByRole('checkbox', {
+  name: 'Tree shade pilot',
+  exact: true,
+  includeHidden: true,
+});
 await expect(canopyToggle).not.toBeChecked();
 if (
   await page.evaluate(async () =>
@@ -53,6 +59,7 @@ if (
   )
 )
   throw new Error('Canopy should not be fetched before the user enables the scenario');
+await page.locator('.model-options summary').click();
 await canopyToggle.check();
 await expect(page.locator('.route-card').first()).toContainText('potential shade', {
   timeout: 60000,
@@ -103,6 +110,7 @@ await page.getByRole('button', { name: 'Close information' }).click();
 await context.setOffline(true);
 await page.reload();
 await expect(page.locator('.route-card').first()).toBeVisible({ timeout: 60000 });
+await page.locator('.model-options summary').click();
 await canopyToggle.check();
 await expect(page.locator('.route-card').first()).toContainText('potential shade', {
   timeout: 60000,
@@ -155,7 +163,7 @@ await expect(page.locator('.route-pavement-note').first()).toContainText('4 cros
 await page.getByRole('button', { name: 'Standard walking network', exact: true }).click();
 await standardReference(page);
 await expect(page.locator('.route-card').first()).toBeVisible({ timeout: 60000 });
-await page.getByRole('checkbox', { name: /Prefer waterside/ }).check();
+await page.locator('#route-priority').selectOption('water');
 await expect(page.getByRole('button', { name: /More time near water/ })).toBeVisible({
   timeout: 60000,
 });
@@ -263,7 +271,7 @@ try {
   await app.reload();
   await expect(app.locator('html')).toHaveAttribute('lang', 'de');
   await expect(app.locator('.route-card').first()).toBeVisible({ timeout: 60000 });
-  await app.getByRole('checkbox', { name: /Verkehrsberuhigt bevorzugen/ }).check();
+  await app.locator('#route-priority').selectOption('calm');
   await expect(app.getByRole('button', { name: /Verkehrsberuhigter Weg/ })).toBeVisible({
     timeout: 60000,
   });
@@ -282,7 +290,7 @@ try {
   installation.vehicleCountsOffline = true;
   await app.locator('.traffic-counts').scrollIntoViewIfNeeded();
   await app.screenshot({ path: 'docs/screenshots/installed-vehicle-counts.png' });
-  await app.getByRole('checkbox', { name: /Verkehrsberuhigt bevorzugen/ }).uncheck();
+  await app.locator('#route-priority').selectOption('shade');
   await app.getByRole('combobox', { name: 'Von', exact: true }).fill('Hofwiesenstrasse 350');
   await app.getByRole('combobox', { name: 'Von', exact: true }).press('Enter');
   await app.getByRole('combobox', { name: 'Nach', exact: true }).fill('Wallisellenstrasse 45');
@@ -302,6 +310,8 @@ try {
   });
   await expect(app.locator('.map-failure')).toHaveCount(0);
   installation.addressSearchOffline = true;
+  if (!(await app.locator('.model-options').evaluate((el) => el.open)))
+    await app.locator('.model-options summary').click();
   await app.getByRole('checkbox', { name: 'Baumschatten-Pilot', exact: true }).check();
   await expect(app.locator('.route-card').first()).toContainText('möglicher Schatten', {
     timeout: 60000,
@@ -341,7 +351,7 @@ try {
   await elevationTo.press('Enter');
   await elevationFrom.fill('Bucheggplatz');
   await elevationFrom.press('Enter');
-  await app.getByRole('checkbox', { name: 'Flachere Wege bevorzugen', exact: true }).check();
+  await app.locator('#route-priority').selectOption('flat');
   await expect(app.getByRole('button', { name: /Flacherer Weg/ })).toBeVisible({ timeout: 60000 });
   await expect(app.locator('.route-elevation').last()).toContainText('90 m');
   await app.locator('.elevation-profile summary').click();

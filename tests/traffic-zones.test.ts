@@ -3,7 +3,12 @@ import { describe, expect, it } from 'vitest';
 import type { FeatureCollection } from 'geojson';
 import { getCity } from '../src/lib/cities';
 import { metric } from '../src/lib/geo';
-import { normalizeTrafficZones, zoneIntersectsBounds } from '../src/lib/traffic-zones';
+import {
+  normalizeTrafficZones,
+  zoneIntersectsBounds,
+  clipZoneStreet,
+  zoneStreetEligible,
+} from '../src/lib/traffic-zones';
 
 const city = getCity('ch-zurich');
 // Synthetic source records for status/geometry validation, never product data.
@@ -47,6 +52,51 @@ function fixture(canton = false): FeatureCollection {
   };
 }
 describe('official Tempo 30 / 20 display data', () => {
+  it('clips streets exactly at zone boundaries and keeps holes uncoloured', () => {
+    const polygons: [number, number][][][] = [
+      [
+        [
+          [0, 0],
+          [100, 0],
+          [100, 100],
+          [0, 100],
+          [0, 0],
+        ],
+        [
+          [40, 20],
+          [60, 20],
+          [60, 80],
+          [40, 80],
+          [40, 20],
+        ],
+      ],
+    ];
+    expect(clipZoneStreet([-10, 50], [110, 50], polygons)).toEqual([
+      [
+        [0, 50],
+        [40, 50],
+      ],
+      [
+        [60, 50],
+        [100, 50],
+      ],
+    ]);
+    expect(clipZoneStreet([-10, 110], [110, 110], polygons)).toEqual([]);
+  });
+  it('does not turn every path or road inside a zone into a Tempo 30 street', () => {
+    expect(zoneStreetEligible({ highway: 'residential' }, 30)).toBe(true);
+    const excluded: Record<string, string>[] = [
+      { highway: 'footway' },
+      { highway: 'steps' },
+      { highway: 'residential', maxspeed: '50' },
+      { highway: 'residential', bridge: 'yes' },
+      { highway: 'service', access: 'private' },
+      { highway: 'tertiary' },
+      { highway: 'residential', 'maxspeed:conditional': '30 @ (night)' },
+    ];
+    for (const tags of excluded) expect(zoneStreetEligible(tags, 30)).toBe(false);
+    expect(zoneStreetEligible({ highway: 'tertiary', maxspeed: '30' }, 30)).toBe(true);
+  });
   it('keeps a legal order distinct from implementation and preserves the raw date marker', () => {
     const [zone] = normalizeTrafficZones(fixture(true), 'zurich-canton', city, '2026-10-06');
     expect(zone.properties).toMatchObject({
@@ -114,6 +164,17 @@ describe('official Tempo 30 / 20 display data', () => {
     expect(zones).toHaveLength(report.city.imported + report.canton.imported);
     expect(report.city.imported).toBeGreaterThan(300);
     expect(report.canton.imported).toBeGreaterThan(0);
+    const streets = map.features.filter((f) => f.properties?.kind === 'traffic-zone-street');
+    expect(streets.length).toBe(report.streets.features);
+    expect(streets.length).toBeGreaterThan(100);
+    expect(
+      streets.every(
+        (f) =>
+          f.geometry.type === 'MultiLineString' &&
+          f.properties?.status === 'implemented' &&
+          f.properties?.source === 'zurich-city',
+      ),
+    ).toBe(true);
     for (const zone of zones.filter((z) => z.properties?.source === 'zurich-canton')) {
       expect(zone.properties).toMatchObject({ status: 'ordered', implementationDate: null });
       expect(zone.properties?.municipality).not.toBe('Zürich');

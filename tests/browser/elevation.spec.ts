@@ -15,7 +15,7 @@ test('flatter Zurich routes, German and English, time budget, profile and unknow
   await to.press('Enter');
   await from.fill('Bucheggplatz');
   await from.press('Enter');
-  await page.getByRole('checkbox', { name: 'Flachere Wege bevorzugen' }).check();
+  await page.locator('#route-priority').selectOption('flat');
   await expect(page.getByRole('button', { name: /Flacherer Weg/ })).toBeVisible();
   await expect(page.locator('.route-elevation').first()).toContainText('95 m');
   await expect(page.locator('.route-elevation').last()).toContainText('90 m');
@@ -34,7 +34,7 @@ test('flatter Zurich routes, German and English, time budget, profile and unknow
   await page.screenshot({ path: 'docs/screenshots/phone-elevation-de.png', fullPage: true });
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   await page.getByRole('button', { name: 'Weg bearbeiten', exact: true }).click();
-  await expect(page.getByRole('checkbox', { name: 'Flachere Wege bevorzugen' })).toBeChecked();
+  await expect(page.locator('#route-priority')).toHaveValue('flat');
   await page.screenshot({
     path: 'docs/screenshots/phone-elevation-controls-de.png',
     fullPage: true,
@@ -49,10 +49,10 @@ test('flatter Zurich routes, German and English, time budget, profile and unknow
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.getByRole('combobox', { name: 'Sprache', exact: true }).selectOption('en');
   await expect(page.getByRole('button', { name: /Flatter route/ })).toBeVisible();
-  await page.getByRole('checkbox', { name: 'Prefer waterside' }).check();
-  await expect(page.getByRole('checkbox', { name: 'Prefer flatter routes' })).not.toBeChecked();
-  await page.getByRole('checkbox', { name: 'Prefer flatter routes' }).check();
-  await expect(page.getByRole('checkbox', { name: 'Prefer waterside' })).not.toBeChecked();
+  await page.locator('#route-priority').selectOption('water');
+  await expect(page.locator('#route-priority')).not.toHaveValue('flat');
+  await page.locator('#route-priority').selectOption('flat');
+  await expect(page.locator('#route-priority')).not.toHaveValue('water');
   await expect(page.getByRole('button', { name: /Flatter route/ })).toBeVisible();
   const fromEn = page.getByRole('combobox', { name: 'From', exact: true });
   const toEn = page.getByRole('combobox', { name: 'To', exact: true });
@@ -69,7 +69,7 @@ test('flatter Zurich routes, German and English, time budget, profile and unknow
   await page.screenshot({ path: 'docs/screenshots/desktop-elevation-unknown.png' });
   await page.getByRole('combobox', { name: 'City', exact: true }).selectOption('ch-basel');
   await expect(page.locator('.route-card').first()).toBeVisible();
-  await expect(page.getByRole('checkbox', { name: 'Prefer flatter routes' })).toHaveCount(0);
+  await expect(page.locator('#route-priority option[value="flat"]')).toHaveCount(0);
   await expect(page.locator('.elevation-profile')).toHaveCount(0);
 });
 
@@ -81,7 +81,7 @@ test('flatter preference on municipal pavements keeps actual walking geometry', 
   await page.goto('/?view=planner&network=pavements');
   await expect(page.locator('.route-card').first()).toBeVisible();
   const distance = await page.locator('.route-card').first().locator('.route-distance').innerText();
-  await page.getByRole('checkbox', { name: 'Prefer flatter routes' }).check();
+  await page.locator('#route-priority').selectOption('flat');
   await expect(page.locator('.route-elevation').first()).toBeVisible();
   await expect(page.locator('.route-card').first().locator('.route-distance')).toHaveText(
     distance,

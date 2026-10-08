@@ -1,0 +1,827 @@
+{
+  "dataVersion": "zurich-2026-10-08-v12",
+  "model": "ordered-physical-bands-v1",
+  "note": "Computational route checks, not field validation or proof of global optimality.",
+  "records": [
+    {
+      "names": [
+        "Bahnhofquai",
+        "Bürkliplatz"
+      ],
+      "budget": 0,
+      "preferences": {
+        "primary": "calm",
+        "secondary": [
+          "water",
+          "flat"
+        ]
+      },
+      "applied": [],
+      "unavailable": [],
+      "candidateCount": 1,
+      "fastest": {
+        "minutes": 18.89037500000001,
+        "distance": 1511.2300000000007,
+        "sunMeters": 1213.3388571428584,
+        "unknownMeters": 73.53,
+        "waterMeters": 1023.0766666666666,
+        "majorRoadMeters": 587.8466666666664,
+        "terrain": {
+          "ascent": 7.152684897290328,
+          "descent": 7.183972931685446,
+          "unknownMeters": 73.52999999999997
+        },
+        "streets": [
+          "Bahnhofquai",
+          "Walking path",
+          "Bahnhofquai",
+          "Walking path",
+          "Steps",
+          "Heiristeg",
+          "Schipfe",
+          "Strehlgasse",
+          "Weinplatz",
+          "Storchengasse",
+          "Münsterhof",
+          "Walking path",
+          "Fraumünsterstrasse",
+          "Walking path"
+        ]
+      },
+      "alternative": null
+    },
+    {
+      "names": [
+        "Bahnhofquai",
+        "Bürkliplatz"
+      ],
+      "budget": 5,
+      "preferences": {
+        "primary": "calm",
+        "secondary": [
+          "water",
+          "flat"
+        ]
+      },
+      "applied": [
+        "water"
+      ],
+      "unavailable": [
+        "flat"
+      ],
+      "candidateCount": 9,
+      "fastest": {
+        "minutes": 18.89037500000001,
+        "distance": 1511.2300000000007,
+        "sunMeters": 1213.3388571428584,
+        "unknownMeters": 73.53,
+        "waterMeters": 1023.0766666666666,
+        "majorRoadMeters": 587.8466666666664,
+        "terrain": {
+          "ascent": 7.152684897290328,
+          "descent": 7.183972931685446,
+          "unknownMeters": 73.52999999999997
+        },
+        "streets": [
+          "Bahnhofquai",
+          "Walking path",
+          "Bahnhofquai",
+          "Walking path",
+          "Steps",
+          "Heiristeg",
+          "Schipfe",
+          "Strehlgasse",
+          "Weinplatz",
+          "Storchengasse",
+          "Münsterhof",
+          "Walking path",
+          "Fraumünsterstrasse",
+          "Walking path"
+        ]
+      },
+      "alternative": {
+        "minutes": 21.12612499999999,
+        "distance": 1690.0899999999992,
+        "sunMeters": 1255.7128333333337,
+        "unknownMeters": 108.14466666666668,
+        "waterMeters": 238.31666666666666,
+        "majorRoadMeters": 322.2766666666667,
+        "terrain": {
+          "ascent": 23.156591378879057,
+          "descent": 24.623564081608606,
+          "unknownMeters": 53.63000000000011
+        },
+        "streets": [
+          "Bahnhofquai",
+          "Walking path",
+          "Bahnhofquai",
+          "Walking path",
+          "Waisenhausstrasse",
+          "Werdmühlestrasse",
+          "Lindenhofstrasse",
+          "Oetenbachgasse",
+          "Lindenhofstrasse",
+          "Fortunagasse",
+          "Lindenhofstrasse",
+          "Lindenhof",
+          "Pfalzgasse",
+          "Strehlgasse",
+          "Schlüsselgasse",
+          "In Gassen",
+          "Storchengasse",
+          "Münsterhof",
+          "Walking path",
+          "Fraumünsterstrasse",
+          "Walking path"
+        ]
+      }
+    },
+    {
+      "names": [
+        "Bahnhofquai",
+        "Bürkliplatz"
+      ],
+      "budget": 10,
+      "preferences": {
+        "primary": "calm",
+        "secondary": [
+          "water",
+          "flat"
+        ]
+      },
+      "applied": [
+        "water"
+      ],
+      "unavailable": [
+        "flat"
+      ],
+      "candidateCount": 9,
+      "fastest": {
+        "minutes": 18.89037500000001,
+        "distance": 1511.2300000000007,
+        "sunMeters": 1213.3388571428584,
+        "unknownMeters": 73.53,
+        "waterMeters": 1023.0766666666666,
+        "majorRoadMeters": 587.8466666666664,
+        "terrain": {
+          "ascent": 7.152684897290328,
+          "descent": 7.183972931685446,
+          "unknownMeters": 73.52999999999997
+        },
+        "streets": [
+          "Bahnhofquai",
+          "Walking path",
+          "Bahnhofquai",
+          "Walking path",
+          "Steps",
+          "Heiristeg",
+          "Schipfe",
+          "Strehlgasse",
+          "Weinplatz",
+          "Storchengasse",
+          "Münsterhof",
+          "Walking path",
+          "Fraumünsterstrasse",
+          "Walking path"
+        ]
+      },
+      "alternative": {
+        "minutes": 21.12612499999999,
+        "distance": 1690.0899999999992,
+        "sunMeters": 1255.7128333333337,
+        "unknownMeters": 108.14466666666668,
+        "waterMeters": 238.31666666666666,
+        "majorRoadMeters": 322.2766666666667,
+        "terrain": {
+          "ascent": 23.156591378879057,
+          "descent": 24.623564081608606,
+          "unknownMeters": 53.63000000000011
+        },
+        "streets": [
+          "Bahnhofquai",
+          "Walking path",
+          "Bahnhofquai",
+          "Walking path",
+          "Waisenhausstrasse",
+          "Werdmühlestrasse",
+          "Lindenhofstrasse",
+          "Oetenbachgasse",
+          "Lindenhofstrasse",
+          "Fortunagasse",
+          "Lindenhofstrasse",
+          "Lindenhof",
+          "Pfalzgasse",
+          "Strehlgasse",
+          "Schlüsselgasse",
+          "In Gassen",
+          "Storchengasse",
+          "Münsterhof",
+          "Walking path",
+          "Fraumünsterstrasse",
+          "Walking path"
+        ]
+      }
+    },
+    {
+      "names": [
+        "Bahnhofquai",
+        "Bürkliplatz"
+      ],
+      "budget": 0,
+      "preferences": {
+        "primary": "shade",
+        "secondary": [
+          "water",
+          "calm"
+        ]
+      },
+      "applied": [],
+      "unavailable": [],
+      "candidateCount": 1,
+      "fastest": {
+        "minutes": 18.89037500000001,
+        "distance": 1511.2300000000007,
+        "sunMeters": 1213.3388571428584,
+        "unknownMeters": 73.53,
+        "waterMeters": 1023.0766666666666,
+        "majorRoadMeters": 587.8466666666664,
+        "streets": [
+          "Bahnhofquai",
+          "Walking path",
+          "Bahnhofquai",
+          "Walking path",
+          "Steps",
+          "Heiristeg",
+          "Schipfe",
+          "Strehlgasse",
+          "Weinplatz",
+          "Storchengasse",
+          "Münsterhof",
+          "Walking path",
+          "Fraumünsterstrasse",
+          "Walking path"
+        ]
+      },
+      "alternative": null
+    },
+    {
+      "names": [
+        "Bahnhofquai",
+        "Bürkliplatz"
+      ],
+      "budget": 5,
+      "preferences": {
+        "primary": "shade",
+        "secondary": [
+          "water",
+          "calm"
+        ]
+      },
+      "applied": [
+        "water",
+        "calm"
+      ],
+      "unavailable": [],
+      "candidateCount": 10,
+      "fastest": {
+        "minutes": 18.89037500000001,
+        "distance": 1511.2300000000007,
+        "sunMeters": 1213.3388571428584,
+        "unknownMeters": 73.53,
+        "waterMeters": 1023.0766666666666,
+        "majorRoadMeters": 587.8466666666664,
+        "streets": [
+          "Bahnhofquai",
+          "Walking path",
+          "Bahnhofquai",
+          "Walking path",
+          "Steps",
+          "Heiristeg",
+          "Schipfe",
+          "Strehlgasse",
+          "Weinplatz",
+          "Storchengasse",
+          "Münsterhof",
+          "Walking path",
+          "Fraumünsterstrasse",
+          "Walking path"
+        ]
+      },
+      "alternative": {
+        "minutes": 21.077374999999996,
+        "distance": 1686.1899999999996,
+        "sunMeters": 837.9259166666668,
+        "unknownMeters": 56.20666666666667,
+        "waterMeters": 251.57666666666668,
+        "majorRoadMeters": 634.8612499999999,
+        "streets": [
+          "Bahnhofquai",
+          "Walking path",
+          "Bahnhofquai",
+          "Walking path"
+        ]
+      }
+    },
+    {
+      "names": [
+        "Bahnhofquai",
+        "Bürkliplatz"
+      ],
+      "budget": 10,
+      "preferences": {
+        "primary": "shade",
+        "secondary": [
+          "water",
+          "calm"
+        ]
+      },
+      "applied": [
+        "water",
+        "calm"
+      ],
+      "unavailable": [],
+      "candidateCount": 10,
+      "fastest": {
+        "minutes": 18.89037500000001,
+        "distance": 1511.2300000000007,
+        "sunMeters": 1213.3388571428584,
+        "unknownMeters": 73.53,
+        "waterMeters": 1023.0766666666666,
+        "majorRoadMeters": 587.8466666666664,
+        "streets": [
+          "Bahnhofquai",
+          "Walking path",
+          "Bahnhofquai",
+          "Walking path",
+          "Steps",
+          "Heiristeg",
+          "Schipfe",
+          "Strehlgasse",
+          "Weinplatz",
+          "Storchengasse",
+          "Münsterhof",
+          "Walking path",
+          "Fraumünsterstrasse",
+          "Walking path"
+        ]
+      },
+      "alternative": {
+        "minutes": 21.077374999999996,
+        "distance": 1686.1899999999996,
+        "sunMeters": 837.9259166666668,
+        "unknownMeters": 56.20666666666667,
+        "waterMeters": 251.57666666666668,
+        "majorRoadMeters": 634.8612499999999,
+        "streets": [
+          "Bahnhofquai",
+          "Walking path",
+          "Bahnhofquai",
+          "Walking path"
+        ]
+      }
+    },
+    {
+      "names": [
+        "Bucheggplatz",
+        "Waidbadstrasse"
+      ],
+      "budget": 0,
+      "preferences": {
+        "primary": "flat",
+        "secondary": [
+          "shade",
+          "calm"
+        ]
+      },
+      "applied": [],
+      "unavailable": [],
+      "candidateCount": 1,
+      "fastest": {
+        "minutes": 19.347499999999993,
+        "distance": 1547.7999999999995,
+        "sunMeters": 1537.544999999999,
+        "unknownMeters": 0,
+        "waterMeters": 0,
+        "majorRoadMeters": 649.2433333333332,
+        "terrain": {
+          "ascent": 94.51651884997239,
+          "descent": 5.954733927180996,
+          "unknownMeters": 0
+        },
+        "streets": [
+          "Walking path",
+          "Tièchestrasse",
+          "Walking path",
+          "Steps",
+          "Walking path",
+          "Obere Waidstrasse",
+          "Walking path",
+          "Steigholzweg",
+          "Hasenrain",
+          "Waidbadstrasse"
+        ]
+      },
+      "alternative": null
+    },
+    {
+      "names": [
+        "Bucheggplatz",
+        "Waidbadstrasse"
+      ],
+      "budget": 5,
+      "preferences": {
+        "primary": "flat",
+        "secondary": [
+          "shade",
+          "calm"
+        ]
+      },
+      "applied": [
+        "shade",
+        "calm"
+      ],
+      "unavailable": [],
+      "candidateCount": 8,
+      "fastest": {
+        "minutes": 19.347499999999993,
+        "distance": 1547.7999999999995,
+        "sunMeters": 1537.544999999999,
+        "unknownMeters": 0,
+        "waterMeters": 0,
+        "majorRoadMeters": 649.2433333333332,
+        "terrain": {
+          "ascent": 94.51651884997239,
+          "descent": 5.954733927180996,
+          "unknownMeters": 0
+        },
+        "streets": [
+          "Walking path",
+          "Tièchestrasse",
+          "Walking path",
+          "Steps",
+          "Walking path",
+          "Obere Waidstrasse",
+          "Walking path",
+          "Steigholzweg",
+          "Hasenrain",
+          "Waidbadstrasse"
+        ]
+      },
+      "alternative": {
+        "minutes": 21.571374999999996,
+        "distance": 1725.7099999999998,
+        "sunMeters": 1715.4550000000002,
+        "unknownMeters": 0,
+        "waterMeters": 0,
+        "majorRoadMeters": 1058.09,
+        "terrain": {
+          "ascent": 88.56178492279139,
+          "descent": 0,
+          "unknownMeters": 0
+        },
+        "streets": [
+          "Walking path",
+          "Tièchestrasse",
+          "Emil-Klöti-Strasse",
+          "Walking path",
+          "Waidfussweg",
+          "Walking path",
+          "Waidbadstrasse"
+        ]
+      }
+    },
+    {
+      "names": [
+        "Bucheggplatz",
+        "Waidbadstrasse"
+      ],
+      "budget": 10,
+      "preferences": {
+        "primary": "flat",
+        "secondary": [
+          "shade",
+          "calm"
+        ]
+      },
+      "applied": [
+        "shade",
+        "calm"
+      ],
+      "unavailable": [],
+      "candidateCount": 8,
+      "fastest": {
+        "minutes": 19.347499999999993,
+        "distance": 1547.7999999999995,
+        "sunMeters": 1537.544999999999,
+        "unknownMeters": 0,
+        "waterMeters": 0,
+        "majorRoadMeters": 649.2433333333332,
+        "terrain": {
+          "ascent": 94.51651884997239,
+          "descent": 5.954733927180996,
+          "unknownMeters": 0
+        },
+        "streets": [
+          "Walking path",
+          "Tièchestrasse",
+          "Walking path",
+          "Steps",
+          "Walking path",
+          "Obere Waidstrasse",
+          "Walking path",
+          "Steigholzweg",
+          "Hasenrain",
+          "Waidbadstrasse"
+        ]
+      },
+      "alternative": {
+        "minutes": 24.553625000000004,
+        "distance": 1964.2900000000002,
+        "sunMeters": 1954.0349999999987,
+        "unknownMeters": 0,
+        "waterMeters": 0,
+        "majorRoadMeters": 1536.4849999999983,
+        "terrain": {
+          "ascent": 88.56178492279139,
+          "descent": 0,
+          "unknownMeters": 0
+        },
+        "streets": [
+          "Walking path",
+          "Tièchestrasse",
+          "Emil-Klöti-Strasse",
+          "Walking path",
+          "Waidbadstrasse"
+        ]
+      }
+    },
+    {
+      "names": [
+        "Bucheggplatz",
+        "Waidbadstrasse"
+      ],
+      "budget": 0,
+      "preferences": {
+        "primary": "shade",
+        "secondary": [
+          "flat"
+        ]
+      },
+      "applied": [],
+      "unavailable": [],
+      "candidateCount": 1,
+      "fastest": {
+        "minutes": 19.347499999999993,
+        "distance": 1547.7999999999995,
+        "sunMeters": 1537.544999999999,
+        "unknownMeters": 0,
+        "waterMeters": 0,
+        "majorRoadMeters": 649.2433333333332,
+        "terrain": {
+          "ascent": 94.51651884997239,
+          "descent": 5.954733927180996,
+          "unknownMeters": 0
+        },
+        "streets": [
+          "Walking path",
+          "Tièchestrasse",
+          "Walking path",
+          "Steps",
+          "Walking path",
+          "Obere Waidstrasse",
+          "Walking path",
+          "Steigholzweg",
+          "Hasenrain",
+          "Waidbadstrasse"
+        ]
+      },
+      "alternative": null
+    },
+    {
+      "names": [
+        "Bucheggplatz",
+        "Waidbadstrasse"
+      ],
+      "budget": 5,
+      "preferences": {
+        "primary": "shade",
+        "secondary": [
+          "flat"
+        ]
+      },
+      "applied": [],
+      "unavailable": [],
+      "candidateCount": 5,
+      "fastest": {
+        "minutes": 19.347499999999993,
+        "distance": 1547.7999999999995,
+        "sunMeters": 1537.544999999999,
+        "unknownMeters": 0,
+        "waterMeters": 0,
+        "majorRoadMeters": 649.2433333333332,
+        "terrain": {
+          "ascent": 94.51651884997239,
+          "descent": 5.954733927180996,
+          "unknownMeters": 0
+        },
+        "streets": [
+          "Walking path",
+          "Tièchestrasse",
+          "Walking path",
+          "Steps",
+          "Walking path",
+          "Obere Waidstrasse",
+          "Walking path",
+          "Steigholzweg",
+          "Hasenrain",
+          "Waidbadstrasse"
+        ]
+      },
+      "alternative": null
+    },
+    {
+      "names": [
+        "Bucheggplatz",
+        "Waidbadstrasse"
+      ],
+      "budget": 10,
+      "preferences": {
+        "primary": "shade",
+        "secondary": [
+          "flat"
+        ]
+      },
+      "applied": [],
+      "unavailable": [],
+      "candidateCount": 5,
+      "fastest": {
+        "minutes": 19.347499999999993,
+        "distance": 1547.7999999999995,
+        "sunMeters": 1537.544999999999,
+        "unknownMeters": 0,
+        "waterMeters": 0,
+        "majorRoadMeters": 649.2433333333332,
+        "terrain": {
+          "ascent": 94.51651884997239,
+          "descent": 5.954733927180996,
+          "unknownMeters": 0
+        },
+        "streets": [
+          "Walking path",
+          "Tièchestrasse",
+          "Walking path",
+          "Steps",
+          "Walking path",
+          "Obere Waidstrasse",
+          "Walking path",
+          "Steigholzweg",
+          "Hasenrain",
+          "Waidbadstrasse"
+        ]
+      },
+      "alternative": null
+    },
+    {
+      "names": [
+        "Bellevue",
+        "Zürichhorn"
+      ],
+      "budget": 0,
+      "preferences": {
+        "primary": "water",
+        "secondary": [
+          "sun",
+          "flat"
+        ]
+      },
+      "applied": [],
+      "unavailable": [],
+      "candidateCount": 1,
+      "fastest": {
+        "minutes": 19.925874999999998,
+        "distance": 1594.0699999999997,
+        "sunMeters": 1594.0700000000004,
+        "unknownMeters": 0,
+        "waterMeters": 799.839,
+        "majorRoadMeters": 1314.2800000000002,
+        "terrain": {
+          "ascent": 2.570056717214186,
+          "descent": 2.5844165966102537,
+          "unknownMeters": 0
+        },
+        "streets": [
+          "Walking path"
+        ]
+      },
+      "alternative": null
+    },
+    {
+      "names": [
+        "Bellevue",
+        "Zürichhorn"
+      ],
+      "budget": 5,
+      "preferences": {
+        "primary": "water",
+        "secondary": [
+          "sun",
+          "flat"
+        ]
+      },
+      "applied": [
+        "sun",
+        "flat"
+      ],
+      "unavailable": [],
+      "candidateCount": 4,
+      "fastest": {
+        "minutes": 19.925874999999998,
+        "distance": 1594.0699999999997,
+        "sunMeters": 1594.0700000000004,
+        "unknownMeters": 0,
+        "waterMeters": 799.839,
+        "majorRoadMeters": 1314.2800000000002,
+        "terrain": {
+          "ascent": 2.570056717214186,
+          "descent": 2.5844165966102537,
+          "unknownMeters": 0
+        },
+        "streets": [
+          "Walking path"
+        ]
+      },
+      "alternative": {
+        "minutes": 20.469749999999998,
+        "distance": 1637.5799999999997,
+        "sunMeters": 1637.58,
+        "unknownMeters": 0,
+        "waterMeters": 1552.8283333333331,
+        "majorRoadMeters": 545.4333333333337,
+        "terrain": {
+          "ascent": 2.7152658264777187,
+          "descent": 2.7296257058737865,
+          "unknownMeters": 0
+        },
+        "streets": [
+          "Walking path",
+          "Seefeldquai",
+          "Walking path"
+        ]
+      }
+    },
+    {
+      "names": [
+        "Bellevue",
+        "Zürichhorn"
+      ],
+      "budget": 10,
+      "preferences": {
+        "primary": "water",
+        "secondary": [
+          "sun",
+          "flat"
+        ]
+      },
+      "applied": [
+        "sun",
+        "flat"
+      ],
+      "unavailable": [],
+      "candidateCount": 4,
+      "fastest": {
+        "minutes": 19.925874999999998,
+        "distance": 1594.0699999999997,
+        "sunMeters": 1594.0700000000004,
+        "unknownMeters": 0,
+        "waterMeters": 799.839,
+        "majorRoadMeters": 1314.2800000000002,
+        "terrain": {
+          "ascent": 2.570056717214186,
+          "descent": 2.5844165966102537,
+          "unknownMeters": 0
+        },
+        "streets": [
+          "Walking path"
+        ]
+      },
+      "alternative": {
+        "minutes": 20.469749999999998,
+        "distance": 1637.5799999999997,
+        "sunMeters": 1637.58,
+        "unknownMeters": 0,
+        "waterMeters": 1552.8283333333331,
+        "majorRoadMeters": 545.4333333333337,
+        "terrain": {
+          "ascent": 2.7152658264777187,
+          "descent": 2.7296257058737865,
+          "unknownMeters": 0
+        },
+        "streets": [
+          "Walking path",
+          "Seefeldquai",
+          "Walking path"
+        ]
+      }
+    }
+  ]
+}

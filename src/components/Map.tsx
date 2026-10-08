@@ -79,7 +79,8 @@ export function WalkingMap({
   const [pointZones, setPointZones] = useState<ZoneProperties[]>([]);
   const zoneDataAvailable = useMemo(
     () =>
-      !mapData || mapData.features.some((feature) => feature.properties?.kind === 'traffic-zone'),
+      !mapData ||
+      mapData.features.some((feature) => feature.properties?.kind === 'traffic-zone-street'),
     [mapData],
   );
   useEffect(() => {
@@ -270,51 +271,56 @@ export function WalkingMap({
       'bottom-right',
     );
     const attribution = m.getContainer().querySelector('.maplibregl-ctrl-attrib');
+    const legend = container.current.parentElement?.querySelector('.map-legend');
     const attributionObserver = new ResizeObserver(() => {
       if (attribution)
         container.current?.parentElement?.style.setProperty(
           '--map-attribution-height',
           `${attribution.getBoundingClientRect().height}px`,
         );
+      container.current
+        ?.closest<HTMLElement>('.planner')
+        ?.style.setProperty(
+          '--map-bottom-space',
+          `${(attribution?.getBoundingClientRect().height ?? 22) + (legend?.getBoundingClientRect().height ?? 30) + 16}px`,
+        );
     });
     if (attribution) attributionObserver.observe(attribution);
+    if (legend) attributionObserver.observe(legend);
     m.on('load', () => {
-      // Below streets and route strokes: zone colour must not hide paths or exposure.
+      // Paint the matched streets, never whole neighbourhood blocks. Legal orders
+      // remain thin dashed boundaries because their implementation is unknown.
       m.addLayer(
         {
-          id: 'traffic-zone-fill',
-          type: 'fill',
+          id: 'traffic-zone-streets',
+          type: 'line',
           source: 'base',
-          filter: ['==', ['get', 'kind'], 'traffic-zone'],
-          layout: { visibility: 'none' },
+          filter: ['==', ['get', 'kind'], 'traffic-zone-street'],
+          minzoom: 11,
+          layout: { visibility: 'none', 'line-cap': 'round', 'line-join': 'round' },
           paint: {
-            'fill-color': ['case', ['==', ['get', 'speed'], 20], '#aa657d', '#8272ae'],
-            'fill-opacity': 0.17,
+            'line-color': ['case', ['==', ['get', 'speed'], 20], '#986078', '#7c6a9f'],
+            'line-width': ['interpolate', ['linear'], ['zoom'], 11, 0.7, 13, 1.5, 16, 4, 18, 7],
+            'line-opacity': 0.8,
           },
+        },
+        'paths',
+      );
+      m.addLayer(
+        {
+          id: 'traffic-zone-ordered',
+          type: 'line',
+          source: 'base',
+          filter: [
+            'all',
+            ['==', ['get', 'kind'], 'traffic-zone'],
+            ['==', ['get', 'status'], 'ordered'],
+          ],
+          layout: { visibility: 'none' },
+          paint: { 'line-color': '#7c6a9f', 'line-width': 1.5, 'line-dasharray': [3, 3] },
         },
         'building',
       );
-      for (const status of ['implemented', 'ordered']) {
-        m.addLayer(
-          {
-            id: `traffic-zone-${status}`,
-            type: 'line',
-            source: 'base',
-            filter: [
-              'all',
-              ['==', ['get', 'kind'], 'traffic-zone'],
-              ['==', ['get', 'status'], status],
-            ],
-            layout: { visibility: 'none' },
-            paint: {
-              'line-color': ['case', ['==', ['get', 'speed'], 20], '#8e4562', '#6a5797'],
-              'line-width': 1.5,
-              ...(status === 'ordered' ? { 'line-dasharray': [3, 3] } : {}),
-            },
-          },
-          'building',
-        );
-      }
       m.addSource('coverage', {
         type: 'geojson',
         data: collection([
@@ -560,8 +566,10 @@ export function WalkingMap({
         }
       }
       if (!hero) {
-        const zones = m.getLayer('traffic-zone-fill')
-          ? m.queryRenderedFeatures(event.point, { layers: ['traffic-zone-fill'] })
+        const zones = m.getLayer('traffic-zone-streets')
+          ? m.queryRenderedFeatures(event.point, {
+              layers: ['traffic-zone-streets', 'traffic-zone-ordered'],
+            })
           : [];
         setPointZones([
           ...new Map(
@@ -600,7 +608,7 @@ export function WalkingMap({
   useEffect(() => {
     if (!ready || !map.current) return;
     setSettled(false);
-    for (const layer of ['traffic-zone-fill', 'traffic-zone-implemented', 'traffic-zone-ordered'])
+    for (const layer of ['traffic-zone-streets', 'traffic-zone-ordered'])
       map.current.setLayoutProperty(layer, 'visibility', showZones && !hero ? 'visible' : 'none');
     setPointZones([]);
   }, [ready, showZones, hero]);
@@ -858,7 +866,7 @@ export function WalkingMap({
             ? hero
               ? 140
               : showZones
-                ? 140
+                ? 160
                 : canopyScenario
                   ? 115
                   : 95
@@ -1057,7 +1065,7 @@ export function WalkingMap({
                 </span>
                 <span>
                   {zone.status === 'implemented'
-                    ? t('City data · implemented')
+                    ? t('Street in an implemented zone · inferred from map data')
                     : t('Canton data · ordered; implementation unknown')}
                 </span>
               </p>
@@ -1152,10 +1160,8 @@ export function WalkingMap({
                 {t('Encounter zone · 20')}
               </span>
               <span className="zone-status-key">
-                <i className="zone-solid" />
-                {t('Implemented')}
                 <i className="zone-dashed" />
-                {t('Ordered · implementation unknown')}
+                {t('Ordered boundary · implementation unknown')}
               </span>
             </div>
           )}

@@ -63,7 +63,7 @@ test('pavements compare real routes and preserve the trip and time budget across
   await expect(page.getByRole('combobox', { name: 'From', exact: true })).toHaveValue(
     'Talacker / Pelikanstrasse',
   );
-  await expect(page.getByRole('checkbox', { name: 'Prefer calmer streets' })).toHaveCount(0);
+  await expect(page.locator('#route-priority option[value="calm"]')).toHaveCount(0);
   await expect(page.locator('.map-shell')).toHaveAttribute('data-map-settled', 'true');
   await page.screenshot({ path: 'docs/screenshots/desktop-pavement-pilot.png', fullPage: true });
   const accessibility = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa']).analyze();
@@ -80,7 +80,7 @@ test('pavements compare real routes and preserve the trip and time budget across
     'Talacker / Pelikanstrasse',
   );
   await expect(page.locator('.route-pavement-note')).toHaveCount(0);
-  await expect(page.getByRole('checkbox', { name: 'Prefer calmer streets' })).toBeVisible();
+  await expect(page.locator('#route-priority option[value="calm"]')).toHaveCount(1);
   await expect(page.locator('.route-card').first()).toBeVisible();
   await page.getByRole('button', { name: 'Use pavements & crossings', exact: true }).click();
   await expect(page.locator('.route-pavement-note').first()).toBeVisible();
@@ -183,7 +183,7 @@ test('addresses keep their names and require an explicit walking point, includin
     fullPage: true,
   });
   await page.getByRole('button', { name: 'Weg bearbeiten', exact: true }).click();
-  await page.getByRole('checkbox', { name: 'Wasser bevorzugen', exact: true }).check();
+  await page.locator('#route-priority').selectOption('water');
   await expect(page.locator('.route-card').first()).toBeVisible();
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.getByRole('button', { name: 'Standard-Fusswegnetz', exact: true }).click();

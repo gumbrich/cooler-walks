@@ -2,8 +2,14 @@ import fs from 'node:fs';
 import { createHash } from 'node:crypto';
 import type { FeatureCollection } from 'geojson';
 import { getCity } from '../src/lib/cities';
-import { normalizeTrafficZones, zoneIntersectsBounds } from '../src/lib/traffic-zones';
-import type { Bounds } from '../src/lib/types';
+import {
+  normalizeTrafficZones,
+  zoneIntersectsBounds,
+  deriveZoneStreets,
+} from '../src/lib/traffic-zones';
+import type { Bounds, Point } from '../src/lib/types';
+import type { OSMData } from './lib/osm';
+import zurichExtract from '../src/lib/coverage/zurich-extract.json';
 
 const city = getCity('ch-zurich');
 const read = (path: string) => JSON.parse(fs.readFileSync(path, 'utf8'));
@@ -29,9 +35,37 @@ const all = [
   ...normalizeTrafficZones(read(cantonPath), 'zurich-canton', city, fetchRecord.fetchedAt),
 ];
 const zones = all.filter((zone) => zoneIntersectsBounds(zone, bounds));
+const osmPath = `${zurichExtract.rawDirectory}/osm.json`;
+if (sha256(osmPath) !== data.provenance.traffic.sha256.osm)
+  throw new Error('OSM street source differs from routing');
+const osm: OSMData = read(osmPath);
+const nodes = new Map(
+  osm.elements.filter((e) => e.type === 'node').map((e) => [e.id, [e.lon, e.lat] as Point]),
+);
+const streets = deriveZoneStreets(
+  city,
+  zones,
+  osm.elements
+    .filter((e) => e.type === 'way' && e.tags?.highway)
+    .map((e) => ({
+      id: e.id,
+      tags: e.tags!,
+      points: e.nodes.map((n) => {
+        const p = nodes.get(n);
+        if (!p) throw new Error('Incomplete source street');
+        return p;
+      }),
+    })),
+);
 const mapPath = `public${city.mapUrl}`;
 const map: FeatureCollection = read(mapPath);
-map.features = [...map.features.filter((f) => f.properties?.kind !== 'traffic-zone'), ...zones];
+map.features = [
+  ...map.features.filter(
+    (f) => !['traffic-zone', 'traffic-zone-street'].includes(f.properties?.kind),
+  ),
+  ...zones,
+  ...streets,
+];
 fs.writeFileSync(mapPath, JSON.stringify(map));
 const report = {
   version: city.dataVersion,
@@ -62,6 +96,14 @@ const report = {
       ),
     ]),
   ),
+  streets: {
+    features: streets.length,
+    ways: new Set(streets.map((s) => s.properties.way)).size,
+    matchedCityZones: new Set(streets.map((s) => s.properties.id)).size,
+    sourceSha256: sha256(osmPath),
+    method:
+      'Ground-level public OSM motor streets clipped to implemented city zones, preserving holes. Contradictory/conditional speed or access omitted; main roads require matching explicit maxspeed. No cantonal order becomes a street speed claim.',
+  },
   notes: [
     'Whole source polygons intersecting the current map context; holes preserved. WGS84 rounded to 6 decimals.',
     'City implemented-status zones already inform street context; this overlay does not change routing.',

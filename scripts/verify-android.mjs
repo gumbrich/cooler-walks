@@ -101,7 +101,7 @@ try {
 
   await page.getByRole('combobox', { name: 'Language', exact: true }).selectOption('de');
   await page.getByRole('button', { name: 'Weg bearbeiten', exact: true }).click();
-  await page.getByRole('checkbox', { name: /Verkehrsberuhigt bevorzugen/ }).check();
+  await page.locator('#route-priority').selectOption('calm');
   await expect(page.getByRole('button', { name: /Verkehrsberuhigter Weg/ })).toBeVisible({
     timeout: 60000,
   });
@@ -130,7 +130,7 @@ try {
   await page.getByLabel('Departure date', { exact: true }).fill('2026-12-21');
   await page.getByRole('slider', { name: 'Departure time' }).fill('720');
   await page.getByRole('button', { name: 'Edit', exact: true }).click();
-  await page.getByRole('radio', { name: 'Prefer sun', exact: true }).check();
+  await page.locator('#route-priority').selectOption('sun');
   await device.input.press('Back');
   await ready(page);
   await expect(page.locator('.route-card').first()).toContainText('estimated sun');

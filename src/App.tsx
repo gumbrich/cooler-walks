@@ -40,6 +40,10 @@ import { AreaDownloads } from './components/AreaDownloads';
 import { TrafficCounts } from './components/TrafficCounts';
 import { TrafficProfile } from './components/TrafficProfile';
 import { ElevationProfile } from './components/ElevationProfile';
+import { RoutePreferences } from './components/RoutePreferences';
+import { PreferenceComparison } from './components/PreferenceComparison';
+import type { RoutePreferences as Preferences } from './lib/types';
+import { goalsOf } from './lib/preferences';
 import { formatElevation, terrainComplete } from './lib/elevation';
 import { trafficCost } from './lib/traffic';
 import { nearbyCounts } from './lib/vehicle-counts';
@@ -109,16 +113,21 @@ export default function App() {
       window.removeEventListener('resize', update);
     };
   }, []);
-  const [preferCalm, setPreferCalm] = useState(false);
-  const [preferFlat, setPreferFlat] = useState(false);
+  const [preferences, setPreferences] = useState<Preferences>({
+    primary: city.capabilities.buildingShade ? 'shade' : 'greenery',
+    secondary: [],
+  });
+  const activeGoals = goalsOf(preferences);
+  const preferCalm = activeGoals.includes('calm');
+  const preferFlat = activeGoals.includes('flat');
+  const preferWater = activeGoals.includes('water');
+  const sunlight = activeGoals.includes('sun') ? 'sun' : 'shade';
   const [pavements, setPavements] = useState(false);
   const [canopyScenario, setCanopyScenario] = useState(false);
   const initialPavements = useRef(
     new URLSearchParams(location.search).get('network') === 'pavements',
   );
   const [countsExpanded, setCountsExpanded] = useState(false);
-  const [preferWater, setPreferWater] = useState(false);
-  const [sunlight, setSunlight] = useState<'shade' | 'sun'>('shade');
   const [departure, setDeparture] = useState(() => localNow(city.timeZone)),
     [extra, setExtra] = useState(5);
   const [result, setResult] = useState<RouteResult | null>(null),
@@ -148,13 +157,13 @@ export default function App() {
     setStart(null);
     setEnd(null);
     setStops([]);
-    setPreferWater(false);
-    setPreferCalm(false);
-    setPreferFlat(false);
+    setPreferences({
+      primary: city.capabilities.buildingShade ? 'shade' : 'greenery',
+      secondary: [],
+    });
     setPavements(false);
     setCanopyScenario(false);
     setCountsExpanded(false);
-    setSunlight('shade');
     setError('');
     setDataState('loading');
     setBusy(false);
@@ -339,6 +348,7 @@ export default function App() {
         preferWater,
         preferCalm,
         preferFlat,
+        preferences,
         sunlight,
         pavements,
         canopyScenario,
@@ -356,6 +366,7 @@ export default function App() {
     preferWater,
     preferCalm,
     preferFlat,
+    preferences,
     sunlight,
     pavements,
     canopyScenario,
@@ -413,7 +424,11 @@ export default function App() {
     const next = !pavements;
     setPavements(next);
     setPick(null);
-    setPreferCalm(false);
+    if (next)
+      setPreferences((p) => ({
+        primary: p.primary === 'calm' ? 'shade' : p.primary,
+        secondary: p.secondary.filter((g) => g !== 'calm'),
+      }));
     setError('');
     const url = new URL(location.href);
     if (next) url.searchParams.set('network', 'pavements');
@@ -593,21 +608,23 @@ export default function App() {
         <span>
           {busy
             ? t('Updating…')
-            : preferFlat
-              ? t('Elevation does not depend on the time.')
-              : preferCalm
-                ? t('Street context is fixed. Counter profiles change with time.')
-                : preferWater
-                  ? t('Water proximity does not depend on the time.')
-                  : result?.mode === 'night'
-                    ? t('After dark · direct sun is not relevant')
-                    : result?.mode === 'low-sun'
-                      ? t('Low sun · building estimate unavailable')
-                      : result?.mode === 'transition'
-                        ? t('Light changes during this walk · comparison unavailable')
-                        : hasExposure || (!result && city.capabilities.buildingShade)
-                          ? t('Estimates change with departure time.')
-                          : t('Tree proximity does not depend on the time.')}
+            : preferences.secondary.some((g) => g === 'shade' || g === 'sun')
+              ? t('Estimates change with departure time.')
+              : preferences.primary === 'flat'
+                ? t('Elevation does not depend on the time.')
+                : preferences.primary === 'calm'
+                  ? t('Street context is fixed. Counter profiles change with time.')
+                  : preferences.primary === 'water'
+                    ? t('Water proximity does not depend on the time.')
+                    : result?.mode === 'night'
+                      ? t('After dark · direct sun is not relevant')
+                      : result?.mode === 'low-sun'
+                        ? t('Low sun · building estimate unavailable')
+                        : result?.mode === 'transition'
+                          ? t('Light changes during this walk · comparison unavailable')
+                          : hasExposure || (!result && city.capabilities.buildingShade)
+                            ? t('Estimates change with departure time.')
+                            : t('Tree proximity does not depend on the time.')}
         </span>
         <label className="date-label">
           {t('Date')}
@@ -633,21 +650,23 @@ export default function App() {
       <div className="route-card-top">
         <span className="route-name">
           {index
-            ? result?.preference === 'flat'
-              ? t('Flatter route')
-              : result?.preference === 'calm'
-                ? t('Calmer streets')
-                : result?.preference === 'water'
-                  ? t('More time near water')
-                  : result?.preference === 'sun'
-                    ? canopyResult
-                      ? t('More potential sun')
-                      : t('More estimated sun')
-                    : isShade
+            ? result?.preferences?.secondary.length
+              ? t('Alternative')
+              : result?.preference === 'flat'
+                ? t('Flatter route')
+                : result?.preference === 'calm'
+                  ? t('Calmer streets')
+                  : result?.preference === 'water'
+                    ? t('More time near water')
+                    : result?.preference === 'sun'
                       ? canopyResult
-                        ? t('More potential shade')
-                        : t('More estimated shade')
-                      : t('Greener route')
+                        ? t('More potential sun')
+                        : t('More estimated sun')
+                      : isShade
+                        ? canopyResult
+                          ? t('More potential shade')
+                          : t('More estimated shade')
+                        : t('Greener route')
             : t('Fastest walk')}
           {index > 0 && (
             <small>
@@ -964,6 +983,11 @@ export default function App() {
             </div>
           </section>
           <footer className="home-footer">
+            {import.meta.env.VITE_PRIVATE_SITE === '1' && !isNativeApp && (
+              <form method="post" action="/_access/logout">
+                <button>{t('Lock website')}</button>
+              </form>
+            )}
             <span>{t('No account needed.')}</span>
             <button onClick={() => setModal('method')}>
               {t('Method, sources & privacy ')}
@@ -1236,146 +1260,45 @@ export default function App() {
                       ))}
                     </div>
                   </fieldset>
-                  {city.capabilities.buildingShade && (
-                    <fieldset className="sunlight-preference">
-                      <legend>{t('Sun or shade')}</legend>
-                      <div className="sunlight-options">
-                        {(['shade', 'sun'] as const).map((value) => (
-                          <label
-                            key={value}
-                            className={sunlight === value ? `active ${value}` : ''}
-                          >
-                            <input
-                              type="radio"
-                              name="sunlight"
-                              value={value}
-                              checked={sunlight === value}
-                              onChange={() => setSunlight(value)}
-                            />
-                            {value === 'sun' ? <Sun size={18} /> : <Leaf size={18} />}
-                            {t(value === 'sun' ? 'Prefer sun' : 'Prefer shade')}
-                          </label>
-                        ))}
-                      </div>
-                    </fieldset>
-                  )}
+                  <RoutePreferences
+                    city={city}
+                    pavements={pavements}
+                    value={preferences}
+                    onChange={setPreferences}
+                  />
                   {city.canopyPilot && (
-                    <div className="canopy-preference">
-                      <label className={`water-preference ${canopyScenario ? 'active' : ''}`}>
-                        <Leaf size={21} />
-                        <span>
-                          <strong>{t('Tree shade pilot')}</strong>
-                        </span>
-                        <input
-                          type="checkbox"
-                          checked={canopyScenario}
-                          onChange={(e) => setCanopyScenario(e.target.checked)}
-                          aria-describedby="canopy-help"
-                        />
-                      </label>
-                      <p className="preference-help" id="canopy-help">
-                        {t('Full foliage assumption · Zurich map')}
-                      </p>
-                      {canopyScenario && (
-                        <p className="preference-help">
-                          {t(
-                            'Experimental · not field-validated. Gaps in the source data remain unknown.',
+                    <details className="model-options">
+                      <summary>
+                        {t('Shade model')}
+                        {canopyScenario ? t(' · trees included') : ''}
+                      </summary>
+                      {city.canopyPilot && (
+                        <div className="canopy-preference">
+                          <label className={`water-preference ${canopyScenario ? 'active' : ''}`}>
+                            <Leaf size={21} />
+                            <span>
+                              <strong>{t('Tree shade pilot')}</strong>
+                            </span>
+                            <input
+                              type="checkbox"
+                              checked={canopyScenario}
+                              onChange={(e) => setCanopyScenario(e.target.checked)}
+                              aria-describedby="canopy-help"
+                            />
+                          </label>
+                          <p className="preference-help" id="canopy-help">
+                            {t('Full foliage assumption · Zurich map')}
+                          </p>
+                          {canopyScenario && (
+                            <p className="preference-help">
+                              {t(
+                                'Experimental · not field-validated. Gaps in the source data remain unknown.',
+                              )}
+                            </p>
                           )}
-                        </p>
+                        </div>
                       )}
-                    </div>
-                  )}
-                  {city.capabilities.water && (
-                    <label className={`water-preference ${preferWater ? 'active' : ''}`}>
-                      <Waves size={21} />
-                      <span>
-                        <strong>{t('Prefer waterside')}</strong>
-                      </span>
-                      <input
-                        type="checkbox"
-                        checked={preferWater}
-                        onChange={(e) => {
-                          setPreferWater(e.target.checked);
-                          if (e.target.checked) {
-                            setPreferCalm(false);
-                            setPreferFlat(false);
-                          }
-                        }}
-                      />
-                    </label>
-                  )}
-                  {city.capabilities.trafficCalming && !pavements && (
-                    <label
-                      className={`water-preference calm-preference ${preferCalm ? 'active' : ''}`}
-                    >
-                      <TrafficCone size={21} />
-                      <span>
-                        <strong>{t('Prefer calmer streets')}</strong>
-                      </span>
-                      <input
-                        type="checkbox"
-                        checked={preferCalm}
-                        onChange={(e) => {
-                          setPreferCalm(e.target.checked);
-                          if (e.target.checked) {
-                            setPreferWater(false);
-                            setPreferFlat(false);
-                          }
-                        }}
-                      />
-                    </label>
-                  )}
-                  {city.elevation && (
-                    <div>
-                      <label className={`water-preference ${preferFlat ? 'active' : ''}`}>
-                        <Mountain size={21} />
-                        <span>
-                          <strong>{t('Prefer flatter routes')}</strong>
-                        </span>
-                        <input
-                          type="checkbox"
-                          checked={preferFlat}
-                          aria-describedby={preferFlat ? 'elevation-help' : undefined}
-                          onChange={(e) => {
-                            setPreferFlat(e.target.checked);
-                            if (e.target.checked) {
-                              setPreferWater(false);
-                              setPreferCalm(false);
-                            }
-                          }}
-                        />
-                      </label>
-                      {preferFlat && (
-                        <p className="preference-help" id="elevation-help">
-                          {t(
-                            'Less uphill and downhill takes priority. Your extra-time limit still applies.',
-                          )}
-                        </p>
-                      )}
-                    </div>
-                  )}
-                  {pavements && (
-                    <p className="preference-help">
-                      {t(
-                        'Traffic matching is not yet available for the pavement network. Use the standard walking network to compare calmer streets.',
-                      )}
-                    </p>
-                  )}
-                  {preferCalm && (
-                    <p className="preference-help">
-                      {t(
-                        'Street types and official zones take priority. No live traffic or noise measurements.',
-                      )}
-                    </p>
-                  )}
-                  {preferWater && (
-                    <p className="preference-help">
-                      {t(
-                        city.capabilities.buildingShade
-                          ? 'Water proximity takes priority over your sunlight preference.'
-                          : 'Water proximity takes priority over your greenery preference.',
-                      )}
-                    </p>
+                    </details>
                   )}
                   <button className="primary mobile-save" type="submit">
                     {t('Show routes ')}
@@ -1456,13 +1379,14 @@ export default function App() {
                       {[result.fastest, ...(result.alternative ? [result.alternative] : [])].map(
                         routeCard,
                       )}
+                      <PreferenceComparison result={result} units={units} />
                       {!result.alternative && (!(canopyResult && !isShade) || preferFlat) && (
                         <p className="result-note">
                           {extra === 0
                             ? t(
                                 'With no extra walking time, the fastest walk through your chosen points is your route.',
                               )
-                            : preferFlat
+                            : preferences.primary === 'flat'
                               ? !terrainComplete(result.fastest.terrain)
                                 ? t(
                                     'Some walking heights are unknown. A flatter comparison is unavailable; the fastest walk is shown.',
@@ -1470,7 +1394,7 @@ export default function App() {
                                 : t(
                                     'No meaningfully flatter route was found within your time limit.',
                                   )
-                              : preferCalm
+                              : preferences.primary === 'calm'
                                 ? result.fastest.trafficUnknownMeters / result.fastest.distance >
                                   0.05
                                   ? t(
@@ -1483,7 +1407,7 @@ export default function App() {
                                   ? t(
                                       'A sun-based recommendation is unavailable for this time or coverage. The fastest walk is shown.',
                                     )
-                                  : preferWater
+                                  : preferences.primary === 'water'
                                     ? t(
                                         'No route with meaningfully more water proximity was found within your time limit.',
                                       )
@@ -1714,6 +1638,11 @@ export default function App() {
                   <ArrowRight size={16} />
                 </button>
                 <div className="panel-footer">
+                  {import.meta.env.VITE_PRIVATE_SITE === '1' && !isNativeApp && (
+                    <form method="post" action="/_access/logout">
+                      <button>{t('Lock website')}</button>
+                    </form>
+                  )}
                   <button onClick={() => setModal('coverage')}>
                     <span className="pilot-dot" />{' '}
                     {pavements

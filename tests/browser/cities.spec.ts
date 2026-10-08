@@ -37,7 +37,7 @@ test('prefer sun works in winter and respects the direct-walk limit', async ({ p
   await expect(page.locator('.route-card').first()).toBeVisible();
   await page.getByLabel('Departure date', { exact: true }).fill('2026-12-21');
   await page.getByRole('slider', { name: 'Departure time' }).fill('720');
-  await page.getByRole('radio', { name: 'Prefer sun', exact: true }).check();
+  await page.locator('#route-priority').selectOption('sun');
   await expect(page.locator('.spinner')).toHaveCount(0);
   await expect(
     page.getByText(
@@ -103,10 +103,10 @@ for (const [id, slug, sunlight, timeZone] of [
     await expect(page.getByRole('button', { name: /Fastest walk/ })).toBeVisible();
     await expect(page.locator('.time-heading')).toContainText(`${timeZone} time`);
     if (sunlight) {
-      await page.getByRole('radio', { name: 'Prefer sun', exact: true }).check();
+      await page.locator('#route-priority').selectOption('sun');
       await expect(page.locator('.route-card').first()).toContainText('estimated sun');
     } else {
-      await expect(page.getByRole('radio', { name: 'Prefer sun', exact: true })).toHaveCount(0);
+      await expect(page.locator('#route-priority option[value="sun"]')).toHaveCount(0);
       await expect(page.locator('.route-card').first()).toContainText('near trees');
       await expect(page.locator('.capability-note')).toContainText('Greenery prototype');
     }

@@ -1,5 +1,7 @@
 # Cooler Walks
 
+**0.20.0:** Tempo-30-/20-Zonen werden an zugeordneten Strassen markiert. Ein Hauptwunsch und optionale weitere Wünsche lassen sich kombinieren; Ergebnisse zeigen die Abstriche. Die Website ist vorübergehend passwortgeschützt. Bereits gespeicherte Offline-Kopien werden dadurch nicht zurückgezogen. [Funktionsweise](docs/preferences.md) · [Zugangsschutz](docs/private-access.md).
+
 **Höhenprofil 0.19.0:** In Zürich **Flachere Wege bevorzugen** aktivieren. Auf- und Abstieg sowie das Höhenprofil werden mit dem kantonalen Geländemodell geschätzt – auf beiden Fusswegnetzen und innerhalb des gewählten Umwegs. Fehlende Weghöhen verhindern einen Vergleich; auch flachere Wege können Treppen enthalten. [Methode und Prüfungen](docs/elevation.md).
 
 **Baum-Pilot 0.17.0:** «Baumschatten-Pilot» gilt jetzt für das gesamte unterstützte Zürcher Kartengebiet (57,77 km²). 324 Kacheln aus klassifizierten LiDAR-Punkten liefern möglichen Baumschatten unter der Annahme dichter, voller Belaubung. Datenlücken bleiben unbekannt; die Genauigkeit ist noch nicht vor Ort bestätigt. Online werden nur benötigte Kacheln geladen, ein vollständiger Zürich-Download umfasst rund 205 MB. [Methode, Abdeckung und Prüfungen](docs/tree-shade-expansion.md).

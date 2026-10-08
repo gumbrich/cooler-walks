@@ -1,0 +1,19 @@
+{
+  "checkedAt": "2026-10-08T22:09:52.538Z",
+  "origin": "https://coolerwalks.ch",
+  "version": "0.20.0",
+  "unauthenticatedPaths": [
+    "/",
+    "/de/",
+    "/index.html",
+    "/packs/catalog.json",
+    "/data/zurich.json",
+    "/sw.js",
+    "/manifest.webmanifest",
+    "/.netlify/images?url=/icons/icon-192.png"
+  ],
+  "wrongPassword": 401,
+  "authorizedPagesAndData": 200,
+  "unauthorizedAfterAuthorizedCacheWarm": 401,
+  "limitations": ["Historical deploy permalinks and already saved offline files are not retracted."]
+}

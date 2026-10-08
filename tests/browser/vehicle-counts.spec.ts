@@ -53,7 +53,7 @@ test('Historical counters follow route, local departure time and language withou
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   await page.screenshot({ path: 'docs/screenshots/phone-vehicle-counts.png', fullPage: true });
   await page.getByRole('button', { name: 'Weg bearbeiten', exact: true }).click();
-  await page.getByRole('checkbox', { name: /Verkehrsberuhigt bevorzugen/ }).check();
+  await page.locator('#route-priority').selectOption('calm');
   await expect(page.getByRole('button', { name: /Verkehrsberuhigter Weg/ })).toBeVisible();
   await page.getByRole('button', { name: 'Routen anzeigen' }).click();
   await expect(evidence).toContainText('das bedeutet nicht null Verkehr');

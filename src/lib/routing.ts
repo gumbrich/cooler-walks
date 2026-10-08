@@ -1,4 +1,15 @@
-import type { Bounds, Edge, PilotData, Point, City, Route, RouteResult, Sample } from './types';
+import type {
+  Bounds,
+  Edge,
+  PilotData,
+  Point,
+  City,
+  Route,
+  RouteResult,
+  Sample,
+  RoutePreferences,
+} from './types';
+import { goalsOf, selectPreferences, validPreferences } from './preferences';
 import { distance, geographic, gridAzimuth, inBounds, inside, metric, rayHits } from './geo';
 import { DetailedShade } from './detailed-shade';
 import { ShadeLibrary } from './shade-library';
@@ -577,13 +588,22 @@ export class Router {
     canopyScenario = false,
     pavementSources?: (number | undefined)[],
     preferFlat = false,
+    preferences?: RoutePreferences,
   ): Generator<void, RouteResult, void> {
     const router = this;
     yield;
     this.selectNetwork(pavements);
+    if (preferences) {
+      if (!validPreferences(preferences)) throw new Error('Choose compatible route preferences.');
+      const goals = goalsOf(preferences);
+      preferFlat = goals.includes('flat');
+      preferCalm = goals.includes('calm');
+      preferWater = goals.includes('water');
+      sunlight = goals.includes('sun') ? 'sun' : 'shade';
+    }
     if (preferFlat && (!this.city.elevation || !this.detailed))
       throw new Error('Elevation data is unavailable for this area.');
-    if (preferFlat && (preferCalm || preferWater))
+    if (!preferences && preferFlat && (preferCalm || preferWater))
       throw new Error('Choose one route preference: flatter, calmer or waterside.');
     if (
       pavementSources &&
@@ -840,31 +860,39 @@ export class Router {
         );
         if (distinct(r)) candidates.push(r);
       }
-      for (const emphasis of preferFlat ? [] : [0.2, 0.6, 1.5]) {
-        const r = yield* buildRoute(
-          yield* throughStops((e, i) => {
-            const favorable = sample(i).reduce(
-              (v, s) =>
-                v +
-                ((
-                  preferCalm
-                    ? s.traffic !== 'major' && s.traffic !== 'unknown'
-                    : preferWater
-                      ? s.water
-                      : departureMode === 'shade'
-                        ? s.exposure === sunlight
-                        : s.green
-                )
-                  ? s.meters
-                  : 0),
-              0,
-            );
-            return e.length * emphasis + e.length - favorable + crossingChoice(e);
-          }),
-          `option-${candidates.length}`,
-        );
-        if (distinct(r)) candidates.push(r);
-      }
+      const searchGoals = preferences
+        ? goalsOf(preferences).filter((g) => g !== 'flat')
+        : preferFlat
+          ? []
+          : [preferCalm ? 'calm' : preferWater ? 'water' : sunlight];
+      for (const goal of searchGoals)
+        for (const emphasis of [0.2, 0.6, 1.5]) {
+          const r = yield* buildRoute(
+            yield* throughStops((e, i) => {
+              const favorable = sample(i).reduce(
+                (v, s) =>
+                  v +
+                  ((
+                    goal === 'calm'
+                      ? s.traffic !== 'major' && s.traffic !== 'unknown'
+                      : goal === 'water'
+                        ? s.water
+                        : departureMode === 'shade'
+                          ? goal === 'greenery'
+                            ? s.green
+                            : s.exposure === goal
+                          : s.green
+                  )
+                    ? s.meters
+                    : 0),
+                0,
+              );
+              return e.length * emphasis + e.length - favorable + crossingChoice(e);
+            }),
+            `option-${candidates.length}`,
+          );
+          if (distinct(r)) candidates.push(r);
+        }
     }
     if (extra > 0 && preferFlat) {
       const costs = new Map<number, { vertical: number; grade: number }>();
@@ -960,19 +988,22 @@ export class Router {
       (r) =>
         valid(r) &&
         r.minutes <= fastest.minutes + extra + 1e-9 &&
-        (preferFlat
-          ? terrainComplete(fastest.terrain) && terrainComplete(r.terrain)
-          : preferCalm
-            ? trafficCovered(fastest) && trafficCovered(r)
-            : preferWater
-              ? true
-              : shade
-                ? covered(r) && comparableModel(r)
-                : true),
+        (preferences
+          ? true
+          : preferFlat
+            ? terrainComplete(fastest.terrain) && terrainComplete(r.terrain)
+            : preferCalm
+              ? trafficCovered(fastest) && trafficCovered(r)
+              : preferWater
+                ? true
+                : shade
+                  ? covered(r) && comparableModel(r)
+                  : true),
     );
     // Require a material improvement and a genuinely different path (at least 10% new length).
     const better = eligible.filter((r) => {
-      if (canopyScenario && !shade && !preferCalm && !preferWater && !preferFlat) return false;
+      if (!preferences && canopyScenario && !shade && !preferCalm && !preferWater && !preferFlat)
+        return false;
       const novel = r.nodes
         .slice(1)
         .reduce(
@@ -985,21 +1016,23 @@ export class Router {
         );
       return (
         novel / r.distance >= 0.1 &&
-        (preferFlat
-          ? terrainImproves(r.terrain!, fastest.terrain!)
-          : preferCalm
-            ? trafficImproves(r, fastest)
-            : preferWater
-              ? r.waterMeters / r.distance - fastest.waterMeters / fastest.distance >= 0.03
-              : sunlight === 'sun'
-                ? shade &&
-                  r.sunMeters / r.distance -
-                    (fastest.sunMeters + fastest.unknownMeters) / fastest.distance >=
-                    0.03
-                : shade
-                  ? fastest.sunMeters - (r.sunMeters + r.unknownMeters) >=
-                    40 * Math.max(1, (r.crossingCount ?? 0) - (fastest.crossingCount ?? 0))
-                  : r.greenMeters / r.distance - fastest.greenMeters / fastest.distance >= 0.03)
+        (preferences
+          ? true
+          : preferFlat
+            ? terrainImproves(r.terrain!, fastest.terrain!)
+            : preferCalm
+              ? trafficImproves(r, fastest)
+              : preferWater
+                ? r.waterMeters / r.distance - fastest.waterMeters / fastest.distance >= 0.03
+                : sunlight === 'sun'
+                  ? shade &&
+                    r.sunMeters / r.distance -
+                      (fastest.sunMeters + fastest.unknownMeters) / fastest.distance >=
+                      0.03
+                  : shade
+                    ? fastest.sunMeters - (r.sunMeters + r.unknownMeters) >=
+                      40 * Math.max(1, (r.crossingCount ?? 0) - (fastest.crossingCount ?? 0))
+                    : r.greenMeters / r.distance - fastest.greenMeters / fastest.distance >= 0.03)
       );
     });
     better.sort(
@@ -1018,9 +1051,17 @@ export class Router {
                   : y.greenMeters / y.distance - x.greenMeters / x.distance) ||
         x.minutes - y.minutes,
     );
+    const combined = preferences ? selectPreferences(better, fastest, preferences, mode) : null;
     return {
       fastest,
-      alternative: better[0] ?? null,
+      alternative: combined ? combined.route : (better[0] ?? null),
+      ...(preferences && combined
+        ? {
+            preferences,
+            appliedSecondary: combined.applied,
+            unavailableSecondary: combined.unavailable,
+          }
+        : {}),
       candidateCount: candidates.length + 1,
       mode,
       start: this.data.nodes[a.index].point,
@@ -1030,15 +1071,19 @@ export class Router {
       waypoints: stops
         .slice(1, -1)
         .map((stop) => ({ point: this.data.nodes[stop.index].point, snap: stop.meters })),
-      preference: preferFlat
-        ? 'flat'
-        : preferCalm
-          ? 'calm'
-          : preferWater
-            ? 'water'
-            : sunlight === 'sun'
-              ? 'sun'
-              : 'environment',
+      preference: preferences
+        ? ['shade', 'greenery'].includes(preferences.primary)
+          ? 'environment'
+          : (preferences.primary as RouteResult['preference'])
+        : preferFlat
+          ? 'flat'
+          : preferCalm
+            ? 'calm'
+            : preferWater
+              ? 'water'
+              : sunlight === 'sun'
+                ? 'sun'
+                : 'environment',
       departure,
       ...(pavements ? { pavementVersion: this.data.pavementNetwork!.version } : {}),
       ...(canopyScenario ? { canopyVersion: this.canopy!.data.version } : {}),

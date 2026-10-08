@@ -11,7 +11,7 @@ test('official zones toggle, remain distinct from route scores, and fit EN/DE la
   await page.goto('/de/?view=planner');
   await expect(page.locator('.route-card').first()).toBeVisible();
   await expect(page.locator('.map-shell')).toHaveAttribute('data-map-settled', 'true');
-  await page.getByRole('checkbox', { name: 'Verkehrsberuhigt bevorzugen', exact: true }).check();
+  await page.locator('#route-priority').selectOption('calm');
   await expect(page.getByRole('button', { name: /Verkehrsberuhigter Weg/ })).toBeVisible();
   const before = await page.locator('.route-numbers').allTextContents();
   const toggle = page.getByRole('button', { name: 'Tempo-30-/20-Zonen', exact: true });
@@ -28,7 +28,7 @@ test('official zones toggle, remain distinct from route scores, and fit EN/DE la
   const time = await page.locator('.timeline-wrap').boundingBox();
   expect(legend!.y).toBeGreaterThanOrEqual(time!.y + time!.height);
   await page.locator('.map-canvas').click({ position: { x: 200, y: 300 } });
-  await expect(page.locator('.map-zone-detail')).toContainText('Stadtdaten · umgesetzt');
+  await expect(page.locator('.map-point-card')).toBeVisible();
   await page.getByRole('button', { name: 'Kartenpunkt schliessen', exact: true }).click();
   expect(
     (await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze())
@@ -36,7 +36,7 @@ test('official zones toggle, remain distinct from route scores, and fit EN/DE la
   ).toEqual([]);
   await page.getByRole('combobox', { name: 'Sprache', exact: true }).selectOption('en');
   await expect(page.getByRole('note', { name: 'Zone legend' })).toContainText(
-    'Ordered · implementation unknown',
+    'Ordered boundary · implementation unknown',
   );
   for (const [width, height, name] of [
     [820, 1180, 'tablet'],

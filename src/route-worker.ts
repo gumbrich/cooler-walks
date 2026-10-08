@@ -4,7 +4,7 @@ import { readCanopyTile } from './lib/canopy-cache';
 import { runCalculation } from './lib/calculation';
 import { dataUrl } from './lib/data-url';
 import { Router } from './lib/routing';
-import type { City, PilotData, Point } from './lib/types';
+import type { City, PilotData, Point, RoutePreferences } from './lib/types';
 import type { AreaDescriptor } from './lib/area-types';
 import { decodeArea } from './lib/area-codec';
 import { boundedBytes } from './lib/area-codec';
@@ -29,6 +29,7 @@ self.onmessage = async (
     preferWater: boolean;
     preferCalm: boolean;
     preferFlat?: boolean;
+    preferences?: RoutePreferences;
     sunlight: 'shade' | 'sun';
     pavements?: boolean;
     canopyScenario?: boolean;
@@ -162,6 +163,7 @@ self.onmessage = async (
           m.canopyScenario,
           m.pavementSources,
           m.preferFlat,
+          m.preferences,
         ),
         () => request !== sequence,
       );

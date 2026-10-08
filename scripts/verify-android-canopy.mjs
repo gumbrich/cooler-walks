@@ -63,6 +63,7 @@ try {
     .getByRole('option', { name: /^Zürichhorn/ })
     .first()
     .click();
+  await page.locator('.model-options summary').click();
   await page.getByRole('checkbox', { name: 'Tree shade pilot', exact: true }).check();
   await page.getByRole('button', { name: 'Show routes', exact: true }).click();
   await expect(page.locator('.route-card').first()).toContainText('potential shade', {

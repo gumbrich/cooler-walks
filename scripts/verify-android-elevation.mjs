@@ -45,7 +45,7 @@ try {
     .getByRole('option', { name: /^Bucheggplatz/ })
     .first()
     .click();
-  await page.getByRole('checkbox', { name: 'Prefer flatter routes', exact: true }).check();
+  await page.locator('#route-priority').selectOption('flat');
   await expect(page.getByRole('button', { name: /Flatter route/ })).toBeVisible({ timeout: 60000 });
   await expect(page.locator('.route-elevation').first()).toContainText('95 m');
   await expect(page.locator('.route-elevation').last()).toContainText('90 m');
@@ -63,9 +63,9 @@ try {
   await expect(page.locator('.route-card')).toHaveCount(1, { timeout: 60000 });
   await page.getByRole('button', { name: '+5 min', exact: true }).click();
   await expect(page.getByRole('button', { name: /Flacherer Weg/ })).toBeVisible({ timeout: 60000 });
-  await page.getByRole('checkbox', { name: 'Flachere Wege bevorzugen', exact: true }).uncheck();
+  await page.locator('#route-priority').selectOption('shade');
   await expect(page.locator('.route-elevation')).toHaveCount(0, { timeout: 60000 });
-  await page.getByRole('checkbox', { name: 'Flachere Wege bevorzugen', exact: true }).check();
+  await page.locator('#route-priority').selectOption('flat');
   await expect(page.getByRole('button', { name: /Flacherer Weg/ })).toBeVisible({ timeout: 60000 });
   await page.getByRole('button', { name: 'Routen anzeigen', exact: true }).click();
   assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));

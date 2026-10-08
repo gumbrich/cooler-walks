@@ -1,6 +1,6 @@
-# Zurich elevation preference · 0.19.0
+# Zurich elevation preference
 
-Choose **Prefer flatter routes** / **Flachere Wege bevorzugen** in the trip controls. Off is the default: existing shade, sun, water and traffic behavior is unchanged. When enabled, elevation takes priority; water/calm preferences switch off. The 0/5/10-minute detour limit still applies to the same fastest mapped walk. Available on the standard and municipal pavement networks across the supported 57.77 km² Zurich map, subject to walking-height coverage. Other cities do not advertise elevation yet.
+Choose **Flatter routes** / **Flachere Wege** as the main priority or an optional wish. Elevation is off by default. Since 0.20.0 it can be combined with shade or sun, water and supported traffic preferences; the visible order determines priority. See [combined preferences](preferences.md) for the ranking and trade-offs. The 0/5/10-minute detour limit still applies to the same fastest mapped walk. Available on the standard and municipal pavement networks across the supported 57.77 km² Zurich map, subject to walking-height coverage. Other cities do not advertise elevation yet.
 
 The result cards show estimated ascent/descent rounded to 5 m (10 ft). Open **Elevation profile / Höhenprofil** below the cards for the selected route's ground-height profile, model coverage and gaps. A flatter route can still include steps; this is neither step-free routing nor a guarantee of level ground. Walking duration and arrival-time shade sampling still use 4.8 km/h without a slope-speed adjustment.
 

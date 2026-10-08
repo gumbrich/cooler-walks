@@ -108,7 +108,7 @@ try {
   await page.locator('.traffic-counts').scrollIntoViewIfNeeded();
   await device.screenshot({ path: 'docs/screenshots/android-vehicle-counts.png' });
   await page.getByRole('button', { name: 'Weg bearbeiten', exact: true }).click();
-  await page.getByRole('checkbox', { name: /Verkehrsberuhigt bevorzugen/ }).check();
+  await page.locator('#route-priority').selectOption('calm');
   await expect(page.getByRole('button', { name: /Verkehrsberuhigter Weg/ })).toBeVisible({
     timeout: 60000,
   });
@@ -120,7 +120,7 @@ try {
   await device.screenshot({ path: 'docs/screenshots/android-traffic-v2.png' });
   console.log('PASS Android traffic v2 comparison and German street breakdown');
   await page.getByRole('button', { name: 'Weg bearbeiten', exact: true }).click();
-  await page.getByRole('checkbox', { name: /Verkehrsberuhigt bevorzugen/ }).uncheck();
+  await page.locator('#route-priority').selectOption('shade');
   await page.getByRole('combobox', { name: 'Von', exact: true }).fill('Hofwiesenstrasse 350');
   await page.getByRole('option', { name: /^Hofwiesenstrasse 350 Amtliche Adresse/ }).click();
   await expect(page.getByRole('combobox', { name: 'Von', exact: true })).toHaveValue(

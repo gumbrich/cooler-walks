@@ -3891,8 +3891,9 @@ html[lang='de'] .icon-text {
 .zone-swatch {
   display: inline-block;
   width: 14px;
-  height: 10px;
-  border: 1.5px solid;
+  height: 4px;
+  border: 2px solid;
+  border-radius: 2px;
 }
 .zone-30 {
   background: #8272ae2b;
@@ -3955,6 +3956,9 @@ html[lang='de'] .icon-text {
   .map-legend.with-zones {
     bottom: calc(var(--map-attribution-height, 22px) + 8px);
     font-size: 0.6875rem;
+  }
+  .planner:has(.with-zones) .timeline-wrap {
+    bottom: calc(var(--map-bottom-space, 110px) + 12px);
   }
 }
 .network-choice {
@@ -4244,4 +4248,110 @@ html[lang='de'] .icon-text {
   grid-column: 2;
   justify-content: space-between;
   font-size: 11px;
+}
+
+/* One main decision, with optional priorities kept out of the first-use flow. */
+.route-preferences {
+  margin: 16px 0;
+}
+.priority-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.route-preferences > select {
+  width: 100%;
+  min-height: 46px;
+  padding: 10px 12px;
+  border: 1px solid #a3b0a1;
+  border-radius: 8px;
+  background: #fffdf7;
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.9375rem;
+}
+.additional-preferences,
+.model-options {
+  border-bottom: 1px solid var(--line);
+}
+.additional-preferences summary,
+.model-options summary {
+  cursor: pointer;
+  min-height: 44px;
+  padding: 12px 0;
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+.preference-count {
+  background: var(--forest);
+  color: #fff;
+  font-size: 0.6875rem;
+  border-radius: 20px;
+  padding: 2px 6px;
+  margin-left: 8px;
+}
+.optional-preference {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+.optional-preference input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--forest);
+}
+.optional-preference small {
+  margin-left: auto;
+  color: var(--muted);
+}
+.preference-order {
+  font-size: 0.75rem;
+  line-height: 1.6;
+  color: var(--muted);
+  margin: 9px 0 0;
+}
+.model-options {
+  margin: -4px 0 14px;
+}
+.preference-comparison {
+  margin: 16px 0;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #f5f4eb;
+}
+.preference-comparison summary {
+  font-size: 0.8125rem;
+  cursor: pointer;
+  font-weight: 600;
+  min-height: 30px;
+}
+.preference-comparison table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.6875rem;
+  line-height: 1.5;
+}
+.preference-comparison th,
+.preference-comparison td {
+  padding: 7px 4px;
+  border-bottom: 1px solid var(--line);
+  text-align: end;
+  font-weight: 400;
+}
+.preference-comparison th:first-child {
+  text-align: start;
+}
+.preference-comparison thead th {
+  color: var(--muted);
+}
+.preference-comparison p {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 0.6875rem;
+  line-height: 1.5;
 }

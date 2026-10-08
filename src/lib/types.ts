@@ -213,7 +213,15 @@ export interface Route {
   crossingCount?: number;
   canopyShadeMeters?: number;
 }
+export type RouteGoal = 'shade' | 'sun' | 'greenery' | 'water' | 'calm' | 'flat';
+export interface RoutePreferences {
+  primary: RouteGoal;
+  secondary: RouteGoal[];
+}
 export interface RouteResult {
+  preferences?: RoutePreferences;
+  appliedSecondary?: RouteGoal[];
+  unavailableSecondary?: RouteGoal[];
   fastest: Route;
   alternative: Route | null;
   candidateCount: number;

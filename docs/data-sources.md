@@ -1,5 +1,9 @@
 # Data sources and preparation
 
+## Tempo 30 street overlay · 9 October 2026
+
+Reuses the recorded municipal implemented-zone snapshot and the exact OSM extract already catalogued for Zurich; no new field observations or fetch dates are implied. `scripts/prepare-traffic-zones.ts` checks both source hashes, clips eligible street lines in LV95 to the zone polygons and emits WGS84 multiline features. 5,110 features / 4,985 ways / 288 city zones are represented. Source polygons and canton orders remain separately retained; ordered boundaries do not become implemented street limits. Full exclusions and source hashes: [traffic-zone-validation.json](traffic-zone-validation.json). Zurich runtime revision is `zurich-2026-10-08-v12`; the walking and environmental coverage boundaries are unchanged.
+
 ## Zurich tree library expansion · 8 October 2026
 
 The optional tree scenario now targets the entire supported Zurich walking area. Its 324 adjacent 500 m LiDAR source tiles span 81 km² around the 57.77 km² walking boundary. The [expansion method and preparation](tree-shade-expansion.md), [complete source/hash register](canopy-library-source-audit.json) and [computational checks](canopy-library-validation.json) record exact coverage, transformations and retained unknowns. Source: [Kanton Zürich product 557](https://geolion.zh.ch/geodatensatz/4289), observation epoch 2021–2022, LV95/LN02; free reuse and redistribution, Kanton Zürich attribution. The October 2026 fetch is not a new tree observation. Historical lakeshore references below remain evidence for version 1, not the new coverage boundary. Leaf-off acquisition and opacity/foliage assumptions remain experimental.

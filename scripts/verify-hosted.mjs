@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import assert from 'node:assert/strict';
 import crypto from 'node:crypto';
+import { siteAccess } from './lib/site-access.mjs';
 
 // Run after upload against the real HTTPS host. --local only relaxes HTTPS, for
 // a local host that actually applies _headers and _redirects (not vite preview).
@@ -10,6 +11,7 @@ if (!origin)
     'Usage: npm run release:smoke -- https://owned-domain [https://map-host/packs/] [--catalog path/to/build-catalog.json] [--local]',
   );
 const site = new URL(origin);
+const cookie = await siteAccess(origin);
 if (
   site.protocol !== 'https:' &&
   !(process.argv.includes('--local') && ['localhost', '127.0.0.1'].includes(site.hostname))
@@ -27,7 +29,13 @@ const catalogPath =
   catalogFlag < 0 ? 'src/generated/area-catalog.json' : process.argv[catalogFlag + 1];
 assert.ok(catalogPath && !catalogPath.startsWith('--'), '--catalog requires a local JSON file');
 const get = async (url, options = {}) => {
-  const response = await fetch(url, { ...options, signal: AbortSignal.timeout(120000) });
+  const headers = new Headers(options.headers);
+  if (cookie && new URL(url).origin === site.origin) headers.set('Cookie', cookie);
+  const response = await fetch(url, { ...options, headers, signal: AbortSignal.timeout(120000) });
+  if (response.status === 401)
+    throw new Error(
+      'This deployment is private. Supply CW_SITE_PASSWORD through an ignored environment file.',
+    );
   return response;
 };
 for (const [route, phrase] of [
@@ -60,7 +68,7 @@ for (const route of [
   );
 const sw = await get(new URL('/sw.js', site));
 assert.equal(sw.status, 200);
-assert.match(sw.headers.get('cache-control') ?? '', /no-cache|max-age=0/);
+assert.match(sw.headers.get('cache-control') ?? '', /no-cache|no-store|max-age=0/);
 const manifest = await (await get(new URL('/manifest.webmanifest', site))).json();
 assert.equal(manifest.display, 'standalone');
 const germanManifest = await (await get(new URL('/manifest-de.webmanifest', site))).json();

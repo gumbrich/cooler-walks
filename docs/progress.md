@@ -1,5 +1,13 @@
 # Progress
 
+## Street zones, combined preferences and private testing · 0.20.0
+
+Implemented street-based Tempo 30/20 markings, a lean primary/optional preference UI, ordered multi-objective candidate selection with explicit physical tolerances and a visible trade-off table. Existing shade, traffic and height models remain experimental. The live server-side password gate is active, with secrets outside Git and verified protection of pages and direct data URLs. Historical public deploys/offline copies are not retracted. [Preferences and validation](preferences.md) · [access limits](private-access.md).
+
+Local checks pass: 149 unit/model tests, all 36 browser scenarios after two selector corrections, 15 real combined-preference/budget cases, formatting, production build and five release-pack checks. Actual desktop, phone, tablet and emulator captures were inspected. [Exact scope](platform.md#street-zones-and-combined-preferences--0200--native-build-19).
+
+Next: field-validate the combined recommendations and street assignments, then match traffic data to municipal pavements. Public store distribution also needs an authenticated native-download decision or a return to public hosting.
+
 ## Zurich elevation preference · 0.19.0
 
 Implemented optional flatter-route comparison on both Zurich walking networks, reusing the existing cantonal ground grid. Adds rounded ascent/descent, an expandable profile, EN/DE controls and unknown-height handling. Defaults preserve existing routing. [Method and verification](elevation.md). Local TypeScript and 133 automated checks, 42 real route/budget cases, focused EN/DE responsive/accessibility browser tests, production build and all five pack checks pass. Chrome installation/standalone/offline and Android 2 GB emulator offline elevation tests pass. Both native projects are synchronized. The live domain passes hosted tile/pack hashes and installed offline elevation routing. All 34 browser scenarios are verified after correcting one test locator. GitHub source/data checks, all 34 Linux scenarios, cache upgrades and Android/iOS builds pass; an existing city-switch timeout passed on an unchanged retry. [CI evidence](releases/0.19.0-ci.json). Field accuracy remains unvalidated.

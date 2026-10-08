@@ -8,7 +8,11 @@ test('tree scenario shows coverage, separate contributions, translated mobile co
   await page.clock.setFixedTime(new Date('2024-08-01T14:00:00Z'));
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto('/en/?view=planner');
-  const toggle = page.getByRole('checkbox', { name: 'Tree shade pilot', exact: true });
+  const toggle = page.getByRole('checkbox', {
+    name: 'Tree shade pilot',
+    exact: true,
+    includeHidden: true,
+  });
   await expect(toggle).not.toBeChecked();
   await expect(page.locator('.route-card').first()).toBeVisible();
   await page.getByRole('combobox', { name: 'From', exact: true }).fill('Bellevue');
@@ -26,6 +30,8 @@ test('tree scenario shows coverage, separate contributions, translated mobile co
   await expect(page.locator('.spinner')).toHaveCount(0);
   await expect(page.locator('.map-shell')).toHaveAttribute('data-map-settled', 'true');
   await expect(page.locator('.route-card').first()).toContainText('estimated shade');
+  if (!(await page.locator('.model-options').evaluate((el) => (el as HTMLDetailsElement).open)))
+    await page.locator('.model-options summary').click();
   await toggle.check();
   await expect(page.locator('.route-card').first()).toContainText('potential shade');
   await expect(page.locator('.route-card')).toHaveCount(1);
@@ -81,7 +87,9 @@ test('tree scenario shows coverage, separate contributions, translated mobile co
   await expect(page.locator('.route-card').first()).toBeVisible();
   await expect(page.getByRole('checkbox', { name: 'Baumschatten-Pilot' })).toHaveCount(0);
   await page.getByRole('combobox', { name: 'Stadt', exact: true }).selectOption('ch-zurich');
-  await expect(page.getByRole('checkbox', { name: 'Baumschatten-Pilot' })).not.toBeChecked();
+  await expect(
+    page.getByRole('checkbox', { name: 'Baumschatten-Pilot', includeHidden: true }),
+  ).not.toBeChecked();
 });
 
 test('failed canopy download has a recoverable error and cannot silently fall back', async ({
@@ -93,7 +101,13 @@ test('failed canopy download has a recoverable error and cannot silently fall ba
   );
   await page.goto('/en/?view=planner');
   await expect(page.locator('.route-card').first()).toBeVisible();
-  const toggle = page.getByRole('checkbox', { name: 'Tree shade pilot', exact: true });
+  const toggle = page.getByRole('checkbox', {
+    name: 'Tree shade pilot',
+    exact: true,
+    includeHidden: true,
+  });
+  if (!(await page.locator('.model-options').evaluate((el) => (el as HTMLDetailsElement).open)))
+    await page.locator('.model-options summary').click();
   await toggle.check();
   await expect(
     page.getByText(
@@ -132,7 +146,13 @@ test('tree tiles serve northern Zurich on demand and cancelled time changes cann
   await expect(page.locator('.spinner')).toHaveCount(0);
   await expect(page.locator('.route-card').first()).toBeVisible();
   expect(treeRequests.size).toBe(0);
-  const toggle = page.getByRole('checkbox', { name: 'Tree shade pilot', exact: true });
+  const toggle = page.getByRole('checkbox', {
+    name: 'Tree shade pilot',
+    exact: true,
+    includeHidden: true,
+  });
+  if (!(await page.locator('.model-options').evaluate((el) => (el as HTMLDetailsElement).open)))
+    await page.locator('.model-options summary').click();
   await toggle.check();
   await expect(page.locator('.route-card').first()).toContainText('potential shade');
   await expect(page.locator('#canopy-help')).toContainText('Zurich map');

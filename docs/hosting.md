@@ -1,5 +1,9 @@
 # Hosting and domain launch
 
+## Private testing · 9 October 2026
+
+The live website now requires the shared testing password, including direct asset and map-file URLs. Authenticated HTTP checks pass, unauthenticated requests return 401, and missing server secrets fail closed. No plan or billing change. See [access configuration, cookie handling, offline/historical-deploy limits and verification](private-access.md). Passwords never appear in this repository. Hosted checks accept `CW_SITE_PASSWORD` via an ignored environment file: `node --env-file=.env.access scripts/verify-hosted.mjs https://coolerwalks.ch --catalog <deployed-catalogue>`. PWA checks use the same optional environment variable. Keep secrets and cookies out of reports.
+
 Updated 30 September 2026. **The website is live at https://coolerwalks.ch/ with valid HTTPS. The domain is registered in the owner's Infomaniak account; the Netlify project deploys the private GitHub repository.** The public support email is `knoerzerjohannes@protonmail.com`, as requested. “Cooler Walks” is the public brand; store enrollment and legal publisher details remain separate steps.
 
 ## Recommended launch setup

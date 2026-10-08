@@ -1,11 +1,18 @@
 {
-  "version": "zurich-2026-10-06-v11",
-  "contextBounds": [8.456999999999999, 47.338, 8.585, 47.442],
+  "version": "zurich-2026-10-08-v12",
+  "contextBounds": [
+    8.456999999999999,
+    47.338,
+    8.585,
+    47.442
+  ],
   "city": {
     "fetchedAt": "2026-09-29",
     "sha256": "bfbfd367c2bf92941a4bf8f1c1820a5c1af44c2784b1735fb16abdb908cb009c",
     "sourceCrs": "EPSG:4326",
-    "missingGeometryIds": [65],
+    "missingGeometryIds": [
+      65
+    ],
     "imported": 347
   },
   "canton": {
@@ -14,7 +21,9 @@
     "fetchedAt": "2026-10-06T13:43:10.869Z",
     "features": 679,
     "sha256": "d5a7fe048550eb6d3f3d07d83d1879dc917f5ee962a6fda02210e03522c1f178",
-    "sourceMarkers": ["260921"],
+    "sourceMarkers": [
+      "260921"
+    ],
     "sourceCrs": "EPSG:2056",
     "imported": 42
   },
@@ -27,6 +36,13 @@
       "20": 3,
       "30": 39
     }
+  },
+  "streets": {
+    "features": 5110,
+    "ways": 4985,
+    "matchedCityZones": 288,
+    "sourceSha256": "e9d22f78af806498cbd3915bf57d4b96f4850bd091b03f95bf45d5ce3609e12d",
+    "method": "Ground-level public OSM motor streets clipped to implemented city zones, preserving holes. Contradictory/conditional speed or access omitted; main roads require matching explicit maxspeed. No cantonal order becomes a street speed claim."
   },
   "notes": [
     "Whole source polygons intersecting the current map context; holes preserved. WGS84 rounded to 6 decimals.",

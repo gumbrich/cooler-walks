@@ -1,0 +1,15 @@
+{
+  "checkedAt": "2026-10-08T22:18:16.975Z",
+  "version": "0.20.0",
+  "device": "CoolerWalks_Test, Android 36.1, 2 GB",
+  "passed": [
+    "Real Bucheggplatz–Waidbadstrasse flatter alternative",
+    "Estimated ascent/descent and profile",
+    "English/German",
+    "Zero and five-minute budgets offline",
+    "Preference toggling offline",
+    "Flatter + shade + waterside together, with explicit priority and comparison, offline",
+    "No horizontal overflow or JavaScript errors"
+  ],
+  "limitations": ["No physical-phone test", "No iOS interaction test", "No field-validation claim"]
+}

@@ -112,7 +112,7 @@ try {
   await expect(page.locator('.trip-compact')).toContainText('Hofwiesenstrasse 350');
   await expect(page.locator('.trip-compact')).toContainText('Wallisellenstrasse 45');
   await page.getByRole('button', { name: 'Weg bearbeiten', exact: true }).click();
-  await page.getByRole('checkbox', { name: 'Wasser bevorzugen', exact: true }).check();
+  await page.locator('#route-priority').selectOption('water');
   await expect(page.locator('.route-card').first()).toBeVisible({ timeout: 60000 });
   await page.getByRole('button', { name: 'Routen anzeigen', exact: true }).click();
   await page.locator('.map-shell').scrollIntoViewIfNeeded();

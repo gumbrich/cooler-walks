@@ -52,6 +52,8 @@ describe('German interface', () => {
     for (const file of [
       'src/App.tsx',
       'src/components/Map.tsx',
+      'src/components/RoutePreferences.tsx',
+      'src/components/PreferenceComparison.tsx',
       'src/components/Search.tsx',
       'src/components/PavementPicker.tsx',
       'src/components/AreaDownloads.tsx',

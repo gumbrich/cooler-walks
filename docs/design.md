@@ -1,5 +1,11 @@
 # Design direction
 
+## Lean preference controls · 0.20.0
+
+Replaced competing toggle rows with one main-priority selector. Optional wishes are folded under “More preferences”; their displayed order matches ranking. Sun and shade are mutually exclusive. A compact computed comparison explains trade-offs, and unavailable layers are named. Tree geometry assumptions sit under a separate model disclosure. The same components serve web, installed PWA and native shells.
+
+Tempo 30/20 highlights follow clipped road geometry; solid neighbourhood fills are removed. The legend distinguishes inferred implemented street context from unconfirmed legal-order boundaries. Its measured height reserves space above the time control. Password entry uses a small EN/DE form in the existing warm/forest palette, served by the edge gate independently of app assets.
+
 An everyday walking atlas: precise local cartography, a warm paper surface, deep forest ink and a generous serif headline. The map is actual geography and carries the visual identity; no generated place photography or decorative map routes are used.
 
 ## Tokens

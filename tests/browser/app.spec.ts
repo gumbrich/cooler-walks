@@ -4,7 +4,7 @@ test('water preference and ordered stops work on desktop and phone', async ({ pa
   await page.goto('/?view=planner');
   await page.getByLabel('Departure date', { exact: true }).fill('2026-06-21');
   await page.getByRole('slider', { name: 'Departure time' }).fill('840');
-  await page.getByRole('checkbox', { name: /Prefer waterside/ }).check();
+  await page.locator('#route-priority').selectOption('water');
   await expect(page.getByRole('button', { name: /More time near water/ })).toBeVisible();
   await expect(page.locator('.route-water').first()).toContainText('near mapped water');
   await page.getByRole('button', { name: 'Add a stop' }).click();
@@ -45,7 +45,7 @@ test('water preference and ordered stops work on desktop and phone', async ({ pa
   await page.getByRole('button', { name: 'Edit trip', exact: true }).click();
   await page.getByRole('button', { name: 'Remove stop 1' }).click();
   await expect(page.getByRole('combobox', { name: 'Stop 1', exact: true })).toHaveCount(0);
-  await page.getByRole('checkbox', { name: /Prefer waterside/ }).uncheck();
+  await page.locator('#route-priority').selectOption('shade');
   await expect(page.getByRole('button', { name: /More estimated shade/ })).toBeVisible();
 });
 test('failed pilot download explains the issue and can recover', async ({ page }) => {

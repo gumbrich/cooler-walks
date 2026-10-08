@@ -1,5 +1,11 @@
 # Calmer streets in Zurich · 0.11.0
 
+## Street-based zone display · 0.20.0
+
+The optional Tempo 30/20 layer no longer fills neighbourhood polygons. It contains **5,110 clipped street features from 4,985 OSM ways**, matched to **288 implemented city zones**. The input still has 347 city zone polygons and 42 cantonal orders. Some zones have no eligible public motor street in this extract; a missing coloured street is not evidence of an unrestricted speed.
+
+The adapter clips actual road lines in LV95, preserves polygon holes and excludes footpaths, private drives, non-ground/covered roads, conditional tags and contradictory recorded speeds. Main-road classes require an explicit matching OSM speed. City streets are coloured purple (30) or rose (20); unconfirmed cantonal orders remain dashed boundaries only. There is no broad fill over buildings, parks or water. Tapping a highlighted street describes its inferred zone context. This map derivation does not change the existing route traffic model or establish authoritative segment-level limits. [Preparation and provenance](traffic-zone-validation.json).
+
 **Experimental, map-based street context. Field validation is pending.** The Zurich walking area is 57.77 km². This mode reduces walking beside mapped main roads, then on other streets allowing motor access, within the whole-trip detour budget. It does not estimate vehicle volume, noise, pollution, accident risk or live closures.
 
 ## What changed
