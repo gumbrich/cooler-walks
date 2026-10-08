@@ -97,7 +97,7 @@ npm run native:open:ios      # open Xcode
 
 Detailed setup, signing boundaries and offline behaviour are in [docs/mobile.md](docs/mobile.md). Actual platform test results are in [docs/platform.md](docs/platform.md). Signing credentials and generated native build outputs are ignored.
 
-Android **0.18.0/build 17** includes the expanded tree library and municipal paths. Its test APK is available locally as `native-artifacts/cooler-walks-0.18.0-debug.apk`. The 2 GB Android 16 emulator passes official-address pavement selection offline, preserved trips, waterside preference, German, time/detour controls and Oerlikon routes. Browser/PWA updates retain compatible saved maps. [Current platform evidence](docs/platform.md#pavement-address-selection--0180--native-build-17).
+Android **0.19.0/build 18** includes the elevation preference and profile. Its tested APK is available locally as `native-artifacts/cooler-walks-0.19.0-debug.apk`. The 2 GB Android emulator passes flatter routing in English/German and offline detour changes. Browser/PWA updates retain compatible saved maps. [Current platform evidence](docs/platform.md#elevation-preference--0190).
 
 Android APK/AAB and iOS simulator/unsigned-archive builds pass CI. Physical phones and current iOS interactions remain untested; neither app has been submitted to a store. Historical platform checks and source/model limitations remain documented in [platform.md](docs/platform.md).
 

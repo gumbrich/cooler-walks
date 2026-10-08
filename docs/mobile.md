@@ -6,7 +6,7 @@ The user requested a mobile app in addition to the browser. A shared native cont
 
 ## Implemented
 
-- Native projects in `ios/` and `android/`, with application ID `io.github.gumbrich.coolerwalks`, version 0.9.0.
+- Native projects in `ios/` and `android/`, with application ID `io.github.gumbrich.coolerwalks`, version 0.19.0 / build 18.
 - Direct launch into the planner; selected city and units remembered locally.
 - All four city map/model bundles packaged by default; an optional lite build includes Zurich and downloads other areas. See [downloads.md](downloads.md). Planning does not need a first online visit. Native builds do not register the website service worker.
 - Native one-shot location permission only after “Use my location”; no background tracking. Denial preserves the trip and offers map/search input. A late location response cannot replace inputs after a city change.
@@ -50,7 +50,7 @@ See [Capacitor’s environment requirements](https://capacitorjs.com/docs/gettin
 
 Shared TypeScript, routing, real-data and browser checks cover the planner. Native verification results and platform limitations are recorded in [platform.md](platform.md). Browser viewport screenshots do not count as native-device tests.
 
-Current **0.15.0/build 14** packages the expanded municipal paths and shared 3D model. The tested debug APK is `native-artifacts/cooler-walks-0.15.0-debug.apk`. Both `npm run test:native:pavements` and `npm run test:native:counts` pass on the unchanged 2 GB Android 16 emulator, including offline Oerlikon junctions, official addresses, time/budget controls, German and city switching. Android/iOS cloud builds pass; physical phones and current iOS interactions remain untested. See [the exact current evidence](platform.md#zurich-municipal-path-expansion--0150).
+Current **0.19.0/build 18** adds Zurich flatter routes and elevation profiles to the shared planner. The tested APK is `native-artifacts/cooler-walks-0.19.0-debug.apk`, SHA-256 `7565592232d10a1721f58ca4eecb25c2f5e55a806c11ee5de92ed668616b9089`. `npm run test:native:elevation` passes on the dedicated 2 GB Android 36.1 emulator, including real hilly routes, German/English, profiles and offline preference/budget changes. Both native projects are synchronized. Physical-phone and current iOS interaction tests remain outstanding. [Current evidence](platform.md#elevation-preference--0190).
 
 The earlier 0.8.0/build 6 packaged the 57.77 km² Zurich map and official address index. Worker-owned geometry loading, viewport tree rendering and explicit navigation cleanup address the larger model’s Android memory pressure. `npm run test:native:counts` now also verifies address search and routing offline, alongside a fixed Monday 14:00 count reference, German text and beta city-switch cleanup on the dedicated emulator. These checks pass with zero page errors; the archived report is `docs/releases/0.8.0-native-counts-validation.json` and the tested APK is `native-artifacts/cooler-walks-0.8.0-debug.apk` locally. Physical phones and current iOS interactions remain untested.
 

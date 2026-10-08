@@ -1,0 +1,41 @@
+{
+  "appVersion": "0.19.0",
+  "sourceRevision": "4e5c6dbc3d5a1c11105c8fbc209331974a01d047",
+  "origin": "https://coolerwalks.ch",
+  "checkedAt": "2026-10-08T21:00:01.979132+00:00",
+  "checks": [
+    "/: real HTML and security headers",
+    "/de/: real HTML and security headers",
+    "/de/privacy/: real HTML and security headers",
+    "/de/support/: real HTML and security headers",
+    "/privacy/: real HTML and security headers",
+    "/support/: real HTML and security headers",
+    "Zurich 3D library: manifest and all 81 hosted tile hashes verified",
+    "Zurich pavement pilot: published graph matches the reviewed source extract",
+    "Zurich canopy library: manifest and all 324 hosted tile hashes verified",
+    "ch-zurich: hosted bytes, SHA-256 and native CORS verified",
+    "ch-basel: hosted bytes, SHA-256 and native CORS verified",
+    "de-munich: hosted bytes, SHA-256 and native CORS verified",
+    "us-cambridge-ma: hosted bytes, SHA-256 and native CORS verified",
+    "de-munich-old-town: hosted bytes, SHA-256 and native CORS verified",
+    "Hosted smoke check passed. Browser/PWA/native download verification remains required on this deployment."
+  ],
+  "catalog": "0.19.0-hosted-catalog.json",
+  "entry": "/assets/main-DuJ2R7IR.js",
+  "interface": {
+    "elevationPreference": true,
+    "version": true
+  },
+  "assets": {
+    "worker": {
+      "url": "/assets/route-worker-CceQR9rj.js",
+      "sha256": "9cd8f449a81bb80e95cba17984108c5530e7ae9f192b4087832e7d0d086edb0b",
+      "matchesTestedBuild": true
+    },
+    "css": {
+      "url": "/assets/main-B0D_YRIo.css",
+      "sha256": "1068a4578d837a472be8b2790a8b716ae635d9a3d86851b31420f2e61b595529",
+      "matchesTestedBuild": true
+    }
+  }
+}

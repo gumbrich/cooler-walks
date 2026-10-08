@@ -2,6 +2,10 @@
 
 **Current agreement:** improve Zurich traffic modelling now; field-validate shadow and traffic later. Preserve the [shadow evidence and unresolved issues](shadow-validation.md), keep both capabilities experimental, and treat the requested 0.13.0 library expansion as experimental. Automated checks alone do not establish field accuracy.
 
+## Elevation follow-up
+
+Version 0.19.0 adds Zurich flatter routing and height profiles using the existing cantonal ground grid. Next, field-check the paired hilly routes, steps and path alignment; obtain walking-surface heights for bridges and underpasses; then evaluate a gradient-aware duration model. Enable another city only after checking a suitable ground source and its route coverage. [Method and computed cases](elevation.md).
+
 ## Tree shade follow-up
 
 The [8 October assessment](tree-shade-assessment.md) remains an accuracy limitation. The user subsequently requested experimental coverage across the supported Zurich map; [version 0.17.0](tree-shade-expansion.md) provides the tiled library and a separate verified offline supplement. It remains off by default. Wider geographic coverage does not validate summer crowns, opacity or route-ranking usefulness.
