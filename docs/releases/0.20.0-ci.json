@@ -1,0 +1,180 @@
+{
+  "sourceRevision": "96ea019d04556293858fa2c5ce926923b3760018",
+  "checkedAt": "2026-10-08T22:54:46.070039+00:00",
+  "appVersion": "0.20.0",
+  "summary": {
+    "unitAndModelTests": 149,
+    "browserScenarios": 37,
+    "realCombinedPreferenceCases": 15,
+    "fullDataValidation": "passed",
+    "cacheUpgrade": "passed",
+    "android": "passed",
+    "ios": "passed"
+  },
+  "runs": [
+    {
+      "id": 37853832701,
+      "name": "Checks",
+      "url": "https://github.com/gumbrich/cooler-walks/actions/runs/37853832701",
+      "headSha": "96ea019d04556293858fa2c5ce926923b3760018",
+      "conclusion": "success",
+      "jobs": [
+        {
+          "name": "test",
+          "conclusion": "success",
+          "startedAt": "2026-10-08T22:30:59Z",
+          "completedAt": "2026-10-08T22:41:38Z",
+          "checks": [
+            "Set up job",
+            "Run actions/checkout@v7",
+            "Run actions/setup-node@v7",
+            "Run npm ci",
+            "Run python3 -m venv /tmp/cooler-counts-venv",
+            "Run python3 -m venv /tmp/cooler-shade-venv",
+            "Run npm run check",
+            "Run npm run data:verify",
+            "Run npm run format:check",
+            "Run npm run build",
+            "Post Run actions/setup-node@v7",
+            "Post Run actions/checkout@v7",
+            "Complete job"
+          ]
+        },
+        {
+          "name": "browser (4)",
+          "conclusion": "success",
+          "startedAt": "2026-10-08T22:41:41Z",
+          "completedAt": "2026-10-08T22:52:49Z",
+          "checks": [
+            "Set up job",
+            "Run actions/checkout@v7",
+            "Run actions/setup-node@v7",
+            "Run npm ci",
+            "Run npx playwright install --with-deps chromium",
+            "Run npm run test:e2e -- --shard=4/4",
+            "Post Run actions/setup-node@v7",
+            "Post Run actions/checkout@v7",
+            "Complete job"
+          ]
+        },
+        {
+          "name": "browser (1)",
+          "conclusion": "success",
+          "startedAt": "2026-10-08T22:41:40Z",
+          "completedAt": "2026-10-08T22:52:22Z",
+          "checks": [
+            "Set up job",
+            "Run actions/checkout@v7",
+            "Run actions/setup-node@v7",
+            "Run npm ci",
+            "Run npx playwright install --with-deps chromium",
+            "Run npm run test:e2e -- --shard=1/4",
+            "Verify production cache upgrades",
+            "Post Run actions/setup-node@v7",
+            "Post Run actions/checkout@v7",
+            "Complete job"
+          ]
+        },
+        {
+          "name": "browser (3)",
+          "conclusion": "success",
+          "startedAt": "2026-10-08T22:41:41Z",
+          "completedAt": "2026-10-08T22:48:58Z",
+          "checks": [
+            "Set up job",
+            "Run actions/checkout@v7",
+            "Run actions/setup-node@v7",
+            "Run npm ci",
+            "Run npx playwright install --with-deps chromium",
+            "Run npm run test:e2e -- --shard=3/4",
+            "Post Run actions/setup-node@v7",
+            "Post Run actions/checkout@v7",
+            "Complete job"
+          ]
+        },
+        {
+          "name": "browser (2)",
+          "conclusion": "success",
+          "startedAt": "2026-10-08T22:41:40Z",
+          "completedAt": "2026-10-08T22:46:36Z",
+          "checks": [
+            "Set up job",
+            "Run actions/checkout@v7",
+            "Run actions/setup-node@v7",
+            "Run npm ci",
+            "Run npx playwright install --with-deps chromium",
+            "Run npm run test:e2e -- --shard=2/4",
+            "Post Run actions/setup-node@v7",
+            "Post Run actions/checkout@v7",
+            "Complete job"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 37853832759,
+      "name": "Native Android build",
+      "url": "https://github.com/gumbrich/cooler-walks/actions/runs/37853832759",
+      "headSha": "96ea019d04556293858fa2c5ce926923b3760018",
+      "conclusion": "success",
+      "jobs": [
+        {
+          "name": "android",
+          "conclusion": "success",
+          "startedAt": "2026-10-08T22:29:53Z",
+          "completedAt": "2026-10-08T22:34:09Z",
+          "checks": [
+            "Set up job",
+            "Run actions/checkout@v7",
+            "Run actions/setup-node@v7",
+            "Run actions/setup-java@v6",
+            "Run npm ci",
+            "Run npm run native:sync",
+            "Run android-actions/setup-android@v4",
+            "Run sdkmanager 'platforms;android-36' 'build-tools;36.0.0'",
+            "Run npm run native:android",
+            "Run npm run native:bundle:unsigned",
+            "Post Run actions/setup-java@v6",
+            "Post Run actions/setup-node@v7",
+            "Post Run actions/checkout@v7",
+            "Complete job"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 37853832754,
+      "name": "Native iOS build",
+      "url": "https://github.com/gumbrich/cooler-walks/actions/runs/37853832754",
+      "headSha": "96ea019d04556293858fa2c5ce926923b3760018",
+      "conclusion": "success",
+      "jobs": [
+        {
+          "name": "ios",
+          "conclusion": "success",
+          "startedAt": "2026-10-08T22:29:58Z",
+          "completedAt": "2026-10-08T22:32:54Z",
+          "checks": [
+            "Set up job",
+            "Run actions/checkout@v7",
+            "Run actions/setup-node@v7",
+            "Run npm ci",
+            "Run npm run native:sync",
+            "Run npm run native:ios",
+            "Run npm run native:archive:unsigned",
+            "Run ditto -c -k --keepParent native-artifacts/CoolerWalks-unsigned.xcarchive cooler-walks-ios-unsigned-archive.zip",
+            "Run ditto -c -k --keepParent ios/DerivedData/Build/Products/Debug-iphonesimulator/App.app cooler-walks-ios-simulator.zip",
+            "Post Run actions/setup-node@v7",
+            "Post Run actions/checkout@v7",
+            "Complete job"
+          ]
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "No physical-phone test or new iOS interaction test",
+    "Computational checks do not establish field accuracy"
+  ],
+  "note": "Runtime and native source are fixed at this revision; later commits contain documentation and validation evidence only."
+}

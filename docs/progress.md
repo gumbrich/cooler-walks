@@ -6,7 +6,7 @@ Implemented street-based Tempo 30/20 markings, a lean primary/optional preferenc
 
 Local checks pass: 149 unit/model tests, all 37 browser scenarios including the real password form and two selector corrections, 15 real combined-preference/budget cases, formatting, production build and five release-pack checks. Actual desktop, phone, tablet and emulator captures were inspected. [Exact scope](platform.md#street-zones-and-combined-preferences--0200--native-build-19).
 
-Runtime `96ea019` is live at [coolerwalks.ch](https://coolerwalks.ch/de/). Real browser login/logout and direct-asset protection pass. Chrome installation, the full Zurich download and combined routing offline pass; Android and iOS CI builds pass. [Hosted files](releases/0.20.0-host.json) · [PWA evidence](releases/0.20.0-pwa-validation.json).
+Runtime `96ea019` is live at [coolerwalks.ch](https://coolerwalks.ch/de/). Real browser login/logout and direct-asset protection pass. Chrome installation, the full Zurich download and combined routing offline pass; all 37 Linux browser scenarios, source/data checks, cache upgrades, Android and iOS CI builds pass. [CI evidence](releases/0.20.0-ci.json) · [Hosted files](releases/0.20.0-host.json) · [PWA evidence](releases/0.20.0-pwa-validation.json).
 
 Next: field-validate the combined recommendations and street assignments, then match traffic data to municipal pavements. Public store distribution also needs an authenticated native-download decision or a return to public hosting.
 
