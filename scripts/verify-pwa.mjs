@@ -193,12 +193,24 @@ await expect(page.locator('.map-shell')).toHaveAttribute('data-map-ready', 'true
   timeout: 60000,
 });
 await expect(page.locator('.map-failure')).toHaveCount(0);
-// A visited trip only caches its 3D working set. Exercise the complete 80 MB
+// A visited trip only caches its working tiles. Exercise the complete ~205 MB
 // Zurich download before planning in an unvisited district while offline.
 await page.getByRole('button', { name: 'Offline maps', exact: true }).click();
 const zurichPack = page.locator('[data-area-id="ch-zurich"]');
+const zurichDownloadStarted = performance.now();
 await zurichPack.getByRole('button', { name: 'Download area', exact: true }).click();
-await expect(zurichPack.locator('.area-state')).toHaveText('Saved', { timeout: 120000 });
+try {
+  // Matches the existing full-supplement download policy. The public 205 MB
+  // transfer was still progressing at 77% when the former 80 MB test expired.
+  // Route-calculation and interaction limits remain unchanged.
+  await expect(zurichPack.locator('.area-state')).toHaveText('Saved', { timeout: 600000 });
+} catch (error) {
+  console.log('Full Zurich download diagnostics:', await page.getByRole('dialog').innerText());
+  await context.close();
+  throw error;
+}
+const zurichDownloadMs = Math.round(performance.now() - zurichDownloadStarted);
+console.log(`PASS complete Zurich download in ${zurichDownloadMs} ms`);
 await page.getByRole('button', { name: 'Close information' }).click();
 let installation = {
   installed: false,
@@ -327,6 +339,7 @@ const report = {
   offlineMap: true,
   verifiedAreaDownload: true,
   verifiedCompleteZurichDownload: true,
+  zurichDownloadMs,
   downloadedAreaColdOfflineReload: true,
   offlineWaterPreference: true,
   offlineVisitedCitySwitch: true,

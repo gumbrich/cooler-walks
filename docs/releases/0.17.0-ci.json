@@ -1,0 +1,482 @@
+{
+  "appVersion": "0.17.0",
+  "sourceRevision": "532f166a415962d1bd9d2a1d7e80a2834bfdfd53",
+  "checkedAt": "2026-10-08T09:31:15.773360+00:00",
+  "runs": [
+    {
+      "conclusion": "success",
+      "databaseId": 37754937907,
+      "headSha": "532f166a415962d1bd9d2a1d7e80a2834bfdfd53",
+      "name": "Checks",
+      "status": "completed",
+      "url": "https://github.com/gumbrich/cooler-walks/actions/runs/37754937907"
+    },
+    {
+      "conclusion": "success",
+      "databaseId": 37754937894,
+      "headSha": "532f166a415962d1bd9d2a1d7e80a2834bfdfd53",
+      "name": "Native Android build",
+      "status": "completed",
+      "url": "https://github.com/gumbrich/cooler-walks/actions/runs/37754937894"
+    },
+    {
+      "conclusion": "success",
+      "databaseId": 37754938237,
+      "headSha": "532f166a415962d1bd9d2a1d7e80a2834bfdfd53",
+      "name": "Native iOS build",
+      "status": "completed",
+      "url": "https://github.com/gumbrich/cooler-walks/actions/runs/37754938237"
+    }
+  ],
+  "jobs": [
+    {
+      "name": "test",
+      "status": "completed",
+      "conclusion": "success",
+      "databaseId": 113237060064,
+      "url": "https://github.com/gumbrich/cooler-walks/actions/runs/37754937907/job/113237060064",
+      "startedAt": "2026-10-08T09:11:37Z",
+      "completedAt": "2026-10-08T09:20:20Z",
+      "workflow": "Checks",
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@v7",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-node@v7",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm ci",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run python3 -m venv /tmp/cooler-counts-venv",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run python3 -m venv /tmp/cooler-shade-venv",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run check",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run data:verify",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run format:check",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run build",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-node@v7",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@v7",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "name": "browser (4)",
+      "status": "completed",
+      "conclusion": "success",
+      "databaseId": 113240398645,
+      "url": "https://github.com/gumbrich/cooler-walks/actions/runs/37754937907/job/113240398645",
+      "startedAt": "2026-10-08T09:20:23Z",
+      "completedAt": "2026-10-08T09:30:20Z",
+      "workflow": "Checks",
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@v7",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-node@v7",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm ci",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npx playwright install --with-deps chromium",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run test:e2e -- --shard=4/4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Verify production cache upgrades",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Print failure context without artifact storage",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Run actions/upload-artifact@v7",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Post Run actions/setup-node@v7",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@v7",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "name": "browser (2)",
+      "status": "completed",
+      "conclusion": "success",
+      "databaseId": 113240398656,
+      "url": "https://github.com/gumbrich/cooler-walks/actions/runs/37754937907/job/113240398656",
+      "startedAt": "2026-10-08T09:20:59Z",
+      "completedAt": "2026-10-08T09:26:53Z",
+      "workflow": "Checks",
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@v7",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-node@v7",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm ci",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npx playwright install --with-deps chromium",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run test:e2e -- --shard=2/4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Verify production cache upgrades",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Print failure context without artifact storage",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Run actions/upload-artifact@v7",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Post Run actions/setup-node@v7",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@v7",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "name": "browser (3)",
+      "status": "completed",
+      "conclusion": "success",
+      "databaseId": 113240398668,
+      "url": "https://github.com/gumbrich/cooler-walks/actions/runs/37754937907/job/113240398668",
+      "startedAt": "2026-10-08T09:20:22Z",
+      "completedAt": "2026-10-08T09:25:46Z",
+      "workflow": "Checks",
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@v7",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-node@v7",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm ci",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npx playwright install --with-deps chromium",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run test:e2e -- --shard=3/4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Verify production cache upgrades",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Print failure context without artifact storage",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Run actions/upload-artifact@v7",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Post Run actions/setup-node@v7",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@v7",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "name": "browser (1)",
+      "status": "completed",
+      "conclusion": "success",
+      "databaseId": 113240398682,
+      "url": "https://github.com/gumbrich/cooler-walks/actions/runs/37754937907/job/113240398682",
+      "startedAt": "2026-10-08T09:20:23Z",
+      "completedAt": "2026-10-08T09:29:54Z",
+      "workflow": "Checks",
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@v7",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-node@v7",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm ci",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npx playwright install --with-deps chromium",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run test:e2e -- --shard=1/4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Verify production cache upgrades",
+          "conclusion": "success"
+        },
+        {
+          "name": "Print failure context without artifact storage",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Run actions/upload-artifact@v7",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Post Run actions/setup-node@v7",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@v7",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "name": "android",
+      "status": "completed",
+      "conclusion": "success",
+      "databaseId": 113237060641,
+      "url": "https://github.com/gumbrich/cooler-walks/actions/runs/37754937894/job/113237060641",
+      "startedAt": "2026-10-08T09:11:38Z",
+      "completedAt": "2026-10-08T09:18:19Z",
+      "workflow": "Native Android build",
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@v7",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-node@v7",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-java@v6",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm ci",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run native:sync",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run android-actions/setup-android@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run sdkmanager 'platforms;android-36' 'build-tools;36.0.0'",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run native:android",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run native:bundle:unsigned",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/upload-artifact@v7",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Run actions/upload-artifact@v7",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Post Run actions/setup-java@v6",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-node@v7",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@v7",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "name": "ios",
+      "status": "completed",
+      "conclusion": "success",
+      "databaseId": 113237061594,
+      "url": "https://github.com/gumbrich/cooler-walks/actions/runs/37754938237/job/113237061594",
+      "startedAt": "2026-10-08T09:11:44Z",
+      "completedAt": "2026-10-08T09:15:13Z",
+      "workflow": "Native iOS build",
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@v7",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-node@v7",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm ci",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run native:sync",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run native:ios",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run native:archive:unsigned",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run ditto -c -k --keepParent native-artifacts/CoolerWalks-unsigned.xcarchive cooler-walks-ios-unsigned-archive.zip",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run ditto -c -k --keepParent ios/DerivedData/Build/Products/Debug-iphonesimulator/App.app cooler-walks-ios-simulator.zip",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/upload-artifact@v7",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Run actions/upload-artifact@v7",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Post Run actions/setup-node@v7",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@v7",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ],
+  "scope": "122 model/unit/language tests; full data/source checks; all 31 browser scenarios in four shards; production cache upgrade; Android debug/unsigned bundle and iOS simulator/unsigned archive. No field or physical-phone accuracy claim."
+}

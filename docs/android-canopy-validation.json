@@ -1,11 +1,13 @@
 {
-  "appVersion": "0.16.0",
-  "build": 15,
-  "verifiedAt": "2026-10-07T19:47:01.733Z",
+  "appVersion": "0.17.0",
+  "build": 16,
+  "verifiedAt": "2026-10-08T09:10:44.975Z",
   "device": "CoolerWalks_Test emulator",
   "offlineCanopy": true,
-  "afternoonPotentialShadePercent": 59,
-  "morningPotentialShadePercent": 80,
+  "afternoonText": "Fastest walk\n20 min\n1.59 km\nArrive around 16:20\n830 m\npotential shade\n54% coverage · buildings + tree scenario\n730 m unknown\n3D roofs + ground elevation · 100% of walk",
+  "morningText": "Schnellster Weg\n20 min\n1,59 km\nAnkunft gegen 10:20\n1,22 km\nmöglicher Schatten\n89% Abdeckung · Gebäude + Baum-Szenario\n170 m unbekannt\n3D-Dächer + Geländehöhe · 100% des Wegs",
+  "oerlikonText": "Schnellster Weg\n10 min\n800 m\nAnkunft gegen 10:10\n390 m\nmöglicher Schatten\n92% Abdeckung · Gebäude + Baum-Szenario\n70 m unbekannt\n3D-Dächer + Geländehöhe · 100% des Wegs",
+  "expandedCanopyOffline": true,
   "german": true,
   "pageErrors": [],
   "limits": "Emulator only; not a physical-phone or field validation."

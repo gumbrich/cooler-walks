@@ -1,0 +1,33 @@
+{
+  "checkedAt": "2026-10-08T09:18:36.369Z",
+  "origin": "https://coolerwalks.ch",
+  "expectedSourceCommit": "532f166a415962d1bd9d2a1d7e80a2834bfdfd53",
+  "css": {
+    "url": "/assets/main-Be1UxYgS.css",
+    "sha256": "49b137a9509a9a5e4787c12f28a7578638b9b6fb60549f0c9ed053df9526b0a7",
+    "matchesTestedBuild": true
+  },
+  "routingWorker": {
+    "url": "/assets/route-worker-CW1Xn7-N.js",
+    "sha256": "2cdacd59ffc33ef593e9af3d34645eabb8258f137a83ff96a106c0ed601a32ad",
+    "matchesTestedBuild": true
+  },
+  "canopy": {
+    "version": "zurich-canopy-library-2026-10-08-v2",
+    "sha256": "eb905bb1b5f2645404dee9997dfe48bdefcf1ac521f78036f24938b25fd09dbe",
+    "bytes": 86072,
+    "tiles": 324
+  },
+  "hostedChecks": [
+    "Six EN/DE HTML pages and security headers",
+    "True missing-file 404s",
+    "Both PWA manifests",
+    "All 81 building tile hashes",
+    "Pavement graph",
+    "Canopy manifest and all 324 tile hashes",
+    "Five pack hashes and native CORS",
+    "Five decompressed payloads match local source data"
+  ],
+  "publicPwaReport": "0.17.0-pwa-validation.json",
+  "fieldAccuracy": "Not validated; optional opaque full-foliage scenario over the supported 57.77 km² Zurich map."
+}

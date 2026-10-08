@@ -1,0 +1,45 @@
+{
+  "checkedAt": "2026-10-08T09:18:36.369Z",
+  "packs": [
+    {
+      "id": "ch-zurich",
+      "file": "ch-zurich-531b045ea2d5e629.cwp",
+      "compressedBytes": 80741880,
+      "expandedBytes": 188828655,
+      "expandedSha256": "ebe521b38966e02071bea7c4c12a3cbc3ed24eab71bd3671610cdf3f22ecdc48",
+      "matchesLocalPayload": true
+    },
+    {
+      "id": "ch-basel",
+      "file": "ch-basel-0d6d9b904ff8f315.cwp",
+      "compressedBytes": 1957430,
+      "expandedBytes": 11628977,
+      "expandedSha256": "cb6252c059c70642dd39ed394f09d06bc91f982799575c33512987e4e142d6b7",
+      "matchesLocalPayload": true
+    },
+    {
+      "id": "de-munich",
+      "file": "de-munich-11abcf79c7019199.cwp",
+      "compressedBytes": 4391043,
+      "expandedBytes": 27589260,
+      "expandedSha256": "f6c3918feb4d54682048a1cca6da075d0e38fb7e68953ad5ce668e485261bbd3",
+      "matchesLocalPayload": true
+    },
+    {
+      "id": "us-cambridge-ma",
+      "file": "us-cambridge-ma-f2cca82e97e6e9a8.cwp",
+      "compressedBytes": 6669893,
+      "expandedBytes": 42491983,
+      "expandedSha256": "696c6a7de507d6da4e266337535973c889e8311f3f6b65524756fa10c7ab3a49",
+      "matchesLocalPayload": true
+    },
+    {
+      "id": "de-munich-old-town",
+      "file": "de-munich-old-town-0f8a602649abe3f6.cwp",
+      "compressedBytes": 2306028,
+      "expandedBytes": 14025046,
+      "expandedSha256": "f88792ae110f46602ebb76a8652231522feca7fe0827da67b21cf8def5d6c17b",
+      "matchesLocalPayload": true
+    }
+  ]
+}
