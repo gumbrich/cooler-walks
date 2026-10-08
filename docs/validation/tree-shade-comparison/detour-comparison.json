@@ -1,0 +1,378 @@
+{
+  "case": {
+    "id": "lakeshore",
+    "from": "Bellevue",
+    "to": "Z\u00fcrichhorn",
+    "a": [8.5443354, 47.3668209],
+    "b": [8.5520945, 47.3543016],
+    "setting": "Treed lakeshore and open water edge"
+  },
+  "departure": "2024-08-01T14:00:00Z",
+  "vampireMeters": 1572.7,
+  "vampireFetchedAt": "2026-10-08T07:08:11.642457+00:00",
+  "metric": "Fraction of each LV95 polyline lying within a specified metric buffer of the other; both directions reported. Primary tolerance 8 m preserves earlier protocol; other tolerances expose sensitivity.",
+  "distanceMetric": "Nearest distance to the other route at uniformly weighted <=2 m midpoints; not a street-network detour distance.",
+  "limits": [
+    "Nearby paths are not necessarily the same pavement, crossing or route topology.",
+    "Geometrical similarity is not shade agreement or field accuracy.",
+    "Tree mode retains insufficient-coverage fallback at all budgets; no shade recommendation is claimed.",
+    "Vampire response is held fixed because its public UI has no extra-walking-time control. Published profile uses a fixed radiation penalty; exact deployed build remains unknown.",
+    "Our extra time is a ceiling, not a target; results are best of evaluated candidates, not proven global optima."
+  ],
+  "rows": [
+    {
+      "canopyEnabled": true,
+      "allowedExtraMinutes": 0,
+      "actualExtraMinutes": 0,
+      "selectedMeters": 1594.0699999999997,
+      "selectedMinutes": 19.925874999999998,
+      "coveragePercent": 87.7438594090937,
+      "selectionReason": "Insufficient canopy coverage; fastest fallback",
+      "candidateCount": 1,
+      "coordinateSha256": "25bcf36973935b17e4db2f65b3a943eda8984d73b8e6d1fa8262a6d2e1e61ef2",
+      "proximityPercentAtToleranceMeters": {
+        "3": {
+          "coolerWithinVampirePercent": 53.706563443726004,
+          "vampireWithinCoolerPercent": 54.4454861629983,
+          "symmetricMeanPercent": 54.07602480336215
+        },
+        "8": {
+          "coolerWithinVampirePercent": 71.34215448582788,
+          "vampireWithinCoolerPercent": 72.86530983481505,
+          "symmetricMeanPercent": 72.10373216032147
+        },
+        "15": {
+          "coolerWithinVampirePercent": 97.05442221799146,
+          "vampireWithinCoolerPercent": 97.27257538096794,
+          "symmetricMeanPercent": 97.1634987994797
+        },
+        "20": {
+          "coolerWithinVampirePercent": 97.70769453087156,
+          "vampireWithinCoolerPercent": 97.93250954986364,
+          "symmetricMeanPercent": 97.8201020403676
+        },
+        "30": {
+          "coolerWithinVampirePercent": 100.0,
+          "vampireWithinCoolerPercent": 100.0,
+          "symmetricMeanPercent": 100.0
+        },
+        "50": {
+          "coolerWithinVampirePercent": 100.0,
+          "vampireWithinCoolerPercent": 100.0,
+          "symmetricMeanPercent": 100.0
+        }
+      },
+      "coolerToVampireDistance": {
+        "samples": 798,
+        "spacingMeters": 1.9975769751870622,
+        "meanMeters": 4.159003778785308,
+        "medianMeters": 0.27573753840214277,
+        "p95Meters": 9.402952885034846,
+        "maxSampledMeters": 21.444149734526803
+      },
+      "vampireToCoolerDistance": {
+        "samples": 787,
+        "spacingMeters": 1.9985371082991925,
+        "meanMeters": 4.02792177331396,
+        "medianMeters": 0.24348152606100995,
+        "p95Meters": 8.874835588937204,
+        "maxSampledMeters": 21.41277933642284
+      }
+    },
+    {
+      "canopyEnabled": true,
+      "allowedExtraMinutes": 5,
+      "actualExtraMinutes": 0,
+      "selectedMeters": 1594.0699999999997,
+      "selectedMinutes": 19.925874999999998,
+      "coveragePercent": 87.7438594090937,
+      "selectionReason": "Insufficient canopy coverage; fastest fallback",
+      "candidateCount": 6,
+      "coordinateSha256": "25bcf36973935b17e4db2f65b3a943eda8984d73b8e6d1fa8262a6d2e1e61ef2",
+      "proximityPercentAtToleranceMeters": {
+        "3": {
+          "coolerWithinVampirePercent": 53.706563443726004,
+          "vampireWithinCoolerPercent": 54.4454861629983,
+          "symmetricMeanPercent": 54.07602480336215
+        },
+        "8": {
+          "coolerWithinVampirePercent": 71.34215448582788,
+          "vampireWithinCoolerPercent": 72.86530983481505,
+          "symmetricMeanPercent": 72.10373216032147
+        },
+        "15": {
+          "coolerWithinVampirePercent": 97.05442221799146,
+          "vampireWithinCoolerPercent": 97.27257538096794,
+          "symmetricMeanPercent": 97.1634987994797
+        },
+        "20": {
+          "coolerWithinVampirePercent": 97.70769453087156,
+          "vampireWithinCoolerPercent": 97.93250954986364,
+          "symmetricMeanPercent": 97.8201020403676
+        },
+        "30": {
+          "coolerWithinVampirePercent": 100.0,
+          "vampireWithinCoolerPercent": 100.0,
+          "symmetricMeanPercent": 100.0
+        },
+        "50": {
+          "coolerWithinVampirePercent": 100.0,
+          "vampireWithinCoolerPercent": 100.0,
+          "symmetricMeanPercent": 100.0
+        }
+      },
+      "coolerToVampireDistance": {
+        "samples": 798,
+        "spacingMeters": 1.9975769751870622,
+        "meanMeters": 4.159003778785308,
+        "medianMeters": 0.27573753840214277,
+        "p95Meters": 9.402952885034846,
+        "maxSampledMeters": 21.444149734526803
+      },
+      "vampireToCoolerDistance": {
+        "samples": 787,
+        "spacingMeters": 1.9985371082991925,
+        "meanMeters": 4.02792177331396,
+        "medianMeters": 0.24348152606100995,
+        "p95Meters": 8.874835588937204,
+        "maxSampledMeters": 21.41277933642284
+      }
+    },
+    {
+      "canopyEnabled": true,
+      "allowedExtraMinutes": 10,
+      "actualExtraMinutes": 0,
+      "selectedMeters": 1594.0699999999997,
+      "selectedMinutes": 19.925874999999998,
+      "coveragePercent": 87.7438594090937,
+      "selectionReason": "Insufficient canopy coverage; fastest fallback",
+      "candidateCount": 6,
+      "coordinateSha256": "25bcf36973935b17e4db2f65b3a943eda8984d73b8e6d1fa8262a6d2e1e61ef2",
+      "proximityPercentAtToleranceMeters": {
+        "3": {
+          "coolerWithinVampirePercent": 53.706563443726004,
+          "vampireWithinCoolerPercent": 54.4454861629983,
+          "symmetricMeanPercent": 54.07602480336215
+        },
+        "8": {
+          "coolerWithinVampirePercent": 71.34215448582788,
+          "vampireWithinCoolerPercent": 72.86530983481505,
+          "symmetricMeanPercent": 72.10373216032147
+        },
+        "15": {
+          "coolerWithinVampirePercent": 97.05442221799146,
+          "vampireWithinCoolerPercent": 97.27257538096794,
+          "symmetricMeanPercent": 97.1634987994797
+        },
+        "20": {
+          "coolerWithinVampirePercent": 97.70769453087156,
+          "vampireWithinCoolerPercent": 97.93250954986364,
+          "symmetricMeanPercent": 97.8201020403676
+        },
+        "30": {
+          "coolerWithinVampirePercent": 100.0,
+          "vampireWithinCoolerPercent": 100.0,
+          "symmetricMeanPercent": 100.0
+        },
+        "50": {
+          "coolerWithinVampirePercent": 100.0,
+          "vampireWithinCoolerPercent": 100.0,
+          "symmetricMeanPercent": 100.0
+        }
+      },
+      "coolerToVampireDistance": {
+        "samples": 798,
+        "spacingMeters": 1.9975769751870622,
+        "meanMeters": 4.159003778785308,
+        "medianMeters": 0.27573753840214277,
+        "p95Meters": 9.402952885034846,
+        "maxSampledMeters": 21.444149734526803
+      },
+      "vampireToCoolerDistance": {
+        "samples": 787,
+        "spacingMeters": 1.9985371082991925,
+        "meanMeters": 4.02792177331396,
+        "medianMeters": 0.24348152606100995,
+        "p95Meters": 8.874835588937204,
+        "maxSampledMeters": 21.41277933642284
+      }
+    },
+    {
+      "canopyEnabled": false,
+      "allowedExtraMinutes": 0,
+      "actualExtraMinutes": 0,
+      "selectedMeters": 1594.0699999999997,
+      "selectedMinutes": 19.925874999999998,
+      "coveragePercent": 100.00000000000004,
+      "selectionReason": "Fastest; no qualifying alternative",
+      "candidateCount": 1,
+      "coordinateSha256": "25bcf36973935b17e4db2f65b3a943eda8984d73b8e6d1fa8262a6d2e1e61ef2",
+      "proximityPercentAtToleranceMeters": {
+        "3": {
+          "coolerWithinVampirePercent": 53.706563443726004,
+          "vampireWithinCoolerPercent": 54.4454861629983,
+          "symmetricMeanPercent": 54.07602480336215
+        },
+        "8": {
+          "coolerWithinVampirePercent": 71.34215448582788,
+          "vampireWithinCoolerPercent": 72.86530983481505,
+          "symmetricMeanPercent": 72.10373216032147
+        },
+        "15": {
+          "coolerWithinVampirePercent": 97.05442221799146,
+          "vampireWithinCoolerPercent": 97.27257538096794,
+          "symmetricMeanPercent": 97.1634987994797
+        },
+        "20": {
+          "coolerWithinVampirePercent": 97.70769453087156,
+          "vampireWithinCoolerPercent": 97.93250954986364,
+          "symmetricMeanPercent": 97.8201020403676
+        },
+        "30": {
+          "coolerWithinVampirePercent": 100.0,
+          "vampireWithinCoolerPercent": 100.0,
+          "symmetricMeanPercent": 100.0
+        },
+        "50": {
+          "coolerWithinVampirePercent": 100.0,
+          "vampireWithinCoolerPercent": 100.0,
+          "symmetricMeanPercent": 100.0
+        }
+      },
+      "coolerToVampireDistance": {
+        "samples": 798,
+        "spacingMeters": 1.9975769751870622,
+        "meanMeters": 4.159003778785308,
+        "medianMeters": 0.27573753840214277,
+        "p95Meters": 9.402952885034846,
+        "maxSampledMeters": 21.444149734526803
+      },
+      "vampireToCoolerDistance": {
+        "samples": 787,
+        "spacingMeters": 1.9985371082991925,
+        "meanMeters": 4.02792177331396,
+        "medianMeters": 0.24348152606100995,
+        "p95Meters": 8.874835588937204,
+        "maxSampledMeters": 21.41277933642284
+      }
+    },
+    {
+      "canopyEnabled": false,
+      "allowedExtraMinutes": 5,
+      "actualExtraMinutes": 4.627374999999994,
+      "selectedMeters": 1964.2599999999993,
+      "selectedMinutes": 24.55324999999999,
+      "coveragePercent": 97.83531711687868,
+      "selectionReason": "Qualifying shade alternative",
+      "candidateCount": 6,
+      "coordinateSha256": "15fc16236867c39dd02d3bd13201426c1b75012547a0585393f57b9b474f54bb",
+      "proximityPercentAtToleranceMeters": {
+        "3": {
+          "coolerWithinVampirePercent": 0.6954535334270935,
+          "vampireWithinCoolerPercent": 0.866224881874858,
+          "symmetricMeanPercent": 0.7808392076509758
+        },
+        "8": {
+          "coolerWithinVampirePercent": 1.205138017712421,
+          "vampireWithinCoolerPercent": 1.5020116463284188,
+          "symmetricMeanPercent": 1.35357483202042
+        },
+        "15": {
+          "coolerWithinVampirePercent": 1.9186292174489705,
+          "vampireWithinCoolerPercent": 2.3915077792481183,
+          "symmetricMeanPercent": 2.1550684983485446
+        },
+        "20": {
+          "coolerWithinVampirePercent": 2.4285765409734914,
+          "vampireWithinCoolerPercent": 3.0267405246936523,
+          "symmetricMeanPercent": 2.727658532833572
+        },
+        "30": {
+          "coolerWithinVampirePercent": 3.4762676087381017,
+          "vampireWithinCoolerPercent": 4.297207603583746,
+          "symmetricMeanPercent": 3.8867376061609242
+        },
+        "50": {
+          "coolerWithinVampirePercent": 5.850850770274287,
+          "vampireWithinCoolerPercent": 6.838100955004546,
+          "symmetricMeanPercent": 6.344475862639416
+        }
+      },
+      "coolerToVampireDistance": {
+        "samples": 983,
+        "spacingMeters": 1.9982778434595578,
+        "meanMeters": 179.0337351500189,
+        "medianMeters": 193.82837231931055,
+        "p95Meters": 253.55186232235872,
+        "maxSampledMeters": 256.3593027005908
+      },
+      "vampireToCoolerDistance": {
+        "samples": 787,
+        "spacingMeters": 1.9985371082991925,
+        "meanMeters": 171.31425316940857,
+        "medianMeters": 184.21239458225784,
+        "p95Meters": 242.22974498242598,
+        "maxSampledMeters": 245.55724161445988
+      }
+    },
+    {
+      "canopyEnabled": false,
+      "allowedExtraMinutes": 10,
+      "actualExtraMinutes": 4.627374999999994,
+      "selectedMeters": 1964.2599999999993,
+      "selectedMinutes": 24.55324999999999,
+      "coveragePercent": 97.83531711687868,
+      "selectionReason": "Qualifying shade alternative",
+      "candidateCount": 6,
+      "coordinateSha256": "15fc16236867c39dd02d3bd13201426c1b75012547a0585393f57b9b474f54bb",
+      "proximityPercentAtToleranceMeters": {
+        "3": {
+          "coolerWithinVampirePercent": 0.6954535334270935,
+          "vampireWithinCoolerPercent": 0.866224881874858,
+          "symmetricMeanPercent": 0.7808392076509758
+        },
+        "8": {
+          "coolerWithinVampirePercent": 1.205138017712421,
+          "vampireWithinCoolerPercent": 1.5020116463284188,
+          "symmetricMeanPercent": 1.35357483202042
+        },
+        "15": {
+          "coolerWithinVampirePercent": 1.9186292174489705,
+          "vampireWithinCoolerPercent": 2.3915077792481183,
+          "symmetricMeanPercent": 2.1550684983485446
+        },
+        "20": {
+          "coolerWithinVampirePercent": 2.4285765409734914,
+          "vampireWithinCoolerPercent": 3.0267405246936523,
+          "symmetricMeanPercent": 2.727658532833572
+        },
+        "30": {
+          "coolerWithinVampirePercent": 3.4762676087381017,
+          "vampireWithinCoolerPercent": 4.297207603583746,
+          "symmetricMeanPercent": 3.8867376061609242
+        },
+        "50": {
+          "coolerWithinVampirePercent": 5.850850770274287,
+          "vampireWithinCoolerPercent": 6.838100955004546,
+          "symmetricMeanPercent": 6.344475862639416
+        }
+      },
+      "coolerToVampireDistance": {
+        "samples": 983,
+        "spacingMeters": 1.9982778434595578,
+        "meanMeters": 179.0337351500189,
+        "medianMeters": 193.82837231931055,
+        "p95Meters": 253.55186232235872,
+        "maxSampledMeters": 256.3593027005908
+      },
+      "vampireToCoolerDistance": {
+        "samples": 787,
+        "spacingMeters": 1.9985371082991925,
+        "meanMeters": 171.31425316940857,
+        "medianMeters": 184.21239458225784,
+        "p95Meters": 242.22974498242598,
+        "maxSampledMeters": 245.55724161445988
+      }
+    }
+  ]
+}

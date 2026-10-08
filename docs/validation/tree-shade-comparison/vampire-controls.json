@@ -1,0 +1,7 @@
+{
+  "checkedAt": "2026-10-08T07:21:24.218Z",
+  "url": "https://routing.osm.ch/?z=10&center=47.000000%2C8.000000&loc=&loc=&hl=en&alt=0&srv=5",
+  "profile": "Foot (vampire)",
+  "snapshot": "- button \"Zoom in\": +\n- button \"Zoom out\": −\n- button \"Show me where I am\"\n- textbox \"Start - press enter to drop marker\"\n- generic: ×\n- textbox \"End - press enter to drop marker\"\n- generic: ×\n- button \"+\"\n- button \"⇅\"\n- combobox:\n  - option \"Car (fastest)\"\n  - option \"Bike (city)\"\n  - option \"Bike (touring)\"\n  - option \"Foot (city)\"\n  - option \"Hiking\"\n  - option \"Foot (vampire)\" [selected]\n  - option \"Wheelchair\"\n- generic: ›\n- generic \"Open in editor\"\n- generic \"Open in JOSM\"\n- generic \"Open in Debug Map\"\n- generic \"Open in Mapillary\"\n- generic \"Share Route\"\n- generic \"Export GPX file\"\n- combobox \"Select language\":\n  - option \"English\" [selected]\n  - option \"Deutsch\"\n  - option \"Français\"\n- generic: 10 km\n- generic: 5 mi\n- button \"Layers\"\n- link \"Operated by SOSM, Contact/Imprint\":\n  - /url: contact.html\n- link \"Nutzungsbedingungen und Datenschutz.\":\n  - /url: https://sosm.ch/about/terms-of-service/\n- text: Hosting sponsored by\n- link \"Adfinis\":\n  - /url: https://adfinis.com\n- text: and\n- link \"nine\":\n  - /url: https://nine.ch/\n- text: \"| Map data © OpenStreetMap contributors under ODbL |\"\n- link \"About\":\n  - /url: https://osm.ch/nutze-osm.html",
+  "finding": "No maximum extra-walking-time or detour-budget control is exposed in this public profile UI."
+}

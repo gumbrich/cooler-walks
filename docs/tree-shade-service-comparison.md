@@ -21,6 +21,36 @@ Our tree-mode walk and Vampire use the lakeshore corridor but are not identical:
 
 The live Vampire response includes geometry, distance and duration, **not a shade percentage** or raster build identifier. Duration is not sunlight exposure; the services also use different speed/cost conventions. [Saved live responses](validation/tree-shade-comparison/external-routes.json).
 
+## Detour-budget comparison
+
+Follow-up on 8 October: recalculated **all three public extra-time settings**, using exactly the same endpoints, 16:00 CEST departure and the same saved Vampire response. The selection matches the app's default: alternative when offered, otherwise fastest. Both tree-enabled and buildings-only results are retained.
+
+The current [Vampire interface](https://routing.osm.ch/) exposes no maximum extra-walking-time control after selecting `Foot (vampire)`. [Observed controls](validation/tree-shade-comparison/vampire-controls.json). Its [published profile](https://github.com/sosm/cbf-routing-profiles/blob/6b45390967718a4b785af11222fd0dc2688eeeac/foot-vampire.lua) instead uses a fixed radiation penalty; the exact deployed profile remains unidentified. Our 0/5/10-minute setting is a hard ceiling relative to our own fastest route, not a request to use up those minutes. Vampire's fixed 1,573 m result is therefore held constant across the comparisons.
+
+| Tree pilot | Allowed extra time | Selected distance | Extra time actually used | Our path within 8 m of Vampire | Our path within 20 m of Vampire |
+| ---------- | -----------------: | ----------------: | -----------------------: | -----------------------------: | ------------------------------: |
+| On         |              0 min |           1,594 m |                    0 min |                          71.3% |                           97.7% |
+| On         |              5 min |           1,594 m |                    0 min |                          71.3% |                           97.7% |
+| On         |             10 min |           1,594 m |                    0 min |                          71.3% |                           97.7% |
+| Off        |              0 min |           1,594 m |                    0 min |                          71.3% |                           97.7% |
+| Off        |              5 min |           1,964 m |                  4.6 min |                           1.2% |                            2.4% |
+| Off        |             10 min |           1,964 m |                  4.6 min |                           1.2% |                            2.4% |
+
+**With trees on, the routes follow almost the same corridor at every budget.** Our path's mean nearest distance from Vampire is 4.2 m; 95% of it is within 9.4 m. The lower 71% figure from the earlier strict 8 m comparison should not be read as 29% of the walk taking a completely different street. The exact polylines differ, and proximity alone cannot establish identical pavements, crossings or legal connections.
+
+Tree mode returns byte-identical coordinates at all three budgets because its fastest route has only 87.7% model coverage. More allowed time does not override the 95% coverage requirement, so **no tree-shade alternative is recommended**. This is the reason the budget does not change this particular result.
+
+**With trees off, allowing a detour produces a substantially different inland route.** Both 5 and 10 minutes select the same 1,964 m route (+4.63 minutes). Its mean nearest distance from Vampire is 179 m; only 2.4% lies within 20 m of Vampire. No better qualifying option is found among the six evaluated candidates when the limit rises to ten minutes; this does not establish a globally optimal path or prove that no other useful route exists.
+
+The distance fractions use LV95 metric polyline intersection with 8 m and 20 m buffers. [Full metrics](validation/tree-shade-comparison/detour-comparison.json) retain both directions, sensitivity at 3/8/15/20/30/50 m and uniformly weighted nearest-distance samples at no more than 2 m spacing. [Computed routes](validation/tree-shade-comparison/detour-routes.json) preserve coordinates, actual time used, coverage, selection reason and source hashes. All time limits, unchanged fastest geometry, original five-minute outputs and identical-coordinate claims are checked; metric sanity checks and TypeScript compilation pass. No app algorithm, control or threshold changed.
+
+```sh
+node --import tsx scripts/export-vampire-detours.ts
+.venv-geo/bin/python scripts/compare-vampire-detours.py
+```
+
+The route-choice map below already shows both outcomes: solid green for the shared 0/5/10-minute tree-mode result and dotted grey for the buildings-only 5/10-minute detour, against dashed purple Vampire.
+
 ## Shade at the same points
 
 We reused all **457 original midpoints**, spaced at most 4 m along the exact same 1,594 m Cooler fastest path. Building predictions at these points are unchanged from the previous benchmark. Both Cooler variants use the same departure instant for this comparison. This isolates the effect of trees from route choice and from the app's arrival-time sampling.
