@@ -14,6 +14,7 @@ import {
 } from './traffic';
 import { WaterIndex } from './water';
 import { CanopyShade } from './canopy';
+import { CanopyLibrary } from './canopy-library';
 import { inCoverage, segmentInCoverage } from './coverage';
 import {
   CROSSING_CHOICE_METERS,
@@ -143,7 +144,7 @@ interface MetricBuilding {
   bounds: Bounds;
 }
 export class Router {
-  canopy: CanopyShade | null = null;
+  canopy: CanopyShade | CanopyLibrary | null = null;
   points: Point[];
   adjacency: { to: number; edge: number }[][];
   treeGrid = new Grid<Point>();
@@ -170,6 +171,11 @@ export class Router {
     consumeSource = false,
   ) {
     this.baseGraph = { nodes: data.nodes, edges: data.edges };
+    if (data.canopyLibrary) {
+      if (city.canopyPilot?.format !== 'library') throw new Error('Unexpected tree model library');
+      this.canopy = new CanopyLibrary(data.canopyLibrary, { ...city.canopyPilot, cityId: city.id });
+      if (consumeSource) delete data.canopyLibrary;
+    }
     if (data.canopy) {
       if (!city.canopyPilot) throw new Error('Unexpected canopy data');
       this.canopy = new CanopyShade(data.canopy, { ...city.canopyPilot, cityId: city.id });

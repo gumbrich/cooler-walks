@@ -3,6 +3,7 @@ import { boundedBytes, decodeArea } from './area-codec';
 export { decodeArea } from './area-codec';
 import { areaStore } from './area-store';
 import { isNativeApp } from './platform';
+import { saveCanopyLibrary, canopyDownloadPresent, canopyCacheName } from './canopy-cache';
 import type { AreaDescriptor, AreaStore, SavedArea } from './area-types';
 
 export const areas = catalog as AreaDescriptor[];
@@ -33,7 +34,12 @@ export async function installArea(
     fetcher?: typeof fetch;
   },
 ) {
-  const signal = AbortSignal.any([options.signal, AbortSignal.timeout(180000)]);
+  const signal = AbortSignal.any([
+    options.signal,
+    AbortSignal.timeout(area.canopy ? 600000 : 180000),
+  ]);
+  const supplementBytes = isNativeApp ? 0 : (area.canopy?.bytes ?? 0);
+  const totalBytes = area.bytes + supplementBytes;
   const url = options.url ?? areaDownloadURL(area);
   if (!url) throw new Error('Downloads are not available in this build. Included maps still work.');
   const response = await (options.fetcher ?? fetch)(url, {
@@ -45,10 +51,35 @@ export async function installArea(
   if (!response.ok || !response.body)
     throw new Error(`The area could not download (${response.status}). Try again when connected.`);
   const bytes = await boundedBytes(response.body, Math.min(area.bytes, packageLimit), signal, (n) =>
-    options.progress((n / area.bytes) * 0.92),
+    options.progress((n / totalBytes) * 0.92),
   );
   signal.throwIfAborted();
-  await decodeArea(bytes, area);
+  const library = (await decodeArea(bytes, area)).data.canopyLibrary;
+  if (supplementBytes) {
+    if (
+      !library ||
+      library.version !== area.canopy!.version ||
+      library.tiles.length !== area.canopy!.tiles ||
+      library.tiles.reduce((sum, t) => sum + t.bytes, 0) !== supplementBytes
+    )
+      throw new Error(
+        'The tree shade pilot could not load. Reconnect or update the saved Zurich map.',
+      );
+    try {
+      await saveCanopyLibrary(library, {
+        signal,
+        url,
+        fetcher: options.fetcher,
+        progress: (n) => options.progress(((area.bytes + n) / totalBytes) * 0.92),
+      });
+    } catch (error) {
+      if (signal.aborted || (error as DOMException)?.name === 'QuotaExceededError') throw error;
+      throw new Error(
+        'The tree shade pilot could not load. Reconnect or update the saved Zurich map.',
+        { cause: error },
+      );
+    }
+  }
   signal.throwIfAborted();
   options.progress(0.97);
   await (options.store ?? areaStore()).commit(
@@ -57,6 +88,7 @@ export async function installArea(
       version: area.version,
       sha256: area.sha256,
       bytes: bytes.length,
+      ...(supplementBytes ? { supplementBytes } : {}),
       savedAt: new Date().toISOString(),
     },
     bytes,
@@ -84,11 +116,31 @@ export const bundledAreas = () =>
     : Promise.resolve([]));
 export function installedStatus(area: AreaDescriptor, saved: SavedArea[], bundled: string[]) {
   const local = saved.find((entry) => entry.areaId === area.id);
-  return local?.sha256 === area.sha256
+  return local?.sha256 === area.sha256 && local.supplementReady !== false
     ? 'saved'
     : local
       ? 'update'
       : bundled.includes(area.id)
         ? 'included'
         : 'available';
+}
+
+export async function listSavedAreas() {
+  const saved = await areaStore().list();
+  return Promise.all(
+    saved.map(async (entry) => {
+      const area = areas.find((a) => a.id === entry.areaId);
+      if (!isNativeApp && area?.canopy && entry.sha256 === area.sha256)
+        return {
+          ...entry,
+          supplementReady: await canopyDownloadPresent(area.canopy.version, area.canopy.tiles),
+        };
+      return entry;
+    }),
+  );
+}
+export async function removeSavedArea(area: AreaDescriptor) {
+  await areaStore().remove(area.id);
+  if (!isNativeApp && area.canopy && typeof caches !== 'undefined')
+    await caches.delete(canopyCacheName(area.canopy.version));
 }

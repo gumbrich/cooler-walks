@@ -11,6 +11,7 @@ export interface AreaDescriptor extends AreaSpec {
   file: string;
   preparedAt: string;
   areaKm2: number;
+  canopy?: { version: string; bytes: number; tiles: number };
 }
 export interface AreaPayload {
   schema: 1;
@@ -24,6 +25,8 @@ export interface SavedArea {
   sha256: string;
   bytes: number;
   savedAt: string;
+  supplementBytes?: number;
+  supplementReady?: boolean;
 }
 export interface AreaStore {
   list(): Promise<SavedArea[]>;

@@ -2,6 +2,7 @@ import type { DetailedShadeData } from './detailed-shade';
 import type { ShadeLibraryData } from './shade-library';
 import type { PavementData, PavementNetwork } from './pavements';
 import type { CanopyData } from './canopy';
+import type { CanopyLibraryData } from './canopy-library';
 export type Point = [number, number];
 export type Bounds = [number, number, number, number];
 export interface City {
@@ -46,6 +47,8 @@ export interface City {
   };
   pavementPilot?: { dataUrl: string; version: string };
   canopyPilot?: {
+    format?: 'library';
+    downloadBytes?: number;
     dataUrl: string;
     version: string;
     crs: string;
@@ -140,6 +143,7 @@ export interface PilotData {
   shadeTiles?: Record<string, DetailedShadeData>;
   pavementNetwork?: PavementData;
   canopy?: CanopyData;
+  canopyLibrary?: CanopyLibraryData;
 }
 /** The UI retains only search, map points and counter evidence. Heavy graph/model geometry belongs to the routing worker. */
 export type PlannerData = Pick<PilotData, 'places' | 'trees' | 'vehicleCounts'> & {

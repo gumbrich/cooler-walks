@@ -127,15 +127,29 @@ export class CanopyShade {
       altitude > Math.PI / 2
     )
       return 'unknown';
-    const dx = Math.sin(azimuth),
-      dy = Math.cos(azimuth),
-      tan = Math.tan(altitude);
+    const tan = Math.tan(altitude);
     const reach = Math.max(0, (this.data.maxZ - z) / tan);
+    return this.traceRay(point, z, altitude, azimuth, 0, reach);
+  }
+  /** A clipped ray interval can enter from outside this tile; seams are not missing data. */
+  traceRay(
+    point: Point,
+    z: number,
+    altitude: number,
+    azimuth: number,
+    from: number,
+    to: number,
+  ): 'shade' | 'sun' | 'unknown' {
+    const dx = Math.abs(Math.sin(azimuth)) < 1e-12 ? 0 : Math.sin(azimuth),
+      dy = Math.abs(Math.cos(azimuth)) < 1e-12 ? 0 : Math.cos(azimuth),
+      tan = Math.tan(altitude);
+    const reach = to;
     const x = point[0] - this.data.bounds[0],
       y = point[1] - this.data.bounds[1];
-    let column = Math.floor(x),
-      row = Math.floor(y),
-      at = 0,
+    const start = from === 0 && this.contains(point) ? 0 : Math.min(to, from + 1e-7);
+    let column = Math.floor(x + dx * start),
+      row = Math.floor(y + dy * start),
+      at = from,
       missing = false;
     if (reach < 1e-8) {
       const index = (this.data.height - 1 - row) * this.data.width + column;
@@ -161,7 +175,7 @@ export class CanopyShade {
         z + at * tan <= this.top[index] / 10
       )
         return 'shade';
-      if (end >= reach) return missing ? 'unknown' : 'sun';
+      if (end >= reach - 1e-9) return missing ? 'unknown' : 'sun';
       const crossX = nextX <= nextY + 1e-10,
         crossY = nextY <= nextX + 1e-10;
       at = end;
