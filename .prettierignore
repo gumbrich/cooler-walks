@@ -36,3 +36,5 @@ docs/canopy-source-audit.json
 docs/canopy-route-validation.json
 docs/validation/tree-shade-comparison/*-routes.json
 docs/validation/tree-shade-comparison/point-comparisons.json
+
+docs/canopy-library-*.json

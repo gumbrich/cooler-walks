@@ -1,0 +1,10 @@
+{
+  "format": "library",
+  "dataUrl": "/data/zurich-canopy-library.json",
+  "version": "zurich-canopy-library-2026-10-08-v2",
+  "crs": "EPSG:2056",
+  "verticalDatum": "LN02",
+  "bytes": 86072,
+  "sha256": "eb905bb1b5f2645404dee9997dfe48bdefcf1ac521f78036f24938b25fd09dbe",
+  "downloadBytes": 123389633
+}

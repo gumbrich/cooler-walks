@@ -25,3 +25,4 @@ native-artifacts/
 *.p8
 *.ipa
 *.xcarchive/
+/public/data/**/*.part

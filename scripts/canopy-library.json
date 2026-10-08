@@ -1,0 +1,15 @@
+{
+  "version": "zurich-canopy-library-2026-10-08-v2",
+  "cityId": "ch-zurich",
+  "crs": "EPSG:2056",
+  "verticalDatum": "LN02",
+  "bounds": [2677000, 1245000, 2686000, 1254000],
+  "tileSize": 500,
+  "resolution": 1,
+  "source": "https://maps.zh.ch/download/hoehen/2022/lidar/",
+  "metadata": "https://geolion.zh.ch/geodatensatz/4289",
+  "epoch": "2021–2022; predominantly leaf-off; file creation is not acquisition time",
+  "classification": 5,
+  "verticalPaddingMeters": 0.5,
+  "scenario": "opaque-observed-vegetation-envelope"
+}
