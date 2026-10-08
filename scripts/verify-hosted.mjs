@@ -136,7 +136,7 @@ for (const entry of JSON.parse(fs.readFileSync(catalogPath, 'utf8'))) {
   assert.equal(
     response.headers.get('access-control-allow-origin'),
     '*',
-    'Public credential-free packs must support native app origins.',
+    'The configured pack CORS header must remain present.',
   );
   assert.ok(
     !(response.headers.get('content-encoding') ?? '').includes('gzip'),
@@ -145,7 +145,9 @@ for (const entry of JSON.parse(fs.readFileSync(catalogPath, 'utf8'))) {
   const bytes = Buffer.from(await response.arrayBuffer());
   assert.equal(bytes.length, entry.bytes, entry.id);
   assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'), entry.sha256, entry.id);
-  checks.push(`${entry.id}: hosted bytes, SHA-256 and native CORS verified`);
+  checks.push(
+    `${entry.id}: hosted bytes and SHA-256 verified; ${cookie ? 'authenticated request, CORS header retained (native sign-in not implemented)' : 'native CORS verified'}`,
+  );
 }
 console.log(checks.join('\n'));
 console.log(

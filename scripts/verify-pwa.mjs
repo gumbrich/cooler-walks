@@ -30,6 +30,10 @@ page.on('requestfailed', (r) => console.log('Request failed:', r.url(), r.failur
 const origin = (process.env.PWA_ORIGIN ?? 'http://127.0.0.1:4173').replace(/\/$/, '');
 await authorizeBrowser(context, origin);
 await page.goto(origin + '/?view=planner');
+await expect(page.locator('link[rel="manifest"]')).toHaveAttribute(
+  'crossorigin',
+  'use-credentials',
+);
 await expect(page.locator('.route-card').first()).toBeVisible({ timeout: 60000 });
 await expect(page.locator('.route-model-note').first()).toContainText('3D roofs');
 await expect(page.locator('.map-shell')).toHaveAttribute('data-map-ready', 'true', {
