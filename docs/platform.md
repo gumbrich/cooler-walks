@@ -315,9 +315,11 @@ The shared website/PWA/native interface now exposes when the light choice change
 
 Verified TypeScript, 158 unit/model/language tests, eleven focused Chromium browser scenarios, the production build, all five release-pack checks and the PWA cache-upgrade/offline-routing regression. Browser tests explicitly switch Shade → Sun → Shade, verify the selected path's displayed distance and preserve the trip; they cover zero detour and the previously hidden incomplete-coverage warning with Calm streets. Desktop, phone and tablet screenshots in `screenshots/light-choice-*` were visually inspected. No new field accuracy claim follows.
 
-Android build 21 compiles successfully; both native projects have synchronized web assets. The local debug APK is `native-artifacts/cooler-walks-0.21.1-debug.apk`, SHA-256 `9d01ce16129dfdc77020e3f8cbd6ca3a3ff73595798c4ce9197c4e7c2c48e96c`.
+Runtime `f2feb7e` was published to `https://coolerwalks.ch` on 10 October 2026 at 21:02:10 UTC (Netlify deploy `6acaa7663d7cf70008d1875b`). The authenticated production-browser check passes real Shade/Sun route switching, repeated switching, the October warning with Calm streets and the night explanation. Unauthenticated access still returns 401. [Live check evidence](releases/0.21.1-hosted-light-choice.json).
 
-No physical-phone or new iOS build is claimed. The previously recorded missing local iOS 26.2 platform and GitHub Actions budget restriction are unchanged prerequisites; no account budget or billing settings were modified.
+Android build 21 compiles successfully; both native projects have synchronized web assets. On the dedicated Android 16 / 2 GB emulator, the app passes actual offline Shade → Sun → Shade route switching (490 → 460 → 490 m displayed), the October missing-exposure warning with Calm streets, English/German and the night explanation, without page errors. [Emulator evidence](releases/0.21.1-android-light-choice.json). The local debug APK is `native-artifacts/cooler-walks-0.21.1-debug.apk`, SHA-256 `9d01ce16129dfdc77020e3f8cbd6ca3a3ff73595798c4ce9197c4e7c2c48e96c`.
+
+No physical-phone or new iOS build is claimed. The previously recorded missing local iOS 26.2 platform remains a prerequisite. All three GitHub workflows again failed before executing because of the account's Actions budget; [exact reason and run links](releases/0.21.1-ci.json). No account budget or billing settings were modified.
 
 ## Default Zurich planner · 0.21.0 · native build 20
 

@@ -1,0 +1,21 @@
+{
+  "appVersion": "0.21.1",
+  "sourceRevision": "f2feb7ec9508802b379d32949291eeacb018b3ba",
+  "checkedAt": "2026-10-10T21:01:41.100974+00:00",
+  "remoteStatus": "blocked before execution",
+  "reason": "The job was not started because an Actions budget is preventing further use.",
+  "runs": [
+    {
+      "name": "Checks",
+      "url": "https://github.com/gumbrich/cooler-walks/actions/runs/38085947203"
+    },
+    {
+      "name": "Native Android build",
+      "url": "https://github.com/gumbrich/cooler-walks/actions/runs/38085947427"
+    },
+    {
+      "name": "Native iOS build",
+      "url": "https://github.com/gumbrich/cooler-walks/actions/runs/38085947202"
+    }
+  ]
+}

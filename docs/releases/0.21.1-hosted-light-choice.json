@@ -1,0 +1,12 @@
+{
+  "checkedAt": "2026-10-10T21:02:55.855Z",
+  "origin": "https://coolerwalks.ch",
+  "commit": "f2feb7ec9508802b379d32949291eeacb018b3ba",
+  "unauthenticatedStatus": 401,
+  "shadeDistanceDisplay": "490 m",
+  "sunDistanceDisplay": "460 m",
+  "repeatedSwitching": true,
+  "unknownExposureWithCalm": true,
+  "night": true,
+  "errors": []
+}
