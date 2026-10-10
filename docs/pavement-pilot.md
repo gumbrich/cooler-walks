@@ -1,5 +1,7 @@
 # Zurich pavements and crossings · 0.18.0
 
+**0.21.0 update (10 October 2026):** Zurich now uses municipal pavements and tree shade by default, as requested by the user. The interface no longer calls these optional pilots. This is an integration/default change, not new evidence of field accuracy or seasonal foliage calibration. Traffic context and barrier avoidance are documented in [preferences](preferences.md) and [accessibility routing](accessibility-routing.md). Historical results below retain their original versions and settings.
+
 The optional pavement mode now covers **all complete municipal walking lines inside the current Zurich map**, not just Talacker–Bahnhofstrasse. Open [the planner](https://coolerwalks.ch/de/?view=planner&network=pavements) or choose **Use pavements & crossings / Trottoirs und Querungen nutzen**. The supported area remains **57.77 km²**, bounded by the city polygon and `[8.472, 47.353, 8.570, 47.427]`: centre, north and west, including Oerlikon and Altstetten. This is experimental coverage of that area, not every street in the municipality or field-validated access.
 
 ## Source and topology

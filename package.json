@@ -1,6 +1,6 @@
 {
   "name": "cooler-walks",
-  "version": "0.20.0",
+  "version": "0.21.0",
   "private": true,
   "type": "module",
   "engines": {
@@ -13,7 +13,7 @@
     "test": "vitest run",
     "check": "tsc -b && vitest run",
     "data:prepare": "tsx scripts/prepare-data.ts && npm run data:prepare:traffic && npm run data:attach:counts && npm run data:prepare:addresses && node --import tsx scripts/attach-detailed-shade.ts",
-    "data:verify": "tsx scripts/verify-data.ts && tsx scripts/verify-cities.ts && tsx scripts/verify-coverage.ts && tsx scripts/verify-arrival-shade.ts && node --import tsx scripts/verify-detailed-shade.ts && node --import tsx scripts/verify-traffic.ts && npm run data:verify:shade-library && npm run data:verify:pavements && npm run data:verify:startup && npm run data:verify:canopy && npm run data:verify:canopy-library && npm run data:verify:elevation && npm run data:verify:preferences",
+    "data:verify": "tsx scripts/verify-data.ts && tsx scripts/verify-cities.ts && tsx scripts/verify-coverage.ts && tsx scripts/verify-arrival-shade.ts && node --import tsx scripts/verify-detailed-shade.ts && node --import tsx scripts/verify-traffic.ts && npm run data:verify:shade-library && npm run data:verify:pavements && npm run data:verify:startup && npm run data:verify:canopy && npm run data:verify:canopy-library && npm run data:verify:elevation && npm run data:verify:preferences && npm run data:verify:planner",
     "data:audit-trees": "tsx scripts/audit-trees.ts",
     "test:e2e": "playwright test",
     "test:pwa": "node scripts/verify-pwa.mjs",
@@ -56,7 +56,7 @@
     "data:fetch:traffic:zones": "node --import tsx scripts/fetch-cantonal-traffic.ts",
     "data:prepare:traffic:zones": "node --import tsx scripts/prepare-traffic-zones.ts",
     "data:fetch:pavements": "node --import tsx scripts/fetch-pavements.ts",
-    "data:prepare:pavements": "node --import tsx scripts/prepare-pavements.ts",
+    "data:prepare:pavements": "node --import tsx scripts/prepare-pavements.ts && node --import tsx scripts/prepare-pavement-context.ts",
     "data:verify:pavements": "node --import tsx scripts/verify-pavements.ts && node --import tsx scripts/verify-pavement-expansion.ts && node --import tsx scripts/verify-pavement-selection.ts",
     "data:audit:pavements": ".venv-geo/bin/python scripts/audit-pavement-shadows.py",
     "data:compare:pavements": ".venv-geo/bin/python scripts/compare-pavement-tools.py",
@@ -72,7 +72,9 @@
     "data:verify:elevation": "node --import tsx scripts/verify-elevation.ts",
     "test:native:elevation": "node scripts/verify-android-elevation.mjs",
     "data:verify:preferences": "node --import tsx scripts/verify-preferences.ts",
-    "test:native:preferences": "node scripts/verify-android-preferences.mjs"
+    "test:native:preferences": "node scripts/verify-android-preferences.mjs",
+    "data:prepare:pavement-context": "node --import tsx scripts/prepare-pavement-context.ts",
+    "data:verify:planner": "node --import tsx scripts/verify-planner-defaults.ts && node --import tsx scripts/verify-barrier-detour.ts"
   },
   "dependencies": {
     "@capacitor/android": "^8.5.2",

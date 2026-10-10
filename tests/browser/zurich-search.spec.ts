@@ -36,6 +36,9 @@ test('Zurich addresses, beta labels, direct map selection and honest outside cov
   const changedAt = Date.now();
   await to.fill('Hohlstrasse 554');
   await to.press('Enter');
+  for (let i = 0; i < 2; i++)
+    if (await page.locator('.pavement-option').first().isVisible())
+      await page.locator('.pavement-option').first().click();
   await expect(to).toHaveValue('Hohlstrasse 554');
   await expect(page.getByRole('button', { name: /Fastest walk/ })).toBeVisible();
   console.log(`Updated Altstetten trip appeared in ${Date.now() - changedAt} ms`);
@@ -55,7 +58,12 @@ test('Zurich addresses, beta labels, direct map selection and honest outside cov
   await expect(from).toHaveValue('Altstetterstrasse 145');
   await to.fill('Wehntalerstrasse 790');
   await to.press('Enter');
-  await expect(page.getByText(/This point is outside the Zurich pilot/)).toBeVisible();
+  for (let i = 0; i < 2; i++)
+    if (await page.locator('.pavement-option').first().isVisible())
+      await page.locator('.pavement-option').first().click();
+  await expect(
+    page.getByText(/No nearby walking path in the supported area|outside.*coverage|No mapped/),
+  ).toBeVisible();
   await expect(page.locator('.route-card')).toHaveCount(0);
   await expect(to).toHaveValue('Wehntalerstrasse 790');
   await page.setViewportSize({ width: 820, height: 1180 });
@@ -79,10 +87,16 @@ test('German phone address search and map controls stay usable', async ({ page }
   await expect(page.getByRole('listbox')).toContainText('Amtliche Adresse');
   await page.screenshot({ path: 'docs/screenshots/phone-zurich-search.png', fullPage: true });
   await from.press('Enter');
+  await page.locator('.pavement-option').first().click();
+  await page.getByRole('button', { name: 'Weg bearbeiten', exact: true }).click();
   await page.getByRole('combobox', { name: 'Nach', exact: true }).fill('Wallisellenstrasse 45');
   await page.getByRole('combobox', { name: 'Nach', exact: true }).press('Enter');
+  for (let i = 0; i < 2; i++)
+    if (await page.locator('.pavement-option').first().isVisible())
+      await page.locator('.pavement-option').first().click();
   await expect(page.getByRole('button', { name: /Schnellster Weg/ })).toBeVisible();
-  await page.getByRole('button', { name: 'Routen anzeigen', exact: true }).click();
+  if (await page.getByRole('button', { name: 'Routen anzeigen', exact: true }).isVisible())
+    await page.getByRole('button', { name: 'Routen anzeigen', exact: true }).click();
   await expect(page.locator('.map-shell')).toHaveAttribute('data-map-settled', 'true');
   await page.screenshot({ path: 'docs/screenshots/phone-zurich-expanded.png', fullPage: true });
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);

@@ -1,17 +1,18 @@
+import { wish } from './helpers';
 import { test, expect } from '@playwright/test';
 test('water preference and ordered stops work on desktop and phone', async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto('/?view=planner');
   await page.getByLabel('Departure date', { exact: true }).fill('2026-06-21');
   await page.getByRole('slider', { name: 'Departure time' }).fill('840');
-  await page.locator('#route-priority').selectOption('water');
-  await expect(page.getByRole('button', { name: /More time near water/ })).toBeVisible();
+  await wish(page, 'Waterside');
+  await expect(page.locator('.route-card').first()).toBeVisible();
   await expect(page.locator('.route-water').first()).toContainText('near mapped water');
   await page.getByRole('button', { name: 'Add a stop' }).click();
   await expect(page.locator('.route-card')).toHaveCount(0);
   await page.getByRole('combobox', { name: 'Stop 1', exact: true }).fill('Rennweg');
   await page.getByRole('listbox').getByRole('option').first().click();
-  await expect(page.getByRole('button', { name: /More time near water/ })).toBeVisible();
+  await expect(page.locator('.route-card').first()).toBeVisible();
   await expect(page.locator('.map-marker')).toHaveCount(3);
   await expect(page.locator('.map-shell')).toHaveAttribute('data-map-settled', 'true');
   await page.locator('.header').click({ position: { x: 1, y: 1 } });
@@ -23,10 +24,10 @@ test('water preference and ordered stops work on desktop and phone', async ({ pa
   await page.getByRole('listbox').getByRole('option').first().click();
   await expect(page.locator('.map-marker')).toHaveCount(4);
   await page.getByRole('button', { name: 'Move stop 2 earlier' }).click();
-  await expect(page.getByRole('combobox', { name: 'Stop 1', exact: true })).toHaveValue('Schipfe');
+  await expect(page.getByRole('combobox', { name: 'Stop 1', exact: true })).toHaveValue(/Schipfe/);
   await page.getByRole('button', { name: 'Remove stop 1' }).click();
-  await expect(page.getByRole('combobox', { name: 'Stop 1', exact: true })).toHaveValue('Rennweg');
-  await page.getByRole('button', { name: 'Direct', exact: true }).click();
+  await expect(page.getByRole('combobox', { name: 'Stop 1', exact: true })).toHaveValue(/Rennweg/);
+  await page.getByRole('button', { name: '+0 min', exact: true }).click();
   await expect(page.locator('.route-card')).toHaveCount(1);
   await expect(page.locator('.map-marker')).toHaveCount(3);
   await page.setViewportSize({ width: 390, height: 844 });
@@ -35,7 +36,7 @@ test('water preference and ordered stops work on desktop and phone', async ({ pa
   await page.getByRole('button', { name: 'Edit trip', exact: true }).click();
   await expect(page.getByRole('combobox', { name: 'Stop 1', exact: true })).toBeVisible();
   await page.getByRole('button', { name: /\+5 min/ }).click();
-  await expect(page.getByRole('button', { name: /More time near water/ })).toBeVisible();
+  await expect(page.locator('.route-card').first()).toBeVisible();
   await page.getByRole('button', { name: 'Show routes' }).click();
   await expect(page.locator('.trip-stop-summary')).toContainText('Rennweg');
   await expect(page.locator('.map-shell')).toHaveAttribute('data-map-settled', 'true');
@@ -45,8 +46,8 @@ test('water preference and ordered stops work on desktop and phone', async ({ pa
   await page.getByRole('button', { name: 'Edit trip', exact: true }).click();
   await page.getByRole('button', { name: 'Remove stop 1' }).click();
   await expect(page.getByRole('combobox', { name: 'Stop 1', exact: true })).toHaveCount(0);
-  await page.locator('#route-priority').selectOption('shade');
-  await expect(page.getByRole('button', { name: /More estimated shade/ })).toBeVisible();
+  await wish(page, 'Waterside', false);
+  await expect(page.locator('.route-card').first()).toBeVisible();
 });
 test('failed pilot download explains the issue and can recover', async ({ page }) => {
   await page.route('**/data/zurich.json', (route) =>
@@ -90,7 +91,7 @@ test('desktop planner, search, time, units, coverage and city switching', async 
   }
   await page.locator('.header').click({ position: { x: 1, y: 1 } });
   await page.screenshot({ path: 'docs/screenshots/desktop-planner.png', fullPage: true });
-  await page.getByRole('button', { name: 'Direct', exact: true }).click();
+  await page.getByRole('button', { name: '+0 min', exact: true }).click();
   await expect(page.locator('.route-card')).toHaveCount(1);
   await page.getByRole('button', { name: 'Switch to imperial units' }).click();
   await expect(page.locator('.route-numbers')).toContainText('mi');

@@ -1,3 +1,4 @@
+import { wish } from './helpers';
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 
@@ -11,8 +12,9 @@ test('official zones toggle, remain distinct from route scores, and fit EN/DE la
   await page.goto('/de/?view=planner');
   await expect(page.locator('.route-card').first()).toBeVisible();
   await expect(page.locator('.map-shell')).toHaveAttribute('data-map-settled', 'true');
-  await page.locator('#route-priority').selectOption('calm');
-  await expect(page.getByRole('button', { name: /Verkehrsberuhigter Weg/ })).toBeVisible();
+  await wish(page, 'Verkehrsberuhigt');
+  await expect(page.locator('.route-card').first()).toBeVisible();
+  await expect(page.locator('.results')).toHaveAttribute('aria-busy', 'false');
   const before = await page.locator('.route-numbers').allTextContents();
   const toggle = page.getByRole('button', { name: 'Tempo-30-/20-Zonen', exact: true });
   await toggle.focus();

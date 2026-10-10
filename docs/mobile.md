@@ -6,7 +6,7 @@ The user requested a mobile app in addition to the browser. A shared native cont
 
 ## Implemented
 
-- Native projects in `ios/` and `android/`, with application ID `io.github.gumbrich.coolerwalks`, version 0.20.0 / build 19.
+- Native projects in `ios/` and `android/`, with application ID `io.github.gumbrich.coolerwalks`, version 0.21.0 / build 20.
 - Direct launch into the planner; selected city and units remembered locally.
 - All four city map/model bundles packaged by default; an optional lite build includes Zurich and downloads other areas. See [downloads.md](downloads.md). Planning does not need a first online visit. Native builds do not register the website service worker.
 - Native one-shot location permission only after “Use my location”; no background tracking. Denial preserves the trip and offers map/search input. A late location response cannot replace inputs after a city change.
@@ -88,3 +88,7 @@ Release commands and draft listing materials are now prepared in [app-stores.md]
 ## Version 0.9.0 · arrival-time shadows
 
 Android build 7 passes the focused offline regression on the existing 2 GB Android 16 emulator, including arrival-time shade explanation, English/German city-local arrival labels, Oerlikon addresses/routes, the whole Zurich map, historical counts and beta switching. No page errors occurred. The checked debug APK is `native-artifacts/cooler-walks-0.9.0-debug.apk` (44,665,413 bytes; SHA-256 `ec50480c68e242d7029d1653459a9128e4c1ca044e5172deb0a1cfe43b9533c6`). [Current report](native-counts-validation.json). Physical-phone and current iOS interactions remain untested.
+
+## Default planner checks · 0.21.0
+
+Run `npm run test:native:preferences` on the dedicated `CoolerWalks_Test` Android emulator. It checks the combined default pavement/tree flow, calmer streets, water, barrier avoidance, sun/shade themes, minute detours, offline addresses, historical counters and city clearing. The former `:pavements`, `:canopy`, `:elevation` and `:counts` commands are aliases of this maintained shared flow. Historical reports retain their original version; current evidence is `native-preferences-validation.json`. The separate `test:native:android` flow retains OS permission and Android Back checks.

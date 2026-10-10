@@ -29,57 +29,76 @@ try {
   page.on('pageerror', (e) => errors.push(e.message));
   await expect(page.locator('.mobile-time')).toBeVisible({ timeout: 60000 });
   await page.getByRole('combobox', { name: /^(Language|Sprache)$/ }).selectOption('en');
+  await page.getByRole('combobox', { name: 'City', exact: true }).selectOption('ch-zurich');
   await page.getByLabel('Departure date', { exact: true }).fill('2026-06-21');
   await page.getByRole('slider', { name: 'Departure time', exact: true }).fill('840');
   await page.getByRole('button', { name: 'Edit trip', exact: true }).click();
-  const from = page.getByRole('combobox', { name: 'From', exact: true });
-  const to = page.getByRole('combobox', { name: 'To', exact: true });
-  await from.fill('');
-  await to.fill('Waidbadstrasse');
-  await page
-    .getByRole('option', { name: /^Waidbadstrasse/ })
-    .first()
-    .click();
-  await from.fill('Bucheggplatz');
-  await page
-    .getByRole('option', { name: /^Bucheggplatz/ })
-    .first()
-    .click();
-  await page.locator('#route-priority').selectOption('flat');
-  await expect(page.getByRole('button', { name: /Flatter route/ })).toBeVisible({ timeout: 60000 });
-  await expect(page.locator('.route-elevation').first()).toContainText('95 m');
-  await expect(page.locator('.route-elevation').last()).toContainText('90 m');
-  await page.getByRole('button', { name: 'Show routes', exact: true }).click();
-  await page.locator('.elevation-profile summary').click();
-  await expect(page.locator('.elevation-chart svg')).toBeVisible();
+  await expect(page.locator('.route-pavement-note').first()).toBeVisible();
+  await expect(page.locator('.canopy-result-note')).toBeVisible();
+  await page.locator('.additional-preferences summary').click();
+  for (const name of ['Calm streets', 'Waterside', 'Accessibility'])
+    await page.getByRole('checkbox', { name, exact: true }).check();
+  await expect(page.locator('.accessibility-result-note')).toBeVisible();
+  await page.getByRole('button', { name: '+15 min', exact: true }).click();
+  await page.locator('#detour-minutes').fill('7');
+  await expect(page.locator('.detour-range output')).toHaveText('+7 min');
+  await page.getByRole('button', { name: 'Sun', exact: true }).click();
+  await expect(page.locator('html')).toHaveAttribute('data-walk-mode', 'sun');
+  await expect(page.locator('.results')).toHaveAttribute('aria-busy', 'false', { timeout: 60000 });
   await page.getByRole('combobox', { name: 'Language', exact: true }).selectOption('de');
-  await expect(page.getByRole('button', { name: /Flacherer Weg/ })).toBeVisible();
-  await page.locator('.route-card.selected').scrollIntoViewIfNeeded();
   await shell('svc wifi disable');
   await shell('svc data disable');
-  await page.getByRole('button', { name: 'Weg bearbeiten', exact: true }).click();
-  await page.getByRole('button', { name: 'Direkt', exact: true }).click();
+  await page.getByRole('button', { name: '+0 min', exact: true }).click();
   await expect(page.locator('.route-card')).toHaveCount(1, { timeout: 60000 });
   await page.getByRole('button', { name: '+5 min', exact: true }).click();
-  await expect(page.getByRole('button', { name: /Flacherer Weg/ })).toBeVisible({ timeout: 60000 });
-  await page.locator('#route-priority').selectOption('shade');
-  await expect(page.locator('.route-elevation')).toHaveCount(0, { timeout: 60000 });
-  await page.locator('#route-priority').selectOption('flat');
-  await expect(page.getByRole('button', { name: /Flacherer Weg/ })).toBeVisible({ timeout: 60000 });
+  await expect(page.locator('.results')).toHaveAttribute('aria-busy', 'false', { timeout: 60000 });
+  await page.locator('.light-choice').scrollIntoViewIfNeeded();
+  await device.screenshot({ path: 'docs/screenshots/android-simple-sun-de.png' });
+  await page.getByRole('button', { name: 'Schatten', exact: true }).click();
   await page.getByRole('button', { name: 'Routen anzeigen', exact: true }).click();
+  await expect(page.locator('.results')).toHaveAttribute('aria-busy', 'false', { timeout: 60000 });
+  await expect(page.locator('.route-elevation').first()).toBeVisible();
+  await page.locator('.route-card').first().scrollIntoViewIfNeeded();
+  await device.screenshot({ path: 'docs/screenshots/android-simple-results-de.png' });
   await page.getByRole('button', { name: 'Weg bearbeiten', exact: true }).click();
-  await page.locator('.additional-preferences summary').click();
-  await page.getByRole('checkbox', { name: 'Schatten', exact: true }).check();
-  await page.getByRole('checkbox', { name: 'Am Wasser', exact: true }).check();
-  await expect(page.locator('#route-priority')).toHaveValue('flat');
-  await expect(page.locator('.preference-comparison')).toContainText('Am Wasser', {
-    timeout: 60000,
-  });
-  await page.locator('#route-priority').scrollIntoViewIfNeeded();
-  await device.screenshot({ path: 'docs/screenshots/android-preferences-de.png' });
+  const from = page.getByRole('combobox', { name: 'Von', exact: true }),
+    to = page.getByRole('combobox', { name: 'Nach', exact: true });
+  await from.fill('Hofwiesenstrasse 350');
+  await from.press('Enter');
+  await page.locator('.pavement-option').first().click();
+  await page.getByRole('button', { name: 'Weg bearbeiten', exact: true }).click();
+  await to.fill('Wallisellenstrasse 45');
+  await to.press('Enter');
+  await page.locator('.pavement-option').first().click();
+  await expect(page.locator('.route-pavement-note').first()).toBeVisible({ timeout: 60000 });
+  await expect(page.locator('.canopy-result-note')).toBeVisible();
+  await page.getByRole('slider', { name: 'Startzeit', exact: true }).fill('600');
+  await expect(page.locator('.results')).toHaveAttribute('aria-busy', 'false', { timeout: 60000 });
+  await expect(page.locator('.route-arrival').first()).toContainText('10:');
+  await page.getByRole('button', { name: 'Tempo-30-/20-Zonen', exact: true }).click();
+  await expect(page.locator('.zone-legend')).toBeVisible();
+  await page.getByRole('button', { name: 'Tempo-30-/20-Zonen', exact: true }).click();
+  await page.getByRole('button', { name: 'Weg bearbeiten', exact: true }).click();
+  await from.fill('Bahnhofquai / Museumstrasse');
+  await from.press('Enter');
+  await to.fill('Bürkliplatz / Stadthausquai');
+  await to.press('Enter');
   await page.getByRole('button', { name: 'Routen anzeigen', exact: true }).click();
-  await page.locator('.preference-comparison').scrollIntoViewIfNeeded();
-  await device.screenshot({ path: 'docs/screenshots/android-combined-results-de.png' });
+  await expect(page.locator('.results')).toHaveAttribute('aria-busy', 'false', { timeout: 60000 });
+  await page.getByRole('button', { name: /Schnellster Weg/ }).click();
+  await page.locator('.traffic-counts > summary').click();
+  await expect(page.locator('.traffic-counts')).toContainText('2025');
+  await expect(page.locator('.counter-list li').first()).toBeVisible();
+  await expect(page.locator('.counter-slot').first()).toContainText('10:00');
+  await page.getByRole('slider', { name: 'Startzeit', exact: true }).fill('480');
+  await expect(page.locator('.counter-slot').first()).toContainText('08:00', { timeout: 60000 });
+  await page.getByRole('combobox', { name: 'Stadt', exact: true }).selectOption('de-munich');
+  await expect(page.locator('.route-card').first()).toBeVisible({ timeout: 60000 });
+  await expect(
+    page.locator('.traffic-counts, .canopy-result-note, .route-pavement-note'),
+  ).toHaveCount(0);
+  await page.getByRole('combobox', { name: 'Stadt', exact: true }).selectOption('ch-zurich');
+  await expect(page.locator('.route-card').first()).toBeVisible({ timeout: 60000 });
   assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
   assert.deepEqual(errors, []);
   const report = {
@@ -87,13 +106,15 @@ try {
     version: JSON.parse(fs.readFileSync('package.json')).version,
     device: 'CoolerWalks_Test, Android 36.1, 2 GB',
     passed: [
-      'Real Bucheggplatz–Waidbadstrasse flatter alternative',
-      'Estimated ascent/descent and profile',
-      'English/German',
-      'Zero and five-minute budgets offline',
-      'Preference toggling offline',
-      'Flatter + shade + waterside together, with explicit priority and comparison, offline',
-      'No horizontal overflow or JavaScript errors',
+      'Municipal pavements and tree shade enabled by default',
+      'Calmer streets, water and accessibility together',
+      'Zero, five, seven and fifteen minute budgets',
+      'Sun/shade buttons and themes',
+      'Elevation summaries with accessibility selected',
+      'Offline route recalculation and northern Zurich address-side selection',
+      'Moving arrival-time shade, street-zone overlay and historical counter hour updates offline',
+      'City change clears incompatible tree, pavement and traffic data',
+      'English/German, no horizontal overflow or JavaScript errors',
     ],
     limitations: ['No physical-phone test', 'No iOS interaction test', 'No field-validation claim'],
   };

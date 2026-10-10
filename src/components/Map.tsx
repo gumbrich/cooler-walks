@@ -379,6 +379,7 @@ export function WalkingMap({
       m.addSource('pavements', { type: 'geojson', data: collection([]) });
       m.addLayer({
         id: 'pavement-lines',
+        minzoom: 15,
         type: 'line',
         source: 'pavements',
         filter: ['==', ['get', 'crossing'], false],
@@ -848,6 +849,19 @@ export function WalkingMap({
     }
     if (pending && !result) return;
     if (result) {
+      const shell = m.getContainer().parentElement;
+      const timelineHeight =
+        m
+          .getContainer()
+          .closest('.planner')
+          ?.querySelector('.timeline-wrap')
+          ?.getBoundingClientRect().height ?? 0;
+      const bottomRoom =
+        timelineHeight +
+        (shell?.querySelector('.map-legend')?.getBoundingClientRect().height ?? 40) +
+        (m.getContainer().querySelector('.maplibregl-ctrl-attrib')?.getBoundingClientRect()
+          .height ?? 22) +
+        48;
       const box = new maplibregl.LngLatBounds();
       result.fastest.coordinates.forEach((p) => box.extend(p));
       result.alternative?.coordinates.forEach((p) => box.extend(p));
@@ -857,7 +871,7 @@ export function WalkingMap({
             ? hero
               ? 95
               : pavements
-                ? 140
+                ? 130
                 : 110
             : hero
               ? 100
@@ -868,13 +882,11 @@ export function WalkingMap({
               : showZones
                 ? 160
                 : canopyScenario
-                  ? 115
+                  ? 135
                   : 95
             : hero
               ? 170
-              : showZones && matchMedia('(max-width:1100px)').matches
-                ? 390
-                : 240,
+              : Math.max(240, bottomRoom),
           left: matchMedia('(max-width:620px)').matches ? 28 : 45,
           right: hero ? 35 : 95,
         },
@@ -943,7 +955,7 @@ export function WalkingMap({
             <span className="eyebrow">{t(city.country)}</span>
             <strong>
               {city.localName}
-              <small className="map-pilot-label">{city.beta ? 'Beta' : t('Pilot')}</small>
+              {city.beta && <small className="map-pilot-label">Beta</small>}
             </strong>
             <span className="map-coverage-label">
               {pavements ? t('Pavements & crossings') : t(city.coverageLabel)}
@@ -1121,7 +1133,7 @@ export function WalkingMap({
           {canopyScenario && (
             <span>
               <i className="legend-canopy" />
-              {t('Tree pilot boundary')}
+              {t('Tree shade coverage')}
             </span>
           )}
           {result?.mode === 'shade' ||

@@ -4355,3 +4355,150 @@ html[lang='de'] .icon-text {
   font-size: 0.6875rem;
   line-height: 1.5;
 }
+
+/* Two light modes, one planner. Warm sunlight and cool forest surfaces retain
+   the same hierarchy and map exposure colours; no inversion of geographic data. */
+:root[data-walk-mode='shade'] {
+  --paper: #f1f5ee;
+  --line: #d6e0d3;
+  --mode-wash: #e4eee2;
+  --mode-accent: #214e3a;
+}
+:root[data-walk-mode='sun'] {
+  --paper: #fff8e9;
+  --line: #e4d7ba;
+  --leaf: #f3ddb0;
+  --mode-wash: #f8e9c7;
+  --mode-accent: #72501e;
+}
+body,
+.header,
+.sidebar,
+.planner-panel {
+  background-color: var(--paper);
+  transition: background-color 220ms ease;
+}
+.light-choice {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  padding: 5px;
+  margin: 0 0 18px;
+  background: var(--mode-wash);
+  border: 1px solid var(--line);
+  border-radius: 15px;
+}
+.light-choice button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 50px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 650;
+}
+.light-choice .shade[aria-pressed='true'] {
+  background: #214e3a;
+  color: #fffdf7;
+  box-shadow: 0 2px 6px #193d321a;
+}
+.light-choice .sun[aria-pressed='true'] {
+  background: #efc36f;
+  color: #35280e;
+  box-shadow: 0 2px 6px #72501e1a;
+}
+.detour .segmented {
+  gap: 4px;
+}
+.detour .segmented button {
+  padding: 9px 5px;
+  font-size: 0.8125rem;
+}
+.detour .segmented svg {
+  display: none;
+}
+.detour-range {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 7px;
+}
+.detour-range input {
+  flex: 1;
+  min-width: 0;
+  min-height: 32px;
+  accent-color: var(--mode-accent);
+  cursor: pointer;
+}
+.detour-range output {
+  min-width: 47px;
+  font-size: 0.8125rem;
+  font-variant-numeric: tabular-nums;
+  text-align: end;
+}
+.route-preferences {
+  margin: 8px 0 16px;
+}
+.preference-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+.optional-preference {
+  gap: 6px;
+  padding: 8px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  font-size: 0.75rem;
+}
+.optional-preference:has(input:checked) {
+  background: var(--mode-wash);
+  border-color: #94a48b;
+}
+.optional-preference > svg {
+  flex-shrink: 0;
+}
+.optional-preference span {
+  flex: 1;
+}
+.optional-preference input {
+  margin: 0;
+  flex-shrink: 0;
+}
+.additional-preferences .preference-help {
+  margin: 10px 0 12px;
+}
+.accessibility-result-note {
+  margin: 8px 0;
+  color: var(--muted);
+  font-size: 0.75rem;
+  line-height: 1.5;
+}
+@media (prefers-reduced-motion: reduce) {
+  body,
+  .header,
+  .sidebar,
+  .planner-panel {
+    transition: none;
+  }
+}
+
+@media (max-width: 620px) {
+  .map-location .map-model-key {
+    display: none;
+  }
+  .planner-panel > .light-choice {
+    margin-bottom: 14px;
+  }
+}
+@media (min-width: 621px) {
+  .map-legend {
+    right: 16px;
+    flex-wrap: wrap;
+  }
+  .planner .timeline-wrap {
+    bottom: calc(var(--map-bottom-space, 90px) + 12px);
+  }
+}

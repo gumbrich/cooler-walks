@@ -2,9 +2,9 @@
 
 **Current agreement:** improve Zurich traffic modelling now; field-validate shadow and traffic later. Preserve the [shadow evidence and unresolved issues](shadow-validation.md), keep both capabilities experimental, and treat the requested 0.13.0 library expansion as experimental. Automated checks alone do not establish field accuracy.
 
-## Combined preferences and private testing · 0.20.0
+## Default Zurich planner · 0.21.0
 
-Street-based zone display and ordered route wishes are implemented. Next, field-check source-to-street assignments and pairs of routes with conflicting priorities; use tester feedback to assess the explicit trade-off bands. Keep the fastest route and detour limit visible. Before returning to public distribution, decide how to retain protected deployments and authenticate native map updates; store privacy/support pages must be publicly accessible at release. [Selection rules](preferences.md) · [Access limits](private-access.md).
+Pavements, tree shade, street-based zones, equally considered optional wishes and mapped-barrier avoidance are implemented. Next, field-check source-to-street assignments and pairs of routes with conflicting priorities; use tester feedback to assess the explicit trade-off bands. Keep the fastest route and detour limit visible. Before returning to public distribution, decide how to retain protected deployments and authenticate native map updates; store privacy/support pages must be publicly accessible at release. [Selection rules](preferences.md) · [Access limits](private-access.md).
 
 ## Elevation follow-up
 
@@ -12,13 +12,13 @@ Version 0.19.0 adds Zurich flatter routing and height profiles using the existin
 
 ## Tree shade follow-up
 
-The [8 October assessment](tree-shade-assessment.md) remains an accuracy limitation. The user subsequently requested experimental coverage across the supported Zurich map; [version 0.17.0](tree-shade-expansion.md) provides the tiled library and a separate verified offline supplement. It remains off by default. Wider geographic coverage does not validate summer crowns, opacity or route-ranking usefulness.
+The [8 October assessment](tree-shade-assessment.md) remains an accuracy limitation. The user subsequently requested experimental coverage across the supported Zurich map; [version 0.17.0](tree-shade-expansion.md) provides the tiled library and a separate verified offline supplement. Version 0.21.0 integrates it by default at the user’s request, retaining full-foliage and field-validation limitations. Wider geographic coverage does not validate summer crowns, opacity or route-ranking usefulness.
 
 Next: field-check tree-covered and open points across several districts at two times, recording foliage, clouds and walking side. Assess leaf-on geometry and light transmission, preserve the 95% coverage requirement and keep sensitivity evidence separate from measured error. Measure the working tile set and complete offline download on a physical phone before making device-performance claims.
 
 ## Pavement pilot follow-up
 
-Version 0.15.0 expanded municipal paths across the current Zurich map; 0.18.0 completes address/map-to-pavement selection and trip preservation, retaining arrival-time shade, detour limits and the original independent comparison points. Next: [paired field validation](pavement-field-validation.md), clarification of Vampire Routing’s raster timestamp, and documented Shadowmap point/time API access before a numerical comparison. Next check the expanded district paths, crossings, steps and uncertain walking heights in the field; only then extend side-of-street traffic matching. Do not infer ground truth from cross-tool agreement.
+Version 0.15.0 expanded municipal paths across the current Zurich map; 0.18.0 completes address/map-to-pavement selection and trip preservation, retaining arrival-time shade, detour limits and the original independent comparison points. Next: [paired field validation](pavement-field-validation.md), clarification of Vampire Routing’s raster timestamp, and documented Shadowmap point/time API access before a numerical comparison. Next check the expanded district paths, crossings, steps and uncertain walking heights in the field; audit the traffic association now supplied by 0.21.0. Do not infer ground truth from cross-tool agreement.
 
 ## Zurich first
 

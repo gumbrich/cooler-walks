@@ -40,7 +40,7 @@ import { AreaDownloads } from './components/AreaDownloads';
 import { TrafficCounts } from './components/TrafficCounts';
 import { TrafficProfile } from './components/TrafficProfile';
 import { ElevationProfile } from './components/ElevationProfile';
-import { RoutePreferences } from './components/RoutePreferences';
+import { RoutePreferences, LightChoice } from './components/RoutePreferences';
 import { PreferenceComparison } from './components/PreferenceComparison';
 import type { RoutePreferences as Preferences } from './lib/types';
 import { goalsOf } from './lib/preferences';
@@ -119,14 +119,17 @@ export default function App() {
   });
   const activeGoals = goalsOf(preferences);
   const preferCalm = activeGoals.includes('calm');
-  const preferFlat = activeGoals.includes('flat');
+  const preferFlat = activeGoals.includes('flat') || !!preferences.avoidSteps;
   const preferWater = activeGoals.includes('water');
   const sunlight = activeGoals.includes('sun') ? 'sun' : 'shade';
+  useEffect(() => {
+    document.documentElement.dataset.walkMode = sunlight;
+    return () => {
+      delete document.documentElement.dataset.walkMode;
+    };
+  }, [sunlight]);
   const [pavements, setPavements] = useState(false);
-  const [canopyScenario, setCanopyScenario] = useState(false);
-  const initialPavements = useRef(
-    new URLSearchParams(location.search).get('network') === 'pavements',
-  );
+  const canopyScenario = !!city.canopyPilot;
   const [countsExpanded, setCountsExpanded] = useState(false);
   const [departure, setDeparture] = useState(() => localNow(city.timeZone)),
     [extra, setExtra] = useState(5);
@@ -162,7 +165,6 @@ export default function App() {
       secondary: [],
     });
     setPavements(false);
-    setCanopyScenario(false);
     setCountsExpanded(false);
     setError('');
     setDataState('loading');
@@ -190,8 +192,7 @@ export default function App() {
         planner = e.data.data;
         if (e.data.map) setMapData(e.data.map);
       } else if (e.data.type === 'ready' && planner) {
-        const pilot = initialPavements.current && planner.pavementNetwork;
-        initialPavements.current = false;
+        const pilot = planner.pavementNetwork;
         const from = pilot
             ? pilot.places[0]
             : planner.places.find((p) => p.name === city.defaultJourney?.[0]),
@@ -408,7 +409,6 @@ export default function App() {
     return () => window.removeEventListener('popstate', pop);
   }, []);
   const changeCity = (id: string) => {
-    initialPavements.current = false;
     const url = new URL(location.href);
     url.searchParams.delete('network');
     history.replaceState({}, '', url);
@@ -418,22 +418,6 @@ export default function App() {
     preference('cw-area', id);
     setDeparture(localNow(getCity(id).timeZone));
     setEditing(false);
-  };
-  const changeNetwork = () => {
-    if (!data?.pavementNetwork) return;
-    const next = !pavements;
-    setPavements(next);
-    setPick(null);
-    if (next)
-      setPreferences((p) => ({
-        primary: p.primary === 'calm' ? 'shade' : p.primary,
-        secondary: p.secondary.filter((g) => g !== 'calm'),
-      }));
-    setError('');
-    const url = new URL(location.href);
-    if (next) url.searchParams.set('network', 'pavements');
-    else url.searchParams.delete('network');
-    history.replaceState({}, '', url);
   };
   const searchPlaces = useMemo(
     () =>
@@ -650,7 +634,7 @@ export default function App() {
       <div className="route-card-top">
         <span className="route-name">
           {index
-            ? result?.preferences?.secondary.length
+            ? result?.preferences && goalsOf(result.preferences).length > 1
               ? t('Alternative')
               : result?.preference === 'flat'
                 ? t('Flatter route')
@@ -763,7 +747,7 @@ export default function App() {
             : hasExposure
               ? t(
                   canopyResult
-                    ? '{coverage}% coverage · buildings + tree scenario'
+                    ? '{coverage}% coverage · buildings + trees'
                     : '{coverage}% model coverage · buildings only',
                   {
                     coverage: Math.round(
@@ -1038,16 +1022,8 @@ export default function App() {
                     {editing ? <PanelTopClose size={21} /> : <MapPin size={21} />}
                   </button>
                 </div>
-                {data?.pavementNetwork && (
-                  <div className={`network-choice ${pavements ? 'is-active' : ''}`}>
-                    <button type="button" onClick={changeNetwork}>
-                      <MapPin size={15} aria-hidden="true" />
-                      {pavements ? t('Standard walking network') : t('Use pavements & crossings')}
-                      <ArrowRight size={14} aria-hidden="true" />
-                    </button>
-                    {pavements && <span>{t('Pavements & crossings')}</span>}
-                  </div>
-                )}
+
+                <LightChoice city={city} value={preferences} onChange={setPreferences} />
                 {pendingPavement && pick === null && (
                   <PavementPicker
                     name={pendingPavement.value.name}
@@ -1247,59 +1223,34 @@ export default function App() {
                   <fieldset className="detour">
                     <legend>{t('Extra walking time')}</legend>
                     <div className="segmented">
-                      {[0, 5, 10].map((n) => (
+                      {[0, 5, 10, 15].map((n) => (
                         <button
                           key={n}
                           type="button"
                           aria-pressed={extra === n}
                           onClick={() => setExtra(n)}
                         >
-                          {n === 0 ? t('Direct') : `+${n} min`}
+                          {`+${n} min`}
                           {extra === n && <Check size={14} />}
                         </button>
                       ))}
                     </div>
+                    <div className="detour-range">
+                      <input
+                        id="detour-minutes"
+                        type="range"
+                        min="0"
+                        max="15"
+                        step="1"
+                        aria-label={t('Extra walking time')}
+                        aria-valuetext={t('{minutes} extra minutes', { minutes: extra })}
+                        value={extra}
+                        onChange={(e) => setExtra(Number(e.target.value))}
+                      />
+                      <output htmlFor="detour-minutes">+{extra} min</output>
+                    </div>
                   </fieldset>
-                  <RoutePreferences
-                    city={city}
-                    pavements={pavements}
-                    value={preferences}
-                    onChange={setPreferences}
-                  />
-                  {city.canopyPilot && (
-                    <details className="model-options">
-                      <summary>
-                        {t('Shade model')}
-                        {canopyScenario ? t(' · trees included') : ''}
-                      </summary>
-                      {city.canopyPilot && (
-                        <div className="canopy-preference">
-                          <label className={`water-preference ${canopyScenario ? 'active' : ''}`}>
-                            <Leaf size={21} />
-                            <span>
-                              <strong>{t('Tree shade pilot')}</strong>
-                            </span>
-                            <input
-                              type="checkbox"
-                              checked={canopyScenario}
-                              onChange={(e) => setCanopyScenario(e.target.checked)}
-                              aria-describedby="canopy-help"
-                            />
-                          </label>
-                          <p className="preference-help" id="canopy-help">
-                            {t('Full foliage assumption · Zurich map')}
-                          </p>
-                          {canopyScenario && (
-                            <p className="preference-help">
-                              {t(
-                                'Experimental · not field-validated. Gaps in the source data remain unknown.',
-                              )}
-                            </p>
-                          )}
-                        </div>
-                      )}
-                    </details>
-                  )}
+                  <RoutePreferences city={city} value={preferences} onChange={setPreferences} />
                   <button className="primary mobile-save" type="submit">
                     {t('Show routes ')}
                     <ArrowRight size={17} />
@@ -1371,9 +1322,16 @@ export default function App() {
                   )}
                   {result && (
                     <>
+                      {result.preferences?.avoidSteps && (
+                        <p className="accessibility-result-note">
+                          {t(
+                            'Mapped stairs and barriers avoided. Accessibility is not verified throughout.',
+                          )}
+                        </p>
+                      )}
                       {canopyResult && (
                         <p className="canopy-result-note">
-                          {t('Tree scenario · full foliage assumed')}
+                          {t('Tree shade included · foliage assumed')}
                         </p>
                       )}
                       {[result.fastest, ...(result.alternative ? [result.alternative] : [])].map(
@@ -1458,7 +1416,7 @@ export default function App() {
                     </>
                   )}
                   {chosen?.terrain && <ElevationProfile route={chosen} units={units} />}
-                  {chosen && result?.preference === 'calm' && city.capabilities.trafficCalming && (
+                  {chosen && preferCalm && city.capabilities.trafficCalming && (
                     <TrafficProfile route={chosen} units={units} />
                   )}
                   {chosen && result && data?.vehicleCounts && city.capabilities.vehicleCounts && (
@@ -1490,7 +1448,7 @@ export default function App() {
                           )}
                         </p>
                       )}
-                      {city.capabilities.trafficCalming && !pavements && (
+                      {city.capabilities.trafficCalming && (
                         <div className="route-traffic">
                           <TrafficCone size={14} />
                           <span>
@@ -1590,7 +1548,7 @@ export default function App() {
                           )}
                         </p>
                       )}
-                      {city.capabilities.trafficCalming && !pavements && (
+                      {city.capabilities.trafficCalming && (
                         <p>
                           {t(
                             'Paths & restricted streets: mapped pedestrian areas, motor-restricted streets and separate paths away from main roads. Begegnungszone and Tempo-30 streets remain separate because they allow motor traffic. Unknown street context:',
@@ -1742,10 +1700,10 @@ export default function App() {
                   <p>{t(city.treeNotes ?? '')}</p>
                   {city.canopyPilot && (
                     <>
-                      <h3>{t('Tree shade pilot')}</h3>
+                      <h3>{t('Tree shade')}</h3>
                       <p>
                         {t(
-                          'The optional tree pilot covers the supported Zurich map. It traces sunlight through 1 m vegetation columns from the 2021–2022 LiDAR survey, using the lowest and highest observed returns. It assumes opaque foliage between those heights. The survey was mainly leaf-off: summer crowns, gaps and light transmission remain uncertain. This is a full-foliage scenario, not a prediction of seasonal leaf cover. It is off by default and needs field validation.',
+                          'Tree shade is included across the supported Zurich map. It traces sunlight through 1 m vegetation columns from the 2021–2022 LiDAR survey, using the lowest and highest observed returns. It assumes opaque foliage between those heights. The survey was mainly leaf-off: summer crowns, gaps and light transmission remain uncertain. This is a full-foliage scenario, not a prediction of seasonal leaf cover. It is included by default. Winter leaf loss is not predicted; field validation remains pending.',
                         )}
                       </p>
                     </>
@@ -1758,7 +1716,7 @@ export default function App() {
                   <h3>{t('Water is a separate preference')}</h3>
                   <p>
                     {t(
-                      'We measure the share of the walk within 50 metres of mapped surface water. “Prefer waterside” chooses the greatest share among the distinct alternatives evaluated within your total detour budget; walking time breaks ties. It may trade shade for water proximity. Mapped proximity does not guarantee access, visibility or a temperature benefit.',
+                      'We measure the share of the walk within 50 metres of mapped surface water. Waterside is considered alongside your other wishes within the detour limit. Proximity does not guarantee access, visibility or a temperature benefit.',
                     )}
                   </p>
                 </div>
@@ -1769,7 +1727,7 @@ export default function App() {
                   <h3>{t('Know the limits')}</h3>
                   <p>
                     {t(
-                      'At least 95% model coverage is required to compare shade or sun. “Prefer sun” ranks the known sunny share of the whole walk; unknown data cannot improve that score. It stays your choice in every season. Low sun below 10° is withheld. The standard network may follow street centrelines. Choose pavement routing to use municipal paths and mapped crossings. Shade accuracy and current access still need field checks; uncertain walking heights remain unknown. Access restrictions, closures and walking speed may differ on the ground. No wheelchair-suitability claim is made.',
+                      'Shade and sun comparisons need at least 95% known exposure. Unknown sections cannot improve a recommendation; low sun below 10° is withheld. Zurich uses municipal pavements and crossings by default. Beta cities may use street centrelines. Uncertain walking heights stay unknown. Access, closures and shade still need field checks. The accessibility option avoids mapped barriers; it does not certify wheelchair suitability.',
                     )}
                   </p>
                 </div>
@@ -1780,7 +1738,7 @@ export default function App() {
                   <h3>{t('Flatter routes')}</h3>
                   <p>
                     {t(
-                      'In Zurich, the cantonal ground model estimates ascent and descent. Flatter routes reduce height changes or offer gentler slopes within your extra-time limit. Comparisons require complete walking-height coverage. This preference takes priority over sun, shade, water and traffic. It does not guarantee a level or step-free path.',
+                      'In Zurich, the cantonal ground model estimates ascent and descent. Flatter routes are considered alongside your other wishes within the detour limit. Comparisons require complete walking-height coverage. This does not guarantee a level or step-free path.',
                     )}
                   </p>
                   <p>{t('Walking times do not yet account for slopes.')}</p>
@@ -1792,7 +1750,7 @@ export default function App() {
                   <h3>{t('Calmer streets, starting in Zurich')}</h3>
                   <p>
                     {t(
-                      'We combine Zurich’s official zones with mapped street types and motor-access restrictions. Paths within 20 metres of a main road at the same recorded level count as main-road proximity. Alternatives first reduce that distance, then walking on other motor-access streets. Tempo-30 streets are not treated like separate paths. Comparisons use absolute distances, so a longer detour cannot win simply by improving a percentage. At least 95% classified context is required, and unknown sections cannot improve a recommendation. Street data may miss changes, deliveries and trams. This experimental mode is neither live traffic nor a noise or safety assessment; field validation is pending.',
+                      'Zurich pavement sections are associated with nearby mapped streets and implemented traffic zones. Within 20 metres of a main road at ground level, that proximity takes precedence. Calmer streets considers main-road and motor-access distances alongside your other wishes. Tempo-30 streets are separate from pedestrian paths. At least 95% classified context is needed for comparison; unknown sections cannot improve a route. This estimates street context, not live traffic, noise or safety. Field validation is pending.',
                     )}
                   </p>
                 </div>
@@ -1880,7 +1838,7 @@ export default function App() {
                         </div>
                         {coveredCity.canopyPilot && (
                           <div>
-                            <dt>{t('Tree shade pilot')}</dt>
+                            <dt>{t('Tree shade')}</dt>
                             <dd>{t('Full foliage assumption · Zurich map')}</dd>
                           </div>
                         )}

@@ -121,3 +121,9 @@ The optional municipal network now retains the user's trip instead of opening a 
 ## Elevation preference · 0.19.0
 
 A single optional “Prefer flatter routes / Flachere Wege bevorzugen” row follows the existing route preferences. Enabling it clears water/calm ranking and briefly explains the priority. Cards show rounded ascent/descent beside a mountain symbol; an expandable profile below the results keeps phone planning compact. A thin forest-green line shows known terrain only, with gaps instead of invented bridge heights. Both controls and detailed explanations have EN/DE text. Unknown coverage and the fixed-speed walking-time limitation stay explicit. Source-method detail lives in the information view and project documentation.
+
+## 0.21.0: light modes and simpler planning
+
+Two adjacent 50 px Shade/Sun buttons replace the priority selector and stay visible on mobile results. The cool shade surface is `#f1f5ee` with forest `#214e3a`; sunlight uses `#fff8e9` and selected amber `#efc36f`. Both keep dark, legible text and identical map exposure semantics. Colour transitions respect reduced motion. The 0/5/10/15 minute presets sit above one uncluttered native range input with a live numeric value; keyboard arrows adjust one minute and clicking the track jumps directly.
+
+Optional wishes use a compact two-column checkbox layout inside one disclosure. Numbered ranks and arrow sequences are removed. Trees and municipal pavement routing are standard in Zurich, removing two setup controls. Access restrictions stay distinct from aesthetic wishes, with concise limitations beside the option and results. Desktop, phone and tablet captures are in `docs/screenshots/*simple*`; screenshots verify layout, while browser/Android interaction checks are recorded separately.

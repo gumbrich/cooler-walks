@@ -72,12 +72,14 @@ try {
   passed('Native launch, bundled Zurich map, real routes and no service worker');
 
   await page.getByRole('button', { name: 'About this app', exact: true }).click();
-  await expect(page.getByRole('dialog')).toContainText('Planning works offline');
+  await expect(page.getByRole('dialog')).toContainText(
+    'Included and downloaded maps work offline.',
+  );
   await device.input.press('Back');
   await expect(page.getByRole('dialog')).not.toBeVisible();
   passed('Android Back closes the native information view');
 
-  await page.getByRole('button', { name: 'Edit', exact: true }).click();
+  await page.getByRole('button', { name: 'Edit trip', exact: true }).click();
   const origin = await page.getByRole('combobox', { name: 'From', exact: true }).inputValue();
   await page.getByRole('button', { name: 'Use my location', exact: true }).click();
   // Decline the real OS request with Back. Wait for the system window so a
@@ -96,23 +98,19 @@ try {
   await expect(page.getByRole('combobox', { name: 'From', exact: true })).toHaveValue(origin);
   await device.screenshot({ path: 'docs/screenshots/android-location-denied.png' });
   await device.input.press('Back');
-  await expect(page.getByRole('button', { name: 'Edit', exact: true })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Edit trip', exact: true })).toBeVisible();
   passed('Native permission dismissal preserves the trip; Back closes editing');
 
   await page.getByRole('combobox', { name: 'Language', exact: true }).selectOption('de');
   await page.getByRole('button', { name: 'Weg bearbeiten', exact: true }).click();
-  await page.locator('#route-priority').selectOption('calm');
-  await expect(page.getByRole('button', { name: /Verkehrsberuhigter Weg/ })).toBeVisible({
-    timeout: 60000,
-  });
-  await expect(page.locator('.route-name').last()).toContainText('+3,0');
+  await page.locator('.additional-preferences summary').click();
+  await page.getByRole('checkbox', { name: 'Verkehrsberuhigt', exact: true }).check();
   await device.input.press('Back');
   await ready(page);
-  await page.evaluate(() => window.scrollTo(0, 0));
-  await device.screenshot({ path: 'docs/screenshots/android-german-calm.png' });
+  await expect(page.locator('.traffic-profile')).toBeVisible();
   await page.getByRole('combobox', { name: 'Sprache', exact: true }).selectOption('en');
-  await expect(page.getByRole('button', { name: /Calmer streets/ })).toBeVisible();
-  passed('German interface and real Zurich calmer route; language switch preserves the trip');
+  await expect(page.locator('.route-pavement-note').first()).toBeVisible();
+  passed('German calmer-street preference on municipal pavements; language switch preserves trip');
 
   await shell('svc wifi disable');
   await shell('svc data disable');
@@ -129,8 +127,8 @@ try {
   await ready(page);
   await page.getByLabel('Departure date', { exact: true }).fill('2026-12-21');
   await page.getByRole('slider', { name: 'Departure time' }).fill('720');
-  await page.getByRole('button', { name: 'Edit', exact: true }).click();
-  await page.locator('#route-priority').selectOption('sun');
+  await page.getByRole('button', { name: 'Edit trip', exact: true }).click();
+  await page.getByRole('button', { name: 'Sun', exact: true }).click();
   await device.input.press('Back');
   await ready(page);
   await expect(page.locator('.route-card').first()).toContainText('estimated sun');

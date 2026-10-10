@@ -12,7 +12,8 @@ export function PreferenceComparison({
   units: 'metric' | 'imperial';
 }) {
   const { t, locale } = useI18n();
-  if (!result.preferences?.secondary.length || !result.alternative) return null;
+  if (!result.preferences || goalsOf(result.preferences).length < 2 || !result.alternative)
+    return null;
   const metric = (goal: RouteGoal, r: Route) => {
     if (!goalCovered(goal, r, result.fastest, result.mode)) return t('Unavailable');
     if (goal === 'flat')
@@ -52,7 +53,11 @@ export function PreferenceComparison({
           ))}
         </tbody>
       </table>
-      <p>{t('Estimates. The main priority comes first; other choices may involve a trade-off.')}</p>
+      <p>
+        {t(
+          'Similar sun or shade; then as many of your wishes as possible. The shorter walk breaks ties.',
+        )}
+      </p>
       {!!result.unavailableSecondary?.length && (
         <p>
           {t('Not compared: {goals}. Data coverage is insufficient.', {

@@ -1,5 +1,7 @@
 # Tree shade: usefulness and expansion decision
 
+**0.21.0 update (10 October 2026):** Zurich now uses municipal pavements and tree shade by default, as requested by the user. The interface no longer calls these optional pilots. This is an integration/default change, not new evidence of field accuracy or seasonal foliage calibration. Traffic context and barrier avoidance are documented in [preferences](preferences.md) and [accessibility routing](accessibility-routing.md). Historical results below retain their original versions and settings.
+
 **Subsequent coverage decision:** the user explicitly requested extending the experimental pilot across the supported Zurich map. The [0.17.0 expansion](tree-shade-expansion.md) implements that request without upgrading this accuracy assessment or lifting the field-validation HOLD. The decision below records the earlier conditional-expansion assessment.
 
 Assessed **8 October 2026**, application 0.16.0 / canopy `zurich-lakeshore-canopy-2026-10-07-v1`, from source revision `151fafb`.

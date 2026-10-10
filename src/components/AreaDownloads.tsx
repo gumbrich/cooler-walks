@@ -184,7 +184,7 @@ export function AreaDownloads({
                         : t('The map shows the supported boundary.')}{' '}
                       {city.canopyPilot
                         ? t(
-                            'Includes the optional tree scenario across the supported Zurich map. Live closures are not included.',
+                            'Includes tree shade across the supported Zurich map. Live closures are not included.',
                           )
                         : t('Tree shade and live closures are not included.')}
                     </p>

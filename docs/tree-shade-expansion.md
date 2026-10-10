@@ -1,5 +1,7 @@
 # Tree-shade coverage · Zurich · 0.17.0
 
+**0.21.0 update (10 October 2026):** Zurich now uses municipal pavements and tree shade by default, as requested by the user. The interface no longer calls these optional pilots. This is an integration/default change, not new evidence of field accuracy or seasonal foliage calibration. Traffic context and barrier avoidance are documented in [preferences](preferences.md) and [accessibility routing](accessibility-routing.md). Historical results below retain their original versions and settings.
+
 The user explicitly requested extending the experimental tree scenario across the supported map after the [accuracy assessment](tree-shade-assessment.md). That changes the coverage decision, not the assessment of field accuracy. The scenario remains optional, off by default, and labelled as potential shade with an opaque/full-foliage assumption. The field-validation HOLD remains in force.
 
 ## Extent and source

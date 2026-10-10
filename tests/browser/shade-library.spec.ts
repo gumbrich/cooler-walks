@@ -23,6 +23,9 @@ test('Zurich loads 3D tiles per trip and recovers from a missing tile without lo
   await from.press('Enter');
   await to.fill('Wallisellenstrasse 45');
   await to.press('Enter');
+  for (let i = 0; i < 2; i++)
+    if (await page.locator('.pavement-option').first().isVisible())
+      await page.locator('.pavement-option').first().click();
   await expect(
     page.getByText('The 3D model could not load. Reconnect or download the Zurich map.'),
   ).toBeVisible();

@@ -1,5 +1,13 @@
 # Progress
 
+## Default Zurich planner · 0.21.0
+
+Implemented municipal pavements as the default Zurich network, including traffic-context matching, integrated tree shade, paired Shade/Sun controls and themes, 0–15 minute detours, equal optional wishes and mapped-barrier avoidance. No network switch, tree opt-in or numbered preference order remains. Beta cities retain their supported networks. [Selection rules](preferences.md) · [Access limitations](accessibility-routing.md).
+
+TypeScript and 157 unit/model/language tests pass. The complete data suite and 24 real combined-route cases pass. The Stadelhofen barrier case replaces a mapped 20 m staircase with an approximately 188 m route using a mapped lift; current lift operation remains unknown. Field-validation and winter foliage limitations are unchanged.
+
+Next: field-check routes, mapped barriers, street associations and summer/winter tree exposure. Positive kerb/width/surface data is needed before promising wheelchair accessibility.
+
 ## Street zones, combined preferences and private testing · 0.20.0
 
 Implemented street-based Tempo 30/20 markings, a lean primary/optional preference UI, ordered multi-objective candidate selection with explicit physical tolerances and a visible trade-off table. Existing shade, traffic and height models remain experimental. The live server-side password gate is active, with secrets outside Git and verified protection of pages and direct data URLs. Historical public deploys/offline copies are not retracted. [Preferences and validation](preferences.md) · [access limits](private-access.md).

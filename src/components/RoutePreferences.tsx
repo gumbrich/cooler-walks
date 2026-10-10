@@ -1,96 +1,105 @@
+import { CloudSun, Sun, Waves, Mountain, Footprints, Accessibility } from 'lucide-react';
 import { useI18n } from '../i18n';
-import { goalLabels, goalsOf } from '../lib/preferences';
+import { goalLabels } from '../lib/preferences';
 import type { City, RouteGoal, RoutePreferences as Preferences } from '../lib/types';
 
-export function RoutePreferences({
+export function LightChoice({
   city,
-  pavements,
   value,
   onChange,
 }: {
   city: City;
-  pavements: boolean;
   value: Preferences;
   onChange: (value: Preferences) => void;
 }) {
   const { t } = useI18n();
-  const available: RouteGoal[] = [
-    ...(city.capabilities.buildingShade ? (['shade', 'sun'] as const) : (['greenery'] as const)),
-    ...(city.capabilities.trafficCalming && !pavements ? (['calm'] as const) : []),
-    ...(city.elevation ? (['flat'] as const) : []),
-    ...(city.capabilities.water ? (['water'] as const) : []),
+  if (!city.capabilities.buildingShade) return null;
+  return (
+    <div className="light-choice" role="group" aria-label={t('Sun or shade')}>
+      {(['shade', 'sun'] as const).map((mode) => {
+        const Icon = mode === 'shade' ? CloudSun : Sun;
+        return (
+          <button
+            key={mode}
+            type="button"
+            className={mode}
+            aria-pressed={value.primary === mode}
+            onClick={() => onChange({ ...value, primary: mode })}
+          >
+            <Icon size={22} aria-hidden="true" />
+            {t(goalLabels[mode])}
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+export function RoutePreferences({
+  city,
+  value,
+  onChange,
+}: {
+  city: City;
+  value: Preferences;
+  onChange: (value: Preferences) => void;
+}) {
+  const { t } = useI18n();
+  const available: { goal: RouteGoal; icon: typeof Waves }[] = [
+    ...(city.capabilities.trafficCalming ? [{ goal: 'calm' as const, icon: Footprints }] : []),
+    ...(city.capabilities.water ? [{ goal: 'water' as const, icon: Waves }] : []),
+    ...(city.elevation ? [{ goal: 'flat' as const, icon: Mountain }] : []),
   ];
-  const compatible = (goal: RouteGoal, primary: RouteGoal) =>
-    goal !== primary && !(['shade', 'sun'].includes(goal) && ['shade', 'sun'].includes(primary));
-  const additional = available.filter((goal) => compatible(goal, value.primary));
+  const count = value.secondary.length + (value.avoidSteps ? 1 : 0);
   return (
     <section className="route-preferences" aria-label={t('Route preferences')}>
-      <label className="priority-label" htmlFor="route-priority">
-        {t('Main priority')}
-      </label>
-      <select
-        id="route-priority"
-        value={value.primary}
-        onChange={(e) => {
-          const primary = e.target.value as RouteGoal;
-          onChange({
-            primary,
-            secondary: value.secondary.filter((goal) => compatible(goal, primary)),
-          });
-        }}
-      >
-        {available.map((goal) => (
-          <option key={goal} value={goal}>
-            {t(goalLabels[goal])}
-          </option>
-        ))}
-      </select>
       <details className="additional-preferences">
         <summary>
           {t('More preferences')}
-          {value.secondary.length > 0 && (
-            <span className="preference-count">{value.secondary.length}</span>
-          )}
+          {count > 0 && <span className="preference-count">{count}</span>}
         </summary>
-        <p className="preference-help">
-          {t('Used in the order selected, when routes are similar for your main priority.')}
-        </p>
-        {additional.map((goal) => (
-          <label className="optional-preference" key={goal}>
-            <input
-              type="checkbox"
-              checked={value.secondary.includes(goal)}
-              onChange={(e) =>
-                onChange({
-                  primary: value.primary,
-                  secondary: e.target.checked
-                    ? [...value.secondary.filter((g) => compatible(g, goal)), goal]
-                    : value.secondary.filter((g) => g !== goal),
-                })
-              }
-            />
-            <span>{t(goalLabels[goal])}</span>
-            {value.secondary.includes(goal) && (
-              <small aria-hidden="true">{value.secondary.indexOf(goal) + 2}</small>
+        <div className="preference-grid">
+          {available.map(({ goal, icon: Icon }) => (
+            <label className="optional-preference" key={goal}>
+              <Icon size={18} aria-hidden="true" />
+              <span>{t(goalLabels[goal])}</span>
+              <input
+                type="checkbox"
+                checked={value.secondary.includes(goal)}
+                onChange={(e) =>
+                  onChange({
+                    ...value,
+                    secondary: e.target.checked
+                      ? [...value.secondary, goal]
+                      : value.secondary.filter((g) => g !== goal),
+                  })
+                }
+              />
+            </label>
+          ))}
+          {city.pavementPilot && (
+            <label className="optional-preference">
+              <Accessibility size={18} aria-hidden="true" />
+              <span>{t('Accessibility')}</span>
+              <input
+                type="checkbox"
+                checked={!!value.avoidSteps}
+                aria-describedby="accessibility-help"
+                onChange={(e) => onChange({ ...value, avoidSteps: e.target.checked })}
+              />
+            </label>
+          )}
+        </div>
+        {value.avoidSteps && (
+          <p className="preference-help" id="accessibility-help">
+            {t(
+              'Avoids mapped stairs and barriers; prefers gentler routes. Kerbs, widths and surfaces still need checking.',
             )}
-          </label>
-        ))}
-        {pavements && city.capabilities.trafficCalming && (
-          <p className="preference-help">
-            {t('Calmer-street comparison is available on the standard network.')}
           </p>
         )}
-      </details>
-      {value.secondary.length > 0 && (
-        <p className="preference-order" aria-live="polite">
-          {goalsOf(value).map((goal, i) => (
-            <span key={goal}>
-              {i > 0 && ' → '}
-              {t(goalLabels[goal])}
-            </span>
-          ))}
+        <p className="preference-help">
+          {t('Your wishes are considered together, within the extra walking time.')}
         </p>
-      )}
+      </details>
     </section>
   );
 }

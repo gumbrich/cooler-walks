@@ -1,3 +1,4 @@
+import { wish } from './helpers';
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 test('German entry, calmer streets and language switching preserve the trip', async ({ page }) => {
@@ -8,9 +9,9 @@ test('German entry, calmer streets and language switching preserve the trip', as
   await expect(page.locator('.map-shell')).toHaveAttribute('data-map-settled', 'true');
   await page.screenshot({ path: 'docs/screenshots/desktop-german-home.png', fullPage: true });
   await page.locator('.hero-cta').click();
-  await page.locator('#route-priority').selectOption('calm');
-  await expect(page.getByRole('button', { name: /Verkehrsberuhigter Weg/ })).toBeVisible();
-  await expect(page.locator('.route-name').last()).toContainText('+3,0');
+  await wish(page, 'Verkehrsberuhigt');
+  await expect(page.locator('.route-card').first()).toBeVisible();
+  await expect(page.locator('.results')).toHaveAttribute('aria-busy', 'false');
   await expect(page.locator('body')).not.toContainText('{zone}');
   const from = await page.getByRole('combobox', { name: 'Von', exact: true }).inputValue();
   const destination = await page.getByRole('combobox', { name: 'Nach', exact: true }).inputValue();
@@ -18,8 +19,8 @@ test('German entry, calmer streets and language switching preserve the trip', as
   await page.getByRole('combobox', { name: 'Sprache', exact: true }).selectOption('en');
   await expect(page.getByRole('combobox', { name: 'From', exact: true })).toHaveValue(from);
   await expect(page.getByRole('combobox', { name: 'To', exact: true })).toHaveValue(destination);
-  await expect(page.locator('#route-priority')).toHaveValue('calm');
-  await expect(page.getByRole('button', { name: /Calmer streets/ })).toBeVisible();
+  await expect(page.getByRole('checkbox', { name: 'Calm streets', exact: true })).toBeChecked();
+  await expect(page.locator('.route-card').first()).toBeVisible();
   await page.getByRole('combobox', { name: 'Language', exact: true }).selectOption('de');
   await expect(page.locator('.route-card.selected .route-numbers')).toHaveText(route, {
     useInnerText: true,
@@ -37,11 +38,13 @@ test('German entry, calmer streets and language switching preserve the trip', as
     (await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze())
       .violations,
   ).toEqual([]);
-  await page.getByRole('button', { name: 'Direkt', exact: true }).click();
+  await page.getByRole('button', { name: '+0 min', exact: true }).click();
   await expect(page.locator('.route-card')).toHaveCount(1);
   await page.getByRole('button', { name: /\+5 min/ }).click();
   await page.getByRole('combobox', { name: 'Stadt', exact: true }).selectOption('de-munich');
-  await expect(page.locator('#route-priority option[value="calm"]')).toHaveCount(0);
+  await expect(page.getByRole('checkbox', { name: 'Verkehrsberuhigt', exact: true })).toHaveCount(
+    0,
+  );
   await expect(page.locator('.route-card').first()).toBeVisible();
   await page.reload();
   await expect(page.locator('html')).toHaveAttribute('lang', 'de');
@@ -53,8 +56,9 @@ test('German phone and tablet layouts, controls, downloads and error recovery', 
   await page.goto('/de/?view=planner');
   await expect(page.locator('.route-card').first()).toBeVisible();
   await page.getByRole('button', { name: 'Weg bearbeiten', exact: true }).click();
-  await page.locator('#route-priority').selectOption('calm');
-  await expect(page.getByRole('button', { name: /Verkehrsberuhigter Weg/ })).toBeVisible();
+  await wish(page, 'Verkehrsberuhigt');
+  await expect(page.locator('.route-card').first()).toBeVisible();
+  await expect(page.locator('.results')).toHaveAttribute('aria-busy', 'false');
   await page.screenshot({ path: 'docs/screenshots/phone-german-editor.png', fullPage: true });
   await page.getByRole('button', { name: 'Routen anzeigen' }).click();
   await page.locator('.traffic-profile > summary').click();

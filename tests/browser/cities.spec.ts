@@ -37,23 +37,26 @@ test('prefer sun works in winter and respects the direct-walk limit', async ({ p
   await expect(page.locator('.route-card').first()).toBeVisible();
   await page.getByLabel('Departure date', { exact: true }).fill('2026-12-21');
   await page.getByRole('slider', { name: 'Departure time' }).fill('720');
-  await page.locator('#route-priority').selectOption('sun');
+  await page.getByRole('button', { name: 'Sun', exact: true }).click();
   await expect(page.locator('.spinner')).toHaveCount(0);
   await expect(
     page.getByText(
-      'A sun-based recommendation is unavailable for this time or coverage. The fastest walk is shown.',
+      'Tree-scenario coverage is below 95%. No shade comparison; estimates cover only the known part of the walk.',
     ),
   ).toBeVisible();
   await page.getByRole('combobox', { name: 'From', exact: true }).fill('Hofwiesenstrasse 350');
   await page.getByRole('combobox', { name: 'From', exact: true }).press('Enter');
   await page.getByRole('combobox', { name: 'To', exact: true }).fill('Wallisellenstrasse 45');
   await page.getByRole('combobox', { name: 'To', exact: true }).press('Enter');
-  await expect(page.locator('.route-card').first()).toContainText('estimated sun');
+  for (let i = 0; i < 2; i++)
+    if (await page.locator('.pavement-option').first().isVisible())
+      await page.locator('.pavement-option').first().click();
+  await expect(page.locator('.route-card').first()).toContainText('potential sun');
   await expect(page.locator('.map-shell')).toHaveAttribute('data-map-settled', 'true');
   await expectMarkersVisible(page);
   await page.locator('.results').scrollIntoViewIfNeeded();
   await page.screenshot({ path: 'docs/screenshots/desktop-prefer-sun.png', fullPage: true });
-  await page.getByRole('button', { name: 'Direct', exact: true }).click();
+  await page.getByRole('button', { name: '+0 min', exact: true }).click();
   await expect(page.locator('.route-card')).toHaveCount(1);
   await page.setViewportSize({ width: 390, height: 844 });
   await expect
@@ -103,10 +106,10 @@ for (const [id, slug, sunlight, timeZone] of [
     await expect(page.getByRole('button', { name: /Fastest walk/ })).toBeVisible();
     await expect(page.locator('.time-heading')).toContainText(`${timeZone} time`);
     if (sunlight) {
-      await page.locator('#route-priority').selectOption('sun');
+      await page.getByRole('button', { name: 'Sun', exact: true }).click();
       await expect(page.locator('.route-card').first()).toContainText('estimated sun');
     } else {
-      await expect(page.locator('#route-priority option[value="sun"]')).toHaveCount(0);
+      await expect(page.getByRole('button', { name: 'Sun', exact: true })).toHaveCount(0);
       await expect(page.locator('.route-card').first()).toContainText('near trees');
       await expect(page.locator('.capability-note')).toContainText('Greenery prototype');
     }

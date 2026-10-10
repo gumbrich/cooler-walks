@@ -1,4 +1,4 @@
-import { pavementReference, standardReference } from './lib/pavement-browser.mjs';
+import { pavementReference } from './lib/pavement-browser.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import http from 'node:http';
@@ -118,15 +118,12 @@ try {
   assert(requests.some((url) => url.includes(versioned('/data/zurich.json'))));
   await expect(page.locator('.route-model-note').first()).toContainText('3D roofs');
   assert(requests.some((url) => url.includes(versioned('/data/zurich-pavements.json'))));
-  await page.getByRole('button', { name: 'Use pavements & crossings', exact: true }).click();
   await pavementReference(page);
   await expect(page.locator('.route-card')).toHaveCount(2);
   await expect(page.locator('.route-pavement-note').first()).toContainText('4 crossing sections');
   console.log(
     'PASS new app and expanded pavements load under old controller without a manual reload',
   );
-  await page.getByRole('button', { name: 'Standard walking network', exact: true }).click();
-  await standardReference(page);
   await expect(page.locator('.route-card').first()).toBeVisible();
   current = true;
   await page.evaluate(async () => {
@@ -188,10 +185,9 @@ try {
   await page.reload();
   await expect(page.locator('.route-card').first()).toBeVisible({ timeout: 45000 });
   await expect(page.locator('.route-model-note').first()).toContainText('3D roofs');
-  await page.getByRole('button', { name: 'Use pavements & crossings', exact: true }).click();
   await pavementReference(page);
   await expect(page.locator('.route-card')).toHaveCount(2, { timeout: 45000 });
-  console.log('PASS upgraded app and both Zurich networks work offline');
+  console.log('PASS upgraded app and default pavement network and integrated trees work offline');
 } finally {
   await browser.close();
   await new Promise((resolve) => server.close(resolve));
