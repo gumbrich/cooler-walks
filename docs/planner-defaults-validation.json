@@ -1,0 +1,1053 @@
+{
+  "checkedAt": "2026-10-10T10:39:23.588Z",
+  "pavementVersion": "zurich-pavements-2026-10-10-v3",
+  "canopyVersion": "zurich-canopy-library-2026-10-08-v2",
+  "policy": "equal-wish-bands-v2",
+  "records": [
+    {
+      "names": ["Talacker / Pelikanstrasse", "Bahnhofstrasse / Sihlstrasse"],
+      "budget": 0,
+      "goals": ["shade", "calm", "flat", "water"],
+      "avoidSteps": true,
+      "mode": "shade",
+      "candidates": 1,
+      "applied": [],
+      "unavailable": [],
+      "fastest": {
+        "distance": 399.4862453577219,
+        "minutes": 4.993578066971524,
+        "shade": 68.01839912672783,
+        "trees": 68.01839912672783,
+        "sun": 316.2016357694211,
+        "unknown": 15.266210461573259,
+        "majorRoad": 24.525916995649112,
+        "trafficUnknown": 0,
+        "steps": false,
+        "terrain": {
+          "up": 1.5268448140977853,
+          "down": 0,
+          "unknown": 0
+        },
+        "streets": [
+          "Talacker Überquerung",
+          "Pelikanstrasse",
+          "Nüschelerstrasse Überquerung",
+          "Pelikanstrasse",
+          "St. Annagasse Überquerung",
+          "Pelikanstrasse",
+          "Bahnhofstrasse",
+          "Sihlstrasse Überquerung"
+        ]
+      },
+      "alternative": null
+    },
+    {
+      "names": ["Talacker / Pelikanstrasse", "Bahnhofstrasse / Sihlstrasse"],
+      "budget": 0,
+      "goals": ["sun", "calm", "flat", "water"],
+      "avoidSteps": true,
+      "mode": "shade",
+      "candidates": 1,
+      "applied": [],
+      "unavailable": [],
+      "fastest": {
+        "distance": 399.4862453577219,
+        "minutes": 4.993578066971524,
+        "shade": 68.01839912672783,
+        "trees": 68.01839912672783,
+        "sun": 316.2016357694211,
+        "unknown": 15.266210461573259,
+        "majorRoad": 24.525916995649112,
+        "trafficUnknown": 0,
+        "steps": false,
+        "terrain": {
+          "up": 1.5268448140977853,
+          "down": 0,
+          "unknown": 0
+        },
+        "streets": [
+          "Talacker Überquerung",
+          "Pelikanstrasse",
+          "Nüschelerstrasse Überquerung",
+          "Pelikanstrasse",
+          "St. Annagasse Überquerung",
+          "Pelikanstrasse",
+          "Bahnhofstrasse",
+          "Sihlstrasse Überquerung"
+        ]
+      },
+      "alternative": null
+    },
+    {
+      "names": ["Talacker / Pelikanstrasse", "Bahnhofstrasse / Sihlstrasse"],
+      "budget": 1,
+      "goals": ["shade", "calm", "flat", "water"],
+      "avoidSteps": true,
+      "mode": "shade",
+      "candidates": 4,
+      "applied": ["calm", "flat", "water"],
+      "unavailable": [],
+      "fastest": {
+        "distance": 399.4862453577219,
+        "minutes": 4.993578066971524,
+        "shade": 68.01839912672783,
+        "trees": 68.01839912672783,
+        "sun": 316.2016357694211,
+        "unknown": 15.266210461573259,
+        "majorRoad": 24.525916995649112,
+        "trafficUnknown": 0,
+        "steps": false,
+        "terrain": {
+          "up": 1.5268448140977853,
+          "down": 0,
+          "unknown": 0
+        },
+        "streets": [
+          "Talacker Überquerung",
+          "Pelikanstrasse",
+          "Nüschelerstrasse Überquerung",
+          "Pelikanstrasse",
+          "St. Annagasse Überquerung",
+          "Pelikanstrasse",
+          "Bahnhofstrasse",
+          "Sihlstrasse Überquerung"
+        ]
+      },
+      "alternative": {
+        "distance": 404.5618662766958,
+        "minutes": 5.057023328458698,
+        "shade": 144.41785720833343,
+        "trees": 65.70021468723102,
+        "sun": 244.8777986067895,
+        "unknown": 15.266210461573259,
+        "majorRoad": 24.525916995649112,
+        "trafficUnknown": 0,
+        "steps": false,
+        "terrain": {
+          "up": 1.5268448140977853,
+          "down": 0,
+          "unknown": 0
+        },
+        "streets": [
+          "Talacker Überquerung",
+          "Pelikanstrasse",
+          "Nüschelerstrasse Überquerung",
+          "Pelikanstrasse Überquerung",
+          "Pelikanstrasse",
+          "Bahnhofstrasse",
+          "Sihlstrasse Überquerung"
+        ]
+      }
+    },
+    {
+      "names": ["Talacker / Pelikanstrasse", "Bahnhofstrasse / Sihlstrasse"],
+      "budget": 1,
+      "goals": ["sun", "calm", "flat", "water"],
+      "avoidSteps": true,
+      "mode": "shade",
+      "candidates": 5,
+      "applied": ["calm", "flat", "water"],
+      "unavailable": [],
+      "fastest": {
+        "distance": 399.4862453577219,
+        "minutes": 4.993578066971524,
+        "shade": 68.01839912672783,
+        "trees": 68.01839912672783,
+        "sun": 316.2016357694211,
+        "unknown": 15.266210461573259,
+        "majorRoad": 24.525916995649112,
+        "trafficUnknown": 0,
+        "steps": false,
+        "terrain": {
+          "up": 1.5268448140977853,
+          "down": 0,
+          "unknown": 0
+        },
+        "streets": [
+          "Talacker Überquerung",
+          "Pelikanstrasse",
+          "Nüschelerstrasse Überquerung",
+          "Pelikanstrasse",
+          "St. Annagasse Überquerung",
+          "Pelikanstrasse",
+          "Bahnhofstrasse",
+          "Sihlstrasse Überquerung"
+        ]
+      },
+      "alternative": {
+        "distance": 462.79303015288036,
+        "minutes": 5.7849128769110045,
+        "shade": 20.086006603957987,
+        "trees": 20.086006603957987,
+        "sun": 433.1343456341432,
+        "unknown": 9.572677914779272,
+        "majorRoad": 187.13963971059843,
+        "trafficUnknown": 0,
+        "steps": false,
+        "terrain": {
+          "up": 1.5268448140977853,
+          "down": 0,
+          "unknown": 0
+        },
+        "streets": [
+          "Talacker Überquerung",
+          "Pelikanstrasse",
+          "Nüschelerstrasse Überquerung",
+          "Pelikanstrasse",
+          "St. Annagasse Überquerung",
+          "St. Annagasse",
+          "Sihlstrasse",
+          "Sihlstrasse Überquerung",
+          "Sihlstrasse"
+        ]
+      }
+    },
+    {
+      "names": ["Talacker / Pelikanstrasse", "Bahnhofstrasse / Sihlstrasse"],
+      "budget": 7,
+      "goals": ["shade", "calm", "flat", "water"],
+      "avoidSteps": true,
+      "mode": "shade",
+      "candidates": 6,
+      "applied": ["calm", "flat", "water"],
+      "unavailable": [],
+      "fastest": {
+        "distance": 399.4862453577219,
+        "minutes": 4.993578066971524,
+        "shade": 68.01839912672783,
+        "trees": 68.01839912672783,
+        "sun": 316.2016357694211,
+        "unknown": 15.266210461573259,
+        "majorRoad": 24.525916995649112,
+        "trafficUnknown": 0,
+        "steps": false,
+        "terrain": {
+          "up": 1.5268448140977853,
+          "down": 0,
+          "unknown": 0
+        },
+        "streets": [
+          "Talacker Überquerung",
+          "Pelikanstrasse",
+          "Nüschelerstrasse Überquerung",
+          "Pelikanstrasse",
+          "St. Annagasse Überquerung",
+          "Pelikanstrasse",
+          "Bahnhofstrasse",
+          "Sihlstrasse Überquerung"
+        ]
+      },
+      "alternative": {
+        "distance": 490.36685963065673,
+        "minutes": 6.129585745383209,
+        "shade": 313.8172910844087,
+        "trees": 9.378268820550158,
+        "sun": 166.97689063146817,
+        "unknown": 9.572677914779272,
+        "majorRoad": 298.6351467114008,
+        "trafficUnknown": 0,
+        "steps": false,
+        "terrain": {
+          "up": 1.5268448140977853,
+          "down": 0,
+          "unknown": 0
+        },
+        "streets": [
+          "Talacker Überquerung",
+          "Pelikanstrasse",
+          "Nüschelerstrasse",
+          "Nüschelerstrasse Überquerung",
+          "Sihlstrasse",
+          "St. Annagasse Überquerung",
+          "St. Annagasse",
+          "Sihlstrasse",
+          "Sihlstrasse Überquerung"
+        ]
+      }
+    },
+    {
+      "names": ["Talacker / Pelikanstrasse", "Bahnhofstrasse / Sihlstrasse"],
+      "budget": 7,
+      "goals": ["sun", "calm", "flat", "water"],
+      "avoidSteps": true,
+      "mode": "shade",
+      "candidates": 6,
+      "applied": ["calm", "flat", "water"],
+      "unavailable": [],
+      "fastest": {
+        "distance": 399.4862453577219,
+        "minutes": 4.993578066971524,
+        "shade": 68.01839912672783,
+        "trees": 68.01839912672783,
+        "sun": 316.2016357694211,
+        "unknown": 15.266210461573259,
+        "majorRoad": 24.525916995649112,
+        "trafficUnknown": 0,
+        "steps": false,
+        "terrain": {
+          "up": 1.5268448140977853,
+          "down": 0,
+          "unknown": 0
+        },
+        "streets": [
+          "Talacker Überquerung",
+          "Pelikanstrasse",
+          "Nüschelerstrasse Überquerung",
+          "Pelikanstrasse",
+          "St. Annagasse Überquerung",
+          "Pelikanstrasse",
+          "Bahnhofstrasse",
+          "Sihlstrasse Überquerung"
+        ]
+      },
+      "alternative": {
+        "distance": 462.79303015288036,
+        "minutes": 5.7849128769110045,
+        "shade": 20.086006603957987,
+        "trees": 20.086006603957987,
+        "sun": 433.1343456341432,
+        "unknown": 9.572677914779272,
+        "majorRoad": 187.13963971059843,
+        "trafficUnknown": 0,
+        "steps": false,
+        "terrain": {
+          "up": 1.5268448140977853,
+          "down": 0,
+          "unknown": 0
+        },
+        "streets": [
+          "Talacker Überquerung",
+          "Pelikanstrasse",
+          "Nüschelerstrasse Überquerung",
+          "Pelikanstrasse",
+          "St. Annagasse Überquerung",
+          "St. Annagasse",
+          "Sihlstrasse",
+          "Sihlstrasse Überquerung",
+          "Sihlstrasse"
+        ]
+      }
+    },
+    {
+      "names": ["Talacker / Pelikanstrasse", "Bahnhofstrasse / Sihlstrasse"],
+      "budget": 15,
+      "goals": ["shade", "calm", "flat", "water"],
+      "avoidSteps": true,
+      "mode": "shade",
+      "candidates": 6,
+      "applied": ["calm", "flat", "water"],
+      "unavailable": [],
+      "fastest": {
+        "distance": 399.4862453577219,
+        "minutes": 4.993578066971524,
+        "shade": 68.01839912672783,
+        "trees": 68.01839912672783,
+        "sun": 316.2016357694211,
+        "unknown": 15.266210461573259,
+        "majorRoad": 24.525916995649112,
+        "trafficUnknown": 0,
+        "steps": false,
+        "terrain": {
+          "up": 1.5268448140977853,
+          "down": 0,
+          "unknown": 0
+        },
+        "streets": [
+          "Talacker Überquerung",
+          "Pelikanstrasse",
+          "Nüschelerstrasse Überquerung",
+          "Pelikanstrasse",
+          "St. Annagasse Überquerung",
+          "Pelikanstrasse",
+          "Bahnhofstrasse",
+          "Sihlstrasse Überquerung"
+        ]
+      },
+      "alternative": {
+        "distance": 490.36685963065673,
+        "minutes": 6.129585745383209,
+        "shade": 313.8172910844087,
+        "trees": 9.378268820550158,
+        "sun": 166.97689063146817,
+        "unknown": 9.572677914779272,
+        "majorRoad": 298.6351467114008,
+        "trafficUnknown": 0,
+        "steps": false,
+        "terrain": {
+          "up": 1.5268448140977853,
+          "down": 0,
+          "unknown": 0
+        },
+        "streets": [
+          "Talacker Überquerung",
+          "Pelikanstrasse",
+          "Nüschelerstrasse",
+          "Nüschelerstrasse Überquerung",
+          "Sihlstrasse",
+          "St. Annagasse Überquerung",
+          "St. Annagasse",
+          "Sihlstrasse",
+          "Sihlstrasse Überquerung"
+        ]
+      }
+    },
+    {
+      "names": ["Talacker / Pelikanstrasse", "Bahnhofstrasse / Sihlstrasse"],
+      "budget": 15,
+      "goals": ["sun", "calm", "flat", "water"],
+      "avoidSteps": true,
+      "mode": "shade",
+      "candidates": 6,
+      "applied": ["calm", "flat", "water"],
+      "unavailable": [],
+      "fastest": {
+        "distance": 399.4862453577219,
+        "minutes": 4.993578066971524,
+        "shade": 68.01839912672783,
+        "trees": 68.01839912672783,
+        "sun": 316.2016357694211,
+        "unknown": 15.266210461573259,
+        "majorRoad": 24.525916995649112,
+        "trafficUnknown": 0,
+        "steps": false,
+        "terrain": {
+          "up": 1.5268448140977853,
+          "down": 0,
+          "unknown": 0
+        },
+        "streets": [
+          "Talacker Überquerung",
+          "Pelikanstrasse",
+          "Nüschelerstrasse Überquerung",
+          "Pelikanstrasse",
+          "St. Annagasse Überquerung",
+          "Pelikanstrasse",
+          "Bahnhofstrasse",
+          "Sihlstrasse Überquerung"
+        ]
+      },
+      "alternative": {
+        "distance": 462.79303015288036,
+        "minutes": 5.7849128769110045,
+        "shade": 20.086006603957987,
+        "trees": 20.086006603957987,
+        "sun": 433.1343456341432,
+        "unknown": 9.572677914779272,
+        "majorRoad": 187.13963971059843,
+        "trafficUnknown": 0,
+        "steps": false,
+        "terrain": {
+          "up": 1.5268448140977853,
+          "down": 0,
+          "unknown": 0
+        },
+        "streets": [
+          "Talacker Überquerung",
+          "Pelikanstrasse",
+          "Nüschelerstrasse Überquerung",
+          "Pelikanstrasse",
+          "St. Annagasse Überquerung",
+          "St. Annagasse",
+          "Sihlstrasse",
+          "Sihlstrasse Überquerung",
+          "Sihlstrasse"
+        ]
+      }
+    },
+    {
+      "names": ["Franklinstrasse / Hofwiesenstrasse", "Franklinstrasse / Schaffhauserstrasse"],
+      "budget": 0,
+      "goals": ["shade", "calm", "flat", "water"],
+      "avoidSteps": true,
+      "mode": "shade",
+      "candidates": 1,
+      "applied": [],
+      "unavailable": [],
+      "fastest": {
+        "distance": 376.0026907690595,
+        "minutes": 4.700033634613243,
+        "shade": 210.86045508889407,
+        "trees": 111.1361992888215,
+        "sun": 159.24438922709405,
+        "unknown": 5.897846453071945,
+        "majorRoad": 376.0026907690595,
+        "trafficUnknown": 0,
+        "steps": false,
+        "terrain": {
+          "up": 1.8000000000000682,
+          "down": 0,
+          "unknown": 0
+        },
+        "streets": ["Franklinstrasse", "Franklinstrasse Überquerung", "Franklinstrasse"]
+      },
+      "alternative": null
+    },
+    {
+      "names": ["Franklinstrasse / Hofwiesenstrasse", "Franklinstrasse / Schaffhauserstrasse"],
+      "budget": 0,
+      "goals": ["sun", "calm", "flat", "water"],
+      "avoidSteps": true,
+      "mode": "shade",
+      "candidates": 1,
+      "applied": [],
+      "unavailable": [],
+      "fastest": {
+        "distance": 376.0026907690595,
+        "minutes": 4.700033634613243,
+        "shade": 210.86045508889407,
+        "trees": 111.1361992888215,
+        "sun": 159.24438922709405,
+        "unknown": 5.897846453071945,
+        "majorRoad": 376.0026907690595,
+        "trafficUnknown": 0,
+        "steps": false,
+        "terrain": {
+          "up": 1.8000000000000682,
+          "down": 0,
+          "unknown": 0
+        },
+        "streets": ["Franklinstrasse", "Franklinstrasse Überquerung", "Franklinstrasse"]
+      },
+      "alternative": null
+    },
+    {
+      "names": ["Franklinstrasse / Hofwiesenstrasse", "Franklinstrasse / Schaffhauserstrasse"],
+      "budget": 1,
+      "goals": ["shade", "calm", "flat", "water"],
+      "avoidSteps": true,
+      "mode": "shade",
+      "candidates": 8,
+      "applied": ["calm", "flat", "water"],
+      "unavailable": [],
+      "fastest": {
+        "distance": 376.0026907690595,
+        "minutes": 4.700033634613243,
+        "shade": 210.86045508889407,
+        "trees": 111.1361992888215,
+        "sun": 159.24438922709405,
+        "unknown": 5.897846453071945,
+        "majorRoad": 376.0026907690595,
+        "trafficUnknown": 0,
+        "steps": false,
+        "terrain": {
+          "up": 1.8000000000000682,
+          "down": 0,
+          "unknown": 0
+        },
+        "streets": ["Franklinstrasse", "Franklinstrasse Überquerung", "Franklinstrasse"]
+      },
+      "alternative": {
+        "distance": 422.7568141424694,
+        "minutes": 5.284460176780867,
+        "shade": 298.9720771610237,
+        "trees": 90.69731254302597,
+        "sun": 112.1036660252473,
+        "unknown": 11.681070956198777,
+        "majorRoad": 308.29000514726914,
+        "trafficUnknown": 0,
+        "steps": false,
+        "terrain": {
+          "up": 1.8000000000000682,
+          "down": 0,
+          "unknown": 0
+        },
+        "streets": [
+          "Franklinstrasse",
+          "Franklinstrasse Überquerung",
+          "Franklinstrasse",
+          "Querstrasse",
+          "Edisonstrasse",
+          "Franklinstrasse"
+        ]
+      }
+    },
+    {
+      "names": ["Franklinstrasse / Hofwiesenstrasse", "Franklinstrasse / Schaffhauserstrasse"],
+      "budget": 1,
+      "goals": ["sun", "calm", "flat", "water"],
+      "avoidSteps": true,
+      "mode": "shade",
+      "candidates": 6,
+      "applied": [],
+      "unavailable": [],
+      "fastest": {
+        "distance": 376.0026907690595,
+        "minutes": 4.700033634613243,
+        "shade": 210.86045508889407,
+        "trees": 111.1361992888215,
+        "sun": 159.24438922709405,
+        "unknown": 5.897846453071945,
+        "majorRoad": 376.0026907690595,
+        "trafficUnknown": 0,
+        "steps": false,
+        "terrain": {
+          "up": 1.8000000000000682,
+          "down": 0,
+          "unknown": 0
+        },
+        "streets": ["Franklinstrasse", "Franklinstrasse Überquerung", "Franklinstrasse"]
+      },
+      "alternative": null
+    },
+    {
+      "names": ["Franklinstrasse / Hofwiesenstrasse", "Franklinstrasse / Schaffhauserstrasse"],
+      "budget": 7,
+      "goals": ["shade", "calm", "flat", "water"],
+      "avoidSteps": true,
+      "mode": "shade",
+      "candidates": 8,
+      "applied": ["calm", "flat", "water"],
+      "unavailable": [],
+      "fastest": {
+        "distance": 376.0026907690595,
+        "minutes": 4.700033634613243,
+        "shade": 210.86045508889407,
+        "trees": 111.1361992888215,
+        "sun": 159.24438922709405,
+        "unknown": 5.897846453071945,
+        "majorRoad": 376.0026907690595,
+        "trafficUnknown": 0,
+        "steps": false,
+        "terrain": {
+          "up": 1.8000000000000682,
+          "down": 0,
+          "unknown": 0
+        },
+        "streets": ["Franklinstrasse", "Franklinstrasse Überquerung", "Franklinstrasse"]
+      },
+      "alternative": {
+        "distance": 510.7086623912052,
+        "minutes": 6.383858279890065,
+        "shade": 356.99930531964975,
+        "trees": 124.8541347221732,
+        "sun": 144.46532554946796,
+        "unknown": 9.244031522087985,
+        "majorRoad": 139.42413941386923,
+        "trafficUnknown": 0,
+        "steps": false,
+        "terrain": {
+          "up": 1.8000000000000682,
+          "down": 0,
+          "unknown": 0
+        },
+        "streets": [
+          "Franklinstrasse Überquerung",
+          "Hofwiesenstrasse",
+          "Schulstrasse",
+          "Schulstrasse Überquerung",
+          "Nansenstrasse",
+          "Marktplatz Oerlikon",
+          "Querstrasse Überquerung",
+          "Edisonstrasse",
+          "Franklinstrasse"
+        ]
+      }
+    },
+    {
+      "names": ["Franklinstrasse / Hofwiesenstrasse", "Franklinstrasse / Schaffhauserstrasse"],
+      "budget": 7,
+      "goals": ["sun", "calm", "flat", "water"],
+      "avoidSteps": true,
+      "mode": "shade",
+      "candidates": 6,
+      "applied": [],
+      "unavailable": [],
+      "fastest": {
+        "distance": 376.0026907690595,
+        "minutes": 4.700033634613243,
+        "shade": 210.86045508889407,
+        "trees": 111.1361992888215,
+        "sun": 159.24438922709405,
+        "unknown": 5.897846453071945,
+        "majorRoad": 376.0026907690595,
+        "trafficUnknown": 0,
+        "steps": false,
+        "terrain": {
+          "up": 1.8000000000000682,
+          "down": 0,
+          "unknown": 0
+        },
+        "streets": ["Franklinstrasse", "Franklinstrasse Überquerung", "Franklinstrasse"]
+      },
+      "alternative": null
+    },
+    {
+      "names": ["Franklinstrasse / Hofwiesenstrasse", "Franklinstrasse / Schaffhauserstrasse"],
+      "budget": 15,
+      "goals": ["shade", "calm", "flat", "water"],
+      "avoidSteps": true,
+      "mode": "shade",
+      "candidates": 8,
+      "applied": ["calm", "flat", "water"],
+      "unavailable": [],
+      "fastest": {
+        "distance": 376.0026907690595,
+        "minutes": 4.700033634613243,
+        "shade": 210.86045508889407,
+        "trees": 111.1361992888215,
+        "sun": 159.24438922709405,
+        "unknown": 5.897846453071945,
+        "majorRoad": 376.0026907690595,
+        "trafficUnknown": 0,
+        "steps": false,
+        "terrain": {
+          "up": 1.8000000000000682,
+          "down": 0,
+          "unknown": 0
+        },
+        "streets": ["Franklinstrasse", "Franklinstrasse Überquerung", "Franklinstrasse"]
+      },
+      "alternative": {
+        "distance": 510.7086623912052,
+        "minutes": 6.383858279890065,
+        "shade": 356.99930531964975,
+        "trees": 124.8541347221732,
+        "sun": 144.46532554946796,
+        "unknown": 9.244031522087985,
+        "majorRoad": 139.42413941386923,
+        "trafficUnknown": 0,
+        "steps": false,
+        "terrain": {
+          "up": 1.8000000000000682,
+          "down": 0,
+          "unknown": 0
+        },
+        "streets": [
+          "Franklinstrasse Überquerung",
+          "Hofwiesenstrasse",
+          "Schulstrasse",
+          "Schulstrasse Überquerung",
+          "Nansenstrasse",
+          "Marktplatz Oerlikon",
+          "Querstrasse Überquerung",
+          "Edisonstrasse",
+          "Franklinstrasse"
+        ]
+      }
+    },
+    {
+      "names": ["Franklinstrasse / Hofwiesenstrasse", "Franklinstrasse / Schaffhauserstrasse"],
+      "budget": 15,
+      "goals": ["sun", "calm", "flat", "water"],
+      "avoidSteps": true,
+      "mode": "shade",
+      "candidates": 6,
+      "applied": [],
+      "unavailable": [],
+      "fastest": {
+        "distance": 376.0026907690595,
+        "minutes": 4.700033634613243,
+        "shade": 210.86045508889407,
+        "trees": 111.1361992888215,
+        "sun": 159.24438922709405,
+        "unknown": 5.897846453071945,
+        "majorRoad": 376.0026907690595,
+        "trafficUnknown": 0,
+        "steps": false,
+        "terrain": {
+          "up": 1.8000000000000682,
+          "down": 0,
+          "unknown": 0
+        },
+        "streets": ["Franklinstrasse", "Franklinstrasse Überquerung", "Franklinstrasse"]
+      },
+      "alternative": null
+    },
+    {
+      "names": ["Bucheggplatz / Hofwiesenstrasse", "Fuchspass / Waidbadstrasse"],
+      "budget": 0,
+      "goals": ["shade", "calm", "flat", "water"],
+      "avoidSteps": true,
+      "mode": "greenery",
+      "candidates": 1,
+      "applied": [],
+      "unavailable": ["calm", "flat"],
+      "fastest": {
+        "distance": 1466.1569481553179,
+        "minutes": 18.326961851941473,
+        "shade": 977.5930586037348,
+        "trees": 966.2249650914736,
+        "sun": 397.43877486563287,
+        "unknown": 91.12511468595066,
+        "majorRoad": 42.459050824496586,
+        "trafficUnknown": 100.63768327504083,
+        "steps": false,
+        "terrain": {
+          "up": 88.2399731662407,
+          "down": 1.243231452242867,
+          "unknown": 91.12511468595062
+        },
+        "streets": [
+          "Bucheggplatz",
+          "Obere Waidstrasse",
+          "Im Rehsprung",
+          "Fussweg",
+          "Im Rehsprung",
+          "Lindenweg",
+          "Reitweg",
+          "Hasenrain"
+        ]
+      },
+      "alternative": null
+    },
+    {
+      "names": ["Bucheggplatz / Hofwiesenstrasse", "Fuchspass / Waidbadstrasse"],
+      "budget": 0,
+      "goals": ["sun", "calm", "flat", "water"],
+      "avoidSteps": true,
+      "mode": "greenery",
+      "candidates": 1,
+      "applied": [],
+      "unavailable": ["calm", "flat"],
+      "fastest": {
+        "distance": 1466.1569481553179,
+        "minutes": 18.326961851941473,
+        "shade": 977.5930586037348,
+        "trees": 966.2249650914736,
+        "sun": 397.43877486563287,
+        "unknown": 91.12511468595066,
+        "majorRoad": 42.459050824496586,
+        "trafficUnknown": 100.63768327504083,
+        "steps": false,
+        "terrain": {
+          "up": 88.2399731662407,
+          "down": 1.243231452242867,
+          "unknown": 91.12511468595062
+        },
+        "streets": [
+          "Bucheggplatz",
+          "Obere Waidstrasse",
+          "Im Rehsprung",
+          "Fussweg",
+          "Im Rehsprung",
+          "Lindenweg",
+          "Reitweg",
+          "Hasenrain"
+        ]
+      },
+      "alternative": null
+    },
+    {
+      "names": ["Bucheggplatz / Hofwiesenstrasse", "Fuchspass / Waidbadstrasse"],
+      "budget": 1,
+      "goals": ["shade", "calm", "flat", "water"],
+      "avoidSteps": true,
+      "mode": "greenery",
+      "candidates": 14,
+      "applied": [],
+      "unavailable": ["calm", "flat"],
+      "fastest": {
+        "distance": 1466.1569481553179,
+        "minutes": 18.326961851941473,
+        "shade": 977.5930586037348,
+        "trees": 966.2249650914736,
+        "sun": 397.43877486563287,
+        "unknown": 91.12511468595066,
+        "majorRoad": 42.459050824496586,
+        "trafficUnknown": 100.63768327504083,
+        "steps": false,
+        "terrain": {
+          "up": 88.2399731662407,
+          "down": 1.243231452242867,
+          "unknown": 91.12511468595062
+        },
+        "streets": [
+          "Bucheggplatz",
+          "Obere Waidstrasse",
+          "Im Rehsprung",
+          "Fussweg",
+          "Im Rehsprung",
+          "Lindenweg",
+          "Reitweg",
+          "Hasenrain"
+        ]
+      },
+      "alternative": null
+    },
+    {
+      "names": ["Bucheggplatz / Hofwiesenstrasse", "Fuchspass / Waidbadstrasse"],
+      "budget": 1,
+      "goals": ["sun", "calm", "flat", "water"],
+      "avoidSteps": true,
+      "mode": "greenery",
+      "candidates": 13,
+      "applied": [],
+      "unavailable": ["calm", "flat"],
+      "fastest": {
+        "distance": 1466.1569481553179,
+        "minutes": 18.326961851941473,
+        "shade": 977.5930586037348,
+        "trees": 966.2249650914736,
+        "sun": 397.43877486563287,
+        "unknown": 91.12511468595066,
+        "majorRoad": 42.459050824496586,
+        "trafficUnknown": 100.63768327504083,
+        "steps": false,
+        "terrain": {
+          "up": 88.2399731662407,
+          "down": 1.243231452242867,
+          "unknown": 91.12511468595062
+        },
+        "streets": [
+          "Bucheggplatz",
+          "Obere Waidstrasse",
+          "Im Rehsprung",
+          "Fussweg",
+          "Im Rehsprung",
+          "Lindenweg",
+          "Reitweg",
+          "Hasenrain"
+        ]
+      },
+      "alternative": null
+    },
+    {
+      "names": ["Bucheggplatz / Hofwiesenstrasse", "Fuchspass / Waidbadstrasse"],
+      "budget": 7,
+      "goals": ["shade", "calm", "flat", "water"],
+      "avoidSteps": true,
+      "mode": "greenery",
+      "candidates": 16,
+      "applied": [],
+      "unavailable": ["calm", "flat"],
+      "fastest": {
+        "distance": 1466.1569481553179,
+        "minutes": 18.326961851941473,
+        "shade": 977.5930586037348,
+        "trees": 966.2249650914736,
+        "sun": 397.43877486563287,
+        "unknown": 91.12511468595066,
+        "majorRoad": 42.459050824496586,
+        "trafficUnknown": 100.63768327504083,
+        "steps": false,
+        "terrain": {
+          "up": 88.2399731662407,
+          "down": 1.243231452242867,
+          "unknown": 91.12511468595062
+        },
+        "streets": [
+          "Bucheggplatz",
+          "Obere Waidstrasse",
+          "Im Rehsprung",
+          "Fussweg",
+          "Im Rehsprung",
+          "Lindenweg",
+          "Reitweg",
+          "Hasenrain"
+        ]
+      },
+      "alternative": null
+    },
+    {
+      "names": ["Bucheggplatz / Hofwiesenstrasse", "Fuchspass / Waidbadstrasse"],
+      "budget": 7,
+      "goals": ["sun", "calm", "flat", "water"],
+      "avoidSteps": true,
+      "mode": "greenery",
+      "candidates": 16,
+      "applied": [],
+      "unavailable": ["calm", "flat"],
+      "fastest": {
+        "distance": 1466.1569481553179,
+        "minutes": 18.326961851941473,
+        "shade": 977.5930586037348,
+        "trees": 966.2249650914736,
+        "sun": 397.43877486563287,
+        "unknown": 91.12511468595066,
+        "majorRoad": 42.459050824496586,
+        "trafficUnknown": 100.63768327504083,
+        "steps": false,
+        "terrain": {
+          "up": 88.2399731662407,
+          "down": 1.243231452242867,
+          "unknown": 91.12511468595062
+        },
+        "streets": [
+          "Bucheggplatz",
+          "Obere Waidstrasse",
+          "Im Rehsprung",
+          "Fussweg",
+          "Im Rehsprung",
+          "Lindenweg",
+          "Reitweg",
+          "Hasenrain"
+        ]
+      },
+      "alternative": null
+    },
+    {
+      "names": ["Bucheggplatz / Hofwiesenstrasse", "Fuchspass / Waidbadstrasse"],
+      "budget": 15,
+      "goals": ["shade", "calm", "flat", "water"],
+      "avoidSteps": true,
+      "mode": "greenery",
+      "candidates": 16,
+      "applied": [],
+      "unavailable": ["calm", "flat"],
+      "fastest": {
+        "distance": 1466.1569481553179,
+        "minutes": 18.326961851941473,
+        "shade": 977.5930586037348,
+        "trees": 966.2249650914736,
+        "sun": 397.43877486563287,
+        "unknown": 91.12511468595066,
+        "majorRoad": 42.459050824496586,
+        "trafficUnknown": 100.63768327504083,
+        "steps": false,
+        "terrain": {
+          "up": 88.2399731662407,
+          "down": 1.243231452242867,
+          "unknown": 91.12511468595062
+        },
+        "streets": [
+          "Bucheggplatz",
+          "Obere Waidstrasse",
+          "Im Rehsprung",
+          "Fussweg",
+          "Im Rehsprung",
+          "Lindenweg",
+          "Reitweg",
+          "Hasenrain"
+        ]
+      },
+      "alternative": null
+    },
+    {
+      "names": ["Bucheggplatz / Hofwiesenstrasse", "Fuchspass / Waidbadstrasse"],
+      "budget": 15,
+      "goals": ["sun", "calm", "flat", "water"],
+      "avoidSteps": true,
+      "mode": "greenery",
+      "candidates": 16,
+      "applied": [],
+      "unavailable": ["calm", "flat"],
+      "fastest": {
+        "distance": 1466.1569481553179,
+        "minutes": 18.326961851941473,
+        "shade": 977.5930586037348,
+        "trees": 966.2249650914736,
+        "sun": 397.43877486563287,
+        "unknown": 91.12511468595066,
+        "majorRoad": 42.459050824496586,
+        "trafficUnknown": 100.63768327504083,
+        "steps": false,
+        "terrain": {
+          "up": 88.2399731662407,
+          "down": 1.243231452242867,
+          "unknown": 91.12511468595062
+        },
+        "streets": [
+          "Bucheggplatz",
+          "Obere Waidstrasse",
+          "Im Rehsprung",
+          "Fussweg",
+          "Im Rehsprung",
+          "Lindenweg",
+          "Reitweg",
+          "Hasenrain"
+        ]
+      },
+      "alternative": null
+    }
+  ]
+}

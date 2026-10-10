@@ -1,0 +1,24 @@
+{
+  "model": "zurich-pavement-context-v1",
+  "checkedAt": "2026-10-10T10:34:15.835Z",
+  "osmTimestamp": null,
+  "sources": {
+    "osm": "e9d22f78af806498cbd3915bf57d4b96f4850bd091b03f95bf45d5ce3609e12d",
+    "zoneStreets": "28a5f3eda45b4623d8f5980492a3638c601db9674681b9c8d2575de3e32cba79"
+  },
+  "metersByClass": {
+    "unknown": 68495.29642052577,
+    "major": 351393.1315696837,
+    "other": 438085.8131398022,
+    "tempo30": 263484.9640429874,
+    "path": 84243.38214525256,
+    "encounter": 40063.70738893594,
+    "restricted": 107505.36813070803,
+    "pedestrian": 7058.340639279867
+  },
+  "totalMeters": 1360330.0034771985,
+  "knownShare": 0.94964802934182,
+  "barrierPieces": 3140,
+  "associatedWays": 12934,
+  "notes": "20 m same-ground road context; 6 m parallel walking association; no area-only speed inference. Unmatched and non-ground paths unknown. Barriers: municipal named steps plus close, aligned OSM steps/wheelchair=no; kerbs, widths and surfaces incomplete. No live vehicle counts or accessibility guarantee."
+}

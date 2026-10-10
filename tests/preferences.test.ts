@@ -95,7 +95,7 @@ describe('combined preferences without a hidden composite score', () => {
     expect(r.applied).toEqual([]);
     expect(r.unavailable).toEqual(['flat']);
   });
-  it('honours the displayed order of several optional wishes', () => {
+  it('gives the same result regardless of the order wishes were selected', () => {
     const a = route('water', {
       sunMeters: 300,
       shadeMeters: 700,
@@ -109,7 +109,7 @@ describe('combined preferences without a hidden composite score', () => {
       greenMeters: 900,
     });
     expect(choose([a, b], { primary: 'shade', secondary: ['water', 'greenery'] }).route?.id).toBe(
-      'water',
+      'trees',
     );
     expect(choose([a, b], { primary: 'shade', secondary: ['greenery', 'water'] }).route?.id).toBe(
       'trees',

@@ -1,0 +1,17 @@
+{
+  "checkedAt": "2026-10-10T10:39:25.176Z",
+  "version": "zurich-pavements-2026-10-10-v3",
+  "sourceId": 21,
+  "name": "Bahnhof Stadelhofen, Treppe zwischen Ladenpassage und Perron",
+  "start": [8.547998291967396, 47.36722876309554],
+  "end": [8.547770124965947, 47.367132875623575],
+  "ordinaryMeters": 20.265603914042526,
+  "avoidingMeters": 188.10197260881978,
+  "avoidingStreets": [
+    "Bahnhof Stadelhofen, Ladenpassage",
+    "Bahnhof Stadelhofen, Lift zwischen Ladenpassage und Aufnahmegebäude",
+    "Bahnhof Stadelhofen, Fussweg",
+    "Bahnhof Stadelhofen, Perron Gleis 1"
+  ],
+  "note": "Actual source graph; excludes known steps/barriers but does not establish complete accessibility. Extra budget is relative to the restricted fastest route."
+}

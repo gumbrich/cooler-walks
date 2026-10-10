@@ -1,5 +1,6 @@
 import type { FeatureCollection, LineString } from 'geojson';
 import type { City, Edge, GraphNode, Point } from './types';
+import { TRAFFIC_CODES } from './pavement-context-data';
 import { distance, geographic } from './geo';
 
 export interface MunicipalPath {
@@ -10,6 +11,8 @@ export interface MunicipalPath {
     fuss: number;
     name: string;
     steps?: boolean;
+    traffic?: string;
+    barriers?: string;
     nonGround?: boolean;
   };
 }
@@ -72,6 +75,7 @@ export function preparePavementGraph(features: MunicipalPath[], city: City) {
       geometry: { type: 'LineString', coordinates: coordinates.map((p) => geographic(city, p)) },
     });
     let previous = node(coordinates[0], true);
+    let piece = 0;
     for (let i = 1; i < coordinates.length; i++) {
       const p = coordinates[i - 1],
         q = coordinates[i],
@@ -91,10 +95,15 @@ export function preparePavementGraph(features: MunicipalPath[], city: City) {
           name,
           way: -sourceId,
           steps: feature.properties.steps ?? false,
+          ...(feature.properties.traffic
+            ? { traffic: [TRAFFIC_CODES[Number(feature.properties.traffic[piece])]] }
+            : {}),
+          ...(feature.properties.barriers?.[piece] === '1' ? { accessBarrier: true } : {}),
           ...(feature.properties.nonGround ? { nonGround: true } : {}),
           pavement: { sourceId, crossing, crossingShare: crossing ? meters / count / length : 0 },
         });
         previous = next;
+        piece++;
       }
     }
   }

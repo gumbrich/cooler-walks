@@ -184,6 +184,54 @@ function fixture(): PilotData {
   };
 }
 describe('route constraints', () => {
+  it('supports every whole-minute budget and rejects values outside 0–15', () => {
+    const d = fixture(),
+      r = new Router(d, cities[0]);
+    for (let n = 0; n <= 15; n++) {
+      const result = r.calculate(d.nodes[0].point, d.nodes[2].point, '2026-06-21T12:00:00Z', n);
+      if (result.alternative)
+        expect(result.alternative.minutes).toBeLessThanOrEqual(result.fastest.minutes + n + 1e-9);
+    }
+    for (const n of [-1, 16, 2.5, NaN])
+      expect(() =>
+        r.calculate(d.nodes[0].point, d.nodes[2].point, '2026-06-21T12:00:00Z', n),
+      ).toThrow('0 and 15');
+  });
+  it('uses the fastest barrier-avoiding route as the budget reference and never returns stairs', () => {
+    const d = fixture();
+    d.edges[0].steps = true;
+    const r = new Router(d, cities[0]);
+    const run = (extra: number) =>
+      r.calculate(
+        d.nodes[0].point,
+        d.nodes[2].point,
+        '2026-06-21T12:00:00Z',
+        extra,
+        [],
+        false,
+        'shade',
+        false,
+        false,
+        false,
+        undefined,
+        false,
+        { primary: 'greenery', secondary: [], avoidSteps: true },
+      );
+    // Disable implicit terrain preference in this tiny topology-only fixture.
+    r.city = { ...r.city, elevation: { resolution: 2 } };
+    r.detailed = {
+      data: { bounds: [0, 0, 1e7, 1e7] },
+      contains: () => false,
+      elevation: () => 400,
+    } as unknown as typeof r.detailed;
+    const result = run(0);
+    expect(result.fastest.nodes).toEqual([0, 3, 2]);
+    expect(result.fastest.steps).toBe(false);
+    expect(result.alternative).toBeNull();
+    d.edges[2].accessBarrier = true;
+    expect(() => run(5)).toThrow('No connected route avoiding mapped barriers');
+  });
+
   it('keeps every budget-feasible ordered walk, including rounded edges and repeated waypoints', () => {
     const d = fixture();
     // Two connected alternatives plus a disconnected component. Deliberately

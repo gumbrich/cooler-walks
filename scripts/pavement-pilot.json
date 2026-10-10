@@ -1,7 +1,7 @@
 {
   "schema": 2,
   "id": "zurich-citywide-pavements",
-  "version": "zurich-pavements-2026-10-06-v2",
+  "version": "zurich-pavements-2026-10-10-v3",
   "sourceSha256": "e9823e5eb919808e2812b8ad795d59de477b28045fbeacfe0f8f52a8d5575787",
   "fetchBounds": [8.472, 47.353, 8.57, 47.427],
   "rawDirectory": "data/raw/zurich-pavements-expansion",

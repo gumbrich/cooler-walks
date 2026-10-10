@@ -1,6 +1,6 @@
 {
-  "checkedAt": "2026-10-06T20:21:05.580Z",
-  "version": "zurich-pavements-2026-10-06-v2",
+  "checkedAt": "2026-10-10T10:34:12.783Z",
+  "version": "zurich-pavements-2026-10-10-v3",
   "source": {
     "url": "https://data.stadt-zuerich.ch/dataset/geo_fuss__und_velowegnetz",
     "fetchedAt": "2026-10-06T19:48:55.416Z",
@@ -191,8 +191,8 @@
     "bufferMeters": 4,
     "minimumLengthOverlap": 0.8,
     "sampledEveryMetres": 3,
-    "flaggedFeatures": 1128,
-    "regularGraphSha256": "da779dbab32adde0988aa008b3ea58177a50ff4de6215908f6762e69fcdbd6ac",
+    "flaggedFeatures": 1132,
+    "regularGraphSha256": "af3d35ba44270a52f1c8c7599d7968d1cbc5cbda9a510294510af06b3800cc29",
     "masks": [
       {
         "sourceId": 1,
@@ -1297,6 +1297,12 @@
         ]
       },
       {
+        "sourceId": 6289,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
         "sourceId": 6306,
         "reasons": [
           "overlaps tagged non-ground walking geometry"
@@ -1459,6 +1465,7 @@
       {
         "sourceId": 7317,
         "reasons": [
+          "source structure name",
           "overlaps tagged non-ground walking geometry"
         ]
       },
@@ -1890,6 +1897,7 @@
       {
         "sourceId": 9472,
         "reasons": [
+          "source structure name",
           "overlaps tagged non-ground walking geometry"
         ]
       },
@@ -1995,6 +2003,12 @@
         ]
       },
       {
+        "sourceId": 10209,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
         "sourceId": 10251,
         "reasons": [
           "source structure name"
@@ -2034,6 +2048,7 @@
       {
         "sourceId": 10561,
         "reasons": [
+          "source structure name",
           "overlaps tagged non-ground walking geometry"
         ]
       },
@@ -2502,6 +2517,7 @@
       {
         "sourceId": 13021,
         "reasons": [
+          "source structure name",
           "overlaps tagged non-ground walking geometry"
         ]
       },
@@ -2662,6 +2678,7 @@
       {
         "sourceId": 13772,
         "reasons": [
+          "source structure name",
           "overlaps tagged non-ground walking geometry"
         ]
       },
@@ -3106,6 +3123,7 @@
       {
         "sourceId": 16284,
         "reasons": [
+          "source structure name",
           "overlaps tagged non-ground walking geometry"
         ]
       },
@@ -3272,6 +3290,7 @@
       {
         "sourceId": 17336,
         "reasons": [
+          "source structure name",
           "overlaps tagged non-ground walking geometry"
         ]
       },
@@ -4901,6 +4920,7 @@
       {
         "sourceId": 25899,
         "reasons": [
+          "source structure name",
           "overlaps tagged non-ground walking geometry"
         ]
       },
@@ -4973,6 +4993,12 @@
       },
       {
         "sourceId": 26340,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
+        "sourceId": 26369,
         "reasons": [
           "source structure name"
         ]
@@ -5054,6 +5080,7 @@
       {
         "sourceId": 26777,
         "reasons": [
+          "source structure name",
           "overlaps tagged non-ground walking geometry"
         ]
       },
@@ -6629,6 +6656,12 @@
         ]
       },
       {
+        "sourceId": 35590,
+        "reasons": [
+          "source structure name"
+        ]
+      },
+      {
         "sourceId": 35639,
         "reasons": [
           "overlaps tagged non-ground walking geometry"
@@ -6912,6 +6945,7 @@
       {
         "sourceId": 36824,
         "reasons": [
+          "source structure name",
           "overlaps tagged non-ground walking geometry"
         ]
       },

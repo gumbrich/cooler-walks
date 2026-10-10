@@ -1,6 +1,6 @@
 {
-  "checkedAt": "2026-10-06T20:09:29.106Z",
-  "networkVersion": "zurich-pavements-2026-10-06-v2",
+  "checkedAt": "2026-10-10T10:39:49.337Z",
+  "networkVersion": "zurich-pavements-2026-10-10-v3",
   "departure": "2026-06-21T12:00:00Z",
   "records": [
     {
@@ -35,7 +35,7 @@
         ]
       },
       "alternative": null,
-      "computeMs": 1251
+      "computeMs": 1231
     },
     {
       "district": "Oerlikon",
@@ -77,7 +77,7 @@
           "Franklinstrasse Überquerung"
         ]
       },
-      "computeMs": 550
+      "computeMs": 552
     },
     {
       "district": "Höngg",
@@ -109,7 +109,7 @@
         ]
       },
       "alternative": null,
-      "computeMs": 579
+      "computeMs": 658
     },
     {
       "district": "Wiedikon",
@@ -170,7 +170,7 @@
           "Seebahnstrasse"
         ]
       },
-      "computeMs": 680
+      "computeMs": 749
     },
     {
       "district": "Seefeld",
@@ -223,7 +223,7 @@
           "Seefeldstrasse"
         ]
       },
-      "computeMs": 1022
+      "computeMs": 1062
     },
     {
       "district": "Wipkingen",
@@ -258,7 +258,7 @@
         ]
       },
       "alternative": null,
-      "computeMs": 744
+      "computeMs": 741
     },
     {
       "district": "Limmat crossing",
@@ -300,7 +300,7 @@
           "Bahnhofbrücke Überquerung"
         ]
       },
-      "computeMs": 496
+      "computeMs": 525
     },
     {
       "district": "Altstetten–Oerlikon",
@@ -455,7 +455,7 @@
           "Franklinstrasse Überquerung"
         ]
       },
-      "computeMs": 7709
+      "computeMs": 7909
     }
   ],
   "nodes": 260385,

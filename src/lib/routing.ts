@@ -366,7 +366,7 @@ export class Router {
     if (!canopyScenario) return building;
     if (building.exposure !== 'sun') return { ...building, canopyShade: false };
     if (!this.canopy)
-      throw new Error('The tree shade pilot could not load. Reconnect and try again.');
+      throw new Error('The tree shade data could not load. Reconnect and try again.');
     const p = metric(this.city, point),
       z = this.detailed?.elevation(p);
     if (nonGround || z == null)
@@ -433,7 +433,7 @@ export class Router {
   snap(point: Point, pavementSource?: number) {
     if (this.pavementMode && !inBounds(point, this.data.pavementNetwork!.bounds))
       throw new Error(
-        'This point is outside the pavement coverage. Choose a highlighted path or use the standard walking network.',
+        'This point is outside the pavement coverage. Choose a highlighted walking path.',
       );
     if (!inCoverage(this.city, point))
       throw new Error(
@@ -521,7 +521,7 @@ export class Router {
     return path.reverse();
   }
   /** Exact distances in the same rounded network units as the route budget. */
-  distancesFrom(start: number) {
+  distancesFrom(start: number, avoidSteps = false) {
     const distances = new Float64Array(this.points.length).fill(Infinity);
     const heap = new MinHeap();
     distances[start] = 0;
@@ -530,6 +530,11 @@ export class Router {
       const [score, node] = heap.pop();
       if (score > distances[node]) continue;
       for (const next of this.adjacency[node]) {
+        if (
+          avoidSteps &&
+          (this.data.edges[next.edge].steps || this.data.edges[next.edge].accessBarrier)
+        )
+          continue;
         const candidate = score + this.data.edges[next.edge].length;
         if (candidate < distances[next.to]) {
           distances[next.to] = candidate;
@@ -539,14 +544,14 @@ export class Router {
     }
     return distances;
   }
-  edgesWithinBudget(stops: number[], baseline: number, extra: number) {
+  edgesWithinBudget(stops: number[], baseline: number, extra: number, avoidSteps = false) {
     // An edge can matter only if some ordered leg can traverse it within
     // the whole-trip budget. Exact network distances account for rivers,
     // disconnected paths and rounded source lengths, without a city-sized
     // rounding allowance. Both directions are legal in this undirected graph.
     // This discards no budget-feasible route and avoids modelling distant
     // streets that cannot possibly be part of the walk.
-    const stopDistances = stops.map((stop) => this.distancesFrom(stop));
+    const stopDistances = stops.map((stop) => this.distancesFrom(stop, avoidSteps));
     const limit = baseline + extra * WALK_METERS_PER_MINUTE + 1e-7;
     const legs = stops.slice(1);
     return Uint8Array.from(this.data.edges, (edge) =>
@@ -612,11 +617,7 @@ export class Router {
     )
       throw new Error('Choose a mapped walking point for each stop.');
     if (canopyScenario && (!this.city.canopyPilot || !this.canopy))
-      throw new Error('The tree shade pilot could not load. Reconnect and try again.');
-    if (pavements && preferCalm)
-      throw new Error(
-        'Traffic matching is not yet available for the pavement network. Use the standard walking network to compare calmer streets.',
-      );
+      throw new Error('The tree shade data could not load. Reconnect and try again.');
     if (
       preferCalm &&
       (!this.city.capabilities.trafficCalming || this.data.trafficModel !== TRAFFIC_MODEL)
@@ -625,7 +626,8 @@ export class Router {
     if (waypoints.length > MAX_WAYPOINTS) throw new Error('Choose up to three stops.');
     if (preferWater && (!this.city.capabilities.water || !this.water.areas.length))
       throw new Error('Water proximity is unavailable in this pilot.');
-    if (![0, 5, 10].includes(extra)) throw new Error('Choose 0, 5 or 10 extra minutes.');
+    if (!Number.isInteger(extra) || extra < 0 || extra > 15)
+      throw new Error('Choose between 0 and 15 extra minutes.');
     const date = new Date(departure);
     if (!Number.isFinite(date.getTime())) throw new Error('Choose a valid departure time.');
     const stops = [start, ...waypoints, end].map((point, i) => {
@@ -650,11 +652,16 @@ export class Router {
         try {
           nodes.push(
             ...(yield* router.shortestSteps(stops[i - 1].index, stops[i].index, (edge, index) =>
-              feasible && !feasible[index] ? Infinity : weight(edge, index),
+              (preferences?.avoidSteps && (edge.steps || edge.accessBarrier)) ||
+              (feasible && !feasible[index])
+                ? Infinity
+                : weight(edge, index),
             )).slice(1),
           );
         } catch (e) {
-          throw new Error(`Leg ${i}: ${(e as Error).message}`);
+          throw new Error(
+            `Leg ${i}: ${preferences?.avoidSteps ? 'No connected route avoiding mapped barriers was found. Try another walking point.' : (e as Error).message}`,
+          );
         }
       }
       return nodes;
@@ -840,6 +847,7 @@ export class Router {
         stops.map((stop) => stop.index),
         fastest.distance,
         extra,
+        preferences?.avoidSteps,
       );
     const fastNodes = new Set(fastest.nodes),
       candidates: Route[] = [];

@@ -116,7 +116,7 @@ for (const f of features) {
   f.properties.steps = /trepp|stiege|stufen/iu.test(name);
   const reasons: string[] = [];
   if (
-    /(brücke|bruecke|steg)(?=\s|$|,)|passerelle|unterführung|unterfuehrung|überführung|ueberfuehrung|passage|tunnel|perron|gleis|trepp/iu.test(
+    /(brücke|bruecke|steg)(?=\s|$|,)|passerelle|unterführung|unterfuehrung|überführung|ueberfuehrung|passage|tunnel|perron|gleis|trepp|\blift\b|\baufzug\b/iu.test(
       name,
     )
   )

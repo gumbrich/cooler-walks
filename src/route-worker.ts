@@ -143,7 +143,7 @@ self.onmessage = async (
       } catch (error) {
         if ((error as Error)?.name === 'AbortError') throw error;
         throw new Error(
-          'The tree shade pilot could not load. Reconnect or update the saved Zurich map.',
+          'The tree shade data could not load. Reconnect or update the saved Zurich map.',
         );
       }
     }
@@ -211,7 +211,7 @@ self.onmessage = async (
         } catch (error) {
           if ((error as Error)?.name === 'AbortError') throw error;
           throw new Error(
-            'The tree shade pilot could not load. Reconnect or update the saved Zurich map.',
+            'The tree shade data could not load. Reconnect or update the saved Zurich map.',
           );
         }
       },

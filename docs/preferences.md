@@ -1,37 +1,30 @@
-# Route preferences · 0.20.0
+# Route preferences · 0.21.0
 
-The planner now has one **Main priority / Am wichtigsten** selector. **More preferences / Weitere Wünsche** holds optional wishes; they stay selected together instead of silently switching one another off. The visible sequence is the actual ranking order. Changing the main priority preserves compatible secondary choices and removes duplicates. Sun and shade exclude one another. City changes reset incompatible preferences.
+The planner starts with two buttons: **Shade / Sun** (**Schatten / Sonne**). They remain visible on phone results as well as in the editor. Shade uses a cool forest palette; Sun uses warm cream and amber. Map exposure colours retain their meaning in both modes.
 
-| Combination                          | Meaning and limits                                                                                                                                         |
-| ------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Shade or sun + water                 | First improve direct-sun exposure, then prefer water among similar candidates. Water proximity is not shade or a temperature measurement.                  |
-| Calmer streets + shade + flatter     | First compare street context, then exposure, then ascent/descent. Each layer needs its own coverage; unknown elevation does not become flat terrain.       |
-| Flatter + water                      | Prefer less vertical movement/gentler grades, then nearby water. Riversides can still have bridges and stairs. This is not step-free routing.              |
-| Water + sun in winter                | Prioritize water, then known sun, where the solar model is usable. Very low sun remains unsupported; seasons do not automatically change the preference.   |
-| Municipal pavements + calmer streets | Unavailable: the traffic adapter has not been matched to that network. Shade, water and supported elevation remain usable.                                 |
-| Tree scenario                        | A separate model setting, not another route wish. It assumes full foliage and remains experimental. Do not treat it as validated winter tree transmission. |
+Zurich always uses the municipal pavement, footpath and crossing network. There is no network switch. Existing beta cities retain their own supported walking graphs; this does not establish pavement precision outside Zurich. Addresses and arbitrary map points still require an explicit reachable walking-point choice.
 
-## Ranking
+**Extra walking time** has 0, 5, 10 and 15 minute presets and a native range input accepting every whole minute from 0 through 15. Clicking the track, dragging and keyboard arrows all work. Five minutes remains the default. The budget covers the whole journey through any stops.
 
-Model identifier: `ordered-physical-bands-v1`. The fastest valid route remains the reference. The 0/5/10-minute budget, ordered stops, legal graph topology and complete walking-area checks are unchanged. Duration still uses 80 m/min; terrain does not change the time estimate.
+**More preferences** contains independent choices for calmer streets, water and flatter paths, plus **Accessibility** in Zurich. There are no numbered or ordered priorities. Accessibility excludes known stairs and closely matched mapped barriers and also requests the gentler-route comparison; it is not a guarantee of step-free or wheelchair-accessible travel. [Coverage and limitations](accessibility-routing.md).
 
-The router generates distinct candidates for **each selected objective**, as well as alternatives avoiding the fastest path. Ground-height and arrival-time solar sampling use their existing models. It evaluates the collected candidates, not every possible route; there is no global-optimality claim.
+## Choosing a route
 
-An alternative needs at least 10% new walking length. It must either materially improve the main goal, or keep that goal no worse than the fastest route while materially improving a supported secondary wish. Missing data is treated conservatively against the candidate. A single-priority request keeps the existing exact ranking and duration tie-breaker.
+Policy: `equal-wish-bands-v2`. The fastest valid route under the selected access restrictions is the reference. Distinct alternatives must respect its extra-time limit and contain at least 10% new walking length. Walking speed remains 80 m/min, without crossing waits, pauses or a slope adjustment.
 
-With optional wishes, start with the best main-goal candidate. Retain candidates within these explicit similarity bands, then apply each optional wish in the displayed order:
+When sunlight coverage supports comparison, first retain routes similar to the best shade/sun alternative. An alternative must meaningfully improve the chosen sunlight goal, or keep it no worse than the fastest route while improving a supported optional wish. Unknown exposure cannot earn an improvement. When sunlight cannot be compared, supported optional wishes can still produce an alternative; the sunlight estimate remains unavailable/partial, explicitly displayed.
 
-- Shade: at most 40 m more sun-plus-unknown distance, roughly half a minute at the fixed walking speed.
-- Sun, water and greenery: at most 3 percentage points less of the relevant whole-route share.
-- Calm streets: at most 40 m more near main roads **and** 40 m more on streets permitting motor access.
-- Flatter: at most 5 m more total ascent/descent, and grade burden no more than 25% or 1 m above the best value, whichever is larger. These are model tolerances, not field accuracy claims.
+For each optional wish, calculate its best value within that candidate pool. Every wish uses the same fixed physical similarity bands, independently:
 
-Every retained candidate stays inside all earlier bands. Compare candidates against one fixed best value at each stage; pairwise fuzzy sorting could be inconsistent. Choose the shortest remaining walk. These bands express small trade-offs in real units; there is no opaque combined “coolness” score. See `src/lib/preferences.ts` for thresholds and tests.
+- Shade: within 40 m of sun-plus-unknown distance.
+- Sun, water or greenery: within 3 percentage points of the whole-route share.
+- Calm streets: within 40 m of both main-road proximity and motor-access street distance.
+- Flatter: within 5 m of total ascent/descent and within the greater of 1 m or 25% of the best grade burden.
 
-Shade/sun requires at least 95% modeled daylight coverage, no night/low-sun transition and comparable detailed-model coverage (within 5 percentage points of the reference). Traffic requires at least 95% coverage. Terrain requires complete usable walking-ground heights. A secondary wish with insufficient comparable coverage is explicitly listed as **not compared**; it cannot improve the score. If the main goal lacks coverage, show the fastest route.
+Choose the route meeting the most selected wishes, with shorter walking time breaking ties. Each wish counts once; there is no weighted temperature or “coolness” score. **Selection order does not matter.** Choices can conflict: the comparison table exposes the actual resulting values, including a wish that could not be improved. We evaluate generated alternatives, not all possible routes.
 
-## Interface and evidence
+Shade/sun comparison still requires at least 95% known daylight exposure, no night/low-sun transition and comparable detailed-building coverage within 5 percentage points. Calm comparison requires at least 95% traffic-context coverage. Terrain comparison requires complete usable walking-height data. Missing criteria are reported, never treated as favourable values. Tree shade is included by default; foliage and historical-source uncertainty remain in the method and result notes.
 
-The optional comparison table shows computed values for the fastest and alternative routes. A requested wish can still be worse on the alternative when a higher priority wins; the table exposes that trade-off. Sunlight values describe model estimates, water means within 50 m of mapped surface water, and traffic remains street context rather than live vehicle counts. Tree settings are folded under **Shade model**. Map overlays do not change routing preferences.
+## Evidence
 
-`npm run data:verify:preferences` checks five actual Zurich requests at 0, 5 and 10 extra minutes, covering the centre, Bucheggplatz–Waidbadstrasse and Bellevue–Zürichhorn. [Computed records](preferences-validation.json) include candidates, actual metrics, gaps and applied wishes. Synthetic tests cover priority order, contradictory sun/shade choices, coverage, secondary gains with an unchanged main goal and tie-breaking. Browser checks cover German/English, independent selections, time limits, city switching, accessibility and phone/tablet/desktop layouts. Computational checks do not replace the agreed field validation.
+[24 real Zurich cases](planner-defaults-validation.json) cover central Zurich, Oerlikon and the Waid area, Shade and Sun, 0/1/7/15 minute budgets, calmer streets + water + barrier avoidance, exact budget enforcement and reversed selection order. Unit tests exercise every minute budget, hard barrier exclusion, restricted fastest-reference routing, missing coverage and equal-wish selection. Browser and Android reports record their tested platforms separately. These are computational checks; field validation remains pending.

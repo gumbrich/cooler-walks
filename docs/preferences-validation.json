@@ -17,7 +17,9 @@
         ]
       },
       "applied": [],
-      "unavailable": [],
+      "unavailable": [
+        "flat"
+      ],
       "candidateCount": 1,
       "fastest": {
         "minutes": 18.89037500000001,
@@ -278,8 +280,8 @@
         ]
       },
       "applied": [
-        "water",
-        "calm"
+        "calm",
+        "water"
       ],
       "unavailable": [],
       "candidateCount": 10,
@@ -336,8 +338,8 @@
         ]
       },
       "applied": [
-        "water",
-        "calm"
+        "calm",
+        "water"
       ],
       "unavailable": [],
       "candidateCount": 10,

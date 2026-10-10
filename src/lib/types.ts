@@ -83,6 +83,8 @@ export interface Edge {
   name: string;
   way: number;
   steps: boolean;
+  /** Closely matched mapped stairs/wheelchair=no; not a complete barrier inventory. */
+  accessBarrier?: boolean;
   /** Samples at the shared 8 m resolution, from the versioned traffic adapter. */
   traffic?: TrafficClass[];
   /** Conservative metre clearance from the whole edge to an irregular model-data boundary. */
@@ -215,6 +217,7 @@ export interface Route {
 }
 export type RouteGoal = 'shade' | 'sun' | 'greenery' | 'water' | 'calm' | 'flat';
 export interface RoutePreferences {
+  avoidSteps?: boolean;
   primary: RouteGoal;
   secondary: RouteGoal[];
 }

@@ -21,7 +21,7 @@ export const cities: City[] = [
     capabilities: {
       greenery: true,
       buildingShade: true,
-      treeShade: false,
+      treeShade: true,
       terrain: false,
       fountains: false,
       water: true,
@@ -36,7 +36,7 @@ export const cities: City[] = [
     elevation: { resolution: 2 },
     pavementPilot: {
       dataUrl: '/data/zurich-pavements.json',
-      version: 'zurich-pavements-2026-10-06-v2',
+      version: 'zurich-pavements-2026-10-10-v3',
     },
     canopyPilot: {
       ...canopyCatalog,

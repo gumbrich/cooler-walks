@@ -1,5 +1,10 @@
 import type { FeatureCollection, LineString } from 'geojson';
 import type { Bounds, City, Edge, GraphNode, Place } from './types';
+import {
+  TRAFFIC_CODES,
+  PAVEMENT_CONTEXT_MODEL,
+  type PavementContextData,
+} from './pavement-context-data';
 import { geographic } from './geo';
 import { preparePavementGraph, type MunicipalPath } from './pavement-graph';
 
@@ -34,6 +39,7 @@ export interface PackedPavements extends Pick<
   'version' | 'cityId' | 'bounds' | 'places' | 'provenance'
 > {
   schema: 2;
+  context?: PavementContextData;
   crs: 'EPSG:2056';
   scale: 1000000;
   origin: [number, number];
@@ -44,7 +50,7 @@ export interface PackedPavements extends Pick<
 export type PavementData = PavementNetwork | PackedPavements;
 
 export function municipalPaths(data: PackedPavements): MunicipalPath[] {
-  return data.paths.map(([id, name, flags, deltas]) => {
+  return data.paths.map(([id, name, flags, deltas], index) => {
     let x = data.origin[0],
       y = data.origin[1];
     const coordinates: number[][] = [];
@@ -62,6 +68,8 @@ export function municipalPaths(data: PackedPavements): MunicipalPath[] {
         name: data.names[name],
         steps: !!(flags & 1),
         nonGround: !!(flags & 2),
+        traffic: data.context?.traffic[index],
+        barriers: data.context?.barriers[index],
       },
     };
   });
@@ -120,8 +128,15 @@ export function validatePavementData(data: PavementData, cityId: string, version
     data.bounds[1] >= data.bounds[3]
   )
     throw new Error('The pavement data is incompatible. Reload the app.');
+  if (
+    data.context &&
+    (data.context.model !== PAVEMENT_CONTEXT_MODEL ||
+      data.context.traffic.length !== data.paths.length ||
+      data.context.barriers.length !== data.paths.length)
+  )
+    throw new Error('Invalid pavement context');
   const ids = new Set<number>();
-  for (const [id, name, flags, deltas] of data.paths) {
+  for (const [pathIndex, [id, name, flags, deltas]] of data.paths.entries()) {
     if (
       !Number.isInteger(id) ||
       ids.has(id) ||
@@ -138,6 +153,17 @@ export function validatePavementData(data: PavementData, cityId: string, version
     )
       throw new Error('Invalid pavement geometry');
     ids.add(id);
+    let pieces = 0;
+    for (let i = 2; i < deltas.length; i += 2)
+      pieces += Math.ceil(Math.hypot(deltas[i] / data.scale, deltas[i + 1] / data.scale) / 6);
+    if (
+      data.context &&
+      (data.context.traffic[pathIndex].length !== pieces ||
+        data.context.barriers[pathIndex].length !== pieces ||
+        !new RegExp(`^[0-${TRAFFIC_CODES.length - 1}]*$`).test(data.context.traffic[pathIndex]) ||
+        !/^[01]*$/.test(data.context.barriers[pathIndex]))
+    )
+      throw new Error('Invalid pavement context codes');
     let x = data.origin[0],
       y = data.origin[1];
     for (let i = 0; i < deltas.length; i += 2) {

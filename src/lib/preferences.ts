@@ -10,13 +10,20 @@ export const goalLabels: Record<RouteGoal, string> = {
   flat: 'Flatter routes',
   water: 'Waterside',
 };
-export const goalsOf = (p: RoutePreferences) => [p.primary, ...p.secondary];
+const goalOrder: RouteGoal[] = ['shade', 'sun', 'greenery', 'calm', 'flat', 'water'];
+export const goalsOf = (p: RoutePreferences) => [
+  p.primary,
+  ...goalOrder.filter(
+    (g) => p.secondary.includes(g) || (g === 'flat' && p.avoidSteps && p.primary !== 'flat'),
+  ),
+];
 export function validPreferences(p: RoutePreferences) {
-  const goals = goalsOf(p);
+  const goals = [p.primary, ...p.secondary];
   return (
+    (p.avoidSteps === undefined || typeof p.avoidSteps === 'boolean') &&
     goals.length <= 5 &&
     goals.every((g) => Object.hasOwn(goalLabels, g)) &&
-    new Set(goals).size === goals.length &&
+    new Set([p.primary, ...p.secondary]).size === p.secondary.length + 1 &&
     !(goals.includes('shade') && goals.includes('sun'))
   );
 }
@@ -121,33 +128,56 @@ export function selectPreferences(
   preferences: RoutePreferences,
   mode: RouteResult['mode'],
 ) {
-  let pool = candidates.filter(
-    (r) =>
+  const primaryAvailable = goalCovered(preferences.primary, fastest, fastest, mode);
+  const secondary = goalsOf(preferences).slice(1);
+  let pool = candidates.filter((r) => {
+    const usable = secondary.filter((g) => goalCovered(g, r, fastest, mode));
+    if (!primaryAvailable) return usable.some((g) => goalImproves(g, r, fastest));
+    return (
       goalCovered(preferences.primary, r, fastest, mode) &&
       (goalImproves(preferences.primary, r, fastest) ||
         (goalNoWorse(preferences.primary, r, fastest) &&
-          preferences.secondary.some(
-            (goal) => goalCovered(goal, r, fastest, mode) && goalImproves(goal, r, fastest),
-          ))),
-  );
+          usable.some((g) => goalImproves(g, r, fastest))))
+    );
+  });
   const applied: RouteGoal[] = [],
     unavailable: RouteGoal[] = [];
-  if (!pool.length) return { route: null, applied, unavailable };
   const bestFor = (goal: RouteGoal, routes: Route[]) =>
-    [...routes].sort((a, b) => compareGoal(goal, a, b) || a.minutes - b.minutes)[0];
-  const primaryBest = bestFor(preferences.primary, pool);
-  if (!preferences.secondary.length) return { route: primaryBest, applied, unavailable };
-  pool = pool.filter((r) => similarGoal(preferences.primary, r, primaryBest));
-  for (const goal of preferences.secondary) {
-    const covered = pool.filter((r) => goalCovered(goal, r, fastest, mode));
-    if (!covered.length) {
-      unavailable.push(goal);
-      continue;
-    }
-    const best = bestFor(goal, covered);
-    pool = covered.filter((r) => similarGoal(goal, r, best));
-    applied.push(goal);
+    [...routes].sort(
+      (a, b) => compareGoal(goal, a, b) || a.minutes - b.minutes || a.id.localeCompare(b.id),
+    )[0];
+  if (!pool.length)
+    return {
+      route: null,
+      applied,
+      unavailable: secondary.filter((g) => !goalCovered(g, fastest, fastest, mode)),
+    };
+  if (primaryAvailable) {
+    const best = bestFor(preferences.primary, pool);
+    if (!secondary.length) return { route: best, applied, unavailable };
+    pool = pool.filter((r) => similarGoal(preferences.primary, r, best));
   }
-  // After every chosen priority is inside its physical band, prefer the shorter walk.
-  return { route: pool.sort((a, b) => a.minutes - b.minutes)[0], applied, unavailable };
+  // Each wish uses its own physical band against one fixed best value. All
+  // wishes count equally; selection/click order cannot affect the answer.
+  const best = new Map<RouteGoal, Route>();
+  for (const goal of secondary) {
+    const covered = pool.filter((r) => goalCovered(goal, r, fastest, mode));
+    if (!covered.length) unavailable.push(goal);
+    else {
+      best.set(goal, bestFor(goal, covered));
+      applied.push(goal);
+    }
+  }
+  const met = (r: Route) =>
+    applied.filter((g) => goalCovered(g, r, fastest, mode) && similarGoal(g, r, best.get(g)!))
+      .length;
+  const route = pool.sort(
+    (a, b) => met(b) - met(a) || a.minutes - b.minutes || a.id.localeCompare(b.id),
+  )[0];
+  // A wish missing on the selected route is disclosed, never rewarded as met.
+  return {
+    route,
+    applied: applied.filter((g) => goalCovered(g, route, fastest, mode)),
+    unavailable: [...unavailable, ...applied.filter((g) => !goalCovered(g, route, fastest, mode))],
+  };
 }

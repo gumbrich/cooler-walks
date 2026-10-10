@@ -183,7 +183,8 @@ assert.throws(
     ),
   /outside the pavement coverage/,
 );
-assert.throws(
+const calmPavements = await withShadeTiles(
+  library,
   () =>
     router.calculate(
       p[0].point,
@@ -196,8 +197,12 @@ assert.throws(
       true,
       true,
     ),
-  /Traffic matching/,
+  load,
 );
+assert(calmPavements.fastest.trafficUnknownMeters / calmPavements.fastest.distance < 0.05);
+assert.equal(calmPavements.preference, 'calm');
+if (calmPavements.alternative)
+  assert(calmPavements.alternative.minutes <= calmPavements.fastest.minutes + 5 + 1e-8);
 // Return to the full OSM graph in the same worker/router, without stale pilot nodes.
 const normal = city.defaultJourney!.map((name) => mainPlaces.find((p) => p.name === name)!);
 const returned = await withShadeTiles(
