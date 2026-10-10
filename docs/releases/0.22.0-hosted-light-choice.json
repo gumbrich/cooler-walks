@@ -1,0 +1,24 @@
+{
+  "checkedAt": "2026-10-10T21:49:23.756Z",
+  "origin": "https://coolerwalks.ch",
+  "commit": "5d9ef4c9919666756e75b67a9fedd643172d7058",
+  "unauthenticatedStatus": 401,
+  "june": {
+    "shadeDistanceDisplay": "490 m",
+    "sunDistanceDisplay": "460 m"
+  },
+  "october": {
+    "shadeDistanceDisplay": "400 m",
+    "sunDistanceDisplay": "440 m",
+    "explicitBuildingModel": true,
+    "calmStreets": true
+  },
+  "oerlikonOctober": {
+    "shadeDistanceDisplay": "960 m",
+    "sunDistanceDisplay": "810 m",
+    "treeAware": true
+  },
+  "repeatedSwitching": true,
+  "night": true,
+  "errors": []
+}

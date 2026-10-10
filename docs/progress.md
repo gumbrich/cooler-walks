@@ -2,7 +2,7 @@
 
 ## Restore useful sunlight choices · 0.22.0
 
-Replaced the blanket 95% sunlight gate with worst-case unknown-exposure comparisons and an explicit building-model fallback when tree observations prevent comparison. Known tree evidence is retained and can reject a contradictory fallback. The broad regression covers 48 calculations in eight Zurich districts over June, October and December; 19/24 paired choices differ, including 7/8 October pairs. Source geometry and field-validation limits are unchanged. [Repair and evidence](shade-routing-recovery.md).
+Replaced the blanket 95% sunlight gate with worst-case unknown-exposure comparisons and an explicit building-model fallback when tree observations prevent comparison. Known tree evidence is retained and can reject a contradictory fallback. The broad regression covers 48 calculations in eight Zurich districts over June, October and December; 19/24 paired choices differ, including 7/8 October pairs. Source geometry and field-validation limits are unchanged. [Repair and evidence](shade-routing-recovery.md). All 162 unit/model/language and 40 browser tests pass, along with every data-verification stage, production build and release checks. Installed PWA and Android pass offline Sun/Shade switching. Published and checked on coolerwalks.ch; GitHub Actions remains budget-blocked before execution. [Platform and live evidence](platform.md).
 
 ## Explain Sun/Shade routing · 0.21.1
 
