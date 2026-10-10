@@ -38,6 +38,15 @@ const route = (id: string, patch: Partial<Route> = {}): Route => ({
 const choose = (rs: Route[], p: RoutePreferences, fast = route('fast')) =>
   selectPreferences(rs, fast, p, 'shade');
 describe('combined preferences without a hidden composite score', () => {
+  it('selects opposite routes for shade and sun from the same candidates', () => {
+    const shady = route('shady', { sunMeters: 200, shadeMeters: 800, minutes: 14 });
+    const sunny = route('sunny', { sunMeters: 900, shadeMeters: 100, minutes: 14 });
+    const candidates = [shady, sunny];
+    for (const secondary of [[], ['water']] as RoutePreferences['secondary'][]) {
+      expect(choose(candidates, { primary: 'shade', secondary }).route?.id).toBe('shady');
+      expect(choose(candidates, { primary: 'sun', secondary }).route?.id).toBe('sunny');
+    }
+  });
   it('keeps the main priority and refines similar routes using another goal', () => {
     const shady = route('shade', { sunMeters: 300, shadeMeters: 700, minutes: 14 });
     const waterside = route('water', {

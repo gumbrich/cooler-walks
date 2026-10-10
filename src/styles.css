@@ -4409,6 +4409,17 @@ body,
   color: #35280e;
   box-shadow: 0 2px 6px #72501e1a;
 }
+.light-routing-status {
+  margin: -8px 0 18px;
+  color: var(--muted);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
+.light-routing-status.unavailable {
+  color: var(--ink);
+  padding-inline-start: 10px;
+  border-inline-start: 2px solid var(--mode-accent);
+}
 .detour .segmented {
   gap: 4px;
 }

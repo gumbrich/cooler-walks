@@ -41,6 +41,7 @@ import { TrafficCounts } from './components/TrafficCounts';
 import { TrafficProfile } from './components/TrafficProfile';
 import { ElevationProfile } from './components/ElevationProfile';
 import { RoutePreferences, LightChoice } from './components/RoutePreferences';
+import { LightRoutingStatus } from './components/LightRoutingStatus';
 import { PreferenceComparison } from './components/PreferenceComparison';
 import type { RoutePreferences as Preferences } from './lib/types';
 import { goalsOf } from './lib/preferences';
@@ -1024,6 +1025,14 @@ export default function App() {
                 </div>
 
                 <LightChoice city={city} value={preferences} onChange={setPreferences} />
+                {city.capabilities.buildingShade && (
+                  <LightRoutingStatus
+                    result={error ? null : result}
+                    busy={busy}
+                    goal={sunlight}
+                    extra={extra}
+                  />
+                )}
                 {pendingPavement && pick === null && (
                   <PavementPicker
                     name={pendingPavement.value.name}
@@ -1338,7 +1347,7 @@ export default function App() {
                         routeCard,
                       )}
                       <PreferenceComparison result={result} units={units} />
-                      {!result.alternative && (!(canopyResult && !isShade) || preferFlat) && (
+                      {!result.alternative && !['shade', 'sun'].includes(preferences.primary) && (
                         <p className="result-note">
                           {extra === 0
                             ? t(
@@ -1388,31 +1397,29 @@ export default function App() {
                           )}
                         </p>
                       )}
-                      {result.mode === 'low-sun' && !preferCalm && (
+                      {result.mode === 'low-sun' && (
                         <p className="result-note">
                           {t(
                             'The sun is too low for this bounded building model. Tree proximity is shown instead.',
                           )}
                         </p>
                       )}
-                      {result.mode === 'transition' && !preferCalm && (
+                      {result.mode === 'transition' && (
                         <p className="result-note">
                           {t(
                             'This walk crosses low sun or night. A shade or sun comparison is unavailable; tree proximity is shown separately.',
                           )}
                         </p>
                       )}
-                      {result.mode === 'greenery' &&
-                        city.capabilities.buildingShade &&
-                        !preferCalm && (
-                          <p className="result-note">
-                            {t(
-                              canopyResult
-                                ? 'Tree-scenario coverage is below 95%. No shade comparison; estimates cover only the known part of the walk.'
-                                : 'Building-shade coverage is insufficient for comparison. These are greenery indicators.',
-                            )}
-                          </p>
-                        )}
+                      {result.mode === 'greenery' && city.capabilities.buildingShade && (
+                        <p className="result-note">
+                          {t(
+                            canopyResult
+                              ? 'Tree-scenario coverage is below 95%. No shade comparison; estimates cover only the known part of the walk.'
+                              : 'Building-shade coverage is insufficient for comparison. These are greenery indicators.',
+                          )}
+                        </p>
+                      )}
                     </>
                   )}
                   {chosen?.terrain && <ElevationProfile route={chosen} units={units} />}

@@ -55,7 +55,9 @@ export function PreferenceComparison({
       </table>
       <p>
         {t(
-          'Similar sun or shade; then as many of your wishes as possible. The shorter walk breaks ties.',
+          goalCovered(result.preferences.primary, result.fastest, result.fastest, result.mode)
+            ? 'Similar sun or shade; then as many of your wishes as possible. The shorter walk breaks ties.'
+            : 'The main preference could not be compared. This alternative follows your other wishes.',
         )}
       </p>
       {!!result.unavailableSecondary?.length && (

@@ -1,5 +1,13 @@
 # Progress
 
+## Explain Sun/Shade routing · 0.21.1
+
+Verified that the two choices already select different real Zurich routes when exposure coverage permits. Fixed the misleading fallback: a visible EN/DE status beside the buttons now explains the estimated benefit, missing coverage, night/low sun, dawn/dusk or zero detour. Calm streets can no longer hide the warning. Model geometry, ranking and the 95% coverage requirement are unchanged. [Reference cases and limits](light-choice.md).
+
+TypeScript, 158 unit/model/language tests, ten real opposite-preference calculations, eleven focused browser scenarios, production build, five release-pack checks and PWA cache migration/offline routing pass. Actual desktop, phone and tablet screenshots were inspected. Native and deployment evidence is recorded in [platform notes](platform.md#sunshade-routing-explanation--0211--native-build-21).
+
+Next: investigate the missing exposure on low-angle daylight routes without replacing unknown data with sun or weakening recommendation coverage; field-check the integrated model.
+
 ## Default Zurich planner · 0.21.0
 
 Implemented municipal pavements as the default Zurich network, including traffic-context matching, integrated tree shade, paired Shade/Sun controls and themes, 0–15 minute detours, equal optional wishes and mapped-barrier avoidance. No network switch, tree opt-in or numbered preference order remains. Beta cities retain their supported networks. [Selection rules](preferences.md) · [Access limitations](accessibility-routing.md).

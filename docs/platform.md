@@ -309,6 +309,16 @@ Chrome **154.0.8037.98** installs and launches the final password-protected prod
 
 All three GitHub workflows pass for runtime `96ea019`: source/model/Python/data/format/build checks, all **37 Linux browser scenarios**, production cache upgrades, Android APK/AAB and iOS simulator/archive. The final run required no retries or relaxed assertions. [CI evidence](releases/0.20.0-ci.json). Subsequent commits update documentation and evidence only.
 
+## Sun/Shade routing explanation · 0.21.1 · native build 21
+
+The shared website/PWA/native interface now exposes when the light choice changes the recommendation and why it sometimes cannot. The physical model and selection policy are unchanged. [Ten real calculation cases](light-choice-validation.json) and [interpretation](light-choice.md).
+
+Verified TypeScript, 158 unit/model/language tests, eleven focused Chromium browser scenarios, the production build, all five release-pack checks and the PWA cache-upgrade/offline-routing regression. Browser tests explicitly switch Shade → Sun → Shade, verify the selected path's displayed distance and preserve the trip; they cover zero detour and the previously hidden incomplete-coverage warning with Calm streets. Desktop, phone and tablet screenshots in `screenshots/light-choice-*` were visually inspected. No new field accuracy claim follows.
+
+Android build 21 compiles successfully; both native projects have synchronized web assets. The local debug APK is `native-artifacts/cooler-walks-0.21.1-debug.apk`, SHA-256 `9d01ce16129dfdc77020e3f8cbd6ca3a3ff73595798c4ce9197c4e7c2c48e96c`.
+
+No physical-phone or new iOS build is claimed. The previously recorded missing local iOS 26.2 platform and GitHub Actions budget restriction are unchanged prerequisites; no account budget or billing settings were modified.
+
 ## Default Zurich planner · 0.21.0 · native build 20
 
 Runtime `4d36810` is deployed at [coolerwalks.ch](https://coolerwalks.ch/de/?view=planner). Local TypeScript, 157 unit/model/language tests, 15 Python source tests, the service-comparison regression, the full data suite and 24 new combined-pavement cases pass. All 37 Chromium browser scenarios and four production-page scenarios pass. Formatting, production build, five pack hashes and the production service-worker upgrade regression pass. Historical screenshots/reports retain their original version.
