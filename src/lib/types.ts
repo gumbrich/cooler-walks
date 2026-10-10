@@ -214,6 +214,8 @@ export interface Route {
   /** Traversals of source crossing features, not signal counts or observed wait times. */
   crossingCount?: number;
   canopyShadeMeters?: number;
+  /** Combined building/tree evidence retained when comparison uses buildings only. */
+  treeEstimate?: Pick<Route, 'shadeMeters' | 'sunMeters' | 'unknownMeters' | 'canopyShadeMeters'>;
 }
 export type RouteGoal = 'shade' | 'sun' | 'greenery' | 'water' | 'calm' | 'flat';
 export interface RoutePreferences {
@@ -238,4 +240,8 @@ export interface RouteResult {
   departure: string;
   pavementVersion?: string;
   canopyVersion?: string;
+  /** Partial coverage may still prove an improvement using worst-case unknown exposure. */
+  shadeCoverage?: 'complete' | 'partial';
+  /** A declared building-based comparison because tree gaps prevented comparison. */
+  treeShadeFallback?: boolean;
 }

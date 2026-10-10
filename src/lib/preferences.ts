@@ -39,13 +39,13 @@ export function goalCovered(
       (r) => 1 - r.trafficUnknownMeters / r.distance >= MIN_TRAFFIC_COVERAGE,
     );
   if (goal === 'shade' || goal === 'sun')
+    // Coverage percentage is not a proof of benefit. Selection below must beat
+    // the fastest route even with unknown exposure assigned against the candidate.
+    // This permits useful partial-data comparisons without inventing sun or shade.
     return (
       mode === 'shade' &&
       [route, fastest].every(
-        (r) =>
-          r.nightMeters === 0 &&
-          r.lowSunMeters === 0 &&
-          (r.shadeMeters + r.sunMeters) / r.distance >= 0.95,
+        (r) => r.nightMeters === 0 && r.lowSunMeters === 0 && r.shadeMeters + r.sunMeters > 0,
       ) &&
       Math.abs(
         (route.detailedMeters ?? 0) / route.distance -

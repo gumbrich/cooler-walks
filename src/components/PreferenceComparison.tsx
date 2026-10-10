@@ -19,7 +19,12 @@ export function PreferenceComparison({
     if (goal === 'flat')
       return `↑ ${formatElevation(r.terrain!.ascent, units, locale)} · ↓ ${formatElevation(r.terrain!.descent, units, locale)}`;
     if (goal === 'calm') return formatDistance(r.majorRoadMeters, units, locale);
-    if (goal === 'shade') return `${Math.round(r.sunMeters / 80)} min`;
+    if (goal === 'shade')
+      return r.unknownMeters > 1e-6
+        ? `${Math.floor(r.sunMeters / 80)}–${Math.ceil((r.sunMeters + r.unknownMeters) / 80)} min`
+        : `${Math.round(r.sunMeters / 80)} min`;
+    if (goal === 'sun' && r.unknownMeters > 1e-6)
+      return `${Math.floor((100 * r.sunMeters) / r.distance)}–${Math.ceil((100 * (r.sunMeters + r.unknownMeters)) / r.distance)}%`;
     const share = goal === 'sun' ? r.sunMeters : goal === 'water' ? r.waterMeters : r.greenMeters;
     return `${Math.round((100 * share) / r.distance)}%`;
   };

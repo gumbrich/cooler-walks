@@ -9,7 +9,7 @@ import type {
   Sample,
   RoutePreferences,
 } from './types';
-import { goalsOf, selectPreferences, validPreferences } from './preferences';
+import { goalsOf, goalImproves, selectPreferences, validPreferences } from './preferences';
 import { distance, geographic, gridAzimuth, inBounds, inside, metric, rayHits } from './geo';
 import { DetailedShade } from './detailed-shade';
 import { ShadeLibrary } from './shade-library';
@@ -48,7 +48,7 @@ export const WALK_METERS_PER_MINUTE = 80;
 export const SAMPLE_METERS = 8;
 export const TREE_PROXIMITY_METERS = 15;
 export const MIN_SHADE_COVERAGE = 0.95;
-export const MODEL_VERSION = 'roof-mesh-tiled-ground-arrival-v8';
+export const MODEL_VERSION = 'roof-mesh-tiled-ground-arrival-v9';
 export const MAX_WAYPOINTS = 3;
 const CELL = 60;
 class Grid<T> {
@@ -594,6 +594,7 @@ export class Router {
     pavementSources?: (number | undefined)[],
     preferFlat = false,
     preferences?: RoutePreferences,
+    adaptiveShade = true,
   ): Generator<void, RouteResult, void> {
     const router = this;
     yield;
@@ -969,9 +970,7 @@ export class Router {
         'This route leaves the pilot’s data coverage. Try closer points inside the boundary.',
       );
     const covered = (r: Route) =>
-      r.nightMeters === 0 &&
-      r.lowSunMeters === 0 &&
-      (r.shadeMeters + r.sunMeters) / r.distance >= MIN_SHADE_COVERAGE;
+      r.nightMeters === 0 && r.lowSunMeters === 0 && r.shadeMeters + r.sunMeters > 0;
     const mode: RouteResult['mode'] =
       fastest.nightMeters >= fastest.distance - 1e-6
         ? 'night'
@@ -1060,9 +1059,72 @@ export class Router {
         x.minutes - y.minutes,
     );
     const combined = preferences ? selectPreferences(better, fastest, preferences, mode) : null;
+    const alternative = combined ? combined.route : (better[0] ?? null);
+    // Missing optional canopy observations must not disable the core building
+    // model. Prefer a proven combined-model benefit; otherwise try a declared
+    // building comparison, preserving tree evidence on the same chosen paths.
+    if (
+      adaptiveShade &&
+      canopyScenario &&
+      this.canopy &&
+      this.city.capabilities.buildingShade &&
+      fastest.nightMeters === 0 &&
+      fastest.lowSunMeters === 0 &&
+      (preferences
+        ? ['shade', 'sun'].includes(preferences.primary)
+        : !preferWater && !preferCalm && !preferFlat) &&
+      fastest.unknownMeters / fastest.distance > 1 - MIN_SHADE_COVERAGE &&
+      (!alternative || !goalImproves(sunlight, alternative, fastest))
+    ) {
+      const fallback = yield* this.calculateSteps(
+        start,
+        end,
+        departure,
+        extra,
+        waypoints,
+        preferWater,
+        sunlight,
+        preferCalm,
+        pavements,
+        false,
+        pavementSources,
+        preferFlat,
+        preferences,
+        false,
+      );
+      if (
+        fallback.mode === 'shade' &&
+        fallback.fastest.unknownMeters + 1e-6 < fastest.unknownMeters
+      ) {
+        const treeAlternative = fallback.alternative
+          ? yield* buildRoute(fallback.alternative.nodes, fallback.alternative.id)
+          : null;
+        // Do not advertise a building-based alternative that the known tree
+        // evidence already proves worse overall, even under favourable unknowns.
+        const contradictsTrees =
+          treeAlternative &&
+          (sunlight === 'shade'
+            ? treeAlternative.sunMeters > fastest.sunMeters + fastest.unknownMeters + 1e-9
+            : (treeAlternative.sunMeters + treeAlternative.unknownMeters) /
+                treeAlternative.distance <
+              fastest.sunMeters / fastest.distance - 1e-9);
+        if (!contradictsTrees) {
+          const evidence = (r: Route): Route['treeEstimate'] => ({
+            shadeMeters: r.shadeMeters,
+            sunMeters: r.sunMeters,
+            unknownMeters: r.unknownMeters,
+            canopyShadeMeters: r.canopyShadeMeters,
+          });
+          fallback.fastest.treeEstimate = evidence(fastest);
+          if (fallback.alternative && treeAlternative)
+            fallback.alternative.treeEstimate = evidence(treeAlternative);
+          return { ...fallback, canopyVersion: this.canopy!.data.version, treeShadeFallback: true };
+        }
+      }
+    }
     return {
       fastest,
-      alternative: combined ? combined.route : (better[0] ?? null),
+      alternative,
       ...(preferences && combined
         ? {
             preferences,
@@ -1072,6 +1134,15 @@ export class Router {
         : {}),
       candidateCount: candidates.length + 1,
       mode,
+      ...(shade
+        ? {
+            shadeCoverage: [fastest, ...(alternative ? [alternative] : [])].every(
+              (r) => (r.shadeMeters + r.sunMeters) / r.distance >= MIN_SHADE_COVERAGE,
+            )
+              ? ('complete' as const)
+              : ('partial' as const),
+          }
+        : {}),
       start: this.data.nodes[a.index].point,
       end: this.data.nodes[b.index].point,
       startSnap: a.meters,

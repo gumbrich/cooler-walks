@@ -1,5 +1,7 @@
 # Cooler Walks
 
+**0.22.0:** Restored useful Sun/Shade routing when tree observations have gaps. Partial-data improvements must survive worst-case unknown exposure; otherwise the app can explicitly compare building shade. In 48 real Zurich calculations, Sun and Shade select different paths in 19 of 24 matched pairs. [Cause, repair and remaining limits](docs/shade-routing-recovery.md).
+
 Compare walking routes by estimated shade, greenery, nearby water, calmer streets and elevation.
 
 [Deutsch](README.de.md) · English / German website and app interface

@@ -1,0 +1,1021 @@
+{
+  "revision": "7b1f8ee",
+  "model": "roof-mesh-tiled-ground-arrival-v8",
+  "method": "Same eight address pairs, nearest explicit municipal walking choices, three midday dates. Original 95% gate applied to the actual combined fastest-route exposure.",
+  "records": [
+    {
+      "district": "Centre",
+      "from": "Bahnhofquai",
+      "to": "Bürkliplatz",
+      "departure": "2026-06-21T12:00:00Z",
+      "anchors": [
+        {
+          "point": [
+            8.541342717777487,
+            47.37766534224276
+          ],
+          "sourceId": 7481,
+          "name": "Bahnhofquai",
+          "distance": 12.006143834337898
+        },
+        {
+          "point": [
+            8.541511682887975,
+            47.366115409239264
+          ],
+          "sourceId": 10425,
+          "name": "Bürkliplatz",
+          "distance": 2.009449160762848
+        }
+      ],
+      "buildings": {
+        "mode": "greenery",
+        "distance": 1444.5295040818237,
+        "shade": 253.83213001993974,
+        "sun": 938.8710703690591,
+        "unknown": 251.82630369282802,
+        "coverage": 0.8256689787358192
+      },
+      "combined": {
+        "mode": "greenery",
+        "distance": 1444.5295040818237,
+        "shade": 629.2408789339295,
+        "sun": 374.31389490081665,
+        "unknown": 440.97473024708063,
+        "coverage": 0.6947277788366315
+      }
+    },
+    {
+      "district": "Centre",
+      "from": "Bahnhofquai",
+      "to": "Bürkliplatz",
+      "departure": "2026-10-10T12:00:00Z",
+      "anchors": [
+        {
+          "point": [
+            8.541342717777487,
+            47.37766534224276
+          ],
+          "sourceId": 7481,
+          "name": "Bahnhofquai",
+          "distance": 12.006143834337898
+        },
+        {
+          "point": [
+            8.541511682887975,
+            47.366115409239264
+          ],
+          "sourceId": 10425,
+          "name": "Bürkliplatz",
+          "distance": 2.009449160762848
+        }
+      ],
+      "buildings": {
+        "mode": "greenery",
+        "distance": 1444.5295040818237,
+        "shade": 328.85459110944316,
+        "sun": 846.3515170966051,
+        "unknown": 269.32339587577815,
+        "coverage": 0.8135563205079956
+      },
+      "combined": {
+        "mode": "greenery",
+        "distance": 1444.5295040818237,
+        "shade": 732.9551860475932,
+        "sun": 216.4201442865407,
+        "unknown": 495.15417374769197,
+        "coverage": 0.657221142006081
+      }
+    },
+    {
+      "district": "Centre",
+      "from": "Bahnhofquai",
+      "to": "Bürkliplatz",
+      "departure": "2026-12-21T11:00:00Z",
+      "anchors": [
+        {
+          "point": [
+            8.541342717777487,
+            47.37766534224276
+          ],
+          "sourceId": 7481,
+          "name": "Bahnhofquai",
+          "distance": 12.006143834337898
+        },
+        {
+          "point": [
+            8.541511682887975,
+            47.366115409239264
+          ],
+          "sourceId": 10425,
+          "name": "Bürkliplatz",
+          "distance": 2.009449160762848
+        }
+      ],
+      "buildings": {
+        "mode": "greenery",
+        "distance": 1444.5295040818237,
+        "shade": 189.76475470743364,
+        "sun": 886.081234258193,
+        "unknown": 368.68351511619943,
+        "coverage": 0.7447725961467705
+      },
+      "combined": {
+        "mode": "greenery",
+        "distance": 1444.5295040818237,
+        "shade": 659.8996133097949,
+        "sun": 0,
+        "unknown": 784.6298907720311,
+        "coverage": 0.45682667709112823
+      }
+    },
+    {
+      "district": "Oerlikon",
+      "from": "Hofwiesenstrasse 350",
+      "to": "Wallisellenstrasse 45",
+      "departure": "2026-06-21T12:00:00Z",
+      "anchors": [
+        {
+          "point": [
+            8.542519874295733,
+            47.41052130673649
+          ],
+          "sourceId": 31619,
+          "name": "Hofwiesenstrasse",
+          "distance": 3.5145848143095537
+        },
+        {
+          "point": [
+            8.551761467091621,
+            47.41072021541055
+          ],
+          "sourceId": 10577,
+          "name": "Wallisellenstrasse",
+          "distance": 8.878320001498924
+        }
+      ],
+      "buildings": {
+        "mode": "shade",
+        "distance": 788.1891214678839,
+        "shade": 203.043219142195,
+        "sun": 567.6456268141961,
+        "unknown": 17.500275511492266,
+        "coverage": 0.9777968573343144
+      },
+      "combined": {
+        "mode": "shade",
+        "distance": 788.1891214678839,
+        "shade": 286.2342499767581,
+        "sun": 473.94054726027684,
+        "unknown": 28.014324230847787,
+        "coverage": 0.9644573574186402
+      }
+    },
+    {
+      "district": "Oerlikon",
+      "from": "Hofwiesenstrasse 350",
+      "to": "Wallisellenstrasse 45",
+      "departure": "2026-10-10T12:00:00Z",
+      "anchors": [
+        {
+          "point": [
+            8.542519874295733,
+            47.41052130673649
+          ],
+          "sourceId": 31619,
+          "name": "Hofwiesenstrasse",
+          "distance": 3.5145848143095537
+        },
+        {
+          "point": [
+            8.551761467091621,
+            47.41072021541055
+          ],
+          "sourceId": 10577,
+          "name": "Wallisellenstrasse",
+          "distance": 8.878320001498924
+        }
+      ],
+      "buildings": {
+        "mode": "shade",
+        "distance": 788.1891214678839,
+        "shade": 351.0761323751893,
+        "sun": 426.1859425924558,
+        "unknown": 10.927046500237958,
+        "coverage": 0.9861365169822582
+      },
+      "combined": {
+        "mode": "greenery",
+        "distance": 788.1891214678839,
+        "shade": 383.6146763048588,
+        "sun": 362.62622293383214,
+        "unknown": 41.94822222919212,
+        "coverage": 0.9467789885870656
+      }
+    },
+    {
+      "district": "Oerlikon",
+      "from": "Hofwiesenstrasse 350",
+      "to": "Wallisellenstrasse 45",
+      "departure": "2026-12-21T11:00:00Z",
+      "anchors": [
+        {
+          "point": [
+            8.542519874295733,
+            47.41052130673649
+          ],
+          "sourceId": 31619,
+          "name": "Hofwiesenstrasse",
+          "distance": 3.5145848143095537
+        },
+        {
+          "point": [
+            8.551761467091621,
+            47.41072021541055
+          ],
+          "sourceId": 10577,
+          "name": "Wallisellenstrasse",
+          "distance": 8.878320001498924
+        }
+      ],
+      "buildings": {
+        "mode": "shade",
+        "distance": 788.1891214678839,
+        "shade": 458.74575411586665,
+        "sun": 296.6622278513029,
+        "unknown": 32.78113950071388,
+        "coverage": 0.9584095509467773
+      },
+      "combined": {
+        "mode": "greenery",
+        "distance": 788.1891214678839,
+        "shade": 486.15511380500607,
+        "sun": 225.8831918499172,
+        "unknown": 76.15081581296,
+        "coverage": 0.9033850966235856
+      }
+    },
+    {
+      "district": "Altstetten",
+      "from": "Altstetterstrasse 145",
+      "to": "Hohlstrasse 554",
+      "departure": "2026-06-21T12:00:00Z",
+      "anchors": [
+        {
+          "point": [
+            8.486868850049815,
+            47.38848323756354
+          ],
+          "sourceId": 18887,
+          "name": "Altstetterstrasse",
+          "distance": 7.137195723993948
+        },
+        {
+          "point": [
+            8.489829797615979,
+            47.390626814205305
+          ],
+          "sourceId": 3589,
+          "name": "Hohlstrasse",
+          "distance": 9.608405222700817,
+          "sharedEndpoint": "8.489829789278987,47.390626805334115"
+        }
+      ],
+      "buildings": {
+        "mode": "shade",
+        "distance": 507.2014984994302,
+        "shade": 27.09985475478615,
+        "sun": 480.1016437446441,
+        "unknown": 0,
+        "coverage": 1.0000000000000002
+      },
+      "combined": {
+        "mode": "shade",
+        "distance": 507.2014984994302,
+        "shade": 204.16043558403734,
+        "sun": 288.99028060395597,
+        "unknown": 14.050782311436791,
+        "coverage": 0.9722974353328874
+      }
+    },
+    {
+      "district": "Altstetten",
+      "from": "Altstetterstrasse 145",
+      "to": "Hohlstrasse 554",
+      "departure": "2026-10-10T12:00:00Z",
+      "anchors": [
+        {
+          "point": [
+            8.486868850049815,
+            47.38848323756354
+          ],
+          "sourceId": 18887,
+          "name": "Altstetterstrasse",
+          "distance": 7.137195723993948
+        },
+        {
+          "point": [
+            8.489829797615979,
+            47.390626814205305
+          ],
+          "sourceId": 3589,
+          "name": "Hohlstrasse",
+          "distance": 9.608405222700817,
+          "sharedEndpoint": "8.489829789278987,47.390626805334115"
+        }
+      ],
+      "buildings": {
+        "mode": "shade",
+        "distance": 507.2014984994302,
+        "shade": 143.0953462913005,
+        "sun": 364.1061522081298,
+        "unknown": 0,
+        "coverage": 1.0000000000000002
+      },
+      "combined": {
+        "mode": "greenery",
+        "distance": 507.2014984994302,
+        "shade": 288.2867750693706,
+        "sun": 188.6862706364959,
+        "unknown": 30.22845279356362,
+        "coverage": 0.9404014915511972
+      }
+    },
+    {
+      "district": "Altstetten",
+      "from": "Altstetterstrasse 145",
+      "to": "Hohlstrasse 554",
+      "departure": "2026-12-21T11:00:00Z",
+      "anchors": [
+        {
+          "point": [
+            8.486868850049815,
+            47.38848323756354
+          ],
+          "sourceId": 18887,
+          "name": "Altstetterstrasse",
+          "distance": 7.137195723993948
+        },
+        {
+          "point": [
+            8.489829797615979,
+            47.390626814205305
+          ],
+          "sourceId": 3589,
+          "name": "Hohlstrasse",
+          "distance": 9.608405222700817,
+          "sharedEndpoint": "8.489829789278987,47.390626805334115"
+        }
+      ],
+      "buildings": {
+        "mode": "shade",
+        "distance": 507.2014984994302,
+        "shade": 294.07005360230687,
+        "sun": 213.13144489712317,
+        "unknown": 0,
+        "coverage": 0.9999999999999997
+      },
+      "combined": {
+        "mode": "shade",
+        "distance": 507.2014984994302,
+        "shade": 401.7801602172965,
+        "sun": 91.06018918577126,
+        "unknown": 14.361149096362347,
+        "coverage": 0.9716855152462083
+      }
+    },
+    {
+      "district": "Höngg",
+      "from": "Limmattalstrasse 180",
+      "to": "Limmattalstrasse 220",
+      "departure": "2026-06-21T12:00:00Z",
+      "anchors": [
+        {
+          "point": [
+            8.499117277166626,
+            47.402122610589764
+          ],
+          "sourceId": 1720,
+          "name": "Limmattalstrasse",
+          "distance": 4.763801957253424,
+          "sharedEndpoint": "8.499117268824135,47.40212260171635"
+        },
+        {
+          "point": [
+            8.496693846813068,
+            47.40221868690667
+          ],
+          "sourceId": 561,
+          "name": "Limmattalstrasse",
+          "distance": 4.33987927697754
+        }
+      ],
+      "buildings": {
+        "mode": "shade",
+        "distance": 186.50122727346118,
+        "shade": 8.74180187137398,
+        "sun": 177.7594254020872,
+        "unknown": 0,
+        "coverage": 1
+      },
+      "combined": {
+        "mode": "shade",
+        "distance": 186.50122727346118,
+        "shade": 8.74180187137398,
+        "sun": 177.7594254020872,
+        "unknown": 0,
+        "coverage": 1
+      }
+    },
+    {
+      "district": "Höngg",
+      "from": "Limmattalstrasse 180",
+      "to": "Limmattalstrasse 220",
+      "departure": "2026-10-10T12:00:00Z",
+      "anchors": [
+        {
+          "point": [
+            8.499117277166626,
+            47.402122610589764
+          ],
+          "sourceId": 1720,
+          "name": "Limmattalstrasse",
+          "distance": 4.763801957253424,
+          "sharedEndpoint": "8.499117268824135,47.40212260171635"
+        },
+        {
+          "point": [
+            8.496693846813068,
+            47.40221868690667
+          ],
+          "sourceId": 561,
+          "name": "Limmattalstrasse",
+          "distance": 4.33987927697754
+        }
+      ],
+      "buildings": {
+        "mode": "shade",
+        "distance": 186.50122727346118,
+        "shade": 64.11446848367751,
+        "sun": 122.3867587897837,
+        "unknown": 0,
+        "coverage": 1.0000000000000002
+      },
+      "combined": {
+        "mode": "greenery",
+        "distance": 186.50122727346118,
+        "shade": 77.68438835165217,
+        "sun": 0,
+        "unknown": 108.81683892180907,
+        "coverage": 0.41653553430908996
+      }
+    },
+    {
+      "district": "Höngg",
+      "from": "Limmattalstrasse 180",
+      "to": "Limmattalstrasse 220",
+      "departure": "2026-12-21T11:00:00Z",
+      "anchors": [
+        {
+          "point": [
+            8.499117277166626,
+            47.402122610589764
+          ],
+          "sourceId": 1720,
+          "name": "Limmattalstrasse",
+          "distance": 4.763801957253424,
+          "sharedEndpoint": "8.499117268824135,47.40212260171635"
+        },
+        {
+          "point": [
+            8.496693846813068,
+            47.40221868690667
+          ],
+          "sourceId": 561,
+          "name": "Limmattalstrasse",
+          "distance": 4.33987927697754
+        }
+      ],
+      "buildings": {
+        "mode": "shade",
+        "distance": 186.50122727346118,
+        "shade": 125.33794899993741,
+        "sun": 55.558162613284765,
+        "unknown": 5.605115660239036,
+        "coverage": 0.9699459583071782
+      },
+      "combined": {
+        "mode": "greenery",
+        "distance": 186.50122727346118,
+        "shade": 169.77848864344654,
+        "sun": 0,
+        "unknown": 16.722738630014646,
+        "coverage": 0.9103344311751118
+      }
+    },
+    {
+      "district": "Wipkingen",
+      "from": "Nordstrasse 275",
+      "to": "Nordstrasse 387",
+      "departure": "2026-06-21T12:00:00Z",
+      "anchors": [
+        {
+          "point": [
+            8.525251967045937,
+            47.39479460472208
+          ],
+          "sourceId": 15556,
+          "name": "Rosengartenstrasse",
+          "distance": 3.741099457089183
+        },
+        {
+          "point": [
+            8.515698940108862,
+            47.39692216010866
+          ],
+          "sourceId": 33936,
+          "name": "Nordstrasse",
+          "distance": 6.534207909859205
+        }
+      ],
+      "buildings": {
+        "mode": "shade",
+        "distance": 773.5858644436022,
+        "shade": 204.43966090519604,
+        "sun": 539.4378238676633,
+        "unknown": 29.70837967074297,
+        "coverage": 0.9615965324132306
+      },
+      "combined": {
+        "mode": "shade",
+        "distance": 773.5858644436022,
+        "shade": 495.39858682824547,
+        "sun": 245.33769201026035,
+        "unknown": 32.84958560509628,
+        "coverage": 0.9575359541649286
+      }
+    },
+    {
+      "district": "Wipkingen",
+      "from": "Nordstrasse 275",
+      "to": "Nordstrasse 387",
+      "departure": "2026-10-10T12:00:00Z",
+      "anchors": [
+        {
+          "point": [
+            8.525251967045937,
+            47.39479460472208
+          ],
+          "sourceId": 15556,
+          "name": "Rosengartenstrasse",
+          "distance": 3.741099457089183
+        },
+        {
+          "point": [
+            8.515698940108862,
+            47.39692216010866
+          ],
+          "sourceId": 33936,
+          "name": "Nordstrasse",
+          "distance": 6.534207909859205
+        }
+      ],
+      "buildings": {
+        "mode": "shade",
+        "distance": 773.5858644436022,
+        "shade": 458.46283270441467,
+        "sun": 285.4146520684443,
+        "unknown": 29.70837967074297,
+        "coverage": 0.9615965324132301
+      },
+      "combined": {
+        "mode": "greenery",
+        "distance": 773.5858644436022,
+        "shade": 624.7120050463777,
+        "sun": 42.26878545900387,
+        "unknown": 106.60507393822127,
+        "coverage": 0.8621936118043008
+      }
+    },
+    {
+      "district": "Wipkingen",
+      "from": "Nordstrasse 275",
+      "to": "Nordstrasse 387",
+      "departure": "2026-12-21T11:00:00Z",
+      "anchors": [
+        {
+          "point": [
+            8.525251967045937,
+            47.39479460472208
+          ],
+          "sourceId": 15556,
+          "name": "Rosengartenstrasse",
+          "distance": 3.741099457089183
+        },
+        {
+          "point": [
+            8.515698940108862,
+            47.39692216010866
+          ],
+          "sourceId": 33936,
+          "name": "Nordstrasse",
+          "distance": 6.534207909859205
+        }
+      ],
+      "buildings": {
+        "mode": "shade",
+        "distance": 773.5858644436022,
+        "shade": 516.9244079489733,
+        "sun": 226.95307682388585,
+        "unknown": 29.70837967074297,
+        "coverage": 0.9615965324132304
+      },
+      "combined": {
+        "mode": "greenery",
+        "distance": 773.5858644436022,
+        "shade": 627.6613592788328,
+        "sun": 5.666682676898873,
+        "unknown": 140.25782248787118,
+        "coverage": 0.8186913322301329
+      }
+    },
+    {
+      "district": "Wiedikon",
+      "from": "Birmensdorferstrasse 91",
+      "to": "Birmensdorferstrasse 252",
+      "departure": "2026-06-21T12:00:00Z",
+      "anchors": [
+        {
+          "point": [
+            8.52314138995459,
+            47.37086565507586
+          ],
+          "sourceId": 2129,
+          "name": "Birmensdorferstrasse",
+          "distance": 2.38586428221333
+        },
+        {
+          "point": [
+            8.512725871305369,
+            47.37023542442034
+          ],
+          "sourceId": 30558,
+          "name": "Birmensdorferstrasse",
+          "distance": 2.859858826271751
+        }
+      ],
+      "buildings": {
+        "mode": "greenery",
+        "distance": 1217.0447785461408,
+        "shade": 167.4192651529627,
+        "sun": 972.3769031199718,
+        "unknown": 77.2486102732035,
+        "coverage": 0.9365277172747201
+      },
+      "combined": {
+        "mode": "greenery",
+        "distance": 1217.0447785461408,
+        "shade": 356.48087552521025,
+        "sun": 731.7770394235071,
+        "unknown": 128.78686359741977,
+        "coverage": 0.8941806695467115
+      }
+    },
+    {
+      "district": "Wiedikon",
+      "from": "Birmensdorferstrasse 91",
+      "to": "Birmensdorferstrasse 252",
+      "departure": "2026-10-10T12:00:00Z",
+      "anchors": [
+        {
+          "point": [
+            8.52314138995459,
+            47.37086565507586
+          ],
+          "sourceId": 2129,
+          "name": "Birmensdorferstrasse",
+          "distance": 2.38586428221333
+        },
+        {
+          "point": [
+            8.512725871305369,
+            47.37023542442034
+          ],
+          "sourceId": 30558,
+          "name": "Birmensdorferstrasse",
+          "distance": 2.859858826271751
+        }
+      ],
+      "buildings": {
+        "mode": "shade",
+        "distance": 1217.0447785461408,
+        "shade": 626.1356883089721,
+        "sun": 532.5312685563689,
+        "unknown": 58.377821680795584,
+        "coverage": 0.9520331357482698
+      },
+      "combined": {
+        "mode": "greenery",
+        "distance": 1217.0447785461408,
+        "shade": 665.2985601925187,
+        "sun": 376.3299415347355,
+        "unknown": 175.41627681888224,
+        "coverage": 0.8558670314263739
+      }
+    },
+    {
+      "district": "Wiedikon",
+      "from": "Birmensdorferstrasse 91",
+      "to": "Birmensdorferstrasse 252",
+      "departure": "2026-12-21T11:00:00Z",
+      "anchors": [
+        {
+          "point": [
+            8.52314138995459,
+            47.37086565507586
+          ],
+          "sourceId": 2129,
+          "name": "Birmensdorferstrasse",
+          "distance": 2.38586428221333
+        },
+        {
+          "point": [
+            8.512725871305369,
+            47.37023542442034
+          ],
+          "sourceId": 30558,
+          "name": "Birmensdorferstrasse",
+          "distance": 2.859858826271751
+        }
+      ],
+      "buildings": {
+        "mode": "shade",
+        "distance": 1217.0447785461408,
+        "shade": 1083.1771876213245,
+        "sun": 108.41273838945553,
+        "unknown": 25.45485253535918,
+        "coverage": 0.9790847033863712
+      },
+      "combined": {
+        "mode": "shade",
+        "distance": 1217.0447785461408,
+        "shade": 1119.8235690187082,
+        "sun": 44.93635043442203,
+        "unknown": 52.284859093009906,
+        "coverage": 0.9570394943434464
+      }
+    },
+    {
+      "district": "University",
+      "from": "Rämistrasse 71",
+      "to": "Universitätstrasse 100",
+      "departure": "2026-06-21T12:00:00Z",
+      "anchors": [
+        {
+          "point": [
+            8.549134871086284,
+            47.374602434537195
+          ],
+          "sourceId": 4779,
+          "name": "Universität Zentrum, Fussweg",
+          "distance": 5.400237807287421
+        },
+        {
+          "point": [
+            8.548350290835605,
+            47.38374036912351
+          ],
+          "sourceId": 6523,
+          "name": "Universitätstrasse",
+          "distance": 2.4449637555533927
+        }
+      ],
+      "buildings": {
+        "mode": "shade",
+        "distance": 1062.7829527802344,
+        "shade": 257.3968464273983,
+        "sun": 805.3861063528375,
+        "unknown": 0,
+        "coverage": 1.0000000000000013
+      },
+      "combined": {
+        "mode": "greenery",
+        "distance": 1062.7829527802344,
+        "shade": 362.29782778909055,
+        "sun": 587.1071043312108,
+        "unknown": 113.37802065993424,
+        "coverage": 0.89331968454769
+      }
+    },
+    {
+      "district": "University",
+      "from": "Rämistrasse 71",
+      "to": "Universitätstrasse 100",
+      "departure": "2026-10-10T12:00:00Z",
+      "anchors": [
+        {
+          "point": [
+            8.549134871086284,
+            47.374602434537195
+          ],
+          "sourceId": 4779,
+          "name": "Universität Zentrum, Fussweg",
+          "distance": 5.400237807287421
+        },
+        {
+          "point": [
+            8.548350290835605,
+            47.38374036912351
+          ],
+          "sourceId": 6523,
+          "name": "Universitätstrasse",
+          "distance": 2.4449637555533927
+        }
+      ],
+      "buildings": {
+        "mode": "shade",
+        "distance": 1062.7829527802344,
+        "shade": 625.8769062017888,
+        "sun": 419.2928194320035,
+        "unknown": 17.613227146441986,
+        "coverage": 0.9834272585005565
+      },
+      "combined": {
+        "mode": "greenery",
+        "distance": 1062.7829527802344,
+        "shade": 710.4584812977715,
+        "sun": 259.2257813777452,
+        "unknown": 93.09869010471759,
+        "coverage": 0.9124010317805983
+      }
+    },
+    {
+      "district": "University",
+      "from": "Rämistrasse 71",
+      "to": "Universitätstrasse 100",
+      "departure": "2026-12-21T11:00:00Z",
+      "anchors": [
+        {
+          "point": [
+            8.549134871086284,
+            47.374602434537195
+          ],
+          "sourceId": 4779,
+          "name": "Universität Zentrum, Fussweg",
+          "distance": 5.400237807287421
+        },
+        {
+          "point": [
+            8.548350290835605,
+            47.38374036912351
+          ],
+          "sourceId": 6523,
+          "name": "Universitätstrasse",
+          "distance": 2.4449637555533927
+        }
+      ],
+      "buildings": {
+        "mode": "shade",
+        "distance": 1062.7829527802344,
+        "shade": 372.09337975324286,
+        "sun": 686.1834073307799,
+        "unknown": 4.5061656962114425,
+        "coverage": 0.9957600320136643
+      },
+      "combined": {
+        "mode": "greenery",
+        "distance": 1062.7829527802344,
+        "shade": 739.6840000761465,
+        "sun": 37.4747785236263,
+        "unknown": 285.6241741804636,
+        "coverage": 0.7312488185539011
+      }
+    },
+    {
+      "district": "Lakeshore",
+      "from": "Bellevue",
+      "to": "Zürichhorn",
+      "departure": "2026-06-21T12:00:00Z",
+      "anchors": [
+        {
+          "point": [
+            8.54431478975411,
+            47.366843542225084
+          ],
+          "sourceId": 25073,
+          "name": "Utoquai",
+          "distance": 2.95940054064243
+        },
+        {
+          "point": [
+            8.552147993194337,
+            47.354362830354766
+          ],
+          "sourceId": 28381,
+          "name": "Fussweg",
+          "distance": 7.915855308509803
+        }
+      ],
+      "buildings": {
+        "mode": "shade",
+        "distance": 1590.309794162961,
+        "shade": 0,
+        "sun": 1590.309794162961,
+        "unknown": 0,
+        "coverage": 1
+      },
+      "combined": {
+        "mode": "greenery",
+        "distance": 1590.309794162961,
+        "shade": 818.3592606381479,
+        "sun": 404.1515354456153,
+        "unknown": 367.79899807919446,
+        "coverage": 0.768724936846167
+      }
+    },
+    {
+      "district": "Lakeshore",
+      "from": "Bellevue",
+      "to": "Zürichhorn",
+      "departure": "2026-10-10T12:00:00Z",
+      "anchors": [
+        {
+          "point": [
+            8.54431478975411,
+            47.366843542225084
+          ],
+          "sourceId": 25073,
+          "name": "Utoquai",
+          "distance": 2.95940054064243
+        },
+        {
+          "point": [
+            8.552147993194337,
+            47.354362830354766
+          ],
+          "sourceId": 28381,
+          "name": "Fussweg",
+          "distance": 7.915855308509803
+        }
+      ],
+      "buildings": {
+        "mode": "greenery",
+        "distance": 1590.309794162961,
+        "shade": 76.3874106466944,
+        "sun": 1288.4944234763614,
+        "unknown": 225.4279600399032,
+        "coverage": 0.8582490274113187
+      },
+      "combined": {
+        "mode": "greenery",
+        "distance": 1590.309794162961,
+        "shade": 841.3271158000947,
+        "sun": 0,
+        "unknown": 748.9826783628635,
+        "coverage": 0.5290334744136543
+      }
+    },
+    {
+      "district": "Lakeshore",
+      "from": "Bellevue",
+      "to": "Zürichhorn",
+      "departure": "2026-12-21T11:00:00Z",
+      "anchors": [
+        {
+          "point": [
+            8.54431478975411,
+            47.366843542225084
+          ],
+          "sourceId": 25073,
+          "name": "Utoquai",
+          "distance": 2.95940054064243
+        },
+        {
+          "point": [
+            8.552147993194337,
+            47.354362830354766
+          ],
+          "sourceId": 28381,
+          "name": "Fussweg",
+          "distance": 7.915855308509803
+        }
+      ],
+      "buildings": {
+        "mode": "greenery",
+        "distance": 1590.309794162961,
+        "shade": 126.53107425482945,
+        "sun": 561.3710507737069,
+        "unknown": 902.4076691344214,
+        "coverage": 0.43255856660972447
+      },
+      "combined": {
+        "mode": "greenery",
+        "distance": 1590.309794162961,
+        "shade": 618.7047129932636,
+        "sun": 0,
+        "unknown": 971.6050811696941,
+        "coverage": 0.3890466595025347
+      }
+    }
+  ]
+}

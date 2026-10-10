@@ -1,6 +1,6 @@
 {
   "name": "cooler-walks",
-  "version": "0.21.1",
+  "version": "0.22.0",
   "private": true,
   "type": "module",
   "engines": {
@@ -74,7 +74,7 @@
     "data:verify:preferences": "node --import tsx scripts/verify-preferences.ts",
     "test:native:preferences": "node scripts/verify-android-preferences.mjs",
     "data:prepare:pavement-context": "node --import tsx scripts/prepare-pavement-context.ts",
-    "data:verify:planner": "node --import tsx scripts/verify-planner-defaults.ts && node --import tsx scripts/verify-barrier-detour.ts && node --import tsx scripts/verify-light-choice.ts"
+    "data:verify:planner": "node --import tsx scripts/verify-planner-defaults.ts && node --import tsx scripts/verify-barrier-detour.ts && node --import tsx scripts/verify-light-choice.ts && node --import tsx scripts/verify-shade-availability.ts"
   },
   "dependencies": {
     "@capacitor/android": "^8.5.2",

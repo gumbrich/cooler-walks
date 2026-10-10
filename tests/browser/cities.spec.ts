@@ -40,9 +40,7 @@ test('prefer sun works in winter and respects the direct-walk limit', async ({ p
   await page.getByRole('button', { name: 'Sun', exact: true }).click();
   await expect(page.locator('.spinner')).toHaveCount(0);
   await expect(
-    page.getByText(
-      'Tree-scenario coverage is below 95%. No shade comparison; estimates cover only the known part of the walk.',
-    ),
+    page.getByText('Building shade comparison · tree coverage is incomplete'),
   ).toBeVisible();
   await page.getByRole('combobox', { name: 'From', exact: true }).fill('Hofwiesenstrasse 350');
   await page.getByRole('combobox', { name: 'From', exact: true }).press('Enter');
@@ -51,7 +49,7 @@ test('prefer sun works in winter and respects the direct-walk limit', async ({ p
   for (let i = 0; i < 2; i++)
     if (await page.locator('.pavement-option').first().isVisible())
       await page.locator('.pavement-option').first().click();
-  await expect(page.locator('.route-card').first()).toContainText('potential sun');
+  await expect(page.locator('.route-card').first()).toContainText(/(potential|estimated) sun/);
   await expect(page.locator('.map-shell')).toHaveAttribute('data-map-settled', 'true');
   await expectMarkersVisible(page);
   await page.locator('.results').scrollIntoViewIfNeeded();

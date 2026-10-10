@@ -1,5 +1,24 @@
 import { test, expect } from '@playwright/test';
 
+test('October desktop shows different real paths and names the building comparison', async ({
+  page,
+}) => {
+  await page.clock.setFixedTime(new Date('2026-10-10T12:00:00Z'));
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  await page.goto('/de/?view=planner');
+  const status = page.locator('.light-routing-status');
+  const selected = page.locator('.route-card[aria-pressed="true"] .route-distance');
+  await expect(status).toContainText('Gebäudeschatten:');
+  await expect(selected).toContainText('400 m');
+  await expect(page.locator('.map-shell')).toHaveAttribute('data-map-settled', 'true');
+  await page.screenshot({ path: 'docs/screenshots/shade-restored-october-desktop-de.png' });
+  await page.getByRole('button', { name: 'Sonne', exact: true }).click();
+  await expect(status).toContainText('Ohne Gebäudeschatten:');
+  await expect(selected).toContainText('440 m');
+  await expect(page.locator('.map-shell')).toHaveAttribute('data-map-settled', 'true');
+  await page.screenshot({ path: 'docs/screenshots/sun-restored-october-desktop-de.png' });
+});
+
 test('Shade and Sun change the selected route, preserve the trip and survive repeated toggles', async ({
   page,
 }) => {
@@ -34,29 +53,39 @@ test('Shade and Sun change the selected route, preserve the trip and survive rep
   await expect(selected.locator('.route-distance')).toContainText('400 m');
 });
 
-test('missing shade coverage and night are explained beside the choice even with calm streets', async ({
+test('October sun and shade routes work with explicit building comparison and calm streets', async ({
   page,
 }) => {
   await page.clock.setFixedTime(new Date('2026-10-10T12:00:00Z'));
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/de/?view=planner');
   const status = page.locator('.light-routing-status');
-  await expect(status).toContainText('Für diesen Weg fehlen Schattendaten.');
+  await expect(status).toContainText('Gebäudeschatten:');
+  await expect(page.locator('.route-card[aria-pressed="true"] .route-distance')).toContainText(
+    '400 m',
+  );
   await page.getByRole('button', { name: 'Weg bearbeiten', exact: true }).click();
   await page.locator('.additional-preferences summary').click();
   await page.getByRole('checkbox', { name: 'Verkehrsberuhigt', exact: true }).check();
-  await expect(status).toContainText('Für diesen Weg fehlen Schattendaten.');
-  await page.getByRole('button', { name: 'Sonne', exact: true }).click();
-  await expect(status).toContainText(
-    'Die Wahl von Sonne oder Schatten kann nicht berücksichtigt werden.',
+  await expect(status).toContainText('Gebäudeschatten:');
+  await expect(page.locator('.route-card[aria-pressed="true"] .route-distance')).toContainText(
+    '400 m',
   );
+  await page.getByRole('button', { name: 'Sonne', exact: true }).click();
+  await expect(status).toContainText('Ohne Gebäudeschatten:');
+  await expect(page.locator('.route-card[aria-pressed="true"] .route-distance')).toContainText(
+    '440 m',
+  );
+  await expect(page.locator('.canopy-result-note')).toContainText('Vergleich nach Gebäudeschatten');
   await page.getByRole('button', { name: 'Routen anzeigen', exact: true }).click();
   await expect(page.locator('.map-shell')).toHaveAttribute('data-map-settled', 'true');
   await page.screenshot({
-    path: 'docs/screenshots/light-choice-unavailable-phone-de.png',
+    path: 'docs/screenshots/shade-restored-october-phone-de.png',
     fullPage: true,
   });
-  await expect(page.locator('.results')).toContainText('unter 95%');
+  await expect(
+    page.getByText('Für diesen Weg fehlen Schattendaten.', { exact: false }),
+  ).toHaveCount(0);
   await page.getByRole('slider', { name: 'Startzeit', exact: true }).fill('1320');
   await expect(status).toHaveText(
     'Zur gewählten Zeit ist es dunkel. Sonne oder Schatten ändern den Weg daher nicht.',

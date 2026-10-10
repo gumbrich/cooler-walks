@@ -131,3 +131,7 @@ Optional wishes use a compact two-column checkbox layout inside one disclosure. 
 ## 0.21.1: make the light choice's effect visible
 
 A small live status directly under Shade/Sun states the available recommendation's estimated benefit, or explains why the choice cannot guide this trip. Incomplete exposure, night, low sun and dawn/dusk receive a restrained vertical rule rather than a large alert. Zero detour and no useful alternative are explained in the same place. These states stay visible with Calm streets and in the collapsed phone results view. Method details and coverage figures remain beside the route cards. Actual inspected captures are in `docs/screenshots/light-choice-*`.
+
+## 0.22.0: usable light choices with a visible model basis
+
+The two light buttons now control useful autumn routes, including partial observations. A short second status line names missing tree coverage when the comparison uses buildings. The result caption, card denominator and map legend agree on that basis. Partial comparisons show sun-distance/share ranges instead of hiding uncertainty in a single figure; hatched map/card segments remain unknown. Tree evidence for a building-only path is retained in the expandable route details. No new planning controls are required. See [the routing repair](shade-routing-recovery.md).

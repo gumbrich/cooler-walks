@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import assert from 'node:assert/strict';
+import { goalImproves } from '../src/lib/preferences';
 import { getCity } from '../src/lib/cities';
 import { Router, MODEL_VERSION } from '../src/lib/routing';
 import { ShadeLibrary, decodeShadeTile, withShadeTiles } from '../src/lib/shade-library';
@@ -79,7 +80,7 @@ for (const [district, fromName, toName] of journeys) {
       );
       if (r.alternative && r.mode === 'shade')
         assert(
-          1 - route.unknownMeters / route.distance >= 0.95,
+          goalImproves('shade', r.alternative, r.fastest),
           'Unknown data cannot improve a shade recommendation',
         );
       // Original-polygon audit inputs at real route samples and arrival instants.

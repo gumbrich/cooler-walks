@@ -3,6 +3,7 @@ import { getCity } from '../src/lib/cities';
 import { geographic, gridAzimuth, metric } from '../src/lib/geo';
 import { runCalculation } from '../src/lib/calculation';
 import { Router } from '../src/lib/routing';
+import { CanopyShade } from '../src/lib/canopy';
 import * as sun from '../src/lib/solar';
 import { arrivalLabel } from '../src/lib/time';
 import type { PilotData, Point } from '../src/lib/types';
@@ -57,6 +58,61 @@ function movingSun(changeMinutes: number, before = Math.PI, after = 0) {
 afterEach(() => vi.restoreAllMocks());
 
 describe('arrival-time building shade', () => {
+  it('retains usable building estimates when every tree observation is unknown', () => {
+    movingSun(0, 0, 0);
+    const data = fixture(),
+      router = new Router(data, city);
+    const reference = {
+      cityId: city.id,
+      version: 'synthetic-test',
+      crs: 'EPSG:2056',
+      verticalDatum: 'LN02',
+    };
+    router.canopy = new CanopyShade(
+      {
+        schema: 1,
+        ...reference,
+        bounds: [0, 0, 1, 1],
+        resolution: 1,
+        width: 1,
+        height: 1,
+        columns: '',
+        base: '',
+        top: '',
+        unknown: 'AA==',
+        maxZ: 40,
+        scenario: 'opaque-observed-vegetation-envelope',
+        epoch: 'synthetic-test-only',
+      },
+      reference,
+    );
+    const args: Parameters<Router['calculateSteps']> = [
+      data.nodes[0].point,
+      data.nodes[2].point,
+      departure,
+      5,
+      [],
+      false,
+      'shade',
+      false,
+      false,
+      true,
+      undefined,
+      false,
+      { primary: 'shade', secondary: [] },
+    ];
+    args[13] = false;
+    const strict = router.calculate(...args);
+    args[13] = true;
+    expect(strict.fastest.unknownMeters).toBeCloseTo(800);
+    const usable = router.calculate(...args);
+    expect(usable.mode).toBe('shade');
+    expect(usable.treeShadeFallback).toBe(true);
+    expect(usable.fastest.sunMeters).toBeCloseTo(800);
+    expect(usable.fastest.unknownMeters).toBe(0);
+    expect(usable.fastest.treeEstimate?.unknownMeters).toBeCloseTo(800);
+    expect(usable.alternative).toBeNull();
+  });
   it('keeps every arrival-time sample identical when route work yields to input', async () => {
     movingSun(5);
     const data = fixture(),
@@ -115,7 +171,9 @@ describe('arrival-time building shade', () => {
     const r = new Router(d, city).calculate(d.nodes[0].point, d.nodes[2].point, departure, 0);
     expect(r.fastest.sunMeters).toBeCloseTo(400);
     expect(r.fastest.unknownMeters).toBeCloseTo(400);
-    expect(r.mode).toBe('greenery');
+    expect(r.mode).toBe('shade');
+    expect(r.shadeCoverage).toBe('partial');
+    expect(r.alternative).toBeNull();
   });
 
   it('keeps sunset, low sun and unknown distinct and withholds a sun comparison', () => {

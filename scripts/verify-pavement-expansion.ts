@@ -6,6 +6,7 @@ import { ShadeLibrary, decodeShadeTile, withShadeTiles } from '../src/lib/shade-
 import { expandPavements } from '../src/lib/pavements';
 import { inCoverage, segmentInCoverage } from '../src/lib/coverage';
 import type { PilotData, Route } from '../src/lib/types';
+import { goalImproves } from '../src/lib/preferences';
 
 const city = getCity('ch-zurich');
 const data: PilotData = JSON.parse(fs.readFileSync(`public${city.dataUrl}`, 'utf8'));
@@ -70,7 +71,11 @@ for (const [district, from, to] of cases) {
       'The bridge deck height is unknown: do not evaluate it at river-bed elevation',
     );
     assert.equal(result.mode, 'greenery');
-    if (result.alternative) assert.equal(result.alternative.shadeMeters, 0);
+    assert.equal(result.fastest.shadeMeters + result.fastest.sunMeters, 0);
+    if (result.alternative) {
+      assert(!goalImproves('shade', result.alternative, result.fastest));
+      assert(goalImproves('greenery', result.alternative, result.fastest));
+    }
   }
   records.push({
     district,

@@ -5,12 +5,14 @@ import { runCalculation } from '../src/lib/calculation';
 import { Router } from '../src/lib/routing';
 import { ShadeLibrary, decodeShadeTile, withShadeTiles } from '../src/lib/shade-library';
 import type { PilotData } from '../src/lib/types';
+import { goalImproves } from '../src/lib/preferences';
 const city = cities[0];
 const results = [];
-// Frozen outputs from the pre-optimization 0.14.0 calculator, not observations.
-for (const [departure, fastestShade, alternativeShade] of [
-  ['2026-06-21T12:00:00Z', 224.36114285714285, 792.0574166666672],
-  ['2026-10-06T14:45:00Z', 893.3910833333332, 1143.7147499999987],
+// Frozen fastest-path geometry from the pre-optimization 0.14.0 calculator,
+// not observations. Alternative selection now follows bounded light evidence.
+for (const [departure, fastestShade] of [
+  ['2026-06-21T12:00:00Z', 224.36114285714285],
+  ['2026-10-06T14:45:00Z', 893.3910833333332],
 ] as const) {
   const started = performance.now();
   const data = JSON.parse(fs.readFileSync(`public${city.dataUrl}`, 'utf8')) as PilotData;
@@ -32,9 +34,10 @@ for (const [departure, fastestShade, alternativeShade] of [
     (tile) => decodeShadeTile(fs.readFileSync(`public${tile.url}`), tile),
   );
   assert(Math.abs(result.fastest.shadeMeters - fastestShade) < 1e-6);
-  assert(result.alternative);
-  assert(Math.abs(result.alternative.shadeMeters - alternativeShade) < 1e-6);
-  assert(result.alternative.minutes <= result.fastest.minutes + 5);
+  if (result.alternative) {
+    assert(goalImproves('shade', result.alternative, result.fastest));
+    assert(result.alternative.minutes <= result.fastest.minutes + 5);
+  }
   assert(
     router.detailed.models.size < 9,
     'Short walk should not load the old oversized working set',
@@ -45,7 +48,7 @@ for (const [departure, fastestShade, alternativeShade] of [
     passes,
     loadedTiles: router.detailed.models.size,
     fastestShadeMeters: result.fastest.shadeMeters,
-    alternativeShadeMeters: result.alternative.shadeMeters,
+    alternativeShadeMeters: result.alternative?.shadeMeters ?? null,
   });
 }
 const report = {

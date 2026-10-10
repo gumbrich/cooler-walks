@@ -84,6 +84,19 @@ try {
   await ready(app);
   await app.getByLabel('Startdatum', { exact: true }).fill('2026-06-21');
   await app.getByRole('slider', { name: 'Startzeit', exact: true }).fill('840');
+  await app.getByLabel('Startdatum', { exact: true }).fill('2026-10-10');
+  await app.getByRole('button', { name: 'Schatten', exact: true }).click();
+  await expect(app.locator('.light-routing-status')).toContainText('Gebäudeschatten:');
+  await expect(app.locator('.route-card[aria-pressed="true"] .route-distance')).toContainText(
+    '400 m',
+  );
+  await app.getByRole('button', { name: 'Sonne', exact: true }).click();
+  await expect(app.locator('.light-routing-status')).toContainText('Ohne Gebäudeschatten:');
+  await expect(app.locator('.route-card[aria-pressed="true"] .route-distance')).toContainText(
+    '440 m',
+  );
+  await app.getByLabel('Startdatum', { exact: true }).fill('2026-06-21');
+  await app.getByRole('button', { name: 'Schatten', exact: true }).click();
   await wish(app, 'Verkehrsberuhigt');
   await wish(app, 'Am Wasser');
   await wish(app, 'Barrierefreiheit');
@@ -142,6 +155,8 @@ try {
     barrierAvoidance: true,
     minuteDetour: true,
     shadeSunThemes: true,
+    offlineOctoberShadeDistance: '400 m',
+    offlineOctoberSunDistance: '440 m',
     offlineAddressSelection: true,
     offlineWaypoints: true,
     offlineTrafficEvidence: true,

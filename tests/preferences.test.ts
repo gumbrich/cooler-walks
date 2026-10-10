@@ -38,6 +38,46 @@ const route = (id: string, patch: Partial<Route> = {}): Route => ({
 const choose = (rs: Route[], p: RoutePreferences, fast = route('fast')) =>
   selectPreferences(rs, fast, p, 'shade');
 describe('combined preferences without a hidden composite score', () => {
+  it('proves a shade improvement with partial coverage under every assignment of unknown exposure', () => {
+    const fast = route('fast', { sunMeters: 600, shadeMeters: 200, unknownMeters: 200 });
+    const candidate = route('partial', { sunMeters: 150, shadeMeters: 550, unknownMeters: 300 });
+    expect(choose([candidate], { primary: 'shade', secondary: [] }, fast).route?.id).toBe(
+      'partial',
+    );
+    for (const a of [0, 0.25, 0.5, 0.75, 1])
+      for (const b of [0, 0.25, 0.5, 0.75, 1])
+        expect(
+          fast.sunMeters +
+            a * fast.unknownMeters -
+            candidate.sunMeters -
+            b * candidate.unknownMeters,
+        ).toBeGreaterThanOrEqual(40);
+  });
+  it('proves a sunnier share with partial coverage without assuming the missing parts are sunny', () => {
+    const fast = route('fast', { sunMeters: 300, shadeMeters: 500, unknownMeters: 200 });
+    const candidate = route('partial', {
+      distance: 1200,
+      detailedMeters: 1200,
+      minutes: 15,
+      sunMeters: 900,
+      shadeMeters: 100,
+      unknownMeters: 200,
+    });
+    expect(choose([candidate], { primary: 'sun', secondary: [] }, fast).route?.id).toBe('partial');
+    for (const a of [0, 0.25, 0.5, 0.75, 1])
+      for (const b of [0, 0.25, 0.5, 0.75, 1])
+        expect(
+          (candidate.sunMeters + b * candidate.unknownMeters) / candidate.distance -
+            (fast.sunMeters + a * fast.unknownMeters) / fast.distance,
+        ).toBeGreaterThanOrEqual(0.03);
+  });
+  it('rejects apparently better partial routes when the missing exposure can reverse the benefit', () => {
+    const fast = route('fast', { sunMeters: 300, shadeMeters: 500, unknownMeters: 200 });
+    const shady = route('shady-looking', { sunMeters: 0, shadeMeters: 600, unknownMeters: 400 });
+    const sunny = route('sunny-looking', { sunMeters: 480, shadeMeters: 120, unknownMeters: 400 });
+    expect(choose([shady], { primary: 'shade', secondary: [] }, fast).route).toBeNull();
+    expect(choose([sunny], { primary: 'sun', secondary: [] }, fast).route).toBeNull();
+  });
   it('selects opposite routes for shade and sun from the same candidates', () => {
     const shady = route('shady', { sunMeters: 200, shadeMeters: 800, minutes: 14 });
     const sunny = route('sunny', { sunMeters: 900, shadeMeters: 100, minutes: 14 });

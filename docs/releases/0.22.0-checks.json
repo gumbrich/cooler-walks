@@ -1,0 +1,43 @@
+{
+  "version": "0.22.0",
+  "checkedAt": "2026-10-10T21:46:07.899229+00:00",
+  "node": "26.4.0",
+  "model": "roof-mesh-tiled-ground-arrival-v9",
+  "localChecks": {
+    "typescript": "passed",
+    "unitModelLanguageTests": 162,
+    "browserTests": 40,
+    "dataVerification": "All stages passed, run in groups. Historical output reports preserved; current broad and focused light-choice reports retained.",
+    "formatting": "passed",
+    "productionBuild": "passed",
+    "releasePackHashes": 5,
+    "androidBuild": "passed",
+    "pwaInstallOffline": "passed",
+    "pwaUpgradeOffline": "passed",
+    "androidEmulatorOffline": "passed"
+  },
+  "routingRegression": {
+    "calculations": 48,
+    "areas": 8,
+    "dates": 3,
+    "differentSunShadePairs": 19,
+    "matchedPairs": 24,
+    "octoberDifferentPairs": 7,
+    "octoberPairs": 8,
+    "treeAwareAlternatives": 18,
+    "explicitBuildingAlternatives": 13
+  },
+  "screenshotsInspected": [
+    "shade-restored-october-desktop-de.png",
+    "sun-restored-october-desktop-de.png",
+    "shade-restored-october-phone-de.png",
+    "shade-restored-android-de.png",
+    "light-choice-night-tablet-en.png",
+    "phone-entry.png"
+  ],
+  "limits": [
+    "Computational and emulator checks do not establish field accuracy.",
+    "No physical phone or current iOS build test.",
+    "Historical foliage and source gaps remain; building-only fallback is explicitly labelled."
+  ]
+}

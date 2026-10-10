@@ -535,7 +535,7 @@ export default function App() {
       nearbyCounts(data?.vehicleCounts, city, chosen, result?.departure ?? '2000-01-01T00:00:00Z'),
     [data, city, chosen, result?.departure],
   );
-  const canopyResult = !!result?.canopyVersion;
+  const canopyResult = !!result?.canopyVersion && !result.treeShadeFallback;
   const hasExposure = isShade || (canopyResult && result?.mode === 'greenery');
   const showWater = result?.preference === 'water';
   const showCalm = result?.preference === 'calm';
@@ -680,9 +680,7 @@ export default function App() {
             ? formatDistance(route.majorRoadMeters, units, locale)
             : showShade && route.shadeMeters + route.sunMeters < 1
               ? '—'
-              : showShade &&
-                  canopyResult &&
-                  (route.shadeMeters + route.sunMeters) / route.distance < 0.95
+              : showShade && (route.shadeMeters + route.sunMeters) / route.distance < 0.95
                 ? formatDistance(showSun ? route.sunMeters : route.shadeMeters, units, locale)
                 : `${percentage(route)}%`}
           <small>
@@ -758,7 +756,7 @@ export default function App() {
                 )
               : t('Within 15 m of a recorded tree · not canopy shade')}
       </div>
-      {showShade && canopyResult && route.unknownMeters / route.distance > 0.05 && (
+      {showShade && route.unknownMeters / route.distance > 0.05 && (
         <div className="route-unknown-note">
           <i className="unknown-swatch" aria-hidden="true" />
           {t('{distance} unknown', {
@@ -1338,15 +1336,28 @@ export default function App() {
                           )}
                         </p>
                       )}
-                      {canopyResult && (
+                      {result.treeShadeFallback ? (
                         <p className="canopy-result-note">
-                          {t('Tree shade included · foliage assumed')}
+                          {t('Building shade comparison · tree coverage is incomplete')}
                         </p>
+                      ) : (
+                        canopyResult && (
+                          <p className="canopy-result-note">
+                            {t('Tree shade included · foliage assumed')}
+                          </p>
+                        )
                       )}
                       {[result.fastest, ...(result.alternative ? [result.alternative] : [])].map(
                         routeCard,
                       )}
                       <PreferenceComparison result={result} units={units} />
+                      {result.shadeCoverage === 'partial' && (
+                        <p className="result-note">
+                          {t(
+                            'Some exposure is unknown. A recommended alternative must improve your choice even when those gaps count against it.',
+                          )}
+                        </p>
+                      )}
                       {!result.alternative && !['shade', 'sun'].includes(preferences.primary) && (
                         <p className="result-note">
                           {extra === 0
@@ -1415,7 +1426,7 @@ export default function App() {
                         <p className="result-note">
                           {t(
                             canopyResult
-                              ? 'Tree-scenario coverage is below 95%. No shade comparison; estimates cover only the known part of the walk.'
+                              ? 'No usable sun/shade data on this path. Unknown sections remain unclassified.'
                               : 'Building-shade coverage is insufficient for comparison. These are greenery indicators.',
                           )}
                         </p>
@@ -1451,6 +1462,25 @@ export default function App() {
                                 locale,
                               ),
                               trees: formatDistance(chosen.canopyShadeMeters ?? 0, units, locale),
+                            },
+                          )}
+                        </p>
+                      )}
+                      {chosen.treeEstimate && (
+                        <p className="canopy-breakdown">
+                          {t(
+                            'Tree data on this walk: {trees} additional potential shade, {unknown} unknown exposure. Route comparison and map colours use buildings only.',
+                            {
+                              trees: formatDistance(
+                                chosen.treeEstimate.canopyShadeMeters ?? 0,
+                                units,
+                                locale,
+                              ),
+                              unknown: formatDistance(
+                                chosen.treeEstimate.unknownMeters,
+                                units,
+                                locale,
+                              ),
                             },
                           )}
                         </p>
@@ -1734,7 +1764,7 @@ export default function App() {
                   <h3>{t('Know the limits')}</h3>
                   <p>
                     {t(
-                      'Shade and sun comparisons need at least 95% known exposure. Unknown sections cannot improve a recommendation; low sun below 10° is withheld. Zurich uses municipal pavements and crossings by default. Beta cities may use street centrelines. Uncertain walking heights stay unknown. Access, closures and shade still need field checks. The accessibility option avoids mapped barriers; it does not certify wheelchair suitability.',
+                      'Sun and shade comparisons count unknown sections against an alternative: it must still improve the chosen goal. If gaps in tree data prevent that comparison, we use the building model and label it clearly. Known tree evidence must not contradict the recommendation. Low sun below 10° is withheld. Zurich uses municipal pavements and crossings; beta cities may use street centrelines. Uncertain walking heights stay unknown. Access and shade still need field checks. Barrier avoidance does not certify wheelchair suitability.',
                     )}
                   </p>
                 </div>

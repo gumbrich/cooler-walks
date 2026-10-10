@@ -78,6 +78,10 @@ for (const c of [
           false,
           c.pavements,
           enabled,
+          undefined,
+          false,
+          undefined,
+          false,
         ),
       load,
     );

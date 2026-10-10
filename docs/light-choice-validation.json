@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-10T20:55:10.222Z",
+  "checkedAt": "2026-10-10T21:43:25.105Z",
   "start": "Talacker / Pelikanstrasse",
   "end": "Bahnhofstrasse / Sihlstrasse",
   "timeZone": "Europe/Zurich",
@@ -15,6 +15,8 @@
         "secondary": []
       },
       "mode": "shade",
+      "treeShadeFallback": false,
+      "shadeCoverage": "complete",
       "fastest": {
         "distance": 399.4862453577219,
         "minutes": 4.993578066971524,
@@ -80,6 +82,8 @@
         "secondary": []
       },
       "mode": "shade",
+      "treeShadeFallback": false,
+      "shadeCoverage": "complete",
       "fastest": {
         "distance": 399.4862453577219,
         "minutes": 4.993578066971524,
@@ -144,6 +148,8 @@
         "secondary": ["calm"]
       },
       "mode": "shade",
+      "treeShadeFallback": false,
+      "shadeCoverage": "complete",
       "fastest": {
         "distance": 399.4862453577219,
         "minutes": 4.993578066971524,
@@ -209,6 +215,8 @@
         "secondary": ["calm"]
       },
       "mode": "shade",
+      "treeShadeFallback": false,
+      "shadeCoverage": "complete",
       "fastest": {
         "distance": 399.4862453577219,
         "minutes": 4.993578066971524,
@@ -273,6 +281,8 @@
         "secondary": []
       },
       "mode": "shade",
+      "treeShadeFallback": false,
+      "shadeCoverage": "complete",
       "fastest": {
         "distance": 399.4862453577219,
         "minutes": 4.993578066971524,
@@ -335,6 +345,8 @@
         "secondary": []
       },
       "mode": "shade",
+      "treeShadeFallback": false,
+      "shadeCoverage": "complete",
       "fastest": {
         "distance": 399.4862453577219,
         "minutes": 4.993578066971524,
@@ -396,13 +408,15 @@
         "primary": "shade",
         "secondary": []
       },
-      "mode": "greenery",
+      "mode": "shade",
+      "treeShadeFallback": true,
+      "shadeCoverage": "complete",
       "fastest": {
         "distance": 399.4862453577219,
         "minutes": 4.993578066971524,
-        "sun": 46.23961480821892,
+        "sun": 155.95944902110384,
         "shade": 243.52679633661862,
-        "unknown": 109.7198342128849,
+        "unknown": 0,
         "streets": [
           "Talacker Überquerung",
           "Pelikanstrasse",
@@ -424,29 +438,28 @@
         ]
       },
       "chosen": {
-        "distance": 399.4862453577219,
-        "minutes": 4.993578066971524,
-        "sun": 46.23961480821892,
-        "shade": 243.52679633661862,
-        "unknown": 109.7198342128849,
+        "distance": 404.5618662766958,
+        "minutes": 5.057023328458698,
+        "sun": 81.2417837773846,
+        "shade": 323.3200824993113,
+        "unknown": 0,
         "streets": [
           "Talacker Überquerung",
           "Pelikanstrasse",
           "Nüschelerstrasse Überquerung",
-          "Pelikanstrasse",
-          "St. Annagasse Überquerung",
+          "Pelikanstrasse Überquerung",
           "Pelikanstrasse",
           "Bahnhofstrasse",
           "Sihlstrasse Überquerung"
         ],
         "nodes": [
           154477, 154478, 154479, 55327, 55326, 55325, 55324, 55323, 55322, 76498, 76497, 76496,
-          76495, 76494, 76493, 109673, 109674, 184806, 184805, 184804, 184803, 184802, 66570, 66569,
-          66568, 1179, 1180, 1181, 1182, 1183, 1184, 1185, 1186, 225568, 225569, 101548, 107455,
-          29104, 72270, 72269, 72268, 72267, 72266, 22796, 22797, 22798, 22799, 22800, 22801, 22802,
-          22803, 22804, 158597, 158598, 158599, 158600, 158601, 158602, 158603, 67961, 67962, 67963,
-          67964, 67965, 67966, 67967, 67968, 67969, 67970, 67971, 67972, 67973, 67974, 20090, 44912,
-          44913, 44914
+          76495, 76494, 76493, 109673, 109674, 153052, 153051, 56402, 129522, 129521, 129520,
+          129519, 129518, 129517, 129516, 129515, 129514, 10290, 29112, 29111, 29110, 29109, 29108,
+          29107, 29106, 29105, 29104, 72270, 72269, 72268, 72267, 72266, 22796, 22797, 22798, 22799,
+          22800, 22801, 22802, 22803, 22804, 158597, 158598, 158599, 158600, 158601, 158602, 158603,
+          67961, 67962, 67963, 67964, 67965, 67966, 67967, 67968, 67969, 67970, 67971, 67972, 67973,
+          67974, 20090, 44912, 44913, 44914
         ]
       }
     },
@@ -458,13 +471,15 @@
         "primary": "sun",
         "secondary": []
       },
-      "mode": "greenery",
+      "mode": "shade",
+      "treeShadeFallback": true,
+      "shadeCoverage": "complete",
       "fastest": {
         "distance": 399.4862453577219,
         "minutes": 4.993578066971524,
-        "sun": 46.23961480821892,
+        "sun": 155.95944902110384,
         "shade": 243.52679633661862,
-        "unknown": 109.7198342128849,
+        "unknown": 0,
         "streets": [
           "Talacker Überquerung",
           "Pelikanstrasse",
@@ -486,11 +501,11 @@
         ]
       },
       "chosen": {
-        "distance": 399.4862453577219,
-        "minutes": 4.993578066971524,
-        "sun": 46.23961480821892,
-        "shade": 243.52679633661862,
-        "unknown": 109.7198342128849,
+        "distance": 438.59297310774605,
+        "minutes": 5.482412163846826,
+        "sun": 342.27384416581395,
+        "shade": 96.31912894193239,
+        "unknown": 0,
         "streets": [
           "Talacker Überquerung",
           "Pelikanstrasse",
@@ -498,17 +513,20 @@
           "Pelikanstrasse",
           "St. Annagasse Überquerung",
           "Pelikanstrasse",
+          "Bahnhofstrasse Überquerung",
           "Bahnhofstrasse",
+          "Bahnhofstrasse Überquerung",
           "Sihlstrasse Überquerung"
         ],
         "nodes": [
           154477, 154478, 154479, 55327, 55326, 55325, 55324, 55323, 55322, 76498, 76497, 76496,
           76495, 76494, 76493, 109673, 109674, 184806, 184805, 184804, 184803, 184802, 66570, 66569,
           66568, 1179, 1180, 1181, 1182, 1183, 1184, 1185, 1186, 225568, 225569, 101548, 107455,
-          29104, 72270, 72269, 72268, 72267, 72266, 22796, 22797, 22798, 22799, 22800, 22801, 22802,
-          22803, 22804, 158597, 158598, 158599, 158600, 158601, 158602, 158603, 67961, 67962, 67963,
-          67964, 67965, 67966, 67967, 67968, 67969, 67970, 67971, 67972, 67973, 67974, 20090, 44912,
-          44913, 44914
+          29104, 72270, 72269, 72268, 72267, 72266, 22796, 169771, 169772, 40409, 241038, 241039,
+          241040, 241041, 241042, 241043, 241044, 136218, 136219, 136220, 136221, 136222, 136223,
+          136224, 136225, 136226, 136227, 136228, 136229, 136230, 136231, 136232, 136233, 136234,
+          136235, 136236, 136237, 136238, 136239, 20094, 20093, 20092, 20091, 20090, 44912, 44913,
+          44914
         ]
       }
     },
@@ -521,6 +539,7 @@
         "secondary": []
       },
       "mode": "night",
+      "treeShadeFallback": false,
       "fastest": {
         "distance": 399.4862453577219,
         "minutes": 4.993578066971524,
@@ -583,6 +602,7 @@
         "secondary": []
       },
       "mode": "night",
+      "treeShadeFallback": false,
       "fastest": {
         "distance": 399.4862453577219,
         "minutes": 4.993578066971524,

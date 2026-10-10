@@ -1145,9 +1145,11 @@ export function WalkingMap({
                 {t(
                   result?.preference === 'calm'
                     ? 'Close to main roads'
-                    : result?.canopyVersion
-                      ? 'Potential sun'
-                      : 'Direct sun',
+                    : result?.treeShadeFallback
+                      ? 'Sun · buildings only'
+                      : result?.canopyVersion
+                        ? 'Potential sun'
+                        : 'Direct sun',
                 )}
               </span>
               <span>

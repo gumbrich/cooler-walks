@@ -1,0 +1,18 @@
+{
+  "checkedAt": "2026-10-10T21:43:02.956Z",
+  "version": "0.22.0",
+  "device": "CoolerWalks_Test",
+  "offlineSwitching": true,
+  "shadeDistanceDisplay": "490 m",
+  "sunDistanceDisplay": "460 m",
+  "repeatedSwitching": true,
+  "octoberShadeDistanceDisplay": "400 m",
+  "octoberSunDistanceDisplay": "440 m",
+  "buildingComparisonWithCalm": true,
+  "night": true,
+  "languages": [
+    "en",
+    "de"
+  ],
+  "errors": []
+}

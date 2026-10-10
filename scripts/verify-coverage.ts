@@ -1,3 +1,4 @@
+import { goalImproves } from '../src/lib/preferences';
 import { loadData } from './lib/load-data';
 import fs from 'node:fs';
 import assert from 'node:assert/strict';
@@ -93,7 +94,8 @@ for (const entry of cases) {
       assert(route.distance > 200);
       if (city.id === 'ch-zurich') {
         assert.equal(r.mode, 'shade', 'New Zurich routes need supported shade estimates');
-        assert(1 - route.unknownMeters / route.distance >= 0.95);
+        if (route.id === r.fastest.id) assert(1 - route.unknownMeters / route.distance >= 0.95);
+        else assert(goalImproves('shade', route, r.fastest));
       }
     }
     assert.equal(router.calculate(from.point, to.point, r.departure, 0).alternative, null);

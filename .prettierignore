@@ -42,3 +42,5 @@ docs/canopy-library-*.json
 docs/elevation-validation.json
 docs/preferences-validation.json
 docs/light-choice-validation.json
+docs/shade-availability-before.json
+docs/shade-availability-validation.json

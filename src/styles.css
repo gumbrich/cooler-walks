@@ -4420,6 +4420,12 @@ body,
   padding-inline-start: 10px;
   border-inline-start: 2px solid var(--mode-accent);
 }
+.light-model-note {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
 .detour .segmented {
   gap: 4px;
 }

@@ -2,6 +2,7 @@
 import fs from 'node:fs';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
+import { goalImproves } from '../src/lib/preferences';
 import { getCity } from '../src/lib/cities';
 import { Router, MODEL_VERSION } from '../src/lib/routing';
 import { CanopyShade, type CanopyData } from '../src/lib/canopy';
@@ -122,6 +123,10 @@ for (const [district, fromName, toName] of journeys) {
           false,
           false,
           enabled,
+          undefined,
+          false,
+          undefined,
+          false,
         ),
       loadShade,
       loadCanopy,
@@ -152,7 +157,7 @@ for (const [district, fromName, toName] of journeys) {
           route.samples.reduce((sum, s) => sum + (s.canopyShade ? s.meters : 0), 0),
         );
         if (r.mode === 'shade' && r.alternative)
-          assert(1 - route.unknownMeters / route.distance >= 0.95);
+          assert(goalImproves('shade', r.alternative!, r.fastest));
       }
       if (!extra) assert.equal(r.alternative, null);
       records.push({
@@ -190,7 +195,7 @@ for (const [district, fromName, toName] of journeys) {
   const sun = await calculate(true, '2024-08-01T14:00:00Z', 5, 'sun');
   if (sun.alternative) {
     assert(sun.alternative.minutes <= sun.fastest.minutes + 5 + 1e-8);
-    assert(1 - sun.alternative.unknownMeters / sun.alternative.distance >= 0.95);
+    assert(goalImproves('sun', sun.alternative, sun.fastest));
   }
 }
 const pavementCases = [];
@@ -217,6 +222,10 @@ for (const [district, fromName, toName] of [
         false,
         true,
         true,
+        undefined,
+        false,
+        undefined,
+        false,
       ),
     loadShade,
     loadCanopy,
@@ -235,7 +244,7 @@ for (const [district, fromName, toName] of [
       ) < 1e-6,
     );
     if (r.alternative && r.mode === 'shade')
-      assert(1 - route.unknownMeters / route.distance >= 0.95);
+      assert(goalImproves('shade', r.alternative!, r.fastest));
   }
   if (district === 'Limmat bridge')
     assert(

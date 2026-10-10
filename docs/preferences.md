@@ -1,4 +1,4 @@
-# Route preferences · 0.21.0
+# Route preferences · 0.22.0
 
 The planner starts with two buttons: **Shade / Sun** (**Schatten / Sonne**). They remain visible on phone results as well as in the editor. Shade uses a cool forest palette; Sun uses warm cream and amber. Map exposure colours retain their meaning in both modes.
 
@@ -10,7 +10,7 @@ Zurich always uses the municipal pavement, footpath and crossing network. There 
 
 ## Choosing a route
 
-Policy: `equal-wish-bands-v2`. The fastest valid route under the selected access restrictions is the reference. Distinct alternatives must respect its extra-time limit and contain at least 10% new walking length. Walking speed remains 80 m/min, without crossing waits, pauses or a slope adjustment.
+Policy: `equal-wish-bands-v3-bounded-light`. The fastest valid route under the selected access restrictions is the reference. Distinct alternatives must respect its extra-time limit and contain at least 10% new walking length. Walking speed remains 80 m/min, without crossing waits, pauses or a slope adjustment.
 
 When sunlight coverage supports comparison, first retain routes similar to the best shade/sun alternative. An alternative must meaningfully improve the chosen sunlight goal, or keep it no worse than the fastest route while improving a supported optional wish. Unknown exposure cannot earn an improvement. When sunlight cannot be compared, supported optional wishes can still produce an alternative; the sunlight estimate remains unavailable/partial, explicitly displayed.
 
@@ -23,7 +23,7 @@ For each optional wish, calculate its best value within that candidate pool. Eve
 
 Choose the route meeting the most selected wishes, with shorter walking time breaking ties. Each wish counts once; there is no weighted temperature or “coolness” score. **Selection order does not matter.** Choices can conflict: the comparison table exposes the actual resulting values, including a wish that could not be improved. We evaluate generated alternatives, not all possible routes.
 
-Shade/sun comparison still requires at least 95% known daylight exposure, no night/low-sun transition and comparable detailed-building coverage within 5 percentage points. Calm comparison requires at least 95% traffic-context coverage. Terrain comparison requires complete usable walking-height data. Missing criteria are reported, never treated as favourable values. Tree shade is included by default; foliage and historical-source uncertainty remain in the method and result notes.
+Shade/sun comparison requires a benefit that survives worst-case unknown exposure, no night/low-sun transition and comparable detailed-building coverage within 5 percentage points. Missing tree observations no longer veto the whole trip: where a combined-model improvement cannot be established, an explicitly labelled building comparison is attempted, retaining tree evidence and rejecting a known contradiction. The 95% boundary now controls partial-data display and this fallback trigger. [Exact bounds, model selection and broad regression](shade-routing-recovery.md). Calm comparison requires at least 95% traffic-context coverage. Terrain comparison requires complete usable walking-height data. Missing criteria are reported, never treated as favourable values. Tree shade is included by default; foliage and historical-source uncertainty remain in the method and result notes.
 
 ## Evidence
 

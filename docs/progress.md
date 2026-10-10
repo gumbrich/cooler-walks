@@ -1,5 +1,9 @@
 # Progress
 
+## Restore useful sunlight choices · 0.22.0
+
+Replaced the blanket 95% sunlight gate with worst-case unknown-exposure comparisons and an explicit building-model fallback when tree observations prevent comparison. Known tree evidence is retained and can reject a contradictory fallback. The broad regression covers 48 calculations in eight Zurich districts over June, October and December; 19/24 paired choices differ, including 7/8 October pairs. Source geometry and field-validation limits are unchanged. [Repair and evidence](shade-routing-recovery.md).
+
 ## Explain Sun/Shade routing · 0.21.1
 
 Verified that the two choices already select different real Zurich routes when exposure coverage permits. Fixed the misleading fallback: a visible EN/DE status beside the buttons now explains the estimated benefit, missing coverage, night/low sun, dawn/dusk or zero detour. Calm streets can no longer hide the warning. Model geometry, ranking and the 95% coverage requirement are unchanged. [Reference cases and limits](light-choice.md).

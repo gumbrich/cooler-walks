@@ -59,17 +59,14 @@ for (const scenario of [
     const chosen = result.alternative ?? result.fastest;
     assert.equal(result.preferences!.primary, primary);
     assert(chosen.minutes <= result.fastest.minutes + scenario.budget + 1e-9);
-    if (scenario.name.startsWith('daylight')) {
+    if (scenario.name.startsWith('daylight') || scenario.name === 'unknown-exposure') {
       assert.equal(result.mode, 'shade');
       assert(result.alternative, `${scenario.name}: ${primary} must find a real alternative`);
       assert(goalCovered(primary, chosen, result.fastest, result.mode));
       assert(goalImproves(primary, chosen, result.fastest));
     } else {
       assert.equal(result.alternative, null);
-      assert.equal(
-        result.mode,
-        scenario.name === 'night' ? 'night' : scenario.name === 'no-detour' ? 'shade' : 'greenery',
-      );
+      assert.equal(result.mode, scenario.name === 'night' ? 'night' : 'shade');
     }
     results.push(result);
     records.push({
@@ -78,13 +75,15 @@ for (const scenario of [
       budget: scenario.budget,
       preferences,
       mode: result.mode,
+      treeShadeFallback: !!result.treeShadeFallback,
+      shadeCoverage: result.shadeCoverage,
       fastest: summarize(result.fastest),
       chosen: summarize(chosen),
     });
   }
   const chosen = results.map((r) => r.alternative ?? r.fastest);
   assert.deepEqual(results[0].fastest.nodes, results[1].fastest.nodes);
-  if (scenario.name.startsWith('daylight')) {
+  if (scenario.name.startsWith('daylight') || scenario.name === 'unknown-exposure') {
     assert.notDeepEqual(chosen[0].nodes, chosen[1].nodes, 'Sun and Shade must use different paths');
     assert(chosen[0].sunMeters + chosen[0].unknownMeters < chosen[1].sunMeters);
     assert(
@@ -93,7 +92,7 @@ for (const scenario of [
     );
   } else assert.deepEqual(chosen[0].nodes, chosen[1].nodes);
   console.log(
-    `${scenario.name}: ${scenario.name.startsWith('daylight') ? 'opposite light choices change the path' : 'same path with explicit reason'}`,
+    `${scenario.name}: ${scenario.name.startsWith('daylight') || scenario.name === 'unknown-exposure' ? 'opposite light choices change the path' : 'same path with explicit reason'}`,
   );
 }
 fs.writeFileSync(

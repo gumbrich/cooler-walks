@@ -55,15 +55,22 @@ try {
   await expect(status).toContainText('Shadier option:');
   await expect(selected).toContainText('490 m');
   await page.getByLabel('Departure date', { exact: true }).fill('2026-10-10');
-  await expect(status).toContainText('Not enough shade data');
+  await expect(status).toContainText('Building shade:');
+  await expect(selected).toContainText('400 m');
+  await page.getByRole('button', { name: 'Sun', exact: true }).click();
+  await expect(status).toContainText('Without building shade:');
+  await expect(selected).toContainText('440 m');
+  await page.getByRole('button', { name: 'Shade', exact: true }).click();
+  await expect(selected).toContainText('400 m');
   await page.locator('.additional-preferences summary').click();
   await page.getByRole('checkbox', { name: 'Calm streets', exact: true }).check();
-  await expect(status).toContainText('Your sun or shade choice cannot be applied.');
+  await expect(status).toContainText('Building shade:');
+  await expect(selected).toContainText('400 m');
   await page.getByRole('combobox', { name: 'Language', exact: true }).selectOption('de');
-  await expect(status).toContainText('Für diesen Weg fehlen Schattendaten.');
+  await expect(status).toContainText('Gebäudeschatten:');
   await page.getByRole('button', { name: 'Routen anzeigen', exact: true }).click();
   await page.locator('.light-choice').scrollIntoViewIfNeeded();
-  await device.screenshot({ path: 'docs/screenshots/light-choice-android-de.png' });
+  await device.screenshot({ path: 'docs/screenshots/shade-restored-android-de.png' });
   await page.getByRole('slider', { name: 'Startzeit', exact: true }).fill('1320');
   await expect(status).toContainText('Zur gewählten Zeit ist es dunkel.');
   assert.deepEqual(errors, []);
@@ -79,7 +86,9 @@ try {
         shadeDistanceDisplay: '490 m',
         sunDistanceDisplay: '460 m',
         repeatedSwitching: true,
-        unknownExposureWithCalm: true,
+        octoberShadeDistanceDisplay: '400 m',
+        octoberSunDistanceDisplay: '440 m',
+        buildingComparisonWithCalm: true,
         night: true,
         languages: ['en', 'de'],
         errors,

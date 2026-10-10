@@ -1,0 +1,3686 @@
+{
+  "checkedAt": "2026-10-10T21:44:19.920Z",
+  "model": "roof-mesh-tiled-ground-arrival-v9",
+  "timeZone": "Europe/Zurich",
+  "routeCases": 48,
+  "differentPairs": 19,
+  "treeAwareRecommendations": 18,
+  "buildingFallbackRecommendations": 13,
+  "records": [
+    {
+      "district": "Centre",
+      "from": "Bahnhofquai",
+      "to": "Bürkliplatz",
+      "anchors": [
+        {
+          "point": [
+            8.541342717777487,
+            47.37766534224276
+          ],
+          "sourceId": 7481,
+          "name": "Bahnhofquai",
+          "distance": 12.006143834337898
+        },
+        {
+          "point": [
+            8.541511682887975,
+            47.366115409239264
+          ],
+          "sourceId": 10425,
+          "name": "Bürkliplatz",
+          "distance": 2.009449160762848
+        }
+      ],
+      "departure": "2026-06-21T12:00:00Z",
+      "different": true,
+      "choices": [
+        {
+          "primary": "shade",
+          "mode": "shade",
+          "basis": "buildings",
+          "shadeCoverage": "partial",
+          "alternative": true,
+          "fastest": {
+            "distance": 1444.5295040818237,
+            "minutes": 18.056618801022797,
+            "sun": 938.8710703690591,
+            "shade": 253.83213001993974,
+            "unknown": 251.82630369282802,
+            "treeEstimate": {
+              "shadeMeters": 629.2408789339295,
+              "sunMeters": 374.31389490081665,
+              "unknownMeters": 440.97473024708063,
+              "canopyShadeMeters": 375.4087489139891
+            },
+            "pathHash": "49299137595edf34983352a268406cdf577319910890350acc46484b4c7487cc",
+            "streets": [
+              "Bahnhofquai",
+              "Bahnhofquai Überquerung",
+              "Tram Bahnhofquai",
+              "Tram Bahnhofquai Überquerung",
+              "Tram Bahnhofquai",
+              "Bahnhofquai Überquerung",
+              "Bahnhofbrücke Überquerung",
+              "Bahnhofbrücke",
+              "Bahnhofquai",
+              "Uraniastrasse",
+              "Rudolf-Brun-Brücke Überquerung",
+              "Rudolf-Brun-Brücke",
+              "Heiristeg",
+              "Schipfe",
+              "Rathausbrücke",
+              "Weinplatz",
+              "Wühre",
+              "Münsterbrücke",
+              "Münsterbrücke Überquerung",
+              "Stadthausquai",
+              "Bürkliplatz Überquerung",
+              "Bürkliplatz"
+            ]
+          },
+          "chosen": {
+            "distance": 1735.9162835840607,
+            "minutes": 21.69895354480076,
+            "sun": 631.0638361932266,
+            "shade": 1000.9489317297238,
+            "unknown": 103.90351566110891,
+            "treeEstimate": {
+              "shadeMeters": 1162.9489856215712,
+              "sunMeters": 301.2083872125129,
+              "unknownMeters": 271.75891074997537,
+              "canopyShadeMeters": 162.00005389184716
+            },
+            "pathHash": "9bee89d9692b8d70b3f55d5d5e738fb04f23a7fff292aeb8f1de958cf1c87aeb",
+            "streets": [
+              "Bahnhofquai",
+              "Hauptbahnhof Zürich, Ausgang Bahnhofquai",
+              "Hauptbahnhof Zürich, Bahnhofshalle",
+              "Hauptbahnhof Zürich, Lift zwischen Bahnhofshalle und Rail City",
+              "Hauptbahnhof Zürich, Rail City",
+              "Hauptbahnhof Zürich, Treppe Ausgang Bahnhofstrasse / Waisenhausstrasse",
+              "Bahnhofplatz",
+              "Waisenhausstrasse",
+              "Fussweg",
+              "Schützengasse",
+              "Waisenhausstrasse",
+              "Werdmühlestrasse",
+              "Werdmühlestrasse Überquerung",
+              "Lindenhofstrasse",
+              "Oetenbachgasse Überquerung",
+              "Oetenbachgasse",
+              "Lindenhofstrasse",
+              "Lindenhof",
+              "Pfalzgasse",
+              "Strehlgasse",
+              "Weinplatz",
+              "Wühre",
+              "Münsterhof",
+              "Münsterhof Überquerung",
+              "Stadthausquai",
+              "Kappelergasse Überquerung",
+              "Stadthausquai",
+              "Börsenstrasse Überquerung",
+              "Stadthausquai",
+              "Stadthausquai Überquerung",
+              "Stadthausquai",
+              "Bürkliplatz Überquerung",
+              "Bürkliplatz"
+            ]
+          },
+          "calculationMs": 6126
+        },
+        {
+          "primary": "sun",
+          "mode": "shade",
+          "basis": "buildings-and-trees",
+          "shadeCoverage": "partial",
+          "alternative": true,
+          "fastest": {
+            "distance": 1444.5295040818237,
+            "minutes": 18.056618801022797,
+            "sun": 374.31389490081665,
+            "shade": 629.2408789339295,
+            "unknown": 440.97473024708063,
+            "trees": 375.4087489139891,
+            "pathHash": "49299137595edf34983352a268406cdf577319910890350acc46484b4c7487cc",
+            "streets": [
+              "Bahnhofquai",
+              "Bahnhofquai Überquerung",
+              "Tram Bahnhofquai",
+              "Tram Bahnhofquai Überquerung",
+              "Tram Bahnhofquai",
+              "Bahnhofquai Überquerung",
+              "Bahnhofbrücke Überquerung",
+              "Bahnhofbrücke",
+              "Bahnhofquai",
+              "Uraniastrasse",
+              "Rudolf-Brun-Brücke Überquerung",
+              "Rudolf-Brun-Brücke",
+              "Heiristeg",
+              "Schipfe",
+              "Rathausbrücke",
+              "Weinplatz",
+              "Wühre",
+              "Münsterbrücke",
+              "Münsterbrücke Überquerung",
+              "Stadthausquai",
+              "Bürkliplatz Überquerung",
+              "Bürkliplatz"
+            ]
+          },
+          "chosen": {
+            "distance": 1609.2213805502502,
+            "minutes": 20.115267256878127,
+            "sun": 1002.5626494058014,
+            "shade": 352.1544179500146,
+            "unknown": 254.50431319443285,
+            "trees": 191.86291102963926,
+            "pathHash": "d747ef8c186686fb9a5cce320f5cf3098d843b79f87f99330ff4d66d8b4fc276",
+            "streets": [
+              "Bahnhofquai",
+              "Hauptbahnhof Zürich, Treppe Ausgang Bahnhofquai",
+              "Hauptbahnhof Zürich, Rail City",
+              "Hauptbahnhof Zürich, Treppe Ausgang Bahnhofsstrasse",
+              "Bahnhofstrasse",
+              "Uraniastrasse Überquerung",
+              "Bahnhofstrasse",
+              "Rennweg",
+              "Oetenbachgasse Überquerung",
+              "Rennweg",
+              "Strehlgasse",
+              "Glockengasse",
+              "Robert-Walser-Gasse",
+              "St. Peterhofstatt",
+              "Schlüsselgasse",
+              "Altstadtgasse",
+              "Storchengasse",
+              "Münsterhof",
+              "Fraumünsterstrasse",
+              "Kappelergasse Überquerung",
+              "Fraumünsterstrasse",
+              "Börsenstrasse Überquerung",
+              "Fraumünsterstrasse",
+              "Lochmannstrasse",
+              "Stadthausquai Überquerung",
+              "Stadthausquai",
+              "Bürkliplatz Überquerung",
+              "Bürkliplatz"
+            ]
+          },
+          "calculationMs": 947
+        }
+      ]
+    },
+    {
+      "district": "Centre",
+      "from": "Bahnhofquai",
+      "to": "Bürkliplatz",
+      "anchors": [
+        {
+          "point": [
+            8.541342717777487,
+            47.37766534224276
+          ],
+          "sourceId": 7481,
+          "name": "Bahnhofquai",
+          "distance": 12.006143834337898
+        },
+        {
+          "point": [
+            8.541511682887975,
+            47.366115409239264
+          ],
+          "sourceId": 10425,
+          "name": "Bürkliplatz",
+          "distance": 2.009449160762848
+        }
+      ],
+      "departure": "2026-10-10T12:00:00Z",
+      "different": true,
+      "choices": [
+        {
+          "primary": "shade",
+          "mode": "shade",
+          "basis": "buildings",
+          "shadeCoverage": "partial",
+          "alternative": true,
+          "fastest": {
+            "distance": 1444.5295040818237,
+            "minutes": 18.056618801022797,
+            "sun": 846.3515170966051,
+            "shade": 328.85459110944316,
+            "unknown": 269.32339587577815,
+            "treeEstimate": {
+              "shadeMeters": 732.9551860475932,
+              "sunMeters": 216.4201442865407,
+              "unknownMeters": 495.15417374769197,
+              "canopyShadeMeters": 404.10059493815027
+            },
+            "pathHash": "49299137595edf34983352a268406cdf577319910890350acc46484b4c7487cc",
+            "streets": [
+              "Bahnhofquai",
+              "Bahnhofquai Überquerung",
+              "Tram Bahnhofquai",
+              "Tram Bahnhofquai Überquerung",
+              "Tram Bahnhofquai",
+              "Bahnhofquai Überquerung",
+              "Bahnhofbrücke Überquerung",
+              "Bahnhofbrücke",
+              "Bahnhofquai",
+              "Uraniastrasse",
+              "Rudolf-Brun-Brücke Überquerung",
+              "Rudolf-Brun-Brücke",
+              "Heiristeg",
+              "Schipfe",
+              "Rathausbrücke",
+              "Weinplatz",
+              "Wühre",
+              "Münsterbrücke",
+              "Münsterbrücke Überquerung",
+              "Stadthausquai",
+              "Bürkliplatz Überquerung",
+              "Bürkliplatz"
+            ]
+          },
+          "chosen": {
+            "distance": 1804.334283202003,
+            "minutes": 22.55417854002504,
+            "sun": 315.7997854616162,
+            "shade": 1425.0983370523657,
+            "unknown": 63.43616068801995,
+            "treeEstimate": {
+              "shadeMeters": 1490.764387502569,
+              "sunMeters": 65.96033183430818,
+              "unknownMeters": 247.6095638651255,
+              "canopyShadeMeters": 65.66605045020233
+            },
+            "pathHash": "6673f57e542dbd482b9c88fec08ac6b7dd407bd019037ad25048f75c8633f528",
+            "streets": [
+              "Bahnhofquai",
+              "Hauptbahnhof Zürich, Ausgang Bahnhofquai",
+              "Hauptbahnhof Zürich, Bahnhofshalle",
+              "Hauptbahnhof Zürich, Treppe zwischen Bahnhofshalle und Rail City",
+              "Hauptbahnhof Zürich, Rail City",
+              "Hauptbahnhof Zürich, Treppe Ausgang Löwenstrasse",
+              "Löwenstrasse",
+              "Seidengasse",
+              "Uraniastrasse",
+              "Uraniastrasse Überquerung",
+              "Uraniastrasse",
+              "Seidengasse",
+              "Sihlstrasse",
+              "Sihlstrasse Überquerung",
+              "Bahnhofstrasse",
+              "Paradeplatz Überquerung",
+              "Paradeplatz",
+              "Paradeplatz Überquerung",
+              "Bahnhofstrasse",
+              "Börsenstrasse Überquerung",
+              "Börsenstrasse",
+              "Talstrasse Überquerung",
+              "Talstrasse",
+              "Bürkliplatz",
+              "Bürkliplatz Überquerung",
+              "Bürkliplatz"
+            ]
+          },
+          "calculationMs": 3245
+        },
+        {
+          "primary": "sun",
+          "mode": "shade",
+          "basis": "buildings",
+          "shadeCoverage": "partial",
+          "alternative": true,
+          "fastest": {
+            "distance": 1444.5295040818237,
+            "minutes": 18.056618801022797,
+            "sun": 846.3515170966051,
+            "shade": 328.85459110944316,
+            "unknown": 269.32339587577815,
+            "treeEstimate": {
+              "shadeMeters": 732.9551860475932,
+              "sunMeters": 216.4201442865407,
+              "unknownMeters": 495.15417374769197,
+              "canopyShadeMeters": 404.10059493815027
+            },
+            "pathHash": "49299137595edf34983352a268406cdf577319910890350acc46484b4c7487cc",
+            "streets": [
+              "Bahnhofquai",
+              "Bahnhofquai Überquerung",
+              "Tram Bahnhofquai",
+              "Tram Bahnhofquai Überquerung",
+              "Tram Bahnhofquai",
+              "Bahnhofquai Überquerung",
+              "Bahnhofbrücke Überquerung",
+              "Bahnhofbrücke",
+              "Bahnhofquai",
+              "Uraniastrasse",
+              "Rudolf-Brun-Brücke Überquerung",
+              "Rudolf-Brun-Brücke",
+              "Heiristeg",
+              "Schipfe",
+              "Rathausbrücke",
+              "Weinplatz",
+              "Wühre",
+              "Münsterbrücke",
+              "Münsterbrücke Überquerung",
+              "Stadthausquai",
+              "Bürkliplatz Überquerung",
+              "Bürkliplatz"
+            ]
+          },
+          "chosen": {
+            "distance": 1552.6118502382055,
+            "minutes": 19.40764812797757,
+            "sun": 1445.884770747044,
+            "shade": 45.78688530072849,
+            "unknown": 60.94019419043291,
+            "treeEstimate": {
+              "shadeMeters": 692.254256948687,
+              "sunMeters": 278.0831588324684,
+              "unknownMeters": 582.2744344570518,
+              "canopyShadeMeters": 646.4673716479585
+            },
+            "pathHash": "a77dbee22dda92fa751e33c1b5ef8cee33e1fb28dd840555df287867236066c6",
+            "streets": [
+              "Bahnhofquai",
+              "Hauptbahnhof Zürich, Treppe Ausgang Bahnhofquai",
+              "Hauptbahnhof Zürich, Rail City",
+              "Hauptbahnhof Zürich, Treppe Ausgang Bahnhofstrasse / City",
+              "Bahnhofstrasse",
+              "Uraniastrasse Überquerung",
+              "Bahnhofstrasse",
+              "Sihlstrasse Überquerung",
+              "Bahnhofstrasse Überquerung",
+              "Bahnhofstrasse",
+              "Börsenstrasse Überquerung",
+              "Bahnhofstrasse",
+              "Bürkliplatz Überquerung",
+              "Bürkliplatz",
+              "Bürkliplatz Überquerung",
+              "Bürkliplatz"
+            ]
+          },
+          "calculationMs": 1508
+        }
+      ]
+    },
+    {
+      "district": "Centre",
+      "from": "Bahnhofquai",
+      "to": "Bürkliplatz",
+      "anchors": [
+        {
+          "point": [
+            8.541342717777487,
+            47.37766534224276
+          ],
+          "sourceId": 7481,
+          "name": "Bahnhofquai",
+          "distance": 12.006143834337898
+        },
+        {
+          "point": [
+            8.541511682887975,
+            47.366115409239264
+          ],
+          "sourceId": 10425,
+          "name": "Bürkliplatz",
+          "distance": 2.009449160762848
+        }
+      ],
+      "departure": "2026-12-21T11:00:00Z",
+      "different": true,
+      "choices": [
+        {
+          "primary": "shade",
+          "mode": "shade",
+          "basis": "buildings",
+          "shadeCoverage": "partial",
+          "alternative": true,
+          "fastest": {
+            "distance": 1444.5295040818237,
+            "minutes": 18.056618801022797,
+            "sun": 886.081234258193,
+            "shade": 189.76475470743364,
+            "unknown": 368.68351511619943,
+            "treeEstimate": {
+              "shadeMeters": 659.8996133097949,
+              "sunMeters": 0,
+              "unknownMeters": 784.6298907720311,
+              "canopyShadeMeters": 470.1348586023614
+            },
+            "pathHash": "49299137595edf34983352a268406cdf577319910890350acc46484b4c7487cc",
+            "streets": [
+              "Bahnhofquai",
+              "Bahnhofquai Überquerung",
+              "Tram Bahnhofquai",
+              "Tram Bahnhofquai Überquerung",
+              "Tram Bahnhofquai",
+              "Bahnhofquai Überquerung",
+              "Bahnhofbrücke Überquerung",
+              "Bahnhofbrücke",
+              "Bahnhofquai",
+              "Uraniastrasse",
+              "Rudolf-Brun-Brücke Überquerung",
+              "Rudolf-Brun-Brücke",
+              "Heiristeg",
+              "Schipfe",
+              "Rathausbrücke",
+              "Weinplatz",
+              "Wühre",
+              "Münsterbrücke",
+              "Münsterbrücke Überquerung",
+              "Stadthausquai",
+              "Bürkliplatz Überquerung",
+              "Bürkliplatz"
+            ]
+          },
+          "chosen": {
+            "distance": 1692.176409965829,
+            "minutes": 21.152205124572863,
+            "sun": 221.78981341848805,
+            "shade": 1382.655892642015,
+            "unknown": 87.73070390532698,
+            "treeEstimate": {
+              "shadeMeters": 1443.6554630507155,
+              "sunMeters": 0,
+              "unknownMeters": 248.52094691511527,
+              "canopyShadeMeters": 60.99957040869978
+            },
+            "pathHash": "13cb92e773ea5889df4329be2e66f46d5fa4a6f65920f65762bae11667ee1582",
+            "streets": [
+              "Bahnhofquai",
+              "Hauptbahnhof Zürich, Treppe Ausgang Bahnhofquai",
+              "Hauptbahnhof Zürich, Rail City",
+              "Hauptbahnhof Zürich, Treppe Ausgang Bahnhofsstrasse",
+              "Bahnhofstrasse",
+              "Uraniastrasse Überquerung",
+              "Bahnhofstrasse",
+              "Rennweg",
+              "Oetenbachgasse Überquerung",
+              "Rennweg",
+              "Kuttelgasse",
+              "Augustinergasse",
+              "Bahnhofstrasse Überquerung",
+              "Bahnhofstrasse",
+              "Paradeplatz",
+              "Paradeplatz Überquerung",
+              "Bleicherweg",
+              "Talstrasse Überquerung",
+              "Talstrasse",
+              "Börsenstrasse Überquerung",
+              "Talstrasse",
+              "Bürkliplatz",
+              "Bürkliplatz Überquerung",
+              "Bürkliplatz"
+            ]
+          },
+          "calculationMs": 2934
+        },
+        {
+          "primary": "sun",
+          "mode": "shade",
+          "basis": "buildings",
+          "shadeCoverage": "partial",
+          "alternative": false,
+          "fastest": {
+            "distance": 1444.5295040818237,
+            "minutes": 18.056618801022797,
+            "sun": 886.081234258193,
+            "shade": 189.76475470743364,
+            "unknown": 368.68351511619943,
+            "treeEstimate": {
+              "shadeMeters": 659.8996133097949,
+              "sunMeters": 0,
+              "unknownMeters": 784.6298907720311,
+              "canopyShadeMeters": 470.1348586023614
+            },
+            "pathHash": "49299137595edf34983352a268406cdf577319910890350acc46484b4c7487cc",
+            "streets": [
+              "Bahnhofquai",
+              "Bahnhofquai Überquerung",
+              "Tram Bahnhofquai",
+              "Tram Bahnhofquai Überquerung",
+              "Tram Bahnhofquai",
+              "Bahnhofquai Überquerung",
+              "Bahnhofbrücke Überquerung",
+              "Bahnhofbrücke",
+              "Bahnhofquai",
+              "Uraniastrasse",
+              "Rudolf-Brun-Brücke Überquerung",
+              "Rudolf-Brun-Brücke",
+              "Heiristeg",
+              "Schipfe",
+              "Rathausbrücke",
+              "Weinplatz",
+              "Wühre",
+              "Münsterbrücke",
+              "Münsterbrücke Überquerung",
+              "Stadthausquai",
+              "Bürkliplatz Überquerung",
+              "Bürkliplatz"
+            ]
+          },
+          "chosen": {
+            "distance": 1444.5295040818237,
+            "minutes": 18.056618801022797,
+            "sun": 886.081234258193,
+            "shade": 189.76475470743364,
+            "unknown": 368.68351511619943,
+            "treeEstimate": {
+              "shadeMeters": 659.8996133097949,
+              "sunMeters": 0,
+              "unknownMeters": 784.6298907720311,
+              "canopyShadeMeters": 470.1348586023614
+            },
+            "pathHash": "49299137595edf34983352a268406cdf577319910890350acc46484b4c7487cc",
+            "streets": [
+              "Bahnhofquai",
+              "Bahnhofquai Überquerung",
+              "Tram Bahnhofquai",
+              "Tram Bahnhofquai Überquerung",
+              "Tram Bahnhofquai",
+              "Bahnhofquai Überquerung",
+              "Bahnhofbrücke Überquerung",
+              "Bahnhofbrücke",
+              "Bahnhofquai",
+              "Uraniastrasse",
+              "Rudolf-Brun-Brücke Überquerung",
+              "Rudolf-Brun-Brücke",
+              "Heiristeg",
+              "Schipfe",
+              "Rathausbrücke",
+              "Weinplatz",
+              "Wühre",
+              "Münsterbrücke",
+              "Münsterbrücke Überquerung",
+              "Stadthausquai",
+              "Bürkliplatz Überquerung",
+              "Bürkliplatz"
+            ]
+          },
+          "calculationMs": 1340
+        }
+      ]
+    },
+    {
+      "district": "Oerlikon",
+      "from": "Hofwiesenstrasse 350",
+      "to": "Wallisellenstrasse 45",
+      "anchors": [
+        {
+          "point": [
+            8.542519874295733,
+            47.41052130673649
+          ],
+          "sourceId": 31619,
+          "name": "Hofwiesenstrasse",
+          "distance": 3.5145848143095537
+        },
+        {
+          "point": [
+            8.551761467091621,
+            47.41072021541055
+          ],
+          "sourceId": 10577,
+          "name": "Wallisellenstrasse",
+          "distance": 8.878320001498924
+        }
+      ],
+      "departure": "2026-06-21T12:00:00Z",
+      "different": true,
+      "choices": [
+        {
+          "primary": "shade",
+          "mode": "shade",
+          "basis": "buildings-and-trees",
+          "shadeCoverage": "complete",
+          "alternative": true,
+          "fastest": {
+            "distance": 788.1891214678839,
+            "minutes": 9.852364018348549,
+            "sun": 473.94054726027684,
+            "shade": 286.2342499767581,
+            "unknown": 28.014324230847787,
+            "trees": 83.19103083456321,
+            "pathHash": "20a40b77aaed94addf513538733910e533f1bd633498fd913e0765465fb681bc",
+            "streets": [
+              "Hofwiesenstrasse",
+              "Franklinstrasse",
+              "Querstrasse",
+              "Edisonstrasse Überquerung",
+              "Querstrasse",
+              "Schaffhauserstrasse Überquerung",
+              "Wallisellenstrasse",
+              "Dörflistrasse Überquerung",
+              "Wallisellenstrasse",
+              "Thurgauerstrasse Überquerung",
+              "Thurgauerstrasse",
+              "Wallisellenstrasse Überquerung",
+              "Wallisellenstrasse"
+            ]
+          },
+          "chosen": {
+            "distance": 843.8306120505615,
+            "minutes": 10.547882650632019,
+            "sun": 402.40683792590403,
+            "shade": 441.42377412465714,
+            "unknown": 0,
+            "trees": 127.88873619724109,
+            "pathHash": "d2203642c1f529afd08c677ac6acf5763c3ffe0d7973e744d3a53fc29a953925",
+            "streets": [
+              "Hofwiesenstrasse",
+              "Schulstrasse",
+              "Schulstrasse Überquerung",
+              "Nansenstrasse",
+              "Marktplatz Oerlikon",
+              "Querstrasse",
+              "Edisonstrasse Überquerung",
+              "Querstrasse",
+              "Schaffhauserstrasse",
+              "Schaffhauserstrasse Überquerung",
+              "Wallisellenstrasse",
+              "Dörflistrasse Überquerung",
+              "Wallisellenstrasse",
+              "Thurgauerstrasse Überquerung",
+              "Thurgauerstrasse",
+              "Wallisellenstrasse Überquerung",
+              "Wallisellenstrasse"
+            ]
+          },
+          "calculationMs": 1568
+        },
+        {
+          "primary": "sun",
+          "mode": "shade",
+          "basis": "buildings-and-trees",
+          "shadeCoverage": "complete",
+          "alternative": true,
+          "fastest": {
+            "distance": 788.1891214678839,
+            "minutes": 9.852364018348549,
+            "sun": 473.94054726027684,
+            "shade": 286.2342499767581,
+            "unknown": 28.014324230847787,
+            "trees": 83.19103083456321,
+            "pathHash": "20a40b77aaed94addf513538733910e533f1bd633498fd913e0765465fb681bc",
+            "streets": [
+              "Hofwiesenstrasse",
+              "Franklinstrasse",
+              "Querstrasse",
+              "Edisonstrasse Überquerung",
+              "Querstrasse",
+              "Schaffhauserstrasse Überquerung",
+              "Wallisellenstrasse",
+              "Dörflistrasse Überquerung",
+              "Wallisellenstrasse",
+              "Thurgauerstrasse Überquerung",
+              "Thurgauerstrasse",
+              "Wallisellenstrasse Überquerung",
+              "Wallisellenstrasse"
+            ]
+          },
+          "chosen": {
+            "distance": 965.2043808475846,
+            "minutes": 12.065054760594808,
+            "sun": 844.509013790095,
+            "shade": 94.47359091222886,
+            "unknown": 26.22177614526051,
+            "trees": 72.75638938141854,
+            "pathHash": "20a39347e27b705f991c5c721ca9cf7c4005d3be214477349652c4efa58cff51",
+            "streets": [
+              "Hofwiesenstrasse",
+              "Franklinstrasse",
+              "Querstrasse",
+              "Marktplatz Oerlikon",
+              "Edisonstrasse",
+              "Edisonstrasse Überquerung",
+              "Nansenstrasse",
+              "Nansenstrasse Überquerung",
+              "Ohmstrasse Überquerung",
+              "Ohmstrasse",
+              "Schaffhauserstrasse Überquerung",
+              "Wallisellenstrasse",
+              "Dörflistrasse Überquerung",
+              "Wallisellenstrasse",
+              "Thurgauerstrasse",
+              "Thurgauerstrasse Überquerung",
+              "Thurgauerstrasse",
+              "Wallisellenstrasse"
+            ]
+          },
+          "calculationMs": 265
+        }
+      ]
+    },
+    {
+      "district": "Oerlikon",
+      "from": "Hofwiesenstrasse 350",
+      "to": "Wallisellenstrasse 45",
+      "anchors": [
+        {
+          "point": [
+            8.542519874295733,
+            47.41052130673649
+          ],
+          "sourceId": 31619,
+          "name": "Hofwiesenstrasse",
+          "distance": 3.5145848143095537
+        },
+        {
+          "point": [
+            8.551761467091621,
+            47.41072021541055
+          ],
+          "sourceId": 10577,
+          "name": "Wallisellenstrasse",
+          "distance": 8.878320001498924
+        }
+      ],
+      "departure": "2026-10-10T12:00:00Z",
+      "different": true,
+      "choices": [
+        {
+          "primary": "shade",
+          "mode": "shade",
+          "basis": "buildings-and-trees",
+          "shadeCoverage": "partial",
+          "alternative": true,
+          "fastest": {
+            "distance": 788.1891214678839,
+            "minutes": 9.852364018348549,
+            "sun": 362.62622293383214,
+            "shade": 383.6146763048588,
+            "unknown": 41.94822222919212,
+            "trees": 32.538543929669515,
+            "pathHash": "20a40b77aaed94addf513538733910e533f1bd633498fd913e0765465fb681bc",
+            "streets": [
+              "Hofwiesenstrasse",
+              "Franklinstrasse",
+              "Querstrasse",
+              "Edisonstrasse Überquerung",
+              "Querstrasse",
+              "Schaffhauserstrasse Überquerung",
+              "Wallisellenstrasse",
+              "Dörflistrasse Überquerung",
+              "Wallisellenstrasse",
+              "Thurgauerstrasse Überquerung",
+              "Thurgauerstrasse",
+              "Wallisellenstrasse Überquerung",
+              "Wallisellenstrasse"
+            ]
+          },
+          "chosen": {
+            "distance": 960.1049219529789,
+            "minutes": 12.001311524412236,
+            "sun": 277.07052313082573,
+            "shade": 672.1073523219145,
+            "unknown": 10.927046500237958,
+            "trees": 43.31364540159465,
+            "pathHash": "5add2336f9f6a9cf9d8b1c795344773a562b06e808577d35755d72480701a81e",
+            "streets": [
+              "Hofwiesenstrasse",
+              "Schulstrasse",
+              "Schulstrasse Überquerung",
+              "Nansenstrasse",
+              "Marktplatz Oerlikon",
+              "Edisonstrasse Überquerung",
+              "Querstrasse",
+              "Schaffhauserstrasse",
+              "Schaffhauserstrasse Überquerung",
+              "Wallisellenstrasse",
+              "Dörflistrasse",
+              "Dörflistrasse Überquerung",
+              "Thurgauerstrasse",
+              "Thurgauerstrasse Überquerung",
+              "Thurgauerstrasse",
+              "Wallisellenstrasse Überquerung",
+              "Wallisellenstrasse"
+            ]
+          },
+          "calculationMs": 876
+        },
+        {
+          "primary": "sun",
+          "mode": "shade",
+          "basis": "buildings-and-trees",
+          "shadeCoverage": "partial",
+          "alternative": true,
+          "fastest": {
+            "distance": 788.1891214678839,
+            "minutes": 9.852364018348549,
+            "sun": 362.62622293383214,
+            "shade": 383.6146763048588,
+            "unknown": 41.94822222919212,
+            "trees": 32.538543929669515,
+            "pathHash": "20a40b77aaed94addf513538733910e533f1bd633498fd913e0765465fb681bc",
+            "streets": [
+              "Hofwiesenstrasse",
+              "Franklinstrasse",
+              "Querstrasse",
+              "Edisonstrasse Überquerung",
+              "Querstrasse",
+              "Schaffhauserstrasse Überquerung",
+              "Wallisellenstrasse",
+              "Dörflistrasse Überquerung",
+              "Wallisellenstrasse",
+              "Thurgauerstrasse Überquerung",
+              "Thurgauerstrasse",
+              "Wallisellenstrasse Überquerung",
+              "Wallisellenstrasse"
+            ]
+          },
+          "chosen": {
+            "distance": 806.9639984101825,
+            "minutes": 10.087049980127281,
+            "sun": 451.5076622340656,
+            "shade": 326.3101254780427,
+            "unknown": 29.14621069807171,
+            "trees": 9.28851308370199,
+            "pathHash": "37df192e25b4733eedd8219e7e725abe45cb3f50c4011226e57a6927a654cd0a",
+            "streets": [
+              "Hofwiesenstrasse",
+              "Franklinstrasse",
+              "Querstrasse",
+              "Edisonstrasse Überquerung",
+              "Querstrasse",
+              "Schaffhauserstrasse Überquerung",
+              "Wallisellenstrasse Überquerung",
+              "Wallisellenstrasse",
+              "Dörflistrasse Überquerung",
+              "Wallisellenstrasse",
+              "Thurgauerstrasse",
+              "Thurgauerstrasse Überquerung",
+              "Thurgauerstrasse",
+              "Wallisellenstrasse"
+            ]
+          },
+          "calculationMs": 281
+        }
+      ]
+    },
+    {
+      "district": "Oerlikon",
+      "from": "Hofwiesenstrasse 350",
+      "to": "Wallisellenstrasse 45",
+      "anchors": [
+        {
+          "point": [
+            8.542519874295733,
+            47.41052130673649
+          ],
+          "sourceId": 31619,
+          "name": "Hofwiesenstrasse",
+          "distance": 3.5145848143095537
+        },
+        {
+          "point": [
+            8.551761467091621,
+            47.41072021541055
+          ],
+          "sourceId": 10577,
+          "name": "Wallisellenstrasse",
+          "distance": 8.878320001498924
+        }
+      ],
+      "departure": "2026-12-21T11:00:00Z",
+      "different": true,
+      "choices": [
+        {
+          "primary": "shade",
+          "mode": "shade",
+          "basis": "buildings",
+          "shadeCoverage": "complete",
+          "alternative": false,
+          "fastest": {
+            "distance": 788.1891214678839,
+            "minutes": 9.852364018348549,
+            "sun": 296.6622278513029,
+            "shade": 458.74575411586665,
+            "unknown": 32.78113950071388,
+            "treeEstimate": {
+              "shadeMeters": 486.15511380500607,
+              "sunMeters": 225.8831918499172,
+              "unknownMeters": 76.15081581296,
+              "canopyShadeMeters": 27.409359689139457
+            },
+            "pathHash": "20a40b77aaed94addf513538733910e533f1bd633498fd913e0765465fb681bc",
+            "streets": [
+              "Hofwiesenstrasse",
+              "Franklinstrasse",
+              "Querstrasse",
+              "Edisonstrasse Überquerung",
+              "Querstrasse",
+              "Schaffhauserstrasse Überquerung",
+              "Wallisellenstrasse",
+              "Dörflistrasse Überquerung",
+              "Wallisellenstrasse",
+              "Thurgauerstrasse Überquerung",
+              "Thurgauerstrasse",
+              "Wallisellenstrasse Überquerung",
+              "Wallisellenstrasse"
+            ]
+          },
+          "chosen": {
+            "distance": 788.1891214678839,
+            "minutes": 9.852364018348549,
+            "sun": 296.6622278513029,
+            "shade": 458.74575411586665,
+            "unknown": 32.78113950071388,
+            "treeEstimate": {
+              "shadeMeters": 486.15511380500607,
+              "sunMeters": 225.8831918499172,
+              "unknownMeters": 76.15081581296,
+              "canopyShadeMeters": 27.409359689139457
+            },
+            "pathHash": "20a40b77aaed94addf513538733910e533f1bd633498fd913e0765465fb681bc",
+            "streets": [
+              "Hofwiesenstrasse",
+              "Franklinstrasse",
+              "Querstrasse",
+              "Edisonstrasse Überquerung",
+              "Querstrasse",
+              "Schaffhauserstrasse Überquerung",
+              "Wallisellenstrasse",
+              "Dörflistrasse Überquerung",
+              "Wallisellenstrasse",
+              "Thurgauerstrasse Überquerung",
+              "Thurgauerstrasse",
+              "Wallisellenstrasse Überquerung",
+              "Wallisellenstrasse"
+            ]
+          },
+          "calculationMs": 1337
+        },
+        {
+          "primary": "sun",
+          "mode": "shade",
+          "basis": "buildings",
+          "shadeCoverage": "complete",
+          "alternative": true,
+          "fastest": {
+            "distance": 788.1891214678839,
+            "minutes": 9.852364018348549,
+            "sun": 296.6622278513029,
+            "shade": 458.74575411586665,
+            "unknown": 32.78113950071388,
+            "treeEstimate": {
+              "shadeMeters": 486.15511380500607,
+              "sunMeters": 225.8831918499172,
+              "unknownMeters": 76.15081581296,
+              "canopyShadeMeters": 27.409359689139457
+            },
+            "pathHash": "20a40b77aaed94addf513538733910e533f1bd633498fd913e0765465fb681bc",
+            "streets": [
+              "Hofwiesenstrasse",
+              "Franklinstrasse",
+              "Querstrasse",
+              "Edisonstrasse Überquerung",
+              "Querstrasse",
+              "Schaffhauserstrasse Überquerung",
+              "Wallisellenstrasse",
+              "Dörflistrasse Überquerung",
+              "Wallisellenstrasse",
+              "Thurgauerstrasse Überquerung",
+              "Thurgauerstrasse",
+              "Wallisellenstrasse Überquerung",
+              "Wallisellenstrasse"
+            ]
+          },
+          "chosen": {
+            "distance": 832.1834338964065,
+            "minutes": 10.402292923705081,
+            "sun": 461.64577977196814,
+            "shade": 332.9200183503,
+            "unknown": 37.61763577413687,
+            "treeEstimate": {
+              "shadeMeters": 399.67250647212677,
+              "sunMeters": 302.7188204846759,
+              "unknownMeters": 129.7921069396022,
+              "canopyShadeMeters": 66.75248812182689
+            },
+            "pathHash": "7809060e0c0165380050d25d5cac8cee4419a0e4cea8496b7e03b951c3bd2e18",
+            "streets": [
+              "Hofwiesenstrasse",
+              "Schulstrasse",
+              "Schulstrasse Überquerung",
+              "Nansenstrasse",
+              "Edisonstrasse",
+              "Edisonstrasse Überquerung",
+              "Nansenstrasse",
+              "Ohmstrasse Überquerung",
+              "Ohmstrasse",
+              "Schaffhauserstrasse Überquerung",
+              "Wallisellenstrasse",
+              "Dörflistrasse Überquerung",
+              "Wallisellenstrasse",
+              "Thurgauerstrasse",
+              "Thurgauerstrasse Überquerung",
+              "Thurgauerstrasse",
+              "Wallisellenstrasse"
+            ]
+          },
+          "calculationMs": 610
+        }
+      ]
+    },
+    {
+      "district": "Altstetten",
+      "from": "Altstetterstrasse 145",
+      "to": "Hohlstrasse 554",
+      "anchors": [
+        {
+          "point": [
+            8.486868850049815,
+            47.38848323756354
+          ],
+          "sourceId": 18887,
+          "name": "Altstetterstrasse",
+          "distance": 7.137195723993948
+        },
+        {
+          "point": [
+            8.489829797615979,
+            47.390626814205305
+          ],
+          "sourceId": 3589,
+          "name": "Hohlstrasse",
+          "distance": 9.608405222700817,
+          "sharedEndpoint": "8.489829789278987,47.390626805334115"
+        }
+      ],
+      "departure": "2026-06-21T12:00:00Z",
+      "different": true,
+      "choices": [
+        {
+          "primary": "shade",
+          "mode": "shade",
+          "basis": "buildings-and-trees",
+          "shadeCoverage": "complete",
+          "alternative": true,
+          "fastest": {
+            "distance": 507.2014984994302,
+            "minutes": 6.3400187312428775,
+            "sun": 288.99028060395597,
+            "shade": 204.16043558403734,
+            "unknown": 14.050782311436791,
+            "trees": 177.06058082925122,
+            "pathHash": "36eee29cf9022e330d7389cc730d7c6c6219878f55b55b88c8a1d6ef43e1707e",
+            "streets": [
+              "Altstetterstrasse",
+              "Baslerstrasse",
+              "Baslerstrasse Überquerung",
+              "Altstetterstrasse",
+              "Hohlstrasse",
+              "Saumackerstrasse Überquerung",
+              "Hohlstrasse Überquerung"
+            ]
+          },
+          "chosen": {
+            "distance": 610.8295785008511,
+            "minutes": 7.635369731260639,
+            "sun": 203.30132725198501,
+            "shade": 391.53461849285765,
+            "unknown": 15.99363275600819,
+            "trees": 326.74369816127785,
+            "pathHash": "5f8bfe31013d8d823444505d1647775df4ecb31e66063213763342c492559737",
+            "streets": [
+              "Altstetterstrasse",
+              "Altstetterstrasse Überquerung",
+              "Altstetterstrasse",
+              "Altstetterstrasse Überquerung",
+              "Hohlstrasse",
+              "Hohlstrasse Überquerung",
+              "Hohlstrasse",
+              "Altstetterplatz",
+              "Altstetterplatz Überquerung",
+              "Hohlstrasse"
+            ]
+          },
+          "calculationMs": 1408
+        },
+        {
+          "primary": "sun",
+          "mode": "shade",
+          "basis": "buildings-and-trees",
+          "shadeCoverage": "complete",
+          "alternative": true,
+          "fastest": {
+            "distance": 507.2014984994302,
+            "minutes": 6.3400187312428775,
+            "sun": 288.99028060395597,
+            "shade": 204.16043558403734,
+            "unknown": 14.050782311436791,
+            "trees": 177.06058082925122,
+            "pathHash": "36eee29cf9022e330d7389cc730d7c6c6219878f55b55b88c8a1d6ef43e1707e",
+            "streets": [
+              "Altstetterstrasse",
+              "Baslerstrasse",
+              "Baslerstrasse Überquerung",
+              "Altstetterstrasse",
+              "Hohlstrasse",
+              "Saumackerstrasse Überquerung",
+              "Hohlstrasse Überquerung"
+            ]
+          },
+          "chosen": {
+            "distance": 610.2375069522975,
+            "minutes": 7.627968836903719,
+            "sun": 532.5402068098573,
+            "shade": 77.69730014244053,
+            "unknown": 0,
+            "trees": 72.5902208010917,
+            "pathHash": "0e441886415de89e54c31cc28dde6fea4ed63745b84d977d4d6c60977395924f",
+            "streets": [
+              "Altstetterstrasse",
+              "Badenerstrasse",
+              "Saumackerstrasse",
+              "Baslerstrasse Überquerung",
+              "Saumackerstrasse",
+              "Saumackerstrasse Überquerung",
+              "Hohlstrasse Überquerung"
+            ]
+          },
+          "calculationMs": 227
+        }
+      ]
+    },
+    {
+      "district": "Altstetten",
+      "from": "Altstetterstrasse 145",
+      "to": "Hohlstrasse 554",
+      "anchors": [
+        {
+          "point": [
+            8.486868850049815,
+            47.38848323756354
+          ],
+          "sourceId": 18887,
+          "name": "Altstetterstrasse",
+          "distance": 7.137195723993948
+        },
+        {
+          "point": [
+            8.489829797615979,
+            47.390626814205305
+          ],
+          "sourceId": 3589,
+          "name": "Hohlstrasse",
+          "distance": 9.608405222700817,
+          "sharedEndpoint": "8.489829789278987,47.390626805334115"
+        }
+      ],
+      "departure": "2026-10-10T12:00:00Z",
+      "different": true,
+      "choices": [
+        {
+          "primary": "shade",
+          "mode": "shade",
+          "basis": "buildings",
+          "shadeCoverage": "complete",
+          "alternative": false,
+          "fastest": {
+            "distance": 507.2014984994302,
+            "minutes": 6.3400187312428775,
+            "sun": 364.1061522081298,
+            "shade": 143.0953462913005,
+            "unknown": 0,
+            "treeEstimate": {
+              "shadeMeters": 288.2867750693706,
+              "sunMeters": 188.6862706364959,
+              "unknownMeters": 30.22845279356362,
+              "canopyShadeMeters": 145.19142877807028
+            },
+            "pathHash": "36eee29cf9022e330d7389cc730d7c6c6219878f55b55b88c8a1d6ef43e1707e",
+            "streets": [
+              "Altstetterstrasse",
+              "Baslerstrasse",
+              "Baslerstrasse Überquerung",
+              "Altstetterstrasse",
+              "Hohlstrasse",
+              "Saumackerstrasse Überquerung",
+              "Hohlstrasse Überquerung"
+            ]
+          },
+          "chosen": {
+            "distance": 507.2014984994302,
+            "minutes": 6.3400187312428775,
+            "sun": 364.1061522081298,
+            "shade": 143.0953462913005,
+            "unknown": 0,
+            "treeEstimate": {
+              "shadeMeters": 288.2867750693706,
+              "sunMeters": 188.6862706364959,
+              "unknownMeters": 30.22845279356362,
+              "canopyShadeMeters": 145.19142877807028
+            },
+            "pathHash": "36eee29cf9022e330d7389cc730d7c6c6219878f55b55b88c8a1d6ef43e1707e",
+            "streets": [
+              "Altstetterstrasse",
+              "Baslerstrasse",
+              "Baslerstrasse Überquerung",
+              "Altstetterstrasse",
+              "Hohlstrasse",
+              "Saumackerstrasse Überquerung",
+              "Hohlstrasse Überquerung"
+            ]
+          },
+          "calculationMs": 1100
+        },
+        {
+          "primary": "sun",
+          "mode": "shade",
+          "basis": "buildings-and-trees",
+          "shadeCoverage": "partial",
+          "alternative": true,
+          "fastest": {
+            "distance": 507.2014984994302,
+            "minutes": 6.3400187312428775,
+            "sun": 188.6862706364959,
+            "shade": 288.2867750693706,
+            "unknown": 30.22845279356362,
+            "trees": 145.19142877807028,
+            "pathHash": "36eee29cf9022e330d7389cc730d7c6c6219878f55b55b88c8a1d6ef43e1707e",
+            "streets": [
+              "Altstetterstrasse",
+              "Baslerstrasse",
+              "Baslerstrasse Überquerung",
+              "Altstetterstrasse",
+              "Hohlstrasse",
+              "Saumackerstrasse Überquerung",
+              "Hohlstrasse Überquerung"
+            ]
+          },
+          "chosen": {
+            "distance": 533.035402683429,
+            "minutes": 6.6629425335428625,
+            "sun": 319.66308032213846,
+            "shade": 182.5942390355021,
+            "unknown": 30.778083325788497,
+            "trees": 138.58158677688658,
+            "pathHash": "6559fe6895f09b135f787d8bc5b44d30a106e69766c5b2e3540731e975fce815",
+            "streets": [
+              "Altstetterstrasse",
+              "Baslerstrasse",
+              "Baslerstrasse Überquerung",
+              "Altstetterstrasse",
+              "Hohlstrasse",
+              "Hohlstrasse Überquerung",
+              "Hohlstrasse",
+              "Altstetterplatz",
+              "Altstetterplatz Überquerung",
+              "Hohlstrasse"
+            ]
+          },
+          "calculationMs": 278
+        }
+      ]
+    },
+    {
+      "district": "Altstetten",
+      "from": "Altstetterstrasse 145",
+      "to": "Hohlstrasse 554",
+      "anchors": [
+        {
+          "point": [
+            8.486868850049815,
+            47.38848323756354
+          ],
+          "sourceId": 18887,
+          "name": "Altstetterstrasse",
+          "distance": 7.137195723993948
+        },
+        {
+          "point": [
+            8.489829797615979,
+            47.390626814205305
+          ],
+          "sourceId": 3589,
+          "name": "Hohlstrasse",
+          "distance": 9.608405222700817,
+          "sharedEndpoint": "8.489829789278987,47.390626805334115"
+        }
+      ],
+      "departure": "2026-12-21T11:00:00Z",
+      "different": true,
+      "choices": [
+        {
+          "primary": "shade",
+          "mode": "shade",
+          "basis": "buildings-and-trees",
+          "shadeCoverage": "complete",
+          "alternative": true,
+          "fastest": {
+            "distance": 507.2014984994302,
+            "minutes": 6.3400187312428775,
+            "sun": 91.06018918577126,
+            "shade": 401.7801602172965,
+            "unknown": 14.361149096362347,
+            "trees": 107.71010661498964,
+            "pathHash": "36eee29cf9022e330d7389cc730d7c6c6219878f55b55b88c8a1d6ef43e1707e",
+            "streets": [
+              "Altstetterstrasse",
+              "Baslerstrasse",
+              "Baslerstrasse Überquerung",
+              "Altstetterstrasse",
+              "Hohlstrasse",
+              "Saumackerstrasse Überquerung",
+              "Hohlstrasse Überquerung"
+            ]
+          },
+          "chosen": {
+            "distance": 602.8015060471892,
+            "minutes": 7.535018825589864,
+            "sun": 18.901339149577474,
+            "shade": 583.9001668976117,
+            "unknown": 0,
+            "trees": 0,
+            "pathHash": "e13d36dcbfc4b5dd260de30b941c7c466c49eb62ac35f64723a8dd788cc8182d",
+            "streets": [
+              "Altstetterstrasse",
+              "Badenerstrasse",
+              "Saumackerstrasse Überquerung",
+              "Saumackerstrasse",
+              "Baslerstrasse",
+              "Baslerstrasse Überquerung",
+              "Baslerstrasse",
+              "Saumackerstrasse",
+              "Hohlstrasse Überquerung"
+            ]
+          },
+          "calculationMs": 826
+        },
+        {
+          "primary": "sun",
+          "mode": "shade",
+          "basis": "buildings-and-trees",
+          "shadeCoverage": "partial",
+          "alternative": true,
+          "fastest": {
+            "distance": 507.2014984994302,
+            "minutes": 6.3400187312428775,
+            "sun": 91.06018918577126,
+            "shade": 401.7801602172965,
+            "unknown": 14.361149096362347,
+            "trees": 107.71010661498964,
+            "pathHash": "36eee29cf9022e330d7389cc730d7c6c6219878f55b55b88c8a1d6ef43e1707e",
+            "streets": [
+              "Altstetterstrasse",
+              "Baslerstrasse",
+              "Baslerstrasse Überquerung",
+              "Altstetterstrasse",
+              "Hohlstrasse",
+              "Saumackerstrasse Überquerung",
+              "Hohlstrasse Überquerung"
+            ]
+          },
+          "chosen": {
+            "distance": 511.97157999335724,
+            "minutes": 6.399644749916965,
+            "sun": 205.73163337709065,
+            "shade": 274.3373914352274,
+            "unknown": 31.90255518103927,
+            "trees": 95.93819921360954,
+            "pathHash": "3863e87f86ce6af06c64bcc0e12c6bd0d4a8fed5b374578a95389b31fceea865",
+            "streets": [
+              "Altstetterstrasse",
+              "Baslerstrasse",
+              "Baslerstrasse Überquerung",
+              "Baslerstrasse",
+              "Bristenstrasse Überquerung",
+              "Baslerstrasse",
+              "Saumackerstrasse",
+              "Saumackerstrasse Überquerung",
+              "Hohlstrasse Überquerung"
+            ]
+          },
+          "calculationMs": 251
+        }
+      ]
+    },
+    {
+      "district": "Höngg",
+      "from": "Limmattalstrasse 180",
+      "to": "Limmattalstrasse 220",
+      "anchors": [
+        {
+          "point": [
+            8.499117277166626,
+            47.402122610589764
+          ],
+          "sourceId": 1720,
+          "name": "Limmattalstrasse",
+          "distance": 4.763801957253424,
+          "sharedEndpoint": "8.499117268824135,47.40212260171635"
+        },
+        {
+          "point": [
+            8.496693846813068,
+            47.40221868690667
+          ],
+          "sourceId": 561,
+          "name": "Limmattalstrasse",
+          "distance": 4.33987927697754
+        }
+      ],
+      "departure": "2026-06-21T12:00:00Z",
+      "different": false,
+      "choices": [
+        {
+          "primary": "shade",
+          "mode": "shade",
+          "basis": "buildings-and-trees",
+          "shadeCoverage": "complete",
+          "alternative": false,
+          "fastest": {
+            "distance": 186.50122727346118,
+            "minutes": 2.331265340918265,
+            "sun": 177.7594254020872,
+            "shade": 8.74180187137398,
+            "unknown": 0,
+            "trees": 0,
+            "pathHash": "2da17759d2d7518e2e60ba3490deb725737c5f1ea25564d98db0aad59195bc61",
+            "streets": [
+              "Limmattalstrasse"
+            ]
+          },
+          "chosen": {
+            "distance": 186.50122727346118,
+            "minutes": 2.331265340918265,
+            "sun": 177.7594254020872,
+            "shade": 8.74180187137398,
+            "unknown": 0,
+            "trees": 0,
+            "pathHash": "2da17759d2d7518e2e60ba3490deb725737c5f1ea25564d98db0aad59195bc61",
+            "streets": [
+              "Limmattalstrasse"
+            ]
+          },
+          "calculationMs": 1348
+        },
+        {
+          "primary": "sun",
+          "mode": "shade",
+          "basis": "buildings-and-trees",
+          "shadeCoverage": "complete",
+          "alternative": false,
+          "fastest": {
+            "distance": 186.50122727346118,
+            "minutes": 2.331265340918265,
+            "sun": 177.7594254020872,
+            "shade": 8.74180187137398,
+            "unknown": 0,
+            "trees": 0,
+            "pathHash": "2da17759d2d7518e2e60ba3490deb725737c5f1ea25564d98db0aad59195bc61",
+            "streets": [
+              "Limmattalstrasse"
+            ]
+          },
+          "chosen": {
+            "distance": 186.50122727346118,
+            "minutes": 2.331265340918265,
+            "sun": 177.7594254020872,
+            "shade": 8.74180187137398,
+            "unknown": 0,
+            "trees": 0,
+            "pathHash": "2da17759d2d7518e2e60ba3490deb725737c5f1ea25564d98db0aad59195bc61",
+            "streets": [
+              "Limmattalstrasse"
+            ]
+          },
+          "calculationMs": 234
+        }
+      ]
+    },
+    {
+      "district": "Höngg",
+      "from": "Limmattalstrasse 180",
+      "to": "Limmattalstrasse 220",
+      "anchors": [
+        {
+          "point": [
+            8.499117277166626,
+            47.402122610589764
+          ],
+          "sourceId": 1720,
+          "name": "Limmattalstrasse",
+          "distance": 4.763801957253424,
+          "sharedEndpoint": "8.499117268824135,47.40212260171635"
+        },
+        {
+          "point": [
+            8.496693846813068,
+            47.40221868690667
+          ],
+          "sourceId": 561,
+          "name": "Limmattalstrasse",
+          "distance": 4.33987927697754
+        }
+      ],
+      "departure": "2026-10-10T12:00:00Z",
+      "different": false,
+      "choices": [
+        {
+          "primary": "shade",
+          "mode": "shade",
+          "basis": "buildings",
+          "shadeCoverage": "complete",
+          "alternative": false,
+          "fastest": {
+            "distance": 186.50122727346118,
+            "minutes": 2.331265340918265,
+            "sun": 122.3867587897837,
+            "shade": 64.11446848367751,
+            "unknown": 0,
+            "treeEstimate": {
+              "shadeMeters": 77.68438835165217,
+              "sunMeters": 0,
+              "unknownMeters": 108.81683892180907,
+              "canopyShadeMeters": 13.569919867974658
+            },
+            "pathHash": "2da17759d2d7518e2e60ba3490deb725737c5f1ea25564d98db0aad59195bc61",
+            "streets": [
+              "Limmattalstrasse"
+            ]
+          },
+          "chosen": {
+            "distance": 186.50122727346118,
+            "minutes": 2.331265340918265,
+            "sun": 122.3867587897837,
+            "shade": 64.11446848367751,
+            "unknown": 0,
+            "treeEstimate": {
+              "shadeMeters": 77.68438835165217,
+              "sunMeters": 0,
+              "unknownMeters": 108.81683892180907,
+              "canopyShadeMeters": 13.569919867974658
+            },
+            "pathHash": "2da17759d2d7518e2e60ba3490deb725737c5f1ea25564d98db0aad59195bc61",
+            "streets": [
+              "Limmattalstrasse"
+            ]
+          },
+          "calculationMs": 999
+        },
+        {
+          "primary": "sun",
+          "mode": "shade",
+          "basis": "buildings",
+          "shadeCoverage": "complete",
+          "alternative": false,
+          "fastest": {
+            "distance": 186.50122727346118,
+            "minutes": 2.331265340918265,
+            "sun": 122.3867587897837,
+            "shade": 64.11446848367751,
+            "unknown": 0,
+            "treeEstimate": {
+              "shadeMeters": 77.68438835165217,
+              "sunMeters": 0,
+              "unknownMeters": 108.81683892180907,
+              "canopyShadeMeters": 13.569919867974658
+            },
+            "pathHash": "2da17759d2d7518e2e60ba3490deb725737c5f1ea25564d98db0aad59195bc61",
+            "streets": [
+              "Limmattalstrasse"
+            ]
+          },
+          "chosen": {
+            "distance": 186.50122727346118,
+            "minutes": 2.331265340918265,
+            "sun": 122.3867587897837,
+            "shade": 64.11446848367751,
+            "unknown": 0,
+            "treeEstimate": {
+              "shadeMeters": 77.68438835165217,
+              "sunMeters": 0,
+              "unknownMeters": 108.81683892180907,
+              "canopyShadeMeters": 13.569919867974658
+            },
+            "pathHash": "2da17759d2d7518e2e60ba3490deb725737c5f1ea25564d98db0aad59195bc61",
+            "streets": [
+              "Limmattalstrasse"
+            ]
+          },
+          "calculationMs": 528
+        }
+      ]
+    },
+    {
+      "district": "Höngg",
+      "from": "Limmattalstrasse 180",
+      "to": "Limmattalstrasse 220",
+      "anchors": [
+        {
+          "point": [
+            8.499117277166626,
+            47.402122610589764
+          ],
+          "sourceId": 1720,
+          "name": "Limmattalstrasse",
+          "distance": 4.763801957253424,
+          "sharedEndpoint": "8.499117268824135,47.40212260171635"
+        },
+        {
+          "point": [
+            8.496693846813068,
+            47.40221868690667
+          ],
+          "sourceId": 561,
+          "name": "Limmattalstrasse",
+          "distance": 4.33987927697754
+        }
+      ],
+      "departure": "2026-12-21T11:00:00Z",
+      "different": false,
+      "choices": [
+        {
+          "primary": "shade",
+          "mode": "shade",
+          "basis": "buildings",
+          "shadeCoverage": "complete",
+          "alternative": false,
+          "fastest": {
+            "distance": 186.50122727346118,
+            "minutes": 2.331265340918265,
+            "sun": 55.558162613284765,
+            "shade": 125.33794899993741,
+            "unknown": 5.605115660239036,
+            "treeEstimate": {
+              "shadeMeters": 169.77848864344654,
+              "sunMeters": 0,
+              "unknownMeters": 16.722738630014646,
+              "canopyShadeMeters": 44.440539643509155
+            },
+            "pathHash": "2da17759d2d7518e2e60ba3490deb725737c5f1ea25564d98db0aad59195bc61",
+            "streets": [
+              "Limmattalstrasse"
+            ]
+          },
+          "chosen": {
+            "distance": 186.50122727346118,
+            "minutes": 2.331265340918265,
+            "sun": 55.558162613284765,
+            "shade": 125.33794899993741,
+            "unknown": 5.605115660239036,
+            "treeEstimate": {
+              "shadeMeters": 169.77848864344654,
+              "sunMeters": 0,
+              "unknownMeters": 16.722738630014646,
+              "canopyShadeMeters": 44.440539643509155
+            },
+            "pathHash": "2da17759d2d7518e2e60ba3490deb725737c5f1ea25564d98db0aad59195bc61",
+            "streets": [
+              "Limmattalstrasse"
+            ]
+          },
+          "calculationMs": 979
+        },
+        {
+          "primary": "sun",
+          "mode": "shade",
+          "basis": "buildings",
+          "shadeCoverage": "complete",
+          "alternative": false,
+          "fastest": {
+            "distance": 186.50122727346118,
+            "minutes": 2.331265340918265,
+            "sun": 55.558162613284765,
+            "shade": 125.33794899993741,
+            "unknown": 5.605115660239036,
+            "treeEstimate": {
+              "shadeMeters": 169.77848864344654,
+              "sunMeters": 0,
+              "unknownMeters": 16.722738630014646,
+              "canopyShadeMeters": 44.440539643509155
+            },
+            "pathHash": "2da17759d2d7518e2e60ba3490deb725737c5f1ea25564d98db0aad59195bc61",
+            "streets": [
+              "Limmattalstrasse"
+            ]
+          },
+          "chosen": {
+            "distance": 186.50122727346118,
+            "minutes": 2.331265340918265,
+            "sun": 55.558162613284765,
+            "shade": 125.33794899993741,
+            "unknown": 5.605115660239036,
+            "treeEstimate": {
+              "shadeMeters": 169.77848864344654,
+              "sunMeters": 0,
+              "unknownMeters": 16.722738630014646,
+              "canopyShadeMeters": 44.440539643509155
+            },
+            "pathHash": "2da17759d2d7518e2e60ba3490deb725737c5f1ea25564d98db0aad59195bc61",
+            "streets": [
+              "Limmattalstrasse"
+            ]
+          },
+          "calculationMs": 474
+        }
+      ]
+    },
+    {
+      "district": "Wipkingen",
+      "from": "Nordstrasse 275",
+      "to": "Nordstrasse 387",
+      "anchors": [
+        {
+          "point": [
+            8.525251967045937,
+            47.39479460472208
+          ],
+          "sourceId": 15556,
+          "name": "Rosengartenstrasse",
+          "distance": 3.741099457089183
+        },
+        {
+          "point": [
+            8.515698940108862,
+            47.39692216010866
+          ],
+          "sourceId": 33936,
+          "name": "Nordstrasse",
+          "distance": 6.534207909859205
+        }
+      ],
+      "departure": "2026-06-21T12:00:00Z",
+      "different": true,
+      "choices": [
+        {
+          "primary": "shade",
+          "mode": "shade",
+          "basis": "buildings-and-trees",
+          "shadeCoverage": "complete",
+          "alternative": false,
+          "fastest": {
+            "distance": 773.5858644436022,
+            "minutes": 9.669823305545027,
+            "sun": 245.33769201026035,
+            "shade": 495.39858682824547,
+            "unknown": 32.84958560509628,
+            "trees": 290.95892592304955,
+            "pathHash": "8d526e5b3da9c629e495069b51839cc6ce797cebf182c21016bfa099ecfebee3",
+            "streets": [
+              "Rosengartenstrasse",
+              "Nordstrasse",
+              "Rosengartenbrücke Überquerung",
+              "Nordstrasse",
+              "Waidstrasse Überquerung",
+              "Nordstrasse"
+            ]
+          },
+          "chosen": {
+            "distance": 773.5858644436022,
+            "minutes": 9.669823305545027,
+            "sun": 245.33769201026035,
+            "shade": 495.39858682824547,
+            "unknown": 32.84958560509628,
+            "trees": 290.95892592304955,
+            "pathHash": "8d526e5b3da9c629e495069b51839cc6ce797cebf182c21016bfa099ecfebee3",
+            "streets": [
+              "Rosengartenstrasse",
+              "Nordstrasse",
+              "Rosengartenbrücke Überquerung",
+              "Nordstrasse",
+              "Waidstrasse Überquerung",
+              "Nordstrasse"
+            ]
+          },
+          "calculationMs": 1756
+        },
+        {
+          "primary": "sun",
+          "mode": "shade",
+          "basis": "buildings-and-trees",
+          "shadeCoverage": "complete",
+          "alternative": true,
+          "fastest": {
+            "distance": 773.5858644436022,
+            "minutes": 9.669823305545027,
+            "sun": 245.33769201026035,
+            "shade": 495.39858682824547,
+            "unknown": 32.84958560509628,
+            "trees": 290.95892592304955,
+            "pathHash": "8d526e5b3da9c629e495069b51839cc6ce797cebf182c21016bfa099ecfebee3",
+            "streets": [
+              "Rosengartenstrasse",
+              "Nordstrasse",
+              "Rosengartenbrücke Überquerung",
+              "Nordstrasse",
+              "Waidstrasse Überquerung",
+              "Nordstrasse"
+            ]
+          },
+          "chosen": {
+            "distance": 881.60382295021,
+            "minutes": 11.020047786877624,
+            "sun": 658.4389158866998,
+            "shade": 205.41505363536436,
+            "unknown": 17.749853428145652,
+            "trees": 194.17242717188475,
+            "pathHash": "ef6f81882e82819af1c977c1f3253511367a04a5e9d02323f86ccf1d430dd969",
+            "streets": [
+              "Rosengartenstrasse",
+              "Nordstrasse Überquerung",
+              "Nordstrasse",
+              "Nordstrasse Überquerung",
+              "Nordstrasse",
+              "Waidstrasse",
+              "Trottenstrasse",
+              "Waidfussweg",
+              "Nordstrasse"
+            ]
+          },
+          "calculationMs": 305
+        }
+      ]
+    },
+    {
+      "district": "Wipkingen",
+      "from": "Nordstrasse 275",
+      "to": "Nordstrasse 387",
+      "anchors": [
+        {
+          "point": [
+            8.525251967045937,
+            47.39479460472208
+          ],
+          "sourceId": 15556,
+          "name": "Rosengartenstrasse",
+          "distance": 3.741099457089183
+        },
+        {
+          "point": [
+            8.515698940108862,
+            47.39692216010866
+          ],
+          "sourceId": 33936,
+          "name": "Nordstrasse",
+          "distance": 6.534207909859205
+        }
+      ],
+      "departure": "2026-10-10T12:00:00Z",
+      "different": true,
+      "choices": [
+        {
+          "primary": "shade",
+          "mode": "shade",
+          "basis": "buildings",
+          "shadeCoverage": "complete",
+          "alternative": false,
+          "fastest": {
+            "distance": 773.5858644436022,
+            "minutes": 9.669823305545027,
+            "sun": 285.4146520684443,
+            "shade": 458.46283270441467,
+            "unknown": 29.70837967074297,
+            "treeEstimate": {
+              "shadeMeters": 624.7120050463777,
+              "sunMeters": 42.26878545900387,
+              "unknownMeters": 106.60507393822127,
+              "canopyShadeMeters": 166.2491723419622
+            },
+            "pathHash": "8d526e5b3da9c629e495069b51839cc6ce797cebf182c21016bfa099ecfebee3",
+            "streets": [
+              "Rosengartenstrasse",
+              "Nordstrasse",
+              "Rosengartenbrücke Überquerung",
+              "Nordstrasse",
+              "Waidstrasse Überquerung",
+              "Nordstrasse"
+            ]
+          },
+          "chosen": {
+            "distance": 773.5858644436022,
+            "minutes": 9.669823305545027,
+            "sun": 285.4146520684443,
+            "shade": 458.46283270441467,
+            "unknown": 29.70837967074297,
+            "treeEstimate": {
+              "shadeMeters": 624.7120050463777,
+              "sunMeters": 42.26878545900387,
+              "unknownMeters": 106.60507393822127,
+              "canopyShadeMeters": 166.2491723419622
+            },
+            "pathHash": "8d526e5b3da9c629e495069b51839cc6ce797cebf182c21016bfa099ecfebee3",
+            "streets": [
+              "Rosengartenstrasse",
+              "Nordstrasse",
+              "Rosengartenbrücke Überquerung",
+              "Nordstrasse",
+              "Waidstrasse Überquerung",
+              "Nordstrasse"
+            ]
+          },
+          "calculationMs": 1184
+        },
+        {
+          "primary": "sun",
+          "mode": "shade",
+          "basis": "buildings",
+          "shadeCoverage": "complete",
+          "alternative": true,
+          "fastest": {
+            "distance": 773.5858644436022,
+            "minutes": 9.669823305545027,
+            "sun": 285.4146520684443,
+            "shade": 458.46283270441467,
+            "unknown": 29.70837967074297,
+            "treeEstimate": {
+              "shadeMeters": 624.7120050463777,
+              "sunMeters": 42.26878545900387,
+              "unknownMeters": 106.60507393822127,
+              "canopyShadeMeters": 166.2491723419622
+            },
+            "pathHash": "8d526e5b3da9c629e495069b51839cc6ce797cebf182c21016bfa099ecfebee3",
+            "streets": [
+              "Rosengartenstrasse",
+              "Nordstrasse",
+              "Rosengartenbrücke Überquerung",
+              "Nordstrasse",
+              "Waidstrasse Überquerung",
+              "Nordstrasse"
+            ]
+          },
+          "chosen": {
+            "distance": 881.60382295021,
+            "minutes": 11.020047786877624,
+            "sun": 550.7472755942581,
+            "shade": 330.8565473559518,
+            "unknown": 0,
+            "treeEstimate": {
+              "shadeMeters": 439.3738497292672,
+              "sunMeters": 84.10055792937291,
+              "unknownMeters": 358.12941529156967,
+              "canopyShadeMeters": 108.5173023733155
+            },
+            "pathHash": "ef6f81882e82819af1c977c1f3253511367a04a5e9d02323f86ccf1d430dd969",
+            "streets": [
+              "Rosengartenstrasse",
+              "Nordstrasse Überquerung",
+              "Nordstrasse",
+              "Nordstrasse Überquerung",
+              "Nordstrasse",
+              "Waidstrasse",
+              "Trottenstrasse",
+              "Waidfussweg",
+              "Nordstrasse"
+            ]
+          },
+          "calculationMs": 556
+        }
+      ]
+    },
+    {
+      "district": "Wipkingen",
+      "from": "Nordstrasse 275",
+      "to": "Nordstrasse 387",
+      "anchors": [
+        {
+          "point": [
+            8.525251967045937,
+            47.39479460472208
+          ],
+          "sourceId": 15556,
+          "name": "Rosengartenstrasse",
+          "distance": 3.741099457089183
+        },
+        {
+          "point": [
+            8.515698940108862,
+            47.39692216010866
+          ],
+          "sourceId": 33936,
+          "name": "Nordstrasse",
+          "distance": 6.534207909859205
+        }
+      ],
+      "departure": "2026-12-21T11:00:00Z",
+      "different": true,
+      "choices": [
+        {
+          "primary": "shade",
+          "mode": "shade",
+          "basis": "buildings",
+          "shadeCoverage": "complete",
+          "alternative": false,
+          "fastest": {
+            "distance": 773.5858644436022,
+            "minutes": 9.669823305545027,
+            "sun": 226.95307682388585,
+            "shade": 516.9244079489733,
+            "unknown": 29.70837967074297,
+            "treeEstimate": {
+              "shadeMeters": 627.6613592788328,
+              "sunMeters": 5.666682676898873,
+              "unknownMeters": 140.25782248787118,
+              "canopyShadeMeters": 110.73695132985868
+            },
+            "pathHash": "8d526e5b3da9c629e495069b51839cc6ce797cebf182c21016bfa099ecfebee3",
+            "streets": [
+              "Rosengartenstrasse",
+              "Nordstrasse",
+              "Rosengartenbrücke Überquerung",
+              "Nordstrasse",
+              "Waidstrasse Überquerung",
+              "Nordstrasse"
+            ]
+          },
+          "chosen": {
+            "distance": 773.5858644436022,
+            "minutes": 9.669823305545027,
+            "sun": 226.95307682388585,
+            "shade": 516.9244079489733,
+            "unknown": 29.70837967074297,
+            "treeEstimate": {
+              "shadeMeters": 627.6613592788328,
+              "sunMeters": 5.666682676898873,
+              "unknownMeters": 140.25782248787118,
+              "canopyShadeMeters": 110.73695132985868
+            },
+            "pathHash": "8d526e5b3da9c629e495069b51839cc6ce797cebf182c21016bfa099ecfebee3",
+            "streets": [
+              "Rosengartenstrasse",
+              "Nordstrasse",
+              "Rosengartenbrücke Überquerung",
+              "Nordstrasse",
+              "Waidstrasse Überquerung",
+              "Nordstrasse"
+            ]
+          },
+          "calculationMs": 1170
+        },
+        {
+          "primary": "sun",
+          "mode": "shade",
+          "basis": "buildings",
+          "shadeCoverage": "complete",
+          "alternative": true,
+          "fastest": {
+            "distance": 773.5858644436022,
+            "minutes": 9.669823305545027,
+            "sun": 226.95307682388585,
+            "shade": 516.9244079489733,
+            "unknown": 29.70837967074297,
+            "treeEstimate": {
+              "shadeMeters": 627.6613592788328,
+              "sunMeters": 5.666682676898873,
+              "unknownMeters": 140.25782248787118,
+              "canopyShadeMeters": 110.73695132985868
+            },
+            "pathHash": "8d526e5b3da9c629e495069b51839cc6ce797cebf182c21016bfa099ecfebee3",
+            "streets": [
+              "Rosengartenstrasse",
+              "Nordstrasse",
+              "Rosengartenbrücke Überquerung",
+              "Nordstrasse",
+              "Waidstrasse Überquerung",
+              "Nordstrasse"
+            ]
+          },
+          "chosen": {
+            "distance": 1146.560363352952,
+            "minutes": 14.3320045419119,
+            "sun": 812.438704896767,
+            "shade": 309.96360251852354,
+            "unknown": 24.158055937661423,
+            "treeEstimate": {
+              "shadeMeters": 584.1587403767486,
+              "sunMeters": 41.97379324114732,
+              "unknownMeters": 520.4278297350571,
+              "canopyShadeMeters": 274.1951378582247
+            },
+            "pathHash": "49d6f25a9d22a5cf1071935e4e77a8aeef1b0c11f3ab9b75838e89eca4487221",
+            "streets": [
+              "Rosengartenstrasse",
+              "Dorfstrasse Überquerung",
+              "Rosengartenstrasse",
+              "Wipkingerplatz",
+              "Hönggerstrasse",
+              "Dorfstrasse Überquerung",
+              "Dorfstrasse",
+              "Hönggerstrasse",
+              "Waidfussweg",
+              "Trottenstrasse",
+              "Trottenstrasse Überquerung",
+              "Waidfussweg",
+              "Nordstrasse"
+            ]
+          },
+          "calculationMs": 547
+        }
+      ]
+    },
+    {
+      "district": "Wiedikon",
+      "from": "Birmensdorferstrasse 91",
+      "to": "Birmensdorferstrasse 252",
+      "anchors": [
+        {
+          "point": [
+            8.52314138995459,
+            47.37086565507586
+          ],
+          "sourceId": 2129,
+          "name": "Birmensdorferstrasse",
+          "distance": 2.38586428221333
+        },
+        {
+          "point": [
+            8.512725871305369,
+            47.37023542442034
+          ],
+          "sourceId": 30558,
+          "name": "Birmensdorferstrasse",
+          "distance": 2.859858826271751
+        }
+      ],
+      "departure": "2026-06-21T12:00:00Z",
+      "different": true,
+      "choices": [
+        {
+          "primary": "shade",
+          "mode": "shade",
+          "basis": "buildings-and-trees",
+          "shadeCoverage": "partial",
+          "alternative": true,
+          "fastest": {
+            "distance": 1217.0447785461408,
+            "minutes": 15.21305973182676,
+            "sun": 731.7770394235071,
+            "shade": 356.48087552521025,
+            "unknown": 128.78686359741977,
+            "trees": 189.06161037224743,
+            "pathHash": "36edc713905c927a069081859824de4b15620c79c59b59fa782a2072a9915195",
+            "streets": [
+              "Birmensdorferstrasse",
+              "Weststrasse Überquerung",
+              "Weststrasse",
+              "Birmensdorferstrasse Überquerung",
+              "Birmensdorferstrasse",
+              "Zentralstrasse Überquerung",
+              "Birmensdorferstrasse",
+              "Zurlindenstrasse",
+              "Zurlindenstrasse Überquerung",
+              "Zurlindenstrasse",
+              "Zweierstrasse Überquerung",
+              "Zweierstrasse",
+              "Birmensdorferstrasse",
+              "Aemtlerstrasse Überquerung",
+              "Birmensdorferstrasse",
+              "Saumstrasse Überquerung",
+              "Birmensdorferstrasse",
+              "Kalkbreitestrasse Überquerung",
+              "Birmensdorferstrasse",
+              "Goldbrunnenstrasse",
+              "Nussbaumstrasse Überquerung",
+              "Goldbrunnenstrasse",
+              "Goldbrunnenstrasse Überquerung",
+              "Goldbrunnenstrasse",
+              "Birmensdorferstrasse"
+            ]
+          },
+          "chosen": {
+            "distance": 1359.6093986061053,
+            "minutes": 16.995117482576315,
+            "sun": 379.5801885298356,
+            "shade": 928.7707476864738,
+            "unknown": 51.25846238979609,
+            "trees": 100.0596827849814,
+            "pathHash": "291ca7c0d0a2ccc9576279815276f7a839d72c7c0dcfb5d1fb96b0451e4f9205",
+            "streets": [
+              "Birmensdorferstrasse",
+              "Weststrasse Überquerung",
+              "Weststrasse",
+              "Birmensdorferstrasse Überquerung",
+              "Weststrasse",
+              "Zweierstrasse",
+              "Zweierstrasse Überquerung",
+              "Zurlindenstrasse Überquerung",
+              "Zurlindenstrasse",
+              "Bremgartnerstrasse",
+              "Birmensdorferstrasse",
+              "Birmensdorferstrasse Überquerung",
+              "Aemtlerstrasse",
+              "Kalkbreitestrasse",
+              "Kalkbreitestrasse Überquerung",
+              "Kalkbreitestrasse",
+              "Rotachstrasse",
+              "Nussbaumstrasse",
+              "Saumstrasse Überquerung",
+              "Nussbaumstrasse",
+              "Nussbaumstrasse Überquerung",
+              "Goldbrunnenstrasse",
+              "Goldbrunnenstrasse Überquerung",
+              "Goldbrunnenstrasse",
+              "Birmensdorferstrasse"
+            ]
+          },
+          "calculationMs": 2118
+        },
+        {
+          "primary": "sun",
+          "mode": "shade",
+          "basis": "buildings-and-trees",
+          "shadeCoverage": "partial",
+          "alternative": true,
+          "fastest": {
+            "distance": 1217.0447785461408,
+            "minutes": 15.21305973182676,
+            "sun": 731.7770394235071,
+            "shade": 356.48087552521025,
+            "unknown": 128.78686359741977,
+            "trees": 189.06161037224743,
+            "pathHash": "36edc713905c927a069081859824de4b15620c79c59b59fa782a2072a9915195",
+            "streets": [
+              "Birmensdorferstrasse",
+              "Weststrasse Überquerung",
+              "Weststrasse",
+              "Birmensdorferstrasse Überquerung",
+              "Birmensdorferstrasse",
+              "Zentralstrasse Überquerung",
+              "Birmensdorferstrasse",
+              "Zurlindenstrasse",
+              "Zurlindenstrasse Überquerung",
+              "Zurlindenstrasse",
+              "Zweierstrasse Überquerung",
+              "Zweierstrasse",
+              "Birmensdorferstrasse",
+              "Aemtlerstrasse Überquerung",
+              "Birmensdorferstrasse",
+              "Saumstrasse Überquerung",
+              "Birmensdorferstrasse",
+              "Kalkbreitestrasse Überquerung",
+              "Birmensdorferstrasse",
+              "Goldbrunnenstrasse",
+              "Nussbaumstrasse Überquerung",
+              "Goldbrunnenstrasse",
+              "Goldbrunnenstrasse Überquerung",
+              "Goldbrunnenstrasse",
+              "Birmensdorferstrasse"
+            ]
+          },
+          "chosen": {
+            "distance": 1545.0739314494683,
+            "minutes": 19.313424143118354,
+            "sun": 1253.6808572621796,
+            "shade": 161.9462690062505,
+            "unknown": 129.44680518104087,
+            "trees": 135.05210705811064,
+            "pathHash": "eb19161e0cdbee4a241830a30effc5f39beae7c480ceb323eebb7439c698c461",
+            "streets": [
+              "Birmensdorferstrasse",
+              "Birmensdorferstrasse Überquerung",
+              "Birmensdorferstrasse",
+              "Weststrasse",
+              "Zweierstrasse Überquerung",
+              "Zweierstrasse",
+              "Weststrasse",
+              "Weststrasse Überquerung",
+              "Weststrasse",
+              "Zweierstrasse",
+              "Zentralstrasse",
+              "Bremgartnerstrasse Überquerung",
+              "Zentralstrasse Überquerung",
+              "Bremgartnerstrasse",
+              "Zurlindenstrasse",
+              "Zurlindenstrasse Überquerung",
+              "Kalkbreitestrasse Überquerung",
+              "Kalkbreitestrasse",
+              "Aemtlerstrasse",
+              "Eschwiesenstrasse Überquerung",
+              "Aemtlerstrasse",
+              "Aemtlerstrasse Überquerung",
+              "Aemtlerstrasse",
+              "Gertrudstrasse",
+              "Rotachstrasse Überquerung",
+              "Gertrudstrasse",
+              "Saumstrasse Überquerung",
+              "Gertrudstrasse",
+              "Goldbrunnenstrasse Überquerung",
+              "Gertrudstrasse",
+              "Gertrudstrasse Überquerung",
+              "Haldenstrasse",
+              "Birmensdorferstrasse"
+            ]
+          },
+          "calculationMs": 361
+        }
+      ]
+    },
+    {
+      "district": "Wiedikon",
+      "from": "Birmensdorferstrasse 91",
+      "to": "Birmensdorferstrasse 252",
+      "anchors": [
+        {
+          "point": [
+            8.52314138995459,
+            47.37086565507586
+          ],
+          "sourceId": 2129,
+          "name": "Birmensdorferstrasse",
+          "distance": 2.38586428221333
+        },
+        {
+          "point": [
+            8.512725871305369,
+            47.37023542442034
+          ],
+          "sourceId": 30558,
+          "name": "Birmensdorferstrasse",
+          "distance": 2.859858826271751
+        }
+      ],
+      "departure": "2026-10-10T12:00:00Z",
+      "different": true,
+      "choices": [
+        {
+          "primary": "shade",
+          "mode": "shade",
+          "basis": "buildings-and-trees",
+          "shadeCoverage": "partial",
+          "alternative": true,
+          "fastest": {
+            "distance": 1217.0447785461408,
+            "minutes": 15.21305973182676,
+            "sun": 376.3299415347355,
+            "shade": 665.2985601925187,
+            "unknown": 175.41627681888224,
+            "trees": 39.16287188354683,
+            "pathHash": "36edc713905c927a069081859824de4b15620c79c59b59fa782a2072a9915195",
+            "streets": [
+              "Birmensdorferstrasse",
+              "Weststrasse Überquerung",
+              "Weststrasse",
+              "Birmensdorferstrasse Überquerung",
+              "Birmensdorferstrasse",
+              "Zentralstrasse Überquerung",
+              "Birmensdorferstrasse",
+              "Zurlindenstrasse",
+              "Zurlindenstrasse Überquerung",
+              "Zurlindenstrasse",
+              "Zweierstrasse Überquerung",
+              "Zweierstrasse",
+              "Birmensdorferstrasse",
+              "Aemtlerstrasse Überquerung",
+              "Birmensdorferstrasse",
+              "Saumstrasse Überquerung",
+              "Birmensdorferstrasse",
+              "Kalkbreitestrasse Überquerung",
+              "Birmensdorferstrasse",
+              "Goldbrunnenstrasse",
+              "Nussbaumstrasse Überquerung",
+              "Goldbrunnenstrasse",
+              "Goldbrunnenstrasse Überquerung",
+              "Goldbrunnenstrasse",
+              "Birmensdorferstrasse"
+            ]
+          },
+          "chosen": {
+            "distance": 1385.420954467448,
+            "minutes": 17.317761930843098,
+            "sun": 63.540159712087004,
+            "shade": 1253.7864876897615,
+            "unknown": 68.0943070655976,
+            "trees": 31.49155818261082,
+            "pathHash": "7848734ac4f2b640aa3f51b37403e544ad990dda08e0f96092076bd60c8c399a",
+            "streets": [
+              "Birmensdorferstrasse",
+              "Weststrasse Überquerung",
+              "Weststrasse",
+              "Birmensdorferstrasse Überquerung",
+              "Weststrasse",
+              "Zweierstrasse",
+              "Zweierstrasse Überquerung",
+              "Zurlindenstrasse Überquerung",
+              "Zurlindenstrasse",
+              "Bremgartnerstrasse",
+              "Birmensdorferstrasse",
+              "Birmensdorferstrasse Überquerung",
+              "Aemtlerstrasse",
+              "Kalkbreitestrasse",
+              "Kalkbreitestrasse Überquerung",
+              "Kalkbreitestrasse",
+              "Saumstrasse",
+              "Nussbaumstrasse Überquerung",
+              "Saumstrasse",
+              "Gertrudstrasse",
+              "Goldbrunnenstrasse Überquerung",
+              "Goldbrunnenstrasse",
+              "Birmensdorferstrasse"
+            ]
+          },
+          "calculationMs": 794
+        },
+        {
+          "primary": "sun",
+          "mode": "shade",
+          "basis": "buildings",
+          "shadeCoverage": "partial",
+          "alternative": true,
+          "fastest": {
+            "distance": 1217.0447785461408,
+            "minutes": 15.21305973182676,
+            "sun": 532.5312685563689,
+            "shade": 626.1356883089721,
+            "unknown": 58.377821680795584,
+            "treeEstimate": {
+              "shadeMeters": 665.2985601925187,
+              "sunMeters": 376.3299415347355,
+              "unknownMeters": 175.41627681888224,
+              "canopyShadeMeters": 39.16287188354683
+            },
+            "pathHash": "36edc713905c927a069081859824de4b15620c79c59b59fa782a2072a9915195",
+            "streets": [
+              "Birmensdorferstrasse",
+              "Weststrasse Überquerung",
+              "Weststrasse",
+              "Birmensdorferstrasse Überquerung",
+              "Birmensdorferstrasse",
+              "Zentralstrasse Überquerung",
+              "Birmensdorferstrasse",
+              "Zurlindenstrasse",
+              "Zurlindenstrasse Überquerung",
+              "Zurlindenstrasse",
+              "Zweierstrasse Überquerung",
+              "Zweierstrasse",
+              "Birmensdorferstrasse",
+              "Aemtlerstrasse Überquerung",
+              "Birmensdorferstrasse",
+              "Saumstrasse Überquerung",
+              "Birmensdorferstrasse",
+              "Kalkbreitestrasse Überquerung",
+              "Birmensdorferstrasse",
+              "Goldbrunnenstrasse",
+              "Nussbaumstrasse Überquerung",
+              "Goldbrunnenstrasse",
+              "Goldbrunnenstrasse Überquerung",
+              "Goldbrunnenstrasse",
+              "Birmensdorferstrasse"
+            ]
+          },
+          "chosen": {
+            "distance": 1507.1798644994044,
+            "minutes": 18.839748306242555,
+            "sun": 945.0822033555623,
+            "shade": 463.38644003304904,
+            "unknown": 98.7112211107931,
+            "treeEstimate": {
+              "shadeMeters": 618.2916593777582,
+              "sunMeters": 593.870032125664,
+              "unknownMeters": 295.0181729959814,
+              "canopyShadeMeters": 154.90521934471064
+            },
+            "pathHash": "1110fa05cd779d26973c259ded4f481df5a64951c75d66cb232535f862e22612",
+            "streets": [
+              "Birmensdorferstrasse",
+              "Birmensdorferstrasse Überquerung",
+              "Birmensdorferstrasse",
+              "Weststrasse Überquerung",
+              "Birmensdorferstrasse",
+              "Zentralstrasse Überquerung",
+              "Birmensdorferstrasse",
+              "Zurlindenstrasse",
+              "Zweierstrasse Überquerung",
+              "Zurlindenstrasse",
+              "Zurlindenstrasse Überquerung",
+              "Kalkbreitestrasse Überquerung",
+              "Kalkbreitestrasse",
+              "Aemtlerstrasse",
+              "Aemtlerstrasse Überquerung",
+              "Aemtlerstrasse",
+              "Kalkbreitestrasse",
+              "Birmensdorferstrasse",
+              "Goldbrunnenstrasse",
+              "Nussbaumstrasse Überquerung",
+              "Goldbrunnenstrasse",
+              "Goldbrunnenstrasse Überquerung",
+              "Gertrudstrasse",
+              "Haldenstrasse",
+              "Birmensdorferstrasse"
+            ]
+          },
+          "calculationMs": 745
+        }
+      ]
+    },
+    {
+      "district": "Wiedikon",
+      "from": "Birmensdorferstrasse 91",
+      "to": "Birmensdorferstrasse 252",
+      "anchors": [
+        {
+          "point": [
+            8.52314138995459,
+            47.37086565507586
+          ],
+          "sourceId": 2129,
+          "name": "Birmensdorferstrasse",
+          "distance": 2.38586428221333
+        },
+        {
+          "point": [
+            8.512725871305369,
+            47.37023542442034
+          ],
+          "sourceId": 30558,
+          "name": "Birmensdorferstrasse",
+          "distance": 2.859858826271751
+        }
+      ],
+      "departure": "2026-12-21T11:00:00Z",
+      "different": false,
+      "choices": [
+        {
+          "primary": "shade",
+          "mode": "shade",
+          "basis": "buildings-and-trees",
+          "shadeCoverage": "complete",
+          "alternative": false,
+          "fastest": {
+            "distance": 1217.0447785461408,
+            "minutes": 15.21305973182676,
+            "sun": 44.93635043442203,
+            "shade": 1119.8235690187082,
+            "unknown": 52.284859093009906,
+            "trees": 36.646381397382726,
+            "pathHash": "36edc713905c927a069081859824de4b15620c79c59b59fa782a2072a9915195",
+            "streets": [
+              "Birmensdorferstrasse",
+              "Weststrasse Überquerung",
+              "Weststrasse",
+              "Birmensdorferstrasse Überquerung",
+              "Birmensdorferstrasse",
+              "Zentralstrasse Überquerung",
+              "Birmensdorferstrasse",
+              "Zurlindenstrasse",
+              "Zurlindenstrasse Überquerung",
+              "Zurlindenstrasse",
+              "Zweierstrasse Überquerung",
+              "Zweierstrasse",
+              "Birmensdorferstrasse",
+              "Aemtlerstrasse Überquerung",
+              "Birmensdorferstrasse",
+              "Saumstrasse Überquerung",
+              "Birmensdorferstrasse",
+              "Kalkbreitestrasse Überquerung",
+              "Birmensdorferstrasse",
+              "Goldbrunnenstrasse",
+              "Nussbaumstrasse Überquerung",
+              "Goldbrunnenstrasse",
+              "Goldbrunnenstrasse Überquerung",
+              "Goldbrunnenstrasse",
+              "Birmensdorferstrasse"
+            ]
+          },
+          "chosen": {
+            "distance": 1217.0447785461408,
+            "minutes": 15.21305973182676,
+            "sun": 44.93635043442203,
+            "shade": 1119.8235690187082,
+            "unknown": 52.284859093009906,
+            "trees": 36.646381397382726,
+            "pathHash": "36edc713905c927a069081859824de4b15620c79c59b59fa782a2072a9915195",
+            "streets": [
+              "Birmensdorferstrasse",
+              "Weststrasse Überquerung",
+              "Weststrasse",
+              "Birmensdorferstrasse Überquerung",
+              "Birmensdorferstrasse",
+              "Zentralstrasse Überquerung",
+              "Birmensdorferstrasse",
+              "Zurlindenstrasse",
+              "Zurlindenstrasse Überquerung",
+              "Zurlindenstrasse",
+              "Zweierstrasse Überquerung",
+              "Zweierstrasse",
+              "Birmensdorferstrasse",
+              "Aemtlerstrasse Überquerung",
+              "Birmensdorferstrasse",
+              "Saumstrasse Überquerung",
+              "Birmensdorferstrasse",
+              "Kalkbreitestrasse Überquerung",
+              "Birmensdorferstrasse",
+              "Goldbrunnenstrasse",
+              "Nussbaumstrasse Überquerung",
+              "Goldbrunnenstrasse",
+              "Goldbrunnenstrasse Überquerung",
+              "Goldbrunnenstrasse",
+              "Birmensdorferstrasse"
+            ]
+          },
+          "calculationMs": 1243
+        },
+        {
+          "primary": "sun",
+          "mode": "shade",
+          "basis": "buildings-and-trees",
+          "shadeCoverage": "complete",
+          "alternative": false,
+          "fastest": {
+            "distance": 1217.0447785461408,
+            "minutes": 15.21305973182676,
+            "sun": 44.93635043442203,
+            "shade": 1119.8235690187082,
+            "unknown": 52.284859093009906,
+            "trees": 36.646381397382726,
+            "pathHash": "36edc713905c927a069081859824de4b15620c79c59b59fa782a2072a9915195",
+            "streets": [
+              "Birmensdorferstrasse",
+              "Weststrasse Überquerung",
+              "Weststrasse",
+              "Birmensdorferstrasse Überquerung",
+              "Birmensdorferstrasse",
+              "Zentralstrasse Überquerung",
+              "Birmensdorferstrasse",
+              "Zurlindenstrasse",
+              "Zurlindenstrasse Überquerung",
+              "Zurlindenstrasse",
+              "Zweierstrasse Überquerung",
+              "Zweierstrasse",
+              "Birmensdorferstrasse",
+              "Aemtlerstrasse Überquerung",
+              "Birmensdorferstrasse",
+              "Saumstrasse Überquerung",
+              "Birmensdorferstrasse",
+              "Kalkbreitestrasse Überquerung",
+              "Birmensdorferstrasse",
+              "Goldbrunnenstrasse",
+              "Nussbaumstrasse Überquerung",
+              "Goldbrunnenstrasse",
+              "Goldbrunnenstrasse Überquerung",
+              "Goldbrunnenstrasse",
+              "Birmensdorferstrasse"
+            ]
+          },
+          "chosen": {
+            "distance": 1217.0447785461408,
+            "minutes": 15.21305973182676,
+            "sun": 44.93635043442203,
+            "shade": 1119.8235690187082,
+            "unknown": 52.284859093009906,
+            "trees": 36.646381397382726,
+            "pathHash": "36edc713905c927a069081859824de4b15620c79c59b59fa782a2072a9915195",
+            "streets": [
+              "Birmensdorferstrasse",
+              "Weststrasse Überquerung",
+              "Weststrasse",
+              "Birmensdorferstrasse Überquerung",
+              "Birmensdorferstrasse",
+              "Zentralstrasse Überquerung",
+              "Birmensdorferstrasse",
+              "Zurlindenstrasse",
+              "Zurlindenstrasse Überquerung",
+              "Zurlindenstrasse",
+              "Zweierstrasse Überquerung",
+              "Zweierstrasse",
+              "Birmensdorferstrasse",
+              "Aemtlerstrasse Überquerung",
+              "Birmensdorferstrasse",
+              "Saumstrasse Überquerung",
+              "Birmensdorferstrasse",
+              "Kalkbreitestrasse Überquerung",
+              "Birmensdorferstrasse",
+              "Goldbrunnenstrasse",
+              "Nussbaumstrasse Überquerung",
+              "Goldbrunnenstrasse",
+              "Goldbrunnenstrasse Überquerung",
+              "Goldbrunnenstrasse",
+              "Birmensdorferstrasse"
+            ]
+          },
+          "calculationMs": 383
+        }
+      ]
+    },
+    {
+      "district": "University",
+      "from": "Rämistrasse 71",
+      "to": "Universitätstrasse 100",
+      "anchors": [
+        {
+          "point": [
+            8.549134871086284,
+            47.374602434537195
+          ],
+          "sourceId": 4779,
+          "name": "Universität Zentrum, Fussweg",
+          "distance": 5.400237807287421
+        },
+        {
+          "point": [
+            8.548350290835605,
+            47.38374036912351
+          ],
+          "sourceId": 6523,
+          "name": "Universitätstrasse",
+          "distance": 2.4449637555533927
+        }
+      ],
+      "departure": "2026-06-21T12:00:00Z",
+      "different": true,
+      "choices": [
+        {
+          "primary": "shade",
+          "mode": "shade",
+          "basis": "buildings-and-trees",
+          "shadeCoverage": "partial",
+          "alternative": true,
+          "fastest": {
+            "distance": 1062.7829527802344,
+            "minutes": 13.28478690975293,
+            "sun": 587.1071043312108,
+            "shade": 362.29782778909055,
+            "unknown": 113.37802065993424,
+            "trees": 104.90098136169249,
+            "pathHash": "2287fc49dc3c1cee798ffce27c5c3c04ee8e14affaf47cdfa4f641ed99fdc1d4",
+            "streets": [
+              "Universität Zentrum, Fussweg",
+              "Rämistrasse",
+              "Karl-Schmid-Strasse Überquerung",
+              "Rämistrasse",
+              "Tannenstrasse Überquerung",
+              "Universitätstrasse",
+              "Sonneggstrasse Überquerung",
+              "Universitätstrasse",
+              "Universitätstrasse Überquerung",
+              "Universitätstrasse"
+            ]
+          },
+          "chosen": {
+            "distance": 1111.7178368934706,
+            "minutes": 13.896472961168381,
+            "sun": 398.98596066002636,
+            "shade": 611.128268974902,
+            "unknown": 101.60360725854369,
+            "trees": 304.079463625398,
+            "pathHash": "aae544ca9e70b7b0827ea2f908eaf713b6f7a30bc148d8c2d53ac353b8102436",
+            "streets": [
+              "Universität Zentrum, Fussweg",
+              "Rämistrasse",
+              "Karl-Schmid-Strasse Überquerung",
+              "Rämistrasse",
+              "Rämistrasse Überquerung",
+              "Rämistrasse",
+              "Universitätstrasse",
+              "Universitätstrasse Überquerung",
+              "Universitätstrasse",
+              "Universitätstrasse Überquerung",
+              "Universitätstrasse"
+            ]
+          },
+          "calculationMs": 2483
+        },
+        {
+          "primary": "sun",
+          "mode": "shade",
+          "basis": "buildings",
+          "shadeCoverage": "complete",
+          "alternative": true,
+          "fastest": {
+            "distance": 1062.7829527802344,
+            "minutes": 13.28478690975293,
+            "sun": 805.3861063528375,
+            "shade": 257.3968464273983,
+            "unknown": 0,
+            "treeEstimate": {
+              "shadeMeters": 362.29782778909055,
+              "sunMeters": 587.1071043312108,
+              "unknownMeters": 113.37802065993424,
+              "canopyShadeMeters": 104.90098136169249
+            },
+            "pathHash": "2287fc49dc3c1cee798ffce27c5c3c04ee8e14affaf47cdfa4f641ed99fdc1d4",
+            "streets": [
+              "Universität Zentrum, Fussweg",
+              "Rämistrasse",
+              "Karl-Schmid-Strasse Überquerung",
+              "Rämistrasse",
+              "Tannenstrasse Überquerung",
+              "Universitätstrasse",
+              "Sonneggstrasse Überquerung",
+              "Universitätstrasse",
+              "Universitätstrasse Überquerung",
+              "Universitätstrasse"
+            ]
+          },
+          "chosen": {
+            "distance": 1072.1371497587024,
+            "minutes": 13.40171437198378,
+            "sun": 1072.1371497587024,
+            "shade": 0,
+            "unknown": 0,
+            "treeEstimate": {
+              "shadeMeters": 349.5318685193016,
+              "sunMeters": 634.6710682261426,
+              "unknownMeters": 87.93421301325805,
+              "canopyShadeMeters": 349.5318685193016
+            },
+            "pathHash": "039b3b5eba09b9e596e813bacbf19890f72ca60e5409d1e83c1cca13363fa7a9",
+            "streets": [
+              "Universität Zentrum, Fussweg",
+              "Rämistrasse",
+              "Rämistrasse Überquerung",
+              "Rämistrasse",
+              "Schmelzbergstrasse Überquerung",
+              "Rämistrasse",
+              "Universitätstrasse",
+              "Bolleystrasse Überquerung",
+              "Universitätstrasse"
+            ]
+          },
+          "calculationMs": 651
+        }
+      ]
+    },
+    {
+      "district": "University",
+      "from": "Rämistrasse 71",
+      "to": "Universitätstrasse 100",
+      "anchors": [
+        {
+          "point": [
+            8.549134871086284,
+            47.374602434537195
+          ],
+          "sourceId": 4779,
+          "name": "Universität Zentrum, Fussweg",
+          "distance": 5.400237807287421
+        },
+        {
+          "point": [
+            8.548350290835605,
+            47.38374036912351
+          ],
+          "sourceId": 6523,
+          "name": "Universitätstrasse",
+          "distance": 2.4449637555533927
+        }
+      ],
+      "departure": "2026-10-10T12:00:00Z",
+      "different": true,
+      "choices": [
+        {
+          "primary": "shade",
+          "mode": "shade",
+          "basis": "buildings-and-trees",
+          "shadeCoverage": "partial",
+          "alternative": true,
+          "fastest": {
+            "distance": 1062.7829527802344,
+            "minutes": 13.28478690975293,
+            "sun": 259.2257813777452,
+            "shade": 710.4584812977715,
+            "unknown": 93.09869010471759,
+            "trees": 84.58157509598287,
+            "pathHash": "2287fc49dc3c1cee798ffce27c5c3c04ee8e14affaf47cdfa4f641ed99fdc1d4",
+            "streets": [
+              "Universität Zentrum, Fussweg",
+              "Rämistrasse",
+              "Karl-Schmid-Strasse Überquerung",
+              "Rämistrasse",
+              "Tannenstrasse Überquerung",
+              "Universitätstrasse",
+              "Sonneggstrasse Überquerung",
+              "Universitätstrasse",
+              "Universitätstrasse Überquerung",
+              "Universitätstrasse"
+            ]
+          },
+          "chosen": {
+            "distance": 1107.8317519766463,
+            "minutes": 13.84789689970808,
+            "sun": 125.64670774818363,
+            "shade": 896.8630540849974,
+            "unknown": 85.32199014346583,
+            "trees": 67.45314540080484,
+            "pathHash": "f460373c096cb47628d61cc1c9459a4a5b3a93ccac2266fd3e6936ca0a65875b",
+            "streets": [
+              "Universität Zentrum, Fussweg",
+              "Karl-Schmid-Strasse",
+              "Karl-Schmid-Strasse Überquerung",
+              "Rämistrasse",
+              "Tannenstrasse Überquerung",
+              "Universitätstrasse",
+              "Sonneggstrasse Überquerung",
+              "Universitätstrasse",
+              "Universitätstrasse Überquerung",
+              "Universitätstrasse"
+            ]
+          },
+          "calculationMs": 791
+        },
+        {
+          "primary": "sun",
+          "mode": "shade",
+          "basis": "buildings-and-trees",
+          "shadeCoverage": "partial",
+          "alternative": true,
+          "fastest": {
+            "distance": 1062.7829527802344,
+            "minutes": 13.28478690975293,
+            "sun": 259.2257813777452,
+            "shade": 710.4584812977715,
+            "unknown": 93.09869010471759,
+            "trees": 84.58157509598287,
+            "pathHash": "2287fc49dc3c1cee798ffce27c5c3c04ee8e14affaf47cdfa4f641ed99fdc1d4",
+            "streets": [
+              "Universität Zentrum, Fussweg",
+              "Rämistrasse",
+              "Karl-Schmid-Strasse Überquerung",
+              "Rämistrasse",
+              "Tannenstrasse Überquerung",
+              "Universitätstrasse",
+              "Sonneggstrasse Überquerung",
+              "Universitätstrasse",
+              "Universitätstrasse Überquerung",
+              "Universitätstrasse"
+            ]
+          },
+          "chosen": {
+            "distance": 1092.2376675773974,
+            "minutes": 13.652970844717467,
+            "sun": 469.809204133555,
+            "shade": 209.23565306680035,
+            "unknown": 413.19281037704076,
+            "trees": 209.23565306680035,
+            "pathHash": "6ca755b65442d51f3482961b916f8800cccd275bce5af9d3fcb4fdec31cae281",
+            "streets": [
+              "Universität Zentrum, Fussweg",
+              "Rämistrasse Überquerung",
+              "Gloriastrasse Überquerung",
+              "Rämistrasse",
+              "Schmelzbergstrasse Überquerung",
+              "Rämistrasse",
+              "Universitätstrasse",
+              "Bolleystrasse Überquerung",
+              "Universitätstrasse"
+            ]
+          },
+          "calculationMs": 376
+        }
+      ]
+    },
+    {
+      "district": "University",
+      "from": "Rämistrasse 71",
+      "to": "Universitätstrasse 100",
+      "anchors": [
+        {
+          "point": [
+            8.549134871086284,
+            47.374602434537195
+          ],
+          "sourceId": 4779,
+          "name": "Universität Zentrum, Fussweg",
+          "distance": 5.400237807287421
+        },
+        {
+          "point": [
+            8.548350290835605,
+            47.38374036912351
+          ],
+          "sourceId": 6523,
+          "name": "Universitätstrasse",
+          "distance": 2.4449637555533927
+        }
+      ],
+      "departure": "2026-12-21T11:00:00Z",
+      "different": true,
+      "choices": [
+        {
+          "primary": "shade",
+          "mode": "shade",
+          "basis": "buildings",
+          "shadeCoverage": "complete",
+          "alternative": true,
+          "fastest": {
+            "distance": 1062.7829527802344,
+            "minutes": 13.28478690975293,
+            "sun": 686.1834073307799,
+            "shade": 372.09337975324286,
+            "unknown": 4.5061656962114425,
+            "treeEstimate": {
+              "shadeMeters": 739.6840000761465,
+              "sunMeters": 37.4747785236263,
+              "unknownMeters": 285.6241741804636,
+              "canopyShadeMeters": 367.59062032290217
+            },
+            "pathHash": "2287fc49dc3c1cee798ffce27c5c3c04ee8e14affaf47cdfa4f641ed99fdc1d4",
+            "streets": [
+              "Universität Zentrum, Fussweg",
+              "Rämistrasse",
+              "Karl-Schmid-Strasse Überquerung",
+              "Rämistrasse",
+              "Tannenstrasse Überquerung",
+              "Universitätstrasse",
+              "Sonneggstrasse Überquerung",
+              "Universitätstrasse",
+              "Universitätstrasse Überquerung",
+              "Universitätstrasse"
+            ]
+          },
+          "chosen": {
+            "distance": 1292.4402601699842,
+            "minutes": 16.155503252124802,
+            "sun": 200.46508315522826,
+            "shade": 1058.627259988891,
+            "unknown": 33.3479170258646,
+            "treeEstimate": {
+              "shadeMeters": 1143.6381103502429,
+              "sunMeters": 10.91352048763782,
+              "unknownMeters": 137.8886293321041,
+              "canopyShadeMeters": 85.01085036135089
+            },
+            "pathHash": "9bb80d25b9b672f8953e830a412f4efc1017023221703a107dee2cdd995b45c4",
+            "streets": [
+              "Universität Zentrum, Fussweg",
+              "Karl-Schmid-Strasse",
+              "Karl-Schmid-Strasse Überquerung",
+              "Rämistrasse",
+              "Tannenstrasse Überquerung",
+              "Universitätstrasse",
+              "Sonneggstrasse",
+              "Weinbergfussweg",
+              "Haldenbachstrasse",
+              "Culmannstrasse",
+              "Culmannstrasse Überquerung",
+              "Culmannstrasse",
+              "Panweg Überquerung",
+              "Culmannstrasse",
+              "Stapferstrasse",
+              "Universitätstrasse",
+              "Universitätstrasse Überquerung",
+              "Universitätstrasse"
+            ]
+          },
+          "calculationMs": 1605
+        },
+        {
+          "primary": "sun",
+          "mode": "shade",
+          "basis": "buildings",
+          "shadeCoverage": "complete",
+          "alternative": true,
+          "fastest": {
+            "distance": 1062.7829527802344,
+            "minutes": 13.28478690975293,
+            "sun": 686.1834073307799,
+            "shade": 372.09337975324286,
+            "unknown": 4.5061656962114425,
+            "treeEstimate": {
+              "shadeMeters": 739.6840000761465,
+              "sunMeters": 37.4747785236263,
+              "unknownMeters": 285.6241741804636,
+              "canopyShadeMeters": 367.59062032290217
+            },
+            "pathHash": "2287fc49dc3c1cee798ffce27c5c3c04ee8e14affaf47cdfa4f641ed99fdc1d4",
+            "streets": [
+              "Universität Zentrum, Fussweg",
+              "Rämistrasse",
+              "Karl-Schmid-Strasse Überquerung",
+              "Rämistrasse",
+              "Tannenstrasse Überquerung",
+              "Universitätstrasse",
+              "Sonneggstrasse Überquerung",
+              "Universitätstrasse",
+              "Universitätstrasse Überquerung",
+              "Universitätstrasse"
+            ]
+          },
+          "chosen": {
+            "distance": 1103.3904132758155,
+            "minutes": 13.792380165947694,
+            "sun": 1034.798547885949,
+            "shade": 68.59186538986569,
+            "unknown": 0,
+            "treeEstimate": {
+              "shadeMeters": 407.03781174427843,
+              "sunMeters": 225.06839463205185,
+              "unknownMeters": 471.2842068994885,
+              "canopyShadeMeters": 338.44594635441274
+            },
+            "pathHash": "7636086df1bf6269da68fe9c53f86647d791da1263f6a3a1242a1964bb0814ff",
+            "streets": [
+              "Universität Zentrum, Fussweg",
+              "Rämistrasse",
+              "Rämistrasse Überquerung",
+              "Rämistrasse",
+              "Schmelzbergstrasse Überquerung",
+              "Rämistrasse",
+              "Universitätstrasse",
+              "Universitätstrasse Überquerung",
+              "Universitätstrasse",
+              "Universitätstrasse Überquerung",
+              "Universitätstrasse"
+            ]
+          },
+          "calculationMs": 715
+        }
+      ]
+    },
+    {
+      "district": "Lakeshore",
+      "from": "Bellevue",
+      "to": "Zürichhorn",
+      "anchors": [
+        {
+          "point": [
+            8.54431478975411,
+            47.366843542225084
+          ],
+          "sourceId": 25073,
+          "name": "Utoquai",
+          "distance": 2.95940054064243
+        },
+        {
+          "point": [
+            8.552147993194337,
+            47.354362830354766
+          ],
+          "sourceId": 28381,
+          "name": "Fussweg",
+          "distance": 7.915855308509803
+        }
+      ],
+      "departure": "2026-06-21T12:00:00Z",
+      "different": true,
+      "choices": [
+        {
+          "primary": "shade",
+          "mode": "shade",
+          "basis": "buildings",
+          "shadeCoverage": "partial",
+          "alternative": true,
+          "fastest": {
+            "distance": 1590.309794162961,
+            "minutes": 19.878872427037013,
+            "sun": 1590.309794162961,
+            "shade": 0,
+            "unknown": 0,
+            "treeEstimate": {
+              "shadeMeters": 818.3592606381479,
+              "sunMeters": 404.1515354456153,
+              "unknownMeters": 367.79899807919446,
+              "canopyShadeMeters": 818.3592606381479
+            },
+            "pathHash": "e0d85b171e9343e9fd710b0724d1ec2d586d9cd99426703552fc0aaa3065959b",
+            "streets": [
+              "Utoquai",
+              "Utoquai Überquerung",
+              "Utoquai",
+              "Färberstrasse Überquerung",
+              "Utoquai",
+              "Bellerivestrasse",
+              "Feldeggstrasse Überquerung",
+              "Bellerivestrasse",
+              "Höschgasse Überquerung",
+              "Bellerivestrasse",
+              "Bellerivestrasse Überquerung",
+              "Höschgasse",
+              "Fussweg"
+            ]
+          },
+          "chosen": {
+            "distance": 1913.6505319332766,
+            "minutes": 23.92063164916596,
+            "sun": 625.383654195374,
+            "shade": 1140.4335383725959,
+            "unknown": 147.83333936530425,
+            "treeEstimate": {
+              "shadeMeters": 1348.231707502122,
+              "sunMeters": 271.49975058192166,
+              "unknownMeters": 293.91907384923115,
+              "canopyShadeMeters": 207.79816912952532
+            },
+            "pathHash": "1f7a3a99a0da551d8893fe92f91155c1ee36e026f8992d6d89004fa1e845e037",
+            "streets": [
+              "Utoquai",
+              "Utoquai Überquerung",
+              "Bellevueplatz",
+              "Schoeckstrasse Überquerung",
+              "Theaterstrasse",
+              "Gottfried-Keller-Strasse Überquerung",
+              "Theaterstrasse",
+              "Falkenstrasse Überquerung",
+              "Seefeldstrasse",
+              "Seehofstrasse Überquerung",
+              "Seefeldstrasse",
+              "Kreuzstrasse Überquerung",
+              "Kreuzstrasse",
+              "Seefeldstrasse",
+              "Florastrasse",
+              "Seefeldstrasse",
+              "Höschgasse Überquerung",
+              "Seefeldstrasse",
+              "Dahliastrasse Überquerung",
+              "Seefeldstrasse",
+              "Alderstrasse Überquerung",
+              "Alderstrasse",
+              "Dufourstrasse Überquerung",
+              "Dufourstrasse",
+              "Baurstrasse Überquerung",
+              "Baurstrasse",
+              "Bellerivestrasse",
+              "Unterführung",
+              "Fussweg"
+            ]
+          },
+          "calculationMs": 2601
+        },
+        {
+          "primary": "sun",
+          "mode": "shade",
+          "basis": "buildings-and-trees",
+          "shadeCoverage": "partial",
+          "alternative": true,
+          "fastest": {
+            "distance": 1590.309794162961,
+            "minutes": 19.878872427037013,
+            "sun": 404.1515354456153,
+            "shade": 818.3592606381479,
+            "unknown": 367.79899807919446,
+            "trees": 818.3592606381479,
+            "pathHash": "e0d85b171e9343e9fd710b0724d1ec2d586d9cd99426703552fc0aaa3065959b",
+            "streets": [
+              "Utoquai",
+              "Utoquai Überquerung",
+              "Utoquai",
+              "Färberstrasse Überquerung",
+              "Utoquai",
+              "Bellerivestrasse",
+              "Feldeggstrasse Überquerung",
+              "Bellerivestrasse",
+              "Höschgasse Überquerung",
+              "Bellerivestrasse",
+              "Bellerivestrasse Überquerung",
+              "Höschgasse",
+              "Fussweg"
+            ]
+          },
+          "chosen": {
+            "distance": 1986.9810479044847,
+            "minutes": 24.83726309880606,
+            "sun": 1147.110467103805,
+            "shade": 294.974675543683,
+            "unknown": 544.8959052569955,
+            "trees": 272.68447810082984,
+            "pathHash": "88745af747370caeebadfad710ce4b8ff1f746adc69df193b1418dd287296c16",
+            "streets": [
+              "Utoquai",
+              "Utoquai Überquerung",
+              "Bellevueplatz",
+              "Theaterstrasse Überquerung",
+              "Theaterstrasse",
+              "Gottfried-Keller-Strasse Überquerung",
+              "Theaterstrasse",
+              "Goethestrasse Überquerung",
+              "Theaterstrasse",
+              "Falkenstrasse Überquerung",
+              "Seefeldstrasse",
+              "Holbeinstrasse Überquerung",
+              "Seefeldstrasse",
+              "Kreuzstrasse Überquerung",
+              "Kreuzstrasse",
+              "Seefeldstrasse",
+              "Fussweg",
+              "Seefeldstrasse",
+              "Höschgasse Überquerung",
+              "Seefeldstrasse",
+              "Seefeldstrasse Überquerung",
+              "Seefeldstrasse",
+              "Hornbachstrasse",
+              "Dufourstrasse",
+              "Dufourstrasse Überquerung",
+              "Hornbachstrasse",
+              "Bellerivestrasse",
+              "Unterführung",
+              "Fussweg"
+            ]
+          },
+          "calculationMs": 311
+        }
+      ]
+    },
+    {
+      "district": "Lakeshore",
+      "from": "Bellevue",
+      "to": "Zürichhorn",
+      "anchors": [
+        {
+          "point": [
+            8.54431478975411,
+            47.366843542225084
+          ],
+          "sourceId": 25073,
+          "name": "Utoquai",
+          "distance": 2.95940054064243
+        },
+        {
+          "point": [
+            8.552147993194337,
+            47.354362830354766
+          ],
+          "sourceId": 28381,
+          "name": "Fussweg",
+          "distance": 7.915855308509803
+        }
+      ],
+      "departure": "2026-10-10T12:00:00Z",
+      "different": true,
+      "choices": [
+        {
+          "primary": "shade",
+          "mode": "shade",
+          "basis": "buildings",
+          "shadeCoverage": "partial",
+          "alternative": true,
+          "fastest": {
+            "distance": 1590.309794162961,
+            "minutes": 19.878872427037013,
+            "sun": 1288.4944234763614,
+            "shade": 76.3874106466944,
+            "unknown": 225.4279600399032,
+            "treeEstimate": {
+              "shadeMeters": 841.3271158000947,
+              "sunMeters": 0,
+              "unknownMeters": 748.9826783628635,
+              "canopyShadeMeters": 764.9397051534
+            },
+            "pathHash": "e0d85b171e9343e9fd710b0724d1ec2d586d9cd99426703552fc0aaa3065959b",
+            "streets": [
+              "Utoquai",
+              "Utoquai Überquerung",
+              "Utoquai",
+              "Färberstrasse Überquerung",
+              "Utoquai",
+              "Bellerivestrasse",
+              "Feldeggstrasse Überquerung",
+              "Bellerivestrasse",
+              "Höschgasse Überquerung",
+              "Bellerivestrasse",
+              "Bellerivestrasse Überquerung",
+              "Höschgasse",
+              "Fussweg"
+            ]
+          },
+          "chosen": {
+            "distance": 1900.7175527012198,
+            "minutes": 23.758969408765246,
+            "sun": 308.31950703738454,
+            "shade": 1367.5410118656932,
+            "unknown": 224.85703379813947,
+            "treeEstimate": {
+              "shadeMeters": 1504.030955082879,
+              "sunMeters": 19.33942323317762,
+              "unknownMeters": 377.34717438516117,
+              "canopyShadeMeters": 136.48994321718519
+            },
+            "pathHash": "d409da66268dfd35d09643c67e8e4f1356a0430d46cc53d0169107c6019f6951",
+            "streets": [
+              "Utoquai",
+              "Utoquai Überquerung",
+              "Bellevueplatz",
+              "Schoeckstrasse Überquerung",
+              "Theaterstrasse",
+              "Gottfried-Keller-Strasse Überquerung",
+              "Theaterstrasse",
+              "Falkenstrasse Überquerung",
+              "Seefeldstrasse",
+              "Seehofstrasse Überquerung",
+              "Seefeldstrasse",
+              "Kreuzstrasse Überquerung",
+              "Kreuzstrasse",
+              "Seefeldstrasse",
+              "Florastrasse",
+              "Seefeldstrasse",
+              "Höschgasse Überquerung",
+              "Höschgasse",
+              "Dufourstrasse",
+              "Dufourstrasse Überquerung",
+              "Dufourstrasse",
+              "Alderstrasse Überquerung",
+              "Dufourstrasse",
+              "Baurstrasse Überquerung",
+              "Baurstrasse",
+              "Bellerivestrasse",
+              "Unterführung",
+              "Fussweg"
+            ]
+          },
+          "calculationMs": 1315
+        },
+        {
+          "primary": "sun",
+          "mode": "shade",
+          "basis": "buildings",
+          "shadeCoverage": "partial",
+          "alternative": false,
+          "fastest": {
+            "distance": 1590.309794162961,
+            "minutes": 19.878872427037013,
+            "sun": 1288.4944234763614,
+            "shade": 76.3874106466944,
+            "unknown": 225.4279600399032,
+            "treeEstimate": {
+              "shadeMeters": 841.3271158000947,
+              "sunMeters": 0,
+              "unknownMeters": 748.9826783628635,
+              "canopyShadeMeters": 764.9397051534
+            },
+            "pathHash": "e0d85b171e9343e9fd710b0724d1ec2d586d9cd99426703552fc0aaa3065959b",
+            "streets": [
+              "Utoquai",
+              "Utoquai Überquerung",
+              "Utoquai",
+              "Färberstrasse Überquerung",
+              "Utoquai",
+              "Bellerivestrasse",
+              "Feldeggstrasse Überquerung",
+              "Bellerivestrasse",
+              "Höschgasse Überquerung",
+              "Bellerivestrasse",
+              "Bellerivestrasse Überquerung",
+              "Höschgasse",
+              "Fussweg"
+            ]
+          },
+          "chosen": {
+            "distance": 1590.309794162961,
+            "minutes": 19.878872427037013,
+            "sun": 1288.4944234763614,
+            "shade": 76.3874106466944,
+            "unknown": 225.4279600399032,
+            "treeEstimate": {
+              "shadeMeters": 841.3271158000947,
+              "sunMeters": 0,
+              "unknownMeters": 748.9826783628635,
+              "canopyShadeMeters": 764.9397051534
+            },
+            "pathHash": "e0d85b171e9343e9fd710b0724d1ec2d586d9cd99426703552fc0aaa3065959b",
+            "streets": [
+              "Utoquai",
+              "Utoquai Überquerung",
+              "Utoquai",
+              "Färberstrasse Überquerung",
+              "Utoquai",
+              "Bellerivestrasse",
+              "Feldeggstrasse Überquerung",
+              "Bellerivestrasse",
+              "Höschgasse Überquerung",
+              "Bellerivestrasse",
+              "Bellerivestrasse Überquerung",
+              "Höschgasse",
+              "Fussweg"
+            ]
+          },
+          "calculationMs": 590
+        }
+      ]
+    },
+    {
+      "district": "Lakeshore",
+      "from": "Bellevue",
+      "to": "Zürichhorn",
+      "anchors": [
+        {
+          "point": [
+            8.54431478975411,
+            47.366843542225084
+          ],
+          "sourceId": 25073,
+          "name": "Utoquai",
+          "distance": 2.95940054064243
+        },
+        {
+          "point": [
+            8.552147993194337,
+            47.354362830354766
+          ],
+          "sourceId": 28381,
+          "name": "Fussweg",
+          "distance": 7.915855308509803
+        }
+      ],
+      "departure": "2026-12-21T11:00:00Z",
+      "different": false,
+      "choices": [
+        {
+          "primary": "shade",
+          "mode": "shade",
+          "basis": "buildings",
+          "shadeCoverage": "partial",
+          "alternative": false,
+          "fastest": {
+            "distance": 1590.309794162961,
+            "minutes": 19.878872427037013,
+            "sun": 561.3710507737069,
+            "shade": 126.53107425482945,
+            "unknown": 902.4076691344214,
+            "treeEstimate": {
+              "shadeMeters": 618.7047129932636,
+              "sunMeters": 0,
+              "unknownMeters": 971.6050811696941,
+              "canopyShadeMeters": 492.1736387384339
+            },
+            "pathHash": "e0d85b171e9343e9fd710b0724d1ec2d586d9cd99426703552fc0aaa3065959b",
+            "streets": [
+              "Utoquai",
+              "Utoquai Überquerung",
+              "Utoquai",
+              "Färberstrasse Überquerung",
+              "Utoquai",
+              "Bellerivestrasse",
+              "Feldeggstrasse Überquerung",
+              "Bellerivestrasse",
+              "Höschgasse Überquerung",
+              "Bellerivestrasse",
+              "Bellerivestrasse Überquerung",
+              "Höschgasse",
+              "Fussweg"
+            ]
+          },
+          "chosen": {
+            "distance": 1590.309794162961,
+            "minutes": 19.878872427037013,
+            "sun": 561.3710507737069,
+            "shade": 126.53107425482945,
+            "unknown": 902.4076691344214,
+            "treeEstimate": {
+              "shadeMeters": 618.7047129932636,
+              "sunMeters": 0,
+              "unknownMeters": 971.6050811696941,
+              "canopyShadeMeters": 492.1736387384339
+            },
+            "pathHash": "e0d85b171e9343e9fd710b0724d1ec2d586d9cd99426703552fc0aaa3065959b",
+            "streets": [
+              "Utoquai",
+              "Utoquai Überquerung",
+              "Utoquai",
+              "Färberstrasse Überquerung",
+              "Utoquai",
+              "Bellerivestrasse",
+              "Feldeggstrasse Überquerung",
+              "Bellerivestrasse",
+              "Höschgasse Überquerung",
+              "Bellerivestrasse",
+              "Bellerivestrasse Überquerung",
+              "Höschgasse",
+              "Fussweg"
+            ]
+          },
+          "calculationMs": 1186
+        },
+        {
+          "primary": "sun",
+          "mode": "shade",
+          "basis": "buildings",
+          "shadeCoverage": "partial",
+          "alternative": false,
+          "fastest": {
+            "distance": 1590.309794162961,
+            "minutes": 19.878872427037013,
+            "sun": 561.3710507737069,
+            "shade": 126.53107425482945,
+            "unknown": 902.4076691344214,
+            "treeEstimate": {
+              "shadeMeters": 618.7047129932636,
+              "sunMeters": 0,
+              "unknownMeters": 971.6050811696941,
+              "canopyShadeMeters": 492.1736387384339
+            },
+            "pathHash": "e0d85b171e9343e9fd710b0724d1ec2d586d9cd99426703552fc0aaa3065959b",
+            "streets": [
+              "Utoquai",
+              "Utoquai Überquerung",
+              "Utoquai",
+              "Färberstrasse Überquerung",
+              "Utoquai",
+              "Bellerivestrasse",
+              "Feldeggstrasse Überquerung",
+              "Bellerivestrasse",
+              "Höschgasse Überquerung",
+              "Bellerivestrasse",
+              "Bellerivestrasse Überquerung",
+              "Höschgasse",
+              "Fussweg"
+            ]
+          },
+          "chosen": {
+            "distance": 1590.309794162961,
+            "minutes": 19.878872427037013,
+            "sun": 561.3710507737069,
+            "shade": 126.53107425482945,
+            "unknown": 902.4076691344214,
+            "treeEstimate": {
+              "shadeMeters": 618.7047129932636,
+              "sunMeters": 0,
+              "unknownMeters": 971.6050811696941,
+              "canopyShadeMeters": 492.1736387384339
+            },
+            "pathHash": "e0d85b171e9343e9fd710b0724d1ec2d586d9cd99426703552fc0aaa3065959b",
+            "streets": [
+              "Utoquai",
+              "Utoquai Überquerung",
+              "Utoquai",
+              "Färberstrasse Überquerung",
+              "Utoquai",
+              "Bellerivestrasse",
+              "Feldeggstrasse Überquerung",
+              "Bellerivestrasse",
+              "Höschgasse Überquerung",
+              "Bellerivestrasse",
+              "Bellerivestrasse Überquerung",
+              "Höschgasse",
+              "Fussweg"
+            ]
+          },
+          "calculationMs": 587
+        }
+      ]
+    }
+  ]
+}

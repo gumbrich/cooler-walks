@@ -41,17 +41,27 @@ export function LightRoutingStatus({
     const r = result.alternative;
     text =
       goal === 'shade'
-        ? t('Shadier option: about {minutes} min less direct sun.', {
-            // Durations use the router's fixed walking speed; no new speed assumption here.
-            minutes: number(
-              (result.fastest.minutes * result.fastest.sunMeters) / result.fastest.distance -
-                (r.minutes * r.sunMeters) / r.distance,
-              1,
-            ),
-          })
-        : t('Sunnier option: about {share}% of the walk in direct sun.', {
-            share: Math.round((100 * r.sunMeters) / r.distance),
-          });
+        ? t(
+            result.treeShadeFallback
+              ? 'Building shade: about {minutes} min less sun.'
+              : 'Shadier option: about {minutes} min less direct sun.',
+            {
+              // Durations use the router's fixed walking speed; no new speed assumption here.
+              minutes: number(
+                (result.fastest.minutes * result.fastest.sunMeters) / result.fastest.distance -
+                  (r.minutes * (r.sunMeters + r.unknownMeters)) / r.distance,
+                1,
+              ),
+            },
+          )
+        : t(
+            result.treeShadeFallback
+              ? 'Without building shade: about {share}% of the walk.'
+              : 'Sunnier option: about {share}% of the walk in direct sun.',
+            {
+              share: Math.round((100 * r.sunMeters) / r.distance),
+            },
+          );
   } else
     text = t(
       goal === 'shade'
@@ -61,6 +71,9 @@ export function LightRoutingStatus({
   return (
     <p className={`light-routing-status${unavailable ? ' unavailable' : ''}`} role="status">
       {text}
+      {result?.treeShadeFallback && !busy && (
+        <small className="light-model-note">{t('Buildings used; tree data has gaps here.')}</small>
+      )}
     </p>
   );
 }

@@ -1,5 +1,9 @@
 # Data sources and preparation
 
+## Sun/Shade availability repair · 0.22.0
+
+No source assets, observation dates, tree masks or ray geometry changed. The route selector now uses worst-case unknown-exposure bounds and a declared building-only fallback when optional tree gaps prevent comparison. Source-only canopy checks disable fallback and still verify raw unknown cells. [Policy, provenance-preserving behaviour and evidence](shade-routing-recovery.md).
+
 ## Tempo 30 street overlay · 9 October 2026
 
 Reuses the recorded municipal implemented-zone snapshot and the exact OSM extract already catalogued for Zurich; no new field observations or fetch dates are implied. `scripts/prepare-traffic-zones.ts` checks both source hashes, clips eligible street lines in LV95 to the zone polygons and emits WGS84 multiline features. 5,110 features / 4,985 ways / 288 city zones are represented. Source polygons and canton orders remain separately retained; ordered boundaries do not become implemented street limits. Full exclusions and source hashes: [traffic-zone-validation.json](traffic-zone-validation.json). Zurich runtime revision is `zurich-2026-10-08-v12`; the walking and environmental coverage boundaries are unchanged.
