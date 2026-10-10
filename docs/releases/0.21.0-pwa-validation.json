@@ -1,0 +1,23 @@
+{
+  "appVersion": "0.21.0",
+  "verifiedAt": "2026-10-10T10:54:26.743Z",
+  "origin": "https://coolerwalks.ch",
+  "browser": "154.0.8037.98",
+  "manifestErrors": [],
+  "installabilityErrors": [],
+  "standalone": true,
+  "germanOffline": true,
+  "verifiedCompleteZurichDownload": true,
+  "downloadMs": 146784,
+  "pavementsDefault": true,
+  "treesDefault": true,
+  "calmPavements": true,
+  "barrierAvoidance": true,
+  "minuteDetour": true,
+  "shadeSunThemes": true,
+  "offlineAddressSelection": true,
+  "offlineWaypoints": true,
+  "offlineTrafficEvidence": true,
+  "offlineZones": true,
+  "pageErrors": []
+}

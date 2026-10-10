@@ -99,7 +99,11 @@ try {
   await expect(app.locator('.route-card')).toHaveCount(1);
   await app.getByRole('button', { name: '+5 min', exact: true }).click();
   await ready(app);
-  await app.locator('.trip-form').scrollIntoViewIfNeeded();
+  await expect(app.locator('.route-card')).toHaveCount(2);
+  await app.locator('.light-choice').scrollIntoViewIfNeeded();
+  await app.getByRole('button', { name: 'Weg auf der Karte einpassen', exact: true }).click();
+  await expect(app.locator('.map-shell')).toHaveAttribute('data-map-settled', 'true');
+  await expect(app.locator('.results')).toHaveAttribute('aria-busy', 'false');
   await app.screenshot({ path: 'docs/screenshots/installed-simple-planner-de.png' });
   await choose(app, 'Von', 'Hofwiesenstrasse 350');
   await choose(app, 'Nach', 'Wallisellenstrasse 45');

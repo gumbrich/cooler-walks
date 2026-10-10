@@ -83,6 +83,8 @@ test('phone and tablet keep the planner simple, legible and usable', async ({ pa
   await expect(page.locator('.results')).toHaveAttribute('aria-busy', 'false');
   await page.screenshot({ path: 'docs/screenshots/phone-simple-results-de.png', fullPage: true });
   await page.setViewportSize({ width: 820, height: 1180 });
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await page.getByRole('button', { name: 'Weg auf der Karte einpassen', exact: true }).click();
   await expect(page.locator('.map-shell')).toHaveAttribute('data-map-settled', 'true');
   await page.screenshot({ path: 'docs/screenshots/tablet-simple-planner-de.png' });
   const legend = (await page.locator('.map-legend').boundingBox())!;

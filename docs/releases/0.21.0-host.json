@@ -1,0 +1,17 @@
+{
+  "appVersion": "0.21.0",
+  "sourceRevision": "4d368107ac97dfdafd47e6c8b9e50ba56c13b451",
+  "origin": "https://coolerwalks.ch",
+  "checkedAt": "2026-10-10T10:49:19.928181+00:00",
+  "netlifyDeployId": "6aca16dfee38ca00089c17f2",
+  "publishedAt": "2026-10-10T10:45:31.485Z",
+  "checks": [
+    "Six EN/DE HTML pages and security headers",
+    "All 81 detailed shade tile hashes",
+    "Pavement graph matches reviewed v3 data",
+    "All 324 canopy tile hashes",
+    "All five hosted map-pack byte lengths and SHA-256 values using deployed catalogue",
+    "Private authentication; map-pack CORS retained without claiming native sign-in"
+  ],
+  "passwordGate": "docs/private-access-validation.json"
+}

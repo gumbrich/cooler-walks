@@ -1,6 +1,6 @@
 # Preparing Google Play and the App Store
 
-## Private website testing · 0.20.0 / native build 19
+## Private website testing · 0.21.0 / native build 20
 
 Store submission remains pending. The website, support/privacy URLs and remote map-download host now require the testing password. Restore public policy/support URLs and provide an appropriate native download service before any store submission. Bundled native data remains usable; the website cookie is not native authentication. See [private access](private-access.md). Neither a shared site password nor this build is an App Store/Play Store release.
 
@@ -13,9 +13,9 @@ Status on 29 September 2026: native Android and iOS projects exist, with the sam
 - Live HTTPS [privacy](https://coolerwalks.ch/privacy/) and [support](https://coolerwalks.ch/support/) pages, with email feedback, offline caching and confirmed Netlify hosting disclosure.
 - English listing copy, category suggestions, reviewer instructions, bounded-city claims, screenshot inventory and release checks. No store account, signing key, listing or submission was created.
 
-The unsigned Android AAB, iOS simulator build and unsigned iOS device archive passed the [native CI build](https://github.com/gumbrich/cooler-walks/actions/runs/36590625022) for the packaging milestone. Local Xcode device archiving remains blocked by its platform installation; CI provides the working archive path. The new help/privacy navigation was then checked on the Android emulator: explicit `index.html` links are required by Capacitor's bundled asset server, and the pages honor native safe-area insets. Run `npm run test:native:pages` against the dedicated installed debug emulator build to repeat it; see `native-public-pages-validation.json`.
+The unsigned Android AAB, iOS simulator build and unsigned iOS device archive passed the [native CI build](https://github.com/gumbrich/cooler-walks/actions/runs/36590625022) for the packaging milestone. Local Xcode device archiving remains blocked by its platform installation; CI provided the working archive path for those earlier versions. For 0.21.0, all GitHub jobs are blocked before starting by the Actions budget; there is no new verified iOS build. [Current evidence](releases/0.21.0-ci.json). The new help/privacy navigation was then checked on the Android emulator: explicit `index.html` links are required by Capacitor's bundled asset server, and the pages honor native safe-area insets. Run `npm run test:native:pages` against the dedicated installed debug emulator build to repeat it; see `native-public-pages-validation.json`.
 
-Keep `io.github.gumbrich.coolerwalks` as the provisional application/bundle ID. Confirm it before creating the store records: changing it after publication creates a different app. Current marketing version is 0.20.0, Android versionCode/iOS build number 19. Increment build numbers for later uploaded builds; keep Android, iOS and package.json version values consistent.
+Keep `io.github.gumbrich.coolerwalks` as the provisional application/bundle ID. Confirm it before creating the store records: changing it after publication creates a different app. Current marketing version is 0.21.0, Android versionCode/iOS build number 20. Increment build numbers for later uploaded builds; keep Android, iOS and package.json version values consistent.
 
 ## Accounts and current requirements
 

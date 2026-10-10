@@ -1,18 +1,18 @@
 {
-  "checkedAt": "2026-09-29T21:36:20.945Z",
-  "appVersion": "0.5.0",
+  "checkedAt": "2026-10-10T10:42:51.614Z",
+  "appVersion": "0.21.0",
   "device": {
     "model": "sdk_gphone64_arm64",
     "avd": "CoolerWalks_Test",
     "emulated": true
   },
   "android": "16",
-  "webView": "Current WebView package (name, version): (com.google.android.webview, 154.0.8037.58)",
+  "webView": "Current WebView package (name, version): (com.google.android.webview, 153.0.8010.57)",
   "passed": [
     "Native launch, bundled Zurich map, real routes and no service worker",
     "Android Back closes the native information view",
     "Native permission dismissal preserves the trip; Back closes editing",
-    "German interface and real Zurich calmer route; language switch preserves the trip",
+    "German calmer-street preference on municipal pavements; language switch preserves trip",
     "Offline map and real routing: ch-zurich",
     "Offline map and real routing: de-munich",
     "Offline map and real routing: us-cambridge-ma",

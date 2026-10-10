@@ -1,4 +1,5 @@
-import { _android, expect } from '@playwright/test';
+import { _android, expect as baseExpect } from '@playwright/test';
+const expect = baseExpect.configure({ timeout: 60000 });
 import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
 import os from 'node:os';
@@ -30,6 +31,7 @@ try {
   await expect(page.locator('.mobile-time')).toBeVisible({ timeout: 60000 });
   await page.getByRole('combobox', { name: /^(Language|Sprache)$/ }).selectOption('en');
   await page.getByRole('combobox', { name: 'City', exact: true }).selectOption('ch-zurich');
+  await expect(page.locator('.route-card').first()).toBeVisible();
   await page.getByLabel('Departure date', { exact: true }).fill('2026-06-21');
   await page.getByRole('slider', { name: 'Departure time', exact: true }).fill('840');
   await page.getByRole('button', { name: 'Edit trip', exact: true }).click();

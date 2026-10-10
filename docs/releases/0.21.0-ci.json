@@ -1,0 +1,53 @@
+{
+  "appVersion": "0.21.0",
+  "sourceRevision": "4d368107ac97dfdafd47e6c8b9e50ba56c13b451",
+  "checkedAt": "2026-10-10T10:49:04.456464+00:00",
+  "remoteStatus": "blocked before execution",
+  "reason": "The job was not started because an Actions budget is preventing further use.",
+  "runs": [
+    {
+      "conclusion": "failure",
+      "databaseId": 38045910674,
+      "headSha": "4d368107ac97dfdafd47e6c8b9e50ba56c13b451",
+      "status": "completed",
+      "url": "https://github.com/gumbrich/cooler-walks/actions/runs/38045910674",
+      "workflowName": "Native iOS build"
+    },
+    {
+      "conclusion": "failure",
+      "databaseId": 38045910680,
+      "headSha": "4d368107ac97dfdafd47e6c8b9e50ba56c13b451",
+      "status": "completed",
+      "url": "https://github.com/gumbrich/cooler-walks/actions/runs/38045910680",
+      "workflowName": "Native Android build"
+    },
+    {
+      "conclusion": "failure",
+      "databaseId": 38045910720,
+      "headSha": "4d368107ac97dfdafd47e6c8b9e50ba56c13b451",
+      "status": "completed",
+      "url": "https://github.com/gumbrich/cooler-walks/actions/runs/38045910720",
+      "workflowName": "Checks"
+    }
+  ],
+  "localEvidence": {
+    "unitModelLanguageTests": 157,
+    "browserScenarios": 37,
+    "fullDataSuite": "passed; affected pavement and 24-case planner checks repeated after final data update",
+    "pythonSourceChecks": 15,
+    "serviceComparisonRegression": "passed",
+    "androidBuild": "passed",
+    "androidOfflineFlow": "passed",
+    "androidOsInteractions": "passed",
+    "pwaCacheUpgrade": "passed",
+    "iosBuild": "unavailable: Xcode requires iOS 26.2 platform installation",
+    "productionPageScenarios": 4,
+    "liveInstalledPwa": "passed: actual Chrome installation, full Zurich download and German offline planner",
+    "hostedAssets": "passed: all 81 shade tiles, 324 canopy tiles and five packs"
+  },
+  "limits": [
+    "Local macOS results are not Linux CI results",
+    "No remote runner started",
+    "No new iOS build or interaction validation"
+  ]
+}

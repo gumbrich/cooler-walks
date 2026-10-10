@@ -1,15 +1,17 @@
 {
-  "checkedAt": "2026-10-08T22:18:16.975Z",
-  "version": "0.20.0",
+  "checkedAt": "2026-10-10T10:47:07.816Z",
+  "version": "0.21.0",
   "device": "CoolerWalks_Test, Android 36.1, 2 GB",
   "passed": [
-    "Real Bucheggplatz–Waidbadstrasse flatter alternative",
-    "Estimated ascent/descent and profile",
-    "English/German",
-    "Zero and five-minute budgets offline",
-    "Preference toggling offline",
-    "Flatter + shade + waterside together, with explicit priority and comparison, offline",
-    "No horizontal overflow or JavaScript errors"
+    "Municipal pavements and tree shade enabled by default",
+    "Calmer streets, water and accessibility together",
+    "Zero, five, seven and fifteen minute budgets",
+    "Sun/shade buttons and themes",
+    "Elevation summaries with accessibility selected",
+    "Offline route recalculation and northern Zurich address-side selection",
+    "Moving arrival-time shade, street-zone overlay and historical counter hour updates offline",
+    "City change clears incompatible tree, pavement and traffic data",
+    "English/German, no horizontal overflow or JavaScript errors"
   ],
   "limitations": ["No physical-phone test", "No iOS interaction test", "No field-validation claim"]
 }

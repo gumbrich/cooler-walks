@@ -62,6 +62,7 @@ test('planner runs under production CSP and offline privacy navigation stays on 
       (window as unknown as { cspErrors: string[] }).cspErrors.push(event.violatedDirective);
     });
   });
+  await page.clock.setFixedTime(new Date('2026-06-21T12:00:00Z'));
   await page.goto('/?view=planner');
   await expect(page.locator('.route-card').first()).toBeVisible();
   await expect(page.locator('.map-shell')).toHaveAttribute('data-map-ready', 'true');
@@ -76,8 +77,8 @@ test('planner runs under production CSP and offline privacy navigation stays on 
       () =>
         page.evaluate(
           async () =>
-            Boolean(await caches.match('/data/zurich.json')) &&
-            Boolean(await caches.match('/data/zurich-map.geojson')),
+            Boolean(await caches.match('/data/zurich.json', { ignoreSearch: true })) &&
+            Boolean(await caches.match('/data/zurich-map.geojson', { ignoreSearch: true })),
         ),
       { timeout: 60000 },
     )
@@ -114,6 +115,7 @@ test('German public pages work without JavaScript and offline navigation stays G
     publicPage.getByRole('heading', { name: 'Der Standort bleibt deine Entscheidung' }),
   ).toBeVisible();
   await noScript.close();
+  await page.clock.setFixedTime(new Date('2026-06-21T12:00:00Z'));
   await page.goto('/de/?view=planner');
   await expect(page.locator('.route-card').first()).toBeVisible();
   await page.evaluate(async () => {
@@ -127,8 +129,8 @@ test('German public pages work without JavaScript and offline navigation stays G
       () =>
         page.evaluate(
           async () =>
-            Boolean(await caches.match('/data/zurich.json')) &&
-            Boolean(await caches.match('/data/zurich-map.geojson')),
+            Boolean(await caches.match('/data/zurich.json', { ignoreSearch: true })) &&
+            Boolean(await caches.match('/data/zurich-map.geojson', { ignoreSearch: true })),
         ),
       { timeout: 60000 },
     )

@@ -6,6 +6,8 @@ Implemented municipal pavements as the default Zurich network, including traffic
 
 TypeScript and 157 unit/model/language tests pass. The complete data suite and 24 real combined-route cases pass. The Stadelhofen barrier case replaces a mapped 20 m staircase with an approximately 188 m route using a mapped lift; current lift operation remains unknown. Field-validation and winter foliage limitations are unchanged.
 
+Runtime `4d36810` is live with its password gate intact. All 37 browser and four production-page scenarios, Android build/emulator, Chrome installation/full download/offline, cache-upgrade and hosted hash checks pass. Screenshots were inspected at desktop, tablet and phone sizes. GitHub runners are blocked by the Actions budget; local iOS lacks the required 26.2 platform. [Release evidence and exact limits](platform.md#default-zurich-planner--0210--native-build-20).
+
 Next: field-check routes, mapped barriers, street associations and summer/winter tree exposure. Positive kerb/width/surface data is needed before promising wheelchair accessibility.
 
 ## Street zones, combined preferences and private testing · 0.20.0
