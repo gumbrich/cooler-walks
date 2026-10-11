@@ -223,3 +223,9 @@ All three GitHub workflows pass for runtime `089b6bf`: the shared source/model/d
 ## Private test release · 0.20.0
 
 Runtime `96ea019d04556293858fa2c5ce926923b3760018` is deployed at https://coolerwalks.ch, Netlify deploy `6ac8195e8a5a41000843e87d`. Its routing worker and stylesheet match the tested local build; the deployed catalogue is retained with all five pack checksums and all 405 model-tile checks. The web bundle includes the private-site logout control. [Hosted evidence](releases/0.20.0-host.json). Sign-in/logout, anonymous asset denial, authenticated manifest installation, complete Zurich downloads and offline combined preferences pass on this deployment. [PWA report](releases/0.20.0-pwa-validation.json). Native downloads do not inherit the browser session; native bundles remain usable offline.
+
+## Munich coverage expansion · 0.24.0
+
+Published `0d6dd78f60cb301ef4df0690a378046e18feb14c` at https://coolerwalks.ch, Netlify deploy `6acb8bdcd0153e00080cf9cc`. The build passed 168 tests and finished on 11 October 2026 at 13:17:24 UTC. All 469 streamed model tiles, both Munich map/graph files and all five download packs match the tested local data; compressed pack hashes are checked against the actual deployed catalogue, and decompressed contents against local packs to allow Node/zlib compression differences. The HTTPS PWA installs, launches standalone and passes original and expanded Munich flows offline. The password gate remains effective. [Hosted checks](releases/0.24.0-hosted.json) · [PWA checks](releases/0.24.0-pwa-munich.json) · [access checks](private-access-validation.json).
+
+GitHub runners remain blocked by the account Actions budget; Netlify and local checks executed successfully. No DNS, plan, billing or access settings changed. Native protected-host sign-in and physical-device validation remain open.

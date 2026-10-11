@@ -24,5 +24,13 @@
     "Munich tree shade, complete pavement sides, local vehicle counts, authoritative address coordinates and non-ground walking heights remain incomplete.",
     "No physical-device test; current iOS platform unavailable.",
     "Native remote downloads remain subject to protected-host access."
-  ]
+  ],
+  "pythonChecks": {
+    "total": 10,
+    "files": {
+      "scripts/test-detailed-shade.py": 3,
+      "scripts/test-shadow-audit.py": 4,
+      "scripts/test-shadow-lidar-review.py": 3
+    }
+  }
 }

@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import assert from 'node:assert/strict';
 import crypto from 'node:crypto';
+import { gunzipSync } from 'node:zlib';
 import { siteAccess } from './lib/site-access.mjs';
 
 // Run after upload against the real HTTPS host. --local only relaxes HTTPS, for
@@ -28,6 +29,7 @@ const catalogFlag = process.argv.indexOf('--catalog');
 const catalogPath =
   catalogFlag < 0 ? 'src/generated/area-catalog.json' : process.argv[catalogFlag + 1];
 assert.ok(catalogPath && !catalogPath.startsWith('--'), '--catalog requires a local JSON file');
+const localCatalog = JSON.parse(fs.readFileSync('src/generated/area-catalog.json', 'utf8'));
 const get = async (url, options = {}) => {
   const headers = new Headers(options.headers);
   if (cookie && new URL(url).origin === site.origin) headers.set('Cookie', cookie);
@@ -172,8 +174,20 @@ for (const entry of JSON.parse(fs.readFileSync(catalogPath, 'utf8'))) {
   const bytes = Buffer.from(await response.arrayBuffer());
   assert.equal(bytes.length, entry.bytes, entry.id);
   assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'), entry.sha256, entry.id);
+  const localEntry = localCatalog.find((local) => local.id === entry.id);
+  assert.ok(localEntry, `Unrecognized hosted area: ${entry.id}`);
+  assert.equal(entry.version, localEntry.version, `${entry.id}: hosted data version`);
+  // Node/zlib releases can produce different gzip streams. Verify both the
+  // deployed stream against its catalogue and its contents against our build.
+  const payloadHash = (compressed) =>
+    crypto.createHash('sha256').update(gunzipSync(compressed)).digest('hex');
+  assert.equal(
+    payloadHash(bytes),
+    payloadHash(fs.readFileSync(`public/packs/${localEntry.file}`)),
+    `${entry.id}: hosted payload must match the tested local data`,
+  );
   checks.push(
-    `${entry.id}: hosted bytes and SHA-256 verified; ${cookie ? 'authenticated request, CORS header retained (native sign-in not implemented)' : 'native CORS verified'}`,
+    `${entry.id}: hosted bytes, SHA-256 and decompressed local payload verified; ${cookie ? 'authenticated request, CORS header retained (native sign-in not implemented)' : 'native CORS verified'}`,
   );
 }
 console.log(checks.join('\n'));

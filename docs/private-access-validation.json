@@ -1,7 +1,7 @@
 {
-  "checkedAt": "2026-10-11T12:23:19.248Z",
+  "checkedAt": "2026-10-11T13:17:47.644Z",
   "origin": "https://coolerwalks.ch",
-  "version": "0.23.0",
+  "version": "0.24.0",
   "unauthenticatedPaths": [
     "/",
     "/de/",

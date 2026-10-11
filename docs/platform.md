@@ -2,6 +2,12 @@
 
 ## Munich expansion · 0.24.0
 
+Published at **https://coolerwalks.ch** from `0d6dd78f60cb301ef4df0690a378046e18feb14c`, [Netlify deploy `6acb8bdcd0153e00080cf9cc`](https://app.netlify.com/projects/cooler-walks/deploys/6acb8bdcd0153e00080cf9cc). Netlify ran all 168 tests and the production/release checks successfully; the deployment finished at 13:17:24 UTC on 11 October 2026 (2 minutes 15 seconds). The actual HTTPS PWA installed, launched standalone, downloaded Munich and repeated the original and expanded-area flows after an offline reload, with no page errors. [Live PWA evidence](releases/0.24.0-pwa-munich.json). Anonymous access remains denied, including after authenticated cache warming. [Password-gate checks](private-access-validation.json).
+
+The hosted Munich download is **52,572,309 bytes**; the local Node 26 build is **53,085,616 bytes**. Node/zlib versions produce different gzip streams, so the [deployed catalogue](releases/0.24.0-hosted-catalog.json) records the published hashes. The host verifier also compares decompressed content with the tested local pack. GitHub's web/Android/iOS jobs did not start because the account's Actions budget blocked them; the browser job was skipped. [Exact annotations](releases/0.24.0-ci.json). Billing settings were not changed.
+
+All **64 Munich 3D tiles**, the Munich graph/map files, **81 Zurich building tiles**, **324 Zurich canopy tiles**, and all **five pack hashes and decompressed payloads** match the tested data. Both languages, security headers, manifests and missing-file responses pass. [Hosted evidence](releases/0.24.0-hosted.json).
+
 Local verification passed: **168 unit/model/language tests**, TypeScript, production build and all five release pack hashes. **53 Munich route calculations**, all **20 paired Sun/Shade route choices**, 84,827 original graph segments and **870 independent source rays** pass their computational checks. All four city reference routes and the expanded coverage checks pass. Field accuracy remains unvalidated.
 
 Eight relevant browser scenarios pass across Munich feature controls, the expanded districts, city switching, winter sun, public entry, coverage, German/English, automated accessibility and unavailable-data recovery. The new coverage assertion initially targeted the method dialog; it was corrected to the actual coverage dialog. Rendered screenshots also exposed and verified a real fix: map pan limits now allow the expanded boundary to fit above the time controls. [Local release evidence](releases/0.24.0-local-validation.json).

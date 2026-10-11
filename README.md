@@ -43,7 +43,7 @@ npm ci
 npm run dev
 ```
 
-Open **http://127.0.0.1:5173/** for the entry page or **http://127.0.0.1:5173/?view=planner** for the planner. A returning browser opens the planner directly. Processed regional extracts are included, so a fresh checkout does not need to download the raw data. The browser loads one city at a time and fetches only the building/tree tiles needed for online routing. A complete Zurich offline download is about 205 MB.
+Open **http://127.0.0.1:5173/** for the entry page or **http://127.0.0.1:5173/?view=planner** for the planner. A returning browser opens the planner directly. Processed regional extracts are included, so a fresh checkout does not need to download the raw data. The browser loads one city at a time and fetches only the building/tree tiles needed for online routing. A complete Zurich offline download is about 81–82 MB compressed (192 MB expanded); Munich is about 53 MB compressed (143 MB expanded).
 
 For the installable production build:
 

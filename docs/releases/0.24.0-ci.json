@@ -1,0 +1,57 @@
+{
+  "commit": "0d6dd78f60cb301ef4df0690a378046e18feb14c",
+  "checkedAt": "2026-10-11T13:16:10.934974+00:00",
+  "checks": [
+    {
+      "name": "browser",
+      "url": "https://github.com/gumbrich/cooler-walks/actions/runs/38142429071/job/114478855090",
+      "conclusion": "skipped",
+      "annotations": []
+    },
+    {
+      "name": "ios",
+      "url": "https://github.com/gumbrich/cooler-walks/actions/runs/38142429110/job/114478847952",
+      "conclusion": "failure",
+      "annotations": [
+        {
+          "level": "failure",
+          "message": "The job was not started because an Actions budget is preventing further use."
+        },
+        {
+          "level": "notice",
+          "message": "Due to capacity constraints, jobs targeting macOS arm64 runners may experience longer queue times."
+        }
+      ]
+    },
+    {
+      "name": "test",
+      "url": "https://github.com/gumbrich/cooler-walks/actions/runs/38142429071/job/114478847709",
+      "conclusion": "failure",
+      "annotations": [
+        {
+          "level": "failure",
+          "message": "The job was not started because an Actions budget is preventing further use."
+        },
+        {
+          "level": "notice",
+          "message": "\"The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748\""
+        }
+      ]
+    },
+    {
+      "name": "android",
+      "url": "https://github.com/gumbrich/cooler-walks/actions/runs/38142429038/job/114478847681",
+      "conclusion": "failure",
+      "annotations": [
+        {
+          "level": "failure",
+          "message": "The job was not started because an Actions budget is preventing further use."
+        },
+        {
+          "level": "notice",
+          "message": "\"The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748\""
+        }
+      ]
+    }
+  ]
+}
