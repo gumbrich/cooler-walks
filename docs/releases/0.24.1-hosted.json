@@ -1,0 +1,26 @@
+{
+  "version": "0.24.1",
+  "origin": "https://coolerwalks.ch",
+  "checkedAt": "2026-10-11T20:38:26.875Z",
+  "assets": [
+    {
+      "file": "main-CPEJkhPA.css",
+      "sha256": "a03e1334c2fe985ebf1132a5d5e65e9665d5483d2db0def1857764e906bb9a42"
+    },
+    {
+      "file": "route-worker-uj8B9YTA.js",
+      "sha256": "81f1cc51db0c771aefa99863d15da75a6aa99618a46cde7428c245ca632c404b"
+    }
+  ],
+  "anonymousAccess": 401,
+  "sunRouteDistance": "460 m",
+  "sunnyPercent": 94,
+  "viewports": ["desktop close zoom", "phone expanded map"],
+  "pageErrors": [],
+  "limitations": [
+    "No new field or physical-device validation; unchanged data packs were not downloaded again."
+  ],
+  "sourceCommit": "71bd8225f5dfe8901df4c1d66a7afa4ababce019",
+  "netlifyDeploy": "6acbf30d847b8c00084056dd",
+  "buildEndedAt": "2026-10-11T20:37:45Z"
+}

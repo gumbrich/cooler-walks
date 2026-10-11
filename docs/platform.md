@@ -2,6 +2,10 @@
 
 ## Sunlight overlay · 0.24.1
 
+Published runtime `71bd8225f5dfe8901df4c1d66a7afa4ababce019` at **https://coolerwalks.ch**, [Netlify deploy `6acbf30d847b8c00084056dd`](https://app.netlify.com/projects/cooler-walks/deploys/6acbf30d847b8c00084056dd). Netlify passed all 175 tests and its build/release checks; publishing completed at 20:37:45 UTC on 11 October 2026 (2 minutes 19 seconds).
+
+The live desktop/phone Sun flow passes, and the hosted routing worker and stylesheet match the tested local bytes. Anonymous access is still denied. [Hosted evidence](releases/0.24.1-hosted.json) · [live screenshot](screenshots/sun-lines-live-desktop.png). GitHub jobs have started running for this release; their state at verification is recorded [here](releases/0.24.1-ci.json).
+
 TypeScript and **175 tests in 28 files** pass, including route-bend, repeated-leg and unknown-gap display checks. The production build and all five pack checks pass. A real Zurich Sun route was inspected at ordinary and close zoom on desktop and phone, plus a tablet view; the browser flow passed without page errors. [Local evidence](releases/0.24.1-local-validation.json) · [desktop](screenshots/sun-lines-desktop-close.png) · [phone](screenshots/sun-lines-phone-close.png) · [tablet](screenshots/sun-lines-tablet.png).
 
 The shared native assets are synchronized. Android **build 25** compiled; the APK is `native-artifacts/cooler-walks-0.24.1-debug.apk`. This small display update was not retested on an emulator or physical device. iOS was not rebuilt or tested. Routing choices and shade calculations are unchanged.
