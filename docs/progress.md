@@ -2,6 +2,8 @@
 
 ## Munich feature expansion · 0.23.0
 
+Published at **https://coolerwalks.ch** from `d900430`; the live installed-PWA offline flow and password gate pass. GitHub Actions remains blocked by its account budget.
+
 Added real Bavarian LoD2 roof/facade shade and DGM1 ground elevation to the existing 8.90 km² Munich beta area. The shared planner now offers Munich shade/sun route choice, flatter routes, calmer streets, mapped-barrier avoidance, 5,516 deduplicated OSM addresses and 711 corroborated Tempo 30 street fragments. Combined wishes, waypoints, minute detours, German/English and offline packs use the same implementation as Zurich. Source files are pinned by hashes; raw downloads remain outside Git.
 
 The 33-calculation Munich regression selects different Sun/Shade paths in all ten paired June/October cases. The independent source audit agrees on 440/440 rays and checks ground elevations against native DGM1 cells. These are computational checks; field accuracy remains unvalidated. Desktop Chrome installed-PWA and Android emulator flows pass with the full Munich area offline. [Feature/source/verification record and open items](munich.md).

@@ -2,6 +2,12 @@
 
 ## Munich · 0.23.0 / native build 23
 
+Runtime `d900430d1a552fb52975162d4539e05ffc16c359` is published at **https://coolerwalks.ch** (Netlify deploy `6acb7f4141956e0008acdce7`, 11 October 2026, 12:22:59 UTC). The production build completed in 1 minute 37 seconds. The actual HTTPS PWA installed, launched standalone, downloaded Munich and repeated the complete offline flow with no page errors. [Hosted installed-PWA report](releases/0.23.0-pwa-munich.json). Unauthenticated pages, files, manifests and pack requests remain denied; authenticated requests retain private/no-store headers. [Access verification](private-access-validation.json).
+
+All five hosted pack checksums, the Munich planner/map data, all 16 Munich 3D tiles, 81 Zurich 3D tiles and 324 Zurich canopy tiles match the reviewed files. Production HTML, security headers and missing-file handling pass. [Hosted asset report](releases/0.23.0-hosted.json).
+
+GitHub's web, Android and iOS jobs were prevented from starting by the existing Actions budget. The browser job was therefore skipped. [Exact annotations](releases/0.23.0-ci.json). Account billing was not changed; the local checks and Netlify build above are the executed evidence.
+
 TypeScript and all 167 unit/model/language tests, every data-verification stage, 15 Python checks, the external-comparison fixture audit, formatting, production build and all five pack hashes pass. The 42-scenario browser run found two map-layout/legend issues; both were fixed and all 14 affected scenarios passed on rerun. Cache migration and offline recovery also pass. [Exact local release evidence](releases/0.23.0-local-validation.json).
 
 The website, PWA and native shells use the same Munich implementation. The full 18.2 MB Munich pack and 16.0 MB Old Town pack include the surrounding building/ground tiles; the full native build bundles Munich for immediate offline use.

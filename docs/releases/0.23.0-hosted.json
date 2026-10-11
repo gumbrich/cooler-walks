@@ -1,0 +1,33 @@
+{
+  "version": "0.23.0",
+  "origin": "https://coolerwalks.ch",
+  "sourceCommit": "d900430d1a552fb52975162d4539e05ffc16c359",
+  "netlifyDeploy": "6acb7f4141956e0008acdce7",
+  "publishedAt": "2026-10-11T12:22:59Z",
+  "checkedAt": "2026-10-11T12:27:07.117803+00:00",
+  "checks": [
+    "/: real HTML and security headers",
+    "/de/: real HTML and security headers",
+    "/de/privacy/: real HTML and security headers",
+    "/de/support/: real HTML and security headers",
+    "/privacy/: real HTML and security headers",
+    "/support/: real HTML and security headers",
+    "Zurich 3D library: manifest and all 81 hosted tile hashes verified",
+    "Munich: planner/map data, manifest and all 16 3D tile hashes verified",
+    "Zurich pavement pilot: published graph matches the reviewed source extract",
+    "Zurich canopy library: manifest and all 324 hosted tile hashes verified",
+    "ch-zurich: hosted bytes and SHA-256 verified; authenticated request, CORS header retained (native sign-in not implemented)",
+    "ch-basel: hosted bytes and SHA-256 verified; authenticated request, CORS header retained (native sign-in not implemented)",
+    "de-munich: hosted bytes and SHA-256 verified; authenticated request, CORS header retained (native sign-in not implemented)",
+    "us-cambridge-ma: hosted bytes and SHA-256 verified; authenticated request, CORS header retained (native sign-in not implemented)",
+    "de-munich-old-town: hosted bytes and SHA-256 verified; authenticated request, CORS header retained (native sign-in not implemented)"
+  ],
+  "installedPwaReport": "0.23.0-pwa-munich.json",
+  "passwordGateReport": "../private-access-validation.json",
+  "limitations": [
+    "Field accuracy is not established.",
+    "Physical-phone and current iOS interaction tests remain open.",
+    "Authenticated HTTP CORS checks do not implement native sign-in to protected remote downloads.",
+    "GitHub jobs did not execute because the account Actions budget blocked them."
+  ]
+}
