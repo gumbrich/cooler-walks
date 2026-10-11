@@ -3,7 +3,7 @@ import { geographic, metric, inside } from './geo';
 import { streetLevel } from './traffic';
 import type { Bounds, City, Point } from './types';
 
-export type ZoneSource = 'zurich-city' | 'zurich-canton';
+export type ZoneSource = 'zurich-city' | 'zurich-canton' | 'munich-city';
 export interface ZoneProperties {
   kind: 'traffic-zone';
   id: string;
@@ -150,7 +150,7 @@ export function deriveZoneStreets(
 /** Display geometry only. Cantonal orders never feed street-context scoring. */
 export function normalizeTrafficZones(
   input: FeatureCollection,
-  source: ZoneSource,
+  source: Exclude<ZoneSource, 'munich-city'>,
   city: City,
   fetchedAt: string,
 ): TrafficZone[] {

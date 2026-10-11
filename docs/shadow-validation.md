@@ -81,3 +81,7 @@ The audit verifies source and runtime hashes, writes predictions to ignored `dat
 1. Continue the [raw-LiDAR investigation](shadow-validation-followup.md): verify post-renovation station geometry and remaining roof differences. Do not silently replace source geometry or relax the threshold.
 2. Register the three promising timestamped photographs and resolve the retained Münsterhof disagreement, following the [acceptance protocol](shadow-observations.md). SWISSIMAGE RS remains an alternative; its public sample is outside Zurich and no imagery order or email has been sent.
 3. Review point classifications, shadow-boundary errors and failures by location/time. Only then decide whether the limited pilot passes and whether expansion can resume.
+
+## Munich source integration · 0.23.0
+
+Munich now uses actual LoD2 roof/facade meshes and DGM1 receiver elevations within its existing beta area. [440 independent ray checks](munich-shade-audit.json) agree with original CityGML polygon intersections; sampled ground quantization stays within 0.05 m and checked solar elevations within the predeclared 0.25° tolerance against NREL SPA. This validates processing, not survey or field accuracy. The 62 excluded footprint records, simplified LoD2 roofs, differing source epochs, missing tree shade, incomplete pavement sides and bridge/tunnel walking-height gaps remain explicit. **The field-validation hold remains in force.** [Details](munich.md).

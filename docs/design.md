@@ -1,5 +1,11 @@
 # Design direction
 
+## Munich · 0.23.0
+
+Munich uses the same paired Shade/Sun buttons, quiet/flat/water/access wishes, 0/5/10/15-minute shortcuts and minute slider as Zurich. No second interaction model is introduced. Its method dialog names Munich's actual capabilities and gaps. Implemented Tempo 30 context colours corroborated street fragments, and the legend omits unavailable 20 km/h or ordered-zone categories. Source attribution remains visible in English and German. Phone route fitting reserves the measured legend and attribution heights so the longer source credit cannot cover endpoint markers.
+
+The current preference design supersedes the historical numbered/main-priority description below: optional wishes are unnumbered and can be combined. Actual Munich desktop, phone, tablet, error, installed-PWA and Android emulator screenshots accompany this release.
+
 ## Lean preference controls · 0.20.0
 
 Replaced competing toggle rows with one main-priority selector. Optional wishes are folded under “More preferences”; their displayed order matches ranking. Sun and shade are mutually exclusive. A compact computed comparison explains trade-offs, and unavailable layers are named. Tree geometry assumptions sit under a separate model disclosure. The same components serve web, installed PWA and native shells.

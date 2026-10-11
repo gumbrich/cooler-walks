@@ -83,6 +83,23 @@ export function WalkingMap({
       mapData.features.some((feature) => feature.properties?.kind === 'traffic-zone-street'),
     [mapData],
   );
+  const zoneLegend = useMemo(
+    () => ({
+      // Online GeoJSON loads directly in MapLibre; downloaded packs supply mapData.
+      // City metadata supplies the audited categories before that source is available.
+      encounter: mapData
+        ? mapData.features.some(
+            (f) => f.properties?.kind === 'traffic-zone-street' && f.properties.speed === 20,
+          )
+        : !!city.trafficZoneLegend?.encounter,
+      ordered: mapData
+        ? mapData.features.some(
+            (f) => f.properties?.kind === 'traffic-zone' && f.properties.status === 'ordered',
+          )
+        : !!city.trafficZoneLegend?.ordered,
+    }),
+    [mapData, city.trafficZoneLegend],
+  );
   useEffect(() => {
     if (!pointChoice || !map.current) return;
     const marker = new maplibregl.Marker({ color: '#185a65' })
@@ -856,12 +873,12 @@ export function WalkingMap({
           .closest('.planner')
           ?.querySelector('.timeline-wrap')
           ?.getBoundingClientRect().height ?? 0;
-      const bottomRoom =
-        timelineHeight +
+      const legendRoom =
         (shell?.querySelector('.map-legend')?.getBoundingClientRect().height ?? 40) +
         (m.getContainer().querySelector('.maplibregl-ctrl-attrib')?.getBoundingClientRect()
           .height ?? 22) +
         48;
+      const bottomRoom = timelineHeight + legendRoom;
       const box = new maplibregl.LngLatBounds();
       result.fastest.coordinates.forEach((p) => box.extend(p));
       result.alternative?.coordinates.forEach((p) => box.extend(p));
@@ -879,11 +896,7 @@ export function WalkingMap({
           bottom: matchMedia('(max-width:620px)').matches
             ? hero
               ? 140
-              : showZones
-                ? 160
-                : canopyScenario
-                  ? 135
-                  : 95
+              : Math.max(legendRoom, showZones ? 160 : canopyScenario ? 135 : 95)
             : hero
               ? 170
               : Math.max(240, bottomRoom),
@@ -1073,7 +1086,7 @@ export function WalkingMap({
                 <strong>{zone.speed === 20 ? t('Encounter zone · 20') : t('Tempo 30')}</strong>
                 <span>
                   {zone.name}
-                  {zone.municipality !== 'Zürich' ? ` · ${zone.municipality}` : ''}
+                  {zone.municipality !== city.localName ? ` · ${zone.municipality}` : ''}
                 </span>
                 <span>
                   {zone.status === 'implemented'
@@ -1169,14 +1182,18 @@ export function WalkingMap({
                 <i className="zone-swatch zone-30" />
                 {t('Tempo 30')}
               </span>
-              <span>
-                <i className="zone-swatch zone-20" />
-                {t('Encounter zone · 20')}
-              </span>
-              <span className="zone-status-key">
-                <i className="zone-dashed" />
-                {t('Ordered boundary · implementation unknown')}
-              </span>
+              {zoneLegend.encounter && (
+                <span>
+                  <i className="zone-swatch zone-20" />
+                  {t('Encounter zone · 20')}
+                </span>
+              )}
+              {zoneLegend.ordered && (
+                <span className="zone-status-key">
+                  <i className="zone-dashed" />
+                  {t('Ordered boundary · implementation unknown')}
+                </span>
+              )}
             </div>
           )}
         </div>

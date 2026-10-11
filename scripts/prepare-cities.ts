@@ -194,4 +194,5 @@ for (const [slug, identifier] of Object.entries(identifiers)) {
     ) + '\n',
   );
   console.log(slug, counts, 'model bounds', modelBounds);
+  if (slug === 'munich') await import('./prepare-munich-features');
 }

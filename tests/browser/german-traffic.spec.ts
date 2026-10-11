@@ -43,7 +43,7 @@ test('German entry, calmer streets and language switching preserve the trip', as
   await page.getByRole('button', { name: /\+5 min/ }).click();
   await page.getByRole('combobox', { name: 'Stadt', exact: true }).selectOption('de-munich');
   await expect(page.getByRole('checkbox', { name: 'Verkehrsberuhigt', exact: true })).toHaveCount(
-    0,
+    1,
   );
   await expect(page.locator('.route-card').first()).toBeVisible();
   await page.reload();

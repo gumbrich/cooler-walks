@@ -97,6 +97,33 @@ for (let first = 0; first < tiles.length; first += 3) {
   );
 }
 checks.push(`Zurich 3D library: manifest and all ${tiles.length} hosted tile hashes verified`);
+const munichLibraryPath = '/data/munich-shade-library.json';
+const munichLibraryResponse = await get(new URL(munichLibraryPath, site));
+assert.equal(munichLibraryResponse.status, 200);
+const munichLibraryBytes = Buffer.from(await munichLibraryResponse.arrayBuffer());
+assert.deepEqual(munichLibraryBytes, fs.readFileSync(`public${munichLibraryPath}`));
+const munichTiles = JSON.parse(munichLibraryBytes.toString()).tiles;
+for (let first = 0; first < munichTiles.length; first += 3)
+  await Promise.all(
+    munichTiles.slice(first, first + 3).map(async (tile) => {
+      const response = await get(new URL(tile.url, site));
+      assert.equal(response.status, 200, tile.id);
+      const bytes = Buffer.from(await response.arrayBuffer());
+      assert.equal(bytes.length, tile.bytes, tile.id);
+      assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'), tile.sha256, tile.id);
+    }),
+  );
+for (const file of ['munich.json', 'munich-map.geojson']) {
+  const response = await get(new URL(`/data/${file}`, site));
+  assert.equal(response.status, 200);
+  assert.deepEqual(
+    Buffer.from(await response.arrayBuffer()),
+    fs.readFileSync(`public/data/${file}`),
+  );
+}
+checks.push(
+  `Munich: planner/map data, manifest and all ${munichTiles.length} 3D tile hashes verified`,
+);
 const pavementResponse = await get(new URL('/data/zurich-pavements.json', site));
 assert.equal(pavementResponse.status, 200);
 assert.deepEqual(

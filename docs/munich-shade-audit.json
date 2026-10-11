@@ -1,0 +1,13 @@
+{
+  "rays": 440,
+  "compared": 440,
+  "edgeCasesWithin2cm": [],
+  "mismatches": [],
+  "sourceFaces": 10625,
+  "sourceParts": 405,
+  "maximumGroundQuantizationErrorMeters": 0.049990844726607975,
+  "maximumSolarElevationDifferenceDegrees": 0.19800511084309846,
+  "modelSha256": "6ee19cf581e4d0fcc4ffc39192b2c4559e8e6419775cea4ee09ae0dd8499b8c8",
+  "method": "Direct original CityGML polygon intersections with independent SVD planes; DGM1 native 2x2 blocks; pvlib NREL SPA geometric elevation.",
+  "limits": "Processing fidelity only. Source accuracy, source-age mismatch, side-of-street geometry and field validation remain open."
+}

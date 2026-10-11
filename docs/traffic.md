@@ -1,5 +1,7 @@
 # Calmer streets in Zurich · 0.11.0
 
+**Munich update · 0.23.0:** Munich now supports the same calmer-street comparison using its own OSM street/access/speed tags and same-level main-road proximity. Its municipal Tempo 30 layer marks only streets corroborated by explicit OSM speed tags. Zurich vehicle-count evidence is not copied to Munich; reusable Munich counts remain open. [Munich source and capability record](munich.md).
+
 ## Street-based zone display · 0.20.0
 
 The optional Tempo 30/20 layer no longer fills neighbourhood polygons. It contains **5,110 clipped street features from 4,985 OSM ways**, matched to **288 implemented city zones**. The input still has 347 city zone polygons and 42 cantonal orders. Some zones have no eligible public motor street in this extract; a missing coloured street is not evidence of an unrestricted speed.

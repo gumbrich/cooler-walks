@@ -1,0 +1,51 @@
+{
+  "version": "0.23.0",
+  "nativeBuild": 23,
+  "checkedAt": "2026-10-11T12:13:47.292028+00:00",
+  "typecheck": "passed",
+  "unitModelLanguageTests": 167,
+  "testFiles": 27,
+  "allDataVerificationStages": "passed",
+  "munichRealCalculations": 33,
+  "differentSunShadePairs": 10,
+  "sourceRayAudit": {
+    "agree": 440,
+    "compared": 440,
+    "fieldAccuracyEstablished": false
+  },
+  "pythonTests": 15,
+  "externalComparisonFixtureAudit": "passed",
+  "productionBuild": "passed",
+  "releasePackHashes": 5,
+  "android": {
+    "file": "native-artifacts/cooler-walks-0.23.0-debug.apk",
+    "bytes": 243722981,
+    "sha256": "a7b70dd6a4b32c0b8ada34984152d2b809a0a72a5899c07b5d3aa5fe0c508df2",
+    "build": 23,
+    "offlineEmulatorChecks": "passed"
+  },
+  "ios": {
+    "build": "blocked",
+    "reason": "Xcode reports iOS 26.2 platform is not installed. Install in Xcode > Settings > Components.",
+    "physicalDeviceTested": false
+  },
+  "browser": {
+    "suiteScenarios": 42,
+    "initialPassed": 40,
+    "initialIssues": [
+      "Munich phone marker overlapped taller source attribution/legend.",
+      "Online Zurich zone legend lacked configured categories when GeoJSON loaded directly in MapLibre."
+    ],
+    "fixes": "Measured mobile legend/attribution padding and city-configured legend categories.",
+    "affectedScenariosRerun": 14,
+    "rerunPassed": 14,
+    "remainingFailures": 0
+  },
+  "limitations": [
+    "Computational/source checks do not establish field accuracy.",
+    "Physical-phone validation remains open.",
+    "Native remote downloads from the password-protected host still need an access solution."
+  ],
+  "format": "passed (repository files; unrelated untracked presentations excluded)",
+  "pwaUpgrade": "passed: stale cache replaced, compatible cache/downloads retained, Zurich routes work offline"
+}

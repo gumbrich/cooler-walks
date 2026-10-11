@@ -1,5 +1,7 @@
 # Cooler Walks
 
+**0.23.0 — München:** 3D-Gebäudeschatten, Höhenprofile und flachere Wege, verkehrsberuhigte Routen, Tempo-30-Strassen, 5.516 suchbare Adressen und das Meiden erfasster Hindernisse. Website, PWA und Android-App nutzen dieselben Funktionen im bisherigen **8,90 km² grossen Beta-Gebiet**. Baumschatten, vollständige Gehwegseiten und Fahrzeugzählungen bleiben offen. [Funktionen, Daten, Prüfungen und offene Punkte](docs/munich.md).
+
 **0.22.0:** Sonne und Schatten beeinflussen die Routenwahl auch bei lückenhaften Baumdaten. Unbekannte Abschnitte dürfen einen Weg nicht besser erscheinen lassen; gegebenenfalls vergleicht die App ausdrücklich den Gebäudeschatten. Bei 48 Zürcher Berechnungen liefern Sonne und Schatten in 19 von 24 Weg-/Zeitpaaren unterschiedliche Wege. [Änderung, Prüfungen und Grenzen](docs/shade-routing-recovery.md).
 
 **0.21.0:** Trottoirs und Querungen sind das Zürcher Standardnetz. Zwei Schaltflächen wählen Schatten oder Sonne; die Oberfläche wechselt zwischen Grün und warmen Sandtönen. Der Umweg ist mit 0/5/10/15 Minuten oder minutengenau einstellbar. Verkehrsberuhigt, Am Wasser, Flachere Wege und Barrierefreiheit lassen sich ohne nummerierte Reihenfolge kombinieren. Die Website bleibt passwortgeschützt. [Funktionsweise](docs/preferences.md) · [Zugangsschutz](docs/private-access.md).

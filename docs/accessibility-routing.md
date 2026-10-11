@@ -1,5 +1,7 @@
 # Accessibility routing · Zurich
 
+**Munich update · 0.23.0:** Munich now uses the same optional barrier-avoidance flow. Its own OSM graph flags recorded steps, wheelchair restrictions, raised kerbs and mapped barriers at the edge or endpoint. It does not use Zurich’s municipal matching rules. The same incomplete-access and walking-height limitations apply. [Munich sources and checks](munich.md).
+
 The **Accessibility / Barrierefreiheit** option is a limited barrier-avoidance aid, not certification of a route's accessibility.
 
 Selecting it:

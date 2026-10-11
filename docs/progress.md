@@ -1,5 +1,15 @@
 # Progress
 
+## Munich feature expansion · 0.23.0
+
+Added real Bavarian LoD2 roof/facade shade and DGM1 ground elevation to the existing 8.90 km² Munich beta area. The shared planner now offers Munich shade/sun route choice, flatter routes, calmer streets, mapped-barrier avoidance, 5,516 deduplicated OSM addresses and 711 corroborated Tempo 30 street fragments. Combined wishes, waypoints, minute detours, German/English and offline packs use the same implementation as Zurich. Source files are pinned by hashes; raw downloads remain outside Git.
+
+The 33-calculation Munich regression selects different Sun/Shade paths in all ten paired June/October cases. The independent source audit agrees on 440/440 rays and checks ground elevations against native DGM1 cells. These are computational checks; field accuracy remains unvalidated. Desktop Chrome installed-PWA and Android emulator flows pass with the full Munich area offline. [Feature/source/verification record and open items](munich.md).
+
+All 167 unit/model/language tests, the complete data suite, build/release checks and source formatting pass. The two browser issues found in the 42-scenario run were fixed; all 14 affected scenarios pass on rerun. [Release evidence](releases/0.23.0-local-validation.json).
+
+Still open: tree-canopy geometry, complete pavement-side coverage, reusable vehicle-count exports, authoritative geocoded addresses, wider city coverage, bridge/tunnel walking heights and field validation. Munich remains visibly beta; no unavailable capability is borrowed from Zurich. See [platform evidence](platform.md).
+
 ## Restore useful sunlight choices · 0.22.0
 
 Replaced the blanket 95% sunlight gate with worst-case unknown-exposure comparisons and an explicit building-model fallback when tree observations prevent comparison. Known tree evidence is retained and can reject a contradictory fallback. The broad regression covers 48 calculations in eight Zurich districts over June, October and December; 19/24 paired choices differ, including 7/8 October pairs. Source geometry and field-validation limits are unchanged. [Repair and evidence](shade-routing-recovery.md). All 162 unit/model/language and 40 browser tests pass, along with every data-verification stage, production build and release checks. Installed PWA and Android pass offline Sun/Shade switching. Published and checked on coolerwalks.ch; GitHub Actions remains budget-blocked before execution. [Platform and live evidence](platform.md).

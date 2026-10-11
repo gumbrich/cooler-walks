@@ -41,6 +41,9 @@ describe('German interface', () => {
         'buildingNotes',
         'sourceSummary',
         'reviewSummary',
+        'elevationNotes',
+        'trafficNotes',
+        'zoneNotes',
       ] as const)
         if (city[key]) needed.add(city[key]!);
       for (const source of city.sources) needed.add(source.label);

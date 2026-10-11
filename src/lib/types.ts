@@ -34,6 +34,8 @@ export interface City {
     trafficZones?: boolean;
     vehicleCounts?: boolean;
     addresses?: boolean;
+    /** Avoid mapped stairs/barriers; never a certification of wheelchair access. */
+    barrierAvoidance?: boolean;
   };
   dataVersion: string | null;
   dataUrl: string | null;
@@ -69,6 +71,10 @@ export interface City {
   treeNotes: string;
   buildingNotes: string;
   sourceSummary: string;
+  trafficNotes?: string;
+  zoneNotes?: string;
+  trafficZoneLegend?: { encounter: boolean; ordered: boolean };
+  elevationNotes?: string;
   sources: { label: string; url: string }[];
   reviewSummary?: string;
 }

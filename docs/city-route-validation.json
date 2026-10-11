@@ -1,10 +1,10 @@
 {
-  "modelVersion": "roof-mesh-tiled-ground-arrival-v8",
-  "verifiedAt": "2026-10-06T18:21:14.597Z",
+  "modelVersion": "roof-mesh-tiled-ground-arrival-v9",
+  "verifiedAt": "2026-10-11T11:59:41.457Z",
   "cities": [
     {
       "city": "ch-zurich",
-      "version": "zurich-2026-10-06-v11",
+      "version": "zurich-2026-10-08-v12",
       "from": {
         "id": "way-120613500",
         "name": "Bahnhofquai",
@@ -27,7 +27,7 @@
       "capabilities": {
         "greenery": true,
         "buildingShade": true,
-        "treeShade": false,
+        "treeShade": true,
         "terrain": false,
         "fountains": false,
         "water": true,
@@ -181,7 +181,7 @@
           ]
         },
         {
-          "mode": "greenery",
+          "mode": "shade",
           "preference": "environment",
           "departure": "2026-06-21T08:00:00Z",
           "candidates": 1,
@@ -214,7 +214,7 @@
           ]
         },
         {
-          "mode": "greenery",
+          "mode": "shade",
           "preference": "sun",
           "departure": "2026-12-21T11:00:00Z",
           "candidates": 4,
@@ -243,6 +243,21 @@
                 "Fraumünsterstrasse",
                 "Walking path"
               ]
+            },
+            {
+              "meters": 1583.290000000001,
+              "minutes": 19.791125000000015,
+              "sunMeters": 1361.4650000000015,
+              "shadeMeters": 60.695,
+              "unknownMeters": 161.13000000000005,
+              "treeProximityMeters": 689.6288095238091,
+              "waterProximityMeters": 1543.0400000000016,
+              "streets": [
+                "Bahnhofquai",
+                "Walking path",
+                "Limmatquai",
+                "Walking path"
+              ]
             }
           ]
         }
@@ -250,7 +265,7 @@
     },
     {
       "city": "de-munich",
-      "version": "munich-2026-09-29-v2",
+      "version": "munich-2026-10-11-v3",
       "from": {
         "id": "way-116514205",
         "name": "Karlsplatz (Stachus)",
@@ -276,21 +291,25 @@
         "treeShade": false,
         "terrain": false,
         "fountains": false,
-        "water": true
+        "water": true,
+        "trafficCalming": true,
+        "trafficZones": true,
+        "addresses": true,
+        "barrierAvoidance": true
       },
       "results": [
         {
           "mode": "shade",
           "preference": "environment",
           "departure": "2026-06-21T12:00:00Z",
-          "candidates": 5,
+          "candidates": 4,
           "routes": [
             {
               "meters": 1236.3900000000003,
               "minutes": 15.454875000000005,
-              "sunMeters": 1057.5349999999994,
-              "shadeMeters": 178.85500000000002,
-              "unknownMeters": 0,
+              "sunMeters": 1059.5449999999994,
+              "shadeMeters": 143.15500000000003,
+              "unknownMeters": 33.69,
               "treeProximityMeters": 626.9309523809525,
               "waterProximityMeters": 0,
               "streets": [
@@ -311,12 +330,12 @@
               ]
             },
             {
-              "meters": 1431.03,
-              "minutes": 17.887875,
-              "sunMeters": 648.2240833333333,
-              "shadeMeters": 782.8059166666671,
+              "meters": 1312.49,
+              "minutes": 16.406125,
+              "sunMeters": 814.0794285714289,
+              "shadeMeters": 498.41057142857136,
               "unknownMeters": 0,
-              "treeProximityMeters": 445.3810476190476,
+              "treeProximityMeters": 554.8651904761904,
               "waterProximityMeters": 0,
               "streets": [
                 "Karlsplatz (Stachus)",
@@ -324,17 +343,12 @@
                 "Karlsplatz (Stachus)",
                 "Lenbachplatz",
                 "Walking path",
-                "Pacellistraße",
-                "Walking path",
-                "Pacellipassage",
-                "Walking path",
-                "Rochusstraße",
-                "Rochusberg",
-                "Walking path",
-                "Jungfernturmstraße",
+                "Lenbachplatz",
+                "Maximiliansplatz",
                 "Walking path",
                 "Brienner Straße",
                 "Walking path",
+                "Theatinerstraße",
                 "Brienner Straße",
                 "Walking path",
                 "Odeonsplatz"
@@ -351,9 +365,9 @@
             {
               "meters": 1236.3900000000003,
               "minutes": 15.454875000000005,
-              "sunMeters": 1057.5349999999994,
-              "shadeMeters": 178.85500000000002,
-              "unknownMeters": 0,
+              "sunMeters": 1059.5449999999994,
+              "shadeMeters": 143.15500000000003,
+              "unknownMeters": 33.69,
               "treeProximityMeters": 626.9309523809525,
               "waterProximityMeters": 0,
               "streets": [
@@ -376,8 +390,8 @@
             {
               "meters": 1303.6299999999999,
               "minutes": 16.295375,
-              "sunMeters": 1238.8688888888892,
-              "shadeMeters": 64.7611111111111,
+              "sunMeters": 1303.630000000001,
+              "shadeMeters": 0,
               "unknownMeters": 0,
               "treeProximityMeters": 574.3126190476188,
               "waterProximityMeters": 0,
@@ -405,9 +419,9 @@
             {
               "meters": 1236.3900000000003,
               "minutes": 15.454875000000005,
-              "sunMeters": 1057.5349999999994,
-              "shadeMeters": 178.85500000000002,
-              "unknownMeters": 0,
+              "sunMeters": 1059.5449999999994,
+              "shadeMeters": 143.15500000000003,
+              "unknownMeters": 33.69,
               "treeProximityMeters": 626.9309523809525,
               "waterProximityMeters": 0,
               "streets": [
@@ -438,9 +452,9 @@
             {
               "meters": 1236.3900000000003,
               "minutes": 15.454875000000005,
-              "sunMeters": 1130.2633333333322,
-              "shadeMeters": 106.12666666666667,
-              "unknownMeters": 0,
+              "sunMeters": 1155.0233333333322,
+              "shadeMeters": 47.67666666666667,
+              "unknownMeters": 33.69,
               "treeProximityMeters": 626.9309523809525,
               "waterProximityMeters": 0,
               "streets": [
@@ -471,9 +485,9 @@
             {
               "meters": 1236.3900000000003,
               "minutes": 15.454875000000005,
-              "sunMeters": 852.0374999999998,
-              "shadeMeters": 384.35249999999996,
-              "unknownMeters": 0,
+              "sunMeters": 930.6413333333329,
+              "shadeMeters": 272.0586666666667,
+              "unknownMeters": 33.69,
               "treeProximityMeters": 626.9309523809525,
               "waterProximityMeters": 0,
               "streets": [
@@ -490,29 +504,6 @@
                 "Wittelsbacherplatz",
                 "Kardinal-Döpfner-Straße",
                 "Franz-Xaver-Schweyer-Straße",
-                "Odeonsplatz"
-              ]
-            },
-            {
-              "meters": 1343.9799999999996,
-              "minutes": 16.799749999999996,
-              "sunMeters": 1071.3429999999996,
-              "shadeMeters": 272.63700000000006,
-              "unknownMeters": 0,
-              "treeProximityMeters": 568.686619047619,
-              "waterProximityMeters": 0,
-              "streets": [
-                "Karlsplatz (Stachus)",
-                "Walking path",
-                "Lenbachplatz",
-                "Walking path",
-                "Lenbachplatz",
-                "Maximiliansplatz",
-                "Oskar-von-Miller-Ring",
-                "Brienner Straße",
-                "Walking path",
-                "Brienner Straße",
-                "Walking path",
                 "Odeonsplatz"
               ]
             }

@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test('central Zurich discloses 3D building coverage, preserves German and clears it in another city', async ({
+test('Zurich and Munich disclose their own 3D building coverage and clear it in a greenery city', async ({
   page,
 }) => {
   const errors: string[] = [];
@@ -34,6 +34,10 @@ test('central Zurich discloses 3D building coverage, preserves German and clears
   await page.screenshot({ path: 'docs/screenshots/tablet-3d-method.png', fullPage: true });
   await page.keyboard.press('Escape');
   await page.getByRole('combobox', { name: 'Stadt', exact: true }).selectOption('de-munich');
+  await expect(page.locator('.route-card').first()).toBeVisible();
+  await expect(page.locator('.route-model-note').first()).toContainText('3D-Dächer');
+  await expect(page.locator('.map-model-key')).toBeVisible();
+  await page.getByRole('combobox', { name: 'Stadt', exact: true }).selectOption('ch-basel');
   await expect(page.locator('.route-card').first()).toBeVisible();
   await expect(page.locator('.route-model-note')).toHaveCount(0);
   await expect(page.locator('.map-model-key')).toHaveCount(0);

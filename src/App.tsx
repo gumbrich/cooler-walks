@@ -1775,7 +1775,8 @@ export default function App() {
                   <h3>{t('Flatter routes')}</h3>
                   <p>
                     {t(
-                      'In Zurich, the cantonal ground model estimates ascent and descent. Flatter routes are considered alongside your other wishes within the detour limit. Comparisons require complete walking-height coverage. This does not guarantee a level or step-free path.',
+                      city.elevationNotes ??
+                        'In Zurich, the cantonal ground model estimates ascent and descent. Flatter routes are considered alongside your other wishes within the detour limit. Comparisons require complete walking-height coverage. This does not guarantee a level or step-free path.',
                     )}
                   </p>
                   <p>{t('Walking times do not yet account for slopes.')}</p>
@@ -1784,10 +1785,11 @@ export default function App() {
               <div className="method-item">
                 <TrafficCone size={24} />
                 <div>
-                  <h3>{t('Calmer streets, starting in Zurich')}</h3>
+                  <h3>{t('Calm streets')}</h3>
                   <p>
                     {t(
-                      'Zurich pavement sections are associated with nearby mapped streets and implemented traffic zones. Within 20 metres of a main road at ground level, that proximity takes precedence. Calmer streets considers main-road and motor-access distances alongside your other wishes. Tempo-30 streets are separate from pedestrian paths. At least 95% classified context is needed for comparison; unknown sections cannot improve a route. This estimates street context, not live traffic, noise or safety. Field validation is pending.',
+                      city.trafficNotes ??
+                        'Zurich pavement sections are associated with nearby mapped streets and implemented traffic zones. Within 20 metres of a main road at ground level, that proximity takes precedence. Calmer streets considers main-road and motor-access distances alongside your other wishes. Tempo-30 streets are separate from pedestrian paths. At least 95% classified context is needed for comparison; unknown sections cannot improve a route. This estimates street context, not live traffic, noise or safety. Field validation is pending.',
                     )}
                   </p>
                 </div>
@@ -1802,7 +1804,8 @@ export default function App() {
               {city.capabilities.trafficZones && (
                 <p>
                   {t(
-                    'The 30/20 map button shows official zone boundaries. Solid outlines: implemented city zones. Dashed outlines: cantonal legal orders, with implementation unconfirmed. The canton source excludes Zurich and Winterthur; Zurich uses the city’s implemented-zone dataset. Cantonal orders are shown for context only and do not affect route ranking. Boundaries do not establish every street’s speed limit or traffic volume. Signs on the street take precedence.',
+                    city.zoneNotes ??
+                      'The 30/20 map button marks streets matched to implemented city zones. Dashed outlines show cantonal legal orders with implementation unconfirmed; these do not affect routing. Zone membership does not establish every street’s speed limit or traffic volume. Street signs take precedence.',
                   )}
                 </p>
               )}

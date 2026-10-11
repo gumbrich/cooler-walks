@@ -1,5 +1,17 @@
 # Platform decision and verification
 
+## Munich · 0.23.0 / native build 23
+
+TypeScript and all 167 unit/model/language tests, every data-verification stage, 15 Python checks, the external-comparison fixture audit, formatting, production build and all five pack hashes pass. The 42-scenario browser run found two map-layout/legend issues; both were fixed and all 14 affected scenarios passed on rerun. Cache migration and offline recovery also pass. [Exact local release evidence](releases/0.23.0-local-validation.json).
+
+The website, PWA and native shells use the same Munich implementation. The full 18.2 MB Munich pack and 16.0 MB Old Town pack include the surrounding building/ground tiles; the full native build bundles Munich for immediate offline use.
+
+Chrome on macOS installed and launched the production PWA standalone, downloaded Munich and reloaded offline. The real Sun/Shade routes differ, the seven-minute slider works, four optional wishes combine, address search and German street/elevation views work, and no page errors were recorded. [Local installed-PWA report](releases/0.23.0-pwa-munich-local.json).
+
+Android build 23 compiled and passed the same Munich flow with Wi-Fi and mobile data disabled on the dedicated Android 16 emulator. [Report](releases/0.23.0-android-munich.json), [screenshot](screenshots/munich-features-android-de.png). The debug APK is `native-artifacts/cooler-walks-0.23.0-debug.apk`; its final hash is recorded with the release checks. This is an emulator-tested debug build, not a signed store release. iOS assets/version are synchronized, but local Xcode's missing iOS 26.2 platform prevents a new iOS build/test. No physical-device validation was performed.
+
+Store descriptions in English and German now reflect current capabilities and remain drafts. Native remote downloads still need a solution for the website's password gate; bundled offline data works. Source/model limits are in [Munich](munich.md); they are not platform test failures.
+
 Checked 30 September 2026 (Europe/Zurich). One React/TypeScript website also provides an optional installable progressive web app. This keeps planning links immediately usable and shares the map, routing model, data and design. The requested native iOS and Android development projects now reuse this code through Capacitor 8.5.2. No app-store release is included; see [mobile.md](mobile.md) for setup and release boundaries.
 
 ## Installation

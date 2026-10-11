@@ -10,9 +10,6 @@
   "octoberSunDistanceDisplay": "440 m",
   "buildingComparisonWithCalm": true,
   "night": true,
-  "languages": [
-    "en",
-    "de"
-  ],
+  "languages": ["en", "de"],
   "errors": []
 }

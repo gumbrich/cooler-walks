@@ -33,6 +33,7 @@ export const cities: City[] = [
     dataVersion: zurichExtract.version,
     dataUrl: '/data/zurich.json',
     mapUrl: '/data/zurich-map.geojson',
+    trafficZoneLegend: { encounter: true, ordered: true },
     elevation: { resolution: 2 },
     pavementPilot: {
       dataUrl: '/data/zurich-pavements.json',
@@ -176,25 +177,59 @@ cities.push(
       terrain: false,
       fountains: false,
       water: true,
+      trafficCalming: true,
+      trafficZones: true,
+      addresses: true,
+      barrierAvoidance: true,
     },
-    dataVersion: 'munich-2026-09-29-v2',
+    dataVersion: 'munich-2026-10-11-v3',
     dataUrl: '/data/munich.json',
     mapUrl: '/data/munich-map.geojson',
-    providers: ['OpenStreetMap', 'Bayerische Vermessungsverwaltung'],
+    trafficZoneLegend: { encounter: false, ordered: false },
+    elevation: { resolution: 2 },
+    detailedShade: {
+      format: 'library',
+      dataUrl: '/data/munich-shade-library.json',
+      version: 'munich-roofs-dgm-library-2026-10-11-v1',
+      crs: 'EPSG:25832',
+      verticalDatum: 'DHHN2016',
+      coverage: [
+        [11.558, 48.133],
+        [11.601, 48.133],
+        [11.601, 48.158],
+        [11.558, 48.158],
+        [11.558, 48.133],
+      ],
+    },
+    providers: ['OpenStreetMap', 'Bayerische Vermessungsverwaltung', 'Mobilitätsreferat München'],
     translatedNames: { en: 'Munich', de: 'München' },
     defaultJourney: ['Karlsplatz (Stachus)', 'Odeonsplatz'],
     mapAttribution:
-      '© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">OpenStreetMap</a> · <a href="https://geodaten.bayern.de/opengeodata/" target="_blank" rel="noreferrer">Bayerische Vermessungsverwaltung · CC BY 4.0</a>',
+      '© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">OpenStreetMap</a> · <a href="https://geodaten.bayern.de/opengeodata/" target="_blank" rel="noreferrer">Bayerische Vermessungsverwaltung · CC BY 4.0</a> · <a href="https://opendata.muenchen.de/dataset/rad_rsp_tempo30zone_poly" target="_blank" rel="noreferrer">Mobilitätsreferat München · DL-DE-BY-2.0</a>',
     coverageLabel: 'Old town, Lehel & gardens',
     coverageDescription:
-      'An expanded central pilot from Karlsplatz across the old town to Lehel and the southern English Garden. Four adjacent 2 km building tiles support shade estimates; edge and long-shadow gaps remain unknown.',
+      'Central Munich: Karlsplatz, the old town, Lehel and the southern English Garden. The dashed boundary covers 8.9 km², not the entire city. 3D buildings and ground elevations support shade and elevation estimates. Tree shade and complete side-of-street coverage are still missing.',
     treeNotes:
       'Automatically detected individual-tree positions from Bavaria’s 2024 Munich dataset. False detections can occur near roof edges, shadows and power lines. These are not surveyed trunk centres or measured crowns.',
     buildingNotes:
-      'Bavarian LoD2 ground surfaces and actual relative heights, simplified to flat-ground extrusions. Conflicting heights and unsupported elevated structures are masked as unknown; complex roofs and slopes remain limitations.',
+      'Bavarian LoD2 roof and facade surfaces with DGM1 ground elevations, sampled on a 2 m grid. Conflicting heights, unsupported structures and bridge heights remain unknown. Includes building shade only; field validation is pending.',
     sourceSummary:
-      'Fetched 28 September 2026. Munich tree product: 2024. Building index published 22 September 2026; per-building creation and outline dates are retained in the data manifest. Publication is not observation date.',
+      'OSM paths and addresses: snapshot from 28 September 2026. Tree points: 2024. Building index: 22 September 2026, with individual source dates retained. DGM1 and municipal traffic zones fetched 11 October 2026. Fetch dates are not observation dates.',
+    elevationNotes:
+      'Bavaria’s ground model estimates ascent and descent. Bridges and tunnels need separate walking heights and remain unknown. Flatter routes are compared only where walking-height coverage is complete. This does not guarantee a level or step-free path.',
+    trafficNotes:
+      'Munich uses mapped street types, motor-access tags and explicit speed limits. Main roads within 20 metres at the same level take precedence. Calmer streets considers main-road and motor-access distances within your detour limit. This is street context, not measured traffic, noise or safety. Field validation is pending.',
+    zoneNotes:
+      'The Tempo 30 layer marks streets supported by both Munich’s implemented-zone map and an explicit OSM 30 km/h tag. The city source is cartographic, not survey-accurate; coverage is incomplete. Zone areas are not coloured. Street signs take precedence.',
     sources: [
+      {
+        label: 'Bavaria DGM1 ground elevations · CC BY 4.0',
+        url: 'https://geodaten.bayern.de/opengeodata/OpenDataDetail.html?pn=dgm1',
+      },
+      {
+        label: 'Munich Tempo 30 zones · DL-DE-BY-2.0',
+        url: 'https://opendata.muenchen.de/dataset/rad_rsp_tempo30zone_poly',
+      },
       {
         label: 'Bavaria individual trees',
         url: 'https://geodaten.bayern.de/opengeodata/OpenDataDetail.html?pn=einzelbaeume',

@@ -76,7 +76,7 @@ export function RoutePreferences({
               />
             </label>
           ))}
-          {city.pavementPilot && (
+          {(city.pavementPilot || city.capabilities.barrierAvoidance) && (
             <label className="optional-preference">
               <Accessibility size={18} aria-hidden="true" />
               <span>{t('Accessibility')}</span>

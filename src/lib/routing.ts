@@ -30,7 +30,7 @@ import {
   trafficCost,
   trafficImproves,
   MIN_TRAFFIC_COVERAGE,
-  TRAFFIC_MODEL,
+  supportedTrafficModel,
 } from './traffic';
 import { WaterIndex } from './water';
 import { CanopyShade } from './canopy';
@@ -621,7 +621,7 @@ export class Router {
       throw new Error('The tree shade data could not load. Reconnect and try again.');
     if (
       preferCalm &&
-      (!this.city.capabilities.trafficCalming || this.data.trafficModel !== TRAFFIC_MODEL)
+      (!this.city.capabilities.trafficCalming || !supportedTrafficModel(this.data.trafficModel))
     )
       throw new Error('Calmer-street data is unavailable for this area.');
     if (waypoints.length > MAX_WAYPOINTS) throw new Error('Choose up to three stops.');

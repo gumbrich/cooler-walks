@@ -44,3 +44,9 @@ docs/preferences-validation.json
 docs/light-choice-validation.json
 docs/shade-availability-before.json
 docs/shade-availability-validation.json
+
+docs/munich-route-validation.json
+docs/munich-shade-data.json
+tests/fixtures/munich-shade-reference.json
+docs/barrier-detour-validation.json
+docs/planner-defaults-validation.json

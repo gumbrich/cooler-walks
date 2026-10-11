@@ -1,6 +1,6 @@
 {
   "name": "cooler-walks",
-  "version": "0.22.0",
+  "version": "0.23.0",
   "private": true,
   "type": "module",
   "engines": {
@@ -13,7 +13,7 @@
     "test": "vitest run",
     "check": "tsc -b && vitest run",
     "data:prepare": "tsx scripts/prepare-data.ts && npm run data:prepare:traffic && npm run data:attach:counts && npm run data:prepare:addresses && node --import tsx scripts/attach-detailed-shade.ts",
-    "data:verify": "tsx scripts/verify-data.ts && tsx scripts/verify-cities.ts && tsx scripts/verify-coverage.ts && tsx scripts/verify-arrival-shade.ts && node --import tsx scripts/verify-detailed-shade.ts && node --import tsx scripts/verify-traffic.ts && npm run data:verify:shade-library && npm run data:verify:pavements && npm run data:verify:startup && npm run data:verify:canopy && npm run data:verify:canopy-library && npm run data:verify:elevation && npm run data:verify:preferences && npm run data:verify:planner",
+    "data:verify": "tsx scripts/verify-data.ts && tsx scripts/verify-cities.ts && tsx scripts/verify-coverage.ts && tsx scripts/verify-arrival-shade.ts && node --import tsx scripts/verify-detailed-shade.ts && node --import tsx scripts/verify-traffic.ts && npm run data:verify:shade-library && npm run data:verify:pavements && npm run data:verify:startup && npm run data:verify:canopy && npm run data:verify:canopy-library && npm run data:verify:elevation && npm run data:verify:preferences && npm run data:verify:planner && npm run data:verify:munich",
     "data:audit-trees": "tsx scripts/audit-trees.ts",
     "test:e2e": "playwright test",
     "test:pwa": "node scripts/verify-pwa.mjs",
@@ -74,7 +74,10 @@
     "data:verify:preferences": "node --import tsx scripts/verify-preferences.ts",
     "test:native:preferences": "node scripts/verify-android-preferences.mjs",
     "data:prepare:pavement-context": "node --import tsx scripts/prepare-pavement-context.ts",
-    "data:verify:planner": "node --import tsx scripts/verify-planner-defaults.ts && node --import tsx scripts/verify-barrier-detour.ts && node --import tsx scripts/verify-light-choice.ts && node --import tsx scripts/verify-shade-availability.ts"
+    "data:verify:planner": "node --import tsx scripts/verify-planner-defaults.ts && node --import tsx scripts/verify-barrier-detour.ts && node --import tsx scripts/verify-light-choice.ts && node --import tsx scripts/verify-shade-availability.ts",
+    "data:fetch:munich:extensions": ".venv-geo/bin/python scripts/fetch-munich-extensions.py",
+    "data:prepare:munich": ".venv-geo/bin/python scripts/prepare-munich-shade.py && tsx scripts/prepare-cities.ts munich",
+    "data:verify:munich": "tsx scripts/verify-munich.ts"
   },
   "dependencies": {
     "@capacitor/android": "^8.5.2",

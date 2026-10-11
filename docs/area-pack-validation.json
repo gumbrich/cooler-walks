@@ -11,10 +11,7 @@
         "meters": 1236.3900000000003,
         "minutes": 15.454875000000005
       },
-      "alternative": {
-        "meters": 1431.03,
-        "extraMinutes": 2.4329999999999963
-      }
+      "alternative": null
     }
   ]
 }

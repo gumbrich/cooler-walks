@@ -1,0 +1,58 @@
+{
+  "version": "munich-2026-10-11-v3",
+  "preparedAt": "2026-10-11",
+  "traffic": {
+    "model": "osm-street-context-v1",
+    "graphMetersByClass": {
+      "pedestrian": 9392.067333333334,
+      "other": 81338.62191321848,
+      "path": 102020.46572380503,
+      "tempo30": 43020.096806855145,
+      "major": 79801.67869898079,
+      "unknown": 7770.089999999994,
+      "restricted": 3538.2595238095155,
+      "encounter": 147.32999999999998
+    },
+    "majorRoadSegments": 4424,
+    "sampleMeters": 8,
+    "mainRoadDistanceMeters": 20,
+    "note": "OSM classes, same-level main-road proximity and explicit maxspeed=30. Cartographic zone membership alone never changes a road classification. No live or historical vehicle counts."
+  },
+  "trafficZones": {
+    "url": "https://geoportal.muenchen.de/geoserver/mor_wfs/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=mor_wfs:rad_rsp_tempo30zone_poly&outputFormat=application/json",
+    "sha256": "db670bc95e62a01a3722424e5946d6e8bc298be3089d09597fad926e804d0094",
+    "bytes": 4049047,
+    "fetchedAt": "2026-10-11T11:47:07.338154+00:00",
+    "source": "https://opendata.muenchen.de/dataset/rad_rsp_tempo30zone_poly",
+    "licence": "DL-DE-BY-2.0",
+    "implementedZonesInArea": 83,
+    "streetFeatures": 711,
+    "note": "Cartographic source is not survey-accurate. Lines require both an implemented municipal zone and explicit OSM maxspeed=30; incomplete coverage, not authoritative speed limits."
+  },
+  "addresses": {
+    "count": 5516,
+    "pointAddresses": 4529,
+    "source": "OpenStreetMap snapshot 2026-09-28",
+    "licence": "ODbL",
+    "sha256": "c06924edf325271903f4993e20ccae531f9252d479ce602736a19d2cd7770913",
+    "note": "Partial coverage. Node coordinates or derived building-label positions, not verified entrances. The municipal public CSV has no coordinates and is not used for geocoding."
+  },
+  "walking": {
+    "geometryMeters": {
+      "sidewalk": 90634.67999999992,
+      "crossing": 4202.899999999998,
+      "pedestrianPath": 143413.7499999995,
+      "streetCentreline": 88777.27999999991
+    },
+    "barriers": 1012,
+    "steps": 584,
+    "nonGround": 1059,
+    "note": "Original OSM topology; no offset sidewalks or invented crossings. Separately mapped sidewalks and crossings are retained, but street centrelines remain. No general side-of-street precision."
+  },
+  "detailedShade": {
+    "version": "munich-roofs-dgm-library-2026-10-11-v1",
+    "dataUrl": "/data/munich-shade-library.json",
+    "sha256": "6ee19cf581e4d0fcc4ffc39192b2c4559e8e6419775cea4ee09ae0dd8499b8c8",
+    "note": "Actual LoD2 roof/facade surfaces with DGM1 receiver elevations, averaged to 2 m; UTM32/DHHN2016. Experimental, no tree or terrain-cast shade."
+  }
+}

@@ -1,5 +1,9 @@
 # Next milestones
 
+## Munich follow-up · 0.23.0
+
+The shared planner now supports Munich 3D building shade, elevation, traffic context, addresses and barrier avoidance. Next resolve vegetation classification for tree shade, obtain/audit complete pavement-side geometry and a reusable vehicle-count export, then expand the 8.90 km² walking area after connectivity and phone checks. [Exact source blockers and integration steps](munich.md#open-parity-that-is-not-yet-supported). Field validation remains necessary.
+
 **Current agreement:** improve Zurich traffic modelling now; field-validate shadow and traffic later. Preserve the [shadow evidence and unresolved issues](shadow-validation.md), keep both capabilities experimental, and treat the requested 0.13.0 library expansion as experimental. Automated checks alone do not establish field accuracy.
 
 ## Default Zurich planner · 0.21.0

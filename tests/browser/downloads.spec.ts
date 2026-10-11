@@ -12,7 +12,7 @@ test('download, verify, reopen offline, select smaller coverage and remove', asy
   await expect(pack.getByRole('button', { name: 'Download area', exact: true })).toBeEnabled();
   await pack.getByRole('button', { name: 'Download area', exact: true }).click();
   await expect(pack.locator('.area-state')).toHaveText('Saved');
-  await expect(page.getByRole('dialog')).toContainText('2.3 MB saved');
+  await expect(page.getByRole('dialog')).toContainText('16.0 MB saved');
   await page.getByRole('dialog').evaluate((dialog) => dialog.scrollTo(0, 0));
   await page.screenshot({ path: 'docs/screenshots/desktop-downloads.png' });
   expect((await new AxeBuilder({ page }).include('.info-dialog').analyze()).violations).toEqual([]);

@@ -1,0 +1,20 @@
+{
+  "version": "0.23.0",
+  "origin": "http://127.0.0.1:4173",
+  "checkedAt": "2026-10-11T12:13:18.090Z",
+  "installed": true,
+  "standalone": true,
+  "offlineReload": true,
+  "fullMunichDownload": true,
+  "checks": {
+    "shadeDistance": "1.31 km\nArrive around 14:17",
+    "sunDistance": "1.30 km\nArrive around 14:17",
+    "combinedPreferences": true,
+    "minuteSlider": true,
+    "addresses": true,
+    "german": true,
+    "zones": true,
+    "groundProfile": true
+  },
+  "pageErrors": []
+}

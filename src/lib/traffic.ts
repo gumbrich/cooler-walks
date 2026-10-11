@@ -1,6 +1,9 @@
 import type { Route, Sample, TrafficClass } from './types';
 
 export const TRAFFIC_MODEL = 'zurich-street-context-v2';
+export const OSM_TRAFFIC_MODEL = 'osm-street-context-v1';
+export const supportedTrafficModel = (model?: string) =>
+  model === TRAFFIC_MODEL || model === OSM_TRAFFIC_MODEL;
 export const MAJOR_ROAD_DISTANCE = 20;
 export const MIN_TRAFFIC_COVERAGE = 0.95;
 export const isCalmed = (value?: TrafficClass) =>

@@ -1,10 +1,10 @@
 {
-  "verifiedAt": "2026-10-06T18:21:25.438Z",
-  "modelVersion": "roof-mesh-tiled-ground-arrival-v8",
+  "verifiedAt": "2026-10-11T11:59:50.022Z",
+  "modelVersion": "roof-mesh-tiled-ground-arrival-v9",
   "cities": [
     {
       "city": "ch-zurich",
-      "version": "zurich-2026-10-06-v11",
+      "version": "zurich-2026-10-08-v12",
       "areaKm2": 57.77,
       "previousAreaKm2": 21.81,
       "areaFactor": 2.65,
@@ -35,7 +35,7 @@
             "address": true
           },
           "mode": "shade",
-          "elapsedMs": 496,
+          "elapsedMs": 250,
           "routes": [
             {
               "meters": 800,
@@ -85,7 +85,7 @@
             "address": true
           },
           "mode": "shade",
-          "elapsedMs": 280,
+          "elapsedMs": 199,
           "routes": [
             {
               "meters": 498,
@@ -123,7 +123,7 @@
             "address": true
           },
           "mode": "shade",
-          "elapsedMs": 760,
+          "elapsedMs": 549,
           "routes": [
             {
               "meters": 2722,
@@ -157,7 +157,7 @@
     },
     {
       "city": "de-munich",
-      "version": "munich-2026-09-29-v2",
+      "version": "munich-2026-10-11-v3",
       "areaKm2": 8.9,
       "previousAreaKm2": 2,
       "areaFactor": 4.44,
@@ -184,14 +184,14 @@
             "kind": "Street or path"
           },
           "mode": "shade",
-          "elapsedMs": 280,
+          "elapsedMs": 282,
           "routes": [
             {
               "meters": 3152,
               "minutes": 39.4,
               "greeneryPercent": 68,
-              "modelCoveragePercent": 100,
-              "shadedMeters": 946,
+              "modelCoveragePercent": 97,
+              "shadedMeters": 655,
               "streets": [
                 "Karlsplatz (Stachus)",
                 "Walking path",
@@ -221,11 +221,11 @@
               ]
             },
             {
-              "meters": 3419,
-              "minutes": 42.7,
-              "greeneryPercent": 41,
-              "modelCoveragePercent": 100,
-              "shadedMeters": 1734,
+              "meters": 3548,
+              "minutes": 44.4,
+              "greeneryPercent": 42,
+              "modelCoveragePercent": 98,
+              "shadedMeters": 1710,
               "streets": [
                 "Karlsplatz (Stachus)",
                 "Walking path",
@@ -234,12 +234,7 @@
                 "Walking path",
                 "Maxburgstraße",
                 "Löwengrube",
-                "Aufhäuser Passage",
-                "Commerzbank Passage",
-                "Maffeistraße",
-                "Walking path",
-                "Schäfflerhof",
-                "Maffeistraße",
+                "Schäfflerstraße",
                 "Theatinerstraße",
                 "Perusastraße",
                 "Residenzstraße",
@@ -249,10 +244,12 @@
                 "Walking path",
                 "Kammerspiele",
                 "Walking path",
-                "Karl-Scharnagl-Ring",
+                "Thomas-Wimmer-Ring",
                 "Walking path",
-                "Karl-Scharnagl-Ring",
-                "Bürkleinstraße",
+                "Thomas-Wimmer-Ring",
+                "Walking path",
+                "Maximilianstraße",
+                "Adelgundenstraße",
                 "Sankt-Anna-Straße",
                 "Gewürzmühlstraße",
                 "Walking path",
@@ -304,7 +301,7 @@
             "kind": "Street or path"
           },
           "mode": "greenery",
-          "elapsedMs": 583,
+          "elapsedMs": 365,
           "routes": [
             {
               "meters": 7139,
@@ -373,7 +370,7 @@
             "kind": "Street or path"
           },
           "mode": "greenery",
-          "elapsedMs": 704,
+          "elapsedMs": 456,
           "routes": [
             {
               "meters": 6817,
@@ -461,7 +458,7 @@
             "kind": "Street or path"
           },
           "mode": "greenery",
-          "elapsedMs": 118,
+          "elapsedMs": 96,
           "routes": [
             {
               "meters": 2815,
@@ -542,7 +539,7 @@
             "kind": "Street or path"
           },
           "mode": "greenery",
-          "elapsedMs": 68,
+          "elapsedMs": 52,
           "routes": [
             {
               "meters": 1645,
