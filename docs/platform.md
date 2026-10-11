@@ -1,5 +1,11 @@
 # Platform decision and verification
 
+## Sunlight overlay · 0.24.1
+
+TypeScript and **175 tests in 28 files** pass, including route-bend, repeated-leg and unknown-gap display checks. The production build and all five pack checks pass. A real Zurich Sun route was inspected at ordinary and close zoom on desktop and phone, plus a tablet view; the browser flow passed without page errors. [Local evidence](releases/0.24.1-local-validation.json) · [desktop](screenshots/sun-lines-desktop-close.png) · [phone](screenshots/sun-lines-phone-close.png) · [tablet](screenshots/sun-lines-tablet.png).
+
+The shared native assets are synchronized. Android **build 25** compiled; the APK is `native-artifacts/cooler-walks-0.24.1-debug.apk`. This small display update was not retested on an emulator or physical device. iOS was not rebuilt or tested. Routing choices and shade calculations are unchanged.
+
 ## Munich expansion · 0.24.0
 
 Published at **https://coolerwalks.ch** from `0d6dd78f60cb301ef4df0690a378046e18feb14c`, [Netlify deploy `6acb8bdcd0153e00080cf9cc`](https://app.netlify.com/projects/cooler-walks/deploys/6acb8bdcd0153e00080cf9cc). Netlify ran all 168 tests and the production/release checks successfully; the deployment finished at 13:17:24 UTC on 11 October 2026 (2 minutes 15 seconds). The actual HTTPS PWA installed, launched standalone, downloaded Munich and repeated the original and expanded-area flows after an offline reload, with no page errors. [Live PWA evidence](releases/0.24.0-pwa-munich.json). Anonymous access remains denied, including after authenticated cache warming. [Password-gate checks](private-access-validation.json).

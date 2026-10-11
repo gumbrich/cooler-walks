@@ -1,0 +1,35 @@
+import { test, expect } from '@playwright/test';
+import { ready } from './helpers';
+
+test('sunny route remains readable at walking zoom on desktop and phone', async ({ page }) => {
+  const errors: string[] = [];
+  page.on('pageerror', (error) => errors.push(error.message));
+  await page.clock.setFixedTime(new Date('2026-06-21T12:00:00Z'));
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  await page.goto('/de/?view=planner');
+  await ready(page);
+  await page.getByRole('button', { name: 'Sonne', exact: true }).click();
+  await ready(page);
+  await expect(page.locator('.light-routing-status')).toContainText('Sonnenroute:');
+  const map = page.locator('.map-shell');
+  await expect(map).toHaveAttribute('data-map-settled', 'true');
+  await page.screenshot({ path: 'docs/screenshots/sun-lines-desktop.png' });
+  await page.getByRole('button', { name: 'Vergrössern', exact: true }).click();
+  await expect(map).toHaveAttribute('data-map-settled', 'true');
+  await page.screenshot({ path: 'docs/screenshots/sun-lines-desktop-close.png' });
+  await page.setViewportSize({ width: 390, height: 844 });
+  if (await page.locator('.mobile-save').isVisible()) await page.locator('.mobile-save').click();
+  await page.getByRole('button', { name: 'Weg auf der Karte einpassen', exact: true }).click();
+  await expect(map).toHaveAttribute('data-map-settled', 'true');
+  await page.screenshot({ path: 'docs/screenshots/sun-lines-phone.png', fullPage: true });
+  await page.getByRole('button', { name: 'Karte vergrössern', exact: true }).click();
+  await expect(map).toHaveAttribute('data-map-settled', 'true');
+  await page.getByRole('button', { name: 'Vergrössern', exact: true }).click();
+  await expect(map).toHaveAttribute('data-map-settled', 'true');
+  await page.screenshot({ path: 'docs/screenshots/sun-lines-phone-close.png', fullPage: true });
+  await page.setViewportSize({ width: 820, height: 1180 });
+  await page.getByRole('button', { name: 'Weg auf der Karte einpassen', exact: true }).click();
+  await expect(map).toHaveAttribute('data-map-settled', 'true');
+  await page.screenshot({ path: 'docs/screenshots/sun-lines-tablet.png', fullPage: true });
+  expect(errors).toEqual([]);
+});

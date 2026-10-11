@@ -805,6 +805,7 @@ export class Router {
           );
           samples.push({
             ...sample,
+            routeSegment: n - 1,
             exposure,
             elapsedMinutes,
             ...(detailed ? { detailed } : {}),

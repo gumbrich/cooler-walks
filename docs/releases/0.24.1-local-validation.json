@@ -1,0 +1,40 @@
+{
+  "version": "0.24.1",
+  "checkedAt": "2026-10-11T20:35:21.160418+00:00",
+  "typeCheck": true,
+  "unitTests": 175,
+  "unitFiles": 28,
+  "overlayCases": [
+    "Consecutive sunny samples follow route vertices",
+    "Shade, unknown and night interrupt amber runs",
+    "Retraced waypoint legs preserve traversal order",
+    "Missing segment geometry and isolated samples remain dots",
+    "Main-road overlay retains its existing classification"
+  ],
+  "browserScenarios": 1,
+  "browserViewports": [
+    [1440, 1000],
+    [390, 844],
+    [820, 1180]
+  ],
+  "screenshotsInspected": [
+    "sun-lines-desktop.png",
+    "sun-lines-desktop-close.png",
+    "sun-lines-phone.png",
+    "sun-lines-phone-close.png",
+    "sun-lines-tablet.png"
+  ],
+  "productionBuild": true,
+  "releasePackChecks": 5,
+  "androidBuild": 25,
+  "androidApk": {
+    "file": "native-artifacts/cooler-walks-0.24.1-debug.apk",
+    "bytes": 277379806,
+    "sha256": "7a24ffae0a9bee665834ca4c0454ab1f6378e97833b62ea205444b3b021dbaf3"
+  },
+  "limitations": [
+    "Current Android APK compiled; emulator/physical-device flows were not repeated for this visual change.",
+    "iOS assets synchronized; iOS was not rebuilt or tested.",
+    "No new model or field-accuracy claim."
+  ]
+}

@@ -1,5 +1,9 @@
 # Design direction
 
+## Continuous sunlight overlay · 0.24.1
+
+Consecutive sun-exposed samples are connected in amber along the actual walked geometry. Route vertices are retained around bends and retraced waypoint legs; shaded, unknown and night samples break the connection. Isolated samples remain dots. The cream route casing and outlined sample marks preserve selection contrast and a non-colour cue. The legend now shows a short amber line with a sample marker. This changes display only, not sampling resolution, exposure estimates or route ranking.
+
 ## Munich · 0.23.0
 
 Munich uses the same paired Shade/Sun buttons, quiet/flat/water/access wishes, 0/5/10/15-minute shortcuts and minute slider as Zurich. No second interaction model is introduced. Its method dialog names Munich's actual capabilities and gaps. Implemented Tempo 30 context colours corroborated street fragments, and the legend omits unavailable 20 km/h or ordered-zone categories. Source attribution remains visible in English and German. Phone route fitting reserves the measured legend and attribution heights so the longer source credit cannot cover endpoint markers.
@@ -21,7 +25,7 @@ The revised mark is an open C shaped like a continuous route, with an amber star
 - Paper `#f8f6ef`, ink `#193d32`, route `#214e3a`, foliage `#91b681`, water `#a9c9cd`, sunlight `#dfa848`.
 - Self-hosted DM Sans for interface and measurements; DM Serif Display for expressive headings. Local Open Sans Semibold glyphs label map streets.
 - 4/8 px spacing rhythm, 7–14 px control and panel corners, restrained green-tinted shadows. Visible brown focus outline remains separate from route selection.
-- Route selection uses a dark stroke with cream casing; sun appears as amber dots and unknown as outlined dots. The selected route remains distinguishable independently of exposure.
+- Route selection uses a dark stroke with cream casing; consecutive sunny samples form amber sections with sample markers, and unknown samples remain outlined dots. The selected route remains distinguishable independently of exposure.
 - Reduced-motion mode removes transitions and route-fit animation. Calculations run off the main thread and stale worker messages are ignored.
 
 ## Composition

@@ -1,5 +1,9 @@
 # Progress
 
+## Sunlight map readability · 0.24.1
+
+Connected neighboring sunny samples with amber lines that follow the route's vertices, including bends and retraced waypoint legs. Shade/unknown/night samples interrupt the amber line; isolated samples remain visible. Updated the shared website/app legend. Exposure estimates, sampling and route choices are unchanged.
+
 ## Munich coverage and source follow-up · 0.24.0
 
 Published at **https://coolerwalks.ch** from `0d6dd78`. The live installed-PWA offline flows and password-gate checks pass. Netlify passed all 168 tests and the build; GitHub Actions remains blocked by the account budget.

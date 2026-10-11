@@ -181,6 +181,8 @@ export interface VehicleCounts {
 export type Exposure = 'shade' | 'sun' | 'unknown' | 'night';
 export interface Sample {
   point: Point;
+  /** Index of the traversed segment in Route.coordinates, for map overlays. */
+  routeSegment?: number;
   meters: number;
   exposure: Exposure;
   green: boolean;

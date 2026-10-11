@@ -5,6 +5,7 @@ import * as maplibregl from 'maplibre-gl';
 import { type GeoJSONSource, type Map as LibreMap } from 'maplibre-gl';
 import { Layers, LocateFixed, Minus, Plus, Scan, X, MapPin } from 'lucide-react';
 import { coverageGeometry, inCoverage } from '../lib/coverage';
+import { routeExposureFeatures } from '../lib/route-exposure';
 import type { FeatureCollection, Feature } from 'geojson';
 import type { City, PlannerData, Point, RouteResult } from '../lib/types';
 import type { CounterObservation } from '../lib/vehicle-counts';
@@ -444,9 +445,21 @@ export function WalkingMap({
       m.addSource('exposure', { type: 'geojson', data: collection([]) });
       m.addLayer({
         id: 'sun-segments',
+        type: 'line',
+        source: 'exposure',
+        filter: [
+          'all',
+          ['==', ['geometry-type'], 'LineString'],
+          ['==', ['get', 'exposure'], 'sun'],
+        ],
+        layout: { 'line-cap': 'round', 'line-join': 'round' },
+        paint: { 'line-color': '#e1ab4b', 'line-width': 5 },
+      });
+      m.addLayer({
+        id: 'sun-samples',
         type: 'circle',
         source: 'exposure',
-        filter: ['==', ['get', 'exposure'], 'sun'],
+        filter: ['all', ['==', ['geometry-type'], 'Point'], ['==', ['get', 'exposure'], 'sun']],
         paint: {
           'circle-radius': 2.5,
           'circle-color': '#e1ab4b',
@@ -794,20 +807,7 @@ export function WalkingMap({
           (result?.mode === 'shade' ||
             (result?.canopyVersion && result.mode === 'greenery') ||
             result?.preference === 'calm')
-          ? chosen.samples.map((s) => ({
-              type: 'Feature',
-              properties: {
-                exposure:
-                  result?.preference === 'calm'
-                    ? s.traffic === 'major'
-                      ? 'sun'
-                      : s.traffic === 'unknown'
-                        ? 'unknown'
-                        : 'shade'
-                    : s.exposure,
-              },
-              geometry: { type: 'Point', coordinates: s.point },
-            }))
+          ? routeExposureFeatures(chosen, result?.preference === 'calm')
           : [],
       ),
     );

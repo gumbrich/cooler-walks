@@ -1018,11 +1018,23 @@ small {
   display: inline-block;
 }
 .legend-sun {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
+  width: 18px;
+  height: 3px;
+  border-radius: 3px;
   background: var(--amber);
   display: inline-block;
+  position: relative;
+}
+.legend-sun::after {
+  content: '';
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  top: -2px;
+  left: 5px;
+  border: 1px solid #fff8de;
+  border-radius: 50%;
+  background: var(--amber);
 }
 .legend-unknown {
   width: 7px;
