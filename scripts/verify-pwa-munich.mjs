@@ -4,7 +4,7 @@ import os from 'node:os';
 import path from 'node:path';
 import assert from 'node:assert/strict';
 import { authorizeBrowser } from './lib/site-access.mjs';
-import { checkMunichPlanner, munichReady } from './lib/munich-browser.mjs';
+import { checkMunichPlanner, checkMunichExpansion, munichReady } from './lib/munich-browser.mjs';
 const expect = baseExpect.configure({ timeout: 60000 });
 const origin = (process.env.PWA_ORIGIN ?? 'http://127.0.0.1:4173').replace(/\/$/, '');
 const profile = fs.mkdtempSync(path.join(os.tmpdir(), 'cooler-munich-pwa-'));
@@ -57,7 +57,8 @@ try {
   await app.reload();
   await munichReady(app);
   const checks = await checkMunichPlanner(app);
-  await app.screenshot({ path: 'docs/screenshots/munich-features-pwa-de.png' });
+  checks.expansion = await checkMunichExpansion(app);
+  await app.screenshot({ path: 'docs/screenshots/munich-expanded-pwa-de.png' });
   assert.deepEqual(errors, []);
   const version = JSON.parse(fs.readFileSync('package.json')).version;
   fs.writeFileSync(

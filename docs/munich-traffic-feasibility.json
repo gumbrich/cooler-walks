@@ -1,0 +1,61 @@
+{
+  "source": "https://www.baysis.bayern.de/internet/geodaten_dienste/wfs/index.html",
+  "endpoint": "https://gisportal-stmb.bayern.de/server/services/WFS/BAYSIS_Verkehrsdaten/MapServer/WFSServer",
+  "typeName": "BAYSIS_Verkehrsdaten:svz2021_zaehlstellen",
+  "queryBoundsEPSG25832": [688000, 5332000, 696000, 5340000],
+  "fetchedAt": "2026-10-11T12:53:14Z",
+  "sourceSha256": "e2ab1013113af133b66754ed7f61bac90580993d2194e6b2e891fcd4d15aec38",
+  "licence": "CC BY 4.0",
+  "attribution": "Datenquelle: Bayerische Straßenbauverwaltung - BAYSIS (https://www.baysis.bayern.de)",
+  "observationYear": 2021,
+  "metric": "DTV_Kfz, mean vehicles/day; not hourly or live traffic",
+  "returned": 4,
+  "withinWalkingCoverage": 0,
+  "counters": [
+    {
+      "OBJECTID": "8170",
+      "Straße": "A 8",
+      "Zählstelle": "79359082",
+      "Zählart": "DZ",
+      "DTV_Kfz": "44651.00000000",
+      "DTV_LV": "43511.00000000",
+      "DTV_SV": "1140.00000000",
+      "point": [11.61488342022002, 48.11159672859136],
+      "withinWalkingCoverage": false
+    },
+    {
+      "OBJECTID": "8400",
+      "Straße": "A 9",
+      "Zählstelle": "78359064",
+      "Zählart": "DZ",
+      "DTV_Kfz": "77000.00000000",
+      "DTV_LV": "73697.00000000",
+      "DTV_SV": "3303.00000000",
+      "point": [11.599024657820445, 48.18196339210463],
+      "withinWalkingCoverage": false
+    },
+    {
+      "OBJECTID": "8512",
+      "Straße": "St 2088",
+      "Zählstelle": "78359402",
+      "Zählart": "MZa",
+      "DTV_Kfz": "26196.00000000",
+      "DTV_LV": "25292.00000000",
+      "DTV_SV": "904.00000000",
+      "point": [11.636524594160317, 48.17499015913334],
+      "withinWalkingCoverage": false
+    },
+    {
+      "OBJECTID": "9038",
+      "Straße": "St 2088",
+      "Zählstelle": "78359403",
+      "Zählart": "MZa",
+      "DTV_Kfz": "22793.00000000",
+      "DTV_LV": "21740.00000000",
+      "DTV_SV": "1053.00000000",
+      "point": [11.634693596723055, 48.18033088378321],
+      "withinWalkingCoverage": false
+    }
+  ],
+  "decision": "No counters in the supported walking area; do not project motorway or outer-road counts onto nearby pedestrian streets. Municipal DAVe export or another suitable source remains necessary."
+}

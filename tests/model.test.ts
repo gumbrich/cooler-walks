@@ -321,6 +321,34 @@ describe('route constraints', () => {
     expect(owned.water).toEqual([]);
     expect(owned.trees).toEqual([]);
   });
+  it('keeps tall source objects in the shadow model when the city has a reviewed height bound', () => {
+    const d = fixture();
+    d.modelBounds = [8.5, 47.34, 8.58, 47.41];
+    const origin = metric(cities[0], d.nodes[0].point);
+    d.buildings = [
+      {
+        id: 'synthetic-tall-tower',
+        height: 291.39,
+        ground: 0,
+        ring: [
+          [-200, -125],
+          [400, -125],
+          [400, -115],
+          [-200, -115],
+          [-200, -125],
+        ].map(([x, y]) => geographic(cities[0], [origin[0] + x, origin[1] + y])),
+      },
+    ];
+    expect(() => new Router(d, cities[0])).toThrow('reviewed city height bound');
+    const router = new Router(d, { ...cities[0], buildingHeightCeiling: 350 });
+    expect(
+      router.calculate(d.nodes[0].point, d.nodes[2].point, '2026-06-21T12:00:00Z', 0).fastest
+        .shadeMeters,
+    ).toBeGreaterThan(0);
+    expect(() => new Router(d, { ...cities[0], buildingHeightCeiling: Infinity })).toThrow(
+      'city building-height bound',
+    );
+  });
   it('uses a real ground-referenced height bound without treating open geometry as solid shade', () => {
     const d = fixture();
     d.modelBounds = [8.5, 47.34, 8.58, 47.41];

@@ -35,16 +35,16 @@
   {
     "id": "de-munich",
     "cityId": "de-munich",
-    "label": "Old town, Lehel & gardens",
-    "description": "Central Munich: Karlsplatz, the old town, Lehel and the southern English Garden. The dashed boundary covers 8.9 km², not the entire city. 3D buildings and ground elevations support shade and elevation estimates. Tree shade and complete side-of-street coverage are still missing.",
+    "label": "Central Munich & adjoining districts",
+    "description": "The supported area includes the old town, Hauptbahnhof, Maxvorstadt, Schwabing, Theresienwiese and Haidhausen. The dashed boundary covers 40.5 km². Building shade, elevation and mapped addresses are available within it. Tree shade and complete pavement coverage are still missing.",
     "schema": 1,
-    "version": "munich-2026-10-11-v3",
-    "sha256": "53d739464dea192a1336b0f68fb7286fc5084653d9f0e0b8175ce0a785118135",
-    "bytes": 18219718,
-    "expandedBytes": 48169006,
-    "file": "de-munich-53d739464dea192a.cwp",
+    "version": "munich-2026-10-11-v4",
+    "sha256": "87f59032195b935966feaf9da11f15fb0af2d0a3d1c859c2ac185bc47481e10b",
+    "bytes": 53085616,
+    "expandedBytes": 142665933,
+    "file": "de-munich-87f59032195b9359.cwp",
     "preparedAt": "2026-10-11",
-    "areaKm2": 8.9
+    "areaKm2": 40.51
   },
   {
     "id": "us-cambridge-ma",
@@ -64,7 +64,7 @@
     "id": "de-munich-old-town",
     "cityId": "de-munich",
     "label": "Old Town essentials",
-    "description": "A compact walking area around Karlsplatz, Frauenkirche and Odeonsplatz. Choose the larger Munich pack for Lehel and the gardens. This rectangle is a download area, not an administrative district.",
+    "description": "A smaller walking area around Karlsplatz, Frauenkirche and Odeonsplatz. Choose the full Munich pack for the adjoining districts. Both downloads include surrounding shadow geometry. This rectangle is a download area, not an administrative district.",
     "bounds": [
       11.56,
       48.135,
@@ -72,11 +72,11 @@
       48.146
     ],
     "schema": 1,
-    "version": "munich-2026-10-11-v3-de-munich-old-town-v1",
-    "sha256": "5a9004865485505bead187c7c82645e59118be2e063b63f375e1cde21fa65af5",
-    "bytes": 15979809,
-    "expandedBytes": 32849623,
-    "file": "de-munich-old-town-5a9004865485505b.cwp",
+    "version": "munich-2026-10-11-v4-de-munich-old-town-v1",
+    "sha256": "0c5f369a8da4614455cd04c332fae7e5ef193aa5a1fee9f33b611694a2db5f6e",
+    "bytes": 46064218,
+    "expandedBytes": 93312184,
+    "file": "de-munich-old-town-0c5f369a8da46144.cwp",
     "preparedAt": "2026-10-11",
     "areaKm2": 2
   }

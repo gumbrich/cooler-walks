@@ -26,6 +26,11 @@ const pairs = [
   ['Odeonsplatz', 'Friedensengel'],
   ['Residenzstraße', 'Eisbachwelle'],
   ['Ludwigstraße', 'Maximilianstraße'],
+  ['Arnulfstraße', 'Bayerstraße'],
+  ['Theresienhöhe', 'Lindwurmstraße'],
+  ['Hohenzollernplatz', 'Münchner Freiheit'],
+  ['Pariser Platz', 'Rosenheimer Platz'],
+  ['Gärtnerplatz', 'Wittelsbacherstraße'],
 ];
 // All names must refer to the downloaded source. No synthetic route endpoints.
 const point = (name: string) => {
@@ -116,7 +121,7 @@ async function run(names: string[], local: string, budget: number, preferences: 
   };
   if (
     process.argv.includes('--export-rays') &&
-    records.length < 20 &&
+    records.length < 40 &&
     preferences.primary === 'shade'
   ) {
     const samples = result.fastest.samples;

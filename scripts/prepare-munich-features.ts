@@ -172,7 +172,7 @@ const report = {
   addresses: {
     count: addresses.length,
     pointAddresses: addresses.filter((p) => p.id.startsWith('osm-address-node')).length,
-    source: 'OpenStreetMap snapshot 2026-09-28',
+    source: 'OpenStreetMap / Geofabrik snapshot 2026-10-08',
     licence: 'ODbL',
     sha256: hash('data/raw/munich-osm.json'),
     note: 'Partial coverage. Node coordinates or derived building-label positions, not verified entrances. The municipal public CSV has no coordinates and is not used for geocoding.',

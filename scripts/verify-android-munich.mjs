@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import assert from 'node:assert/strict';
-import { checkMunichPlanner } from './lib/munich-browser.mjs';
+import { checkMunichPlanner, checkMunichExpansion } from './lib/munich-browser.mjs';
 
 const adb = path.join(os.homedir(), 'Library/Android/sdk/platform-tools/adb');
 const serial = 'emulator-5554',
@@ -31,8 +31,9 @@ try {
   page.on('pageerror', (e) => errors.push(e.message));
   if (await page.locator('.hero-cta').isVisible()) await page.locator('.hero-cta').click();
   const checks = await checkMunichPlanner(page);
+  checks.expansion = await checkMunichExpansion(page);
   await page.locator('.light-choice').scrollIntoViewIfNeeded();
-  await device.screenshot({ path: 'docs/screenshots/munich-features-android-de.png' });
+  await device.screenshot({ path: 'docs/screenshots/munich-expanded-android-de.png' });
   assert.deepEqual(errors, []);
   const version = JSON.parse(fs.readFileSync('package.json')).version;
   fs.writeFileSync(

@@ -56,10 +56,11 @@ if __name__ == '__main__':
     for name, url in SOURCES.items():
         fetch(name, url)
     files = ET.parse(RAW / 'dgm.meta4').findall('m:file', NS)
-    selected = {f'{x}_{y}.tif' for x in range(690, 694) for y in range(5334, 5338)}
+    w, s, e, n = json.loads((ROOT / 'scripts/munich-coverage.json').read_text())['sourceBounds']
+    selected = {f'{x//1000}_{y//1000}.tif' for x in range(w, e, 1000) for y in range(s, n, 1000)}
     jobs = [(f.attrib['name'], f.find('m:url', NS).text, f.find('m:hash', NS).text)
             for f in files if f.attrib['name'] in selected]
-    if len(jobs) != 16:
+    if len(jobs) != len(selected):
         raise ValueError('Incomplete ground coverage')
     with ThreadPoolExecutor(max_workers=3) as pool:
         list(pool.map(lambda job: fetch(*job), jobs))

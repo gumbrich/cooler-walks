@@ -3,6 +3,7 @@ import cambridgeCoverage from './coverage/cambridge.json';
 import zurichExtract from './coverage/zurich-extract.json';
 import zurichCoverage from './coverage/zurich.json';
 import canopyCatalog from '../generated/canopy-catalog.json';
+import munichCoverage from '../../scripts/munich-coverage.json';
 export const cities: City[] = [
   {
     id: 'ch-zurich',
@@ -163,11 +164,12 @@ cities.push(
     country: 'Germany',
     region: 'Bavaria',
     center: [11.572, 48.1405],
-    bounds: [11.558, 48.133, 11.601, 48.158],
+    bounds: munichCoverage.routeBounds as Bounds,
     timeZone: 'Europe/Berlin',
     locale: 'de-DE',
     crs: '+proj=utm +zone=32 +ellps=GRS80 +units=m +no_defs',
     sourceCrs: ['EPSG:4326', 'EPSG:25832 / DHHN2016'],
+    buildingHeightCeiling: 350,
     status: 'pilot',
     beta: true,
     capabilities: {
@@ -182,7 +184,7 @@ cities.push(
       addresses: true,
       barrierAvoidance: true,
     },
-    dataVersion: 'munich-2026-10-11-v3',
+    dataVersion: munichCoverage.dataVersion,
     dataUrl: '/data/munich.json',
     mapUrl: '/data/munich-map.geojson',
     trafficZoneLegend: { encounter: false, ordered: false },
@@ -190,15 +192,15 @@ cities.push(
     detailedShade: {
       format: 'library',
       dataUrl: '/data/munich-shade-library.json',
-      version: 'munich-roofs-dgm-library-2026-10-11-v1',
+      version: munichCoverage.shadeVersion,
       crs: 'EPSG:25832',
       verticalDatum: 'DHHN2016',
       coverage: [
-        [11.558, 48.133],
-        [11.601, 48.133],
-        [11.601, 48.158],
-        [11.558, 48.158],
-        [11.558, 48.133],
+        [munichCoverage.routeBounds[0], munichCoverage.routeBounds[1]],
+        [munichCoverage.routeBounds[2], munichCoverage.routeBounds[1]],
+        [munichCoverage.routeBounds[2], munichCoverage.routeBounds[3]],
+        [munichCoverage.routeBounds[0], munichCoverage.routeBounds[3]],
+        [munichCoverage.routeBounds[0], munichCoverage.routeBounds[1]],
       ],
     },
     providers: ['OpenStreetMap', 'Bayerische Vermessungsverwaltung', 'Mobilitätsreferat München'],
@@ -206,15 +208,15 @@ cities.push(
     defaultJourney: ['Karlsplatz (Stachus)', 'Odeonsplatz'],
     mapAttribution:
       '© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">OpenStreetMap</a> · <a href="https://geodaten.bayern.de/opengeodata/" target="_blank" rel="noreferrer">Bayerische Vermessungsverwaltung · CC BY 4.0</a> · <a href="https://opendata.muenchen.de/dataset/rad_rsp_tempo30zone_poly" target="_blank" rel="noreferrer">Mobilitätsreferat München · DL-DE-BY-2.0</a>',
-    coverageLabel: 'Old town, Lehel & gardens',
+    coverageLabel: 'Central Munich & adjoining districts',
     coverageDescription:
-      'Central Munich: Karlsplatz, the old town, Lehel and the southern English Garden. The dashed boundary covers 8.9 km², not the entire city. 3D buildings and ground elevations support shade and elevation estimates. Tree shade and complete side-of-street coverage are still missing.',
+      'The supported area includes the old town, Hauptbahnhof, Maxvorstadt, Schwabing, Theresienwiese and Haidhausen. The dashed boundary covers 40.5 km². Building shade, elevation and mapped addresses are available within it. Tree shade and complete pavement coverage are still missing.',
     treeNotes:
       'Automatically detected individual-tree positions from Bavaria’s 2024 Munich dataset. False detections can occur near roof edges, shadows and power lines. These are not surveyed trunk centres or measured crowns.',
     buildingNotes:
       'Bavarian LoD2 roof and facade surfaces with DGM1 ground elevations, sampled on a 2 m grid. Conflicting heights, unsupported structures and bridge heights remain unknown. Includes building shade only; field validation is pending.',
     sourceSummary:
-      'OSM paths and addresses: snapshot from 28 September 2026. Tree points: 2024. Building index: 22 September 2026, with individual source dates retained. DGM1 and municipal traffic zones fetched 11 October 2026. Fetch dates are not observation dates.',
+      'OSM paths and addresses: Geofabrik snapshot from 8 October 2026. Tree points: 2024. Building index: 6 October 2026, with individual source dates retained. DGM1 and municipal traffic zones fetched 11 October 2026. Fetch dates are not observation dates.',
     elevationNotes:
       'Bavaria’s ground model estimates ascent and descent. Bridges and tunnels need separate walking heights and remain unknown. Flatter routes are compared only where walking-height coverage is complete. This does not guarantee a level or step-free path.',
     trafficNotes:

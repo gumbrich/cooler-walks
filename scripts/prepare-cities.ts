@@ -6,6 +6,7 @@ import { geographic, inBounds } from '../src/lib/geo';
 import { isSurfaceWater } from '../src/lib/water';
 import type { Bounds, Building, PilotData, Point, Tree } from '../src/lib/types';
 import { prepareOSM, type OSMData } from './lib/osm';
+import munichConfig from './munich-coverage.json';
 
 const read = (name: string) => JSON.parse(fs.readFileSync(`data/raw/${name}`, 'utf8'));
 const hash = (name: string) =>
@@ -19,14 +20,15 @@ for (const [slug, identifier] of Object.entries(identifiers)) {
   if (chosen && chosen !== slug) continue;
   const city = getCity(identifier);
   const raw = read(`${slug}-osm.json`) as OSMData;
-  const extraAreas =
-    slug === 'cambridge'
-      ? (read('cambridge-areas.geojson') as FeatureCollection).features.map((f): Feature => ({
-          ...f,
-          properties: { ...f.properties, routeWater: isSurfaceWater(f.properties!.osmTags) },
-        }))
-      : [];
-  const areas = slug === 'cambridge' ? { elements: [] } : read(`${slug}-areas.json`);
+  const extraAreas = ['cambridge', 'munich'].includes(slug)
+    ? (read(`${slug}-areas.geojson`) as FeatureCollection).features.map((f): Feature => ({
+        ...f,
+        properties: { ...f.properties, routeWater: isSurfaceWater(f.properties!.osmTags) },
+      }))
+    : [];
+  const areas = ['cambridge', 'munich'].includes(slug)
+    ? { elements: [] }
+    : read(`${slug}-areas.json`);
   const { nodes, edges, places, features, water } = prepareOSM(city, raw, areas, extraAreas);
   let trees: Tree[] = [],
     buildings: Building[] = [],
@@ -34,7 +36,7 @@ for (const [slug, identifier] of Object.entries(identifiers)) {
   const manifest: Record<string, unknown> = {};
   const sourceFiles = [
     `${slug}-osm.json`,
-    `${slug}-areas.${slug === 'cambridge' ? 'geojson' : 'json'}`,
+    `${slug}-areas.${['cambridge', 'munich'].includes(slug) ? 'geojson' : 'json'}`,
   ];
   // Buffer tree positions around the route boundary for the 15 m proximity query.
   const treeBounds: Bounds = [
@@ -88,7 +90,8 @@ for (const [slug, identifier] of Object.entries(identifiers)) {
       'munich-environment.json',
       ...Object.keys(env.tileSha256).map((tile) => `munich-${tile}.gml`),
       'munich-trees.gpkg',
-      'munich-buildings.meta4',
+      munichConfig.buildingIndex,
+      'oberbayern-261008.osm.pbf',
     );
   } else {
     const treeData = read(`${slug}-trees.geojson`) as FeatureCollection;
@@ -142,8 +145,8 @@ for (const [slug, identifier] of Object.entries(identifiers)) {
   const data: PilotData = {
     version: city.dataVersion!,
     cityId: city.id,
-    fetchedAt: '2026-09-28',
-    preparedAt: '2026-09-29',
+    fetchedAt: slug === 'munich' ? '2026-10-11' : '2026-09-28',
+    preparedAt: slug === 'munich' ? '2026-10-11' : '2026-09-29',
     bounds: city.bounds,
     modelBounds,
     nodes,

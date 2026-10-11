@@ -1,5 +1,17 @@
 # Platform decision and verification
 
+## Munich expansion · 0.24.0
+
+Local verification passed: **168 unit/model/language tests**, TypeScript, production build and all five release pack hashes. **53 Munich route calculations**, all **20 paired Sun/Shade route choices**, 84,827 original graph segments and **870 independent source rays** pass their computational checks. All four city reference routes and the expanded coverage checks pass. Field accuracy remains unvalidated.
+
+Eight relevant browser scenarios pass across Munich feature controls, the expanded districts, city switching, winter sun, public entry, coverage, German/English, automated accessibility and unavailable-data recovery. The new coverage assertion initially targeted the method dialog; it was corrected to the actual coverage dialog. Rendered screenshots also exposed and verified a real fix: map pan limits now allow the expanded boundary to fit above the time controls. [Local release evidence](releases/0.24.0-local-validation.json).
+
+Chrome on macOS installed and launched the final production PWA standalone, downloaded the full **53.1 MB** Munich area and reopened it offline. Original controls and the new **Hohenzollernplatz → Münchner Freiheit** journey pass; the June shade option is 1.83 km and the sunny/fastest option 1.57 km. [Local PWA evidence](releases/0.24.0-pwa-munich-local.json).
+
+Android **build 24** compiled and passed a cold offline launch and the same original/expanded Munich flows on the dedicated **Android 16 / API 36.1, 2 GB emulator**. [Android evidence](releases/0.24.0-android-munich.json). The debug APK is `native-artifacts/cooler-walks-0.24.0-debug.apk` (**278,032,075 bytes**); SHA-256 is in the local release evidence. Native full builds bundle the expanded area. This is emulator testing, not a physical-device test or store release. iOS assets/version are synchronized; iOS was not retested (the last build was blocked by the missing iOS 26.2 platform). Native remote downloads from the protected host still need a separate access solution.
+
+Inspected captures: [desktop route](screenshots/munich-expanded-desktop.png), [German phone route](screenshots/munich-expanded-phone-de.png), [whole coverage](screenshots/munich-expanded-coverage.png), [public entry](screenshots/munich-expanded-entry.png), [tablet method](screenshots/munich-expanded-tablet-method.png), [data error](screenshots/munich-expanded-phone-error.png), [Android](screenshots/munich-expanded-android-de.png) and [installed PWA](screenshots/munich-expanded-pwa-de.png). Screenshots do not establish field or physical-device accuracy.
+
 ## Munich · 0.23.0 / native build 23
 
 Runtime `d900430d1a552fb52975162d4539e05ffc16c359` is published at **https://coolerwalks.ch** (Netlify deploy `6acb7f4141956e0008acdce7`, 11 October 2026, 12:22:59 UTC). The production build completed in 1 minute 37 seconds. The actual HTTPS PWA installed, launched standalone, downloaded Munich and repeated the complete offline flow with no page errors. [Hosted installed-PWA report](releases/0.23.0-pwa-munich.json). Unauthenticated pages, files, manifests and pack requests remain denied; authenticated requests retain private/no-store headers. [Access verification](private-access-validation.json).

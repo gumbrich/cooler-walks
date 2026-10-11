@@ -20,6 +20,8 @@ export interface City {
   locale: string;
   crs: string;
   sourceCrs: string[];
+  /** Reviewed source height bound in metres; defaults to 150 for existing cities. */
+  buildingHeightCeiling?: number;
   status: 'pilot' | 'review';
   /** Product rollout, separate from geographic/model coverage. */
   beta?: boolean;
@@ -110,7 +112,7 @@ export interface Building {
   ground: number | null;
   /** Unsupported/open geometry or conflicting source heights. Never scored as shade. */
   uncertain?: boolean;
-  /** Verified source geometry can bound an uncertain object’s height; absent means the 150 m model ceiling. */
+  /** Verified source geometry can bound an uncertain object’s height; absent means the city model ceiling. */
   shadowHeightBound?: number;
 }
 export interface Tree {

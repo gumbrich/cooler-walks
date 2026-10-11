@@ -10,7 +10,7 @@ from pathlib import Path
 import sqlite3
 import xml.etree.ElementTree as ET
 from shapely import from_wkb, make_valid
-from shapely.geometry import Polygon
+from shapely.geometry import Polygon, MultiPoint
 from shapely.ops import unary_union
 
 raw = Path('data/raw')
@@ -19,7 +19,7 @@ spec = spec_from_file_location('tiles', 'scripts/fetch-munich-buildings.py')
 tiles = module_from_spec(spec)
 spec.loader.exec_module(tiles)
 tile_hashes = {}
-index = ET.parse(raw / 'munich-buildings.meta4').getroot()
+index = ET.parse(raw / tiles.CONFIG['buildingIndex']).getroot()
 
 ns = {'b': 'http://www.opengis.net/citygml/building/1.0',
       'g': 'http://www.opengis.net/gml', 'c': 'http://www.opengis.net/citygml/1.0',
@@ -51,12 +51,21 @@ for tile in tiles.TILES:
                 ground_z.extend(p[2] for p in shell)
                 polygons.append(make_valid(Polygon([p[:2] for p in shell], [[p[:2] for p in ring] for ring in holes])))
             # Height from actual source geometry, independently checked against measuredHeight below.
-            geometry_z = [p[2] for pos in part.findall('./b:boundedBy//g:posList', ns) for p in points(pos)]
+            geometry_xyz = [p for pos in part.findall('./b:boundedBy//g:posList', ns) for p in points(pos)]
+            geometry_z = [p[2] for p in geometry_xyz]
             height, ground = max(geometry_z) - min(ground_z), min(ground_z)
-            if not 0 < height <= 150: raise ValueError(f'Unsupported building height: {height}')
+            if not 0 < height <= 350: raise ValueError(f'Unsupported building height: {height}')
             # Non-building/elevated structures do not fit a ground extrusion.
             function = part.findtext('./b:function', default=element.findtext('./b:function', default='', namespaces=ns), namespaces=ns)
             uncertain = function.startswith('53001_')
+            merged = unary_union(polygons).simplify(0.1, preserve_topology=True)
+            degenerate = merged.geom_type not in ['Polygon', 'MultiPolygon'] or merged.is_empty or merged.area <= 0
+            if degenerate:
+                # A collapsed source ground ring cannot define a physical building.
+                # Keep a conservative unknown mask around all source XY vertices,
+                # including the roof; never score this envelope as known shade.
+                merged = MultiPoint([p[:2] for p in geometry_xyz]).convex_hull.buffer(0.25)
+                uncertain = True
             measured = part.find('./b:measuredHeight', ns)
             if measured is not None:
                 if measured.attrib.get('uom') != 'urn:adv:uom:m': raise ValueError('Unexpected height units')
@@ -67,8 +76,7 @@ for tile in tiles.TILES:
                 excluded.append({'id': part.attrib['{'+ns['g']+'}id'], 'tile': tile,
                     'function': function, 'geometryHeight': round(height, 3),
                     'sourceHeight': float(measured.text) if measured is not None else None,
-                    'reason': 'Non-building structure or source height disagreement; potential shadow remains unknown'})
-            merged = unary_union(polygons).simplify(0.1, preserve_topology=True)
+                    'reason': 'Collapsed/invalid ground surface; source XY envelope + 0.25 m unknown mask' if degenerate else 'Non-building structure or source height disagreement; potential shadow remains unknown'})
             geoms = [merged] if merged.geom_type == 'Polygon' else list(merged.geoms)
             for i, polygon in enumerate(geoms):
                 if polygon.geom_type != 'Polygon': raise ValueError('Unexpected ground geometry')
@@ -86,9 +94,11 @@ assert max(accepted_differences) <= 0.05
 print('Conservatively masked', len(excluded), 'unsupported or conflicting objects', flush=True)
 
 connection = sqlite3.connect('file:data/raw/munich-trees.gpkg?mode=ro', uri=True)
+w, s, e, n = tiles.CONFIG['sourceBounds']
+tree_bounds = (w-200, e+200, s-200, n+200)
 layers = connection.execute("""SELECT g.table_name, g.column_name, g.srs_id
     FROM gpkg_geometry_columns g JOIN gpkg_contents c ON c.table_name=g.table_name
-    WHERE c.max_x>=689800 AND c.min_x<=694200 AND c.max_y>=5333800 AND c.min_y<=5338200""").fetchall()
+    WHERE c.max_x>=? AND c.min_x<=? AND c.max_y>=? AND c.min_y<=?""", tree_bounds).fetchall()
 trees = []
 for table, geom_column, srs in layers:
     if srs != 25832: raise ValueError('Unexpected tree coordinate system')
@@ -98,8 +108,8 @@ for table, geom_column, srs in layers:
     print('Tree schema:', table, columns)
     rtree = f'rtree_{table}_{geom_column}'
     query = f'''SELECT t.* FROM "{table}" t JOIN "{rtree}" r ON t."{primary_key}"=r.id
-                WHERE r.maxx>=689800 AND r.minx<=694200 AND r.maxy>=5333800 AND r.miny<=5338200'''
-    for row in connection.execute(query):
+                WHERE r.maxx>=? AND r.minx<=? AND r.maxy>=? AND r.miny<=?'''
+    for row in connection.execute(query, tree_bounds):
         record = dict(zip(columns, row))
         blob = record[geom_column]
         envelope = (blob[3] >> 1) & 7
@@ -110,10 +120,10 @@ for table, geom_column, srs in layers:
                       'source': 'Bavaria automatic individual-tree detection, 2024'})
 connection.close()
 output = {'buildings': buildings, 'trees': trees, 'sourceCrs': 'EPSG:25832',
-    'tileBounds': [690000,5334000,694000,5338000], 'outlineDates': dict(sorted(dates.items())),
+    'tileBounds': tiles.CONFIG['sourceBounds'], 'outlineDates': dict(sorted(dates.items())),
     'creationDates': dict(sorted(created.items())), 'methods': dict(methods), 'tileSha256': tile_hashes,
     'heightValidation': {'compared': len(height_differences), 'maximumSourceDifferenceMeters': max(height_differences),
         'accepted': len(accepted_differences), 'maximumAcceptedDifferenceMeters': max(accepted_differences),
-        'unknownObjects': excluded, 'unknownPotentialHeightCeilingMeters': 150}}
+        'unknownObjects': excluded, 'unknownPotentialHeightCeilingMeters': 350}}
 (raw / 'munich-environment.json').write_text(json.dumps(output, separators=(',', ':')))
 print('Prepared', len(buildings), 'building parts and', len(trees), 'tree points')

@@ -129,6 +129,10 @@ export function WalkingMap({
     let m: LibreMap;
     try {
       baseSource.current = mapData ?? (city.mapUrl ? dataUrl(city.mapUrl) : collection([]));
+      // Leave room to fit larger coverage boundaries above the departure controls.
+      // A fixed geographic margin forced Munich to zoom back in, hiding its south edge.
+      const marginX = Math.max(0.015, (city.bounds[2] - city.bounds[0]) / 2);
+      const marginY = Math.max(0.015, (city.bounds[3] - city.bounds[1]) / 2);
       m = new maplibregl.Map({
         container: container.current,
         center: city.center,
@@ -138,8 +142,8 @@ export function WalkingMap({
         maxTileCacheSize: 32,
         attributionControl: false,
         maxBounds: [
-          [city.bounds[0] - 0.015, city.bounds[1] - 0.015],
-          [city.bounds[2] + 0.015, city.bounds[3] + 0.015],
+          [city.bounds[0] - marginX, city.bounds[1] - marginY],
+          [city.bounds[2] + marginX, city.bounds[3] + marginY],
         ],
         style: {
           version: 8,

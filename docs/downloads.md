@@ -4,15 +4,15 @@
 
 Version 0.4 adds an offline-map manager for the website/PWA and the shared native app. Open **Offline maps** below the route comparison. Download an area, then choose **Use this area**. The selected area is remembered; the map shows its actual routing boundary. Switching the city selector returns to that city's larger pilot. Downloads never expand environmental coverage beyond verified source data.
 
-| Area                              | Supported footprint | Compressed download     |
-| --------------------------------- | ------------------- | ----------------------- |
-| Zurich, centre, north & west      | 57.77 km²           | ~205 MB including trees |
-| Munich, Old Town, Lehel & gardens | 8.90 km²            | 4.4 MB                  |
-| Munich, Old Town essentials       | 2.00 km²            | 2.3 MB                  |
-| Cambridge, MA, municipal boundary | 18.46 km²           | 6.8 MB                  |
-| Basel, central pilot & Kleinbasel | 10.25 km²           | 2.0 MB                  |
+| Area                                  | Supported footprint | Compressed download     |
+| ------------------------------------- | ------------------- | ----------------------- |
+| Zurich, centre, north & west          | 57.77 km²           | ~205 MB including trees |
+| Munich, central & adjoining districts | 40.5 km²            | 53.1 MB                 |
+| Munich, Old Town essentials           | 2.00 km²            | 46.1 MB                 |
+| Cambridge, MA, municipal boundary     | 18.46 km²           | 6.8 MB                  |
+| Basel, central pilot & Kleinbasel     | 10.25 km²           | 2.0 MB                  |
 
-Sizes describe complete compressed downloads, including the Zurich tree supplement, not total working memory or all app/browser storage. Exact sizes vary with the build; the interface uses its matching catalogue. The smaller Munich rectangle is an optional download area, not an administrative district or a replacement for the larger pilot. Its graph has 5,382 nodes and 6,038 edges. A real Karlsplatz–Odeonsplatz reference walk is 1.236 km; the evaluated alternative at 14:00 local on 21 June takes 2.43 extra minutes. See `area-pack-validation.json`. Zurich/Munich estimate building shade; Cambridge/Basel remain greenery prototypes. Zurich also includes the optional experimental tree scenario. Terrain shadows, weather and live closures are absent.
+Sizes describe complete compressed downloads, including the Zurich tree supplement, not total working memory or all app/browser storage. Exact sizes vary with the build; the interface uses its matching catalogue. The smaller Munich rectangle is an optional download area, not an administrative district or a replacement for the larger pilot. Both Munich packs retain the surrounding 64 km² model, so the Old Town download saves less space than its smaller walking boundary might suggest. The current graph and computed reference route are in `area-pack-validation.json`. Zurich/Munich estimate building shade; Cambridge/Basel remain greenery prototypes. Zurich also includes experimental tree shade. Terrain shadows, weather and live closures are absent.
 
 ## Preparation and deployment
 

@@ -22,7 +22,7 @@ export const areaSpecs: AreaSpec[] = [
     cityId: 'de-munich',
     label: 'Old Town essentials',
     description:
-      'A compact walking area around Karlsplatz, Frauenkirche and Odeonsplatz. Choose the larger Munich pack for Lehel and the gardens. This rectangle is a download area, not an administrative district.',
+      'A smaller walking area around Karlsplatz, Frauenkirche and Odeonsplatz. Choose the full Munich pack for the adjoining districts. Both downloads include surrounding shadow geometry. This rectangle is a download area, not an administrative district.',
     bounds: [11.56, 48.135, 11.582, 48.146],
   },
 ];

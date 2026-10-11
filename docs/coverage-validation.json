@@ -1,5 +1,5 @@
 {
-  "verifiedAt": "2026-10-11T11:59:50.022Z",
+  "verifiedAt": "2026-10-11T13:03:12.985Z",
   "modelVersion": "roof-mesh-tiled-ground-arrival-v9",
   "cities": [
     {
@@ -35,7 +35,7 @@
             "address": true
           },
           "mode": "shade",
-          "elapsedMs": 250,
+          "elapsedMs": 290,
           "routes": [
             {
               "meters": 800,
@@ -85,7 +85,7 @@
             "address": true
           },
           "mode": "shade",
-          "elapsedMs": 199,
+          "elapsedMs": 235,
           "routes": [
             {
               "meters": 498,
@@ -123,7 +123,7 @@
             "address": true
           },
           "mode": "shade",
-          "elapsedMs": 549,
+          "elapsedMs": 599,
           "routes": [
             {
               "meters": 2722,
@@ -157,115 +157,134 @@
     },
     {
       "city": "de-munich",
-      "version": "munich-2026-10-11-v3",
-      "areaKm2": 8.9,
-      "previousAreaKm2": 2,
-      "areaFactor": 4.44,
-      "nodes": 18520,
-      "edges": 20684,
+      "version": "munich-2026-10-11-v4",
+      "areaKm2": 40.51,
+      "previousAreaKm2": 8.9,
+      "areaFactor": 4.55,
+      "nodes": 75328,
+      "edges": 84827,
       "journeys": [
         {
           "from": {
-            "id": "way-116514205",
-            "name": "Karlsplatz (Stachus)",
+            "id": "way-317653695",
+            "name": "Hohenzollernplatz",
             "point": [
-              11.5650186,
-              48.1394243
+              11.5685233,
+              48.1616549
             ],
             "kind": "Street or path"
           },
           "to": {
-            "id": "way-62164333",
-            "name": "Prinzregentenstraße",
+            "id": "way-24039836",
+            "name": "Münchner Freiheit",
             "point": [
-              11.6007015,
-              48.1406556
+              11.5871734,
+              48.1626784
             ],
             "kind": "Street or path"
           },
           "mode": "shade",
-          "elapsedMs": 282,
+          "elapsedMs": 216,
           "routes": [
             {
-              "meters": 3152,
-              "minutes": 39.4,
-              "greeneryPercent": 68,
-              "modelCoveragePercent": 97,
-              "shadedMeters": 655,
+              "meters": 1573,
+              "minutes": 19.7,
+              "greeneryPercent": 45,
+              "modelCoveragePercent": 100,
+              "shadedMeters": 58,
               "streets": [
-                "Karlsplatz (Stachus)",
+                "Hohenzollernplatz",
+                "Rankestraße",
                 "Walking path",
-                "Lenbachplatz",
-                "Maximiliansplatz",
-                "Brienner Straße",
+                "Herzogstraße",
+                "Apianstraße",
                 "Walking path",
-                "Brienner Straße",
-                "Walking path",
-                "Theatinerstraße",
-                "Brienner Straße",
-                "Odeonsplatz",
-                "Galeriestraße",
-                "Walking path",
-                "Franz-Josef-Strauß-Ring",
-                "Prinzregentenstraße",
+                "Leopoldstraße",
                 "Walking path",
                 "Steps",
                 "Walking path",
                 "Steps",
-                "Walking path",
-                "Steps",
-                "Walking path",
-                "Steps",
-                "Walking path",
-                "Prinzregentenstraße"
+                "Walking path"
               ]
             },
             {
-              "meters": 3548,
-              "minutes": 44.4,
-              "greeneryPercent": 42,
-              "modelCoveragePercent": 98,
-              "shadedMeters": 1710,
+              "meters": 1826,
+              "minutes": 22.8,
+              "greeneryPercent": 31,
+              "modelCoveragePercent": 100,
+              "shadedMeters": 1317,
               "streets": [
-                "Karlsplatz (Stachus)",
+                "Hohenzollernplatz",
                 "Walking path",
-                "Karlsplatz (Stachus)",
-                "Lenbachplatz",
-                "Walking path",
-                "Maxburgstraße",
-                "Löwengrube",
-                "Schäfflerstraße",
-                "Theatinerstraße",
-                "Perusastraße",
-                "Residenzstraße",
-                "Perusastraße",
-                "Walking path",
-                "Nationaltheater",
-                "Walking path",
-                "Kammerspiele",
-                "Walking path",
-                "Thomas-Wimmer-Ring",
-                "Walking path",
-                "Thomas-Wimmer-Ring",
-                "Walking path",
-                "Maximilianstraße",
-                "Adelgundenstraße",
-                "Sankt-Anna-Straße",
-                "Gewürzmühlstraße",
-                "Walking path",
-                "Liebigstraße",
-                "Oettingenstraße",
-                "Prinzregentenstraße",
+                "Leopoldstraße",
                 "Walking path",
                 "Steps",
                 "Walking path",
                 "Steps",
+                "Walking path"
+              ]
+            }
+          ]
+        },
+        {
+          "from": {
+            "id": "way-255322149",
+            "name": "Theresienhöhe",
+            "point": [
+              11.5459437,
+              48.1336105
+            ],
+            "kind": "Street or path"
+          },
+          "to": {
+            "id": "way-255725475",
+            "name": "Lindwurmstraße",
+            "point": [
+              11.5579976,
+              48.1292152
+            ],
+            "kind": "Street or path"
+          },
+          "mode": "shade",
+          "elapsedMs": 182,
+          "routes": [
+            {
+              "meters": 1593,
+              "minutes": 19.9,
+              "greeneryPercent": 87,
+              "modelCoveragePercent": 100,
+              "shadedMeters": 105,
+              "streets": [
+                "Theresienhöhe",
                 "Walking path",
-                "Steps",
+                "Alter Messeplatz",
                 "Walking path",
-                "Steps",
+                "Theresienhöhe",
+                "Bavariaring",
+                "Rückertstraße",
+                "Kaiser-Ludwig-Platz",
+                "Haydnstraße",
                 "Walking path",
-                "Prinzregentenstraße"
+                "Lindwurmstraße"
+              ]
+            },
+            {
+              "meters": 1641,
+              "minutes": 20.5,
+              "greeneryPercent": 91,
+              "modelCoveragePercent": 100,
+              "shadedMeters": 290,
+              "streets": [
+                "Theresienhöhe",
+                "Alter Messeplatz",
+                "Walking path",
+                "Theresienhöhe",
+                "Bavariaring",
+                "Rückertstraße",
+                "Kaiser-Ludwig-Platz",
+                "Herzog-Heinrich-Straße",
+                "Walking path",
+                "Lindwurmstraße"
               ]
             }
           ]
@@ -301,7 +320,7 @@
             "kind": "Street or path"
           },
           "mode": "greenery",
-          "elapsedMs": 365,
+          "elapsedMs": 498,
           "routes": [
             {
               "meters": 7139,
@@ -370,7 +389,7 @@
             "kind": "Street or path"
           },
           "mode": "greenery",
-          "elapsedMs": 456,
+          "elapsedMs": 560,
           "routes": [
             {
               "meters": 6817,
@@ -458,7 +477,7 @@
             "kind": "Street or path"
           },
           "mode": "greenery",
-          "elapsedMs": 96,
+          "elapsedMs": 103,
           "routes": [
             {
               "meters": 2815,
@@ -539,7 +558,7 @@
             "kind": "Street or path"
           },
           "mode": "greenery",
-          "elapsedMs": 52,
+          "elapsedMs": 63,
           "routes": [
             {
               "meters": 1645,

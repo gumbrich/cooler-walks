@@ -1,0 +1,18 @@
+{
+  "version": "munich-2026-10-11-v4",
+  "osmTimestamp": "2026-10-08T20:21:06Z",
+  "nodes": 75328,
+  "edges": 84827,
+  "sourceSegmentsVerified": 84827,
+  "geometryMeters": {
+    "sidewalk": 381358.37999999884,
+    "crossing": 19057.08999999998,
+    "pedestrianPath": 624836.5399999967,
+    "streetCentreline": 397720.09999999695
+  },
+  "largestComponentNodes": 70269,
+  "largestComponentShare": 0.9328403780798641,
+  "components": 1447,
+  "isolatedNodes": 733,
+  "limits": "Source topology fidelity, not field access or complete pavement coverage. Disconnected components remain disconnected. OSM road centrelines do not identify a pavement side."
+}

@@ -141,3 +141,7 @@ A small live status directly under Shade/Sun states the available recommendation
 ## 0.22.0: usable light choices with a visible model basis
 
 The two light buttons now control useful autumn routes, including partial observations. A short second status line names missing tree coverage when the comparison uses buildings. The result caption, card denominator and map legend agree on that basis. Partial comparisons show sun-distance/share ranges instead of hiding uncertainty in a single figure; hatched map/card segments remain unknown. Tree evidence for a building-only path is retained in the expandable route details. No new planning controls are required. See [the routing repair](shade-routing-recovery.md).
+
+## Munich expansion · 0.24.0
+
+The larger city uses the same compact planner. Desktop/phone route views, public entry, tablet method view and a missing-data state were rendered and inspected. The whole-coverage screenshot revealed that fixed map-pan margins overrode fit padding for larger areas; margins now scale with the city extent so the boundary fits above the departure card. Routing coverage remains defined by source geometry. Screenshots: `munich-expanded-*.png`.

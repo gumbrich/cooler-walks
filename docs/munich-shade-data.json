@@ -1,11 +1,432 @@
 {
-  "version": "munich-roofs-dgm-library-2026-10-11-v1",
-  "boundsUTM32": [690000, 5334000, 694000, 5338000],
+  "version": "munich-roofs-dgm-library-2026-10-11-v2",
+  "boundsUTM32": [
+    688000,
+    5332000,
+    696000,
+    5340000
+  ],
   "crs": "EPSG:25832",
   "verticalDatum": "DHHN2016",
-  "sourceTriangles": 1036448,
-  "acceptedParts": 19467,
+  "sourceTriangles": 2902264,
+  "acceptedParts": 68037,
   "rejectedBuildings": [
+    {
+      "id": "DEBY_LOD2_4824944:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107628242:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107628699:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107628986:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107629808:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107643256:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107647145:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107655925:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107655974:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107657434:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107657876:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_108462889:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_108462890:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_108462891:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107629152:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107640941:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107650479:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107658184:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107805045:0",
+      "reason": "Non-planar source surface exceeds 5 cm"
+    },
+    {
+      "id": "DEBY_LOD2_107807692:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_108447465:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_108460270:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_108462892:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_108462921:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107628546:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107629540:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_108462894:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107628015:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107628040:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107628588:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107628697:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107628739:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107628915:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107629083:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107629103:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107629111:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107629239:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107629240:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107629382:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107629384:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107629834:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107629910:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107630043:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107637203:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107640047:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107643594:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107644698:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107645944:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107647888:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107648112:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107650446:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107651495:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107655939:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_108462893:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_108462897:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_108462898:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_108462899:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107196505:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107627969:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107627994:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107627996:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107628287:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107629202:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107629817:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107630045:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107637622:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107639224:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107643972:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107645741:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107656261:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107656284:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107656636:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107657247:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107657684:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107657697:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107657762:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107628844:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107629322:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107629997:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107637962:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107641147:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107641917:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107628051:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107628397:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107628463:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107629112:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107629697:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107629824:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107629925:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107630071:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107638884:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107643711:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107650801:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107651253:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107651803:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107656593:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107656864:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107658058:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107805038:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_108460131:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_108461077:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_108461089:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_108461662:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_108462887:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
     {
       "id": "DEBY_LOD2_5053705:0",
       "reason": "Invalid projected polygon"
@@ -253,27 +674,471 @@
     {
       "id": "DEBY_LOD2_108462896:0",
       "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_5009279:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_5009298:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_5056289:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107628095:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107628173:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107628353:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107628497:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107628530:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107628623:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107628850:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107628897:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107629008:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107629055:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107629197:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107629263:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107629662:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107629969:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107633400:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107641574:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107643213:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107648399:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107649653:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107655935:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107656807:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107658172:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_108461253:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_108461781:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107628080:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107628165:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107629567:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107629084:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107656331:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107628339:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107628888:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107629080:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107650274:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_108490273:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107628618:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107630272:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107632242:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107634385:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107635294:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107639243:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107640758:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107643088:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107643603:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107651394:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107653085:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107653350:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_107653651:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_108449271:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_108460344:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_108460912:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
+    },
+    {
+      "id": "DEBY_LOD2_108462878:0",
+      "reason": "Existing unsupported-structure/height-disagreement mask"
     }
   ],
   "buildingSources": [
     {
-      "tile": "690_5334",
-      "sha256": "fa05d2a15ae676f2906cc1d0ff2f9889bd2d6c77b9bd0af38852e848a588ab23"
+      "tile": "688_5332",
+      "sha256": "9bf55c128d0afe346b47244b02ad8a23b1cca8d2f5742314ae0e4b3f9c9f8cba"
     },
     {
-      "tile": "692_5334",
-      "sha256": "1193453ab2dd07455649840bc7ea3fb624f354bde0c7d02b4ae75824b770b489"
+      "tile": "688_5334",
+      "sha256": "990983380419913305a061b234ae69e4ad99f5054bdb3d308cd23f8e0909b56b"
+    },
+    {
+      "tile": "688_5336",
+      "sha256": "03861ba3ad0fc8ecb40fe655810a174688ed8ecd3cf78e3429c3800b978f47d8"
+    },
+    {
+      "tile": "688_5338",
+      "sha256": "5148292892b8f972d1b17cf4ffc60f790e2ea6902703b4a941d71ae6703bbc6d"
+    },
+    {
+      "tile": "690_5332",
+      "sha256": "c44060e24d1f14e87e8750a9e67e39d889439649b6d8cf0501d951e187339893"
+    },
+    {
+      "tile": "690_5334",
+      "sha256": "232c75a398ec7ee81736aeb72f7eda374f88b9431f8c35cdbee18a51ff029e87"
     },
     {
       "tile": "690_5336",
-      "sha256": "8129a87794808742a47e277b293f336206e14dfdcc2cdd7be686d873b7d5d7a5"
+      "sha256": "d6c62a784355feca8d627d31558a69f2a30488322ea84bbe697b95035726d8b8"
+    },
+    {
+      "tile": "690_5338",
+      "sha256": "eccecc83c7ddec2b4b6701ab3b095778b49bd637f5458158169d81241679705b"
+    },
+    {
+      "tile": "692_5332",
+      "sha256": "ee6877f0c7a46c202c1e79808fbbaa38435d7fcb0a0a74543d628df351a6fffd"
+    },
+    {
+      "tile": "692_5334",
+      "sha256": "b3b028ad9df43108351172fa1920b8aa1296f603126d45c422d9b7a66a2a6510"
     },
     {
       "tile": "692_5336",
-      "sha256": "c1acf5c32061ec0d5348374f5e88a182da458b496c3bea84038e0d789741ef58"
+      "sha256": "f62596a9ad36229088ad15ebb3ad57e33b5381dc3e5bf161c5d8715f4d88412b"
+    },
+    {
+      "tile": "692_5338",
+      "sha256": "319a2f227ad8d0f510206f91b66e034df7f91f444c6f6198cbf67027b7b7c3ff"
+    },
+    {
+      "tile": "694_5332",
+      "sha256": "751b09107659777e6ef5599e4707df4394cf36dae79b5a0d097f0a9eb8de38df"
+    },
+    {
+      "tile": "694_5334",
+      "sha256": "738bb87b56c66c34a6f31c830042ba925745d3d015c7927291e2d4387928212e"
+    },
+    {
+      "tile": "694_5336",
+      "sha256": "7208d3ebe9260760154d6b6fe78dd110fb9ef166f0d548842e4ffa0f0b782286"
+    },
+    {
+      "tile": "694_5338",
+      "sha256": "a8e6174967d4aff604d5e1b70674b3de829f592dc4710f6f7eacc1b1343a2ab0"
     }
   ],
   "groundSources": [
+    {
+      "url": "https://download1.bayernwolke.de/a/dgm/dgm1/688_5332.tif",
+      "sha256": "2ed2b354a81bdb8ff0e0acc3a71bd7fed392ffc692c893324aadc8015f373c9f",
+      "bytes": 2637688,
+      "fetchedAt": "2026-10-11T12:51:19.434987+00:00",
+      "rasterTags": {
+        "TIFFTAG_DATETIME": "2022:02:14 00:00:00",
+        "AREA_OR_POINT": "Area"
+      }
+    },
+    {
+      "url": "https://download1.bayernwolke.de/a/dgm/dgm1/688_5333.tif",
+      "sha256": "5b9bf395ab2dfecf809920e9770aa19fe7e3185f3f1a511f89cf8c20bfed02c1",
+      "bytes": 2800188,
+      "fetchedAt": "2026-10-11T12:51:19.974578+00:00",
+      "rasterTags": {
+        "TIFFTAG_DATETIME": "2022:02:14 00:00:00",
+        "AREA_OR_POINT": "Area"
+      }
+    },
+    {
+      "url": "https://download1.bayernwolke.de/a/dgm/dgm1/688_5334.tif",
+      "sha256": "8208636ba01cb4902b5d18865dd17fdb9746a21e68d79797c8ba766ea1435fd5",
+      "bytes": 2618912,
+      "fetchedAt": "2026-10-11T12:51:43.275355+00:00",
+      "rasterTags": {
+        "TIFFTAG_DATETIME": "2022:02:14 00:00:00",
+        "AREA_OR_POINT": "Area"
+      }
+    },
+    {
+      "url": "https://download1.bayernwolke.de/a/dgm/dgm1/688_5335.tif",
+      "sha256": "9ef1bee6936674d832b533dce363e518ccdf426091629de362c06a9e14486ca4",
+      "bytes": 2549396,
+      "fetchedAt": "2026-10-11T12:51:45.571685+00:00",
+      "rasterTags": {
+        "TIFFTAG_DATETIME": "2022:02:14 00:00:00",
+        "AREA_OR_POINT": "Area"
+      }
+    },
+    {
+      "url": "https://download1.bayernwolke.de/a/dgm/dgm1/688_5336.tif",
+      "sha256": "088f4db349f556a42714743938cc225528d482170b27f57597282c929975a157",
+      "bytes": 2581954,
+      "fetchedAt": "2026-10-11T12:48:59.469481+00:00",
+      "rasterTags": {
+        "TIFFTAG_DATETIME": "2022:02:14 00:00:00",
+        "AREA_OR_POINT": "Area"
+      }
+    },
+    {
+      "url": "https://download1.bayernwolke.de/a/dgm/dgm1/688_5337.tif",
+      "sha256": "d39369ac9f84428c51932c080e54e849cba1a32553ef1f92854055fb3cf0b0c7",
+      "bytes": 2605696,
+      "fetchedAt": "2026-10-11T12:51:57.802004+00:00",
+      "rasterTags": {
+        "TIFFTAG_DATETIME": "2022:02:14 00:00:00",
+        "AREA_OR_POINT": "Area"
+      }
+    },
+    {
+      "url": "https://download1.bayernwolke.de/a/dgm/dgm1/688_5338.tif",
+      "sha256": "6a90ebe251e8e0af75595348d20d43469bac579d845db586ee24b4ef235f4ff2",
+      "bytes": 2833370,
+      "fetchedAt": "2026-10-11T12:51:09.293893+00:00",
+      "rasterTags": {
+        "TIFFTAG_DATETIME": "2022:02:14 00:00:00",
+        "AREA_OR_POINT": "Area"
+      }
+    },
+    {
+      "url": "https://download1.bayernwolke.de/a/dgm/dgm1/688_5339.tif",
+      "sha256": "bffc5c7e18f5d11cd09ec08b2315b33eb7baa7f7d21f603bdd1425302382fbf9",
+      "bytes": 2832432,
+      "fetchedAt": "2026-10-11T12:51:21.041509+00:00",
+      "rasterTags": {
+        "TIFFTAG_DATETIME": "2022:02:14 00:00:00",
+        "AREA_OR_POINT": "Area"
+      }
+    },
+    {
+      "url": "https://download1.bayernwolke.de/a/dgm/dgm1/689_5332.tif",
+      "sha256": "eda4fafc26a86fb0539085c2c741b398f5cbaace4d4d7ba19430f0d2277559c8",
+      "bytes": 2833032,
+      "fetchedAt": "2026-10-11T12:51:17.979010+00:00",
+      "rasterTags": {
+        "TIFFTAG_DATETIME": "2022:02:14 00:00:00",
+        "AREA_OR_POINT": "Area"
+      }
+    },
+    {
+      "url": "https://download1.bayernwolke.de/a/dgm/dgm1/689_5333.tif",
+      "sha256": "654d5ad1a3db4f6e20221fead6610ada5a04333d85d9ae7797b2ccc4a91456a2",
+      "bytes": 2813972,
+      "fetchedAt": "2026-10-11T12:51:58.651829+00:00",
+      "rasterTags": {
+        "TIFFTAG_DATETIME": "2022:02:14 00:00:00",
+        "AREA_OR_POINT": "Area"
+      }
+    },
+    {
+      "url": "https://download1.bayernwolke.de/a/dgm/dgm1/689_5334.tif",
+      "sha256": "45a928c4035e15c2b6f7e6bcc872942c276211f1044cf38736ca0bfd96b33d2b",
+      "bytes": 2702390,
+      "fetchedAt": "2026-10-11T12:51:22.290771+00:00",
+      "rasterTags": {
+        "TIFFTAG_DATETIME": "2022:02:14 00:00:00",
+        "AREA_OR_POINT": "Area"
+      }
+    },
+    {
+      "url": "https://download1.bayernwolke.de/a/dgm/dgm1/689_5335.tif",
+      "sha256": "f0a5840d3839a8b12ca6a261bdcdfd91726790d0af24930cc955371412355b84",
+      "bytes": 2557706,
+      "fetchedAt": "2026-10-11T12:51:23.169773+00:00",
+      "rasterTags": {
+        "TIFFTAG_DATETIME": "2022:02:14 00:00:00",
+        "AREA_OR_POINT": "Area"
+      }
+    },
+    {
+      "url": "https://download1.bayernwolke.de/a/dgm/dgm1/689_5336.tif",
+      "sha256": "93f795209ed393f2e99e9e460f9da189a06ca78c249a5396771ebbb17b9b5619",
+      "bytes": 2543576,
+      "fetchedAt": "2026-10-11T12:50:12.546647+00:00",
+      "rasterTags": {
+        "TIFFTAG_DATETIME": "2022:02:14 00:00:00",
+        "AREA_OR_POINT": "Area"
+      }
+    },
+    {
+      "url": "https://download1.bayernwolke.de/a/dgm/dgm1/689_5337.tif",
+      "sha256": "21aae5a3b76fa9977e51121bf86b7b34cce23771080de7861882ac18e552397f",
+      "bytes": 2643690,
+      "fetchedAt": "2026-10-11T12:51:27.825616+00:00",
+      "rasterTags": {
+        "TIFFTAG_DATETIME": "2022:02:14 00:00:00",
+        "AREA_OR_POINT": "Area"
+      }
+    },
+    {
+      "url": "https://download1.bayernwolke.de/a/dgm/dgm1/689_5338.tif",
+      "sha256": "abc6aee8a051792397b725a3292e3bb993ea50d7489290e8871fe18a1527f961",
+      "bytes": 3055070,
+      "fetchedAt": "2026-10-11T12:49:00.188359+00:00",
+      "rasterTags": {
+        "TIFFTAG_DATETIME": "2022:02:14 00:00:00",
+        "AREA_OR_POINT": "Area"
+      }
+    },
+    {
+      "url": "https://download1.bayernwolke.de/a/dgm/dgm1/689_5339.tif",
+      "sha256": "e68c8f1d8e7f85e37c1078482b8ac74a89f62347b8a236cf0cf0c25f3f2d7735",
+      "bytes": 2906138,
+      "fetchedAt": "2026-10-11T12:51:09.703717+00:00",
+      "rasterTags": {
+        "TIFFTAG_DATETIME": "2022:02:14 00:00:00",
+        "AREA_OR_POINT": "Area"
+      }
+    },
+    {
+      "url": "https://download1.bayernwolke.de/a/dgm/dgm1/690_5332.tif",
+      "sha256": "7a22ae76b5224a0b55119a21f2875b5d5f93470f313198aa55597deb90fa62d1",
+      "bytes": 2861408,
+      "fetchedAt": "2026-10-11T12:52:12.073625+00:00",
+      "rasterTags": {
+        "TIFFTAG_DATETIME": "2022:02:14 00:00:00",
+        "AREA_OR_POINT": "Area"
+      }
+    },
+    {
+      "url": "https://download1.bayernwolke.de/a/dgm/dgm1/690_5333.tif",
+      "sha256": "c33e5d958b3265671905025cba7fe9f2686a3f13a28c11f4c83d3cf449a191a2",
+      "bytes": 2727080,
+      "fetchedAt": "2026-10-11T12:49:10.022515+00:00",
+      "rasterTags": {
+        "TIFFTAG_DATETIME": "2022:02:14 00:00:00",
+        "AREA_OR_POINT": "Area"
+      }
+    },
     {
       "url": "https://download1.bayernwolke.de/a/dgm/dgm1/690_5334.tif",
       "sha256": "4b263dc1c674da34498860d56629a13f36b3e58141c12d882161967d7eade67b",
@@ -309,6 +1174,46 @@
       "sha256": "f61d21645da4ad040e8cbe68020b55b1b1e405fcc58ddcf43693008c68c5778d",
       "bytes": 2739760,
       "fetchedAt": "2026-10-11T11:47:57.484458+00:00",
+      "rasterTags": {
+        "TIFFTAG_DATETIME": "2022:02:14 00:00:00",
+        "AREA_OR_POINT": "Area"
+      }
+    },
+    {
+      "url": "https://download1.bayernwolke.de/a/dgm/dgm1/690_5338.tif",
+      "sha256": "3b869518a41c0f84aec8f3461e53ebf9609ef5c8b354c694544712f0615924a5",
+      "bytes": 2923090,
+      "fetchedAt": "2026-10-11T12:51:30.975738+00:00",
+      "rasterTags": {
+        "TIFFTAG_DATETIME": "2022:02:14 00:00:00",
+        "AREA_OR_POINT": "Area"
+      }
+    },
+    {
+      "url": "https://download1.bayernwolke.de/a/dgm/dgm1/690_5339.tif",
+      "sha256": "d89ebb5f63332b1cb11aa7d09cd13d8b69d9db984a789f3bc4d3836b9826eed3",
+      "bytes": 2584402,
+      "fetchedAt": "2026-10-11T12:49:30.962225+00:00",
+      "rasterTags": {
+        "TIFFTAG_DATETIME": "2022:02:14 00:00:00",
+        "AREA_OR_POINT": "Area"
+      }
+    },
+    {
+      "url": "https://download1.bayernwolke.de/a/dgm/dgm1/691_5332.tif",
+      "sha256": "cce656a4efb38fb61396c15cb49b08e1aa0cb18acf5e7d9900a3f9f0604a4e14",
+      "bytes": 2774304,
+      "fetchedAt": "2026-10-11T12:51:33.011694+00:00",
+      "rasterTags": {
+        "TIFFTAG_DATETIME": "2022:02:14 00:00:00",
+        "AREA_OR_POINT": "Area"
+      }
+    },
+    {
+      "url": "https://download1.bayernwolke.de/a/dgm/dgm1/691_5333.tif",
+      "sha256": "c9f3cc9b5aeae8789874db1f2e77d8f9acbe34541eeb9d34e8b9ec30848c485f",
+      "bytes": 2733080,
+      "fetchedAt": "2026-10-11T12:51:40.231724+00:00",
       "rasterTags": {
         "TIFFTAG_DATETIME": "2022:02:14 00:00:00",
         "AREA_OR_POINT": "Area"
@@ -355,6 +1260,46 @@
       }
     },
     {
+      "url": "https://download1.bayernwolke.de/a/dgm/dgm1/691_5338.tif",
+      "sha256": "2780722c6abc04d0c3de886778b6f7e80ea627affb5bc4627046bd6fcfa2d23f",
+      "bytes": 2841530,
+      "fetchedAt": "2026-10-11T12:49:05.972017+00:00",
+      "rasterTags": {
+        "TIFFTAG_DATETIME": "2022:02:14 00:00:00",
+        "AREA_OR_POINT": "Area"
+      }
+    },
+    {
+      "url": "https://download1.bayernwolke.de/a/dgm/dgm1/691_5339.tif",
+      "sha256": "18ff32ce02921d3589c60ee248f7829b271378953fa62981afc772b5c838c37e",
+      "bytes": 2686654,
+      "fetchedAt": "2026-10-11T12:49:34.212704+00:00",
+      "rasterTags": {
+        "TIFFTAG_DATETIME": "2022:02:14 00:00:00",
+        "AREA_OR_POINT": "Area"
+      }
+    },
+    {
+      "url": "https://download1.bayernwolke.de/a/dgm/dgm1/692_5332.tif",
+      "sha256": "66c258c8c8bbbb0f4414d2470c0c8972f860701be0ba83bba5996f9ebc416aa2",
+      "bytes": 2707232,
+      "fetchedAt": "2026-10-11T12:51:10.890120+00:00",
+      "rasterTags": {
+        "TIFFTAG_DATETIME": "2022:02:14 00:00:00",
+        "AREA_OR_POINT": "Area"
+      }
+    },
+    {
+      "url": "https://download1.bayernwolke.de/a/dgm/dgm1/692_5333.tif",
+      "sha256": "15ad5894e6887a0332afbea76d8d56971ed3b680590e632bf9a34e6a8a00bfad",
+      "bytes": 2865094,
+      "fetchedAt": "2026-10-11T12:49:10.900734+00:00",
+      "rasterTags": {
+        "TIFFTAG_DATETIME": "2022:02:14 00:00:00",
+        "AREA_OR_POINT": "Area"
+      }
+    },
+    {
       "url": "https://download1.bayernwolke.de/a/dgm/dgm1/692_5334.tif",
       "sha256": "c4c639a7f04ee4712fb11c92ea01ffd3b7f7f85a45fddb04d912ecd253f28812",
       "bytes": 2971936,
@@ -389,6 +1334,46 @@
       "sha256": "b781b26b077f486e1f4de3e54d5bb00acdfea4b2caf51eff78879422b23a61bc",
       "bytes": 2820802,
       "fetchedAt": "2026-10-11T11:47:57.118885+00:00",
+      "rasterTags": {
+        "TIFFTAG_DATETIME": "2022:02:14 00:00:00",
+        "AREA_OR_POINT": "Area"
+      }
+    },
+    {
+      "url": "https://download1.bayernwolke.de/a/dgm/dgm1/692_5338.tif",
+      "sha256": "8287176fce2ffc1a209a3f5e6c744211b2d7892ec349063602bccfc4884ee070",
+      "bytes": 2702830,
+      "fetchedAt": "2026-10-11T12:49:17.190296+00:00",
+      "rasterTags": {
+        "TIFFTAG_DATETIME": "2022:02:14 00:00:00",
+        "AREA_OR_POINT": "Area"
+      }
+    },
+    {
+      "url": "https://download1.bayernwolke.de/a/dgm/dgm1/692_5339.tif",
+      "sha256": "5e77ec527d50640f3842947918d34ba4191928978a502c9cb3dad0ead9e522d3",
+      "bytes": 2767556,
+      "fetchedAt": "2026-10-11T12:51:18.046521+00:00",
+      "rasterTags": {
+        "TIFFTAG_DATETIME": "2022:02:14 00:00:00",
+        "AREA_OR_POINT": "Area"
+      }
+    },
+    {
+      "url": "https://download1.bayernwolke.de/a/dgm/dgm1/693_5332.tif",
+      "sha256": "ec47f2682faf8adf694ff83ec5c91bde059a31293abe8a80df9c784dbd494556",
+      "bytes": 2681192,
+      "fetchedAt": "2026-10-11T12:49:18.934315+00:00",
+      "rasterTags": {
+        "TIFFTAG_DATETIME": "2022:02:14 00:00:00",
+        "AREA_OR_POINT": "Area"
+      }
+    },
+    {
+      "url": "https://download1.bayernwolke.de/a/dgm/dgm1/693_5333.tif",
+      "sha256": "778847657ccc2b1fa955ec981f1f3238fc7e208f152f8d7081ba0779a10267fc",
+      "bytes": 2777282,
+      "fetchedAt": "2026-10-11T12:49:20.340179+00:00",
       "rasterTags": {
         "TIFFTAG_DATETIME": "2022:02:14 00:00:00",
         "AREA_OR_POINT": "Area"
@@ -433,11 +1418,191 @@
         "TIFFTAG_DATETIME": "2022:02:14 00:00:00",
         "AREA_OR_POINT": "Area"
       }
+    },
+    {
+      "url": "https://download1.bayernwolke.de/a/dgm/dgm1/693_5338.tif",
+      "sha256": "c2bb7969bc101f567c5150738a8f80e1fdaa89f2f3ef62dfdeac5e557f193fdc",
+      "bytes": 2899082,
+      "fetchedAt": "2026-10-11T12:49:08.474633+00:00",
+      "rasterTags": {
+        "TIFFTAG_DATETIME": "2022:02:14 00:00:00",
+        "AREA_OR_POINT": "Area"
+      }
+    },
+    {
+      "url": "https://download1.bayernwolke.de/a/dgm/dgm1/693_5339.tif",
+      "sha256": "0accb323201d582e27aac8171f5945718cb92b12b05107ab7df2ceb0bd0e06de",
+      "bytes": 2804880,
+      "fetchedAt": "2026-10-11T12:49:05.178308+00:00",
+      "rasterTags": {
+        "TIFFTAG_DATETIME": "2022:02:14 00:00:00",
+        "AREA_OR_POINT": "Area"
+      }
+    },
+    {
+      "url": "https://download1.bayernwolke.de/a/dgm/dgm1/694_5332.tif",
+      "sha256": "f0b11ec60b84cc9ffd22769afd3c251bbab57123dabe7972a29d7f6e599053bc",
+      "bytes": 2758356,
+      "fetchedAt": "2026-10-11T12:51:10.720266+00:00",
+      "rasterTags": {
+        "TIFFTAG_DATETIME": "2022:02:14 00:00:00",
+        "AREA_OR_POINT": "Area"
+      }
+    },
+    {
+      "url": "https://download1.bayernwolke.de/a/dgm/dgm1/694_5333.tif",
+      "sha256": "62e470f8940623bb33770e9380101ce123f940010f7ed975c2a74a4f7059ddc3",
+      "bytes": 2645112,
+      "fetchedAt": "2026-10-11T12:50:09.630250+00:00",
+      "rasterTags": {
+        "TIFFTAG_DATETIME": "2022:02:14 00:00:00",
+        "AREA_OR_POINT": "Area"
+      }
+    },
+    {
+      "url": "https://download1.bayernwolke.de/a/dgm/dgm1/694_5334.tif",
+      "sha256": "50f289d6dc6100b7a7933d94ddebfb55ecadc4adfa9fc4fbf117ece68cb82fe6",
+      "bytes": 2610522,
+      "fetchedAt": "2026-10-11T12:49:54.643168+00:00",
+      "rasterTags": {
+        "TIFFTAG_DATETIME": "2022:02:14 00:00:00",
+        "AREA_OR_POINT": "Area"
+      }
+    },
+    {
+      "url": "https://download1.bayernwolke.de/a/dgm/dgm1/694_5335.tif",
+      "sha256": "1a1f40e93fe954b31a3dcc7eec4d606bc7cd4aac71abc9fdae4c2a0594ba0ea9",
+      "bytes": 2636596,
+      "fetchedAt": "2026-10-11T12:50:12.142819+00:00",
+      "rasterTags": {
+        "TIFFTAG_DATETIME": "2022:02:14 00:00:00",
+        "AREA_OR_POINT": "Area"
+      }
+    },
+    {
+      "url": "https://download1.bayernwolke.de/a/dgm/dgm1/694_5336.tif",
+      "sha256": "7e844c7b9ed39a11ec144314fa097855a7ef71b6ef0f255ccb091eb380ae2fed",
+      "bytes": 2839080,
+      "fetchedAt": "2026-10-11T12:49:00.394257+00:00",
+      "rasterTags": {
+        "TIFFTAG_DATETIME": "2022:02:14 00:00:00",
+        "AREA_OR_POINT": "Area"
+      }
+    },
+    {
+      "url": "https://download1.bayernwolke.de/a/dgm/dgm1/694_5337.tif",
+      "sha256": "2c00017527475789f8a23c5564933db62bffab7feeb18a3371445c9b79241cea",
+      "bytes": 2910466,
+      "fetchedAt": "2026-10-11T12:49:05.873429+00:00",
+      "rasterTags": {
+        "TIFFTAG_DATETIME": "2022:02:14 00:00:00",
+        "AREA_OR_POINT": "Area"
+      }
+    },
+    {
+      "url": "https://download1.bayernwolke.de/a/dgm/dgm1/694_5338.tif",
+      "sha256": "c6b6899b191abb4c05422b674fec0fd2094fa9aafc35e902d1aa390f233f3263",
+      "bytes": 2760798,
+      "fetchedAt": "2026-10-11T12:51:13.060567+00:00",
+      "rasterTags": {
+        "TIFFTAG_DATETIME": "2022:02:14 00:00:00",
+        "AREA_OR_POINT": "Area"
+      }
+    },
+    {
+      "url": "https://download1.bayernwolke.de/a/dgm/dgm1/694_5339.tif",
+      "sha256": "ef3ea651fe8a53834603f33317155a89832e385a1e10300c51afa6fc7db06f07",
+      "bytes": 2670004,
+      "fetchedAt": "2026-10-11T12:52:07.015287+00:00",
+      "rasterTags": {
+        "TIFFTAG_DATETIME": "2022:02:14 00:00:00",
+        "AREA_OR_POINT": "Area"
+      }
+    },
+    {
+      "url": "https://download1.bayernwolke.de/a/dgm/dgm1/695_5332.tif",
+      "sha256": "a387fa17c6d46a37a0eeb6cf013f7f86e53507eb42ed36e18e8ca091e81e778f",
+      "bytes": 2600584,
+      "fetchedAt": "2026-10-11T12:52:08.389685+00:00",
+      "rasterTags": {
+        "TIFFTAG_DATETIME": "2022:02:14 00:00:00",
+        "AREA_OR_POINT": "Area"
+      }
+    },
+    {
+      "url": "https://download1.bayernwolke.de/a/dgm/dgm1/695_5333.tif",
+      "sha256": "521c6094a6531b35b3794581071f195d1d33e478fdb628644e43d3234ed99c01",
+      "bytes": 2690002,
+      "fetchedAt": "2026-10-11T12:49:35.437061+00:00",
+      "rasterTags": {
+        "TIFFTAG_DATETIME": "2022:02:14 00:00:00",
+        "AREA_OR_POINT": "Area"
+      }
+    },
+    {
+      "url": "https://download1.bayernwolke.de/a/dgm/dgm1/695_5334.tif",
+      "sha256": "af5ac47c7628b3f57c9b378379eace5964be036dca5affa699f3ec69c6ddd02f",
+      "bytes": 2731940,
+      "fetchedAt": "2026-10-11T12:51:12.401711+00:00",
+      "rasterTags": {
+        "TIFFTAG_DATETIME": "2022:02:14 00:00:00",
+        "AREA_OR_POINT": "Area"
+      }
+    },
+    {
+      "url": "https://download1.bayernwolke.de/a/dgm/dgm1/695_5335.tif",
+      "sha256": "1b5aca0c1e751cc010c0a9fd30fe510013ec962dc8833923e861d01f4bddf38b",
+      "bytes": 2647004,
+      "fetchedAt": "2026-10-11T12:52:08.621470+00:00",
+      "rasterTags": {
+        "TIFFTAG_DATETIME": "2022:02:14 00:00:00",
+        "AREA_OR_POINT": "Area"
+      }
+    },
+    {
+      "url": "https://download1.bayernwolke.de/a/dgm/dgm1/695_5336.tif",
+      "sha256": "fc726c086e0045df977e955c7a79eef5a2934121686ba4102876620b2f28cd9d",
+      "bytes": 2678424,
+      "fetchedAt": "2026-10-11T12:49:53.526796+00:00",
+      "rasterTags": {
+        "TIFFTAG_DATETIME": "2022:02:14 00:00:00",
+        "AREA_OR_POINT": "Area"
+      }
+    },
+    {
+      "url": "https://download1.bayernwolke.de/a/dgm/dgm1/695_5337.tif",
+      "sha256": "d6c830cbf2c594864d36d24bece42e59077637ed4b754cbfbc1b103065296f48",
+      "bytes": 2578718,
+      "fetchedAt": "2026-10-11T12:51:16.699563+00:00",
+      "rasterTags": {
+        "TIFFTAG_DATETIME": "2022:02:14 00:00:00",
+        "AREA_OR_POINT": "Area"
+      }
+    },
+    {
+      "url": "https://download1.bayernwolke.de/a/dgm/dgm1/695_5338.tif",
+      "sha256": "2169f048f4761e6fb46bc201323f9e56ffe685fe117fe42ef7714e6a169b9497",
+      "bytes": 2791898,
+      "fetchedAt": "2026-10-11T12:51:53.863102+00:00",
+      "rasterTags": {
+        "TIFFTAG_DATETIME": "2022:02:14 00:00:00",
+        "AREA_OR_POINT": "Area"
+      }
+    },
+    {
+      "url": "https://download1.bayernwolke.de/a/dgm/dgm1/695_5339.tif",
+      "sha256": "a911d8b1516be989c218353527d3d4b9ff49a6e299dc521e85f66d66e02ab382",
+      "bytes": 3071884,
+      "fetchedAt": "2026-10-11T12:51:16.812480+00:00",
+      "rasterTags": {
+        "TIFFTAG_DATETIME": "2022:02:14 00:00:00",
+        "AREA_OR_POINT": "Area"
+      }
     }
   ],
-  "tiles": 16,
-  "bytes": 13610115,
-  "validGroundCells": 4000000,
+  "tiles": 64,
+  "bytes": 40012477,
+  "validGroundCells": 16000000,
   "missingGroundCells": 0,
   "groundResolutionMeters": 2,
   "quantizationMeters": 0.1,

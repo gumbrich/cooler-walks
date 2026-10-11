@@ -1,0 +1,28 @@
+{
+  "version": "0.24.0",
+  "dataVersion": "munich-2026-10-11-v4",
+  "unitTests": 168,
+  "unitFiles": 27,
+  "realMunichCalculations": 53,
+  "pairedLightComparisons": 20,
+  "differentPairedLightRoutes": 20,
+  "sourceRaysCompared": 870,
+  "sourceRayDisagreements": 0,
+  "originalGraphSegmentsAudited": 84827,
+  "browserScenarios": 8,
+  "browserNote": "Six existing scenarios passed; the new test initially asserted coverage in the method dialog. Corrected to the coverage dialog. Both new scenarios then passed, including a screenshot-driven map-fit correction.",
+  "typeCheck": true,
+  "productionBuild": true,
+  "releasePackChecks": 5,
+  "androidApk": {
+    "file": "native-artifacts/cooler-walks-0.24.0-debug.apk",
+    "bytes": 278032075,
+    "sha256": "1ffa30cc19b8a442f25bf7263ea6249c11b8ef3cfd8fab848dc8d7fe0b2f19fa"
+  },
+  "limitations": [
+    "Munich remains beta; no field validation.",
+    "Munich tree shade, complete pavement sides, local vehicle counts, authoritative address coordinates and non-ground walking heights remain incomplete.",
+    "No physical-device test; current iOS platform unavailable.",
+    "Native remote downloads remain subject to protected-host access."
+  ]
+}

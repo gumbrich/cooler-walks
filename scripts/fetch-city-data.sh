@@ -29,11 +29,13 @@ case "${1:-}" in
     .venv-geo/bin/python scripts/extract-cambridge-osm.py
     ;;
   munich)
-    fetch 'https://geodaten.bayern.de/odd/a/lod2/citygml/meta/metalink/09162000.meta4' munich-buildings.meta4
+    python3 scripts/fetch-munich-coverage.py
     python3 scripts/fetch-munich-buildings.py
     python3 scripts/fetch-munich-trees.py
-    python3 scripts/fetch-munich-network.py
+    .venv-geo/bin/python scripts/extract-munich-osm.py
     .venv-geo/bin/python scripts/extract-munich-environment.py
+    .venv-geo/bin/python scripts/fetch-munich-extensions.py
+    .venv-geo/bin/python scripts/prepare-munich-shade.py
     ;;
   *) echo 'Usage: bash scripts/fetch-city-data.sh basel|cambridge|munich' >&2; exit 1 ;;
 esac

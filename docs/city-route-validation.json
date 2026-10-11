@@ -1,6 +1,6 @@
 {
   "modelVersion": "roof-mesh-tiled-ground-arrival-v9",
-  "verifiedAt": "2026-10-11T11:59:41.457Z",
+  "verifiedAt": "2026-10-11T13:03:01.070Z",
   "cities": [
     {
       "city": "ch-zurich",
@@ -265,7 +265,7 @@
     },
     {
       "city": "de-munich",
-      "version": "munich-2026-10-11-v3",
+      "version": "munich-2026-10-11-v4",
       "from": {
         "id": "way-116514205",
         "name": "Karlsplatz (Stachus)",

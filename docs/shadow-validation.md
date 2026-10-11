@@ -1,5 +1,7 @@
 # Shadow validation gate
 
+**Munich 0.24.0:** expanded walking coverage to 40.5 km² with 64 km² of official LoD2/DGM surroundings. All 870 independently checked roof rays match the original source polygons; this establishes processing fidelity, not field accuracy. The inspected Munich laser/CIR sample has unresolved object classification and a winter-2022/summer-2024 epoch mismatch, so Munich tree shade remains disabled. [Source review](munich-source-review.md). The existing field-validation HOLD and Zurich evidence below remain unchanged.
+
 **0.22.0 routing repair:** missing tree observations no longer disable usable building comparisons. Partial-data alternatives require worst-case exposure bounds; a declared building fallback preserves the combined tree evidence. This improves demonstrated route usefulness, not physical accuracy. The field-validation **HOLD**, unresolved source disagreements and earlier observations remain unchanged. [Repair and computational regression](shade-routing-recovery.md).
 
 **8 October 2026 — experimental coverage expansion:** the user explicitly requested the tree pilot across the supported Zurich map. [Version 0.17.0](tree-shade-expansion.md) expands the source library; it does not supply field observations, resolve the earlier model/service disagreements, or establish summer-crown/transmission accuracy. Keep the field-validation HOLD and the historical comparison evidence below.

@@ -1,9 +1,9 @@
 {
-  "verifiedAt": "2026-10-11T12:04:04.901Z",
+  "verifiedAt": "2026-10-11T13:02:12.346Z",
   "model": "roof-mesh-tiled-ground-arrival-v9",
-  "dataVersion": "munich-2026-10-11-v3",
-  "differentLightChoices": 10,
-  "pairs": 5,
+  "dataVersion": "munich-2026-10-11-v4",
+  "differentLightChoices": 20,
+  "pairs": 10,
   "records": [
     {
       "names": [
@@ -27,7 +27,7 @@
         "detailed": 1236.3899999999999,
         "majorRoadMeters": 916.7299999999994,
         "trafficUnknown": 33.69,
-        "hash": "8901a352541ae9b9781fc890ee7d0bfd33a9a8f535d33e9d7120f34253410ce7",
+        "hash": "8d59ba8f29244be18f8b3c6ffa0a70517b8ac5bd36258c1c94ab77398b096aad",
         "streets": [
           "Karlsplatz (Stachus)",
           "Walking path",
@@ -54,7 +54,7 @@
         "detailed": 1312.4899999999993,
         "majorRoadMeters": 1031.2764285714288,
         "trafficUnknown": 0,
-        "hash": "7c98b8426a9fbfb43f750fba7b55ccf44794bad0fa9dc580d988eb9811eb404c",
+        "hash": "1f61727019186b198dfbf86ebcedba7ded5c8e68166f71474c1bb409acf7eac5",
         "streets": [
           "Karlsplatz (Stachus)",
           "Walking path",
@@ -74,7 +74,7 @@
       },
       "applied": [],
       "unavailable": [],
-      "calculationMs": 340
+      "calculationMs": 384
     },
     {
       "names": [
@@ -98,7 +98,7 @@
         "detailed": 1236.3899999999999,
         "majorRoadMeters": 916.7299999999994,
         "trafficUnknown": 33.69,
-        "hash": "8901a352541ae9b9781fc890ee7d0bfd33a9a8f535d33e9d7120f34253410ce7",
+        "hash": "8d59ba8f29244be18f8b3c6ffa0a70517b8ac5bd36258c1c94ab77398b096aad",
         "streets": [
           "Karlsplatz (Stachus)",
           "Walking path",
@@ -125,7 +125,7 @@
         "detailed": 1303.630000000001,
         "majorRoadMeters": 1224.1400000000003,
         "trafficUnknown": 0,
-        "hash": "fe2a5c4f64879bee520dacc09e89752df656afae3088725f97b561e52722f99c",
+        "hash": "6f6db195945f54afee10285a1bfde800cbd5834ae42b11742e01c4dd44284acb",
         "streets": [
           "Karlsplatz (Stachus)",
           "Walking path",
@@ -141,7 +141,7 @@
       },
       "applied": [],
       "unavailable": [],
-      "calculationMs": 62
+      "calculationMs": 318
     },
     {
       "names": [
@@ -165,7 +165,7 @@
         "detailed": 1236.3899999999999,
         "majorRoadMeters": 916.7299999999994,
         "trafficUnknown": 33.69,
-        "hash": "8901a352541ae9b9781fc890ee7d0bfd33a9a8f535d33e9d7120f34253410ce7",
+        "hash": "8d59ba8f29244be18f8b3c6ffa0a70517b8ac5bd36258c1c94ab77398b096aad",
         "streets": [
           "Karlsplatz (Stachus)",
           "Walking path",
@@ -192,7 +192,7 @@
         "detailed": 1391.7300000000005,
         "majorRoadMeters": 1013.4964285714284,
         "trafficUnknown": 0,
-        "hash": "1a7ee5f44261bc69d37d29afc8c49b232e0f7199349188290a79fbbab22cd04d",
+        "hash": "44ce4afce3284e91f383572ddb4ef1678806b6f893f0ea92e906847daf0ca15e",
         "streets": [
           "Karlsplatz (Stachus)",
           "Walking path",
@@ -214,7 +214,7 @@
       },
       "applied": [],
       "unavailable": [],
-      "calculationMs": 76
+      "calculationMs": 121
     },
     {
       "names": [
@@ -238,7 +238,7 @@
         "detailed": 1236.3899999999999,
         "majorRoadMeters": 916.7299999999994,
         "trafficUnknown": 33.69,
-        "hash": "8901a352541ae9b9781fc890ee7d0bfd33a9a8f535d33e9d7120f34253410ce7",
+        "hash": "8d59ba8f29244be18f8b3c6ffa0a70517b8ac5bd36258c1c94ab77398b096aad",
         "streets": [
           "Karlsplatz (Stachus)",
           "Walking path",
@@ -265,7 +265,7 @@
         "detailed": 1608.079999999999,
         "majorRoadMeters": 1341.6700000000005,
         "trafficUnknown": 0,
-        "hash": "f76c8601784b0bec9621beedd82e2dbcd3309a2ed2ab2da55e004acb5106c274",
+        "hash": "e98c96414cf7dd7d19aca0e4db2eba8f3f8d106f7fdc2f878eee346c95042486",
         "streets": [
           "Karlsplatz (Stachus)",
           "Walking path",
@@ -286,7 +286,7 @@
       },
       "applied": [],
       "unavailable": [],
-      "calculationMs": 84
+      "calculationMs": 346
     },
     {
       "names": [
@@ -302,33 +302,34 @@
       "mode": "shade",
       "alternative": true,
       "fastest": {
-        "minutes": 9.81775,
-        "distance": 785.4200000000001,
-        "sun": 773.8233333333335,
+        "minutes": 9.818000000000001,
+        "distance": 785.44,
+        "sun": 773.8433333333335,
         "shade": 5.576666666666667,
         "unknown": 6.02,
-        "detailed": 785.4200000000001,
+        "detailed": 785.4400000000002,
         "majorRoadMeters": 0,
         "trafficUnknown": 6.02,
-        "hash": "af0736e27ee6765ed6a84311f0c01646a8a44ceec4329daddbf76debab3f38ee",
+        "hash": "22a200eead130ce351f77dcf15dbe86f0e58e622c95af352083fe45332b46d00",
         "streets": [
           "Marienplatz",
           "Dienerstraße",
+          "Schrammerstraße",
           "Residenzstraße",
           "Walking path",
           "Hofgartenstraße"
         ]
       },
       "chosen": {
-        "minutes": 14.27725,
-        "distance": 1142.18,
-        "sun": 598.5301049783549,
-        "shade": 503.2598950216454,
+        "minutes": 14.289499999999999,
+        "distance": 1143.1599999999999,
+        "sun": 599.7158192640692,
+        "shade": 503.0541807359311,
         "unknown": 40.39,
-        "detailed": 1142.179999999999,
+        "detailed": 1143.159999999999,
         "majorRoadMeters": 0,
         "trafficUnknown": 40.39,
-        "hash": "124d69e37c77ff10d927da5211a8784311bf9cef3caf397121e280389362edc5",
+        "hash": "4a7ce7d413c452b932724119c50a3caa0843508156bd4c0867ad94182b42ad48",
         "streets": [
           "Marienplatz",
           "Dienerstraße",
@@ -347,7 +348,7 @@
       },
       "applied": [],
       "unavailable": [],
-      "calculationMs": 199
+      "calculationMs": 269
     },
     {
       "names": [
@@ -363,36 +364,38 @@
       "mode": "shade",
       "alternative": false,
       "fastest": {
-        "minutes": 9.81775,
-        "distance": 785.4200000000001,
-        "sun": 773.8233333333335,
+        "minutes": 9.818000000000001,
+        "distance": 785.44,
+        "sun": 773.8433333333335,
         "shade": 5.576666666666667,
         "unknown": 6.02,
-        "detailed": 785.4200000000001,
+        "detailed": 785.4400000000002,
         "majorRoadMeters": 0,
         "trafficUnknown": 6.02,
-        "hash": "af0736e27ee6765ed6a84311f0c01646a8a44ceec4329daddbf76debab3f38ee",
+        "hash": "22a200eead130ce351f77dcf15dbe86f0e58e622c95af352083fe45332b46d00",
         "streets": [
           "Marienplatz",
           "Dienerstraße",
+          "Schrammerstraße",
           "Residenzstraße",
           "Walking path",
           "Hofgartenstraße"
         ]
       },
       "chosen": {
-        "minutes": 9.81775,
-        "distance": 785.4200000000001,
-        "sun": 773.8233333333335,
+        "minutes": 9.818000000000001,
+        "distance": 785.44,
+        "sun": 773.8433333333335,
         "shade": 5.576666666666667,
         "unknown": 6.02,
-        "detailed": 785.4200000000001,
+        "detailed": 785.4400000000002,
         "majorRoadMeters": 0,
         "trafficUnknown": 6.02,
-        "hash": "af0736e27ee6765ed6a84311f0c01646a8a44ceec4329daddbf76debab3f38ee",
+        "hash": "22a200eead130ce351f77dcf15dbe86f0e58e622c95af352083fe45332b46d00",
         "streets": [
           "Marienplatz",
           "Dienerstraße",
+          "Schrammerstraße",
           "Residenzstraße",
           "Walking path",
           "Hofgartenstraße"
@@ -400,7 +403,7 @@
       },
       "applied": [],
       "unavailable": [],
-      "calculationMs": 54
+      "calculationMs": 275
     },
     {
       "names": [
@@ -416,18 +419,19 @@
       "mode": "shade",
       "alternative": true,
       "fastest": {
-        "minutes": 9.81775,
-        "distance": 785.4200000000001,
-        "sun": 636.713666666667,
+        "minutes": 9.818000000000001,
+        "distance": 785.44,
+        "sun": 636.7336666666671,
         "shade": 142.68633333333332,
         "unknown": 6.02,
-        "detailed": 785.4200000000001,
+        "detailed": 785.4400000000002,
         "majorRoadMeters": 0,
         "trafficUnknown": 6.02,
-        "hash": "af0736e27ee6765ed6a84311f0c01646a8a44ceec4329daddbf76debab3f38ee",
+        "hash": "22a200eead130ce351f77dcf15dbe86f0e58e622c95af352083fe45332b46d00",
         "streets": [
           "Marienplatz",
           "Dienerstraße",
+          "Schrammerstraße",
           "Residenzstraße",
           "Walking path",
           "Hofgartenstraße"
@@ -442,7 +446,7 @@
         "detailed": 1096.3200000000006,
         "majorRoadMeters": 0,
         "trafficUnknown": 0,
-        "hash": "3f55bb990c6cdd8ae13dc9e3c28e0dfe31c61ea267d528f6a3b2b93f99ca5fff",
+        "hash": "df3f05a877c10d9a75e1de3a13430d8961154f4f91d4f0c97a50e98640da98f9",
         "streets": [
           "Marienplatz",
           "Viktualienmarkt",
@@ -464,7 +468,7 @@
       },
       "applied": [],
       "unavailable": [],
-      "calculationMs": 77
+      "calculationMs": 106
     },
     {
       "names": [
@@ -480,33 +484,34 @@
       "mode": "shade",
       "alternative": true,
       "fastest": {
-        "minutes": 9.81775,
-        "distance": 785.4200000000001,
-        "sun": 636.713666666667,
+        "minutes": 9.818000000000001,
+        "distance": 785.44,
+        "sun": 636.7336666666671,
         "shade": 142.68633333333332,
         "unknown": 6.02,
-        "detailed": 785.4200000000001,
+        "detailed": 785.4400000000002,
         "majorRoadMeters": 0,
         "trafficUnknown": 6.02,
-        "hash": "af0736e27ee6765ed6a84311f0c01646a8a44ceec4329daddbf76debab3f38ee",
+        "hash": "22a200eead130ce351f77dcf15dbe86f0e58e622c95af352083fe45332b46d00",
         "streets": [
           "Marienplatz",
           "Dienerstraße",
+          "Schrammerstraße",
           "Residenzstraße",
           "Walking path",
           "Hofgartenstraße"
         ]
       },
       "chosen": {
-        "minutes": 11.848,
-        "distance": 947.84,
-        "sun": 905.1050000000006,
+        "minutes": 11.824500000000002,
+        "distance": 945.9600000000002,
+        "sun": 903.2250000000006,
         "shade": 36.715,
         "unknown": 6.02,
-        "detailed": 947.8400000000006,
+        "detailed": 945.9600000000006,
         "majorRoadMeters": 0,
         "trafficUnknown": 6.02,
-        "hash": "bda6001b0fd5ffc3fb7b2444918255a51370b125cbcc5e7d1d4fccc1d993e654",
+        "hash": "34c6ccc4a52e60b6b3902043344118a695d828c9c095675e1b54550b07fc6a43",
         "streets": [
           "Marienplatz",
           "Dienerstraße",
@@ -520,7 +525,7 @@
       },
       "applied": [],
       "unavailable": [],
-      "calculationMs": 77
+      "calculationMs": 285
     },
     {
       "names": [
@@ -544,7 +549,7 @@
         "detailed": 1624.6200000000006,
         "majorRoadMeters": 1071.553333333333,
         "trafficUnknown": 0,
-        "hash": "8776c81a4a38925d191cb8651b7fe4ca2acadc252e2b911bc24d5096d9cc36bd",
+        "hash": "804629f1c669f60c7f45c12e0ba1b3a22dc8782bfcfd315a79ba127e5bb87489",
         "streets": [
           "Odeonsplatz",
           "Galeriestraße",
@@ -572,7 +577,7 @@
         "detailed": 1624.6200000000006,
         "majorRoadMeters": 1071.553333333333,
         "trafficUnknown": 0,
-        "hash": "8776c81a4a38925d191cb8651b7fe4ca2acadc252e2b911bc24d5096d9cc36bd",
+        "hash": "804629f1c669f60c7f45c12e0ba1b3a22dc8782bfcfd315a79ba127e5bb87489",
         "streets": [
           "Odeonsplatz",
           "Galeriestraße",
@@ -593,7 +598,7 @@
       },
       "applied": [],
       "unavailable": [],
-      "calculationMs": 167
+      "calculationMs": 211
     },
     {
       "names": [
@@ -617,7 +622,7 @@
         "detailed": 1624.6200000000006,
         "majorRoadMeters": 1071.553333333333,
         "trafficUnknown": 0,
-        "hash": "8776c81a4a38925d191cb8651b7fe4ca2acadc252e2b911bc24d5096d9cc36bd",
+        "hash": "804629f1c669f60c7f45c12e0ba1b3a22dc8782bfcfd315a79ba127e5bb87489",
         "streets": [
           "Odeonsplatz",
           "Galeriestraße",
@@ -645,7 +650,7 @@
         "detailed": 1690.8299999999988,
         "majorRoadMeters": 1137.763333333332,
         "trafficUnknown": 0,
-        "hash": "bd99b983c29ed4582bed5801ae1ba80722823550f9018d54333c8914a6fd803c",
+        "hash": "80d7f15f48e321e9e5c401c25c6192aa1cbc5cd25c44e8d4a11e9bc66a2644e3",
         "streets": [
           "Odeonsplatz",
           "Galeriestraße",
@@ -669,7 +674,7 @@
       },
       "applied": [],
       "unavailable": [],
-      "calculationMs": 49
+      "calculationMs": 210
     },
     {
       "names": [
@@ -693,7 +698,7 @@
         "detailed": 1624.6200000000006,
         "majorRoadMeters": 1071.553333333333,
         "trafficUnknown": 0,
-        "hash": "8776c81a4a38925d191cb8651b7fe4ca2acadc252e2b911bc24d5096d9cc36bd",
+        "hash": "804629f1c669f60c7f45c12e0ba1b3a22dc8782bfcfd315a79ba127e5bb87489",
         "streets": [
           "Odeonsplatz",
           "Galeriestraße",
@@ -721,7 +726,7 @@
         "detailed": 1624.6200000000006,
         "majorRoadMeters": 1071.553333333333,
         "trafficUnknown": 0,
-        "hash": "8776c81a4a38925d191cb8651b7fe4ca2acadc252e2b911bc24d5096d9cc36bd",
+        "hash": "804629f1c669f60c7f45c12e0ba1b3a22dc8782bfcfd315a79ba127e5bb87489",
         "streets": [
           "Odeonsplatz",
           "Galeriestraße",
@@ -742,7 +747,7 @@
       },
       "applied": [],
       "unavailable": [],
-      "calculationMs": 178
+      "calculationMs": 228
     },
     {
       "names": [
@@ -766,7 +771,7 @@
         "detailed": 1624.6200000000006,
         "majorRoadMeters": 1071.553333333333,
         "trafficUnknown": 0,
-        "hash": "8776c81a4a38925d191cb8651b7fe4ca2acadc252e2b911bc24d5096d9cc36bd",
+        "hash": "804629f1c669f60c7f45c12e0ba1b3a22dc8782bfcfd315a79ba127e5bb87489",
         "streets": [
           "Odeonsplatz",
           "Galeriestraße",
@@ -794,7 +799,7 @@
         "detailed": 1803.709999999999,
         "majorRoadMeters": 1109.5149999999987,
         "trafficUnknown": 10.5,
-        "hash": "6bb14e9a9c202ee5353c83c53583f76574e30cb342d78aa38711765e03f21a6a",
+        "hash": "1d782af2782818dce32d1064d089aa693f124a47ac3d883a25b24bdbd547fcf0",
         "streets": [
           "Odeonsplatz",
           "Galeriestraße",
@@ -822,7 +827,7 @@
       },
       "applied": [],
       "unavailable": [],
-      "calculationMs": 65
+      "calculationMs": 267
     },
     {
       "names": [
@@ -846,7 +851,7 @@
         "detailed": 1103.6899999999996,
         "majorRoadMeters": 343.40499999999986,
         "trafficUnknown": 6.02,
-        "hash": "2c0dc74a9f77dd2ab0307ce9fe77070b98db77af40519e79157002767cc11d81",
+        "hash": "745cc1a5cf81cb93a2ae3261d5c9f591404f4cf348a40caadeb45ecc0d5b9ab4",
         "streets": [
           "Residenzstraße",
           "Walking path",
@@ -867,7 +872,7 @@
         "detailed": 1302.9899999999996,
         "majorRoadMeters": 241.34166666666647,
         "trafficUnknown": 6.02,
-        "hash": "55431a5d1c65590e27e701a8a9ed1bdaad8fe8d0b13767bd7d4392bc44ea9182",
+        "hash": "c9a3987596f6b6cf4d91570cfe120643f3c70a317d9812fc564ce13860e9c0b5",
         "streets": [
           "Residenzstraße",
           "Walking path",
@@ -889,7 +894,7 @@
       },
       "applied": [],
       "unavailable": [],
-      "calculationMs": 175
+      "calculationMs": 250
     },
     {
       "names": [
@@ -913,7 +918,7 @@
         "detailed": 1103.6899999999996,
         "majorRoadMeters": 343.40499999999986,
         "trafficUnknown": 6.02,
-        "hash": "2c0dc74a9f77dd2ab0307ce9fe77070b98db77af40519e79157002767cc11d81",
+        "hash": "745cc1a5cf81cb93a2ae3261d5c9f591404f4cf348a40caadeb45ecc0d5b9ab4",
         "streets": [
           "Residenzstraße",
           "Walking path",
@@ -934,7 +939,7 @@
         "detailed": 1103.6899999999996,
         "majorRoadMeters": 343.40499999999986,
         "trafficUnknown": 6.02,
-        "hash": "2c0dc74a9f77dd2ab0307ce9fe77070b98db77af40519e79157002767cc11d81",
+        "hash": "745cc1a5cf81cb93a2ae3261d5c9f591404f4cf348a40caadeb45ecc0d5b9ab4",
         "streets": [
           "Residenzstraße",
           "Walking path",
@@ -948,7 +953,7 @@
       },
       "applied": [],
       "unavailable": [],
-      "calculationMs": 37
+      "calculationMs": 268
     },
     {
       "names": [
@@ -972,7 +977,7 @@
         "detailed": 1103.6899999999996,
         "majorRoadMeters": 343.40499999999986,
         "trafficUnknown": 6.02,
-        "hash": "2c0dc74a9f77dd2ab0307ce9fe77070b98db77af40519e79157002767cc11d81",
+        "hash": "745cc1a5cf81cb93a2ae3261d5c9f591404f4cf348a40caadeb45ecc0d5b9ab4",
         "streets": [
           "Residenzstraße",
           "Walking path",
@@ -993,7 +998,7 @@
         "detailed": 1398.5099999999982,
         "majorRoadMeters": 182.86366666666657,
         "trafficUnknown": 6.02,
-        "hash": "21d1abbe7b1cfdde680d15672825e930060ce36459efe0e8cd140036419b2886",
+        "hash": "8b7629e50146605b36ff69a40b48c240ec6126689b44d81bf6bdfe7db743cc21",
         "streets": [
           "Residenzstraße",
           "Walking path",
@@ -1016,7 +1021,7 @@
       },
       "applied": [],
       "unavailable": [],
-      "calculationMs": 48
+      "calculationMs": 91
     },
     {
       "names": [
@@ -1040,7 +1045,7 @@
         "detailed": 1103.6899999999996,
         "majorRoadMeters": 343.40499999999986,
         "trafficUnknown": 6.02,
-        "hash": "2c0dc74a9f77dd2ab0307ce9fe77070b98db77af40519e79157002767cc11d81",
+        "hash": "745cc1a5cf81cb93a2ae3261d5c9f591404f4cf348a40caadeb45ecc0d5b9ab4",
         "streets": [
           "Residenzstraße",
           "Walking path",
@@ -1061,7 +1066,7 @@
         "detailed": 1103.6899999999996,
         "majorRoadMeters": 343.40499999999986,
         "trafficUnknown": 6.02,
-        "hash": "2c0dc74a9f77dd2ab0307ce9fe77070b98db77af40519e79157002767cc11d81",
+        "hash": "745cc1a5cf81cb93a2ae3261d5c9f591404f4cf348a40caadeb45ecc0d5b9ab4",
         "streets": [
           "Residenzstraße",
           "Walking path",
@@ -1075,7 +1080,7 @@
       },
       "applied": [],
       "unavailable": [],
-      "calculationMs": 50
+      "calculationMs": 274
     },
     {
       "names": [
@@ -1099,7 +1104,7 @@
         "detailed": 1684.71,
         "majorRoadMeters": 129.58,
         "trafficUnknown": 0,
-        "hash": "7df3461ed0eb7f45d92aaa176353d26ec3171dd4fb7b0e4ffa3374fc0152241f",
+        "hash": "4f9c8def6633c8701136856bd26529b84ff7059e05a4181d4e0ff3c919e3af27",
         "streets": [
           "Walter-Klingenbeck-Weg",
           "Kaulbachstraße",
@@ -1125,7 +1130,7 @@
         "detailed": 1779.0099999999995,
         "majorRoadMeters": 734.3873214285718,
         "trafficUnknown": 0,
-        "hash": "220abc21d20dc4d4c814644e9974ffdfde30fc20c9151095ca310b76687e1d34",
+        "hash": "0c4bf8fae09f8304346ecd19d7a1272ab989f45c2f56e6d21c7d21a9b1eba6c7",
         "streets": [
           "Ludwigstraße",
           "Schönfeldstraße",
@@ -1143,7 +1148,7 @@
       },
       "applied": [],
       "unavailable": [],
-      "calculationMs": 251
+      "calculationMs": 289
     },
     {
       "names": [
@@ -1167,7 +1172,7 @@
         "detailed": 1684.71,
         "majorRoadMeters": 129.58,
         "trafficUnknown": 0,
-        "hash": "7df3461ed0eb7f45d92aaa176353d26ec3171dd4fb7b0e4ffa3374fc0152241f",
+        "hash": "4f9c8def6633c8701136856bd26529b84ff7059e05a4181d4e0ff3c919e3af27",
         "streets": [
           "Walter-Klingenbeck-Weg",
           "Kaulbachstraße",
@@ -1193,7 +1198,7 @@
         "detailed": 1745.5699999999986,
         "majorRoadMeters": 1470.0999999999988,
         "trafficUnknown": 0,
-        "hash": "2d84a41d606b5cd405f85aeaa3d9357a8c08f103aa808999cb63426fbe775087",
+        "hash": "f082fd7330c03696b023bef781cbe6d89ea82d2b7d977cedb56aa68c91f54fca",
         "streets": [
           "Ludwigstraße",
           "Von-der-Tann-Straße",
@@ -1208,7 +1213,7 @@
       },
       "applied": [],
       "unavailable": [],
-      "calculationMs": 77
+      "calculationMs": 348
     },
     {
       "names": [
@@ -1232,7 +1237,7 @@
         "detailed": 1684.71,
         "majorRoadMeters": 129.58,
         "trafficUnknown": 0,
-        "hash": "7df3461ed0eb7f45d92aaa176353d26ec3171dd4fb7b0e4ffa3374fc0152241f",
+        "hash": "4f9c8def6633c8701136856bd26529b84ff7059e05a4181d4e0ff3c919e3af27",
         "streets": [
           "Walter-Klingenbeck-Weg",
           "Kaulbachstraße",
@@ -1258,7 +1263,7 @@
         "detailed": 1840.7899999999986,
         "majorRoadMeters": 382.50874999999996,
         "trafficUnknown": 0,
-        "hash": "522e31223f404e825dd88cf37cc1a89daa47fb6920054685ac9df7702daa5cfd",
+        "hash": "ac23cba75658d6e3edcdbba17478b3fa208d2f68a977fc7def3423030c14e604",
         "streets": [
           "Ludwigstraße",
           "Schönfeldstraße",
@@ -1276,7 +1281,7 @@
       },
       "applied": [],
       "unavailable": [],
-      "calculationMs": 100
+      "calculationMs": 137
     },
     {
       "names": [
@@ -1300,7 +1305,7 @@
         "detailed": 1684.71,
         "majorRoadMeters": 129.58,
         "trafficUnknown": 0,
-        "hash": "7df3461ed0eb7f45d92aaa176353d26ec3171dd4fb7b0e4ffa3374fc0152241f",
+        "hash": "4f9c8def6633c8701136856bd26529b84ff7059e05a4181d4e0ff3c919e3af27",
         "streets": [
           "Walter-Klingenbeck-Weg",
           "Kaulbachstraße",
@@ -1326,7 +1331,7 @@
         "detailed": 1761.8899999999996,
         "majorRoadMeters": 1059.086666666666,
         "trafficUnknown": 6.01,
-        "hash": "1af280b8de6a87f95890da9b5adb1359988ca1516b65e847c33477590ed6f12b",
+        "hash": "8f0491a4f4030621b2d746fcbb655082928add44fdd9f840a9c53bd02329f1ed",
         "streets": [
           "Ludwigstraße",
           "Walking path",
@@ -1341,7 +1346,1205 @@
       },
       "applied": [],
       "unavailable": [],
-      "calculationMs": 99
+      "calculationMs": 393
+    },
+    {
+      "names": [
+        "Arnulfstraße",
+        "Bayerstraße"
+      ],
+      "local": "2026-06-21T14:00",
+      "budget": 5,
+      "preferences": {
+        "primary": "shade",
+        "secondary": []
+      },
+      "mode": "shade",
+      "alternative": false,
+      "fastest": {
+        "minutes": 23.87000000000001,
+        "distance": 1909.600000000001,
+        "sun": 789.274626984127,
+        "shade": 1049.7753730158734,
+        "unknown": 70.55,
+        "detailed": 1909.5999999999997,
+        "majorRoadMeters": 1310.8699999999992,
+        "trafficUnknown": 52.76,
+        "hash": "483e075c7cc67c8e9c3bbd1339ae2d4f8c1766fac9805b1971295c252369b627",
+        "streets": [
+          "Arnulfstraße",
+          "Walking path",
+          "Arnulfstraße",
+          "Walking path",
+          "Steps",
+          "Walking path",
+          "Steps",
+          "Walking path",
+          "Bayerstraße"
+        ]
+      },
+      "chosen": {
+        "minutes": 23.87000000000001,
+        "distance": 1909.600000000001,
+        "sun": 789.274626984127,
+        "shade": 1049.7753730158734,
+        "unknown": 70.55,
+        "detailed": 1909.5999999999997,
+        "majorRoadMeters": 1310.8699999999992,
+        "trafficUnknown": 52.76,
+        "hash": "483e075c7cc67c8e9c3bbd1339ae2d4f8c1766fac9805b1971295c252369b627",
+        "streets": [
+          "Arnulfstraße",
+          "Walking path",
+          "Arnulfstraße",
+          "Walking path",
+          "Steps",
+          "Walking path",
+          "Steps",
+          "Walking path",
+          "Bayerstraße"
+        ]
+      },
+      "applied": [],
+      "unavailable": [],
+      "calculationMs": 302
+    },
+    {
+      "names": [
+        "Arnulfstraße",
+        "Bayerstraße"
+      ],
+      "local": "2026-06-21T14:00",
+      "budget": 5,
+      "preferences": {
+        "primary": "sun",
+        "secondary": []
+      },
+      "mode": "shade",
+      "alternative": true,
+      "fastest": {
+        "minutes": 23.87000000000001,
+        "distance": 1909.600000000001,
+        "sun": 789.274626984127,
+        "shade": 1049.7753730158734,
+        "unknown": 70.55,
+        "detailed": 1909.5999999999997,
+        "majorRoadMeters": 1310.8699999999992,
+        "trafficUnknown": 52.76,
+        "hash": "483e075c7cc67c8e9c3bbd1339ae2d4f8c1766fac9805b1971295c252369b627",
+        "streets": [
+          "Arnulfstraße",
+          "Walking path",
+          "Arnulfstraße",
+          "Walking path",
+          "Steps",
+          "Walking path",
+          "Steps",
+          "Walking path",
+          "Bayerstraße"
+        ]
+      },
+      "chosen": {
+        "minutes": 24.299,
+        "distance": 1943.92,
+        "sun": 1809.9949999999997,
+        "shade": 95.76249999999999,
+        "unknown": 38.1625,
+        "detailed": 1943.92,
+        "majorRoadMeters": 1395.1300000000015,
+        "trafficUnknown": 0,
+        "hash": "3fa19244ba968fa64888cc8821a937a5d577c0db0be072a136d5051e43acab31",
+        "streets": [
+          "Arnulfstraße",
+          "Walking path",
+          "Arnulfstraße",
+          "Walking path",
+          "Arnulfstraße",
+          "Walking path",
+          "Arnulfstraße",
+          "Walking path",
+          "Bayerstraße"
+        ]
+      },
+      "applied": [],
+      "unavailable": [],
+      "calculationMs": 252
+    },
+    {
+      "names": [
+        "Arnulfstraße",
+        "Bayerstraße"
+      ],
+      "local": "2026-10-11T14:00",
+      "budget": 5,
+      "preferences": {
+        "primary": "shade",
+        "secondary": []
+      },
+      "mode": "shade",
+      "alternative": false,
+      "fastest": {
+        "minutes": 23.87000000000001,
+        "distance": 1909.600000000001,
+        "sun": 551.3985555555554,
+        "shade": 1214.3828333333333,
+        "unknown": 143.81861111111115,
+        "detailed": 1909.5999999999997,
+        "majorRoadMeters": 1310.8699999999992,
+        "trafficUnknown": 52.76,
+        "hash": "483e075c7cc67c8e9c3bbd1339ae2d4f8c1766fac9805b1971295c252369b627",
+        "streets": [
+          "Arnulfstraße",
+          "Walking path",
+          "Arnulfstraße",
+          "Walking path",
+          "Steps",
+          "Walking path",
+          "Steps",
+          "Walking path",
+          "Bayerstraße"
+        ]
+      },
+      "chosen": {
+        "minutes": 23.87000000000001,
+        "distance": 1909.600000000001,
+        "sun": 551.3985555555554,
+        "shade": 1214.3828333333333,
+        "unknown": 143.81861111111115,
+        "detailed": 1909.5999999999997,
+        "majorRoadMeters": 1310.8699999999992,
+        "trafficUnknown": 52.76,
+        "hash": "483e075c7cc67c8e9c3bbd1339ae2d4f8c1766fac9805b1971295c252369b627",
+        "streets": [
+          "Arnulfstraße",
+          "Walking path",
+          "Arnulfstraße",
+          "Walking path",
+          "Steps",
+          "Walking path",
+          "Steps",
+          "Walking path",
+          "Bayerstraße"
+        ]
+      },
+      "applied": [],
+      "unavailable": [],
+      "calculationMs": 109
+    },
+    {
+      "names": [
+        "Arnulfstraße",
+        "Bayerstraße"
+      ],
+      "local": "2026-10-11T14:00",
+      "budget": 5,
+      "preferences": {
+        "primary": "sun",
+        "secondary": []
+      },
+      "mode": "shade",
+      "alternative": true,
+      "fastest": {
+        "minutes": 23.87000000000001,
+        "distance": 1909.600000000001,
+        "sun": 551.3985555555554,
+        "shade": 1214.3828333333333,
+        "unknown": 143.81861111111115,
+        "detailed": 1909.5999999999997,
+        "majorRoadMeters": 1310.8699999999992,
+        "trafficUnknown": 52.76,
+        "hash": "483e075c7cc67c8e9c3bbd1339ae2d4f8c1766fac9805b1971295c252369b627",
+        "streets": [
+          "Arnulfstraße",
+          "Walking path",
+          "Arnulfstraße",
+          "Walking path",
+          "Steps",
+          "Walking path",
+          "Steps",
+          "Walking path",
+          "Bayerstraße"
+        ]
+      },
+      "chosen": {
+        "minutes": 24.350125,
+        "distance": 1948.01,
+        "sun": 1165.170376984126,
+        "shade": 537.2130357142855,
+        "unknown": 245.62658730158725,
+        "detailed": 1948.0100000000004,
+        "majorRoadMeters": 1399.2200000000018,
+        "trafficUnknown": 0,
+        "hash": "aa694a5ee53181b72cea0c672e3b538a32f88dffe40995c630319e15b6028fc8",
+        "streets": [
+          "Arnulfstraße",
+          "Helmholtzstraße",
+          "Marsstraße",
+          "Arnulfstraße",
+          "Walking path",
+          "Arnulfstraße",
+          "Walking path",
+          "Arnulfstraße",
+          "Walking path",
+          "Arnulfstraße",
+          "Walking path",
+          "Bayerstraße"
+        ]
+      },
+      "applied": [],
+      "unavailable": [],
+      "calculationMs": 282
+    },
+    {
+      "names": [
+        "Theresienhöhe",
+        "Lindwurmstraße"
+      ],
+      "local": "2026-06-21T14:00",
+      "budget": 5,
+      "preferences": {
+        "primary": "shade",
+        "secondary": []
+      },
+      "mode": "shade",
+      "alternative": true,
+      "fastest": {
+        "minutes": 19.908375,
+        "distance": 1592.6699999999998,
+        "sun": 1488.1242857142859,
+        "shade": 104.54571428571431,
+        "unknown": 0,
+        "detailed": 1592.6699999999992,
+        "majorRoadMeters": 1159.8919999999998,
+        "trafficUnknown": 0,
+        "hash": "b1a7c3cdc32eea136bd9ed50aec9f8b96ec38ec484fa4ee3321825a796717d61",
+        "streets": [
+          "Theresienhöhe",
+          "Walking path",
+          "Alter Messeplatz",
+          "Walking path",
+          "Theresienhöhe",
+          "Bavariaring",
+          "Rückertstraße",
+          "Kaiser-Ludwig-Platz",
+          "Haydnstraße",
+          "Walking path",
+          "Lindwurmstraße"
+        ]
+      },
+      "chosen": {
+        "minutes": 20.514124999999993,
+        "distance": 1641.1299999999994,
+        "sun": 1350.854333333335,
+        "shade": 290.2756666666665,
+        "unknown": 0,
+        "detailed": 1641.1299999999999,
+        "majorRoadMeters": 1385.665000000002,
+        "trafficUnknown": 0,
+        "hash": "89651e2100e27899a4ef7b983ac1b7bd5d35859ae8fe516692e5a09752e1f174",
+        "streets": [
+          "Theresienhöhe",
+          "Alter Messeplatz",
+          "Walking path",
+          "Theresienhöhe",
+          "Bavariaring",
+          "Rückertstraße",
+          "Kaiser-Ludwig-Platz",
+          "Herzog-Heinrich-Straße",
+          "Walking path",
+          "Lindwurmstraße"
+        ]
+      },
+      "applied": [],
+      "unavailable": [],
+      "calculationMs": 250
+    },
+    {
+      "names": [
+        "Theresienhöhe",
+        "Lindwurmstraße"
+      ],
+      "local": "2026-06-21T14:00",
+      "budget": 5,
+      "preferences": {
+        "primary": "sun",
+        "secondary": []
+      },
+      "mode": "shade",
+      "alternative": true,
+      "fastest": {
+        "minutes": 19.908375,
+        "distance": 1592.6699999999998,
+        "sun": 1488.1242857142859,
+        "shade": 104.54571428571431,
+        "unknown": 0,
+        "detailed": 1592.6699999999992,
+        "majorRoadMeters": 1159.8919999999998,
+        "trafficUnknown": 0,
+        "hash": "b1a7c3cdc32eea136bd9ed50aec9f8b96ec38ec484fa4ee3321825a796717d61",
+        "streets": [
+          "Theresienhöhe",
+          "Walking path",
+          "Alter Messeplatz",
+          "Walking path",
+          "Theresienhöhe",
+          "Bavariaring",
+          "Rückertstraße",
+          "Kaiser-Ludwig-Platz",
+          "Haydnstraße",
+          "Walking path",
+          "Lindwurmstraße"
+        ]
+      },
+      "chosen": {
+        "minutes": 20.568624999999994,
+        "distance": 1645.4899999999996,
+        "sun": 1592.0207142857137,
+        "shade": 53.46928571428572,
+        "unknown": 0,
+        "detailed": 1645.4899999999986,
+        "majorRoadMeters": 1181.6219999999998,
+        "trafficUnknown": 0,
+        "hash": "87abd5645976642886bdf0c76429b5be54b17412d13759fb600c731e288a2e54",
+        "streets": [
+          "Theresienhöhe",
+          "Franziska-Bilek-Weg",
+          "Walking path",
+          "Alter Messeplatz",
+          "Walking path",
+          "Theresienhöhe",
+          "Bavariaring",
+          "Rückertstraße",
+          "Kaiser-Ludwig-Platz",
+          "Haydnstraße",
+          "Walking path",
+          "Mozartstraße",
+          "Goetheplatz",
+          "Häberlstraße",
+          "Lindwurmstraße"
+        ]
+      },
+      "applied": [],
+      "unavailable": [],
+      "calculationMs": 250
+    },
+    {
+      "names": [
+        "Theresienhöhe",
+        "Lindwurmstraße"
+      ],
+      "local": "2026-10-11T14:00",
+      "budget": 5,
+      "preferences": {
+        "primary": "shade",
+        "secondary": []
+      },
+      "mode": "shade",
+      "alternative": true,
+      "fastest": {
+        "minutes": 19.908375,
+        "distance": 1592.6699999999998,
+        "sun": 1139.1870000000001,
+        "shade": 453.4830000000002,
+        "unknown": 0,
+        "detailed": 1592.6699999999992,
+        "majorRoadMeters": 1159.8919999999998,
+        "trafficUnknown": 0,
+        "hash": "b1a7c3cdc32eea136bd9ed50aec9f8b96ec38ec484fa4ee3321825a796717d61",
+        "streets": [
+          "Theresienhöhe",
+          "Walking path",
+          "Alter Messeplatz",
+          "Walking path",
+          "Theresienhöhe",
+          "Bavariaring",
+          "Rückertstraße",
+          "Kaiser-Ludwig-Platz",
+          "Haydnstraße",
+          "Walking path",
+          "Lindwurmstraße"
+        ]
+      },
+      "chosen": {
+        "minutes": 20.150624999999998,
+        "distance": 1612.0499999999997,
+        "sun": 1071.1553333333325,
+        "shade": 540.8946666666669,
+        "unknown": 0,
+        "detailed": 1612.0499999999993,
+        "majorRoadMeters": 1234.1720000000007,
+        "trafficUnknown": 0,
+        "hash": "af9d588f82aa73267bd8784bf9f40205b8f5223dbcdc53463c84216ad696996a",
+        "streets": [
+          "Theresienhöhe",
+          "Alter Messeplatz",
+          "Walking path",
+          "Theresienhöhe",
+          "Bavariaring",
+          "Rückertstraße",
+          "Kaiser-Ludwig-Platz",
+          "Haydnstraße",
+          "Mozartstraße",
+          "Walking path",
+          "Lindwurmstraße"
+        ]
+      },
+      "applied": [],
+      "unavailable": [],
+      "calculationMs": 106
+    },
+    {
+      "names": [
+        "Theresienhöhe",
+        "Lindwurmstraße"
+      ],
+      "local": "2026-10-11T14:00",
+      "budget": 5,
+      "preferences": {
+        "primary": "sun",
+        "secondary": []
+      },
+      "mode": "shade",
+      "alternative": true,
+      "fastest": {
+        "minutes": 19.908375,
+        "distance": 1592.6699999999998,
+        "sun": 1139.1870000000001,
+        "shade": 453.4830000000002,
+        "unknown": 0,
+        "detailed": 1592.6699999999992,
+        "majorRoadMeters": 1159.8919999999998,
+        "trafficUnknown": 0,
+        "hash": "b1a7c3cdc32eea136bd9ed50aec9f8b96ec38ec484fa4ee3321825a796717d61",
+        "streets": [
+          "Theresienhöhe",
+          "Walking path",
+          "Alter Messeplatz",
+          "Walking path",
+          "Theresienhöhe",
+          "Bavariaring",
+          "Rückertstraße",
+          "Kaiser-Ludwig-Platz",
+          "Haydnstraße",
+          "Walking path",
+          "Lindwurmstraße"
+        ]
+      },
+      "chosen": {
+        "minutes": 23.946999999999996,
+        "distance": 1915.7599999999995,
+        "sun": 1776.6364285714303,
+        "shade": 139.12357142857144,
+        "unknown": 0,
+        "detailed": 1915.7600000000018,
+        "majorRoadMeters": 951.6037499999999,
+        "trafficUnknown": 0,
+        "hash": "41ceb06fd7dfb540c904bc06bf754d4829da742bd8e3513a1d456526bed5bcf6",
+        "streets": [
+          "Theresienhöhe",
+          "Franziska-Bilek-Weg",
+          "Walking path",
+          "Alter Messeplatz",
+          "Walking path",
+          "Theresienhöhe",
+          "Bavariaring",
+          "Walking path",
+          "Beethovenstraße",
+          "Walking path",
+          "Beethovenplatz",
+          "Goethestraße",
+          "Goetheplatz",
+          "Häberlstraße",
+          "Lindwurmstraße"
+        ]
+      },
+      "applied": [],
+      "unavailable": [],
+      "calculationMs": 256
+    },
+    {
+      "names": [
+        "Hohenzollernplatz",
+        "Münchner Freiheit"
+      ],
+      "local": "2026-06-21T14:00",
+      "budget": 5,
+      "preferences": {
+        "primary": "shade",
+        "secondary": []
+      },
+      "mode": "shade",
+      "alternative": true,
+      "fastest": {
+        "minutes": 19.657000000000004,
+        "distance": 1572.5600000000004,
+        "sun": 1514.2433333333352,
+        "shade": 58.31666666666667,
+        "unknown": 0,
+        "detailed": 1572.5600000000018,
+        "majorRoadMeters": 155.78399999999996,
+        "trafficUnknown": 0,
+        "hash": "da18401a3fe1ba654c9cf02dc9352af2506b56bc9817647a6e199dc1f8feca12",
+        "streets": [
+          "Hohenzollernplatz",
+          "Rankestraße",
+          "Walking path",
+          "Herzogstraße",
+          "Apianstraße",
+          "Walking path",
+          "Leopoldstraße",
+          "Walking path",
+          "Steps",
+          "Walking path",
+          "Steps",
+          "Walking path"
+        ]
+      },
+      "chosen": {
+        "minutes": 22.819624999999995,
+        "distance": 1825.5699999999997,
+        "sun": 508.21343910256417,
+        "shade": 1317.3565608974368,
+        "unknown": 0,
+        "detailed": 1825.5699999999997,
+        "majorRoadMeters": 911.1668749999999,
+        "trafficUnknown": 0,
+        "hash": "c8181ef86e66212058c1a046a9f4e1c2d05c03271227241b4ef9dcc974d86ff4",
+        "streets": [
+          "Hohenzollernplatz",
+          "Walking path",
+          "Leopoldstraße",
+          "Walking path",
+          "Steps",
+          "Walking path",
+          "Steps",
+          "Walking path"
+        ]
+      },
+      "applied": [],
+      "unavailable": [],
+      "calculationMs": 282
+    },
+    {
+      "names": [
+        "Hohenzollernplatz",
+        "Münchner Freiheit"
+      ],
+      "local": "2026-06-21T14:00",
+      "budget": 5,
+      "preferences": {
+        "primary": "sun",
+        "secondary": []
+      },
+      "mode": "shade",
+      "alternative": false,
+      "fastest": {
+        "minutes": 19.657000000000004,
+        "distance": 1572.5600000000004,
+        "sun": 1514.2433333333352,
+        "shade": 58.31666666666667,
+        "unknown": 0,
+        "detailed": 1572.5600000000018,
+        "majorRoadMeters": 155.78399999999996,
+        "trafficUnknown": 0,
+        "hash": "da18401a3fe1ba654c9cf02dc9352af2506b56bc9817647a6e199dc1f8feca12",
+        "streets": [
+          "Hohenzollernplatz",
+          "Rankestraße",
+          "Walking path",
+          "Herzogstraße",
+          "Apianstraße",
+          "Walking path",
+          "Leopoldstraße",
+          "Walking path",
+          "Steps",
+          "Walking path",
+          "Steps",
+          "Walking path"
+        ]
+      },
+      "chosen": {
+        "minutes": 19.657000000000004,
+        "distance": 1572.5600000000004,
+        "sun": 1514.2433333333352,
+        "shade": 58.31666666666667,
+        "unknown": 0,
+        "detailed": 1572.5600000000018,
+        "majorRoadMeters": 155.78399999999996,
+        "trafficUnknown": 0,
+        "hash": "da18401a3fe1ba654c9cf02dc9352af2506b56bc9817647a6e199dc1f8feca12",
+        "streets": [
+          "Hohenzollernplatz",
+          "Rankestraße",
+          "Walking path",
+          "Herzogstraße",
+          "Apianstraße",
+          "Walking path",
+          "Leopoldstraße",
+          "Walking path",
+          "Steps",
+          "Walking path",
+          "Steps",
+          "Walking path"
+        ]
+      },
+      "applied": [],
+      "unavailable": [],
+      "calculationMs": 228
+    },
+    {
+      "names": [
+        "Hohenzollernplatz",
+        "Münchner Freiheit"
+      ],
+      "local": "2026-10-11T14:00",
+      "budget": 5,
+      "preferences": {
+        "primary": "shade",
+        "secondary": []
+      },
+      "mode": "shade",
+      "alternative": true,
+      "fastest": {
+        "minutes": 19.657000000000004,
+        "distance": 1572.5600000000004,
+        "sun": 438.3476356421357,
+        "shade": 1134.2123643578648,
+        "unknown": 0,
+        "detailed": 1572.5600000000018,
+        "majorRoadMeters": 155.78399999999996,
+        "trafficUnknown": 0,
+        "hash": "da18401a3fe1ba654c9cf02dc9352af2506b56bc9817647a6e199dc1f8feca12",
+        "streets": [
+          "Hohenzollernplatz",
+          "Rankestraße",
+          "Walking path",
+          "Herzogstraße",
+          "Apianstraße",
+          "Walking path",
+          "Leopoldstraße",
+          "Walking path",
+          "Steps",
+          "Walking path",
+          "Steps",
+          "Walking path"
+        ]
+      },
+      "chosen": {
+        "minutes": 19.740499999999994,
+        "distance": 1579.2399999999996,
+        "sun": 335.33,
+        "shade": 1243.9100000000003,
+        "unknown": 0,
+        "detailed": 1579.2400000000005,
+        "majorRoadMeters": 175.47187499999998,
+        "trafficUnknown": 0,
+        "hash": "1b38fcec78a7c74fd828542f73ea97b9e1eaa045ed7964e35969c3e7b07a1a64",
+        "streets": [
+          "Hohenzollernplatz",
+          "Rankestraße",
+          "Walking path",
+          "Leopoldstraße",
+          "Walking path",
+          "Steps",
+          "Walking path",
+          "Steps",
+          "Walking path"
+        ]
+      },
+      "applied": [],
+      "unavailable": [],
+      "calculationMs": 115
+    },
+    {
+      "names": [
+        "Hohenzollernplatz",
+        "Münchner Freiheit"
+      ],
+      "local": "2026-10-11T14:00",
+      "budget": 5,
+      "preferences": {
+        "primary": "sun",
+        "secondary": []
+      },
+      "mode": "shade",
+      "alternative": true,
+      "fastest": {
+        "minutes": 19.657000000000004,
+        "distance": 1572.5600000000004,
+        "sun": 438.3476356421357,
+        "shade": 1134.2123643578648,
+        "unknown": 0,
+        "detailed": 1572.5600000000018,
+        "majorRoadMeters": 155.78399999999996,
+        "trafficUnknown": 0,
+        "hash": "da18401a3fe1ba654c9cf02dc9352af2506b56bc9817647a6e199dc1f8feca12",
+        "streets": [
+          "Hohenzollernplatz",
+          "Rankestraße",
+          "Walking path",
+          "Herzogstraße",
+          "Apianstraße",
+          "Walking path",
+          "Leopoldstraße",
+          "Walking path",
+          "Steps",
+          "Walking path",
+          "Steps",
+          "Walking path"
+        ]
+      },
+      "chosen": {
+        "minutes": 20.235125000000007,
+        "distance": 1618.8100000000006,
+        "sun": 589.6416356421358,
+        "shade": 1029.1683643578651,
+        "unknown": 0,
+        "detailed": 1618.8100000000015,
+        "majorRoadMeters": 155.78399999999996,
+        "trafficUnknown": 0,
+        "hash": "00112c88bcb1e45d40fc6fbe10109428a1a484e72a606a25d56cf88a3d04cdf4",
+        "streets": [
+          "Hohenzollernplatz",
+          "Erich-Kästner-Straße",
+          "Herzogstraße",
+          "Walking path",
+          "Leopoldstraße",
+          "Walking path",
+          "Steps",
+          "Walking path",
+          "Steps",
+          "Walking path"
+        ]
+      },
+      "applied": [],
+      "unavailable": [],
+      "calculationMs": 251
+    },
+    {
+      "names": [
+        "Pariser Platz",
+        "Rosenheimer Platz"
+      ],
+      "local": "2026-06-21T14:00",
+      "budget": 5,
+      "preferences": {
+        "primary": "shade",
+        "secondary": []
+      },
+      "mode": "shade",
+      "alternative": true,
+      "fastest": {
+        "minutes": 6.456125000000002,
+        "distance": 516.4900000000001,
+        "sun": 516.4900000000001,
+        "shade": 0,
+        "unknown": 0,
+        "detailed": 516.4900000000001,
+        "majorRoadMeters": 42.864999999999995,
+        "trafficUnknown": 0,
+        "hash": "9d9ede99405f4d6ccccbe7501386ec19867b881bf42d202a3ac0b1048fd7b5e5",
+        "streets": [
+          "Pariser Platz",
+          "Weißenburger Straße",
+          "Walking path",
+          "Weißenburger Straße",
+          "Rosenheimer Platz"
+        ]
+      },
+      "chosen": {
+        "minutes": 8.247124999999997,
+        "distance": 659.7699999999998,
+        "sun": 203.51900000000003,
+        "shade": 456.25099999999986,
+        "unknown": 0,
+        "detailed": 659.7699999999995,
+        "majorRoadMeters": 225.17950000000002,
+        "trafficUnknown": 0,
+        "hash": "a76f50d3ea21bf1c3578df636a4c873a1ef21cdcb888a60cd2f03ad815d68748",
+        "streets": [
+          "Pariser Platz",
+          "Weißenburger Straße",
+          "Walking path",
+          "Rosenheimer Platz"
+        ]
+      },
+      "applied": [],
+      "unavailable": [],
+      "calculationMs": 316
+    },
+    {
+      "names": [
+        "Pariser Platz",
+        "Rosenheimer Platz"
+      ],
+      "local": "2026-06-21T14:00",
+      "budget": 5,
+      "preferences": {
+        "primary": "sun",
+        "secondary": []
+      },
+      "mode": "shade",
+      "alternative": false,
+      "fastest": {
+        "minutes": 6.456125000000002,
+        "distance": 516.4900000000001,
+        "sun": 516.4900000000001,
+        "shade": 0,
+        "unknown": 0,
+        "detailed": 516.4900000000001,
+        "majorRoadMeters": 42.864999999999995,
+        "trafficUnknown": 0,
+        "hash": "9d9ede99405f4d6ccccbe7501386ec19867b881bf42d202a3ac0b1048fd7b5e5",
+        "streets": [
+          "Pariser Platz",
+          "Weißenburger Straße",
+          "Walking path",
+          "Weißenburger Straße",
+          "Rosenheimer Platz"
+        ]
+      },
+      "chosen": {
+        "minutes": 6.456125000000002,
+        "distance": 516.4900000000001,
+        "sun": 516.4900000000001,
+        "shade": 0,
+        "unknown": 0,
+        "detailed": 516.4900000000001,
+        "majorRoadMeters": 42.864999999999995,
+        "trafficUnknown": 0,
+        "hash": "9d9ede99405f4d6ccccbe7501386ec19867b881bf42d202a3ac0b1048fd7b5e5",
+        "streets": [
+          "Pariser Platz",
+          "Weißenburger Straße",
+          "Walking path",
+          "Weißenburger Straße",
+          "Rosenheimer Platz"
+        ]
+      },
+      "applied": [],
+      "unavailable": [],
+      "calculationMs": 171
+    },
+    {
+      "names": [
+        "Pariser Platz",
+        "Rosenheimer Platz"
+      ],
+      "local": "2026-10-11T14:00",
+      "budget": 5,
+      "preferences": {
+        "primary": "shade",
+        "secondary": []
+      },
+      "mode": "shade",
+      "alternative": true,
+      "fastest": {
+        "minutes": 6.456125000000002,
+        "distance": 516.4900000000001,
+        "sun": 183.54333333333335,
+        "shade": 332.94666666666683,
+        "unknown": 0,
+        "detailed": 516.4900000000001,
+        "majorRoadMeters": 42.864999999999995,
+        "trafficUnknown": 0,
+        "hash": "9d9ede99405f4d6ccccbe7501386ec19867b881bf42d202a3ac0b1048fd7b5e5",
+        "streets": [
+          "Pariser Platz",
+          "Weißenburger Straße",
+          "Walking path",
+          "Weißenburger Straße",
+          "Rosenheimer Platz"
+        ]
+      },
+      "chosen": {
+        "minutes": 7.601624999999997,
+        "distance": 608.1299999999998,
+        "sun": 74.09333333333333,
+        "shade": 534.0366666666665,
+        "unknown": 0,
+        "detailed": 608.1299999999994,
+        "majorRoadMeters": 42.864999999999995,
+        "trafficUnknown": 0,
+        "hash": "fb51d2159abe8b7fd36cec51f6b91820189ea07d295d3649a9891c96598bdc39",
+        "streets": [
+          "Pariser Platz",
+          "Weißenburger Straße",
+          "Walking path",
+          "Weißenburger Straße",
+          "Rosenheimer Platz"
+        ]
+      },
+      "applied": [],
+      "unavailable": [],
+      "calculationMs": 175
+    },
+    {
+      "names": [
+        "Pariser Platz",
+        "Rosenheimer Platz"
+      ],
+      "local": "2026-10-11T14:00",
+      "budget": 5,
+      "preferences": {
+        "primary": "sun",
+        "secondary": []
+      },
+      "mode": "shade",
+      "alternative": true,
+      "fastest": {
+        "minutes": 6.456125000000002,
+        "distance": 516.4900000000001,
+        "sun": 183.54333333333335,
+        "shade": 332.94666666666683,
+        "unknown": 0,
+        "detailed": 516.4900000000001,
+        "majorRoadMeters": 42.864999999999995,
+        "trafficUnknown": 0,
+        "hash": "9d9ede99405f4d6ccccbe7501386ec19867b881bf42d202a3ac0b1048fd7b5e5",
+        "streets": [
+          "Pariser Platz",
+          "Weißenburger Straße",
+          "Walking path",
+          "Weißenburger Straße",
+          "Rosenheimer Platz"
+        ]
+      },
+      "chosen": {
+        "minutes": 8.438624999999998,
+        "distance": 675.0899999999998,
+        "sun": 381.54188405797095,
+        "shade": 293.54811594202897,
+        "unknown": 0,
+        "detailed": 675.0899999999993,
+        "majorRoadMeters": 42.864999999999995,
+        "trafficUnknown": 0,
+        "hash": "36b848a84e6a1911c8bebca858e96783e39e6b0b16910066bbb2d968aa8dda35",
+        "streets": [
+          "Pariser Platz",
+          "Pariser Straße",
+          "Walking path",
+          "Weißenburger Straße",
+          "Walking path",
+          "Weißenburger Straße",
+          "Rosenheimer Platz"
+        ]
+      },
+      "applied": [],
+      "unavailable": [],
+      "calculationMs": 168
+    },
+    {
+      "names": [
+        "Gärtnerplatz",
+        "Wittelsbacherstraße"
+      ],
+      "local": "2026-06-21T14:00",
+      "budget": 5,
+      "preferences": {
+        "primary": "shade",
+        "secondary": []
+      },
+      "mode": "shade",
+      "alternative": true,
+      "fastest": {
+        "minutes": 11.795874999999999,
+        "distance": 943.67,
+        "sun": 886.0300000000008,
+        "shade": 57.63999999999999,
+        "unknown": 0,
+        "detailed": 943.6700000000012,
+        "majorRoadMeters": 605.8866666666665,
+        "trafficUnknown": 0,
+        "hash": "3639eadceda715cf22568c597b7f079131a5105a0d2d3ffe02bebc0721b4673a",
+        "streets": [
+          "Gärtnerplatz",
+          "Reichenbachstraße",
+          "Walking path",
+          "Auenstraße",
+          "Wittelsbacherstraße"
+        ]
+      },
+      "chosen": {
+        "minutes": 11.807625,
+        "distance": 944.61,
+        "sun": 557.585,
+        "shade": 387.025,
+        "unknown": 0,
+        "detailed": 944.6100000000009,
+        "majorRoadMeters": 603.8599999999999,
+        "trafficUnknown": 0,
+        "hash": "3f1c251a557d07a95e0e70fb738aab9bbd339036789349b0c9e0972b25f8b7dd",
+        "streets": [
+          "Klenzestraße",
+          "Walking path",
+          "Auenstraße",
+          "Wittelsbacherstraße"
+        ]
+      },
+      "applied": [],
+      "unavailable": [],
+      "calculationMs": 258
+    },
+    {
+      "names": [
+        "Gärtnerplatz",
+        "Wittelsbacherstraße"
+      ],
+      "local": "2026-06-21T14:00",
+      "budget": 5,
+      "preferences": {
+        "primary": "sun",
+        "secondary": []
+      },
+      "mode": "shade",
+      "alternative": false,
+      "fastest": {
+        "minutes": 11.795874999999999,
+        "distance": 943.67,
+        "sun": 886.0300000000008,
+        "shade": 57.63999999999999,
+        "unknown": 0,
+        "detailed": 943.6700000000012,
+        "majorRoadMeters": 605.8866666666665,
+        "trafficUnknown": 0,
+        "hash": "3639eadceda715cf22568c597b7f079131a5105a0d2d3ffe02bebc0721b4673a",
+        "streets": [
+          "Gärtnerplatz",
+          "Reichenbachstraße",
+          "Walking path",
+          "Auenstraße",
+          "Wittelsbacherstraße"
+        ]
+      },
+      "chosen": {
+        "minutes": 11.795874999999999,
+        "distance": 943.67,
+        "sun": 886.0300000000008,
+        "shade": 57.63999999999999,
+        "unknown": 0,
+        "detailed": 943.6700000000012,
+        "majorRoadMeters": 605.8866666666665,
+        "trafficUnknown": 0,
+        "hash": "3639eadceda715cf22568c597b7f079131a5105a0d2d3ffe02bebc0721b4673a",
+        "streets": [
+          "Gärtnerplatz",
+          "Reichenbachstraße",
+          "Walking path",
+          "Auenstraße",
+          "Wittelsbacherstraße"
+        ]
+      },
+      "applied": [],
+      "unavailable": [],
+      "calculationMs": 202
+    },
+    {
+      "names": [
+        "Gärtnerplatz",
+        "Wittelsbacherstraße"
+      ],
+      "local": "2026-10-11T14:00",
+      "budget": 5,
+      "preferences": {
+        "primary": "shade",
+        "secondary": []
+      },
+      "mode": "shade",
+      "alternative": true,
+      "fastest": {
+        "minutes": 11.795874999999999,
+        "distance": 943.67,
+        "sun": 836.1000000000005,
+        "shade": 107.57000000000001,
+        "unknown": 0,
+        "detailed": 943.6700000000012,
+        "majorRoadMeters": 605.8866666666665,
+        "trafficUnknown": 0,
+        "hash": "3639eadceda715cf22568c597b7f079131a5105a0d2d3ffe02bebc0721b4673a",
+        "streets": [
+          "Gärtnerplatz",
+          "Reichenbachstraße",
+          "Walking path",
+          "Auenstraße",
+          "Wittelsbacherstraße"
+        ]
+      },
+      "chosen": {
+        "minutes": 12.8415,
+        "distance": 1027.32,
+        "sun": 78.98030303030303,
+        "shade": 932.8696969696975,
+        "unknown": 15.469999999999999,
+        "detailed": 1027.3200000000004,
+        "majorRoadMeters": 307.63137931034487,
+        "trafficUnknown": 0,
+        "hash": "cbcb36a87e81396f7a91be426ac2d65b2a0e7e7cf4e8aa868550cf4004a1fdbc",
+        "streets": [
+          "Klenzestraße",
+          "Walking path",
+          "Klenzestraße",
+          "Westermühlstraße",
+          "Auenstraße",
+          "Walking path"
+        ]
+      },
+      "applied": [],
+      "unavailable": [],
+      "calculationMs": 84
+    },
+    {
+      "names": [
+        "Gärtnerplatz",
+        "Wittelsbacherstraße"
+      ],
+      "local": "2026-10-11T14:00",
+      "budget": 5,
+      "preferences": {
+        "primary": "sun",
+        "secondary": []
+      },
+      "mode": "shade",
+      "alternative": true,
+      "fastest": {
+        "minutes": 11.795874999999999,
+        "distance": 943.67,
+        "sun": 836.1000000000005,
+        "shade": 107.57000000000001,
+        "unknown": 0,
+        "detailed": 943.6700000000012,
+        "majorRoadMeters": 605.8866666666665,
+        "trafficUnknown": 0,
+        "hash": "3639eadceda715cf22568c597b7f079131a5105a0d2d3ffe02bebc0721b4673a",
+        "streets": [
+          "Gärtnerplatz",
+          "Reichenbachstraße",
+          "Walking path",
+          "Auenstraße",
+          "Wittelsbacherstraße"
+        ]
+      },
+      "chosen": {
+        "minutes": 11.876999999999999,
+        "distance": 950.16,
+        "sun": 899.4450000000007,
+        "shade": 50.714999999999996,
+        "unknown": 0,
+        "detailed": 950.1600000000011,
+        "majorRoadMeters": 603.9399999999999,
+        "trafficUnknown": 0,
+        "hash": "942bdbd0feb8e76f33ff0d64d972fa5f7cd9e1b252faf0bf12908c6f4c39292f",
+        "streets": [
+          "Gärtnerplatz",
+          "Reichenbachstraße",
+          "Walking path",
+          "Auenstraße",
+          "Wittelsbacherstraße"
+        ]
+      },
+      "applied": [],
+      "unavailable": [],
+      "calculationMs": 215
     },
     {
       "names": [
@@ -1365,7 +2568,7 @@
         "detailed": 1236.3899999999999,
         "majorRoadMeters": 916.7299999999994,
         "trafficUnknown": 33.69,
-        "hash": "8901a352541ae9b9781fc890ee7d0bfd33a9a8f535d33e9d7120f34253410ce7",
+        "hash": "8d59ba8f29244be18f8b3c6ffa0a70517b8ac5bd36258c1c94ab77398b096aad",
         "streets": [
           "Karlsplatz (Stachus)",
           "Walking path",
@@ -1392,7 +2595,7 @@
         "detailed": 1236.3899999999999,
         "majorRoadMeters": 916.7299999999994,
         "trafficUnknown": 33.69,
-        "hash": "8901a352541ae9b9781fc890ee7d0bfd33a9a8f535d33e9d7120f34253410ce7",
+        "hash": "8d59ba8f29244be18f8b3c6ffa0a70517b8ac5bd36258c1c94ab77398b096aad",
         "streets": [
           "Karlsplatz (Stachus)",
           "Walking path",
@@ -1412,7 +2615,7 @@
       },
       "applied": [],
       "unavailable": [],
-      "calculationMs": 85
+      "calculationMs": 108
     },
     {
       "names": [
@@ -1436,7 +2639,7 @@
         "detailed": 1236.3899999999999,
         "majorRoadMeters": 916.7299999999994,
         "trafficUnknown": 33.69,
-        "hash": "8901a352541ae9b9781fc890ee7d0bfd33a9a8f535d33e9d7120f34253410ce7",
+        "hash": "8d59ba8f29244be18f8b3c6ffa0a70517b8ac5bd36258c1c94ab77398b096aad",
         "streets": [
           "Karlsplatz (Stachus)",
           "Walking path",
@@ -1463,7 +2666,7 @@
         "detailed": 1312.4899999999993,
         "majorRoadMeters": 1031.2764285714288,
         "trafficUnknown": 0,
-        "hash": "7c98b8426a9fbfb43f750fba7b55ccf44794bad0fa9dc580d988eb9811eb404c",
+        "hash": "1f61727019186b198dfbf86ebcedba7ded5c8e68166f71474c1bb409acf7eac5",
         "streets": [
           "Karlsplatz (Stachus)",
           "Walking path",
@@ -1483,7 +2686,7 @@
       },
       "applied": [],
       "unavailable": [],
-      "calculationMs": 32
+      "calculationMs": 78
     },
     {
       "names": [
@@ -1507,7 +2710,7 @@
         "detailed": 1236.3899999999999,
         "majorRoadMeters": 916.7299999999994,
         "trafficUnknown": 33.69,
-        "hash": "8901a352541ae9b9781fc890ee7d0bfd33a9a8f535d33e9d7120f34253410ce7",
+        "hash": "8d59ba8f29244be18f8b3c6ffa0a70517b8ac5bd36258c1c94ab77398b096aad",
         "streets": [
           "Karlsplatz (Stachus)",
           "Walking path",
@@ -1534,7 +2737,7 @@
         "detailed": 1312.4899999999993,
         "majorRoadMeters": 1031.2764285714288,
         "trafficUnknown": 0,
-        "hash": "7c98b8426a9fbfb43f750fba7b55ccf44794bad0fa9dc580d988eb9811eb404c",
+        "hash": "1f61727019186b198dfbf86ebcedba7ded5c8e68166f71474c1bb409acf7eac5",
         "streets": [
           "Karlsplatz (Stachus)",
           "Walking path",
@@ -1554,7 +2757,7 @@
       },
       "applied": [],
       "unavailable": [],
-      "calculationMs": 278
+      "calculationMs": 352
     },
     {
       "names": [
@@ -1578,7 +2781,7 @@
         "detailed": 1236.3899999999999,
         "majorRoadMeters": 916.7299999999994,
         "trafficUnknown": 33.69,
-        "hash": "8901a352541ae9b9781fc890ee7d0bfd33a9a8f535d33e9d7120f34253410ce7",
+        "hash": "8d59ba8f29244be18f8b3c6ffa0a70517b8ac5bd36258c1c94ab77398b096aad",
         "streets": [
           "Karlsplatz (Stachus)",
           "Walking path",
@@ -1605,7 +2808,7 @@
         "detailed": 1312.4899999999993,
         "majorRoadMeters": 1031.2764285714288,
         "trafficUnknown": 0,
-        "hash": "7c98b8426a9fbfb43f750fba7b55ccf44794bad0fa9dc580d988eb9811eb404c",
+        "hash": "1f61727019186b198dfbf86ebcedba7ded5c8e68166f71474c1bb409acf7eac5",
         "streets": [
           "Karlsplatz (Stachus)",
           "Walking path",
@@ -1625,7 +2828,7 @@
       },
       "applied": [],
       "unavailable": [],
-      "calculationMs": 469
+      "calculationMs": 514
     },
     {
       "names": [
@@ -1649,7 +2852,7 @@
         "detailed": 1236.3899999999999,
         "majorRoadMeters": 916.7299999999994,
         "trafficUnknown": 33.69,
-        "hash": "8901a352541ae9b9781fc890ee7d0bfd33a9a8f535d33e9d7120f34253410ce7",
+        "hash": "8d59ba8f29244be18f8b3c6ffa0a70517b8ac5bd36258c1c94ab77398b096aad",
         "streets": [
           "Karlsplatz (Stachus)",
           "Walking path",
@@ -1676,7 +2879,7 @@
         "detailed": 1561.4899999999993,
         "majorRoadMeters": 216.63999999999993,
         "trafficUnknown": 5.61,
-        "hash": "11b0b3a80821f9ac0f504ae8b5882df843f535db50c8bd6862b20ecf244ae65b",
+        "hash": "cdf4605db0fc8864f2fec7d92b05366ae80466e4e675bffde384ac6e0ce604d5",
         "streets": [
           "Karlsplatz (Stachus)",
           "Walking path",
@@ -1695,7 +2898,7 @@
       },
       "applied": [],
       "unavailable": [],
-      "calculationMs": 179
+      "calculationMs": 208
     },
     {
       "names": [
@@ -2241,7 +3444,7 @@
             }
           ]
         },
-        "hash": "8901a352541ae9b9781fc890ee7d0bfd33a9a8f535d33e9d7120f34253410ce7",
+        "hash": "8d59ba8f29244be18f8b3c6ffa0a70517b8ac5bd36258c1c94ab77398b096aad",
         "streets": [
           "Karlsplatz (Stachus)",
           "Walking path",
@@ -2790,7 +3993,7 @@
             }
           ]
         },
-        "hash": "8901a352541ae9b9781fc890ee7d0bfd33a9a8f535d33e9d7120f34253410ce7",
+        "hash": "8d59ba8f29244be18f8b3c6ffa0a70517b8ac5bd36258c1c94ab77398b096aad",
         "streets": [
           "Karlsplatz (Stachus)",
           "Walking path",
@@ -2810,7 +4013,7 @@
       },
       "applied": [],
       "unavailable": [],
-      "calculationMs": 55
+      "calculationMs": 92
     },
     {
       "names": [
@@ -2834,7 +4037,7 @@
         "detailed": 1236.3899999999999,
         "majorRoadMeters": 916.7299999999994,
         "trafficUnknown": 33.69,
-        "hash": "8901a352541ae9b9781fc890ee7d0bfd33a9a8f535d33e9d7120f34253410ce7",
+        "hash": "8d59ba8f29244be18f8b3c6ffa0a70517b8ac5bd36258c1c94ab77398b096aad",
         "streets": [
           "Karlsplatz (Stachus)",
           "Walking path",
@@ -2861,7 +4064,7 @@
         "detailed": 1236.3899999999999,
         "majorRoadMeters": 916.7299999999994,
         "trafficUnknown": 33.69,
-        "hash": "8901a352541ae9b9781fc890ee7d0bfd33a9a8f535d33e9d7120f34253410ce7",
+        "hash": "8d59ba8f29244be18f8b3c6ffa0a70517b8ac5bd36258c1c94ab77398b096aad",
         "streets": [
           "Karlsplatz (Stachus)",
           "Walking path",
@@ -2881,7 +4084,7 @@
       },
       "applied": [],
       "unavailable": [],
-      "calculationMs": 136
+      "calculationMs": 169
     },
     {
       "names": [
@@ -3431,7 +4634,7 @@
             }
           ]
         },
-        "hash": "8901a352541ae9b9781fc890ee7d0bfd33a9a8f535d33e9d7120f34253410ce7",
+        "hash": "8d59ba8f29244be18f8b3c6ffa0a70517b8ac5bd36258c1c94ab77398b096aad",
         "streets": [
           "Karlsplatz (Stachus)",
           "Walking path",
@@ -4000,7 +5203,7 @@
             }
           ]
         },
-        "hash": "7c98b8426a9fbfb43f750fba7b55ccf44794bad0fa9dc580d988eb9811eb404c",
+        "hash": "1f61727019186b198dfbf86ebcedba7ded5c8e68166f71474c1bb409acf7eac5",
         "streets": [
           "Karlsplatz (Stachus)",
           "Walking path",
@@ -4025,7 +5228,7 @@
       "unavailable": [
         "flat"
       ],
-      "calculationMs": 505
+      "calculationMs": 532
     },
     {
       "names": [
@@ -4575,7 +5778,7 @@
             }
           ]
         },
-        "hash": "8901a352541ae9b9781fc890ee7d0bfd33a9a8f535d33e9d7120f34253410ce7",
+        "hash": "8d59ba8f29244be18f8b3c6ffa0a70517b8ac5bd36258c1c94ab77398b096aad",
         "streets": [
           "Karlsplatz (Stachus)",
           "Walking path",
@@ -5140,7 +6343,7 @@
             }
           ]
         },
-        "hash": "fe2a5c4f64879bee520dacc09e89752df656afae3088725f97b561e52722f99c",
+        "hash": "6f6db195945f54afee10285a1bfde800cbd5834ae42b11742e01c4dd44284acb",
         "streets": [
           "Karlsplatz (Stachus)",
           "Walking path",
@@ -5185,7 +6388,7 @@
         "detailed": 1236.3899999999999,
         "majorRoadMeters": 916.7299999999994,
         "trafficUnknown": 33.69,
-        "hash": "8901a352541ae9b9781fc890ee7d0bfd33a9a8f535d33e9d7120f34253410ce7",
+        "hash": "8d59ba8f29244be18f8b3c6ffa0a70517b8ac5bd36258c1c94ab77398b096aad",
         "streets": [
           "Karlsplatz (Stachus)",
           "Walking path",
@@ -5212,7 +6415,7 @@
         "detailed": 1236.3899999999999,
         "majorRoadMeters": 916.7299999999994,
         "trafficUnknown": 33.69,
-        "hash": "8901a352541ae9b9781fc890ee7d0bfd33a9a8f535d33e9d7120f34253410ce7",
+        "hash": "8d59ba8f29244be18f8b3c6ffa0a70517b8ac5bd36258c1c94ab77398b096aad",
         "streets": [
           "Karlsplatz (Stachus)",
           "Walking path",
@@ -5232,7 +6435,7 @@
       },
       "applied": [],
       "unavailable": [],
-      "calculationMs": 6
+      "calculationMs": 9
     },
     {
       "names": [
@@ -5251,15 +6454,15 @@
       "mode": "shade",
       "alternative": true,
       "fastest": {
-        "minutes": 22.758374999999994,
-        "distance": 1820.6699999999996,
-        "sun": 1684.099000000001,
+        "minutes": 22.758624999999995,
+        "distance": 1820.6899999999996,
+        "sun": 1684.119000000001,
         "shade": 130.961,
         "unknown": 5.61,
-        "detailed": 1820.670000000001,
+        "detailed": 1820.690000000001,
         "majorRoadMeters": 241.22999999999993,
         "trafficUnknown": 5.61,
-        "hash": "d5ab7e2dc8ff3f07b3909d16f3c97574e9fa35068bef82315ee389e81d6d3407",
+        "hash": "facfc32b246177a7d4747a848a3c316bf26503a2d6e2e2f21280e182c7ca9e17",
         "streets": [
           "Karlsplatz (Stachus)",
           "Walking path",
@@ -5268,6 +6471,7 @@
           "Kaufingerstraße",
           "Marienplatz",
           "Dienerstraße",
+          "Schrammerstraße",
           "Residenzstraße",
           "Walking path",
           "Theatinerstraße",
@@ -5277,15 +6481,15 @@
         ]
       },
       "chosen": {
-        "minutes": 26.14275,
-        "distance": 2091.42,
-        "sun": 1330.5431388888896,
+        "minutes": 26.143,
+        "distance": 2091.44,
+        "sun": 1330.5631388888896,
         "shade": 760.8768611111111,
         "unknown": 0,
-        "detailed": 2091.419999999998,
+        "detailed": 2091.439999999998,
         "majorRoadMeters": 383.7050000000001,
         "trafficUnknown": 0,
-        "hash": "178fd71b21bb81cc5af804c5dc8bd494ee1352b0e9c44ba2c3ba39176fbd493d",
+        "hash": "20fe1cbe59b0dd1bd8f989b8269ad15570dd8744a14516adb482f9168e028d42",
         "streets": [
           "Karlsplatz (Stachus)",
           "Walking path",
@@ -5301,6 +6505,7 @@
           "Dienerstraße",
           "Marienplatz",
           "Dienerstraße",
+          "Schrammerstraße",
           "Residenzstraße",
           "Viscardigasse",
           "Theatinerstraße",
@@ -5315,7 +6520,7 @@
         "calm"
       ],
       "unavailable": [],
-      "calculationMs": 252
+      "calculationMs": 354
     },
     {
       "names": [
@@ -5339,7 +6544,7 @@
         "detailed": 1236.3899999999999,
         "majorRoadMeters": 916.7299999999994,
         "trafficUnknown": 33.69,
-        "hash": "8901a352541ae9b9781fc890ee7d0bfd33a9a8f535d33e9d7120f34253410ce7",
+        "hash": "8d59ba8f29244be18f8b3c6ffa0a70517b8ac5bd36258c1c94ab77398b096aad",
         "streets": [
           "Karlsplatz (Stachus)",
           "Walking path",
@@ -5366,7 +6571,7 @@
         "detailed": 1236.3899999999999,
         "majorRoadMeters": 916.7299999999994,
         "trafficUnknown": 33.69,
-        "hash": "8901a352541ae9b9781fc890ee7d0bfd33a9a8f535d33e9d7120f34253410ce7",
+        "hash": "8d59ba8f29244be18f8b3c6ffa0a70517b8ac5bd36258c1c94ab77398b096aad",
         "streets": [
           "Karlsplatz (Stachus)",
           "Walking path",
@@ -5386,7 +6591,7 @@
       },
       "applied": [],
       "unavailable": [],
-      "calculationMs": 21
+      "calculationMs": 59
     },
     {
       "names": [
@@ -5410,7 +6615,7 @@
         "detailed": 574.3799999999998,
         "majorRoadMeters": 0,
         "trafficUnknown": 12.87,
-        "hash": "0f21567b57c619cc5e41fe808d39170f1b7f6f6e13a749933d78508ba1b9601a",
+        "hash": "d72cba44e12650a820b5a36ac76c98d550823a68eb96761cc8fc538e7dd9797c",
         "streets": [
           "Marienplatz",
           "Weinstraße",
@@ -5430,7 +6635,7 @@
         "detailed": 574.3799999999998,
         "majorRoadMeters": 0,
         "trafficUnknown": 12.87,
-        "hash": "0f21567b57c619cc5e41fe808d39170f1b7f6f6e13a749933d78508ba1b9601a",
+        "hash": "d72cba44e12650a820b5a36ac76c98d550823a68eb96761cc8fc538e7dd9797c",
         "streets": [
           "Marienplatz",
           "Weinstraße",
@@ -5443,7 +6648,7 @@
       },
       "applied": [],
       "unavailable": [],
-      "calculationMs": 146
+      "calculationMs": 218
     }
   ],
   "limitations": "Computational checks, not field validation. Buildings only; mapped sidewalks remain incomplete."

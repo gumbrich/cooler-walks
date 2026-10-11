@@ -1,0 +1,13 @@
+{
+  "sourceBounds": [688000, 5332000, 696000, 5340000],
+  "routeBounds": [11.536, 48.121, 11.625, 48.176],
+  "networkBounds": [11.525, 48.112, 11.637, 48.184],
+  "dataVersion": "munich-2026-10-11-v4",
+  "shadeVersion": "munich-roofs-dgm-library-2026-10-11-v2",
+  "buildingIndex": "munich-buildings-2026-10-11.meta4",
+  "osmFile": "oberbayern-261008.osm.pbf",
+  "osmUrl": "https://download.geofabrik.de/europe/germany/bayern/oberbayern-261008.osm.pbf",
+  "osmBytes": 258495930,
+  "buildingIndexSha256": "92655bd61b7dea6f5edb7a08fb46f5ff84db9f3a9c4e43806f28d518a398b68a",
+  "osmMd5": "96374448c9416f258289bfaf04473606"
+}

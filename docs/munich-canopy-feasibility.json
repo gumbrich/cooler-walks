@@ -1,0 +1,45 @@
+{
+  "decision": "research only; not enabled in routing",
+  "tile": "692_5337",
+  "bounds": [692000, 5337000, 693000, 5338000],
+  "crs": "EPSG:25832",
+  "verticalDatum": "DHHN2016 (provider definition; LAS header has no CRS VLR)",
+  "laser": {
+    "url": "https://geodaten.bayern.de/odd_data/laser/692_5337.laz",
+    "sha256": "a063fd9c9d2427cfb87655390a935375cd217986349c337524f0ef660616a522",
+    "bytes": 145914574,
+    "fileCreationDate": "2022-06-16",
+    "gpsTimeEncoding": "LAS adjusted standard GPS time; +1e9 seconds since 1980-01-06, minus 18s GPS-UTC",
+    "observedUtcRange": ["2022-02-27T17:35:35.715130+00:00", "2022-02-27T18:02:25.723619+00:00"],
+    "classes": {
+      "0": 2,
+      "1": 1,
+      "2": 8360244,
+      "6": 4881274,
+      "7": 124,
+      "20": 11165199,
+      "22": 78893
+    }
+  },
+  "imagery": {
+    "service": "https://geoservices.bayern.de/od/wms/dop/v1/dop20",
+    "layer": "by_dop20cir",
+    "size": [2000, 2000],
+    "format": "image/png",
+    "crs": "EPSG:25832",
+    "flightDate": "2024-08-24",
+    "flight": "124028/0",
+    "sha256": "e1660999077217a90012631597929763cb2b4750094d799ce1344f352d2ac436"
+  },
+  "screening": {
+    "method": "Class-20 returns >2m above DGM1; rendered CIR red-green channel contrast >0.10 at each return. This is a candidate screen, not calibrated NDVI or validated classification.",
+    "elevatedObjectReturns": 9930032,
+    "withVegetationContrast": 8443648,
+    "withoutVegetationContrast": 1486384
+  },
+  "blockers": [
+    "Laser returns observed in winter 2022; imagery in summer 2024. Growth, removal, construction and seasonal state can disagree.",
+    "Class 20 includes non-vegetation objects; rendered colour contrast alone cannot validate individual crowns or vertical foliage gaps.",
+    "Require matched epoch DOM/CIR/laser checks, explicit roof/wire/vehicle rejection and stratified canopy/source audits before enabling."
+  ]
+}

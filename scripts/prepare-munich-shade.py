@@ -18,8 +18,9 @@ import rasterio
 ROOT = Path(__file__).resolve().parents[1]
 RAW = ROOT / 'data/raw'
 OUT = ROOT / 'public/data/munich-shade'
-BOUNDS = [690000, 5334000, 694000, 5338000]
-VERSION = 'munich-roofs-dgm-library-2026-10-11-v1'
+CONFIG = json.loads((ROOT / 'scripts/munich-coverage.json').read_text())
+BOUNDS = CONFIG['sourceBounds']
+VERSION = CONFIG['shadeVersion']
 spec = importlib.util.spec_from_file_location('mesh', ROOT / 'scripts/prepare-detailed-shade.py')
 mesh = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(mesh)
@@ -63,7 +64,7 @@ def main():
                                         [mesh.ring(r) for r in face.findall('g:interior', NS)])], dtype='<f8')
                     if not len(faces):
                         raise ValueError('Empty mesh')
-                    if not np.all((faces[:, :, 2] > 400) & (faces[:, :, 2] < 800)):
+                    if not np.all((faces[:, :, 2] > 400) & (faces[:, :, 2] < 900)):
                         raise ValueError('Unexpected DHHN2016 height')
                 except ValueError as error:
                     rejected.extend({'id': b['id'], 'reason': str(error)} for b in records)
@@ -118,6 +119,11 @@ def main():
                                   'sha256': sha, 'bytes': len(packed), 'expandedBytes': len(raw)})
         print('Prepared', key, len(tri), 'triangles', len(packed), 'bytes', flush=True)
     (ROOT / 'public/data/munich-shade-library.json').write_text(json.dumps(manifest, separators=(',', ':')))
+    # Content-addressed files from earlier builds must not inflate deploy/native assets.
+    current = {Path(t['url']).name for t in manifest['tiles']}
+    for path in OUT.glob('*.shade'):
+        if path.name not in current:
+            path.unlink()
     report = {'version': VERSION, 'boundsUTM32': BOUNDS, 'crs': 'EPSG:25832', 'verticalDatum': 'DHHN2016',
               'sourceTriangles': sum(r['triangles'] for r in accepted), 'acceptedParts': len(accepted),
               'rejectedBuildings': rejected, 'buildingSources': sources, 'groundSources': ground_sources,

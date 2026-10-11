@@ -21,8 +21,11 @@ const cases: { id: string; old: Bounds; journeys: [string, string][] }[] = [
   },
   {
     id: 'de-munich',
-    old: [11.56, 48.135, 11.582, 48.146],
-    journeys: [['Karlsplatz (Stachus)', 'Prinzregentenstraße']],
+    old: [11.558, 48.133, 11.601, 48.158],
+    journeys: [
+      ['Hohenzollernplatz', 'Münchner Freiheit'],
+      ['Theresienhöhe', 'Lindwurmstraße'],
+    ],
   },
   {
     id: 'us-cambridge-ma',

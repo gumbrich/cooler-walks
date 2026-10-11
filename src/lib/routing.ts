@@ -252,10 +252,14 @@ export class Router {
       this.treeGrid.add(p, p);
     });
     if (consumeSource) data.trees = [];
+    const heightCeiling = city.buildingHeightCeiling ?? 150;
+    if (!Number.isFinite(heightCeiling) || heightCeiling <= 0 || heightCeiling > 1000)
+      throw new Error('Invalid city building-height bound');
     data.buildings.forEach((b) => {
-      if (!Number.isFinite(b.height) || b.height <= 0 || b.height > 150) return;
-      const shadowHeight = b.uncertain ? (b.shadowHeightBound ?? 150) : b.height;
-      if (!Number.isFinite(shadowHeight) || shadowHeight <= 0 || shadowHeight > 150)
+      if (!Number.isFinite(b.height) || b.height <= 0 || b.height > heightCeiling)
+        throw new Error('Building exceeds the reviewed city height bound');
+      const shadowHeight = b.uncertain ? (b.shadowHeightBound ?? heightCeiling) : b.height;
+      if (!Number.isFinite(shadowHeight) || shadowHeight <= 0 || shadowHeight > heightCeiling)
         throw new Error('Invalid uncertainty height bound');
       this.maxHeight = Math.max(this.maxHeight, shadowHeight);
       const uncertain = b.uncertain === true || excluded.has(b.id.split(':')[0]);
@@ -279,7 +283,7 @@ export class Router {
         ring,
         holes,
         // Ground-referenced source geometry can bound an open object’s reach.
-        // Without a valid bound, retain the conservative 150 m model ceiling.
+        // Without a valid bound, retain the reviewed city model ceiling.
         height: shadowHeight,
         uncertain,
         radius,

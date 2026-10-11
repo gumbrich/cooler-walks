@@ -3,8 +3,8 @@
   "references": [
     {
       "areaId": "de-munich-old-town",
-      "nodes": 5382,
-      "edges": 6038,
+      "nodes": 5383,
+      "edges": 6039,
       "from": "Karlsplatz (Stachus)",
       "to": "Odeonsplatz",
       "fastest": {

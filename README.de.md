@@ -1,6 +1,6 @@
 # Cooler Walks
 
-**0.23.0 — München:** 3D-Gebäudeschatten, Höhenprofile und flachere Wege, verkehrsberuhigte Routen, Tempo-30-Strassen, 5.516 suchbare Adressen und das Meiden erfasster Hindernisse. Website, PWA und Android-App nutzen dieselben Funktionen im bisherigen **8,90 km² grossen Beta-Gebiet**. Baumschatten, vollständige Gehwegseiten und Fahrzeugzählungen bleiben offen. [Funktionen, Daten, Prüfungen und offene Punkte](docs/munich.md).
+**0.24.0 — München:** Das Gehgebiet wächst von 8,90 auf **40,5 km²**. Schatten/Sonne, Höhenprofile, verkehrsberuhigte Wege, Wassernähe, das Meiden erfasster Hindernisse und Adresssuche nutzen die erweiterte Abdeckung. Grundlage sind ein datierter OSM-Auszug und 64 km² Gebäude- und Geländedaten. München bleibt Beta; Baumschatten, vollständige Gehwegseiten und örtliche Fahrzeugzählungen sind noch offen. [Details und Prüfungen](docs/munich.md).
 
 **0.22.0:** Sonne und Schatten beeinflussen die Routenwahl auch bei lückenhaften Baumdaten. Unbekannte Abschnitte dürfen einen Weg nicht besser erscheinen lassen; gegebenenfalls vergleicht die App ausdrücklich den Gebäudeschatten. Bei 48 Zürcher Berechnungen liefern Sonne und Schatten in 19 von 24 Weg-/Zeitpaaren unterschiedliche Wege. [Änderung, Prüfungen und Grenzen](docs/shade-routing-recovery.md).
 
@@ -26,7 +26,7 @@ Die [aktuelle Untersuchung](docs/shadow-validation-followup.md) prüft alle 26 a
 
 **Verkehr 0.11.0:** separate Wege und verkehrsbeschränkte Strassen werden von Tempo-30- und Begegnungszonen unterschieden. Verglichen werden absolute Strecken; historische Zählwerte beziehen sich auf die geschätzte Vorbeigehzeit. [Methode und Vor-Ort-Plan](docs/traffic.md).
 
-**Zürich ist unser Schwerpunkt:** 57,77 km² mit Oerlikon, Altstetten, Höngg, dem Zentrum, Wiedikon und Seefeld. Basel (10,25 km²), München (8,90 km²) und Cambridge, Massachusetts (18,46 km²) bleiben **Beta**. Die Karte zeigt die tatsächliche Grenze. Zürich und München bieten experimentelle Gebäudeschattenschätzungen; Cambridge und Basel Grün- und Wassernähe. Baumschatten ist nur in Zürich integriert. Geländeschatten, Wetter und Live-Navigation sind nicht enthalten.
+**Zürich ist unser Schwerpunkt:** 57,77 km² mit Oerlikon, Altstetten, Höngg, dem Zentrum, Wiedikon und Seefeld. Basel (10,25 km²), München (40,5 km²) und Cambridge, Massachusetts (18,46 km²) bleiben **Beta**. Die Karte zeigt die tatsächliche Grenze. Zürich und München bieten experimentelle Gebäudeschattenschätzungen; Cambridge und Basel Grün- und Wassernähe. Baumschatten ist nur in Zürich integriert. Geländeschatten, Wetter und Live-Navigation sind nicht enthalten.
 
 In Zürich berücksichtigt **Verkehrsberuhigt bevorzugen** offizielle Fussgänger-, Begegnungs- und Tempo-30-Zonen sowie die Nähe zu kartierten Hauptstrassen. Die Auswahl berücksichtigt Verkehrsmerkmale gemeinsam mit deinen weiteren Wünschen und hält dein Umweglimit ein. Das ist ein Strassenindikator, keine Messung von Verkehrsaufkommen, Lärm oder Sicherheit. [Daten und Berechnung](docs/traffic.md)
 

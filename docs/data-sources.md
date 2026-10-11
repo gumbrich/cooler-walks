@@ -1,5 +1,19 @@
 # Data sources and preparation
 
+## Munich expansion · 0.24.0
+
+The active Munich boundary is `[11.536,48.121,11.625,48.176]`, about **40.5 km²**, buffered by **64 km²** of UTM32/DHHN2016 building and ground data. [Complete active feature/source record](munich.md) and [remaining-source review](munich-source-review.md). Historical entries below describe earlier releases.
+
+- **OSM / Geofabrik:** `oberbayern-261008.osm.pbf`, 258,495,930 bytes, replication timestamp `2026-10-08T20:21:06Z`; fetched 11 October 2026. The published MD5 and local SHA-256 are checked and retained. `scripts/extract-munich-osm.py` clips real node/way topology and uses libosmium for complete multipolygon rings. ODbL, © OpenStreetMap contributors. A regional extract replaces the earlier bounded editing-API requests.
+- **Buildings:** sixteen 2 km CityGML tiles, official municipal metalink published **6 October 2026**, pinned in `scripts/munich-coverage.json`. Every tile matches official SHA-256 and length. Actual part/roof/facade geometry, holes, source heights and per-object dates remain distinct. 68,037 accepted parts / 2,902,264 triangles; 220 footprint records remain unknown. Two collapsed ground rings use conservative source-vertex envelopes as unknown masks. Munich's 350 m source-height bound includes the 291.39 m Olympiaturm; other cities keep their existing bounds.
+- **Ground:** 64 official DGM1 1 km tiles, averaged to 2 m with no filled missing cells. 16 million valid output cells, EPSG:25832/DHHN2016, 0.1 m quantization. Source file timestamps are retained without calling them flight dates. **64 hashed streamed tiles, 40.0 MB**, for ground and detailed building geometry. © Bayerische Vermessungsverwaltung, CC BY 4.0; derived/resampled data.
+- **Tree positions:** expanded extraction from the same official 2024 GeoPackage, **143,573** automatic detections inside/just around the walking boundary. Greenery only; no crowns are invented.
+- **Addresses and paths:** **23,723** deduplicated OSM addresses (17,260 point records, remainder derived building label positions). 75,328 graph nodes / 84,827 verified original source segments. 381.4 km separately mapped sidewalks, 19.1 km crossings, 624.8 km other pedestrian paths, 397.7 km centrelines. Source topology fidelity does not establish public access today or complete side-of-street coverage.
+- **Zones:** the existing municipal implemented-zone source, corroborated by explicit OSM 30 km/h tags, now contributes **2,256 street fragments** over the expanded area. Municipal geometry remains cartographic, not survey-accurate. DL-DE-BY-2.0, Mobilitätsreferat München. No zone polygons are painted as streets.
+- **Research excluded from runtime:** one official 1 km² laser tile with GPS observations from February 2022, rendered CIR imagery from August 2024, and the CC BY 4.0 BAYSIS 2021 traffic-counter export. The tree classification/epoch mismatch remains unresolved; all four returned counters are outside the walking area. [Exact hashes and limitations](munich-source-review.md).
+
+Reproduce with `npm run data:fetch:munich:coverage`, the two Munich extraction scripts, `npm run data:prepare:munich`, and the documented audits. Raw PBF/CityGML/GeoTIFF/GeoPackage/laser/images stay ignored. A changed official publication stops checksum validation and requires a deliberate source/configuration review.
+
 ## Sun/Shade availability repair · 0.22.0
 
 No source assets, observation dates, tree masks or ray geometry changed. The route selector now uses worst-case unknown-exposure bounds and a declared building-only fallback when optional tree gaps prevent comparison. Source-only canopy checks disable fallback and still verify raw unknown cells. [Policy, provenance-preserving behaviour and evidence](shade-routing-recovery.md).

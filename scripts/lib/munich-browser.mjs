@@ -59,3 +59,39 @@ export async function checkMunichPlanner(page) {
     groundProfile: true,
   };
 }
+
+export async function checkMunichExpansion(page) {
+  await page.getByRole('combobox', { name: /^(Language|Sprache)$/ }).selectOption('en');
+  if (!(await page.getByRole('combobox', { name: 'From', exact: true }).isVisible()))
+    await page.getByRole('button', { name: 'Edit trip', exact: true }).click();
+  if (!(await page.locator('.additional-preferences').evaluate((e) => e.open)))
+    await page.locator('.additional-preferences summary').click();
+  for (const name of ['Calm streets', 'Flatter routes', 'Waterside', 'Accessibility'])
+    await page.getByRole('checkbox', { name, exact: true }).uncheck();
+  for (const [label, name] of [
+    ['From', 'Hohenzollernplatz'],
+    ['To', 'Münchner Freiheit'],
+  ]) {
+    await page.getByRole('combobox', { name: label, exact: true }).fill(name);
+    await page.getByRole('listbox').getByRole('option').first().click();
+  }
+  await page.getByRole('button', { name: '+5 min', exact: true }).click();
+  await page.getByRole('button', { name: 'Shade', exact: true }).click();
+  await munichReady(page);
+  const selected = page.locator('.route-card.selected .route-distance');
+  const shade = await selected.innerText();
+  await page.getByRole('button', { name: 'Sun', exact: true }).click();
+  await munichReady(page);
+  await expect(selected).not.toHaveText(shade);
+  const sun = await selected.innerText();
+  await page.getByRole('combobox', { name: 'Language', exact: true }).selectOption('de');
+  if (await page.locator('.mobile-save').isVisible()) await page.locator('.mobile-save').click();
+  await page.getByRole('button', { name: 'Weg auf der Karte einpassen', exact: true }).click();
+  await expect(page.locator('.map-shell')).toHaveAttribute('data-map-settled', 'true');
+  return {
+    from: 'Hohenzollernplatz',
+    to: 'Münchner Freiheit',
+    shadeDistance: shade,
+    sunDistance: sun,
+  };
+}

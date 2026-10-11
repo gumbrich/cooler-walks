@@ -1,5 +1,15 @@
 # Progress
 
+## Munich coverage and source follow-up · 0.24.0
+
+Expanded the working Munich beta from 8.90 to about **40.5 km²**. The updated October OSM snapshot contains **23,723 addresses**, **381.4 km of separate sidewalks** and **19.1 km of crossings**. Building and DGM1 sources cover 64 km²; the importer pins the October building publication, preserves malformed geometry as unknown and supports the tall Olympiaturm without changing Zurich's source-height bound.
+
+**53 real route calculations** pass; all 20 paired Shade/Sun comparisons across ten point pairs select different routes. All 84,827 graph segments match original OSM connectivity, and **870/870 independent source rays** agree. These are computational checks, not field accuracy. The shared planner and offline packs include the expanded area; the full download is 53.1 MB.
+
+A real laser/CIR sample leaves Munich tree shade unresolved (winter 2022 vs summer 2024, vegetation mixed with other objects). The licensed BAYSIS traffic service was queried: none of its four nearby 2021 counters is inside this walking area. [Exact findings and next integration work](munich-source-review.md). Complete pavement sides, municipal vehicle profiles, official address coordinates, bridge heights and field validation remain open.
+
+Browser screenshots exposed a fixed map-pan margin that prevented the full larger boundary from fitting above the timeline; margins now scale with area size. The route controls and phone layout remain unchanged. Platform/release evidence is tracked in [platform](platform.md).
+
 ## Munich feature expansion · 0.23.0
 
 Published at **https://coolerwalks.ch** from `d900430`; the live installed-PWA offline flow and password gate pass. GitHub Actions remains blocked by its account budget.

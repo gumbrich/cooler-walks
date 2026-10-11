@@ -1,0 +1,24 @@
+{
+  "version": "0.24.0",
+  "checkedAt": "2026-10-11T13:09:57.434Z",
+  "emulator": "CoolerWalks_Test",
+  "offline": true,
+  "checks": {
+    "shadeDistance": "1.31 km\nArrive around 14:17",
+    "sunDistance": "1.30 km\nArrive around 14:17",
+    "combinedPreferences": true,
+    "minuteSlider": true,
+    "addresses": true,
+    "german": true,
+    "zones": true,
+    "groundProfile": true,
+    "expansion": {
+      "from": "Hohenzollernplatz",
+      "to": "Münchner Freiheit",
+      "shadeDistance": "1.83 km\nArrive around 14:23",
+      "sunDistance": "1.57 km\nArrive around 14:20"
+    }
+  },
+  "pageErrors": [],
+  "limitations": ["Emulator only; no physical phone or iOS device test."]
+}
